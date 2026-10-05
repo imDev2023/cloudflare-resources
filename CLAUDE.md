@@ -10,3 +10,4 @@ This repository is the canonical knowledge base on Cloudflare's developer platfo
 - Date every snapshot of something that moves (prices, limits, versions, beta or GA status, counts).
 - When a refresh changes `raw/`, update the synthesized files that cover the changed pages, and the "Known stale or broken things" list in `README.md`.
 - Never commit API keys; the scripts read them from the environment.
+- `skill/SKILL.md` is the backup of the global `cloudflare-kb` skill; keep it identical to `~/.claude/skills/cloudflare-kb/SKILL.md`.

@@ -7,6 +7,8 @@ This repository is the one canonical copy.
 Locally it lives at `/Volumes/Farhan/Work Folder/Dev/AI/Research-Projects/cloudflare`; elsewhere use https://github.com/imDev2023/cloudflare-resources (public).
 Projects point at it and never copy it.
 The `cloudflare-kb` skill (`~/.claude/skills/cloudflare-kb/SKILL.md`) is the pointer other sessions use.
+Its backup lives in [skill/SKILL.md](skill/SKILL.md); install it on a new machine with `mkdir -p ~/.claude/skills/cloudflare-kb && cp skill/SKILL.md ~/.claude/skills/cloudflare-kb/`.
+When the skill changes, update both copies; `diff skill/SKILL.md ~/.claude/skills/cloudflare-kb/SKILL.md` shows drift.
 
 ## What was scraped
 
