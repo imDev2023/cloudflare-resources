@@ -4,7 +4,7 @@ Everything on Cloudflare's developer platform and network products, scraped and 
 Read the synthesized files first; drop into `raw/` only when you need the exact source wording.
 
 This repository is the one canonical copy.
-Locally it lives at `/Volumes/Farhan/Work Folder/Dev/AI/Research-Projects/cloudflare`; elsewhere use https://github.com/imDev2023/cloudflare-resources (private).
+Locally it lives at `/Volumes/Farhan/Work Folder/Dev/AI/Research-Projects/cloudflare`; elsewhere use https://github.com/imDev2023/cloudflare-resources (public).
 Projects point at it and never copy it.
 The `cloudflare-kb` skill (`~/.claude/skills/cloudflare-kb/SKILL.md`) is the pointer other sessions use.
 
@@ -23,6 +23,13 @@ The `cloudflare-kb` skill (`~/.claude/skills/cloudflare-kb/SKILL.md`) is the poi
 | Alternative platforms research (Tavily and Jina), plus 129 llms.txt probes | `raw/alternatives/` (`llms-probe.tsv`; third-party `llms-full` dumps gitignored) | 47 searches, 148 pages |
 
 Scraping used the official Markdown endpoints with plain HTTP (no scraping service), `agent-browser` for the sidebar, `gh` for GitHub, and Tavily and Jina for third-party pages.
+
+## Sources and license
+
+The mirrored Cloudflare documentation in `raw/docs/` and `raw/api/` is by Cloudflare, Inc. and contributors, used under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) (code samples under MIT), as stated in https://github.com/cloudflare/cloudflare-docs.
+Cloudflare names and logos are trademarks of Cloudflare; this repository is not affiliated with or endorsed by Cloudflare.
+The synthesized files are original notes that cite their sources.
+Third-party material (Cloudflare blog posts, press releases, news articles and other platforms' docs) is not redistributed here: only its URL lists are committed (`raw/blog/index.tsv`, `raw/external/urls.txt`, `raw/alternatives/llms-probe.tsv`), and `scripts/fetch-blog.py` and `scripts/jina-fetch.sh` re-fetch it locally.
 
 ## Keeping it current
 
