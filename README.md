@@ -4,7 +4,7 @@ Everything on Cloudflare's developer platform and network products, scraped and 
 Read the synthesized files first; drop into `raw/` only when you need the exact source wording.
 
 This repository is the one canonical copy.
-Locally it lives at `/Volumes/Farhan/Work Folder/Dev/AI/Research-Projects/cloudflare`.
+Locally it lives at `/Volumes/Farhan/Work Folder/Dev/AI/Research-Projects/cloudflare`; elsewhere use https://github.com/imDev2023/cloudflare-resources (private).
 Projects point at it and never copy it.
 The `cloudflare-kb` skill (`~/.claude/skills/cloudflare-kb/SKILL.md`) is the pointer other sessions use.
 
