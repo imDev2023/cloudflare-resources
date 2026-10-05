@@ -3,3 +3,7 @@ raw/api/openapi.json
 .env
 __pycache__/
 raw/alternatives/pages/*llms-full*
+# Third-party content is not redistributed (not covered by the docs' CC BY 4.0 license); re-fetch with the scripts.
+raw/blog/*.md
+raw/external/*.md
+raw/alternatives/pages/
