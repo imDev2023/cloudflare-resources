@@ -17,8 +17,8 @@ The `cloudflare-kb` skill (`~/.claude/skills/cloudflare-kb/SKILL.md`) is the poi
 | The docs sidebar with every dropdown expanded, captured in a browser | `raw/nav/home-sidebar.{json,md}` | 13 groups, 93 links |
 | API reference (developers.cloudflare.com/api/) | `raw/api/resources/**/index.md`, `raw/api/llms.txt` | 1,111 resource pages |
 | Official OpenAPI spec (github.com/cloudflare/api-schemas) | `raw/api/openapi.json` (gitignored), `raw/api/endpoints.tsv` | 3,647 operations on 2,287 paths |
-| Cloudflare blog posts tagged web3, ethereum, ipfs, x402, payments, cryptography, randomness | `raw/blog/` | 38 posts |
-| Press releases and third-party pages (NET Dollar, Wallets, x402 Foundation, Helius RPC proxy) | `raw/external/` | 7 pages |
+| Cloudflare blog posts tagged web3, ethereum, ipfs, x402, payments, cryptography, randomness | `raw/blog/` (local only; `index.tsv` committed) | 38 posts |
+| Press releases and third-party pages (NET Dollar, Wallets, x402 Foundation, Helius RPC proxy) | `raw/external/` (local only; `urls.txt` committed) | 7 pages |
 | Every public repo of the cloudflare GitHub org | `raw/github/repos.tsv`, `raw/github/readmes/` | 580 repos, 80 READMEs |
 | Alternative platforms research (Tavily and Jina), plus 129 llms.txt probes | `raw/alternatives/` (`llms-probe.tsv`; third-party `llms-full` dumps gitignored) | 47 searches, 148 pages |
 
