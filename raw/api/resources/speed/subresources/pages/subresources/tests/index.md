@@ -1,0 +1,131 @@
+---
+title: Tests
+---
+
+[Skip to content](#_top)
+
+[API Reference](https://developers.cloudflare.com/api)
+
+[Speed](https://developers.cloudflare.com/api/resources/speed)
+
+[Pages](https://developers.cloudflare.com/api/resources/speed/subresources/pages)
+
+Copy Markdown
+
+Open in **Claude**Open in **ChatGPT**Open in **Cursor**
+
+---
+
+**Copy Markdown****View as Markdown**
+
+# Tests
+
+##### [List page test history](https://developers.cloudflare.com/api/resources/speed/subresources/pages/subresources/tests/methods/list)
+
+GET/zones/{zone\_id}/speed\_api/pages/{url}/tests
+
+##### [Get a page test result](https://developers.cloudflare.com/api/resources/speed/subresources/pages/subresources/tests/methods/get)
+
+GET/zones/{zone\_id}/speed\_api/pages/{url}/tests/{test\_id}
+
+##### [Start page test](https://developers.cloudflare.com/api/resources/speed/subresources/pages/subresources/tests/methods/create)
+
+POST/zones/{zone\_id}/speed\_api/pages/{url}/tests
+
+##### [Delete all page tests](https://developers.cloudflare.com/api/resources/speed/subresources/pages/subresources/tests/methods/delete)
+
+DELETE/zones/{zone\_id}/speed\_api/pages/{url}/tests
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+Test object {id, date, desktopReport, 4 more }
+
+</summary>
+
+id: optional string
+
+UUID.
+
+maxLength36
+
+<a href="#(resource)%20speed.pages.tests%20%3E%20(model)%20test%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+date: optional string
+
+formatdate-time
+
+<a href="#(resource)%20speed.pages.tests%20%3E%20(model)%20test%20%3E%20(schema)%20%3E%20(property)%20date">Link to this property</a>
+
+desktopReport: optional <a href="https://developers.cloudflare.com/api/resources/speed#(resource)%20speed%20%3E%20(model)%20lighthouse_report%20%3E%20(schema)">LighthouseReport</a> { cls, deviceType, error, 9 more }
+
+The Lighthouse report.
+
+<a href="#(resource)%20speed.pages.tests%20%3E%20(model)%20test%20%3E%20(schema)%20%3E%20(property)%20desktopReport">Link to this property</a>
+
+mobileReport: optional <a href="https://developers.cloudflare.com/api/resources/speed#(resource)%20speed%20%3E%20(model)%20lighthouse_report%20%3E%20(schema)">LighthouseReport</a> { cls, deviceType, error, 9 more }
+
+The Lighthouse report.
+
+<a href="#(resource)%20speed.pages.tests%20%3E%20(model)%20test%20%3E%20(schema)%20%3E%20(property)%20mobileReport">Link to this property</a>
+
+region: optional <a href="https://developers.cloudflare.com/api/resources/speed#(resource)%20speed%20%3E%20(model)%20labeled_region%20%3E%20(schema)">LabeledRegion</a> { label, value }
+
+A test region with a label.
+
+<a href="#(resource)%20speed.pages.tests%20%3E%20(model)%20test%20%3E%20(schema)%20%3E%20(property)%20region">Link to this property</a>
+
+<details>
+
+<summary>
+
+scheduleFrequency: optional "DAILY"or "WEEKLY"
+
+The frequency of the test.
+
+</summary>
+
+One of the following:
+
+"DAILY"
+
+<a href="#(resource)%20speed.pages.tests%20%3E%20(model)%20test%20%3E%20(schema)%20%3E%20(property)%20scheduleFrequency%20%3E%20(member)%200">Link to this property</a>
+
+"WEEKLY"
+
+<a href="#(resource)%20speed.pages.tests%20%3E%20(model)%20test%20%3E%20(schema)%20%3E%20(property)%20scheduleFrequency%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20speed.pages.tests%20%3E%20(model)%20test%20%3E%20(schema)%20%3E%20(property)%20scheduleFrequency">Link to this property</a>
+
+url: optional string
+
+A URL.
+
+<a href="#(resource)%20speed.pages.tests%20%3E%20(model)%20test%20%3E%20(schema)%20%3E%20(property)%20url">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20speed.pages.tests%20%3E%20(model)%20test%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+TestDeleteResponse object {count }
+
+</summary>
+
+count: optional number
+
+Number of items affected.
+
+<a href="#(resource)%20speed.pages.tests%20%3E%20(model)%20test_delete_response%20%3E%20(schema)%20%3E%20(property)%20count">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20speed.pages.tests%20%3E%20(model)%20test_delete_response%20%3E%20(schema)>)

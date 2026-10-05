@@ -1,0 +1,106 @@
+---
+description: Terraform examples for managing and configuring leaked credentials detection.
+title: Terraform configuration examples
+image: https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/og.png?v=0a6682a5c188692b
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Terraform configuration examples
+
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+The following Terraform configuration examples address common scenarios for managing, configuring, and using leaked credentials detection.
+
+For more information, refer to the [Terraform Cloudflare provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+
+If you are using the Cloudflare API, refer to [Common API calls](https://developers.cloudflare.com/waf/detections/leaked-credentials/api-calls/).
+
+## Enable leaked credentials detection
+
+Use the `cloudflare_leaked_credential_check` resource to enable leaked credentials detection for a zone. For example:
+
+```terraform
+resource "cloudflare_leaked_credential_check" "zone_lcc_example" {
+	zone_id = var.cloudflare_zone_id
+	enabled = true
+}
+```
+
+## Configure a custom detection location
+
+Use the `cloudflare_leaked_credential_check_rule` resource to add a custom detection location. For example:
+
+```terraform
+resource "cloudflare_leaked_credential_check_rule" "custom_location_example" {
+	zone_id = var.cloudflare_zone_id
+	username = "lookup_json_string(http.request.body.raw, \"user\")"
+	password = "lookup_json_string(http.request.body.raw, \"secret\")"
+}
+```
+
+You only need to provide an expression for the username in custom detection locations.
+
+## Add a custom rule to challenge requests with leaked credentials
+
+This example adds a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) that challenges requests with leaked credentials by using one of the [leaked credentials fields](https://developers.cloudflare.com/waf/detections/leaked-credentials/#leaked-credentials-fields) in the rule expression.
+
+To use the [`cf.waf.credential_check.username_and_password_leaked`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential_check.username_and_password_leaked/) field you must [enable leaked credentials detection](#enable-leaked-credentials-detection).
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```tf
+resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {
+  zone_id     = var.cloudflare_zone_id
+  name        = "Phase entry point ruleset for custom rules in my zone"
+  description = ""
+  kind        = "zone"
+  phase       = "http_request_firewall_custom"
+
+  rules = [{
+    ref         = "challenge_leaked_username_password"
+    description = "Challenge requests with a leaked username and password"
+    expression  = "(cf.waf.credential_check.username_and_password_leaked)"
+    action      = "managed_challenge"
+  }]
+}
+```
+
+```tf
+resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {
+  zone_id     = var.cloudflare_zone_id
+  name        = "Phase entry point ruleset for custom rules in my zone"
+  description = ""
+  kind        = "zone"
+  phase       = "http_request_firewall_custom"
+
+  rules {
+    ref         = "challenge_leaked_username_password"
+    description = "Challenge requests with a leaked username and password"
+    expression  = "(cf.waf.credential_check.username_and_password_leaked)"
+    action      = "managed_challenge"
+  }
+}
+```
+
+## More resources
+
+For additional Terraform configuration examples, refer to [WAF custom rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/).

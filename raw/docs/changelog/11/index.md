@@ -1,0 +1,925 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Jul 21, 2026
+
+[<h2>Cloudflare One Client for Linux (version 2026.6.880.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-07-21-warp-linux-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
+
+Jul 21, 2026
+
+[<h2>Account Role API deprecated</h2>](https://developers.cloudflare.com/changelog/post/2026-07-21-account-role-api-deprecated/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+The [Account Roles API](https://developers.cloudflare.com/api/resources/accounts/subresources/roles/) is deprecated and is being replaced by the [Permission Groups API](https://developers.cloudflare.com/api/resources/iam/subresources/permission_groups/). An end of life date has not yet been established.
+
+#### What you need to do
+
+Review the [Permission Groups API](https://developers.cloudflare.com/api/resources/iam/subresources/permission_groups/) documentation; the response schema differs from the legacy Roles response.
+
+#### Highlights
+
+- Integrations migrating to the Permission Groups API must obtain Permission Group IDs from that API and use them in the Account Members API policies request shape. Integrations that persist legacy Role IDs will need to remap their assignments.
+- The legacy `Role` response includes a top-level `description` and a `permissions` object keyed by resource type with edit/read flags.
+- The `PermissionGroup` response replaces those with a `meta` object containing `label` and `scopes`. Individual permissions are not returned as part of the permission group.
+- The new API supports the [API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) authorization scheme. The legacy Email + API Key authorization schema is provided for backwards compatibility.
+
+For more information, refer to [API deprecations](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/).
+
+Jul 21, 2026
+
+[<h2>Run Devin on Cloudflare using Devin Outposts</h2>](https://developers.cloudflare.com/changelog/post/2026-07-21-devin-outposts/)
+
+[Sandboxes](https://developers.cloudflare.com/sandbox/)
+
+[Devin Outposts ↗︎](https://docs.devin.ai/onboard-devin/outposts) lets you run Devin agents on Cloudflare. Each Devin session runs in its own isolated sandbox backed by [Cloudflare Containers](https://developers.cloudflare.com/containers/), so agents can execute code and use development tooling in an isolated environment.
+
+Use Devin Outposts when you want Devin sessions to run on Cloudflare managed infrastructure, with each session isolated from the others.
+
+![Devin interface showing Cloudflare selected as an Outposts virtual environment](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1712,height=914,format=webp/_astro/devin-outposts.B3xjmfR5.jpg)
+
+To get started, refer to [Run Devin on Cloudflare using Devin Outposts](https://developers.cloudflare.com/sandbox/coding-agents/devin/).
+
+Jul 21, 2026
+
+[<h2>Faster and more secure TLS handshakes to your origins, automatically</h2>](https://developers.cloudflare.com/changelog/post/2026-07-21-automatic-origin-key-exchange/)
+
+[SSL/TLS](https://developers.cloudflare.com/ssl/)
+
+Cloudflare now takes the guesswork out of TLS 1.3 key agreement with your origins. Automatic key exchange predicts the preferred algorithm and sends its key share in the first `ClientHello`, helping avoid a `HelloRetryRequest` and one extra network round trip.
+
+Automatic key exchange is on for all existing zones and on by default for new zones. When an origin supports both classical and post-quantum key agreements, Cloudflare prefers the post-quantum `X25519MLKEM768` hybrid key agreement.
+
+To change this behavior, go to **SSL/TLS** > **Overview** > **Origin connection & post-quantum encryption**. Turn off **Automatic key exchange** to stop automatic scans and preference updates. Turning it off does not change your compliance requirements.
+
+**Compliance requirements** apply only to TLS 1.3 connections. The **Post-quantum hybrid** option requires hybrid post-quantum key agreements support on your origin server. The **Federal Information Processing Standards (FIPS)** option requires FIPS-compliant key agreements. Select both to require key agreements that satisfy both, or leave both unselected to allow all supported key agreements.
+
+For requirements, configuration options, and rollout details, refer to [Automatic key exchange to origins](https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/).
+
+Jul 21, 2026
+
+[<h2>WAF Release - 2026-07-21</h2>](https://developers.cloudflare.com/changelog/post/2026-07-21-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This release introduces new rules for vulnerabilities in Adobe ColdFusion, Next.js, WordPress alongside updates to existing rules thereby providing enhanced generic protections against Server-Side Request Forgery (SSRF), Local File Inclusion (LFI), and Cross-Site Scripting (XSS).
+
+**WAF and framework adapter mitigations for Next.js vulnerabilities**
+
+Multiple [security vulnerabilities ↗︎](https://nextjs.org/blog/july-2026-security-release) were disclosed and patched by the Next.js team through July 2026 security release. These include denial of service, middleware and proxy bypass, server-side request forgery, information disclosure, and cache poisoning across a range of severities.
+
+Several of the disclosed vulnerabilities are not possible to block at WAF layer,we strongly recommend updating your application and its dependencies immediately. Patched versions are available through v16.2.11 (Active LTS) and v15.5.21 (Maintenance LTS) to address these issues.
+
+| Advisory | CVE | Severity | Issue | WAF Coverage |
+| --- | --- | --- | --- | --- |
+| [Denial of Service in App Router using Server Actions](https://github.com/vercel/next.js/security/advisories/GHSA-m99w-x7hq-7vfj) | CVE-2026-64641 | High | Crafted requests targeting Next.js applications using App Router with at least one Server Action can lead to excessive CPU usage. The CPU usage blocks processing of further requests in the same process, leading to Denial of Service. | WAF rule Next.js - DoS - CVE-2026-64641 (...90dcdb0a) has been deployed to provide coverage. |
+| [Middleware / Proxy bypass in App Router applications using Turbopack and single locale](https://github.com/vercel/next.js/security/advisories/GHSA-6gpp-xcg3-4w24) | CVE-2026-64642 | High | Next.js applications using App Router built with Turbopack and a single entry in config.i18n.locales are vulnerable to a middleware/proxy bypass. Accordingly, any authentication or security checks that a middleware/proxy may perform are bypassed. | This is a middleware bypass that unfortunately cannot be covered through Cloudflare WAF signature engine. |
+| [Server-Side Request Forgery in rewrites via attacker-controlled destination hostname](https://github.com/vercel/next.js/security/advisories/GHSA-p9j2-gv94-2wf4) | CVE-2026-64645 | High | A rewrites() or redirects() rule that builds its external destination hostname from request-controlled input can be pointed at an arbitrary hostname, regardless of the rule's hostname suffix. For rewrites, this behavior enables Server-Side Request Forgery (SSRF); for redirects, Open Redirect can be achieved. | Existing SSRF rules provide adequate coverage for this vulnerability, no tailored WAF rule was developed. |
+| [Server-Side Request Forgery in Server Actions on custom servers](https://github.com/vercel/next.js/security/advisories/GHSA-89xv-2m56-2m9x) | CVE-2026-64649 | High | When a Server Action forwards or redirects a request, an attacker can cause the server to send that outbound request to a malicious host (Server-Side Request Forgery). This requires the attacker’s request to control Host-associated headers. | WAF rule Next.js - SSRF - CVE-2026-64649 (...930091a3) has been deployed to provide coverage. |
+| [Denial of Service in the Image Optimization API using SVGs](https://github.com/vercel/next.js/security/advisories/GHSA-q8wf-6r8g-63ch) | CVE-2026-64644 | Medium | When self-hosting Next.js with the default image loader, the Image Optimization API can optimize remotely hosted images if configured (not enabled by default). If those images contain malicious content, the images can cause CPU exhaustion in the /\_next/image endpoint. | Malicious request is unfortunately indistinguishable from a legitimate image optimization request, so no WAF rule has been created to address this vulnerability. |
+| [Unbounded Server Action payload in Edge runtime](https://github.com/vercel/next.js/security/advisories/GHSA-4c39-4ccg-62r3) | CVE-2026-64646 | Medium | A crafted request can lead to memory consumption on Server Actions in the Edge runtime. Next.js applications which use App Router and have at least one Server Action are affected. | Unfortunately there is no one size fits all rule that can be deployed through WAF in lieu of custom bodySizeLimit configurations, so no WAF rule has been created to address this vulnerability. |
+| [Unauthenticated disclosure of internal Server Function endpoints](https://github.com/vercel/next.js/security/advisories/GHSA-955p-x3mx-jcvp) | CVE-2026-64643 | Medium | In Next.js applications using App Router, Server Actions (use server) or use cache endpoint IDs can be globally disclosed. An attacker can use this for reconnaissance and as part of a broader attack chain. | WAF rule Next.js - Information Disclosure - CVE-2026-64643 (...72952826) has been deployed to provide coverage. |
+| [Cache confusion of response bodies for requests with bodies](https://github.com/vercel/next.js/security/advisories/GHSA-68g3-v927-f742) | CVE-2026-64648 | Medium | A server-side fetch with a request body may return a cached response body from a different request to the same URL but different body. This only applies for fetch calls of the shape fetch(new Request(init), aDifferentInit) | This is an application logic bug that unfortunately cannot be covered through Cloudflare WAF signature engine. |
+| [Cache confusion of response bodies for requests with bodies containing invalid UTF-8 byte sequences](https://github.com/vercel/next.js/security/advisories/GHSA-4633-3j49-mh5q) | CVE-2026-64647 | Medium | A server-side fetch with a request body may return a cached response body from a different request to the same URL but different body. This only applies when receiving request bodies which contain invalid UTF-8 characters. | This is an application logic bug that unfortunately cannot be covered through Cloudflare WAF signature engine. |
+
+**Key Findings**
+
+- CVE-2026-48276: A path traversal vulnerability in Adobe ColdFusion file upload mechanisms allows unauthenticated attackers to write or upload files to arbitrary locations outside designated directories on the origin server.
+- CVE-2026-48282: A path traversal vulnerability in Adobe ColdFusion enables unauthenticated attackers to manipulate directory sequences and access restricted system files on the host filesystem.
+- CVE-2026-60137: An unauthenticated SQL injection vulnerability affecting WordPress. Threat actors exploit unsanitized input parameters to execute arbitrary SQL queries, leading to unauthorized database access, record manipulation, or data exfiltration.
+- CVE-2026-63030: A remote code execution vulnerability affecting WordPress core and plugin components. Remote, unauthenticated attackers can execute arbitrary system commands to gain unauthorized access or establish backdoors on host servers.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...215e7d31 | N/A | SSRF - Restricted Protocol | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...a935ee5d | N/A | SSRF - Obfuscated Host | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...1b0230ac | N/A | LFI - Path Traversal | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...61349c8b | N/A | Adobe ColdFusion - File Upload Path Traversal - CVE:CVE-2026-48276 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...9cb61eac | N/A | Adobe ColdFusion - Path Traversal - CVE:CVE-2026-48282 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...4ac5e21f | N/A | XSS — JS Bracket Concat Obfuscation - Body | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...f31f5559 | N/A | XSS — JS Bracket Concat Obfuscation - Headers | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...987984fd | N/A | XSS — JS Bracket Concat Obfuscation - URI | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...ed933fcc | N/A | Wordpress - SQL Injection - CVE:CVE-2026-60137 | N/A | Block | This was labeled as Generic Rules - SQLi. |
+| Cloudflare Managed Ruleset | ...550664b6 | N/A | Wordpress - Remote Code Execution - CVE:CVE-2026-63030 | N/A | Block | This was labeled as Generic Rules - Unauthenticated RCE. |
+| Cloudflare Free Ruleset | ...33697a1a | N/A | Wordpress - SQL Injection - CVE:CVE-2026-60137 | N/A | Block | This was labeled as Generic Rules - SQLi. |
+| Cloudflare Free Ruleset | ...b5ec246a | N/A | Wordpress - Remote Code Execution - CVE:CVE-2026-63030 | N/A | Block | This was labeled as Generic Rules - Unauthenticated RCE. |
+| Cloudflare Managed Ruleset | ...72952826 | N/A | Next.js - Information Disclosure - CVE-2026-64643 | N/A | Block | This was labeled as Generic Rules - Information Disclosure. |
+| Cloudflare Managed Ruleset | ...930091a3 | N/A | Next.js - SSRF - CVE-2026-64649 | N/A | Block | This was labeled as Generic Rules - Auth Bypass - 2. |
+| Cloudflare Managed Ruleset | ...63167195 | N/A | Next.js - Remote Code Execution - Cache Components | N/A | Block | This was labeled as Generic Rules - RCE. |
+| Cloudflare Managed Ruleset | ...90dcdb0a | N/A | Next.js - DoS - CVE-2026-64641 | N/A | Block | This was labeled as Generic Rules - DoS. |
+| Cloudflare Managed Ruleset | ...2049a60c | N/A | Generic Rules - Command Execution - Body - Beta | Disabled | - | This detection has been removed. |
+| Cloudflare Managed Ruleset | ...836855a4 | N/A | Generic Rules - Command Execution - Header - Beta | Disabled | - | This detection has been removed. |
+| Cloudflare Managed Ruleset | ...6d060a0d | N/A | Generic Rules - Command Execution - URI - Beta | Disabled | - | This detection has been removed. |
+
+Jul 20, 2026
+
+[<h2>Browser-based login for plaintext HTTP private applications</h2>](https://developers.cloudflare.com/changelog/post/2026-07-20-http-private-apps-l7-auth/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+Cloudflare Access now uses the standard browser-based login flow for [private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) served over plaintext HTTP on port `80`.
+
+Previously, plaintext HTTP private apps fell back to the same session flow used for SSH, RDP, and other non-HTTP protocols: users got an `Authentication required` pop-up from the Cloudflare One Client, then had to select the notification to open a browser and log in. Now, users hitting an HTTP private app see the Access login page directly in the browser and receive a standard Access [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) on success.
+
+This brings the HTTP experience in line with HTTPS apps (with [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) turned on). No configuration change is required. The Cloudflare One Client is still required to route traffic to the private network, but it no longer manages the Access session for HTTP apps.
+
+Other non-HTTP protocols (SSH, RDP, arbitrary TCP/UDP) continue to use the Cloudflare One Client notification flow.
+
+Jul 20, 2026
+
+[<h2>Budget alerts now on by default for Pay-as-you-go accounts</h2>](https://developers.cloudflare.com/changelog/post/2026-06-15-budget-alerts-default-on/)
+
+[Billing](https://developers.cloudflare.com/billing/) [Workers](https://developers.cloudflare.com/workers/)
+
+We are turning on budget alerts by default for eligible Pay-as-you-go accounts. If your account does not already have a budget alert, Cloudflare will create one for you with a $10 account-level threshold. Your default alert will enable at the turn of your next billing cycle, so it will not fire based on usage you have already incurred.
+
+We are rolling this out in cohorts over the coming weeks, so eligible accounts may see their default alert appear at different times.
+
+The default alert behaves exactly like an alert you would create yourself. When your cumulative usage-based spend this cycle reaches the threshold, you receive an email notification. The alert is informational only. It does not cap your usage or impact your account in any way.
+
+Usage is processed once per day for the prior day's activity, so budget alerts fire the day after the threshold is reached rather than in real time.
+
+Budget alerts only consider spend on usage-based products. Recurring subscription fees, such as the Workers Paid plan fee or other monthly plan charges, are not included in the threshold calculation.
+
+You can change the threshold, add additional alerts, or remove the default alert entirely from **Manage Account** > **Billing** > **Billable Usage**, or from your Notifications settings. If you already configured your own budget alert, nothing changes.
+
+Enterprise contract accounts are not in scope.
+
+For more information, refer to the [Budget alerts documentation](https://developers.cloudflare.com/billing/manage/budget-alerts/).
+
+Jul 20, 2026
+
+[<h2>View total SQLite storage for Durable Object namespaces</h2>](https://developers.cloudflare.com/changelog/post/2026-07-20-durable-objects-total-storage-metrics/)
+
+[Durable Objects](https://developers.cloudflare.com/durable-objects/) [Workers](https://developers.cloudflare.com/workers/)
+
+You can now monitor the total SQLite storage used by a Durable Object namespace over time in the Cloudflare dashboard. The new **Total storage** chart shows the maximum storage reported during each hour. This helps you identify storage growth, validate data cleanup, and investigate unexpected usage.
+
+![The Total storage chart showing a Durable Object namespace growing to 260.1 MB of storage over time.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1436,height=846,format=webp/_astro/durable-objects-total-storage.Cr_F72Yz.png) [Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
+
+The chart appears only for SQLite-backed Durable Object namespaces. It does not appear for namespaces that use the legacy key-value storage backend. Viewing storage for individual Durable Objects by ID or name is not supported.
+
+For more information, refer to [Metrics and analytics](https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/#total-storage).
+
+Jul 17, 2026
+
+[<h2>Restart, reboot, or shut down a Cloudflare One Appliance from the dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-07-17-appliance-restart-reboot-shutdown/)
+
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+You can now restart, reboot, or shut down a [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) directly from the dashboard or via API.
+
+![Restarting a Cloudflare One Appliance from the Operations section of the Edit Appliance page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=948,format=webp/_astro/2026-07-17-appliance-restart-reboot-shutdown.DKqTLOh6.gif)
+
+- **Restart** — Restart managed services. Purges temporary and (optionally) persistent state.
+- **Reboot** — Power cycle the appliance. Optionally, purge persistent state. Re-applies configuration starting from scratch.
+- **Shutdown** — Power off the appliance. Optionally, purge persistent state. The machine will be offline until manually powered on again.
+
+In the dashboard, go to **Networking** > **Connectors** > **Appliances**, select an appliance, then **Edit** > **Operations** to send an operation. Via API, `POST` to the `/accounts/{account_id}/magic/connectors/{connector_id}/interrupts` endpoint.
+
+For details, refer to [Appliance operations](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/appliance-operations/).
+
+Jul 17, 2026
+
+[<h2>Preview sent emails in the Activity log</h2>](https://developers.cloudflare.com/changelog/post/2026-07-17-email-message-preview/)
+
+[Email Service](https://developers.cloudflare.com/email-service/)
+
+You can now preview the content of sent emails directly from the Email Service Activity log. Expand a sent email and open the new **Preview** section to inspect the message as it was sent, across tabs for the rendered **HTML** body, the **Text** body, the **Headers**, the **Attachments**, and the full **Raw** [RFC 5322 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322) source.
+
+![The rendered HTML preview of a sent email in the Email Service Activity log](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2864,height=1172,format=webp/_astro/email-message-preview.Bj6Lk8Y6.png)
+
+Previously, the Activity log surfaced delivery and authentication metadata but not the message content, making rendering and content issues harder to debug. Message preview closes that gap.
+
+To make messages previewable, turn on **Email preview** in your sending domain's settings. Previews cover messages sent while the setting is turned on and are retained for about seven days. Sending domains onboarded on or after 2026-07-02 have **Email preview** turned on automatically.
+
+![The Email preview setting in a sending domain's settings](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2256,height=264,format=webp/_astro/email-preview-setting.XEd1WIiO.png)
+
+Refer to [Email logs](https://developers.cloudflare.com/email-service/observability/logs/#message-preview) for more information.
+
+Jul 17, 2026
+
+[<h2>New header control options for Gateway HTTP policies</h2>](https://developers.cloudflare.com/changelog/post/2026-07-17-http-request-header-manipulation/)
+
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+
+Cloudflare Gateway now supports advanced header control on [Allow policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#allow). Administrators can add, overwrite, or delete headers on matching requests using static values or dynamic variables.
+
+#### Header operations
+
+Gateway HTTP policies using the Allow action support three operations in `rule_settings`:
+
+| Operation | API field | Behavior |
+| --- | --- | --- |
+| Add | `add_headers` | Appends a value to the header. Existing values are preserved. |
+| Overwrite | `set_headers` | Replaces the header value. Creates the header if it does not exist. |
+| Delete | `delete_headers` | Removes the header from the request. |
+
+Gateway applies operations in order: delete, then overwrite, then add.
+
+#### Dynamic variables
+
+Header values can include dynamic variables using the `@{...}` syntax. Gateway resolves variables at request time from identity, device, and network context.
+
+| Variable | Description |
+| --- | --- |
+| `@{identity.email}` | User email from the identity provider |
+| `@{identity.name}` | User display name from the identity provider |
+| `@{identity.id}` | Cloudflare identity UUID |
+| `@{identity.groups}` | Identity provider group memberships |
+| `@{identity.SAML}` | SAML attributes (if configured) |
+| `@{identity.OIDC}` | OIDC claims (if configured) |
+| `@{source.ip}` | Source IP of the connection |
+| `@{destination.ip}` | Destination IP of the request |
+| `@{device.id}` | Cloudflare One Client device UUID |
+| `@{device.posture}` | Device posture check results (JSON string) |
+
+You can mix static text and dynamic variables in a single header value. For example, `user-@{identity.email}` resolves to `user-jdoe@example.com`.
+
+For more information, refer to [Custom headers](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/).
+
+Jul 17, 2026
+
+[<h2>Distributor, MSSP, and Agency partners can manage Organization members directly</h2>](https://developers.cloudflare.com/changelog/post/2026-07-17-distributor-mssp-self-serve-members/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Organizations](https://developers.cloudflare.com/fundamentals/organizations/)
+
+Distributor, MSSP, and Agency partners on Cloudflare [Organizations](https://developers.cloudflare.com/fundamentals/organizations/) can now add and manage Organization Members directly from the Cloudflare dashboard, without help from Cloudflare.
+
+Previously, adding a member to a Distributor, MSSP, or Agency Organization was a manual, Cloudflare-assisted process that required a request to Cloudflare and enrollment in a closed beta, and the dashboard **Add member** flow was blocked for these Organizations.
+
+Now, Organization admins can add members themselves from **Organization** > **Members** > **Add member**, with no beta enrollment required.
+
+New members receive access to the Organization's accounts through the same implicit-access model already used for enterprise Organizations. The **Accounts** list and the account switcher classify Distributor, MSSP, and Agency Organizations consistently with enterprise Organizations, so their accounts are labeled and grouped correctly in the dashboard.
+
+Agency partners also gain access to the Organizations dashboard, while retaining access to their existing Tenant management dashboard.
+
+Distributor, MSSP, and Agency Organizations are currently in beta.
+
+For more information, refer to [Manage Organization members](https://developers.cloudflare.com/fundamentals/organizations/manage-members/).
+
+Jul 17, 2026
+
+[<h2>WAF Release - 2026-07-17 - Emergency</h2>](https://developers.cloudflare.com/changelog/post/2026-07-17-emergency-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE) and SQL injection (SQLi) vulnerability found in popular web frameworks.
+
+**Key Findings**
+
+- Generic Frameworks - Unauthenticated RCE: Attackers can execute arbitrary system commands with web server privileges by sending malicious input containing invalid path sequences during request processing.
+- Generic Frameworks - SQLi: Attackers can execute unauthorized database queries due to a failure to sanitize input values within request parameters.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...550664b6 | N/A | Generic Rules - Unauthenticated RCE | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...ed933fcc | N/A | Generic Rules - SQLi | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...b5ec246a | N/A | Generic Rules - Unauthenticated RCE | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...33697a1a | N/A | Generic Rules - SQLi | N/A | Block | This is a new detection. |
+
+Jul 16, 2026
+
+[<h2>Bulk print PDFs for browser-based RDP</h2>](https://developers.cloudflare.com/changelog/post/2026-07-16-rdp-bulk-print/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+Users in browser-based RDP sessions can now print multiple PDF files as a single print job. Copy the files to your clipboard on the remote machine, then select **Print all PDFs** in the clipboard panel. The files are combined into one PDF and sent to your local printer.
+
+![The clipboard panel showing the Print all PDFs option for multiple selected PDF files.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=768,height=432,format=webp/_astro/rdp-bulk-print.DT4sCcI-.png)
+
+Bulk print is available in Chromium-based browsers and Firefox. For more information, refer to [Print PDFs for browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#print-pdfs).
+
+Jul 16, 2026
+
+[<h2>Manage Flagship from the command line with Wrangler</h2>](https://developers.cloudflare.com/changelog/post/2026-07-16-wrangler-commands/)
+
+[Flagship](https://developers.cloudflare.com/flagship/)
+
+**[Wrangler](https://developers.cloudflare.com/workers/wrangler/)** now includes `wrangler flagship`, a command suite for managing [Flagship](https://developers.cloudflare.com/flagship/) apps and feature flags from your terminal.
+
+Create an app and, if you use it from a Worker, add it to your `wrangler.json` or `wrangler.jsonc` file as a binding:
+
+```bash
+wrangler flagship apps create "My Worker App" \
+  --binding FLAGS \
+  --update-config
+```
+
+Then create flags for the behavior you want to control. Flags can be booleans, strings, numbers, or JSON values:
+
+```bash
+wrangler flagship flags create <APP_ID> new-checkout
+
+wrangler flagship flags create <APP_ID> checkout-flow \
+  --variation control=old-checkout \
+  --variation treatment=new-checkout \
+  --default control \
+  --type string
+```
+
+After a flag exists, change its default variation or use enable and disable commands as kill switches. Existing targeting rules continue to apply unless you change or clear them explicitly:
+
+```bash
+wrangler flagship flags update <APP_ID> checkout-flow --default treatment
+wrangler flagship flags disable <APP_ID> checkout-flow
+wrangler flagship flags enable <APP_ID> checkout-flow
+```
+
+For release workflows, use `rollout`, `split`, and `rules` to change exposure without redeploying your Worker:
+
+```bash
+wrangler flagship flags rollout <APP_ID> new-checkout \
+  --to on \
+  --percentage 25 \
+  --by user_id
+
+wrangler flagship flags split <APP_ID> checkout-flow \
+  --weight control=80 \
+  --weight treatment=20 \
+  --by user_id
+
+wrangler flagship flags rules update <APP_ID> checkout-flow \
+  --priority 1 \
+  --when "country equals US"
+```
+
+These commands can also be used from CI/CD pipelines, scripts, and AI agents to inspect Flagship state, update flag behavior, or roll back changes through Wrangler.
+
+Refer to the [`wrangler flagship` command reference](https://developers.cloudflare.com/flagship/reference/wrangler-commands/) for the full command guide.
+
+Jul 16, 2026
+
+[<h2>Bot management fields and ASN support in Cache Rules</h2>](https://developers.cloudflare.com/changelog/post/2026-07-16-cache-rules-bot-fields-asn/)
+
+[Rules](https://developers.cloudflare.com/rules/)
+
+#### Bot management fields and ASN support in Cache Rules
+
+Cache Rules now supports bot management fields and the `ip.src.asnum` field in expression filters. You can now build cache policies that differentiate between automated and human traffic, or segment caching behavior by autonomous system number (ASN).
+
+This allows you to apply different caching strategies for verified bots, high-risk traffic, or specific network operators without affecting legitimate user requests. For example, you can set shorter cache TTLs for suspected bot traffic or bypass cache entirely for requests from specific ASNs.
+
+#### New fields
+
+The following fields are now available in Cache Rules expressions:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cf.bot_management.score` | Number | Bot score from `1` to `99`, where a lower value indicates a higher likelihood that the request originates from a bot. |
+| `cf.bot_management.ja3_hash` | String | JA3 fingerprint of the request, which helps identify the client making the connection. |
+| `cf.bot_management.ja4` | String | JA4 fingerprint of the request, which provides a more detailed client identification than JA3. |
+| `cf.bot_management.verified_bot` | Boolean | Whether the request originates from a verified bot, such as a search engine crawler. |
+| `cf.bot_management.static_resource` | Boolean | Whether the request is for a static resource and therefore exempt from bot detection. |
+| `cf.bot_management.js_detection.passed` | Boolean | Whether the browser passed JavaScript detection when the feature is enabled. |
+| `cf.bot_management.detection_ids` | Array\<Number> | List of IDs that correspond to Bot Management heuristic detections made on the request. |
+| `cf.bot_management.tags` | Array\<String> | List of tags associated with the bot traffic, such as `API`, `GOOGLE`, or `BING`. Match a tag with an expression such as `any(cf.bot_management.tags[*] eq "API")`. |
+| `cf.bot_management.signed_agent` | Boolean | Whether the request originates from a known agent that identifies itself with Web Bot Auth. |
+| `cf.bot_management.corporate_proxy` | Boolean | Whether the request originates from a known corporate proxy. |
+| `ip.src.asnum` | Number | The autonomous system number (ASN) of the incoming request's IP address. |
+
+Note
+
+Bot management fields require a Bot Management subscription. `ip.src.asnum` is available on all plans.
+
+#### Example
+
+Cache Rules expressions support combining these fields with other criteria. The following example sets a shorter cache TTL for API requests that originate from a high-risk bot or an unexpected ASN:
+
+```txt
+(http.request.uri.path contains "/api/" and cf.bot_management.score lt 30)
+or
+(http.request.uri.path contains "/api/" and not ip.src.asnum in {12345 67890})
+```
+
+To learn more, refer to the [Cache Rules documentation](https://developers.cloudflare.com/cache/how-to/cache-rules/) and the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/).
+
+Jul 15, 2026
+
+[<h2>Internal DNS is now generally available</h2>](https://developers.cloudflare.com/changelog/post/2026-07-15-internal-dns-ga/)
+
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [DNS](https://developers.cloudflare.com/dns/)
+
+[Internal DNS](https://developers.cloudflare.com/dns/internal-dns/) is now generally available. Internal DNS provides authoritative and recursive DNS for private networks on the same global network and control plane you already use for public DNS, Zero Trust, and application services.
+
+#### Why it matters
+
+- **Consolidate DNS operations.** Public and private DNS run on one platform, with one API, one audit trail, and one place to set policy.
+- **Simplify split-horizon DNS.** Internal and external resolution are defined as separate [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/) over shared zones, managed from a single control plane — so there is no drift to chase down.
+- **Extend Zero Trust to DNS.** Resolver policies decide which users and devices resolve against which view, enforced by the same [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) that already governs the rest of your traffic.
+
+Setting up Internal DNS takes three steps: create a zone, create a view, and define a resolver policy.
+
+```json
+POST /zones
+{
+  "account": {
+    "id": "<ACCOUNT_ID>"
+  },
+  "name": "corp.internal",
+  "type": "internal"
+}
+```
+
+Internal DNS is included with [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) for Enterprise customers. To get started, refer to the [Internal DNS documentation](https://developers.cloudflare.com/dns/internal-dns/).
+
+Jul 15, 2026
+
+[<h2>Subscribe to Email Sending events with Queues</h2>](https://developers.cloudflare.com/changelog/post/2026-07-15-event-subscriptions/)
+
+[Email Service](https://developers.cloudflare.com/email-service/) [Queues](https://developers.cloudflare.com/queues/)
+
+You can now subscribe to **[Email Sending](https://developers.cloudflare.com/email-service/api/send-emails/) events** through [Queues event subscriptions](https://developers.cloudflare.com/queues/event-subscriptions/) and receive outbound transactional email lifecycle events on a queue. Each subscription is scoped to one sending domain — either the zone apex, such as `example.com`, or a verified sending subdomain, such as `send.example.com`.
+
+Six event types are published: `message.delivered`, `message.deferred`, `message.bounced`, `message.failed`, `message.rejected`, and `message.complained`. Use them to track deliverability, react to bounces and complaints, and drive suppression or retry logic. Email Routing events are not published on this source.
+
+Each event includes the message details, delivery status, and SMTP response:
+
+```json
+{
+	"type": "cf.email.sending.message.delivered",
+	"source": {
+		"type": "email.sending",
+		"zoneId": "023e105f4ecef8ad9ca31a8372d0c353",
+		"domain": "example.com"
+	},
+	"payload": {
+		"messageId": "0101018f7d0c4d9a-msg-deadbeef",
+		"recipient": "user@example.net",
+		"terminal": true,
+		"delivery": {
+			"status": "delivered",
+			"smtpStatusCode": "250"
+		}
+	}
+}
+```
+
+Refer to [Event subscriptions](https://developers.cloudflare.com/email-service/platform/event-subscriptions/) to see all event types and example payloads.
+
+Jul 15, 2026
+
+[<h2>Deprecate legacy Workers KV namespace API routes</h2>](https://developers.cloudflare.com/changelog/post/2026-07-15-kv-legacy-namespace-routes-deprecation/)
+
+[KV](https://developers.cloudflare.com/kv/)
+
+The legacy Workers KV API routes under `/accounts/{account_id}/workers/namespaces/*` are deprecated as of July 15, 2026, and will stop working on October 15, 2026. Migrate to the documented [Workers KV API](https://developers.cloudflare.com/api/resources/kv/) routes under `/accounts/{account_id}/storage/kv/namespaces/*` before that date.
+
+The legacy and replacement routes are interchangeable. They accept the same request parameters and return the same response payloads. To migrate, update the URL path from `/workers/namespaces/` to `/storage/kv/namespaces/`.
+
+#### What you need to do
+
+Update any integration that calls a route under `/accounts/{account_id}/workers/namespaces/` to use the equivalent route under `/accounts/{account_id}/storage/kv/namespaces/`. The migration is a direct URL path substitution — request parameters and response payloads are identical:
+
+- `GET` and `POST /accounts/{account_id}/workers/namespaces` → `GET` and `POST /accounts/{account_id}/storage/kv/namespaces`
+- `GET`, `PUT`, and `DELETE /accounts/{account_id}/workers/namespaces/{namespace_id}` → `GET`, `PUT`, and `DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}`
+- `GET /accounts/{account_id}/workers/namespaces/{namespace_id}/keys` → `GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/keys`
+- `GET /accounts/{account_id}/workers/namespaces/{namespace_id}/metadata/{key_name}` → `GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/metadata/{key_name}`
+- `GET`, `PUT`, and `DELETE /accounts/{account_id}/workers/namespaces/{namespace_id}/values/{key_name}` → `GET`, `PUT`, and `DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}`
+
+For more information about the deprecation timeline, refer to [API deprecations](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/).
+
+Jul 14, 2026
+
+[<h2>WAF Release - 2026-07-14</h2>](https://developers.cloudflare.com/changelog/post/2026-07-14-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This release introduces new rules targeting critical infrastructure vulnerabilities. These include an unauthenticated memory disclosure flaw in Citrix NetScaler ADC and Gateway (CVE-2026-8451) and a high-severity pre-authentication remote code execution (RCE) vulnerability in Progress Kemp LoadMaster (CVE-2026-8037).
+
+**Key Findings**
+
+- CVE-2026-8451: An insufficient input validation vulnerability affects Citrix NetScaler ADC and NetScaler Gateway appliances configured as a SAML Identity Provider (IdP). Remote, unauthenticated attackers can exploit this flaw by sending malformed requests to trigger a memory overread, allowing them to leak chunks of sensitive data from adjacent appliance memory.
+- CVE-2026-8037: A critical OS command injection vulnerability in Progress Kemp LoadMaster load balancers allows unauthenticated remote attackers to achieve remote code execution (RCE).
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...76973ac4 | N/A | Citrix Netscaler ADC - Insufficient Input Validation - CVE:CVE-2026-8451 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...10233f36 | N/A | Progress Kemp LoadMaster - Remote Code Execution - CVE:CVE-2026-8037 | Log | Block | This is a new detection. |
+
+Jul 14, 2026
+
+[<h2>Improved reliability for account-wide Web Analytics dashboards</h2>](https://developers.cloudflare.com/changelog/post/2026-06-10-improved-reliability-for-web-analytics-dash/)
+
+[Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/)
+
+Cloudflare Web Analytics (Real User Monitoring) has rolled out performance optimizations to significantly improve the stability and loading speed of account-wide dashboards.
+
+For larger accounts (with >100 Web Analytics sites), loading the aggregate account-wide view would often fail, running into timeouts or unexpected interface errors due to the massive scale of parallel query processing. This update optimizes how high-volume multi-site data is queried to reduce errors and provide a snappier dashboard experience.
+
+Accounts with up to 1,000 sites will now be able to load this account-wide aggregate view without experiencing misleading errors.
+
+If you have an account with over 1,000 sites, we cannot currently aggregate over this volume due to processing constraints but you will now be presented with a clear error and instruction to filter to the relevant site(s) you wish to see the data for.
+
+Jul 14, 2026
+
+[<h2>Platforms can now create Temporary Accounts via the Cloudflare API</h2>](https://developers.cloudflare.com/changelog/post/2026-07-14-temporary-accounts-api/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Platforms can now create temporary preview accounts through the Cloudflare REST API. This lets your platform deploy a live Worker before the user signs in to Cloudflare.
+
+With the Temporary Accounts API, coding agents, AI app builders, and other platforms can build a similar flow for generated Workers and supported resources.
+
+Your platform can keep users in its onboarding flow while they generate, deploy, and test an application. Users do not need an existing Cloudflare account, and your platform does not need write access to one.
+
+![Diagram showing an AI agent deploying, verifying, and redeploying a Worker in a temporary account, then a user authenticating and claiming the account to keep its resources](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1748,height=368,format=webp/_astro/claim-deployments-flow.Co0tUHG4.png)
+
+The API returns a claim URL that lets the user make the temporary account and its resources permanent.
+
+[Cloudflare Drop ↗︎](https://www.cloudflare.com/drop/) demonstrates this preview-and-claim pattern for static sites. Someone can upload a site, test and share it for one hour, then sign in or create an account only when they want to keep it.
+
+This API expands the flow first introduced with [`wrangler deploy --temporary`](https://developers.cloudflare.com/changelog/post/2026-06-19-temporary-accounts-for-agents/). Your backend now controls the provisioning and deployment experience directly:
+
+1. Show Cloudflare's Terms of Service and Privacy Policy in your product, and require the user to accept them.
+2. Request and solve a proof-of-work challenge.
+3. Create a temporary preview account.
+4. Deploy with the returned temporary account ID and API token.
+5. Show the deployed Worker URL and claim URL to the user.
+
+```bash
+curl "https://api.cloudflare.com/client/v4/provisioning/previews/challenge" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  --data '{}'
+
+curl "https://api.cloudflare.com/client/v4/provisioning/previews" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  --data '{
+    "termsOfService": "https://www.cloudflare.com/terms/",
+    "privacyPolicy": "https://www.cloudflare.com/privacypolicy/",
+    "acceptTermsOfService": "yes",
+    "challengeToken": "<CHALLENGE_TOKEN>",
+    "solution": {
+      "checkpoints": "<BASE64_CHECKPOINTS>"
+    }
+  }'
+```
+
+For the complete API flow, proof-of-work requirements, supported products, and limits, refer to [Claim deployments (temporary accounts)](https://developers.cloudflare.com/workers/platform/claim-deployments/#integrate-with-the-rest-api). For the background and design goals behind this flow, refer to [Temporary Cloudflare Accounts for AI agents ↗︎](https://blog.cloudflare.com/temporary-accounts/).
+
+Jul 13, 2026
+
+[<h2>Agents can respond to MCP elicitation requests</h2>](https://developers.cloudflare.com/changelog/post/2026-07-13-mcp-client-elicitation/)
+
+[Agents](https://developers.cloudflare.com/agents/) [Workers](https://developers.cloudflare.com/workers/)
+
+Agents connected to Model Context Protocol (MCP) servers with [`addMcpServer`](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) can now handle [elicitation ↗︎](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation) requests.
+
+Elicitation lets an MCP server request user input while it handles a tool call. Form mode collects structured, non-sensitive data. URL mode asks for consent before opening an out-of-band flow, such as third-party authorization or payment.
+
+```
+sequenceDiagram
+    participant User
+    participant Agent as Agent (MCP client)
+    participant Server as MCP server
+    participant Browser
+
+    Server->>Agent: elicitation/create
+    Agent->>User: Show server, reason, and input or URL
+    User->>Agent: Submit, open, decline, or cancel
+    Agent->>Browser: Open URL after consent (URL mode)
+    Agent->>Server: accept, decline, or cancel
+    Server-->>Agent: Optional URL completion notification
+
+```
+
+Register a handler for each mode your Agent supports in `onStart()`:
+
+```js
+import { Agent } from "agents";
+
+export class MyAgent extends Agent {
+	onStart() {
+		this.mcp.configureElicitationHandlers({
+			form: (request, serverId) => this.forwardToUser(request, serverId),
+			url: (request, serverId) => this.forwardToUser(request, serverId),
+		});
+	}
+
+	forwardToUser(request, serverId) {
+		// Show the request in your UI and resolve after the user responds.
+		throw new Error(
+			`Implement elicitation for ${serverId}: ${request.params.message}`,
+		);
+	}
+}
+```
+
+```ts
+import { Agent } from "agents";
+import type { ElicitRequest, ElicitResult } from "agents/mcp";
+
+export class MyAgent extends Agent<Env> {
+	onStart() {
+		this.mcp.configureElicitationHandlers({
+			form: (request, serverId) => this.forwardToUser(request, serverId),
+			url: (request, serverId) => this.forwardToUser(request, serverId),
+		});
+	}
+
+	private forwardToUser(
+		request: ElicitRequest,
+		serverId: string,
+	): Promise<ElicitResult> {
+		// Show the request in your UI and resolve after the user responds.
+		throw new Error(
+			`Implement elicitation for ${serverId}: ${request.params.message}`,
+		);
+	}
+}
+```
+
+Connections advertise only the modes with configured handlers. An Agent without handlers advertises no elicitation capability, which lets the server use its fallback. The SDK stores the advertised modes with each MCP server registration so they survive Durable Object hibernation. Callback functions remain in memory and reattach when `onStart()` runs.
+
+For implementation details and a browser forwarding pattern, refer to [MCP client elicitation](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#elicitation). The [`mcp-client` ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-client) and [`mcp-elicitation` ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation) examples implement both sides.
+
+#### Upgrade
+
+To update to this release:
+
+npmyarnpnpmbun
+
+```
+npm i agents@latest
+```
+
+```
+yarn add agents@latest
+```
+
+```
+pnpm add agents@latest
+```
+
+```
+bun add agents@latest
+```
+
+Jul 13, 2026
+
+[<h2>R2 Data Catalog now supports read-only API tokens</h2>](https://developers.cloudflare.com/changelog/post/2026-07-09-r2-data-catalog-read-only-tokens/)
+
+[Basin Catalog](https://developers.cloudflare.com/basin-catalog/) [Basin](https://developers.cloudflare.com/basin/) [R2](https://developers.cloudflare.com/r2/)
+
+[R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/) now accepts read-only API tokens, so query engines and clients that only read data no longer need a read-write token. Previously, every catalog operation required an **Admin Read & Write** token, which granted read-only clients more access than they needed.
+
+You can now authenticate your Iceberg engine based on your workload:
+
+- **Read-only** operations (such as listing namespaces, loading tables, and querying data) work with an **Admin Read only** token (R2 Data Catalog read and R2 storage read).
+- **Write** operations (such as creating or dropping tables and committing transactions) continue to require an **Admin Read & Write** token.
+
+This lets you follow the principle of least privilege — for example, using a read-write token for the pipeline that writes to your tables and read-only tokens for engines like [R2 SQL](https://developers.cloudflare.com/basin-sql/), [DuckDB](https://developers.cloudflare.com/basin-catalog/config-examples/duckdb/), or [PyIceberg](https://developers.cloudflare.com/basin-catalog/config-examples/pyiceberg/) that query them.
+
+Note that credentials vended by the catalog inherit the R2 storage permissions of the token used to authenticate. To ensure read-only access to your underlying data, scope the R2 storage permission to read-only as well.
+
+For details on choosing and creating the right token, refer to [Authenticate your Iceberg engine](https://developers.cloudflare.com/basin-catalog/manage-catalogs/#authenticate-your-iceberg-engine).
+
+Jul 13, 2026
+
+[<h2>R2 Data Catalog compaction now optimizes manifest files</h2>](https://developers.cloudflare.com/changelog/post/2026-07-13-r2-data-catalog-manifest-optimization/)
+
+[Basin Catalog](https://developers.cloudflare.com/basin-catalog/) [Basin](https://developers.cloudflare.com/basin/)
+
+[R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/), a managed [Apache Iceberg ↗︎](https://iceberg.apache.org/) catalog built into R2, now automatically optimizes manifest files as part of [compaction](https://developers.cloudflare.com/basin-catalog/table-maintenance/).
+
+Manifest files track the data files that make up an Iceberg table. As a table accumulates many small or fragmented manifests, query engines must read more metadata during query planning, which slows down queries even before any data is scanned.
+
+When compaction runs, R2 Data Catalog now rewrites and clusters manifest files by partition as a best-effort pre-step. This consolidates fragmented manifests, reduces the number of manifests a query engine must open, and lowers metadata I/O overhead. Tables that are already well-clustered are skipped, so the operation only runs when it provides a benefit.
+
+This happens automatically for tables with compaction enabled — no configuration changes are required.
+
+For more information, refer to [Table maintenance](https://developers.cloudflare.com/basin-catalog/table-maintenance/).
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/11/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/11/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

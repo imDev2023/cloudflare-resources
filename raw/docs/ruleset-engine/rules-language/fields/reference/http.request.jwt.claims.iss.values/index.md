@@ -1,0 +1,23 @@
+---
+description: The `iss` (issuer) claim identifies the principal that issued the JWT.
+title: http.request.jwt.claims.iss.values
+image: https://developers.cloudflare.com/og-docs.png
+---
+
+[Skip to content](#main-content)
+
+# http.request.jwt.claims.iss.values
+
+`http.request.jwt.claims.iss.values``Array<String>`
+
+The `iss` (issuer) claim identifies the principal that issued the JWT.
+
+For details, refer to the [Registered Claim Names](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1) in RFC 7519.
+
+Requires a Cloudflare Enterprise plan with a paid add-on.
+
+For more information on validating JSON Web Tokens, refer to [JSON Web Tokens Validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/) in the API Shield documentation.
+
+Categories:
+- Request
+- JWT validation

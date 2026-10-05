@@ -1,0 +1,1051 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Apr 16, 2026
+
+[<h2>Email Sending now in public beta</h2>](https://developers.cloudflare.com/changelog/post/2026-04-16-email-sending-public-beta/)
+
+[Email Service](https://developers.cloudflare.com/email-service/)
+
+**[Email Sending](https://developers.cloudflare.com/email-service/api/send-emails/)** is now in public beta. Send transactional emails directly from Workers (`env.EMAIL.send()`) or the REST API, with support for HTML, plain text, attachments, inline images, and custom headers. Email Sending joins [Email Routing ↗︎](https://blog.cloudflare.com/introducing-email-routing/) under the new **Cloudflare Email Service** — a single service for sending and receiving email on the Cloudflare developer platform.
+
+Send an email from a Worker in a few lines of code:
+
+*src/index.jsjs*
+
+```js
+export default {
+	async fetch(request, env) {
+		const response = await env.EMAIL.send({
+			from: "notifications@yourdomain.com",
+			to: "user@example.com",
+			subject: "Order confirmed",
+			html: "<h1>Your order has been confirmed</h1>",
+			text: "Your order has been confirmed.",
+		});
+
+		return Response.json({ messageId: response.messageId });
+	},
+};
+```
+
+*src/index.tsts*
+
+```ts
+export default {
+	async fetch(request, env): Promise<Response> {
+		const response = await env.EMAIL.send({
+			from: "notifications@yourdomain.com",
+			to: "user@example.com",
+			subject: "Order confirmed",
+			html: "<h1>Your order has been confirmed</h1>",
+			text: "Your order has been confirmed.",
+		});
+
+		return Response.json({ messageId: response.messageId });
+	},
+} satisfies ExportedHandler<Env>;
+```
+
+Email Service also integrates with the [Agents SDK](https://developers.cloudflare.com/agents/), giving your agents a native `onEmail` hook to receive, process, and reply to emails. Combined with the new [Email MCP server ↗︎](https://github.com/cloudflare/mcp-server-cloudflare) and Wrangler CLI email commands, any agent can send email regardless of where it runs.
+
+Start sending and receiving emails from Workers and agents today. Email Sending is available on the Workers paid plan. Refer to the [Email Service documentation](https://developers.cloudflare.com/email-service/) to get started.
+
+Apr 15, 2026
+
+[<h2>Increased concurrency, creation rate, and queued instance limits for Workflows instances</h2>](https://developers.cloudflare.com/changelog/post/2026-04-15-workflows-limits-raised/)
+
+[Workflows](https://developers.cloudflare.com/workflows/) [Workers](https://developers.cloudflare.com/workers/)
+
+[Workflows](https://developers.cloudflare.com/workflows/) limits have been raised to the following:
+
+| Limit | Previous | New |
+| --- | --- | --- |
+| Concurrent instances (running in parallel) | 10,000 | 50,000 |
+| Instance creation rate (per account) | 100/second per account | 300/second per account, 100/second per workflow |
+| Queued instances per Workflow <sup>[1](#user-content-fn-1)</sup> | 1 million | 2 million |
+
+These increases apply to all users on the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/). Refer to the [Workflows limits documentation](https://developers.cloudflare.com/workflows/reference/limits/) for more details.
+
+#### Footnotes
+
+1. Queued instances are instances that have been created or awoken and are waiting for a concurrency slot. [↩](#user-content-fnref-1)
+
+Apr 15, 2026
+
+[<h2>Browser Rendering is now Browser Run</h2>](https://developers.cloudflare.com/changelog/post/2026-04-15-br-rename/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+We are renaming Browser Rendering to **[Browser Run](https://developers.cloudflare.com/browser-run/)**. The name Browser Rendering never fully captured what the product does. Browser Run lets you run full browser sessions on Cloudflare's global network, drive them with code or AI, record and replay sessions, crawl pages for content, debug in real time, and let humans intervene when your agent needs help.
+
+Along with the rename, we have increased limits for Workers Paid plans and redesigned the Browser Run dashboard.
+
+We have 4x-ed concurrency limits for Workers Paid plan users:
+
+- **Concurrent browsers per account**: 30 → **120 per account**
+- **New browser instances**: 30 per minute → **1 per second**
+- **REST API rate limits**: recently increased from [3 to 10 requests per second](https://developers.cloudflare.com/changelog/post/2026-03-04-br-rest-api-limit-increase/)
+
+Rate limits across the [limits page](https://developers.cloudflare.com/browser-run/limits/) are now expressed in per-second terms, matching how they are enforced. No action is needed to benefit from the higher limits.
+
+The [redesigned dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/browser-run) now shows every request in a single Runs tab, not just browser sessions but also quick actions like screenshots, PDFs, markdown, and crawls. Filter by endpoint, view target URLs, status, and duration, and expand any row for more detail.
+
+![Browser Run dashboard Runs tab with browser sessions and quick actions visible in one list, and an expanded crawl job showing its progress](https://developers.cloudflare.com/images/browser-run/BRdashboardredesign.png)
+
+We are also shipping several new features:
+
+- **[Live View, Human in the Loop, and Session Recordings](https://developers.cloudflare.com/changelog/post/2026-04-15-br-observability/)** - See what your agent is doing in real time, let humans step in when automation hits a wall, and replay any session after it ends.
+- **[WebMCP](https://developers.cloudflare.com/changelog/post/2026-04-15-br-webmcp/)** - Websites can expose structured tools for AI agents to discover and call directly, replacing slow screenshot-analyze-click loops.
+
+For the full story, read our Agents Week blog [Browser Run: Give your agents a browser ↗︎](https://blog.cloudflare.com/browser-run-for-ai-agents).
+
+Apr 15, 2026
+
+[<h2>Browser Run adds Live View, Human in the Loop, and Session Recordings</h2>](https://developers.cloudflare.com/changelog/post/2026-04-15-br-observability/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+When browser automation fails or behaves unexpectedly, it can be hard to understand what happened. We are shipping three new features in [Browser Run](https://developers.cloudflare.com/browser-run/) (formerly Browser Rendering) to help:
+
+- **[Live View](https://developers.cloudflare.com/browser-run/features/live-view/)** for real-time visibility
+- **[Human in the Loop](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/)** for human intervention
+- **[Session Recordings](https://developers.cloudflare.com/browser-run/features/session-recording/)** for replaying sessions after they end
+
+#### Live View
+
+[Live View](https://developers.cloudflare.com/browser-run/features/live-view/) lets you see what your agent is doing in real time. The page, DOM, console, and network requests are all visible for any active browser session. Access Live View from the Cloudflare dashboard, via the hosted UI at `live.browser.run`, or using native Chrome DevTools.
+
+#### Human in the Loop
+
+When your agent hits a snag like a login page or unexpected edge case, it can hand off to a human instead of failing. With [Human in the Loop](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/), a human steps into the live browser session through Live View, resolves the issue, and hands control back to the script.
+
+Today, you can step in by opening the Live View URL for any active session. Next, we are adding a handoff flow where the agent can signal that it needs help, notify a human to step in, then hand control back to the agent once the issue is resolved.
+
+![Browser Run Human in the Loop demo where an AI agent searches Amazon, selects a product, and requests human help when authentication is needed to buy](https://developers.cloudflare.com/images/browser-run/liveview.gif)
+
+#### Session Recordings
+
+[Session Recordings](https://developers.cloudflare.com/browser-run/features/session-recording/) records DOM state so you can replay any session after it ends. Enable recordings by passing `recording: true` when launching a browser. After the session closes, view the recording in the Cloudflare dashboard under **Browser Run** > **Runs**, or retrieve via API using the session ID. Next, we are adding the ability to inspect DOM state and console output at any point during the recording.
+
+![Browser Run session recording showing an automated browser navigating the Sentry Shop and adding a bomber jacket to the cart](https://developers.cloudflare.com/images/browser-run/sessionrecording.gif)
+
+To get started, refer to the documentation for [Live View](https://developers.cloudflare.com/browser-run/features/live-view/), [Human in the Loop](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/), and [Session Recording](https://developers.cloudflare.com/browser-run/features/session-recording/).
+
+Apr 15, 2026
+
+[<h2>Browser Run adds WebMCP support</h2>](https://developers.cloudflare.com/changelog/post/2026-04-15-br-webmcp/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/) (formerly Browser Rendering) now supports [WebMCP ↗︎](https://webmachinelearning.github.io/webmcp/) (Web Model Context Protocol), a new browser API from the Google Chrome team.
+
+The Internet was built for humans, so navigating as an AI agent today is unreliable. WebMCP lets websites expose structured tools for AI agents to discover and call directly. Instead of slow screenshot-analyze-click loops, agents can call website functions like `searchFlights()` or `bookTicket()` with typed parameters, making browser automation faster, more reliable, and less fragile.
+
+![Browser Run lab session showing WebMCP tools being discovered and executed in the Chrome DevTools console to book a hotel](https://developers.cloudflare.com/images/browser-run/webMCP.gif)
+
+With WebMCP, you can:
+
+- **Discover website tools** - Use `navigator.modelContextTesting.listTools()` to see available actions on any WebMCP-enabled site
+- **Execute tools directly** - Call `navigator.modelContextTesting.executeTool()` with typed parameters
+- **Handle human-in-the-loop interactions** - Some tools pause for user confirmation before completing sensitive actions
+
+WebMCP requires Chrome beta features. We have an experimental pool with browser instances running Chrome beta so you can test emerging browser features before they reach stable Chrome. To start a WebMCP session, add `lab=true` to your `/devtools/browser` request:
+
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/devtools/browser?lab=true&keep_alive=300000" \
+  -H "Authorization: Bearer {api_token}"
+```
+
+Combined with the recently launched [CDP endpoint](https://developers.cloudflare.com/browser-run/cdp/), AI agents can also use WebMCP. Connect an [MCP client](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/) to Browser Run via CDP, and your agent can discover and call website tools directly. Here's the same hotel booking demo, this time driven by an AI agent through OpenCode:
+
+![Browser Run Live View showing an AI agent navigating a hotel booking site in real time](https://developers.cloudflare.com/images/browser-run/webMCPagent.gif)
+
+For a step-by-step guide, refer to the [WebMCP documentation](https://developers.cloudflare.com/browser-run/features/webmcp/).
+
+Apr 15, 2026
+
+[<h2>Independent MFA for Access applications</h2>](https://developers.cloudflare.com/changelog/post/2026-04-15-independent-mfa/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+Cloudflare Access now supports independent multi-factor authentication (MFA), allowing you to enforce MFA requirements without relying on your identity provider (IdP). With per-application and per-policy configuration, you can enforce stricter authentication methods like hardware security keys on sensitive applications without requiring them across your entire organization. This reduces the risk of MFA fatigue for your broader user population while adding additional security where it matters most.
+
+This feature also addresses common gaps in IdP-based MFA, such as inconsistent MFA policies across different identity providers or the need for additional security layers beyond what the IdP provides.
+
+Independent MFA supports the following authenticator types:
+
+- **Authenticator application** — Time-based one-time passwords (TOTP) using apps like Google Authenticator, Microsoft Authenticator, or Authy.
+- **Security key** — Hardware security keys such as YubiKeys.
+- **Biometrics** — Built-in device authenticators including Apple Touch ID, Apple Face ID, and Windows Hello.
+
+Note
+
+Infrastructure applications do not yet support independent MFA.
+
+#### Configuration levels
+
+You can configure MFA requirements at three levels:
+
+| Level | Description |
+| --- | --- |
+| **Organization** | Enforce MFA by default for all applications in your account. |
+| **Application** | Require or turn off MFA for a specific application. |
+| **Policy** | Require or turn off MFA for users who match a specific policy. |
+
+Settings at lower levels (policy) override settings at higher levels (organization), giving you granular control over MFA enforcement.
+
+#### User enrollment
+
+Users enroll their authenticators through the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/). To help with onboarding, administrators can share a direct enrollment link: `<your-team-name>.cloudflareaccess.com/AddMfaDevice`.
+
+To get started with Independent MFA, refer to [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/).
+
+Apr 15, 2026
+
+[<h2>Agent Lee adds Write Operations and Generative UI</h2>](https://developers.cloudflare.com/changelog/post/2026-04-15-agentlee-writeops-genui/)
+
+[Agents](https://developers.cloudflare.com/agents/)
+
+#### Agent Lee adds Write Operations and Generative UI
+
+We are excited to announce two major capability upgrades for **Agent Lee**, the AI co-pilot built directly into the Cloudflare dashboard. Agent Lee is designed to understand your specific account configuration, and with this release, it moves from a passive advisor to an active assistant that can help you manage your infrastructure and visualize your data through natural language.
+
+#### Take action with Write Operations
+
+Agent Lee can now perform changes on your behalf across your Cloudflare account. Whether you need to update DNS records, modify SSL/TLS settings, or configure Workers routes, you can simply ask.
+
+To ensure security and accuracy, every write operation requires **explicit user approval**. Before any change is committed, Agent Lee will present a summary of the proposed action in plain language. No action is taken until you select **Confirm**, and this approval requirement is enforced at the infrastructure level to prevent unauthorized changes.
+
+**Example requests:**
+
+- *"Add an A record for blog.example.com pointing to 192.0.2.10."*
+- *"Enable Always Use HTTPS on my zone."*
+- *"Set the SSL mode for example.com to Full (strict)."*
+
+#### Visualize data with Generative UI
+
+Understanding your traffic and security trends is now as easy as asking a question. Agent Lee now features **Generative UI**, allowing it to render inline charts and structured data visualizations directly within the chat interface using your actual account telemetry.
+
+**Example requests:**
+
+- *"Show me a chart of my traffic over the last 7 days."*
+- *"What does my error rate look like for the past 24 hours?"*
+- *"Graph my cache hit rate for example.com this week."*
+
+---
+
+#### Availability
+
+These features are currently available in **Beta** for all users on the **Free plan**. To get started, log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select **Ask AI** in the upper right corner.
+
+To learn more about how to interact with your account using AI, refer to the [Agent Lee documentation](https://developers.cloudflare.com/agent-lee/).
+
+Apr 15, 2026
+
+[<h2>New, streamlined creation experience for Access Applications and Gateway Policies</h2>](https://developers.cloudflare.com/changelog/post/2026-04-15-new-rule-and-application-builders/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+The Cloudflare One dashboard now features redesigned builders for two core workflows: creating Gateway policies and configuring self-hosted Access applications.
+
+#### Gateway rule builder
+
+The Gateway rule builder now features a redesigned user experience, bringing it in line with the Access policy builder experience. Improvements include:
+
+- **Streamlined UX** with clearer states and improved user interactions
+- **Wirefilter editing** for viewing and editing Gateway rules directly from wirefilter expressions
+- **Preview state** to review the impact of your policy in a simple graphic
+
+![New Gateway rule builder](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1280,height=1494,format=webp/_astro/gateway-rule-builder.BxvzsN8s.png)
+
+For more information, refer to [Traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+
+#### Access application builder for self-hosted apps
+
+The self-hosted Access application builder now offers a simplified creation workflow with fewer steps from setup to save. Improvements include:
+
+- **New application selection experience** that makes choosing the right application type before you begin easier.
+- **Streamlined creation flow** with fewer clicks to build and save an application
+- **Inline policy creation** for building Access policies directly within the application creation flow
+- **Preview state** to understand how your policies enforce user access before saving
+
+![New Access application builder](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1970,height=1104,format=webp/_astro/access-application-builder.B__yqGin.png)
+
+For more information, refer to [self-hosted applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/).
+
+Apr 15, 2026
+
+[<h2>Last seen timestamp for Cloudflare One Client devices is more consistent</h2>](https://developers.cloudflare.com/changelog/post/2026-04-15-dex-consistent-last-seen-timestamps/)
+
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+
+The last seen timestamp for [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) devices is now more consistent across the dashboard. IT teams will see more consistent information about the most recent client event between a device and Cloudflare's network.
+
+Apr 15, 2026
+
+[<h2>New TenantID and Firewall for AI fields in Logpush datasets</h2>](https://developers.cloudflare.com/changelog/post/2026-04-15-logpush-new-fields/)
+
+[Logs](https://developers.cloudflare.com/logs/)
+
+Cloudflare has added new fields to multiple [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/):
+
+#### TenantID field
+
+The following Gateway and Zero Trust datasets now include a `TenantID` field:
+
+- **[Gateway DNS](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/#tenantid)**: Identifies the tenant ID of the DNS request, if it exists.
+- **[Gateway HTTP](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_http/#tenantid)**: Identifies the tenant ID of the HTTP request, if it exists.
+- **[Gateway Network](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_network/#tenantid)**: Identifies the tenant ID of the network session, if it exists.
+- **[Zero Trust Network Sessions](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/#tenantid)**: Identifies the tenant ID of the network session, if it exists.
+
+#### Firewall for AI fields
+
+The following datasets now include [Firewall for AI](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/#firewall-for-ai) fields:
+
+- **[Firewall Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall_events/)**:
+  - `FirewallForAIInjectionScore`: The score indicating the likelihood of a prompt injection attack in the request.
+  - `FirewallForAIPIICategories`: List of PII categories detected in the request.
+  - `FirewallForAITokenCount`: The number of tokens in the request.
+  - `FirewallForAIUnsafeTopicCategories`: List of unsafe topic categories detected in the request.
+- **[HTTP Requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/)**:
+  - `FirewallForAIInjectionScore`: The score indicating the likelihood of a prompt injection attack in the request.
+  - `FirewallForAIPIICategories`: List of PII categories detected in the request.
+  - `FirewallForAITokenCount`: The number of tokens in the request.
+  - `FirewallForAIUnsafeTopicCategories`: List of unsafe topic categories detected in the request.
+
+For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
+
+Apr 15, 2026
+
+[<h2>Privacy Proxy metrics now available via GraphQL Analytics API</h2>](https://developers.cloudflare.com/changelog/post/2026-04-15-graphql-analytics-api/)
+
+[Privacy Proxy](https://developers.cloudflare.com/privacy-proxy/)
+
+Privacy Proxy metrics are now queryable through Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/), the new default method for accessing Privacy Proxy observability data. All metrics are available through a single endpoint:
+
+```bash
+curl https://api.cloudflare.com/client/v4/graphql \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "query": "{ viewer { accounts(filter: { accountTag: $accountTag }) { privacyProxyRequestMetricsAdaptiveGroups(filter: { date_geq: $startDate, date_leq: $endDate }, limit: 10000, orderBy: [date_ASC]) { count dimensions { date } } } } }",
+    "variables": {
+      "accountTag": "<YOUR_ACCOUNT_TAG>",
+      "startDate": "2026-04-04",
+      "endDate": "2026-04-06"
+    }
+  }'
+```
+
+#### Available nodes
+
+Four GraphQL nodes are now live, providing aggregate metrics across all key dimensions of your Privacy Proxy deployment:
+
+- **`privacyProxyRequestMetricsAdaptiveGroups`** — Request volume, error rates, status codes, and proxy status breakdowns.
+- **`privacyProxyIngressConnMetricsAdaptiveGroups`** — Client-to-proxy connection counts, bytes transferred, and latency percentiles.
+- **`privacyProxyEgressConnMetricsAdaptiveGroups`** — Proxy-to-origin connection counts, bytes transferred, and latency percentiles.
+- **`privacyProxyAuthMetricsAdaptiveGroups`** — Authentication attempt counts by method and result.
+
+All nodes support filtering by time, data center (`coloCode`), and endpoint, with additional node-specific dimensions such as transport protocol and authentication method.
+
+#### What this means for existing OpenTelemetry users
+
+OpenTelemetry-based metrics export remains available. The GraphQL Analytics API is now the recommended default method — a plug-and-play method that requires no collector infrastructure, saving engineering overhead.
+
+#### Learn more
+
+- [GraphQL Analytics API for Privacy Proxy](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/)
+- [GraphQL Analytics API — getting started](https://developers.cloudflare.com/analytics/graphql-api/getting-started/)
+
+Apr 15, 2026
+
+[<h2>WAF Release - 2026-04-15</h2>](https://developers.cloudflare.com/changelog/post/2026-04-15-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week's release introduces a new detection for a critical Remote Code Execution (RCE) vulnerability in Mesop (CVE-2026-33057), alongside protections for high-impact vulnerabilities in Cisco Secure Firewall Management Center (CVE-2026-20079) and FortiClient EMS (CVE-2026-21643). Additionally, this release includes an update to our existing React Server DoS coverage to address recently identified resource exhaustion vectors (CVE-2026-23869).
+
+**Key Findings**
+
+- Cisco Secure FMC (CVE-2026-20079): A vulnerability in the web-based management interface of Cisco Secure Firewall Management Center (FMC) that allows an unauthenticated, remote attacker to execute arbitrary commands or bypass security filters.
+- FortiClient EMS (CVE-2026-21643): A critical vulnerability in the FortiClient EMS permitting unauthorized access or administrative configuration manipulation via crafted HTTP requests.
+- Mesop (CVE-2026-33057): A vulnerability in the Mesop Python-based UI framework where unauthenticated attackers can execute arbitrary code by sending specially crafted, Base64-encoded payloads in the request body.
+
+**Impact**
+
+Successful exploitation of these vulnerabilities could allow unauthenticated attackers to execute arbitrary code, gain administrative control over network management infrastructure, or trigger server-side resource exhaustion. Administrators are strongly encouraged to apply official vendor updates.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...aef9415b | N/A | Cisco Secure FMC - RCE via upgradeReadinessCall - CVE:CVE-2026-20079 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...ee7be621 | N/A | FortiClient EMS - Pre-Auth SQL Injection - CVE:CVE-2026-21643 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...c953a72b | N/A | Mesop - Remote Code Execution - Base64 Payload - CVE:CVE-2026-33057 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...50c08f6f | N/A | React Server - DOS - CVE:CVE-2026-23864 - 1 - Beta | Log | Block | This rule has been merged into the original rule "React Server - DOS - CVE:CVE-2026-23864 - 1" (ID: ...61680354) |
+| Cloudflare Managed Ruleset | ...ebd81645 | N/A | XSS, HTML Injection - Link Tag - URI (beta) | N/A | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...0af34bba | N/A | XSS, HTML Injection - Embed Tag - URI (beta) | N/A | Disabled | This is a new detection. |
+
+Apr 14, 2026
+
+[<h2>DLP account-level settings</h2>](https://developers.cloudflare.com/changelog/post/2025-04-14-account-level-dlp-settings/)
+
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+
+**Account-level DLP settings are now available** in Cloudflare One. You can now configure advanced DLP settings at the account level, including OCR, AI context analysis, and payload masking. This provides consistent enforcement across all DLP profiles and simplifies configuration management.
+
+Key changes:
+
+- **Consistent enforcement**: Settings configured at the account level apply to all DLP profiles
+- **Simplified migration**: Settings enabled on any profile are automatically migrated to account level
+- **Deprecation notice**: Profile-level advanced settings will be deprecated in a future release
+
+**Migration details:**
+
+During the migration period, if a setting is enabled on any profile, it will automatically be enabled at the account level. This means profiles that previously had a setting disabled may now have it enabled if another profile in the account had it enabled.
+
+Settings are evaluated using OR logic - a setting is enabled if it is turned on at either the account level or the profile level. However, profile-level settings cannot be enabled when the account-level setting is off.
+
+For more details, refer to the [DLP settings documentation](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/).
+
+Apr 14, 2026
+
+[<h2>Manage Browser Rendering sessions with Wrangler CLI</h2>](https://developers.cloudflare.com/changelog/post/2026-04-14-browser-wrangler-commands/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+[Browser Rendering](https://developers.cloudflare.com/browser-run/) now supports `wrangler browser` commands, letting you create, manage, and view browser sessions directly from your terminal, streamlining your workflow. Since Wrangler handles authentication, you do not need to pass API tokens in your commands.
+
+The following commands are available:
+
+| Command | Description |
+| --- | --- |
+| `wrangler browser create` | Create a new browser session |
+| `wrangler browser close` | Close a session |
+| `wrangler browser list` | List active sessions |
+| `wrangler browser view` | View a live browser session |
+
+The `create` command spins up a browser instance on Cloudflare's network and returns a session URL. Once created, you can connect to the session using any [CDP](https://developers.cloudflare.com/browser-run/cdp/)-compatible client like [Puppeteer](https://developers.cloudflare.com/browser-run/cdp/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/cdp/playwright/), or [MCP clients](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/) to automate browsing, scrape content, or debug remotely.
+
+```sh
+wrangler browser create
+```
+
+Use `--keepAlive` to set the session keep-alive duration (60-600 seconds):
+
+```sh
+wrangler browser create --keepAlive 300
+```
+
+The `view` command auto-selects when only one session exists, or prompts for selection when multiple sessions are available.
+
+All commands support `--json` for structured output, and because these are CLI commands, you can incorporate them into scripts to automate session management.
+
+For full usage details, refer to the [Wrangler commands documentation](https://developers.cloudflare.com/browser-run/reference/wrangler-commands/).
+
+Apr 14, 2026
+
+[<h2>Introducing Cloudflare Mesh</h2>](https://developers.cloudflare.com/changelog/post/2026-04-14-cloudflare-mesh/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) is now available ([blog post ↗︎](https://blog.cloudflare.com/mesh/)). Mesh connects your services and devices with post-quantum encrypted networking, allowing you to route traffic privately between servers, laptops, and phones over TCP, UDP, and ICMP.
+
+![Cloudflare Mesh network map showing nodes and devices connected through Cloudflare](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2070,height=875,format=webp/_astro/mesh-network-map.CED6jNHK.gif)
+
+#### What Cloudflare Mesh does
+
+- Assigns a private [Mesh IP](https://developers.cloudflare.com/mesh/concepts/#mesh-ips) to every enrolled device and node.
+- Enables any participant to reach any other participant by IP — including client-to-client, without deploying any infrastructure.
+- Supports [CIDR routes](https://developers.cloudflare.com/mesh/features/routes/) for subnet routing through Mesh nodes.
+- Supports [high availability](https://developers.cloudflare.com/mesh/features/high-availability/) with active-passive replicas for nodes with routes.
+- All traffic flows through Cloudflare, so [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/), and access rules apply to every connection.
+
+#### What changed
+
+- **WARP Connector** is now **Cloudflare Mesh**. Existing WARP Connectors are now called mesh nodes. All existing deployments continue to work — no migration required.
+- **Peer-to-peer connectivity** is now called **Mesh connectivity** and is part of the Cloudflare Mesh documentation.
+- **Mesh node limit** increased from 10 to **50 per account**.
+- New [dashboard experience ↗︎](https://dash.cloudflare.com/?to=/:account/mesh) at **Networking** > **Mesh** with an interactive network map, node management, route configuration, diagnostics, and a setup wizard.
+
+#### Get started
+
+Refer to the [Cloudflare Mesh documentation](https://developers.cloudflare.com/mesh/) to set up your first Mesh network.
+
+Apr 14, 2026
+
+[<h2>Detect Cloudflare API tokens with DLP</h2>](https://developers.cloudflare.com/changelog/post/2026-04-14-cloudflare-api-token-detections/)
+
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+
+The **Credentials and Secrets** DLP profile now includes three new predefined entries for detecting Cloudflare API credentials:
+
+| Entry name | Token prefix | Detects |
+| --- | --- | --- |
+| Cloudflare User API Key | `cfk_` | User-scoped API keys |
+| Cloudflare User API Token | `cfut_` | User-scoped API tokens |
+| Cloudflare Account Owned API Token | `cfat_` | Account-scoped API tokens |
+
+These detections target the new [Cloudflare API credential format](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/), which uses a structured prefix and a CRC32 checksum suffix. The identifiable prefix makes it possible to detect leaked credentials with high confidence and low false positive rates — no surrounding context such as `Authorization: Bearer` headers is required.
+
+Credentials generated before this format change will not be matched by these entries.
+
+#### How to enable Cloudflare API token detections
+
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **DLP** > **DLP Profiles**.
+2. Select the **Credentials and Secrets** profile.
+3. Turn on one or more of the new Cloudflare API token entries.
+4. Use the profile in a Gateway HTTP policy to log or block traffic containing these credentials.
+
+Example policy:
+
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| DLP Profile | in | *Credentials and Secrets* | Block |
+
+You can also enable individual entries to scope detection to specific credential types — for example, enabling **Account Owned API Token** detection without enabling **User API Key** detection.
+
+For more information, refer to [predefined DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/).
+
+Apr 14, 2026
+
+[<h2>Configure how sensitive data appears in DLP payload logs</h2>](https://developers.cloudflare.com/changelog/post/2026-04-14-configurable-payload-log-masking/)
+
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+
+You can now configure how sensitive data matches are displayed in your DLP payload match logs — giving your incident response team the context they need to validate alerts without compromising your security posture.
+
+To get started, go to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), select **Zero Trust** > **Data loss prevention** > **DLP settings** and find the **Payload log masking** card.
+
+Previously, all DLP payload logs used a single masking mode that obscured matched data entirely and hid the original character count, making it difficult to distinguish true positives from false positives. This update introduces three options:
+
+- **Full Mask (default):** Masks the match while preserving character count and visual formatting (for example, `***-**-****` for a Social Security Number). This is an improvement over the previous default, which did not preserve character count.
+- **Partial Mask:** Reveals 25% of the matched content while masking the remainder (for example, `***-**-6789`).
+- **Clear Text:** Stores the full, unmasked violation for deep investigation (for example, `123-45-6789`).
+
+**Important:** The masking level you select is applied at detection time, before the payload is encrypted. This means the chosen format is what your team will see after decrypting the log with your private key — the existing encryption workflow is unchanged.
+
+**Applies to all enabled detections:** When a masking level other than Full Mask is selected, it applies to all sensitive data matches found within a payload window — not just the match that triggered the policy. Any data matched by your enabled DLP detection entries will be masked at the selected level.
+
+For more information, refer to [DLP logging options](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-the-payload-of-matched-rules).
+
+Apr 14, 2026
+
+[<h2>Improved OAuth experience for consent and management</h2>](https://developers.cloudflare.com/changelog/post/2026-04-14-oauth-consent-and-revoke/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+OAuth allows third-party applications to access your Cloudflare account on your behalf — like when Wrangler deploys Workers or when monitoring tools read your analytics. You now have **granular control** over which accounts these applications can access, plus the ability to revoke access anytime.
+
+#### What's new
+
+#### Choose which accounts to authorize
+
+When authorizing an OAuth application, you can now **select specific accounts** instead of granting access to all your accounts:
+
+- **Account-by-account selection** — Choose exactly which accounts the application can access
+- **"All accounts" option** — Still available for trusted tools like Wrangler This gives you precise control who can access your data.
+
+#### Clear consent screens
+
+The OAuth consent screen now shows:
+
+- **What the application can access** — Explicit list of permissions being requested
+- **Who created the application** — Application owner and contact information
+- **Which accounts you're authorizing** — Checkboxes for account selection
+
+#### Revoke access anytime
+
+Manage authorized OAuth applications from your profile:
+
+- **See all connected apps** — View every OAuth application with access to your accounts
+- **Review permissions and scope** — Check what each application can do and which accounts it can access
+- **Revoke instantly** — Remove access with one click when you no longer need it To manage your OAuth applications, navigate to **Profile** > **Access Management** > **[Connected Applications ↗︎](https://dash.cloudflare.com/profile/access-management/authorization)**.
+
+#### Why this matters
+
+These updates give you:
+
+- **Granular control** — Authorize apps per-account instead of all-or-nothing
+- **Transparency** — Know exactly what you're authorizing before you consent
+- **Security** — Limit blast radius by restricting access to only necessary accounts
+- **Easy cleanup** — Revoke access when applications are no longer needed
+
+#### Learn more
+
+Read more about these improvements in our blog post: [Improving the OAuth consent experience ↗︎](https://blog.cloudflare.com/improved-developer-security/#improving-the-oauth-consent-experience).
+
+Apr 14, 2026
+
+[<h2>Logpush to BigQuery — Cloudflare dashboard support</h2>](https://developers.cloudflare.com/changelog/post/2026-04-14-bigquery-dashboard-support/)
+
+[Logpush](https://developers.cloudflare.com/logs/logpush/) [Logs](https://developers.cloudflare.com/logs/)
+
+You can now configure Logpush jobs to Google BigQuery directly from the Cloudflare dashboard, in addition to the existing API-based setup.
+
+Previously, setting up a BigQuery Logpush destination required using the Logpush API. Now you can create and manage BigQuery Logpush jobs from the **Logpush** page in the Cloudflare dashboard by selecting **Google BigQuery** as the destination and entering your Google Cloud project ID, dataset ID, table ID, and service account credentials.
+
+For more information, refer to [Enable Logpush to Google BigQuery](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/bigquery/).
+
+Apr 14, 2026
+
+[<h2>Generate citations on Cloudflare Radar</h2>](https://developers.cloudflare.com/changelog/post/2026-04-14-radar-citations/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Radar**](https://developers.cloudflare.com/radar/) shareable widgets now include a **generate citation** action, making it easier to reference [Cloudflare Radar ↗︎](https://radar.cloudflare.com) data in research papers and other publications.
+
+![Screenshot of the generate citation icon in the widget action bar](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=548,height=308,format=webp/_astro/citation-action-icon.B2QPGPhA.png)
+
+Select the citation icon to open a modal with five supported citation styles:
+
+- **BibTeX**
+- **APA**
+- **MLA**
+- **Chicago**
+- **RIS**
+
+![Screenshot of the citation modal with format options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1432,height=800,format=webp/_astro/citation-modal.Bf5eDHwO.png)
+
+Explore the feature on any shareable widget at [Cloudflare Radar ↗︎](https://radar.cloudflare.com).
+
+Apr 14, 2026
+
+[<h2>Email obfuscation decode script is now non-render-blocking</h2>](https://developers.cloudflare.com/changelog/post/2026-04-14-email-obfuscation-defer/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+The decode script injected by [Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/) now loads with the `defer` attribute. This means the script no longer blocks page rendering. It downloads in parallel with HTML parsing and executes after the document is fully parsed, before the `DOMContentLoaded` event.
+
+This improves page loading performance, contributing to better Core Web Vitals, for all zones with Email Address Obfuscation on. No action is required.
+
+If you have custom JavaScript that depends on email addresses being decoded at a specific point during page load, note that the decode script now executes after HTML parsing completes rather than inline during parsing.
+
+Apr 14, 2026
+
+[<h2>VPC Networks and Cloudflare Mesh support now in public beta</h2>](https://developers.cloudflare.com/changelog/post/2026-04-14-vpc-networks/)
+
+[Workers VPC](https://developers.cloudflare.com/workers-vpc/)
+
+[VPC Network](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) bindings now give your Workers access to any service in your private network without pre-registering individual hosts or ports. This complements existing [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) bindings, which scope each binding to a specific host and port.
+
+You can bind to a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) by `tunnel_id` to reach any service on the network where that tunnel is running, or bind to your [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) network using `cf1:network` to reach any Mesh node, client device, or subnet route in your account:
+
+```jsonc
+{
+  "vpc_networks": [
+    {
+      "binding": "MESH",
+      "network_id": "cf1:network",
+      "remote": true
+    }
+  ]
+}
+```
+
+```toml
+[[vpc_networks]]
+binding = "MESH"
+network_id = "cf1:network"
+remote = true
+```
+
+At runtime, `fetch()` routes through the network to reach the service at the IP and port you specify:
+
+```js
+const response = await env.MESH.fetch("http://10.0.1.50:8080/api/data");
+```
+
+For configuration options and examples, refer to [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) and [Connect Workers to Cloudflare Mesh](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/).
+
+Apr 13, 2026
+
+[<h2>Containers and Sandboxes are now generally available</h2>](https://developers.cloudflare.com/changelog/post/2026-04-13-containers-sandbox-ga/)
+
+[Containers](https://developers.cloudflare.com/containers/)
+
+Cloudflare [Containers](https://developers.cloudflare.com/containers/) and [Sandboxes](https://developers.cloudflare.com/sandbox/) are now generally available.
+
+Containers let you run more workloads on the Workers platform, including resource-intensive applications, different languages, and CLI tools that need full Linux environments.
+
+Since the initial launch of Containers, there have been significant improvements to Containers' performance, stability, and feature set. Some highlights include:
+
+- [Higher limits](https://developers.cloudflare.com/changelog/post/2026-02-25-higher-container-resource-limits/) allow you to run thousands of containers concurrently.
+- [Active-CPU pricing](https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing/) means that you only pay for used CPU cycles.
+- [Easy connections to Workers and other bindings](https://developers.cloudflare.com/changelog/post/2026-03-26-outbound-workers/) via hostnames help you extend your Containers with additional functionality.
+- [Docker Hub support](https://developers.cloudflare.com/changelog/post/2026-03-24-docker-hub-images/) makes it easy to use your existing images and registries.
+- [SSH support](https://developers.cloudflare.com/changelog/post/2026-03-12-ssh-support/) helps you access and debug issues in live containers.
+
+The [Sandbox SDK](https://developers.cloudflare.com/sandbox/) provides isolated environments for running untrusted code securely, with a simple TypeScript API for executing commands, managing files, and exposing services. This makes it easier to secure and manage your agents at scale. Some additions since launch include:
+
+- [Live preview URLs](https://developers.cloudflare.com/changelog/post/2025-08-05-sandbox-sdk-major-update/) so agents can run long-lived services and verify in-flight changes.
+- [Persistent code interpreters](https://developers.cloudflare.com/changelog/post/2025-08-05-sandbox-sdk-major-update/) for Python, JavaScript, and TypeScript, with rich structured outputs.
+- [Interactive PTY terminals](https://developers.cloudflare.com/changelog/post/2026-02-09-pty-terminal-support/) for real browser-based terminal access with multiple isolated shells per sandbox.
+- [Backup and restore APIs](https://developers.cloudflare.com/changelog/post/2026-02-23-sandbox-backup-restore-api/) to snapshot a workspace and quickly restore an agent's coding session without repeating expensive setup steps.
+- [Real-time filesystem watching](https://developers.cloudflare.com/changelog/post/2026-03-03-sandbox-watch-file-events/) so apps and agents can react immediately to file changes inside a sandbox.
+
+For more information, refer to [Containers](https://developers.cloudflare.com/containers/) and [Sandbox SDK](https://developers.cloudflare.com/sandbox/) documentation.
+
+Apr 13, 2026
+
+[<h2>Secure credential injection and dynamic egress policies for Sandboxes</h2>](https://developers.cloudflare.com/changelog/post/2026-04-13-sandbox-outbound-workers-tls-auth/)
+
+[Containers](https://developers.cloudflare.com/containers/) [Agents](https://developers.cloudflare.com/agents/)
+
+Outbound Workers for [Sandboxes](https://developers.cloudflare.com/sandbox/) and [Containers](https://developers.cloudflare.com/containers/) now support zero-trust credential injection, TLS interception, allow/deny lists, and dynamic per-instance egress policies. These features give platforms running agentic workloads full control over what leaves the sandbox, without exposing secrets to untrusted workloads, like user-generated code or coding agents.
+
+#### Credential injection
+
+Because outbound handlers run in the Workers runtime, outside the sandbox, they can hold secrets the sandbox never sees. A sandboxed workload can make a plain request, and credentials are transparently attached before a request is forwarded upstream.
+
+For instance, you could run an agent in a sandbox and ensure that any requests it makes to Github are authenticated. But it will never be able to access the credentials:
+
+```ts
+export class MySandbox extends Sandbox {}
+
+MySandbox.outboundByHost = {
+	"github.com": (request: Request, env: Env, ctx: OutboundHandlerContext) => {
+		const requestWithAuth = new Request(request);
+		requestWithAuth.headers.set("x-auth-token", env.SECRET);
+		return fetch(requestWithAuth);
+	},
+};
+```
+
+You can easily inject unique credentials for different instances by using `ctx.containerId`:
+
+```ts
+MySandbox.outboundByHost = {
+	"my-internal-vcs.dev": async (
+		request: Request,
+		env: Env,
+		ctx: OutboundHandlerContext,
+	) => {
+		const authKey = await env.KEYS.get(ctx.containerId);
+
+		const requestWithAuth = new Request(request);
+		requestWithAuth.headers.set("x-auth-token", authKey);
+		return fetch(requestWithAuth);
+	},
+};
+```
+
+No token is ever passed into the sandbox. You can rotate secrets in the Worker environment and every request will pick them up immediately.
+
+#### TLS interception
+
+Outbound Workers now intercept HTTPS traffic. A unique ephemeral certificate authority (CA) and private key are created for each sandbox instance. The CA is placed into the sandbox and trusted by default. The ephemeral private key never leaves the container runtime sidecar process and is never shared across instances.
+
+With TLS interception active, outbound Workers can act as a transparent proxy for both HTTP and HTTPS traffic.
+
+#### Allow and deny hosts
+
+Easily filter outbound traffic with `allowedHosts` and `deniedHosts`. When `allowedHosts` is set, it becomes a deny-by-default allowlist. Both properties support glob patterns.
+
+```ts
+export class MySandbox extends Sandbox {
+	allowedHosts = ["github.com", "npmjs.org"];
+}
+```
+
+#### Dynamic outbound handlers
+
+Define named outbound handlers then apply or remove them at runtime using `setOutboundHandler()` or `setOutboundByHost()`. This lets you change egress policy for a running sandbox without restarting it.
+
+```ts
+export class MySandbox extends Sandbox {}
+
+MySandbox.outboundHandlers = {
+	allowHosts: async (req: Request, env: Env, ctx: OutboundHandlerContext ) => {
+		const url = new URL(req.url);
+		if (ctx.params.allowedHostnames.includes(url.hostname)) {
+			return fetch(req);
+		}
+		return new Response(null, { status: 403 });
+	},
+
+	noHttp: async () => {
+		return new Response(null, { status: 403 });
+	},
+};
+```
+
+Apply handlers programmatically from your Worker:
+
+```ts
+const sandbox = getSandbox(env.Sandbox, userId);
+
+// Open network for setup
+await sandbox.setOutboundHandler("allowHosts", {
+	allowedHostnames: ["github.com", "npmjs.org"],
+});
+await sandbox.exec("npm install");
+
+// Lock down after setup
+await sandbox.setOutboundHandler("noHttp");
+```
+
+Handlers accept `params`, so you can customize behavior per instance without defining separate handler functions.
+
+#### Get started
+
+Upgrade to `@cloudflare/containers@0.3.0` or `@cloudflare/sandbox@0.8.9` to use these features.
+
+For more details, refer to [Sandbox outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) and [Container outbound traffic](https://developers.cloudflare.com/containers/configuration/outbound-traffic/).
+
+Apr 13, 2026
+
+[<h2>Local Explorer for local resource data</h2>](https://developers.cloudflare.com/changelog/post/2026-04-13-local-explorer/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Local Explorer is a browser-based interface and REST API for viewing and editing local resource data during development. It removes the need to write throwaway scripts or dig through `.wrangler/state` to understand what data your Worker has stored locally.
+
+Local Explorer is available in Wrangler 4.82.1+ and the Cloudflare Vite plugin 1.32.0+. Start a local development session and press `e` in your terminal, or navigate to `/cdn-cgi/local/explorer` on your local dev server.
+
+#### Supported resources
+
+Local Explorer supports five resource types and works across multiple workers running locally:
+
+- **[KV](https://developers.cloudflare.com/kv/)** — Browse keys, view values and metadata, create, update, and delete key-value pairs.
+- **[R2](https://developers.cloudflare.com/r2/)** — List objects, view metadata, upload files, and delete objects. Supports directory views and multi-select.
+- **[D1](https://developers.cloudflare.com/d1/)** — Browse tables and rows, run arbitrary SQL queries, and edit schemas in a full data studio.
+- **[Durable Objects](https://developers.cloudflare.com/durable-objects/)** (SQLite storage) — Browse individual object SQLite tables, run SQL queries, and edit schemas.
+- **[Workflows](https://developers.cloudflare.com/workflows/)** — List instances, view status and step history, trigger new runs, and pause, resume, restart, or terminate instances.
+
+#### OpenAPI-powered REST API
+
+Local Explorer exposes a REST API at `/cdn-cgi/local/explorer/api` that provides programmatic access to the same operations available in the browser. The root endpoint returns an [OpenAPI specification ↗︎](https://www.openapis.org/) describing all available endpoints, parameters, and response formats.
+
+```sh
+curl http://localhost:8787/cdn-cgi/local/explorer/api
+```
+
+Point an AI coding agent at `/cdn-cgi/local/explorer/api` and it can discover and interact with your local resources without manual setup. This enables iterative development loops where an agent can populate test data in KV or D1, inspect Durable Object state, trigger Workflow runs, or upload files to R2.
+
+For more details, refer to the [Local Explorer documentation](https://developers.cloudflare.com/workers/local-development/local-explorer/).
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/22/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/22/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

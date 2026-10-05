@@ -1,0 +1,14173 @@
+---
+title: AI Gateway
+---
+
+[Skip to content](#_top)
+
+[API Reference](https://developers.cloudflare.com/api)
+
+Copy Markdown
+
+Open in **Claude**Open in **ChatGPT**Open in **Cursor**
+
+---
+
+**Copy Markdown****View as Markdown**
+
+# AI Gateway
+
+##### [List gateways](https://developers.cloudflare.com/api/resources/ai_gateway/methods/list)
+
+GET/accounts/{account\_id}/ai-gateway/gateways
+
+##### [Get a gateway](https://developers.cloudflare.com/api/resources/ai_gateway/methods/get)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{id}
+
+##### [Create a gateway](https://developers.cloudflare.com/api/resources/ai_gateway/methods/create)
+
+POST/accounts/{account\_id}/ai-gateway/gateways
+
+##### [Update a gateway](https://developers.cloudflare.com/api/resources/ai_gateway/methods/update)
+
+PUT/accounts/{account\_id}/ai-gateway/gateways/{id}
+
+##### [Delete a gateway](https://developers.cloudflare.com/api/resources/ai_gateway/methods/delete)
+
+DELETE/accounts/{account\_id}/ai-gateway/gateways/{id}
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+AIGatewayListResponse object {id, cache\_invalidate\_on\_update, cache\_ttl, 25 more }
+
+</summary>
+
+id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+cache\_invalidate\_on\_update: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20cache_invalidate_on_update">Link to this property</a>
+
+cache\_ttl: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20cache_ttl">Link to this property</a>
+
+collect\_logs: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20collect_logs">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+rate\_limiting\_interval: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_interval">Link to this property</a>
+
+rate\_limiting\_limit: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_limit">Link to this property</a>
+
+authentication: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20authentication">Link to this property</a>
+
+byok\_only: optional boolean
+
+Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20byok_only">Link to this property</a>
+
+<details>
+
+<summary>
+
+dlp: optional object {action, enabled, profiles } or object {enabled, policies }
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {action, enabled, profiles }
+
+</summary>
+
+<details>
+
+<summary>
+
+action: "BLOCK"or "FLAG"
+
+</summary>
+
+One of the following:
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action%20%3E%20(member)%200">Link to this property</a>
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action">Link to this property</a>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20enabled">Link to this property</a>
+
+profiles: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20profiles">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {enabled, policies }
+
+</summary>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+policies: array of object {id, action, check, 2 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+action: "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+check: array of "REQUEST"or "RESPONSE"
+
+</summary>
+
+One of the following:
+
+"REQUEST"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check%20%3E%20(items)%20%3E%20(member)%200">Link to this property</a>
+
+"RESPONSE"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check%20%3E%20(items)%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check">Link to this property</a>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20enabled">Link to this property</a>
+
+profiles: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20profiles">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20dlp">Link to this property</a>
+
+<details>
+
+<summary>
+
+guardrails: optional object {prompt, response }
+
+</summary>
+
+<details>
+
+<summary>
+
+prompt: object {P1, S1, S10, 11 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+P1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S10: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10">Link to this property</a>
+
+<details>
+
+<summary>
+
+S11: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11">Link to this property</a>
+
+<details>
+
+<summary>
+
+S12: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12">Link to this property</a>
+
+<details>
+
+<summary>
+
+S13: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13">Link to this property</a>
+
+<details>
+
+<summary>
+
+S2: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2">Link to this property</a>
+
+<details>
+
+<summary>
+
+S3: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3">Link to this property</a>
+
+<details>
+
+<summary>
+
+S4: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4">Link to this property</a>
+
+<details>
+
+<summary>
+
+S5: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5">Link to this property</a>
+
+<details>
+
+<summary>
+
+S6: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6">Link to this property</a>
+
+<details>
+
+<summary>
+
+S7: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7">Link to this property</a>
+
+<details>
+
+<summary>
+
+S8: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8">Link to this property</a>
+
+<details>
+
+<summary>
+
+S9: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt">Link to this property</a>
+
+<details>
+
+<summary>
+
+response: object {P1, S1, S10, 11 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+P1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S10: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10">Link to this property</a>
+
+<details>
+
+<summary>
+
+S11: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11">Link to this property</a>
+
+<details>
+
+<summary>
+
+S12: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12">Link to this property</a>
+
+<details>
+
+<summary>
+
+S13: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13">Link to this property</a>
+
+<details>
+
+<summary>
+
+S2: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2">Link to this property</a>
+
+<details>
+
+<summary>
+
+S3: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3">Link to this property</a>
+
+<details>
+
+<summary>
+
+S4: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4">Link to this property</a>
+
+<details>
+
+<summary>
+
+S5: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5">Link to this property</a>
+
+<details>
+
+<summary>
+
+S6: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6">Link to this property</a>
+
+<details>
+
+<summary>
+
+S7: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7">Link to this property</a>
+
+<details>
+
+<summary>
+
+S8: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8">Link to this property</a>
+
+<details>
+
+<summary>
+
+S9: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20guardrails">Link to this property</a>
+
+is\_default: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20is_default">Link to this property</a>
+
+log\_classification: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20log_classification">Link to this property</a>
+
+log\_management: optional number
+
+maximum10000000
+
+minimum10000
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20log_management">Link to this property</a>
+
+<details>
+
+<summary>
+
+log\_management\_strategy: optional "STOP\_INSERTING"or "DELETE\_OLDEST"
+
+</summary>
+
+One of the following:
+
+"STOP\_INSERTING"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy%20%3E%20(member)%200">Link to this property</a>
+
+"DELETE\_OLDEST"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy">Link to this property</a>
+
+logpush: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20logpush">Link to this property</a>
+
+logpush\_public\_key: optional string
+
+maxLength1024
+
+minLength16
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20logpush_public_key">Link to this property</a>
+
+<details>
+
+<summary>
+
+otel: optional array of object {headers, url, authorization, content\_type }
+
+</summary>
+
+headers: map\[string]
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20headers">Link to this property</a>
+
+url: string
+
+formaturi
+
+maxLength2048
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20url">Link to this property</a>
+
+authorization: optional string
+
+maxLength256
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20authorization">Link to this property</a>
+
+<details>
+
+<summary>
+
+content\_type: optional "json"or "protobuf"
+
+</summary>
+
+One of the following:
+
+"json"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type%20%3E%20(member)%200">Link to this property</a>
+
+"protobuf"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20otel">Link to this property</a>
+
+<details>
+
+<summary>
+
+rate\_limiting\_technique: optional "fixed"or "sliding"
+
+</summary>
+
+One of the following:
+
+"fixed"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique%20%3E%20(member)%200">Link to this property</a>
+
+"sliding"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique">Link to this property</a>
+
+<details>
+
+<summary>
+
+retry\_backoff: optional "constant"or "linear"or "exponential"
+
+Backoff strategy for retry delays
+
+</summary>
+
+One of the following:
+
+"constant"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%200">Link to this property</a>
+
+"linear"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%201">Link to this property</a>
+
+"exponential"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff">Link to this property</a>
+
+retry\_delay: optional number
+
+Delay between retry attempts in milliseconds (0-60000)
+
+maximum60000
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20retry_delay">Link to this property</a>
+
+retry\_max\_attempts: optional number
+
+Maximum number of retry attempts for failed requests (1-5)
+
+maximum5
+
+minimum1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20retry_max_attempts">Link to this property</a>
+
+<details>
+
+<summary>
+
+spend\_limits: optional object {enabled, rules }
+
+</summary>
+
+enabled: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+rules: optional array of object {limit, limitType, window, 6 more }
+
+</summary>
+
+limit: number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20limit">Link to this property</a>
+
+limitType: "cost"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20window">Link to this property</a>
+
+id: optional string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+enabled: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+metadata: optional map\[object {mode } or object {mode, values } ]
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+Mode object {mode }
+
+</summary>
+
+mode: "partition"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20mode">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata">Link to this property</a>
+
+<details>
+
+<summary>
+
+model: optional object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model">Link to this property</a>
+
+<details>
+
+<summary>
+
+provider: optional object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider">Link to this property</a>
+
+<details>
+
+<summary>
+
+technique: optional "fixed"or "sliding"
+
+</summary>
+
+One of the following:
+
+"fixed"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique%20%3E%20(member)%200">Link to this property</a>
+
+"sliding"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits">Link to this property</a>
+
+store\_id: optional string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20store_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+stripe: optional object {authorization, usage\_events }
+
+</summary>
+
+authorization: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20authorization">Link to this property</a>
+
+<details>
+
+<summary>
+
+usage\_events: array of object {payload }
+
+</summary>
+
+payload: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20usage_events%20%3E%20(items)%20%3E%20(property)%20payload">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20usage_events">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20stripe">Link to this property</a>
+
+<details>
+
+<summary>
+
+workers\_ai\_billing\_mode: optional "postpaid"or "unified"
+
+Controls how Workers AI inference calls routed through this gateway are billed. ‘postpaid’ bills the account directly through Workers AI; ‘unified’ deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+
+</summary>
+
+One of the following:
+
+"postpaid"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode%20%3E%20(member)%200">Link to this property</a>
+
+"unified"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode">Link to this property</a>
+
+zdr: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)%20%3E%20(property)%20zdr">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_list_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+AIGatewayGetResponse object {id, cache\_invalidate\_on\_update, cache\_ttl, 25 more }
+
+</summary>
+
+id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+cache\_invalidate\_on\_update: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20cache_invalidate_on_update">Link to this property</a>
+
+cache\_ttl: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20cache_ttl">Link to this property</a>
+
+collect\_logs: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20collect_logs">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+rate\_limiting\_interval: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_interval">Link to this property</a>
+
+rate\_limiting\_limit: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_limit">Link to this property</a>
+
+authentication: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20authentication">Link to this property</a>
+
+byok\_only: optional boolean
+
+Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20byok_only">Link to this property</a>
+
+<details>
+
+<summary>
+
+dlp: optional object {action, enabled, profiles } or object {enabled, policies }
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {action, enabled, profiles }
+
+</summary>
+
+<details>
+
+<summary>
+
+action: "BLOCK"or "FLAG"
+
+</summary>
+
+One of the following:
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action%20%3E%20(member)%200">Link to this property</a>
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action">Link to this property</a>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20enabled">Link to this property</a>
+
+profiles: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20profiles">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {enabled, policies }
+
+</summary>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+policies: array of object {id, action, check, 2 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+action: "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+check: array of "REQUEST"or "RESPONSE"
+
+</summary>
+
+One of the following:
+
+"REQUEST"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check%20%3E%20(items)%20%3E%20(member)%200">Link to this property</a>
+
+"RESPONSE"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check%20%3E%20(items)%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check">Link to this property</a>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20enabled">Link to this property</a>
+
+profiles: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20profiles">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20dlp">Link to this property</a>
+
+<details>
+
+<summary>
+
+guardrails: optional object {prompt, response }
+
+</summary>
+
+<details>
+
+<summary>
+
+prompt: object {P1, S1, S10, 11 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+P1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S10: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10">Link to this property</a>
+
+<details>
+
+<summary>
+
+S11: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11">Link to this property</a>
+
+<details>
+
+<summary>
+
+S12: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12">Link to this property</a>
+
+<details>
+
+<summary>
+
+S13: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13">Link to this property</a>
+
+<details>
+
+<summary>
+
+S2: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2">Link to this property</a>
+
+<details>
+
+<summary>
+
+S3: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3">Link to this property</a>
+
+<details>
+
+<summary>
+
+S4: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4">Link to this property</a>
+
+<details>
+
+<summary>
+
+S5: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5">Link to this property</a>
+
+<details>
+
+<summary>
+
+S6: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6">Link to this property</a>
+
+<details>
+
+<summary>
+
+S7: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7">Link to this property</a>
+
+<details>
+
+<summary>
+
+S8: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8">Link to this property</a>
+
+<details>
+
+<summary>
+
+S9: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt">Link to this property</a>
+
+<details>
+
+<summary>
+
+response: object {P1, S1, S10, 11 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+P1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S10: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10">Link to this property</a>
+
+<details>
+
+<summary>
+
+S11: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11">Link to this property</a>
+
+<details>
+
+<summary>
+
+S12: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12">Link to this property</a>
+
+<details>
+
+<summary>
+
+S13: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13">Link to this property</a>
+
+<details>
+
+<summary>
+
+S2: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2">Link to this property</a>
+
+<details>
+
+<summary>
+
+S3: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3">Link to this property</a>
+
+<details>
+
+<summary>
+
+S4: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4">Link to this property</a>
+
+<details>
+
+<summary>
+
+S5: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5">Link to this property</a>
+
+<details>
+
+<summary>
+
+S6: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6">Link to this property</a>
+
+<details>
+
+<summary>
+
+S7: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7">Link to this property</a>
+
+<details>
+
+<summary>
+
+S8: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8">Link to this property</a>
+
+<details>
+
+<summary>
+
+S9: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20guardrails">Link to this property</a>
+
+is\_default: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20is_default">Link to this property</a>
+
+log\_classification: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20log_classification">Link to this property</a>
+
+log\_management: optional number
+
+maximum10000000
+
+minimum10000
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20log_management">Link to this property</a>
+
+<details>
+
+<summary>
+
+log\_management\_strategy: optional "STOP\_INSERTING"or "DELETE\_OLDEST"
+
+</summary>
+
+One of the following:
+
+"STOP\_INSERTING"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy%20%3E%20(member)%200">Link to this property</a>
+
+"DELETE\_OLDEST"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy">Link to this property</a>
+
+logpush: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20logpush">Link to this property</a>
+
+logpush\_public\_key: optional string
+
+maxLength1024
+
+minLength16
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20logpush_public_key">Link to this property</a>
+
+<details>
+
+<summary>
+
+otel: optional array of object {headers, url, authorization, content\_type }
+
+</summary>
+
+headers: map\[string]
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20headers">Link to this property</a>
+
+url: string
+
+formaturi
+
+maxLength2048
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20url">Link to this property</a>
+
+authorization: optional string
+
+maxLength256
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20authorization">Link to this property</a>
+
+<details>
+
+<summary>
+
+content\_type: optional "json"or "protobuf"
+
+</summary>
+
+One of the following:
+
+"json"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type%20%3E%20(member)%200">Link to this property</a>
+
+"protobuf"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20otel">Link to this property</a>
+
+<details>
+
+<summary>
+
+rate\_limiting\_technique: optional "fixed"or "sliding"
+
+</summary>
+
+One of the following:
+
+"fixed"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique%20%3E%20(member)%200">Link to this property</a>
+
+"sliding"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique">Link to this property</a>
+
+<details>
+
+<summary>
+
+retry\_backoff: optional "constant"or "linear"or "exponential"
+
+Backoff strategy for retry delays
+
+</summary>
+
+One of the following:
+
+"constant"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%200">Link to this property</a>
+
+"linear"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%201">Link to this property</a>
+
+"exponential"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff">Link to this property</a>
+
+retry\_delay: optional number
+
+Delay between retry attempts in milliseconds (0-60000)
+
+maximum60000
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20retry_delay">Link to this property</a>
+
+retry\_max\_attempts: optional number
+
+Maximum number of retry attempts for failed requests (1-5)
+
+maximum5
+
+minimum1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20retry_max_attempts">Link to this property</a>
+
+<details>
+
+<summary>
+
+spend\_limits: optional object {enabled, rules }
+
+</summary>
+
+enabled: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+rules: optional array of object {limit, limitType, window, 6 more }
+
+</summary>
+
+limit: number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20limit">Link to this property</a>
+
+limitType: "cost"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20window">Link to this property</a>
+
+id: optional string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+enabled: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+metadata: optional map\[object {mode } or object {mode, values } ]
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+Mode object {mode }
+
+</summary>
+
+mode: "partition"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20mode">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata">Link to this property</a>
+
+<details>
+
+<summary>
+
+model: optional object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model">Link to this property</a>
+
+<details>
+
+<summary>
+
+provider: optional object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider">Link to this property</a>
+
+<details>
+
+<summary>
+
+technique: optional "fixed"or "sliding"
+
+</summary>
+
+One of the following:
+
+"fixed"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique%20%3E%20(member)%200">Link to this property</a>
+
+"sliding"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits">Link to this property</a>
+
+store\_id: optional string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20store_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+stripe: optional object {authorization, usage\_events }
+
+</summary>
+
+authorization: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20authorization">Link to this property</a>
+
+<details>
+
+<summary>
+
+usage\_events: array of object {payload }
+
+</summary>
+
+payload: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20usage_events%20%3E%20(items)%20%3E%20(property)%20payload">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20usage_events">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20stripe">Link to this property</a>
+
+<details>
+
+<summary>
+
+workers\_ai\_billing\_mode: optional "postpaid"or "unified"
+
+Controls how Workers AI inference calls routed through this gateway are billed. ‘postpaid’ bills the account directly through Workers AI; ‘unified’ deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+
+</summary>
+
+One of the following:
+
+"postpaid"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode%20%3E%20(member)%200">Link to this property</a>
+
+"unified"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode">Link to this property</a>
+
+zdr: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)%20%3E%20(property)%20zdr">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_get_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+AIGatewayCreateResponse object {id, cache\_invalidate\_on\_update, cache\_ttl, 25 more }
+
+</summary>
+
+id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+cache\_invalidate\_on\_update: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20cache_invalidate_on_update">Link to this property</a>
+
+cache\_ttl: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20cache_ttl">Link to this property</a>
+
+collect\_logs: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20collect_logs">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+rate\_limiting\_interval: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_interval">Link to this property</a>
+
+rate\_limiting\_limit: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_limit">Link to this property</a>
+
+authentication: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20authentication">Link to this property</a>
+
+byok\_only: optional boolean
+
+Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20byok_only">Link to this property</a>
+
+<details>
+
+<summary>
+
+dlp: optional object {action, enabled, profiles } or object {enabled, policies }
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {action, enabled, profiles }
+
+</summary>
+
+<details>
+
+<summary>
+
+action: "BLOCK"or "FLAG"
+
+</summary>
+
+One of the following:
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action%20%3E%20(member)%200">Link to this property</a>
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action">Link to this property</a>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20enabled">Link to this property</a>
+
+profiles: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20profiles">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {enabled, policies }
+
+</summary>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+policies: array of object {id, action, check, 2 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+action: "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+check: array of "REQUEST"or "RESPONSE"
+
+</summary>
+
+One of the following:
+
+"REQUEST"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check%20%3E%20(items)%20%3E%20(member)%200">Link to this property</a>
+
+"RESPONSE"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check%20%3E%20(items)%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check">Link to this property</a>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20enabled">Link to this property</a>
+
+profiles: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20profiles">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20dlp">Link to this property</a>
+
+<details>
+
+<summary>
+
+guardrails: optional object {prompt, response }
+
+</summary>
+
+<details>
+
+<summary>
+
+prompt: object {P1, S1, S10, 11 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+P1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S10: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10">Link to this property</a>
+
+<details>
+
+<summary>
+
+S11: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11">Link to this property</a>
+
+<details>
+
+<summary>
+
+S12: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12">Link to this property</a>
+
+<details>
+
+<summary>
+
+S13: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13">Link to this property</a>
+
+<details>
+
+<summary>
+
+S2: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2">Link to this property</a>
+
+<details>
+
+<summary>
+
+S3: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3">Link to this property</a>
+
+<details>
+
+<summary>
+
+S4: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4">Link to this property</a>
+
+<details>
+
+<summary>
+
+S5: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5">Link to this property</a>
+
+<details>
+
+<summary>
+
+S6: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6">Link to this property</a>
+
+<details>
+
+<summary>
+
+S7: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7">Link to this property</a>
+
+<details>
+
+<summary>
+
+S8: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8">Link to this property</a>
+
+<details>
+
+<summary>
+
+S9: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt">Link to this property</a>
+
+<details>
+
+<summary>
+
+response: object {P1, S1, S10, 11 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+P1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S10: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10">Link to this property</a>
+
+<details>
+
+<summary>
+
+S11: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11">Link to this property</a>
+
+<details>
+
+<summary>
+
+S12: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12">Link to this property</a>
+
+<details>
+
+<summary>
+
+S13: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13">Link to this property</a>
+
+<details>
+
+<summary>
+
+S2: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2">Link to this property</a>
+
+<details>
+
+<summary>
+
+S3: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3">Link to this property</a>
+
+<details>
+
+<summary>
+
+S4: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4">Link to this property</a>
+
+<details>
+
+<summary>
+
+S5: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5">Link to this property</a>
+
+<details>
+
+<summary>
+
+S6: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6">Link to this property</a>
+
+<details>
+
+<summary>
+
+S7: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7">Link to this property</a>
+
+<details>
+
+<summary>
+
+S8: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8">Link to this property</a>
+
+<details>
+
+<summary>
+
+S9: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20guardrails">Link to this property</a>
+
+is\_default: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20is_default">Link to this property</a>
+
+log\_classification: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20log_classification">Link to this property</a>
+
+log\_management: optional number
+
+maximum10000000
+
+minimum10000
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20log_management">Link to this property</a>
+
+<details>
+
+<summary>
+
+log\_management\_strategy: optional "STOP\_INSERTING"or "DELETE\_OLDEST"
+
+</summary>
+
+One of the following:
+
+"STOP\_INSERTING"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy%20%3E%20(member)%200">Link to this property</a>
+
+"DELETE\_OLDEST"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy">Link to this property</a>
+
+logpush: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20logpush">Link to this property</a>
+
+logpush\_public\_key: optional string
+
+maxLength1024
+
+minLength16
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20logpush_public_key">Link to this property</a>
+
+<details>
+
+<summary>
+
+otel: optional array of object {headers, url, authorization, content\_type }
+
+</summary>
+
+headers: map\[string]
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20headers">Link to this property</a>
+
+url: string
+
+formaturi
+
+maxLength2048
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20url">Link to this property</a>
+
+authorization: optional string
+
+maxLength256
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20authorization">Link to this property</a>
+
+<details>
+
+<summary>
+
+content\_type: optional "json"or "protobuf"
+
+</summary>
+
+One of the following:
+
+"json"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type%20%3E%20(member)%200">Link to this property</a>
+
+"protobuf"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20otel">Link to this property</a>
+
+<details>
+
+<summary>
+
+rate\_limiting\_technique: optional "fixed"or "sliding"
+
+</summary>
+
+One of the following:
+
+"fixed"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique%20%3E%20(member)%200">Link to this property</a>
+
+"sliding"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique">Link to this property</a>
+
+<details>
+
+<summary>
+
+retry\_backoff: optional "constant"or "linear"or "exponential"
+
+Backoff strategy for retry delays
+
+</summary>
+
+One of the following:
+
+"constant"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%200">Link to this property</a>
+
+"linear"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%201">Link to this property</a>
+
+"exponential"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff">Link to this property</a>
+
+retry\_delay: optional number
+
+Delay between retry attempts in milliseconds (0-60000)
+
+maximum60000
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20retry_delay">Link to this property</a>
+
+retry\_max\_attempts: optional number
+
+Maximum number of retry attempts for failed requests (1-5)
+
+maximum5
+
+minimum1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20retry_max_attempts">Link to this property</a>
+
+<details>
+
+<summary>
+
+spend\_limits: optional object {enabled, rules }
+
+</summary>
+
+enabled: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+rules: optional array of object {limit, limitType, window, 6 more }
+
+</summary>
+
+limit: number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20limit">Link to this property</a>
+
+limitType: "cost"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20window">Link to this property</a>
+
+id: optional string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+enabled: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+metadata: optional map\[object {mode } or object {mode, values } ]
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+Mode object {mode }
+
+</summary>
+
+mode: "partition"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20mode">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata">Link to this property</a>
+
+<details>
+
+<summary>
+
+model: optional object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model">Link to this property</a>
+
+<details>
+
+<summary>
+
+provider: optional object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider">Link to this property</a>
+
+<details>
+
+<summary>
+
+technique: optional "fixed"or "sliding"
+
+</summary>
+
+One of the following:
+
+"fixed"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique%20%3E%20(member)%200">Link to this property</a>
+
+"sliding"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits">Link to this property</a>
+
+store\_id: optional string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20store_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+stripe: optional object {authorization, usage\_events }
+
+</summary>
+
+authorization: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20authorization">Link to this property</a>
+
+<details>
+
+<summary>
+
+usage\_events: array of object {payload }
+
+</summary>
+
+payload: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20usage_events%20%3E%20(items)%20%3E%20(property)%20payload">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20usage_events">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20stripe">Link to this property</a>
+
+<details>
+
+<summary>
+
+workers\_ai\_billing\_mode: optional "postpaid"or "unified"
+
+Controls how Workers AI inference calls routed through this gateway are billed. ‘postpaid’ bills the account directly through Workers AI; ‘unified’ deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+
+</summary>
+
+One of the following:
+
+"postpaid"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode%20%3E%20(member)%200">Link to this property</a>
+
+"unified"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode">Link to this property</a>
+
+zdr: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)%20%3E%20(property)%20zdr">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_create_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+AIGatewayUpdateResponse object {id, cache\_invalidate\_on\_update, cache\_ttl, 25 more }
+
+</summary>
+
+id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+cache\_invalidate\_on\_update: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20cache_invalidate_on_update">Link to this property</a>
+
+cache\_ttl: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20cache_ttl">Link to this property</a>
+
+collect\_logs: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20collect_logs">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+rate\_limiting\_interval: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_interval">Link to this property</a>
+
+rate\_limiting\_limit: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_limit">Link to this property</a>
+
+authentication: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20authentication">Link to this property</a>
+
+byok\_only: optional boolean
+
+Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20byok_only">Link to this property</a>
+
+<details>
+
+<summary>
+
+dlp: optional object {action, enabled, profiles } or object {enabled, policies }
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {action, enabled, profiles }
+
+</summary>
+
+<details>
+
+<summary>
+
+action: "BLOCK"or "FLAG"
+
+</summary>
+
+One of the following:
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action%20%3E%20(member)%200">Link to this property</a>
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action">Link to this property</a>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20enabled">Link to this property</a>
+
+profiles: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20profiles">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {enabled, policies }
+
+</summary>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+policies: array of object {id, action, check, 2 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+action: "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+check: array of "REQUEST"or "RESPONSE"
+
+</summary>
+
+One of the following:
+
+"REQUEST"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check%20%3E%20(items)%20%3E%20(member)%200">Link to this property</a>
+
+"RESPONSE"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check%20%3E%20(items)%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check">Link to this property</a>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20enabled">Link to this property</a>
+
+profiles: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20profiles">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20dlp">Link to this property</a>
+
+<details>
+
+<summary>
+
+guardrails: optional object {prompt, response }
+
+</summary>
+
+<details>
+
+<summary>
+
+prompt: object {P1, S1, S10, 11 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+P1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S10: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10">Link to this property</a>
+
+<details>
+
+<summary>
+
+S11: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11">Link to this property</a>
+
+<details>
+
+<summary>
+
+S12: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12">Link to this property</a>
+
+<details>
+
+<summary>
+
+S13: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13">Link to this property</a>
+
+<details>
+
+<summary>
+
+S2: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2">Link to this property</a>
+
+<details>
+
+<summary>
+
+S3: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3">Link to this property</a>
+
+<details>
+
+<summary>
+
+S4: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4">Link to this property</a>
+
+<details>
+
+<summary>
+
+S5: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5">Link to this property</a>
+
+<details>
+
+<summary>
+
+S6: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6">Link to this property</a>
+
+<details>
+
+<summary>
+
+S7: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7">Link to this property</a>
+
+<details>
+
+<summary>
+
+S8: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8">Link to this property</a>
+
+<details>
+
+<summary>
+
+S9: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt">Link to this property</a>
+
+<details>
+
+<summary>
+
+response: object {P1, S1, S10, 11 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+P1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S10: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10">Link to this property</a>
+
+<details>
+
+<summary>
+
+S11: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11">Link to this property</a>
+
+<details>
+
+<summary>
+
+S12: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12">Link to this property</a>
+
+<details>
+
+<summary>
+
+S13: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13">Link to this property</a>
+
+<details>
+
+<summary>
+
+S2: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2">Link to this property</a>
+
+<details>
+
+<summary>
+
+S3: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3">Link to this property</a>
+
+<details>
+
+<summary>
+
+S4: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4">Link to this property</a>
+
+<details>
+
+<summary>
+
+S5: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5">Link to this property</a>
+
+<details>
+
+<summary>
+
+S6: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6">Link to this property</a>
+
+<details>
+
+<summary>
+
+S7: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7">Link to this property</a>
+
+<details>
+
+<summary>
+
+S8: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8">Link to this property</a>
+
+<details>
+
+<summary>
+
+S9: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20guardrails">Link to this property</a>
+
+is\_default: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20is_default">Link to this property</a>
+
+log\_classification: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20log_classification">Link to this property</a>
+
+log\_management: optional number
+
+maximum10000000
+
+minimum10000
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20log_management">Link to this property</a>
+
+<details>
+
+<summary>
+
+log\_management\_strategy: optional "STOP\_INSERTING"or "DELETE\_OLDEST"
+
+</summary>
+
+One of the following:
+
+"STOP\_INSERTING"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy%20%3E%20(member)%200">Link to this property</a>
+
+"DELETE\_OLDEST"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy">Link to this property</a>
+
+logpush: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20logpush">Link to this property</a>
+
+logpush\_public\_key: optional string
+
+maxLength1024
+
+minLength16
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20logpush_public_key">Link to this property</a>
+
+<details>
+
+<summary>
+
+otel: optional array of object {headers, url, authorization, content\_type }
+
+</summary>
+
+headers: map\[string]
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20headers">Link to this property</a>
+
+url: string
+
+formaturi
+
+maxLength2048
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20url">Link to this property</a>
+
+authorization: optional string
+
+maxLength256
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20authorization">Link to this property</a>
+
+<details>
+
+<summary>
+
+content\_type: optional "json"or "protobuf"
+
+</summary>
+
+One of the following:
+
+"json"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type%20%3E%20(member)%200">Link to this property</a>
+
+"protobuf"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20otel">Link to this property</a>
+
+<details>
+
+<summary>
+
+rate\_limiting\_technique: optional "fixed"or "sliding"
+
+</summary>
+
+One of the following:
+
+"fixed"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique%20%3E%20(member)%200">Link to this property</a>
+
+"sliding"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique">Link to this property</a>
+
+<details>
+
+<summary>
+
+retry\_backoff: optional "constant"or "linear"or "exponential"
+
+Backoff strategy for retry delays
+
+</summary>
+
+One of the following:
+
+"constant"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%200">Link to this property</a>
+
+"linear"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%201">Link to this property</a>
+
+"exponential"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff">Link to this property</a>
+
+retry\_delay: optional number
+
+Delay between retry attempts in milliseconds (0-60000)
+
+maximum60000
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20retry_delay">Link to this property</a>
+
+retry\_max\_attempts: optional number
+
+Maximum number of retry attempts for failed requests (1-5)
+
+maximum5
+
+minimum1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20retry_max_attempts">Link to this property</a>
+
+<details>
+
+<summary>
+
+spend\_limits: optional object {enabled, rules }
+
+</summary>
+
+enabled: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+rules: optional array of object {limit, limitType, window, 6 more }
+
+</summary>
+
+limit: number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20limit">Link to this property</a>
+
+limitType: "cost"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20window">Link to this property</a>
+
+id: optional string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+enabled: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+metadata: optional map\[object {mode } or object {mode, values } ]
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+Mode object {mode }
+
+</summary>
+
+mode: "partition"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20mode">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata">Link to this property</a>
+
+<details>
+
+<summary>
+
+model: optional object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model">Link to this property</a>
+
+<details>
+
+<summary>
+
+provider: optional object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider">Link to this property</a>
+
+<details>
+
+<summary>
+
+technique: optional "fixed"or "sliding"
+
+</summary>
+
+One of the following:
+
+"fixed"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique%20%3E%20(member)%200">Link to this property</a>
+
+"sliding"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits">Link to this property</a>
+
+store\_id: optional string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20store_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+stripe: optional object {authorization, usage\_events }
+
+</summary>
+
+authorization: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20authorization">Link to this property</a>
+
+<details>
+
+<summary>
+
+usage\_events: array of object {payload }
+
+</summary>
+
+payload: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20usage_events%20%3E%20(items)%20%3E%20(property)%20payload">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20usage_events">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20stripe">Link to this property</a>
+
+<details>
+
+<summary>
+
+workers\_ai\_billing\_mode: optional "postpaid"or "unified"
+
+Controls how Workers AI inference calls routed through this gateway are billed. ‘postpaid’ bills the account directly through Workers AI; ‘unified’ deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+
+</summary>
+
+One of the following:
+
+"postpaid"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode%20%3E%20(member)%200">Link to this property</a>
+
+"unified"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode">Link to this property</a>
+
+zdr: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)%20%3E%20(property)%20zdr">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_update_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+AIGatewayDeleteResponse object {id, cache\_invalidate\_on\_update, cache\_ttl, 25 more }
+
+</summary>
+
+id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+cache\_invalidate\_on\_update: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20cache_invalidate_on_update">Link to this property</a>
+
+cache\_ttl: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20cache_ttl">Link to this property</a>
+
+collect\_logs: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20collect_logs">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+rate\_limiting\_interval: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_interval">Link to this property</a>
+
+rate\_limiting\_limit: number
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_limit">Link to this property</a>
+
+authentication: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20authentication">Link to this property</a>
+
+byok\_only: optional boolean
+
+Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20byok_only">Link to this property</a>
+
+<details>
+
+<summary>
+
+dlp: optional object {action, enabled, profiles } or object {enabled, policies }
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {action, enabled, profiles }
+
+</summary>
+
+<details>
+
+<summary>
+
+action: "BLOCK"or "FLAG"
+
+</summary>
+
+One of the following:
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action%20%3E%20(member)%200">Link to this property</a>
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20action">Link to this property</a>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20enabled">Link to this property</a>
+
+profiles: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200%20%3E%20(property)%20profiles">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {enabled, policies }
+
+</summary>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+policies: array of object {id, action, check, 2 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+action: "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+check: array of "REQUEST"or "RESPONSE"
+
+</summary>
+
+One of the following:
+
+"REQUEST"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check%20%3E%20(items)%20%3E%20(member)%200">Link to this property</a>
+
+"RESPONSE"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check%20%3E%20(items)%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20check">Link to this property</a>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20enabled">Link to this property</a>
+
+profiles: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies%20%3E%20(items)%20%3E%20(property)%20profiles">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201%20%3E%20(property)%20policies">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20dlp">Link to this property</a>
+
+<details>
+
+<summary>
+
+guardrails: optional object {prompt, response }
+
+</summary>
+
+<details>
+
+<summary>
+
+prompt: object {P1, S1, S10, 11 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+P1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20P1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S10: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S10">Link to this property</a>
+
+<details>
+
+<summary>
+
+S11: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S11">Link to this property</a>
+
+<details>
+
+<summary>
+
+S12: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S12">Link to this property</a>
+
+<details>
+
+<summary>
+
+S13: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S13">Link to this property</a>
+
+<details>
+
+<summary>
+
+S2: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S2">Link to this property</a>
+
+<details>
+
+<summary>
+
+S3: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S3">Link to this property</a>
+
+<details>
+
+<summary>
+
+S4: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S4">Link to this property</a>
+
+<details>
+
+<summary>
+
+S5: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S5">Link to this property</a>
+
+<details>
+
+<summary>
+
+S6: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S6">Link to this property</a>
+
+<details>
+
+<summary>
+
+S7: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S7">Link to this property</a>
+
+<details>
+
+<summary>
+
+S8: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S8">Link to this property</a>
+
+<details>
+
+<summary>
+
+S9: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt%20%3E%20(property)%20S9">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20prompt">Link to this property</a>
+
+<details>
+
+<summary>
+
+response: object {P1, S1, S10, 11 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+P1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20P1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S1: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S1">Link to this property</a>
+
+<details>
+
+<summary>
+
+S10: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S10">Link to this property</a>
+
+<details>
+
+<summary>
+
+S11: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S11">Link to this property</a>
+
+<details>
+
+<summary>
+
+S12: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S12">Link to this property</a>
+
+<details>
+
+<summary>
+
+S13: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S13">Link to this property</a>
+
+<details>
+
+<summary>
+
+S2: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S2">Link to this property</a>
+
+<details>
+
+<summary>
+
+S3: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S3">Link to this property</a>
+
+<details>
+
+<summary>
+
+S4: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S4">Link to this property</a>
+
+<details>
+
+<summary>
+
+S5: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S5">Link to this property</a>
+
+<details>
+
+<summary>
+
+S6: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S6">Link to this property</a>
+
+<details>
+
+<summary>
+
+S7: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S7">Link to this property</a>
+
+<details>
+
+<summary>
+
+S8: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S8">Link to this property</a>
+
+<details>
+
+<summary>
+
+S9: optional "FLAG"or "BLOCK"
+
+</summary>
+
+One of the following:
+
+"FLAG"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9%20%3E%20(member)%200">Link to this property</a>
+
+"BLOCK"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response%20%3E%20(property)%20S9">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails%20%3E%20(property)%20response">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20guardrails">Link to this property</a>
+
+is\_default: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20is_default">Link to this property</a>
+
+log\_classification: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20log_classification">Link to this property</a>
+
+log\_management: optional number
+
+maximum10000000
+
+minimum10000
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20log_management">Link to this property</a>
+
+<details>
+
+<summary>
+
+log\_management\_strategy: optional "STOP\_INSERTING"or "DELETE\_OLDEST"
+
+</summary>
+
+One of the following:
+
+"STOP\_INSERTING"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy%20%3E%20(member)%200">Link to this property</a>
+
+"DELETE\_OLDEST"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20log_management_strategy">Link to this property</a>
+
+logpush: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20logpush">Link to this property</a>
+
+logpush\_public\_key: optional string
+
+maxLength1024
+
+minLength16
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20logpush_public_key">Link to this property</a>
+
+<details>
+
+<summary>
+
+otel: optional array of object {headers, url, authorization, content\_type }
+
+</summary>
+
+headers: map\[string]
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20headers">Link to this property</a>
+
+url: string
+
+formaturi
+
+maxLength2048
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20url">Link to this property</a>
+
+authorization: optional string
+
+maxLength256
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20authorization">Link to this property</a>
+
+<details>
+
+<summary>
+
+content\_type: optional "json"or "protobuf"
+
+</summary>
+
+One of the following:
+
+"json"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type%20%3E%20(member)%200">Link to this property</a>
+
+"protobuf"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20otel%20%3E%20(items)%20%3E%20(property)%20content_type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20otel">Link to this property</a>
+
+<details>
+
+<summary>
+
+rate\_limiting\_technique: optional "fixed"or "sliding"
+
+</summary>
+
+One of the following:
+
+"fixed"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique%20%3E%20(member)%200">Link to this property</a>
+
+"sliding"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20rate_limiting_technique">Link to this property</a>
+
+<details>
+
+<summary>
+
+retry\_backoff: optional "constant"or "linear"or "exponential"
+
+Backoff strategy for retry delays
+
+</summary>
+
+One of the following:
+
+"constant"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%200">Link to this property</a>
+
+"linear"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%201">Link to this property</a>
+
+"exponential"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff%20%3E%20(member)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20retry_backoff">Link to this property</a>
+
+retry\_delay: optional number
+
+Delay between retry attempts in milliseconds (0-60000)
+
+maximum60000
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20retry_delay">Link to this property</a>
+
+retry\_max\_attempts: optional number
+
+Maximum number of retry attempts for failed requests (1-5)
+
+maximum5
+
+minimum1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20retry_max_attempts">Link to this property</a>
+
+<details>
+
+<summary>
+
+spend\_limits: optional object {enabled, rules }
+
+</summary>
+
+enabled: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+rules: optional array of object {limit, limitType, window, 6 more }
+
+</summary>
+
+limit: number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20limit">Link to this property</a>
+
+limitType: "cost"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20window">Link to this property</a>
+
+id: optional string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+enabled: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+metadata: optional map\[object {mode } or object {mode, values } ]
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+Mode object {mode }
+
+</summary>
+
+mode: "partition"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20mode">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20metadata">Link to this property</a>
+
+<details>
+
+<summary>
+
+model: optional object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20model">Link to this property</a>
+
+<details>
+
+<summary>
+
+provider: optional object {mode, values }
+
+</summary>
+
+mode: "filter"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider%20%3E%20(property)%20mode">Link to this property</a>
+
+values: array of string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider%20%3E%20(property)%20values">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20provider">Link to this property</a>
+
+<details>
+
+<summary>
+
+technique: optional "fixed"or "sliding"
+
+</summary>
+
+One of the following:
+
+"fixed"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique%20%3E%20(member)%200">Link to this property</a>
+
+"sliding"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules%20%3E%20(items)%20%3E%20(property)%20technique">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits%20%3E%20(property)%20rules">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20spend_limits">Link to this property</a>
+
+store\_id: optional string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20store_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+stripe: optional object {authorization, usage\_events }
+
+</summary>
+
+authorization: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20authorization">Link to this property</a>
+
+<details>
+
+<summary>
+
+usage\_events: array of object {payload }
+
+</summary>
+
+payload: string
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20usage_events%20%3E%20(items)%20%3E%20(property)%20payload">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20stripe%20%3E%20(property)%20usage_events">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20stripe">Link to this property</a>
+
+<details>
+
+<summary>
+
+workers\_ai\_billing\_mode: optional "postpaid"or "unified"
+
+Controls how Workers AI inference calls routed through this gateway are billed. ‘postpaid’ bills the account directly through Workers AI; ‘unified’ deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+
+</summary>
+
+One of the following:
+
+"postpaid"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode%20%3E%20(member)%200">Link to this property</a>
+
+"unified"
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20workers_ai_billing_mode">Link to this property</a>
+
+zdr: optional boolean
+
+<a href="#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)%20%3E%20(property)%20zdr">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway%20%3E%20(model)%20ai_gateway_delete_response%20%3E%20(schema)>)
+
+#### AI GatewayEvaluation Types
+
+##### [List evaluator types (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/evaluation_types/methods/list)
+
+GET/accounts/{account\_id}/ai-gateway/evaluation-types
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+EvaluationTypeListResponse object {id, created\_at, description, 5 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluation_types%20%3E%20(model)%20evaluation_type_list_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluation_types%20%3E%20(model)%20evaluation_type_list_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+description: string
+
+<a href="#(resource)%20ai_gateway.evaluation_types%20%3E%20(model)%20evaluation_type_list_response%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+enable: boolean
+
+<a href="#(resource)%20ai_gateway.evaluation_types%20%3E%20(model)%20evaluation_type_list_response%20%3E%20(schema)%20%3E%20(property)%20enable">Link to this property</a>
+
+mandatory: boolean
+
+<a href="#(resource)%20ai_gateway.evaluation_types%20%3E%20(model)%20evaluation_type_list_response%20%3E%20(schema)%20%3E%20(property)%20mandatory">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluation_types%20%3E%20(model)%20evaluation_type_list_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.evaluation_types%20%3E%20(model)%20evaluation_type_list_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+type: string
+
+<a href="#(resource)%20ai_gateway.evaluation_types%20%3E%20(model)%20evaluation_type_list_response%20%3E%20(schema)%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.evaluation_types%20%3E%20(model)%20evaluation_type_list_response%20%3E%20(schema)>)
+
+#### AI GatewayCustom Providers
+
+##### [List custom providers](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/custom_providers/methods/list)
+
+GET/accounts/{account\_id}/ai-gateway/custom-providers
+
+##### [Get a custom provider](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/custom_providers/methods/get)
+
+GET/accounts/{account\_id}/ai-gateway/custom-providers/{id}
+
+##### [Create a custom provider](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/custom_providers/methods/create)
+
+POST/accounts/{account\_id}/ai-gateway/custom-providers
+
+##### [Delete a custom provider](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/custom_providers/methods/delete)
+
+DELETE/accounts/{account\_id}/ai-gateway/custom-providers/{id}
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+CustomProviderListResponse object {id, base\_url, created\_at, 12 more }
+
+</summary>
+
+id: string
+
+formatuuid
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+base\_url: string
+
+formaturi
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20base_url">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+slug: string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20slug">Link to this property</a>
+
+beta: optional boolean
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20beta">Link to this property</a>
+
+curl\_example: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20curl_example">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+enable: optional boolean
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20enable">Link to this property</a>
+
+headers: optional string
+
+JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.
+
+maxLength8192
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20headers">Link to this property</a>
+
+js\_example: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20js_example">Link to this property</a>
+
+link: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20link">Link to this property</a>
+
+logo: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20logo">Link to this property</a>
+
+position: optional number
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)%20%3E%20(property)%20position">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_list_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+CustomProviderGetResponse object {id, base\_url, created\_at, 12 more }
+
+</summary>
+
+id: string
+
+formatuuid
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+base\_url: string
+
+formaturi
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20base_url">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+slug: string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20slug">Link to this property</a>
+
+beta: optional boolean
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20beta">Link to this property</a>
+
+curl\_example: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20curl_example">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+enable: optional boolean
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20enable">Link to this property</a>
+
+headers: optional string
+
+JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.
+
+maxLength8192
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20headers">Link to this property</a>
+
+js\_example: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20js_example">Link to this property</a>
+
+link: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20link">Link to this property</a>
+
+logo: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20logo">Link to this property</a>
+
+position: optional number
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)%20%3E%20(property)%20position">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_get_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+CustomProviderCreateResponse object {id, base\_url, created\_at, 12 more }
+
+</summary>
+
+id: string
+
+formatuuid
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+base\_url: string
+
+formaturi
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20base_url">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+slug: string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20slug">Link to this property</a>
+
+beta: optional boolean
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20beta">Link to this property</a>
+
+curl\_example: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20curl_example">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+enable: optional boolean
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20enable">Link to this property</a>
+
+headers: optional string
+
+JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.
+
+maxLength8192
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20headers">Link to this property</a>
+
+js\_example: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20js_example">Link to this property</a>
+
+link: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20link">Link to this property</a>
+
+logo: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20logo">Link to this property</a>
+
+position: optional number
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)%20%3E%20(property)%20position">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_create_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+CustomProviderDeleteResponse object {id, base\_url, created\_at, 12 more }
+
+</summary>
+
+id: string
+
+formatuuid
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+base\_url: string
+
+formaturi
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20base_url">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+slug: string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20slug">Link to this property</a>
+
+beta: optional boolean
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20beta">Link to this property</a>
+
+curl\_example: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20curl_example">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+enable: optional boolean
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20enable">Link to this property</a>
+
+headers: optional string
+
+JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.
+
+maxLength8192
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20headers">Link to this property</a>
+
+js\_example: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20js_example">Link to this property</a>
+
+link: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20link">Link to this property</a>
+
+logo: optional string
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20logo">Link to this property</a>
+
+position: optional number
+
+<a href="#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)%20%3E%20(property)%20position">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.custom_providers%20%3E%20(model)%20custom_provider_delete_response%20%3E%20(schema)>)
+
+#### AI GatewayLogs
+
+##### [List Gateway Logs](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/logs/methods/list)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/logs
+
+##### [Get Gateway Log Detail](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/logs/methods/get)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/logs/{id}
+
+##### [Patch Gateway Log](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/logs/methods/edit)
+
+PATCH/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/logs/{id}
+
+##### [Delete Gateway Logs](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/logs/methods/delete)
+
+DELETE/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/logs
+
+##### [Get Gateway Log Request](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/logs/methods/request)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/logs/{id}/request
+
+##### [Get Gateway Log Response](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/logs/methods/response)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/logs/{id}/response
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+LogListResponse object {id, cached, created\_at, 16 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+cached: boolean
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20cached">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+duration: number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20duration">Link to this property</a>
+
+model: string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20model">Link to this property</a>
+
+path: string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20path">Link to this property</a>
+
+provider: string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20provider">Link to this property</a>
+
+success: boolean
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20success">Link to this property</a>
+
+tokens\_in: number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20tokens_in">Link to this property</a>
+
+tokens\_out: number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20tokens_out">Link to this property</a>
+
+cost: optional number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20cost">Link to this property</a>
+
+custom\_cost: optional boolean
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20custom_cost">Link to this property</a>
+
+metadata: optional string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20metadata">Link to this property</a>
+
+model\_type: optional string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20model_type">Link to this property</a>
+
+request\_content\_type: optional string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20request_content_type">Link to this property</a>
+
+request\_type: optional string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20request_type">Link to this property</a>
+
+response\_content\_type: optional string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20response_content_type">Link to this property</a>
+
+status\_code: optional number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20status_code">Link to this property</a>
+
+step: optional number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)%20%3E%20(property)%20step">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_list_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+LogGetResponse object {id, cached, created\_at, 22 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+cached: boolean
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20cached">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+duration: number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20duration">Link to this property</a>
+
+model: string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20model">Link to this property</a>
+
+path: string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20path">Link to this property</a>
+
+provider: string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20provider">Link to this property</a>
+
+success: boolean
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20success">Link to this property</a>
+
+tokens\_in: number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20tokens_in">Link to this property</a>
+
+tokens\_out: number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20tokens_out">Link to this property</a>
+
+cost: optional number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20cost">Link to this property</a>
+
+custom\_cost: optional boolean
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20custom_cost">Link to this property</a>
+
+metadata: optional string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20metadata">Link to this property</a>
+
+model\_type: optional string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20model_type">Link to this property</a>
+
+request\_content\_type: optional string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20request_content_type">Link to this property</a>
+
+request\_head: optional string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20request_head">Link to this property</a>
+
+request\_head\_complete: optional boolean
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20request_head_complete">Link to this property</a>
+
+request\_size: optional number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20request_size">Link to this property</a>
+
+request\_type: optional string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20request_type">Link to this property</a>
+
+response\_content\_type: optional string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20response_content_type">Link to this property</a>
+
+response\_head: optional string
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20response_head">Link to this property</a>
+
+response\_head\_complete: optional boolean
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20response_head_complete">Link to this property</a>
+
+response\_size: optional number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20response_size">Link to this property</a>
+
+status\_code: optional number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20status_code">Link to this property</a>
+
+step: optional number
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20step">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)>)
+
+LogEditResponse = unknown
+
+[Link to this property](<#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_edit_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+LogDeleteResponse object {success }
+
+</summary>
+
+success: boolean
+
+<a href="#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_delete_response%20%3E%20(schema)%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_delete_response%20%3E%20(schema)>)
+
+LogRequestResponse = unknown
+
+[Link to this property](<#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_request_response%20%3E%20(schema)>)
+
+LogResponseResponse = unknown
+
+[Link to this property](<#(resource)%20ai_gateway.logs%20%3E%20(model)%20log_response_response%20%3E%20(schema)>)
+
+#### AI GatewayDatasets
+
+##### [List datasets (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/datasets/methods/list)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/datasets
+
+##### [Get a dataset (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/datasets/methods/get)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/datasets/{id}
+
+##### [Create a dataset (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/datasets/methods/create)
+
+POST/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/datasets
+
+##### [Update a dataset (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/datasets/methods/update)
+
+PUT/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/datasets/{id}
+
+##### [Delete a dataset (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/datasets/methods/delete)
+
+DELETE/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/datasets/{id}
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+DatasetListResponse object {id, created\_at, enable, 4 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+enable: boolean
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20enable">Link to this property</a>
+
+<details>
+
+<summary>
+
+filters: array of object {key, operator, value }
+
+</summary>
+
+<details>
+
+<summary>
+
+key: "created\_at"or "request\_content\_type"or "response\_content\_type"or 10 more
+
+</summary>
+
+One of the following:
+
+"created\_at"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%200">Link to this property</a>
+
+"request\_content\_type"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%201">Link to this property</a>
+
+"response\_content\_type"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%202">Link to this property</a>
+
+"success"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%203">Link to this property</a>
+
+"cached"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%204">Link to this property</a>
+
+"provider"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%205">Link to this property</a>
+
+"model"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%206">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%207">Link to this property</a>
+
+"tokens"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%208">Link to this property</a>
+
+"tokens\_in"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%209">Link to this property</a>
+
+"tokens\_out"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2010">Link to this property</a>
+
+"duration"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2011">Link to this property</a>
+
+"feedback"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2012">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key">Link to this property</a>
+
+<details>
+
+<summary>
+
+operator: "eq"or "contains"or "lt"or "gt"
+
+</summary>
+
+One of the following:
+
+"eq"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%200">Link to this property</a>
+
+"contains"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%201">Link to this property</a>
+
+"lt"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%202">Link to this property</a>
+
+"gt"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator">Link to this property</a>
+
+<details>
+
+<summary>
+
+value: array of stringor numberor boolean
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+number
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20filters">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_list_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DatasetGetResponse object {id, created\_at, enable, 4 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+enable: boolean
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20enable">Link to this property</a>
+
+<details>
+
+<summary>
+
+filters: array of object {key, operator, value }
+
+</summary>
+
+<details>
+
+<summary>
+
+key: "created\_at"or "request\_content\_type"or "response\_content\_type"or 10 more
+
+</summary>
+
+One of the following:
+
+"created\_at"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%200">Link to this property</a>
+
+"request\_content\_type"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%201">Link to this property</a>
+
+"response\_content\_type"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%202">Link to this property</a>
+
+"success"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%203">Link to this property</a>
+
+"cached"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%204">Link to this property</a>
+
+"provider"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%205">Link to this property</a>
+
+"model"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%206">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%207">Link to this property</a>
+
+"tokens"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%208">Link to this property</a>
+
+"tokens\_in"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%209">Link to this property</a>
+
+"tokens\_out"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2010">Link to this property</a>
+
+"duration"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2011">Link to this property</a>
+
+"feedback"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2012">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key">Link to this property</a>
+
+<details>
+
+<summary>
+
+operator: "eq"or "contains"or "lt"or "gt"
+
+</summary>
+
+One of the following:
+
+"eq"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%200">Link to this property</a>
+
+"contains"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%201">Link to this property</a>
+
+"lt"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%202">Link to this property</a>
+
+"gt"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator">Link to this property</a>
+
+<details>
+
+<summary>
+
+value: array of stringor numberor boolean
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+number
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20filters">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_get_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DatasetCreateResponse object {id, created\_at, enable, 4 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+enable: boolean
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20enable">Link to this property</a>
+
+<details>
+
+<summary>
+
+filters: array of object {key, operator, value }
+
+</summary>
+
+<details>
+
+<summary>
+
+key: "created\_at"or "request\_content\_type"or "response\_content\_type"or 10 more
+
+</summary>
+
+One of the following:
+
+"created\_at"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%200">Link to this property</a>
+
+"request\_content\_type"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%201">Link to this property</a>
+
+"response\_content\_type"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%202">Link to this property</a>
+
+"success"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%203">Link to this property</a>
+
+"cached"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%204">Link to this property</a>
+
+"provider"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%205">Link to this property</a>
+
+"model"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%206">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%207">Link to this property</a>
+
+"tokens"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%208">Link to this property</a>
+
+"tokens\_in"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%209">Link to this property</a>
+
+"tokens\_out"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2010">Link to this property</a>
+
+"duration"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2011">Link to this property</a>
+
+"feedback"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2012">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key">Link to this property</a>
+
+<details>
+
+<summary>
+
+operator: "eq"or "contains"or "lt"or "gt"
+
+</summary>
+
+One of the following:
+
+"eq"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%200">Link to this property</a>
+
+"contains"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%201">Link to this property</a>
+
+"lt"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%202">Link to this property</a>
+
+"gt"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator">Link to this property</a>
+
+<details>
+
+<summary>
+
+value: array of stringor numberor boolean
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+number
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20filters">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_create_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DatasetUpdateResponse object {id, created\_at, enable, 4 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+enable: boolean
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20enable">Link to this property</a>
+
+<details>
+
+<summary>
+
+filters: array of object {key, operator, value }
+
+</summary>
+
+<details>
+
+<summary>
+
+key: "created\_at"or "request\_content\_type"or "response\_content\_type"or 10 more
+
+</summary>
+
+One of the following:
+
+"created\_at"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%200">Link to this property</a>
+
+"request\_content\_type"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%201">Link to this property</a>
+
+"response\_content\_type"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%202">Link to this property</a>
+
+"success"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%203">Link to this property</a>
+
+"cached"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%204">Link to this property</a>
+
+"provider"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%205">Link to this property</a>
+
+"model"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%206">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%207">Link to this property</a>
+
+"tokens"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%208">Link to this property</a>
+
+"tokens\_in"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%209">Link to this property</a>
+
+"tokens\_out"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2010">Link to this property</a>
+
+"duration"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2011">Link to this property</a>
+
+"feedback"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2012">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key">Link to this property</a>
+
+<details>
+
+<summary>
+
+operator: "eq"or "contains"or "lt"or "gt"
+
+</summary>
+
+One of the following:
+
+"eq"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%200">Link to this property</a>
+
+"contains"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%201">Link to this property</a>
+
+"lt"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%202">Link to this property</a>
+
+"gt"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator">Link to this property</a>
+
+<details>
+
+<summary>
+
+value: array of stringor numberor boolean
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+number
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20filters">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_update_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DatasetDeleteResponse object {id, created\_at, enable, 4 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+enable: boolean
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20enable">Link to this property</a>
+
+<details>
+
+<summary>
+
+filters: array of object {key, operator, value }
+
+</summary>
+
+<details>
+
+<summary>
+
+key: "created\_at"or "request\_content\_type"or "response\_content\_type"or 10 more
+
+</summary>
+
+One of the following:
+
+"created\_at"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%200">Link to this property</a>
+
+"request\_content\_type"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%201">Link to this property</a>
+
+"response\_content\_type"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%202">Link to this property</a>
+
+"success"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%203">Link to this property</a>
+
+"cached"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%204">Link to this property</a>
+
+"provider"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%205">Link to this property</a>
+
+"model"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%206">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%207">Link to this property</a>
+
+"tokens"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%208">Link to this property</a>
+
+"tokens\_in"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%209">Link to this property</a>
+
+"tokens\_out"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2010">Link to this property</a>
+
+"duration"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2011">Link to this property</a>
+
+"feedback"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2012">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key">Link to this property</a>
+
+<details>
+
+<summary>
+
+operator: "eq"or "contains"or "lt"or "gt"
+
+</summary>
+
+One of the following:
+
+"eq"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%200">Link to this property</a>
+
+"contains"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%201">Link to this property</a>
+
+"lt"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%202">Link to this property</a>
+
+"gt"
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator">Link to this property</a>
+
+<details>
+
+<summary>
+
+value: array of stringor numberor boolean
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+number
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20filters">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.datasets%20%3E%20(model)%20dataset_delete_response%20%3E%20(schema)>)
+
+#### AI GatewayEvaluations
+
+##### [List evaluations (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/evaluations/methods/list)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/evaluations
+
+##### [Get an evaluation (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/evaluations/methods/get)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/evaluations/{id}
+
+##### [Create an evaluation (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/evaluations/methods/create)
+
+POST/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/evaluations
+
+##### [Delete an evaluation (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/evaluations/methods/delete)
+
+DELETE/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/evaluations/{id}
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+EvaluationListResponse object {id, created\_at, datasets, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+<details>
+
+<summary>
+
+datasets: array of object {id, account\_id, account\_tag, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+account\_id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20account_id">Link to this property</a>
+
+account\_tag: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20account_tag">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20created_at">Link to this property</a>
+
+enable: boolean
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20enable">Link to this property</a>
+
+<details>
+
+<summary>
+
+filters: array of object {key, operator, value }
+
+</summary>
+
+<details>
+
+<summary>
+
+key: "created\_at"or "request\_content\_type"or "response\_content\_type"or 10 more
+
+</summary>
+
+One of the following:
+
+"created\_at"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%200">Link to this property</a>
+
+"request\_content\_type"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%201">Link to this property</a>
+
+"response\_content\_type"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%202">Link to this property</a>
+
+"success"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%203">Link to this property</a>
+
+"cached"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%204">Link to this property</a>
+
+"provider"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%205">Link to this property</a>
+
+"model"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%206">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%207">Link to this property</a>
+
+"tokens"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%208">Link to this property</a>
+
+"tokens\_in"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%209">Link to this property</a>
+
+"tokens\_out"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2010">Link to this property</a>
+
+"duration"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2011">Link to this property</a>
+
+"feedback"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2012">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key">Link to this property</a>
+
+<details>
+
+<summary>
+
+operator: "eq"or "contains"or "lt"or "gt"
+
+</summary>
+
+One of the following:
+
+"eq"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%200">Link to this property</a>
+
+"contains"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%201">Link to this property</a>
+
+"lt"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%202">Link to this property</a>
+
+"gt"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator">Link to this property</a>
+
+<details>
+
+<summary>
+
+value: array of stringor numberor boolean
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20datasets">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+processed: boolean
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20processed">Link to this property</a>
+
+<details>
+
+<summary>
+
+results: array of object {id, created\_at, evaluation\_id, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20created_at">Link to this property</a>
+
+evaluation\_id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20evaluation_id">Link to this property</a>
+
+evaluation\_type\_id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20evaluation_type_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+result: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20result">Link to this property</a>
+
+status: number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20status">Link to this property</a>
+
+status\_description: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20status_description">Link to this property</a>
+
+total\_logs: number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20total_logs">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20results">Link to this property</a>
+
+total\_logs: number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)%20%3E%20(property)%20total_logs">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_list_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+EvaluationGetResponse object {id, created\_at, datasets, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+<details>
+
+<summary>
+
+datasets: array of object {id, account\_id, account\_tag, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+account\_id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20account_id">Link to this property</a>
+
+account\_tag: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20account_tag">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20created_at">Link to this property</a>
+
+enable: boolean
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20enable">Link to this property</a>
+
+<details>
+
+<summary>
+
+filters: array of object {key, operator, value }
+
+</summary>
+
+<details>
+
+<summary>
+
+key: "created\_at"or "request\_content\_type"or "response\_content\_type"or 10 more
+
+</summary>
+
+One of the following:
+
+"created\_at"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%200">Link to this property</a>
+
+"request\_content\_type"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%201">Link to this property</a>
+
+"response\_content\_type"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%202">Link to this property</a>
+
+"success"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%203">Link to this property</a>
+
+"cached"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%204">Link to this property</a>
+
+"provider"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%205">Link to this property</a>
+
+"model"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%206">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%207">Link to this property</a>
+
+"tokens"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%208">Link to this property</a>
+
+"tokens\_in"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%209">Link to this property</a>
+
+"tokens\_out"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2010">Link to this property</a>
+
+"duration"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2011">Link to this property</a>
+
+"feedback"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2012">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key">Link to this property</a>
+
+<details>
+
+<summary>
+
+operator: "eq"or "contains"or "lt"or "gt"
+
+</summary>
+
+One of the following:
+
+"eq"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%200">Link to this property</a>
+
+"contains"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%201">Link to this property</a>
+
+"lt"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%202">Link to this property</a>
+
+"gt"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator">Link to this property</a>
+
+<details>
+
+<summary>
+
+value: array of stringor numberor boolean
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20datasets">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+processed: boolean
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20processed">Link to this property</a>
+
+<details>
+
+<summary>
+
+results: array of object {id, created\_at, evaluation\_id, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20created_at">Link to this property</a>
+
+evaluation\_id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20evaluation_id">Link to this property</a>
+
+evaluation\_type\_id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20evaluation_type_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+result: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20result">Link to this property</a>
+
+status: number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20status">Link to this property</a>
+
+status\_description: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20status_description">Link to this property</a>
+
+total\_logs: number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20total_logs">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20results">Link to this property</a>
+
+total\_logs: number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)%20%3E%20(property)%20total_logs">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_get_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+EvaluationCreateResponse object {id, created\_at, datasets, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+<details>
+
+<summary>
+
+datasets: array of object {id, account\_id, account\_tag, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+account\_id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20account_id">Link to this property</a>
+
+account\_tag: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20account_tag">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20created_at">Link to this property</a>
+
+enable: boolean
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20enable">Link to this property</a>
+
+<details>
+
+<summary>
+
+filters: array of object {key, operator, value }
+
+</summary>
+
+<details>
+
+<summary>
+
+key: "created\_at"or "request\_content\_type"or "response\_content\_type"or 10 more
+
+</summary>
+
+One of the following:
+
+"created\_at"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%200">Link to this property</a>
+
+"request\_content\_type"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%201">Link to this property</a>
+
+"response\_content\_type"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%202">Link to this property</a>
+
+"success"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%203">Link to this property</a>
+
+"cached"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%204">Link to this property</a>
+
+"provider"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%205">Link to this property</a>
+
+"model"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%206">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%207">Link to this property</a>
+
+"tokens"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%208">Link to this property</a>
+
+"tokens\_in"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%209">Link to this property</a>
+
+"tokens\_out"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2010">Link to this property</a>
+
+"duration"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2011">Link to this property</a>
+
+"feedback"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2012">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key">Link to this property</a>
+
+<details>
+
+<summary>
+
+operator: "eq"or "contains"or "lt"or "gt"
+
+</summary>
+
+One of the following:
+
+"eq"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%200">Link to this property</a>
+
+"contains"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%201">Link to this property</a>
+
+"lt"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%202">Link to this property</a>
+
+"gt"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator">Link to this property</a>
+
+<details>
+
+<summary>
+
+value: array of stringor numberor boolean
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20datasets">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+processed: boolean
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20processed">Link to this property</a>
+
+<details>
+
+<summary>
+
+results: array of object {id, created\_at, evaluation\_id, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20created_at">Link to this property</a>
+
+evaluation\_id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20evaluation_id">Link to this property</a>
+
+evaluation\_type\_id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20evaluation_type_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+result: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20result">Link to this property</a>
+
+status: number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20status">Link to this property</a>
+
+status\_description: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20status_description">Link to this property</a>
+
+total\_logs: number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20total_logs">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20results">Link to this property</a>
+
+total\_logs: number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)%20%3E%20(property)%20total_logs">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_create_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+EvaluationDeleteResponse object {id, created\_at, datasets, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+<details>
+
+<summary>
+
+datasets: array of object {id, account\_id, account\_tag, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+account\_id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20account_id">Link to this property</a>
+
+account\_tag: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20account_tag">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20created_at">Link to this property</a>
+
+enable: boolean
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20enable">Link to this property</a>
+
+<details>
+
+<summary>
+
+filters: array of object {key, operator, value }
+
+</summary>
+
+<details>
+
+<summary>
+
+key: "created\_at"or "request\_content\_type"or "response\_content\_type"or 10 more
+
+</summary>
+
+One of the following:
+
+"created\_at"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%200">Link to this property</a>
+
+"request\_content\_type"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%201">Link to this property</a>
+
+"response\_content\_type"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%202">Link to this property</a>
+
+"success"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%203">Link to this property</a>
+
+"cached"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%204">Link to this property</a>
+
+"provider"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%205">Link to this property</a>
+
+"model"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%206">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%207">Link to this property</a>
+
+"tokens"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%208">Link to this property</a>
+
+"tokens\_in"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%209">Link to this property</a>
+
+"tokens\_out"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2010">Link to this property</a>
+
+"duration"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2011">Link to this property</a>
+
+"feedback"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key%20%3E%20(member)%2012">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20key">Link to this property</a>
+
+<details>
+
+<summary>
+
+operator: "eq"or "contains"or "lt"or "gt"
+
+</summary>
+
+One of the following:
+
+"eq"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%200">Link to this property</a>
+
+"contains"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%201">Link to this property</a>
+
+"lt"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%202">Link to this property</a>
+
+"gt"
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20operator">Link to this property</a>
+
+<details>
+
+<summary>
+
+value: array of stringor numberor boolean
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20filters">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20datasets">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+processed: boolean
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20processed">Link to this property</a>
+
+<details>
+
+<summary>
+
+results: array of object {id, created\_at, evaluation\_id, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20created_at">Link to this property</a>
+
+evaluation\_id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20evaluation_id">Link to this property</a>
+
+evaluation\_type\_id: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20evaluation_type_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+result: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20result">Link to this property</a>
+
+status: number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20status">Link to this property</a>
+
+status\_description: string
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20status_description">Link to this property</a>
+
+total\_logs: number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20results%20%3E%20(items)%20%3E%20(property)%20total_logs">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20results">Link to this property</a>
+
+total\_logs: number
+
+<a href="#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)%20%3E%20(property)%20total_logs">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.evaluations%20%3E%20(model)%20evaluation_delete_response%20%3E%20(schema)>)
+
+#### AI GatewayDynamic Routing
+
+##### [List dynamic routes](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/dynamic_routing/methods/list)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/routes
+
+##### [Get a dynamic route](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/dynamic_routing/methods/get)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/routes/{id}
+
+##### [Create a dynamic route](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/dynamic_routing/methods/create)
+
+POST/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/routes
+
+##### [Rename a dynamic route](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/dynamic_routing/methods/update)
+
+PATCH/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/routes/{id}
+
+##### [Delete a dynamic route](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/dynamic_routing/methods/delete)
+
+DELETE/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/routes/{id}
+
+##### [List dynamic route deployments](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/dynamic_routing/methods/list_deployments)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/routes/{id}/deployments
+
+##### [Deploy a dynamic route version](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/dynamic_routing/methods/create_deployment)
+
+POST/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/routes/{id}/deployments
+
+##### [List dynamic route versions](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/dynamic_routing/methods/list_versions)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/routes/{id}/versions
+
+##### [Create a dynamic route version](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/dynamic_routing/methods/create_version)
+
+POST/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/routes/{id}/versions
+
+##### [Get a dynamic route version](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/dynamic_routing/methods/get_version)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/routes/{id}/versions/{version\_id}
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+DynamicRoutingListResponse object {data, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+data: object {order\_by, order\_by\_direction, page, 2 more }
+
+</summary>
+
+order\_by: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20order_by">Link to this property</a>
+
+order\_by\_direction: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20order_by_direction">Link to this property</a>
+
+page: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20page">Link to this property</a>
+
+per\_page: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20per_page">Link to this property</a>
+
+<details>
+
+<summary>
+
+routes: array of object {id, account\_tag, created\_at, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+account\_tag: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20account_tag">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20created_at">Link to this property</a>
+
+<details>
+
+<summary>
+
+deployment: object {created\_at, deployment\_id, version\_id }
+
+</summary>
+
+created\_at: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20deployment%20%3E%20(property)%20created_at">Link to this property</a>
+
+deployment\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20deployment%20%3E%20(property)%20deployment_id">Link to this property</a>
+
+version\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20deployment%20%3E%20(property)%20version_id">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20deployment">Link to this property</a>
+
+<details>
+
+<summary>
+
+elements: array of object {id, outputs, type } or object {id, outputs, properties, type } or object {id, outputs, type } or 3 more
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {next }
+
+</summary>
+
+<details>
+
+<summary>
+
+next: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "start"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {false, true }
+
+</summary>
+
+<details>
+
+<summary>
+
+false: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false">Link to this property</a>
+
+<details>
+
+<summary>
+
+true: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {conditions }
+
+</summary>
+
+conditions: optional unknown
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties%20%3E%20(property)%20conditions">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "conditional"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "percentage"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {key, limit, limitType, window }
+
+</summary>
+
+key: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20key">Link to this property</a>
+
+limit: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limit">Link to this property</a>
+
+<details>
+
+<summary>
+
+limitType: "count"or "cost"
+
+</summary>
+
+One of the following:
+
+"count"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%200">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20window">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "rate"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {model, provider, retries, timeout }
+
+</summary>
+
+model: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20model">Link to this property</a>
+
+provider: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20provider">Link to this property</a>
+
+retries: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20retries">Link to this property</a>
+
+timeout: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20timeout">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "model"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "end"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20elements">Link to this property</a>
+
+gateway\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+<details>
+
+<summary>
+
+version: object {active, created\_at, data, 2 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+active: "true"or "false"
+
+</summary>
+
+One of the following:
+
+"true"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20version%20%3E%20(property)%20active%20%3E%20(member)%200">Link to this property</a>
+
+"false"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20version%20%3E%20(property)%20active%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20version%20%3E%20(property)%20active">Link to this property</a>
+
+created\_at: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20version%20%3E%20(property)%20created_at">Link to this property</a>
+
+data: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20version%20%3E%20(property)%20data">Link to this property</a>
+
+version\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20version%20%3E%20(property)%20version_id">Link to this property</a>
+
+is\_valid: optional boolean
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20version%20%3E%20(property)%20is_valid">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes%20%3E%20(items)%20%3E%20(property)%20version">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20routes">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20data">Link to this property</a>
+
+success: boolean
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DynamicRoutingGetResponse object {id, created\_at, deployment, 5 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+<details>
+
+<summary>
+
+deployment: object {created\_at, deployment\_id, version\_id }
+
+</summary>
+
+created\_at: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20deployment%20%3E%20(property)%20created_at">Link to this property</a>
+
+deployment\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20deployment%20%3E%20(property)%20deployment_id">Link to this property</a>
+
+version\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20deployment%20%3E%20(property)%20version_id">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20deployment">Link to this property</a>
+
+<details>
+
+<summary>
+
+elements: array of object {id, outputs, type } or object {id, outputs, properties, type } or object {id, outputs, type } or 3 more
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {next }
+
+</summary>
+
+<details>
+
+<summary>
+
+next: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "start"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {false, true }
+
+</summary>
+
+<details>
+
+<summary>
+
+false: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false">Link to this property</a>
+
+<details>
+
+<summary>
+
+true: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {conditions }
+
+</summary>
+
+conditions: optional unknown
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties%20%3E%20(property)%20conditions">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "conditional"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "percentage"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {key, limit, limitType, window }
+
+</summary>
+
+key: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20key">Link to this property</a>
+
+limit: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limit">Link to this property</a>
+
+<details>
+
+<summary>
+
+limitType: "count"or "cost"
+
+</summary>
+
+One of the following:
+
+"count"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%200">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20window">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "rate"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {model, provider, retries, timeout }
+
+</summary>
+
+model: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20model">Link to this property</a>
+
+provider: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20provider">Link to this property</a>
+
+retries: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20retries">Link to this property</a>
+
+timeout: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20timeout">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "model"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "end"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20elements">Link to this property</a>
+
+gateway\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+<details>
+
+<summary>
+
+version: object {active, created\_at, data, 2 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+active: "true"or "false"
+
+</summary>
+
+One of the following:
+
+"true"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20active%20%3E%20(member)%200">Link to this property</a>
+
+"false"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20active%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20active">Link to this property</a>
+
+created\_at: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20created_at">Link to this property</a>
+
+data: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20data">Link to this property</a>
+
+version\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20version_id">Link to this property</a>
+
+is\_valid: optional boolean
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20is_valid">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)%20%3E%20(property)%20version">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DynamicRoutingCreateResponse object {id, created\_at, deployment, 5 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+<details>
+
+<summary>
+
+deployment: object {created\_at, deployment\_id, version\_id }
+
+</summary>
+
+created\_at: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20deployment%20%3E%20(property)%20created_at">Link to this property</a>
+
+deployment\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20deployment%20%3E%20(property)%20deployment_id">Link to this property</a>
+
+version\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20deployment%20%3E%20(property)%20version_id">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20deployment">Link to this property</a>
+
+<details>
+
+<summary>
+
+elements: array of object {id, outputs, type } or object {id, outputs, properties, type } or object {id, outputs, type } or 3 more
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {next }
+
+</summary>
+
+<details>
+
+<summary>
+
+next: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "start"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {false, true }
+
+</summary>
+
+<details>
+
+<summary>
+
+false: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false">Link to this property</a>
+
+<details>
+
+<summary>
+
+true: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {conditions }
+
+</summary>
+
+conditions: optional unknown
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties%20%3E%20(property)%20conditions">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "conditional"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "percentage"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {key, limit, limitType, window }
+
+</summary>
+
+key: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20key">Link to this property</a>
+
+limit: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limit">Link to this property</a>
+
+<details>
+
+<summary>
+
+limitType: "count"or "cost"
+
+</summary>
+
+One of the following:
+
+"count"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%200">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20window">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "rate"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {model, provider, retries, timeout }
+
+</summary>
+
+model: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20model">Link to this property</a>
+
+provider: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20provider">Link to this property</a>
+
+retries: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20retries">Link to this property</a>
+
+timeout: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20timeout">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "model"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "end"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20elements">Link to this property</a>
+
+gateway\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+<details>
+
+<summary>
+
+version: object {active, created\_at, data, 2 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+active: "true"or "false"
+
+</summary>
+
+One of the following:
+
+"true"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20active%20%3E%20(member)%200">Link to this property</a>
+
+"false"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20active%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20active">Link to this property</a>
+
+created\_at: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20created_at">Link to this property</a>
+
+data: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20data">Link to this property</a>
+
+version\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20version_id">Link to this property</a>
+
+is\_valid: optional boolean
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20version%20%3E%20(property)%20is_valid">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)%20%3E%20(property)%20version">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DynamicRoutingUpdateResponse object {route, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+route: object {id, account\_tag, created\_at, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20id">Link to this property</a>
+
+account\_tag: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20account_tag">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20created_at">Link to this property</a>
+
+<details>
+
+<summary>
+
+deployment: object {created\_at, deployment\_id, version\_id }
+
+</summary>
+
+created\_at: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20deployment%20%3E%20(property)%20created_at">Link to this property</a>
+
+deployment\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20deployment%20%3E%20(property)%20deployment_id">Link to this property</a>
+
+version\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20deployment%20%3E%20(property)%20version_id">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20deployment">Link to this property</a>
+
+<details>
+
+<summary>
+
+elements: array of object {id, outputs, type } or object {id, outputs, properties, type } or object {id, outputs, type } or 3 more
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {next }
+
+</summary>
+
+<details>
+
+<summary>
+
+next: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "start"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {false, true }
+
+</summary>
+
+<details>
+
+<summary>
+
+false: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false">Link to this property</a>
+
+<details>
+
+<summary>
+
+true: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {conditions }
+
+</summary>
+
+conditions: optional unknown
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties%20%3E%20(property)%20conditions">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "conditional"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "percentage"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {key, limit, limitType, window }
+
+</summary>
+
+key: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20key">Link to this property</a>
+
+limit: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limit">Link to this property</a>
+
+<details>
+
+<summary>
+
+limitType: "count"or "cost"
+
+</summary>
+
+One of the following:
+
+"count"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%200">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20window">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "rate"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {model, provider, retries, timeout }
+
+</summary>
+
+model: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20model">Link to this property</a>
+
+provider: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20provider">Link to this property</a>
+
+retries: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20retries">Link to this property</a>
+
+timeout: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20timeout">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "model"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "end"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20elements">Link to this property</a>
+
+gateway\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20name">Link to this property</a>
+
+<details>
+
+<summary>
+
+version: object {active, created\_at, data, 2 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+active: "true"or "false"
+
+</summary>
+
+One of the following:
+
+"true"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20version%20%3E%20(property)%20active%20%3E%20(member)%200">Link to this property</a>
+
+"false"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20version%20%3E%20(property)%20active%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20version%20%3E%20(property)%20active">Link to this property</a>
+
+created\_at: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20version%20%3E%20(property)%20created_at">Link to this property</a>
+
+data: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20version%20%3E%20(property)%20data">Link to this property</a>
+
+version\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20version%20%3E%20(property)%20version_id">Link to this property</a>
+
+is\_valid: optional boolean
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20version%20%3E%20(property)%20is_valid">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route%20%3E%20(property)%20version">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20route">Link to this property</a>
+
+success: boolean
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_update_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DynamicRoutingDeleteResponse object {id, created\_at, elements, 3 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+<details>
+
+<summary>
+
+elements: array of object {id, outputs, type } or object {id, outputs, properties, type } or object {id, outputs, type } or 3 more
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {next }
+
+</summary>
+
+<details>
+
+<summary>
+
+next: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "start"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {false, true }
+
+</summary>
+
+<details>
+
+<summary>
+
+false: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false">Link to this property</a>
+
+<details>
+
+<summary>
+
+true: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {conditions }
+
+</summary>
+
+conditions: optional unknown
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties%20%3E%20(property)%20conditions">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "conditional"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "percentage"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {key, limit, limitType, window }
+
+</summary>
+
+key: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20key">Link to this property</a>
+
+limit: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limit">Link to this property</a>
+
+<details>
+
+<summary>
+
+limitType: "count"or "cost"
+
+</summary>
+
+One of the following:
+
+"count"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%200">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20window">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "rate"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {model, provider, retries, timeout }
+
+</summary>
+
+model: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20model">Link to this property</a>
+
+provider: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20provider">Link to this property</a>
+
+retries: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20retries">Link to this property</a>
+
+timeout: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20timeout">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "model"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "end"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20elements">Link to this property</a>
+
+gateway\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_delete_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DynamicRoutingListDeploymentsResponse object {data, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+data: object {deployments, order\_by, order\_by\_direction, 2 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+deployments: array of object {created\_at, deployment\_id, version\_id }
+
+</summary>
+
+created\_at: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_deployments_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20deployments%20%3E%20(items)%20%3E%20(property)%20created_at">Link to this property</a>
+
+deployment\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_deployments_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20deployments%20%3E%20(items)%20%3E%20(property)%20deployment_id">Link to this property</a>
+
+version\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_deployments_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20deployments%20%3E%20(items)%20%3E%20(property)%20version_id">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_deployments_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20deployments">Link to this property</a>
+
+order\_by: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_deployments_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20order_by">Link to this property</a>
+
+order\_by\_direction: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_deployments_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20order_by_direction">Link to this property</a>
+
+page: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_deployments_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20page">Link to this property</a>
+
+per\_page: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_deployments_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20per_page">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_deployments_response%20%3E%20(schema)%20%3E%20(property)%20data">Link to this property</a>
+
+success: boolean
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_deployments_response%20%3E%20(schema)%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_deployments_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DynamicRoutingCreateDeploymentResponse object {id, created\_at, elements, 3 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+<details>
+
+<summary>
+
+elements: array of object {id, outputs, type } or object {id, outputs, properties, type } or object {id, outputs, type } or 3 more
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {next }
+
+</summary>
+
+<details>
+
+<summary>
+
+next: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "start"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {false, true }
+
+</summary>
+
+<details>
+
+<summary>
+
+false: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false">Link to this property</a>
+
+<details>
+
+<summary>
+
+true: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {conditions }
+
+</summary>
+
+conditions: optional unknown
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties%20%3E%20(property)%20conditions">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "conditional"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "percentage"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {key, limit, limitType, window }
+
+</summary>
+
+key: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20key">Link to this property</a>
+
+limit: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limit">Link to this property</a>
+
+<details>
+
+<summary>
+
+limitType: "count"or "cost"
+
+</summary>
+
+One of the following:
+
+"count"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%200">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20window">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "rate"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {model, provider, retries, timeout }
+
+</summary>
+
+model: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20model">Link to this property</a>
+
+provider: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20provider">Link to this property</a>
+
+retries: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20retries">Link to this property</a>
+
+timeout: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20timeout">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "model"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "end"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20elements">Link to this property</a>
+
+gateway\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_deployment_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DynamicRoutingListVersionsResponse object {data, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+data: object {order\_by, order\_by\_direction, page, 2 more }
+
+</summary>
+
+order\_by: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20order_by">Link to this property</a>
+
+order\_by\_direction: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20order_by_direction">Link to this property</a>
+
+page: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20page">Link to this property</a>
+
+per\_page: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20per_page">Link to this property</a>
+
+<details>
+
+<summary>
+
+versions: array of object {active, created\_at, data, 2 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+active: "true"or "false"
+
+</summary>
+
+One of the following:
+
+"true"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20versions%20%3E%20(items)%20%3E%20(property)%20active%20%3E%20(member)%200">Link to this property</a>
+
+"false"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20versions%20%3E%20(items)%20%3E%20(property)%20active%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20versions%20%3E%20(items)%20%3E%20(property)%20active">Link to this property</a>
+
+created\_at: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20versions%20%3E%20(items)%20%3E%20(property)%20created_at">Link to this property</a>
+
+data: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20versions%20%3E%20(items)%20%3E%20(property)%20data">Link to this property</a>
+
+version\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20versions%20%3E%20(items)%20%3E%20(property)%20version_id">Link to this property</a>
+
+is\_valid: optional boolean
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20versions%20%3E%20(items)%20%3E%20(property)%20is_valid">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(property)%20versions">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20data">Link to this property</a>
+
+success: boolean
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_list_versions_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DynamicRoutingCreateVersionResponse object {id, created\_at, elements, 3 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+<details>
+
+<summary>
+
+elements: array of object {id, outputs, type } or object {id, outputs, properties, type } or object {id, outputs, type } or 3 more
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {next }
+
+</summary>
+
+<details>
+
+<summary>
+
+next: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "start"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {false, true }
+
+</summary>
+
+<details>
+
+<summary>
+
+false: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false">Link to this property</a>
+
+<details>
+
+<summary>
+
+true: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {conditions }
+
+</summary>
+
+conditions: optional unknown
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties%20%3E%20(property)%20conditions">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "conditional"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "percentage"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {key, limit, limitType, window }
+
+</summary>
+
+key: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20key">Link to this property</a>
+
+limit: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limit">Link to this property</a>
+
+<details>
+
+<summary>
+
+limitType: "count"or "cost"
+
+</summary>
+
+One of the following:
+
+"count"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%200">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20window">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "rate"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {model, provider, retries, timeout }
+
+</summary>
+
+model: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20model">Link to this property</a>
+
+provider: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20provider">Link to this property</a>
+
+retries: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20retries">Link to this property</a>
+
+timeout: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20timeout">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "model"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "end"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20elements">Link to this property</a>
+
+gateway\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_create_version_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DynamicRoutingGetVersionResponse object {id, active, created\_at, 7 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+active: "true"or "false"
+
+</summary>
+
+One of the following:
+
+"true"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20active%20%3E%20(member)%200">Link to this property</a>
+
+"false"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20active%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20active">Link to this property</a>
+
+created\_at: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+data: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20data">Link to this property</a>
+
+<details>
+
+<summary>
+
+elements: array of object {id, outputs, type } or object {id, outputs, properties, type } or object {id, outputs, type } or 3 more
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {next }
+
+</summary>
+
+<details>
+
+<summary>
+
+next: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs%20%3E%20(property)%20next">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "start"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {false, true }
+
+</summary>
+
+<details>
+
+<summary>
+
+false: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20false">Link to this property</a>
+
+<details>
+
+<summary>
+
+true: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs%20%3E%20(property)%20true">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {conditions }
+
+</summary>
+
+conditions: optional unknown
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties%20%3E%20(property)%20conditions">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "conditional"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "percentage"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {key, limit, limitType, window }
+
+</summary>
+
+key: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20key">Link to this property</a>
+
+limit: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limit">Link to this property</a>
+
+<details>
+
+<summary>
+
+limitType: "count"or "cost"
+
+</summary>
+
+One of the following:
+
+"count"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%200">Link to this property</a>
+
+"cost"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20limitType">Link to this property</a>
+
+window: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties%20%3E%20(property)%20window">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "rate"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%203">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, properties, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: object {fallback, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+fallback: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+success: object {elementId }
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20outputs">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {model, provider, retries, timeout }
+
+</summary>
+
+model: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20model">Link to this property</a>
+
+provider: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20provider">Link to this property</a>
+
+retries: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20retries">Link to this property</a>
+
+timeout: number
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties%20%3E%20(property)%20timeout">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20properties">Link to this property</a>
+
+type: "model"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%204">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {id, outputs, type }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+outputs: map\[object {elementId } ]
+
+</summary>
+
+elementId: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs%20%3E%20(items)%20%3E%20(property)%20elementId">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20outputs">Link to this property</a>
+
+type: "end"
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements%20%3E%20(items)%20%3E%20(variant)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20elements">Link to this property</a>
+
+gateway\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+name: string
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+version\_id: string
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20version_id">Link to this property</a>
+
+is\_valid: optional boolean
+
+<a href="#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)%20%3E%20(property)%20is_valid">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.dynamic_routing%20%3E%20(model)%20dynamic_routing_get_version_response%20%3E%20(schema)>)
+
+#### AI GatewayProvider Configs
+
+##### [List provider keys](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/provider_configs/methods/list)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/provider\_configs
+
+##### [Store a provider key](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/provider_configs/methods/create)
+
+POST/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/provider\_configs
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+ProviderConfigListResponse object {id, alias, default\_config, 7 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_list_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+alias: string
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_list_response%20%3E%20(schema)%20%3E%20(property)%20alias">Link to this property</a>
+
+default\_config: boolean
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_list_response%20%3E%20(schema)%20%3E%20(property)%20default_config">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_list_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_list_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+provider\_slug: string
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_list_response%20%3E%20(schema)%20%3E%20(property)%20provider_slug">Link to this property</a>
+
+secret\_id: string
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_list_response%20%3E%20(schema)%20%3E%20(property)%20secret_id">Link to this property</a>
+
+secret\_preview: string
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_list_response%20%3E%20(schema)%20%3E%20(property)%20secret_preview">Link to this property</a>
+
+rate\_limit: optional number
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_list_response%20%3E%20(schema)%20%3E%20(property)%20rate_limit">Link to this property</a>
+
+rate\_limit\_period: optional number
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_list_response%20%3E%20(schema)%20%3E%20(property)%20rate_limit_period">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_list_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+ProviderConfigCreateResponse object {id, alias, default\_config, 7 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_create_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+alias: string
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_create_response%20%3E%20(schema)%20%3E%20(property)%20alias">Link to this property</a>
+
+default\_config: boolean
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_create_response%20%3E%20(schema)%20%3E%20(property)%20default_config">Link to this property</a>
+
+gateway\_id: string
+
+Unique identifier of the AI Gateway within the account.
+
+maxLength64
+
+minLength1
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_create_response%20%3E%20(schema)%20%3E%20(property)%20gateway_id">Link to this property</a>
+
+modified\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_create_response%20%3E%20(schema)%20%3E%20(property)%20modified_at">Link to this property</a>
+
+provider\_slug: string
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_create_response%20%3E%20(schema)%20%3E%20(property)%20provider_slug">Link to this property</a>
+
+secret\_id: string
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_create_response%20%3E%20(schema)%20%3E%20(property)%20secret_id">Link to this property</a>
+
+secret\_preview: string
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_create_response%20%3E%20(schema)%20%3E%20(property)%20secret_preview">Link to this property</a>
+
+rate\_limit: optional number
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_create_response%20%3E%20(schema)%20%3E%20(property)%20rate_limit">Link to this property</a>
+
+rate\_limit\_period: optional number
+
+<a href="#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_create_response%20%3E%20(schema)%20%3E%20(property)%20rate_limit_period">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.provider_configs%20%3E%20(model)%20provider_config_create_response%20%3E%20(schema)>)
+
+#### AI GatewayURLs
+
+##### [Get Gateway URL](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/urls/methods/get)
+
+GET/accounts/{account\_id}/ai-gateway/gateways/{gateway\_id}/url/{provider}
+
+##### ModelsExpand Collapse
+
+URLGetResponse = string
+
+[Link to this property](<#(resource)%20ai_gateway.urls%20%3E%20(model)%20url_get_response%20%3E%20(schema)>)
+
+#### AI GatewayBilling
+
+##### [Get credit balance](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/billing/methods/credit_balance)
+
+GET/accounts/{account\_id}/ai-gateway/billing/credit-balance
+
+##### [Get usage history](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/billing/methods/usage_history)
+
+GET/accounts/{account\_id}/ai-gateway/billing/usage-history
+
+##### [Get invoice history](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/billing/methods/invoice_history)
+
+GET/accounts/{account\_id}/ai-gateway/billing/invoice-history
+
+##### [Get invoice preview](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/billing/methods/invoice_preview)
+
+GET/accounts/{account\_id}/ai-gateway/billing/invoice-preview
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+BillingCreditBalanceResponse object {balance, has\_default\_payment\_method, payment\_method, 2 more }
+
+</summary>
+
+balance: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)%20%3E%20(property)%20balance">Link to this property</a>
+
+has\_default\_payment\_method: boolean
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)%20%3E%20(property)%20has_default_payment_method">Link to this property</a>
+
+<details>
+
+<summary>
+
+payment\_method: object {brand, last4 }
+
+</summary>
+
+brand: optional string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)%20%3E%20(property)%20payment_method%20%3E%20(property)%20brand">Link to this property</a>
+
+last4: optional string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)%20%3E%20(property)%20payment_method%20%3E%20(property)%20last4">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)%20%3E%20(property)%20payment_method">Link to this property</a>
+
+<details>
+
+<summary>
+
+topup\_config: object {amount, threshold, disabledReason, 2 more }
+
+</summary>
+
+amount: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)%20%3E%20(property)%20topup_config%20%3E%20(property)%20amount">Link to this property</a>
+
+threshold: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)%20%3E%20(property)%20topup_config%20%3E%20(property)%20threshold">Link to this property</a>
+
+disabledReason: optional string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)%20%3E%20(property)%20topup_config%20%3E%20(property)%20disabledReason">Link to this property</a>
+
+error: optional string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)%20%3E%20(property)%20topup_config%20%3E%20(property)%20error">Link to this property</a>
+
+lastFailedAt: optional number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)%20%3E%20(property)%20topup_config%20%3E%20(property)%20lastFailedAt">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)%20%3E%20(property)%20topup_config">Link to this property</a>
+
+first\_topup\_success: optional boolean
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)%20%3E%20(property)%20first_topup_success">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_credit_balance_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+BillingUsageHistoryResponse object {history }
+
+</summary>
+
+<details>
+
+<summary>
+
+history: array of object {id, aggregated\_value, end\_time, start\_time }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_usage_history_response%20%3E%20(schema)%20%3E%20(property)%20history%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+aggregated\_value: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_usage_history_response%20%3E%20(schema)%20%3E%20(property)%20history%20%3E%20(items)%20%3E%20(property)%20aggregated_value">Link to this property</a>
+
+end\_time: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_usage_history_response%20%3E%20(schema)%20%3E%20(property)%20history%20%3E%20(items)%20%3E%20(property)%20end_time">Link to this property</a>
+
+start\_time: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_usage_history_response%20%3E%20(schema)%20%3E%20(property)%20history%20%3E%20(items)%20%3E%20(property)%20start_time">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_usage_history_response%20%3E%20(schema)%20%3E%20(property)%20history">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_usage_history_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+BillingInvoiceHistoryResponse object {invoices, pagination }
+
+</summary>
+
+<details>
+
+<summary>
+
+invoices: array of object {amount\_due, amount\_paid, amount\_remaining, 11 more }
+
+</summary>
+
+amount\_due: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20amount_due">Link to this property</a>
+
+amount\_paid: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20amount_paid">Link to this property</a>
+
+amount\_remaining: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20amount_remaining">Link to this property</a>
+
+currency: string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20currency">Link to this property</a>
+
+id: optional string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+attempt\_count: optional number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20attempt_count">Link to this property</a>
+
+attempted: optional boolean
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20attempted">Link to this property</a>
+
+auto\_advance: optional boolean
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20auto_advance">Link to this property</a>
+
+created: optional number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20created">Link to this property</a>
+
+created\_by: optional string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20created_by">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+invoice\_origin: optional string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20invoice_origin">Link to this property</a>
+
+invoice\_pdf: optional string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20invoice_pdf">Link to this property</a>
+
+status: optional string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices%20%3E%20(items)%20%3E%20(property)%20status">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20invoices">Link to this property</a>
+
+<details>
+
+<summary>
+
+pagination: object {has\_more, page, per\_page, total\_count }
+
+</summary>
+
+has\_more: boolean
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20has_more">Link to this property</a>
+
+page: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20page">Link to this property</a>
+
+per\_page: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20per_page">Link to this property</a>
+
+total\_count: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20total_count">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)%20%3E%20(property)%20pagination">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_history_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+BillingInvoicePreviewResponse object {id, amount\_due, amount\_paid, 6 more }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+amount\_due: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20amount_due">Link to this property</a>
+
+amount\_paid: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20amount_paid">Link to this property</a>
+
+amount\_remaining: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20amount_remaining">Link to this property</a>
+
+currency: string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20currency">Link to this property</a>
+
+<details>
+
+<summary>
+
+invoice\_lines: array of object {amount, currency, description, 4 more }
+
+</summary>
+
+amount: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20amount">Link to this property</a>
+
+currency: string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20currency">Link to this property</a>
+
+description: string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+<details>
+
+<summary>
+
+period: object {end, start }
+
+</summary>
+
+end: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20period%20%3E%20(property)%20end">Link to this property</a>
+
+start: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20period%20%3E%20(property)%20start">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20period">Link to this property</a>
+
+<details>
+
+<summary>
+
+pricing: object {unit\_amount\_decimal }
+
+</summary>
+
+unit\_amount\_decimal: string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20pricing%20%3E%20(property)%20unit_amount_decimal">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20pricing">Link to this property</a>
+
+quantity: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20quantity">Link to this property</a>
+
+<details>
+
+<summary>
+
+pretax\_credit\_amounts: optional array of object {amount, type, credit\_balance\_transaction, discount }
+
+</summary>
+
+amount: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20pretax_credit_amounts%20%3E%20(items)%20%3E%20(property)%20amount">Link to this property</a>
+
+type: string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20pretax_credit_amounts%20%3E%20(items)%20%3E%20(property)%20type">Link to this property</a>
+
+credit\_balance\_transaction: optional string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20pretax_credit_amounts%20%3E%20(items)%20%3E%20(property)%20credit_balance_transaction">Link to this property</a>
+
+discount: optional string
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20pretax_credit_amounts%20%3E%20(items)%20%3E%20(property)%20discount">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines%20%3E%20(items)%20%3E%20(property)%20pretax_credit_amounts">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20invoice_lines">Link to this property</a>
+
+period\_end: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20period_end">Link to this property</a>
+
+period\_start: number
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20period_start">Link to this property</a>
+
+<details>
+
+<summary>
+
+status: "draft"or "open"or "paid"or 2 more
+
+</summary>
+
+One of the following:
+
+"draft"
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%200">Link to this property</a>
+
+"open"
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%201">Link to this property</a>
+
+"paid"
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%202">Link to this property</a>
+
+"uncollectible"
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%203">Link to this property</a>
+
+"void"
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%204">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)%20%3E%20(property)%20status">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.billing%20%3E%20(model)%20billing_invoice_preview_response%20%3E%20(schema)>)
+
+#### AI GatewayBillingTopup
+
+##### [Create a top-up](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/billing/subresources/topup/methods/create)
+
+POST/accounts/{account\_id}/ai-gateway/billing/topup
+
+##### [Check top-up status](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/billing/subresources/topup/methods/status)
+
+POST/accounts/{account\_id}/ai-gateway/billing/topup/status
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+TopupCreateResponse object {client\_secret, onboarding, payment\_intent\_id, 2 more }
+
+</summary>
+
+client\_secret: string
+
+Stripe PaymentIntent client secret.
+
+<a href="#(resource)%20ai_gateway.billing.topup%20%3E%20(model)%20topup_create_response%20%3E%20(schema)%20%3E%20(property)%20client_secret">Link to this property</a>
+
+onboarding: boolean
+
+Whether the user was already onboarded.
+
+<a href="#(resource)%20ai_gateway.billing.topup%20%3E%20(model)%20topup_create_response%20%3E%20(schema)%20%3E%20(property)%20onboarding">Link to this property</a>
+
+payment\_intent\_id: string
+
+Stripe invoice ID.
+
+<a href="#(resource)%20ai_gateway.billing.topup%20%3E%20(model)%20topup_create_response%20%3E%20(schema)%20%3E%20(property)%20payment_intent_id">Link to this property</a>
+
+brand: optional string
+
+Card brand (visa, mastercard, etc.).
+
+<a href="#(resource)%20ai_gateway.billing.topup%20%3E%20(model)%20topup_create_response%20%3E%20(schema)%20%3E%20(property)%20brand">Link to this property</a>
+
+last4: optional string
+
+Last 4 digits of card.
+
+<a href="#(resource)%20ai_gateway.billing.topup%20%3E%20(model)%20topup_create_response%20%3E%20(schema)%20%3E%20(property)%20last4">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.billing.topup%20%3E%20(model)%20topup_create_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+TopupStatusResponse object {payment\_intent\_id, status }
+
+</summary>
+
+payment\_intent\_id: string
+
+<a href="#(resource)%20ai_gateway.billing.topup%20%3E%20(model)%20topup_status_response%20%3E%20(schema)%20%3E%20(property)%20payment_intent_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+status: "completed"or "pending"
+
+</summary>
+
+One of the following:
+
+"completed"
+
+<a href="#(resource)%20ai_gateway.billing.topup%20%3E%20(model)%20topup_status_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%200">Link to this property</a>
+
+"pending"
+
+<a href="#(resource)%20ai_gateway.billing.topup%20%3E%20(model)%20topup_status_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.billing.topup%20%3E%20(model)%20topup_status_response%20%3E%20(schema)%20%3E%20(property)%20status">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.billing.topup%20%3E%20(model)%20topup_status_response%20%3E%20(schema)>)
+
+#### AI GatewayBillingTopupConfig
+
+##### [Get auto top-up configuration](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/billing/subresources/topup/subresources/config/methods/get)
+
+GET/accounts/{account\_id}/ai-gateway/billing/topup/config
+
+##### [Set auto top-up configuration](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/billing/subresources/topup/subresources/config/methods/create)
+
+POST/accounts/{account\_id}/ai-gateway/billing/topup/config
+
+##### [Delete auto top-up configuration](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/billing/subresources/topup/subresources/config/methods/delete)
+
+DELETE/accounts/{account\_id}/ai-gateway/billing/topup/config
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+ConfigGetResponse object {amount, threshold, disabledReason, 2 more }
+
+</summary>
+
+amount: number
+
+<a href="#(resource)%20ai_gateway.billing.topup.config%20%3E%20(model)%20config_get_response%20%3E%20(schema)%20%3E%20(property)%20amount">Link to this property</a>
+
+threshold: number
+
+<a href="#(resource)%20ai_gateway.billing.topup.config%20%3E%20(model)%20config_get_response%20%3E%20(schema)%20%3E%20(property)%20threshold">Link to this property</a>
+
+disabledReason: optional string
+
+<a href="#(resource)%20ai_gateway.billing.topup.config%20%3E%20(model)%20config_get_response%20%3E%20(schema)%20%3E%20(property)%20disabledReason">Link to this property</a>
+
+error: optional string
+
+<a href="#(resource)%20ai_gateway.billing.topup.config%20%3E%20(model)%20config_get_response%20%3E%20(schema)%20%3E%20(property)%20error">Link to this property</a>
+
+lastFailedAt: optional number
+
+<a href="#(resource)%20ai_gateway.billing.topup.config%20%3E%20(model)%20config_get_response%20%3E%20(schema)%20%3E%20(property)%20lastFailedAt">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.billing.topup.config%20%3E%20(model)%20config_get_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+ConfigCreateResponse object {amount, threshold }
+
+</summary>
+
+amount: number
+
+<a href="#(resource)%20ai_gateway.billing.topup.config%20%3E%20(model)%20config_create_response%20%3E%20(schema)%20%3E%20(property)%20amount">Link to this property</a>
+
+threshold: number
+
+<a href="#(resource)%20ai_gateway.billing.topup.config%20%3E%20(model)%20config_create_response%20%3E%20(schema)%20%3E%20(property)%20threshold">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.billing.topup.config%20%3E%20(model)%20config_create_response%20%3E%20(schema)>)
+
+ConfigDeleteResponse = unknown
+
+[Link to this property](<#(resource)%20ai_gateway.billing.topup.config%20%3E%20(model)%20config_delete_response%20%3E%20(schema)>)
+
+#### AI GatewayBillingSpending Limit
+
+##### [Get spending limit (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/billing/subresources/spending_limit/methods/get)
+
+GET/accounts/{account\_id}/ai-gateway/billing/spending-limit
+
+##### [Set spending limit (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/billing/subresources/spending_limit/methods/create)
+
+Deprecated
+
+POST/accounts/{account\_id}/ai-gateway/billing/spending-limit
+
+##### [Delete spending limit (deprecated)](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/billing/subresources/spending_limit/methods/delete)
+
+DELETE/accounts/{account\_id}/ai-gateway/billing/spending-limit
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+SpendingLimitGetResponse object {config, enabled }
+
+</summary>
+
+<details>
+
+<summary>
+
+config: object {amount, duration, strategy }
+
+</summary>
+
+amount: number
+
+<a href="#(resource)%20ai_gateway.billing.spending_limit%20%3E%20(model)%20spending_limit_get_response%20%3E%20(schema)%20%3E%20(property)%20config%20%3E%20(property)%20amount">Link to this property</a>
+
+duration: string
+
+<a href="#(resource)%20ai_gateway.billing.spending_limit%20%3E%20(model)%20spending_limit_get_response%20%3E%20(schema)%20%3E%20(property)%20config%20%3E%20(property)%20duration">Link to this property</a>
+
+strategy: string
+
+<a href="#(resource)%20ai_gateway.billing.spending_limit%20%3E%20(model)%20spending_limit_get_response%20%3E%20(schema)%20%3E%20(property)%20config%20%3E%20(property)%20strategy">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai_gateway.billing.spending_limit%20%3E%20(model)%20spending_limit_get_response%20%3E%20(schema)%20%3E%20(property)%20config">Link to this property</a>
+
+enabled: boolean
+
+<a href="#(resource)%20ai_gateway.billing.spending_limit%20%3E%20(model)%20spending_limit_get_response%20%3E%20(schema)%20%3E%20(property)%20enabled">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai_gateway.billing.spending_limit%20%3E%20(model)%20spending_limit_get_response%20%3E%20(schema)>)
+
+SpendingLimitCreateResponse = unknown
+
+[Link to this property](<#(resource)%20ai_gateway.billing.spending_limit%20%3E%20(model)%20spending_limit_create_response%20%3E%20(schema)>)
+
+SpendingLimitDeleteResponse = unknown
+
+[Link to this property](<#(resource)%20ai_gateway.billing.spending_limit%20%3E%20(model)%20spending_limit_delete_response%20%3E%20(schema)>)

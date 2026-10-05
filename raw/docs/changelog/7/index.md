@@ -1,0 +1,794 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Aug 21, 2026
+
+[<h2>Automatically remediate Microsoft 365 and Google Workspace findings with API-based CASB remediation policies</h2>](https://developers.cloudflare.com/changelog/post/2026-08-21-casb-policies/)
+
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+
+[Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) is an API-based (agentless) tool that continuously scans your SaaS and cloud applications for security misconfigurations and data exposure. You can now use **CASB remediation policies** to automatically fix a finding or send a webhook the moment CASB detects it, without manual triage.
+
+#### Remediate Microsoft 365 and Google Workspace findings
+
+A policy can perform a first-party remediation action directly against the SaaS integration API. When a policy triggers, Cloudflare revokes the external sharing configuration without human intervention.
+
+Remediation is currently supported for file-sharing findings in Microsoft 365 and Google Workspace. Support for additional finding types and integrations is coming soon. For the full list of supported finding types, refer to [Run remediations](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/#run-remediations) in the CASB remediation policies documentation.
+
+#### Send webhooks
+
+A policy can send posture finding data to Slack, ServiceNow, or any other webhook destination. Webhook actions are supported for all posture finding types across CASB integrations.
+
+A single policy can perform both actions: remediate a finding and send a webhook.
+
+#### Get started
+
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Policies**.
+2. Select **Create a policy**.
+3. Under **Basic information**, enter a **Policy name** and, optionally, a **Description**.
+4. Under **Choose how you want to trigger the policy**, select a **Vendor**, **Integration**, and **Finding type**.
+5. Under **Define what to do with findings that match your trigger**, choose **Run Remediation**, **Send webhooks**, or both.
+6. Under **Status**, turn on **Enable policy**.
+7. Select **Create policy**.
+
+#### Learn more
+
+- Learn how to [create and manage CASB remediation policies](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/) in Cloudflare One.
+- Configure [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/) as a policy destination.
+- Learn how to [manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/) in Cloudflare One.
+
+CASB remediation policies are now available in Cloudflare One.
+
+Aug 21, 2026
+
+[<h2>Test Data Loss Prevention profiles without sending traffic through Gateway</h2>](https://developers.cloudflare.com/changelog/post/2026-08-21-dlp-test-scan/)
+
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+
+**Test scan** lets you check how [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) evaluates sample content before you apply a profile to production traffic. Paste text, upload a file, or upload a HAR file, then select the profiles you want to test.
+
+![Test scan results showing matched profiles, detection entries, and match context](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=587,format=webp/_astro/dlp-test-scan.Dm6EgN6x.gif)
+
+Test scan sends content directly to the DLP scanner. Gateway policies are not evaluated, no traffic passes through Gateway, and no Gateway activity logs are created. Results include matched profiles, detection entries, confidence levels, match context, proximity keywords, file metadata, antivirus status, and OCR output.
+
+Test scan is available to all Cloudflare Zero Trust customers. Profile availability depends on your [Zero Trust plan](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/).
+
+For more details, refer to the [Test scan documentation](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/test-scan/).
+
+Aug 21, 2026
+
+[<h2>Enriched 403 responses for the Cloudflare API</h2>](https://developers.cloudflare.com/changelog/post/2026-08-20-contextual-403s/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+Cloudflare API `403 Forbidden` responses now include a `documentation_url` field that links directly to the API documentation for the endpoint that was denied. This gives developers, administrators, and agents an immediate path to the relevant docs with role information instead of guessing at which role or permission they are missing for that endpoint.
+
+**What's New**
+
+**Enriched 403 error responses**: When a Cloudflare API request is denied, the error response now includes a `documentation_url` field that points to the documentation for that specific endpoint. Contextual 403 responses are now available across nearly all Cloudflare product APIs.
+
+**Faster troubleshooting**: The linked API docs surface the roles required for each endpoint, making it easier to self-serve access issues.
+
+**Better support for tools and agents**: Agents can use the \\documentation\_url\` field to immediately fetch the endpoint's documentation from the 403 error response, identify the accepted permissions for the denied action, and use that context to drive third-party approval workflows.\`
+
+Example 403 response:
+
+```json
+{
+  "success": false,
+  "errors": [
+    {
+      "code": 10000,
+      "message": "Forbidden",
+      "documentation_url": "https://developers.cloudflare.com/api/resources/workers/subresources/beta/subresources/workers/methods/list"
+    }
+  ],
+  "messages": [],
+  "result": null
+}
+```
+
+For more info:
+
+- [Browse the Cloudflare API documentation](https://developers.cloudflare.com/api/)
+- [Review Cloudflare roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/)
+- [Review API token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)
+
+Aug 21, 2026
+
+[<h2>Saved login profiles for returning users</h2>](https://developers.cloudflare.com/changelog/post/2026-08-21-one-click-login/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+Cloudflare Dashboard users can now save login profiles on a device for faster sign-in on future visits.
+
+![Saved login profiles for returning users](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2212,height=1544,format=webp/_astro/2026-08-21-one-click-login.CbMATqrT.png)
+
+**What's New**
+
+**Save login profiles on a device**: After a successful sign-in, users can choose to save a login profile on that device. Saved profiles store the email address, login method, and last-used profile locally in the browser.
+
+**Faster sign-in for returning users**: Saved profiles appear directly on the login page. Selecting one can prefill the email field for password logins or resume the associated SSO or social login flow.
+
+Up to five login profiles can be saved per device, and saved profiles can be removed from the profile list at any time.
+
+For more info:
+
+- [Log in to Cloudflare](https://developers.cloudflare.com/fundamentals/user-profiles/login/)
+- [Set up dashboard SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/)
+
+Aug 21, 2026
+
+[<h2>Improved SCIM 2.0 group synchronization</h2>](https://developers.cloudflare.com/changelog/post/2026-08-21-scim-put-group-synchronization/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+Dashboard SCIM now supports replacing groups using HTTP `PUT`, as defined by [RFC 7644 section 3.5.1 ↗︎](https://datatracker.ietf.org/doc/html/rfc7644#section-3.5.1). This allows identity providers to synchronize a group's full state, including its display name, external ID, and members, in a single request.
+
+**What's New**
+
+**Group replacement via `PUT`**: Full-state group synchronization improves compatibility with identity providers that use replacement semantics and helps keep Cloudflare groups aligned with their source identity provider.
+
+Note
+
+SCIM provisioning for the Cloudflare dashboard is available to Enterprise customers. You must be a Super Administrator to complete the initial setup.
+
+For more information:
+
+- [SCIM provisioning overview](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/)
+
+Aug 21, 2026
+
+[<h2>Web Analytics improves soft navigation measurement for Single Page Applications (SPAs)</h2>](https://developers.cloudflare.com/changelog/post/2026-08-21-improved-soft-navigation-measurement-for-single-page-applications/)
+
+[Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/)
+
+Cloudflare Web Analytics (Real User Monitoring) is rolling out accuracy improvements to client-side soft navigations. **Update: this update is complete as of 2026-09-04.**
+
+**This change may alter the volume of reported pageviews and visits in the dashboard and GraphQL API. The reported Largest Contentful Paint (LCP) metric may also fluctuate.** The extent of these variances depend on your front-end architecture and visitor traffic patterns.
+
+Single Page Applications (SPAs)—such as websites built with React, Angular, Vue, or Svelte—predominantly use soft navigations. Soft navigations avoid fully unloading the current page and rendering the next one from scratch as visitors navigate.
+
+Any client-side navigation counts as a soft navigation, including navigations intercepted by [the Navigation API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API) or triggered by [the History API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/History_API). This means a non-SPA website can have soft navigation activity if its implementation uses these APIs.
+
+The main improvement comes from [Google Chrome's new Soft Navigation API ↗︎](https://developer.chrome.com/docs/web-platform/soft-navigations). It natively measures [Largest Contentful Paint (LCP)](https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/#core-web-vitals-metrics) on soft navigations, removing a blind spot in perceived loading speed across pageviews.
+
+We've extended our `navigationType` values to segment these different types of navigations:
+
+| `navigationType` | New? | Description |
+| --- | --- | --- |
+| `navigate` | ❌ | Hard navigations that traditional websites (or "Multi Page Applications") perform when clicking links or submitting forms |
+| `soft-navigation` | ✅ | Where [the new Soft Navigation API ↗︎](https://developer.chrome.com/docs/web-platform/soft-navigations) is available and a visitor makes a client-side navigation, we record these events |
+| `routing-apis` | ✅ | Where the native Soft Navigation API is unavailable (e.g. Safari, Firefox, older Chromium-based browsers), we fallback to measuring soft navigations using [the Navigation API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API) or [History API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/History_API). We cannot collect LCP for these, but the other Core Web Vitals are present. |
+
+Prior to this change, we only used History API and all navigations were bucketed into `navigate`.
+
+For more information, refer to the [Navigation Types](https://developers.cloudflare.com/web-analytics/data-metrics/dimensions/#navigation-types) and [Web Analytics SPA](https://developers.cloudflare.com/web-analytics/get-started/web-analytics-spa/) documentation pages.
+
+Aug 20, 2026
+
+[<h2>Run more headless browsers concurrently with Browser Run</h2>](https://developers.cloudflare.com/changelog/post/2026-08-20-limits-increase/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/) lets you automate headless browsers on Cloudflare's global network. Run full browser sessions for interactive workflows, or use [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) for one-request tasks such as screenshots, PDFs, and capturing page content.
+
+If you are on the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/), your default [limits](https://developers.cloudflare.com/browser-run/limits/#workers-paid) are now higher:
+
+| Limit | Previous | New |
+| --- | --- | --- |
+| Concurrent browsers | 120 | **200** |
+| New browser instances / second | 1 | **3** |
+| Quick Actions requests / second | 10 | **30** |
+
+You can now run hundreds of browser sessions in parallel, launch new browsers faster, and process three times as many [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) per second. These published limits are defaults, not maximums. If your workload needs more more concurrent browsers, [request higher limits ↗︎](https://forms.gle/CdueDKvb26mTaepa9).
+
+Aug 20, 2026
+
+[<h2>Use FUSE in local Containers development</h2>](https://developers.cloudflare.com/changelog/post/2026-08-20-fuse-local-development/)
+
+[Containers](https://developers.cloudflare.com/containers/)
+
+Miniflare now automatically grants local Containers the Docker privileges required for Filesystem in Userspace (FUSE). This applies to `wrangler dev`, the Cloudflare Vite plugin, and direct Miniflare use.
+
+Miniflare grants these privileges when the local Docker daemon runs inside a virtual machine (VM). This includes Docker engines on macOS and through Windows Subsystem for Linux (WSL). On Linux, Miniflare grants the privileges for local rootless Docker when `/dev/fuse` is available.
+
+Rootful Docker on Linux does not support FUSE by default during local development. Miniflare does not grant FUSE privileges when the Docker daemon does not meet these conditions or cannot be inspected.
+
+For requirements and troubleshooting, refer to [FUSE support during local development](https://developers.cloudflare.com/containers/guides/local-dev/#fuse-support). For a complete example, refer to [Mount R2 buckets with FUSE](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/).
+
+Aug 20, 2026
+
+[<h2>View deployments for Durable Objects in the dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-08-20-durable-objects-deployments-tab/)
+
+[Durable Objects](https://developers.cloudflare.com/durable-objects/) [Workers](https://developers.cloudflare.com/workers/)
+
+Durable Object namespaces now have a **Deployments** tab in the Cloudflare dashboard, showing the [versions](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of the backing Worker that are currently live and the traffic split between them.
+
+![The Deployments tab for a Durable Object namespace, showing two versions with their traffic %, requests/sec, error rate, and median wall time](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2508,height=654,format=webp/_astro/durable-objects-deployments-tab.ZJc93gIt.png) [Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
+
+A Durable Object namespace is backed by a Worker script, so its deployments are the same as that Worker's deployments. Previously, checking on a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) in progress for a Durable Object meant navigating to the backing Worker. The new tab surfaces that information directly on the namespace, alongside the metrics that matter for it: requests, error rate, and wall time per version.
+
+The tab is read-only — promoting, rolling back, or splitting traffic on a deployment is still managed from the backing Worker's Deployments tab.
+
+#### Actual vs. configured traffic split
+
+The **Traffic %** column, for both Workers and Durable Objects, now shows the actual, observed traffic share for each version next to the percentage you configured. Previously, this column only showed the configured percentage. If you moved a deployment from 50/50 to 100% on a new version, the configured number updated immediately, but requests take time to catch up, and there was no way to tell how far along that shift was without checking metrics elsewhere.
+
+The configured split assigns Worker versions to individual Durable Objects, not to individual requests. Because [each Durable Object is pinned to the version it started on until you create a new deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/) and some objects naturally receive more traffic than others, the observed split can differ from the configured one for as long as multiple versions are active.
+
+Actual traffic share is calculated from the same [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) data that powers other Workers and Durable Objects metrics, so standard ingestion delay and [sampling](https://developers.cloudflare.com/analytics/faq/graphql-api-inconsistent-results/) apply. Durable Objects analytics can lag Workers analytics by several minutes, so a version's actual share may take a little longer to catch up after a change.
+
+To view this, go to **Workers & Pages** > **Durable Objects**, select a namespace, then select the **Deployments** tab. For more on how gradual deployments work, refer to [Gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/).
+
+Aug 20, 2026
+
+[<h2>Optional OAuth scopes</h2>](https://developers.cloudflare.com/changelog/post/2026-08-20-oauth-optional-scopes/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+We're announcing the GA of Optional OAuth Scopes.
+
+OAuth client developers can now classify configured scopes as required or optional in the Cloudflare dashboard. By default, all configured scopes remain required .
+
+#### What's New
+
+**Optional Scopes:** OAuth clients can now mark configured scopes as optional, allowing applications to request them without requiring users to approve them.
+
+**Scope Selection:** On the consent screen, users must grant required scopes but can decline optional scopes. This helps customers apply least-privilege access to applications, CLIs, and workloads. Optional scopes are selected by default.
+
+**Templates:** The consent screen now includes **Read Only** and **Full Access** templates to make scope selection faster and easier.
+
+**Search:** Users can now search scopes in the consent screen.
+
+Learn how to [select client scopes](https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/#select-scopes) and [edit optional permissions](https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/#edit-optional-permissions).
+
+Aug 20, 2026
+
+[<h2>New Logpush datasets and updated fields across multiple Logpush datasets in Cloudflare Logs</h2>](https://developers.cloudflare.com/changelog/post/2026-08-20-log-fields-updated/)
+
+[Logs](https://developers.cloudflare.com/logs/)
+
+Cloudflare has updated [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/):
+
+#### New datasets
+
+- **Account Abuse Protection Events**: A new dataset with fields including `AuthenticationIdentityProvider`, `AuthenticationMethod`, `AuthenticationStatus`, `BotScore`, `ClientASN`, `ClientCity`, `ClientCountry`, `ClientIP`, `Email`, `EphemeralID`, `EventSource`, `EventType`, `FraudEmailRisk`, `Host`, `JA4`, `RayID`, `Timestamp`, `UserAgent`, and `UserID`.
+- **Magic BGP Logs**: A new dataset with fields including `Direction`, `EventData`, `EventKind`, `EventTimestamp`, `TunnelID`, and `TunnelName`.
+
+#### Updated fields in existing datasets
+
+- **Firewall events** (added): `AISecurityCustomTopicCategories`, `WAFRequestSignatureCategories`, and `WAFRequestSignatureRefs`.
+- **Gateway HTTP** (added): `ExperimentalFeatures` and `PackageInfo`.
+- **HTTP requests** (added): `AISecurityCustomTopicCategories`, `ClientTLSKeyExchangeGroup`, `WAFRequestSignatureCategories`, and `WAFRequestSignatureRefs`.
+
+For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
+
+Aug 20, 2026
+
+[<h2>Per-zone post-quantum visibility in Logpush and Log Explorer</h2>](https://developers.cloudflare.com/changelog/post/2026-08-20-pqc-key-exchange-visibility/)
+
+[Logs](https://developers.cloudflare.com/logs/) [Log Explorer](https://developers.cloudflare.com/log-explorer/)
+
+[Cloudflare Radar ↗︎](https://radar.cloudflare.com/post-quantum) publishes global statistics on post-quantum key agreement adoption across all Cloudflare traffic, but until now customers had no way to see the same measurement scoped to their own zones. This is now possible because the [`http_requests`](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) Logpush dataset — also queryable in [Log Explorer](https://developers.cloudflare.com/log-explorer/) — includes a new `ClientTLSKeyExchangeGroup` field.
+
+The field reports the TLS key exchange group negotiated on the client-to-Cloudflare connection, by group name. Post-quantum connections appear as `X25519MLKEM768`, and classical connections appear as `X25519`, `P-256`, or another named group. A value of `UNK` means the group could not be determined, and `NONE` means either RSA key exchange was used or TLS was not used.
+
+With this field, you can build per-zone reports showing what percentage of your inbound HTTPS traffic is protected by post-quantum key agreement, break the number down by hostname, path, user agent, or country, and push the data into your SIEM via any [Logpush destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/).
+
+Aug 20, 2026
+
+[<h2>Leaked credentials detection now scans Authorization headers</h2>](https://developers.cloudflare.com/changelog/post/2026-08-20-leaked-credentials-authorization-header/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+[Leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/) now scans the `Authorization` request header for Basic Authentication credentials. Previously, the detection only inspected request bodies, query strings, and headers for well-known web applications or custom detection locations, which meant credentials sent through HTTP Basic Authentication were not covered by default.
+
+This new default scan location decodes the `Authorization: Basic <credentials>` header and compares the extracted username and password against Cloudflare's database of leaked credentials, the same way as other default scan locations. Matches populate the existing [leaked credentials fields](https://developers.cloudflare.com/waf/detections/leaked-credentials/#leaked-credentials-fields), such as `cf.waf.credential_check.password_leaked`, and trigger the [`Exposed-Credential-Check` managed transform header](https://developers.cloudflare.com/rules/transform/managed-transforms/reference/#add-leaked-credentials-checks-header) if configured, so you can reuse existing [custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) without changes.
+
+This change was applied automatically for zones with leaked credentials detection enabled. No configuration changes are required.
+
+For more information, refer to [Leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/).
+
+Aug 19, 2026
+
+[<h2>Cloudflare One Client for Windows (version 2026.7.1343.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-08-19-warp-windows-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release introduces multiple features from our previous beta release into stable release, including:
+
+- When reauthentication is needed for any reason, the notifications are clearer and reduce the actions needed to get you back to work by redirecting to the browser for authentication instead of the app window when necessary.
+- When a network is blocking or otherwise not supportive of HTTP/3, the client will learn and adapt by switching the order of fallback for that network by starting with HTTP/2 first and then trying HTTP/3 if needed. This reduces delays in time to connectivity when joining older or heavily filtered networks.
+
+**Additional changes and improvements**
+
+- Fixed a process leak in the Windows GUI that could exhaust system resources during IPC client-creation failures.
+- Fixed being unable to switch organizations when the client was stuck in the "Device not in organization" state.
+- Fixed an issue where Microsoft Defender would falsely flag the Cloudflare One Client installation as malicious when installing with Intune.
+- Made the Windows domain-joined posture check more reliable.
+- A DNS search domain parsing failure no longer prevents connection.
+- Cloud icon now correctly reflects actual connection status instead of showing disconnected while fully connected.
+- Fixed missing certificate error display due to a race condition.
+- Fixed empty black window after transitioning from docked dual displays to undocked/internal display.
+
+**Known issues**
+
+- If a user upgrades to version 2026.7.1343.0, downgrades to an earlier version, re-registers, and then upgrades back to 2026.7.1343.0, the client might fail to connect or switch organizations. To resolve this issue, run `warp-cli registration delete` or `warp-cli registration delete-all`.
+
+Aug 19, 2026
+
+[<h2>Cloudflare One Client for macOS (version 2026.7.1343.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-08-19-warp-macos-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the macOS Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release introduces multiple features from our previous beta release into stable release, including:
+
+- When reauthentication is needed for any reason, the notifications are clearer and reduce the actions needed to get you back to work by redirecting to the browser for authentication instead of the app window when necessary.
+- When a network is blocking or otherwise not supportive of HTTP/3, the client will learn and adapt by switching the order of fallback for that network by starting with HTTP/2 first and then trying HTTP/3 if needed. This reduces delays in time to connectivity when joining older or heavily filtered networks.
+
+**Additional changes and improvements**
+
+- Fixed the client not allowing login to another organization when currently showing "Device not in organization."
+- A DNS search domain parsing failure no longer prevents connection.
+- Cloud icon now correctly reflects actual connection status instead of showing disconnected while fully connected.
+- Fixed missing certificate error display due to a race condition.
+- Fixed crash when trying to connect to captive portal on Wi-Fi.
+- Fixed empty black window after transitioning from docked dual displays to undocked/internal display.
+
+**Known issues**
+
+- None
+
+Aug 19, 2026
+
+[<h2>Cloudflare One Client for Linux (version 2026.7.1343.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-08-19-warp-linux-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release introduces multiple features from our previous beta release into stable release, including:
+
+- When reauthentication is needed for any reason, the notifications are clearer and reduce the actions needed to get you back to work by redirecting to the browser for authentication instead of the app window when necessary.
+- When a network is blocking or otherwise not supportive of HTTP/3, the client will learn and adapt by switching the order of fallback for that network by starting with HTTP/2 first and then trying HTTP/3 if needed. This reduces delays in time to connectivity when joining older or heavily filtered networks.
+
+**Additional changes and improvements**
+
+- Fixed the client not allowing login to another organization when currently showing "Device not in organization."
+- A DNS search domain parsing failure no longer prevents connection.
+- Cloud icon now correctly reflects actual connection status instead of showing disconnected while fully connected.
+- Fixed missing certificate error display due to a race condition.
+- Fixed empty black window after transitioning from docked dual displays to undocked/internal display.
+- Fixed hostname routes not working for Cloudflare Mesh when the IP addresses of the hostnames are local addresses.
+
+**Known issues**
+
+- When in DNS Only mode, the client may send DNS queries for names that are configured for Local Domain Fallback to the encrypted DNS server instead of falling back to the system configuration. Local Domain Fallback works as expected in other client modes.
+
+Aug 19, 2026
+
+[<h2>Access resource lists now support resource-scoped roles</h2>](https://developers.cloudflare.com/changelog/post/2026-08-19-granular-permissions-resource-lists/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+Members with only resource-scoped Access roles can now open Access resource list pages in the Cloudflare dashboard and call list endpoints in the API. They no longer need an additional account-scoped read-only role to list resources.
+
+The dashboard and API return only resources included in the member's permission policy scopes. Filtering applies to Access applications, policies, service tokens, and identity providers. This allows administrators to delegate specific Access resources without granting account-wide visibility. Previously, the dashboard blocked these list pages and API list requests returned `403` responses.
+
+For members with the Cloudflare Access App Admin role, policy lists include policies attached directly to the selected application. Reusable policies appear only when the member has the Cloudflare Access Policy Admin role for those policies.
+
+For role definitions and assignment details, refer to [Resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) and [Role scopes](https://developers.cloudflare.com/fundamentals/manage-members/scope/).
+
+Aug 19, 2026
+
+[<h2>Get 50% off GPT-5.6 Sol through AI Gateway</h2>](https://developers.cloudflare.com/changelog/post/2026-08-19-gpt-5-6-sol-discount/)
+
+[AI Gateway](https://developers.cloudflare.com/ai-gateway/)
+
+GPT-5.6 Sol is available through AI Gateway, and for a limited time you can use it at 50% off. If you are already using AI Gateway, point to the `openai/gpt-5.6-sol` model and the discounted pricing applies automatically — no promo code needed.
+
+The promotion is available for [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) users only (not [Bring Your Own Keys](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/)). Load credits onto AI Gateway and start sending requests to `openai/gpt-5.6-sol`.
+
+Discounted pricing during the promotion:
+
+| Usage | Promotional price | Standard price |
+| --- | --- | --- |
+| Input | $2.50 per 1M tokens | $5 per 1M tokens |
+| Output | $15 per 1M tokens | $30 per 1M tokens |
+| Cache read | $0.25 per 1M tokens | $0.50 per 1M tokens |
+
+The promotion runs through September 18, 2026. After that date, GPT-5.6 Sol requests return to standard pricing.
+
+For more details, refer to the [Unified Billing documentation](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) and the [GPT-5.6 Sol model page](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/).
+
+Aug 19, 2026
+
+[<h2>Threat Intel Lists supported in Unified Routing</h2>](https://developers.cloudflare.com/changelog/post/2026-08-19-unified-routing-threat-lists/)
+
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+[Cloudflare Advanced Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) Threat Intel Lists are now supported for accounts using [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing) mode. This feature requires a Cloudflare Advanced Network Firewall subscription.
+
+Support for additional features - Rate Limiting and Managed Rulesets - is planned.
+
+For the full list of current beta limitations, refer to [Traffic steering beta limitations](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#check-feature-availability-before-upgrading).
+
+Aug 19, 2026
+
+[<h2>@cloudflare/vitest-pool-workers is now @cloudflare/vitest-plugin</h2>](https://developers.cloudflare.com/changelog/post/2026-08-19-vitest-plugin/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Version 1 of the Workers Vitest integration is published as [`@cloudflare/vitest-plugin` ↗︎](https://www.npmjs.com/package/@cloudflare/vitest-plugin). The package was formerly named `@cloudflare/vitest-pool-workers`.
+
+The Vitest configuration API is unchanged. Existing projects must update the dependency name, package imports, and TypeScript `types` entries.
+
+To migrate automatically, run:
+
+npmyarnpnpm
+
+```
+npx @cloudflare/codemods vitest:pool-workers-to-vitest-plugin
+```
+
+```
+yarn @cloudflare/codemods vitest:pool-workers-to-vitest-plugin
+```
+
+```
+pnpm @cloudflare/codemods vitest:pool-workers-to-vitest-plugin
+```
+
+The codemod updates your dependency, imports, and test TypeScript configuration. For manual migration steps, refer to [Migrate to Vitest plugin](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-to-vitest-plugin/).
+
+For outbound request mocks in Workers tests, use the [`@msw/cloudflare` ↗︎](https://github.com/mswjs/cloudflare) integration. Refer to [Mock outbound requests](https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/).
+
+Aug 18, 2026
+
+[<h2>Configure origin application settings for Cloudflare Tunnel in the dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-08-18-tunnel-origin-settings-dashboard/)
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+
+You can now configure origin application settings directly in the Cloudflare dashboard when adding or editing a published application route for a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/). These settings control how `cloudflared` connects to your origin server and were previously only available in the Cloudflare One dashboard or via local configuration files.
+
+![Configure origin application settings in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=948,format=webp/_astro/tunnel-origin-settings-dashboard.CsC2RwFC.gif)
+
+When editing a published application, expand **Additional application settings** to configure parameters organized into three categories:
+
+- **HTTP** — Set a custom HTTP Host header or disable chunked encoding.
+- **TLS** — Configure origin server name, CA pool, TLS timeout, disable TLS verification, match SNI to host, or enable HTTP/2 to origin.
+- **Connection** — Tune connect timeout, keep-alive timeout, keep-alive connections, TCP keep-alive interval, proxy type, or disable Happy Eyeballs.
+
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+
+For the full list of origin parameters, refer to [Origin parameters](https://developers.cloudflare.com/tunnel/reference/origin-parameters/).
+
+Aug 17, 2026
+
+[<h2>Post-quantum key exchange for MX deployments</h2>](https://developers.cloudflare.com/changelog/post/2026-08-17-post-quantum-key-exchange-mx/)
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
+
+Cloudflare Email Security now supports post-quantum hybrid key exchange with X25519MLKEM768 on the SMTP connections we make to receive and deliver mail. Deploying Email Security in front of a provider that supports post-quantum hybrid key agreement (like Google Workspace) will create a TLS 1.3 connection using post-quantum key agreement.
+
+Inbound MX connections and outbound delivery connections now negotiate the [X25519MLKEM768](https://developers.cloudflare.com/ssl/post-quantum-cryptography/#hybrid-key-agreement) hybrid key agreement when the peer supports it, protecting SMTP traffic against [harvest-now, decrypt-later ↗︎](https://blog.cloudflare.com/pq-2024/) attacks.
+
+Support is backwards compatible and enabled automatically for all customers. Senders and receivers that do not yet advertise post-quantum key agreement continue to connect with classical key exchange.
+
+This applies to all Email Security packages:
+
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
+
+Aug 17, 2026
+
+[<h2>Load balancing analytics now filters by pool name</h2>](https://developers.cloudflare.com/changelog/post/2026-08-17-pool-name-analytics-filter/)
+
+[Load Balancing](https://developers.cloudflare.com/load-balancing/)
+
+Load balancing analytics now filters traffic data by pool name instead of pool ID, aligning the query behavior with the pool names displayed in the filter dropdown.
+
+Previously, the analytics pool filter queried by internal pool ID while displaying pool names in the UI dropdown. This mismatch caused filtering issues when pools shared similar names or when you expected results based on the visible pool name. Because the underlying query used a different identifier than what appeared on screen, the displayed data could be confusing or incorrect.
+
+The pool filter now queries by the same pool name shown in the dropdown. When you select a pool from the filter, the analytics graphs and tables display data for that specific pool as you would expect. This change affects:
+
+- **Requests over time**, filtering the chart series to the selected pool.
+- **Pool distribution**, showing only the selected pool segment.
+- **Top endpoints**, displaying cards for origins in the selected pool.
+- **Latency**, showing latency data for the selected pool.
+
+The **Logs** view and health event filtering are unchanged.
+
+To use this, go to **Traffic** > **Load Balancing Analytics** for a zone. The same pool filter appears in the analytics view for an individual load balancer under **Load Balancing** at the account level.
+
+For more information about analytics filters and metrics, refer to [Load Balancing Analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/).
+
+Aug 17, 2026
+
+[<h2>New \`us\` jurisdiction for R2</h2>](https://developers.cloudflare.com/changelog/post/2026-08-17-r2-us-jurisdiction/)
+
+[R2](https://developers.cloudflare.com/r2/)
+
+R2 now supports a `us` [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions), which guarantees that bucket data is stored and processed within the United States. Use this jurisdiction when you need explicit US data residency guarantees.
+
+Use the jurisdiction-specific S3 endpoint to create and access buckets in the `us` jurisdiction:
+
+`https://<ACCOUNT_ID>.us.r2.cloudflarestorage.com`
+
+To access a bucket in the `us` jurisdiction from Workers, set `jurisdiction` in your R2 binding:
+
+```jsonc
+{
+	"r2_buckets": [
+		{
+			"binding": "MY_BUCKET",
+			"bucket_name": "<YOUR_BUCKET_NAME>",
+			"jurisdiction": "us"
+		}
+	]
+}
+```
+
+```toml
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "<YOUR_BUCKET_NAME>"
+jurisdiction = "us"
+```
+
+Once an R2 bucket is created, its jurisdiction cannot be changed.
+
+For setup instructions and the full list of supported jurisdictions, refer to [R2 data location](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions).
+
+Aug 17, 2026
+
+[<h2>WAF Release - 2026-08-17</h2>](https://developers.cloudflare.com/changelog/post/2026-08-17-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This release updates WordPress remote code execution rule metadata in the Cloudflare Managed Ruleset and Cloudflare Free Ruleset to identify CVE-2026-65640.
+
+**Key Findings**
+
+- CVE-2026-65640: A remote code execution vulnerability affecting WordPress core and plugin components. Remote, unauthenticated attackers can execute arbitrary system commands to gain unauthorized access or establish backdoors on host servers.
+
+**Impact**
+
+The WordPress changes update rule metadata only; detection behavior and actions remain unchanged.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...3590a4ad | N/A | Wordpress - Remote Code Execution - CVE:CVE-2026-65640 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Free Ruleset | ...cfe1a93c | N/A | Wordpress - Remote Code Execution - CVE:CVE-2026-65640 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/7/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/7/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

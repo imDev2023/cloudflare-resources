@@ -1,0 +1,43 @@
+---
+description: Rate limits and data retention for Web Analytics.
+title: Limits
+image: https://developers.cloudflare.com/web-analytics/limits/og.png?v=b40d5ba274a902ca
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/web-analytics/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Limits
+
+Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Cloudflare limits the number of sites for which you can track web analytics, as well as the number of rules allowed for each plan type. Refer to the following tables for more information.
+
+## Site limits
+
+Cloudflare limits the number of sites for which you can track web analytics when they are not proxied by Cloudflare.
+
+| Site type | Limit |
+| --- | --- |
+| Not proxied through Cloudflare | 10 |
+| Proxied through Cloudflare | No limit |
+
+Note
+
+To provide a reliable and fast experience, viewing aggregate data is limited to 1,000 websites in parallel in the dashboard. Customers with large volumes of tracked websites can workaround this restriction by selecting specific websites or using the GraphQL API to extract data.
+
+## Rules limits
+
+Cloudflare limits the number of Web Analytics rules you can have by plan type. For plans with a limit of zero, Web Analytics injects the JS snippet on all subdomains.
+
+Rules are only available for sites proxied through Cloudflare.
+
+| Plan type | Rules limit |
+| --- | --- |
+| Free | 0 |
+| Pro | 5 |
+| Business | 20 |
+| Enterprise | 100 |

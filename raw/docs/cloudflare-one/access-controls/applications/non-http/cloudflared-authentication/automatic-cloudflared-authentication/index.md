@@ -1,0 +1,31 @@
+---
+description: Enable automatic cloudflared authentication in Access.
+title: Enable automatic cloudflared authentication
+image: https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/cloudflared-authentication/automatic-cloudflared-authentication/og.png?v=1a1b828ecb5fc5a3
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Enable automatic cloudflared authentication
+
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/cloudflared-authentication/automatic-cloudflared-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+When users connect to an Access application through `cloudflared`, the browser prompts them to allow access by displaying this page:
+
+![Access request prompt page displayed after logging in with cloudflared.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1362,height=1016,format=webp/_astro/access-screen.BXZJ23p9.png)
+
+Automatic `cloudflared` authentication allows users to skip this login page if they already have an active IdP session.
+
+To enable automatic `cloudflared` authentication:
+
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+2. Locate your application and select **Configure**.
+3. Go to **Authentication**.
+4. Turn on **Allow automatic Cloudflared authentication**.
+5. Select **Save**.
+
+This option will still prompt a browser window in the background, but authentication will now happen automatically.

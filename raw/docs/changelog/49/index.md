@@ -1,0 +1,897 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Mar 17, 2025
+
+[<h2>New models in Workers AI</h2>](https://developers.cloudflare.com/changelog/post/2025-03-17-new-workers-ai-models/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+Workers AI is excited to add 4 new models to the catalog, including 2 brand new classes of models with a text-to-speech and reranker model. Introducing:
+
+- [@cf/baai/bge-m3](https://developers.cloudflare.com/workers-ai/models/bge-m3/) - a multi-lingual embeddings model that supports over 100 languages. It can also simultaneously perform dense retrieval, multi-vector retrieval, and sparse retrieval, with the ability to process inputs of different granularities.
+- [@cf/baai/bge-reranker-base](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/) - our first reranker model! Rerankers are a type of text classification model that takes a query and context, and outputs a similarity score between the two. When used in RAG systems, you can use a reranker after the initial vector search to find the most relevant documents to return to a user by reranking the outputs.
+- [@cf/openai/whisper-large-v3-turbo](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/) - a faster, more accurate speech-to-text model. This model was added earlier but is graduating out of beta with pricing included today.
+- [@cf/myshell-ai/melotts](https://developers.cloudflare.com/workers-ai/models/melotts/) - our first text-to-speech model that allows users to generate an MP3 with voice audio from inputted text.
+
+Pricing is available for each of these models on the [Workers AI pricing page](https://developers.cloudflare.com/workers-ai/platform/pricing/).
+
+This docs update includes a few minor bug fixes to the model schema for llama-guard, llama-3.2-1b, which you can review on the [product changelog](https://developers.cloudflare.com/workers-ai/changelog/).
+
+Try it out and let us know what you think! Stay tuned for more models in the coming days.
+
+Mar 17, 2025
+
+[<h2>Import \`env\` to access bindings in your Worker's global scope</h2>](https://developers.cloudflare.com/changelog/post/2025-03-17-importable-env/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+You can now access [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) from anywhere in your Worker by importing the `env` object from `cloudflare:workers`.
+
+Previously, `env` could only be accessed during a request. This meant that bindings could not be used in the top-level context of a Worker.
+
+Now, you can import `env` and access bindings such as [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) or [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) in the initial setup for your Worker:
+
+```js
+import { env } from "cloudflare:workers";
+import ApiClient from "example-api-client";
+
+// API_KEY and LOG_LEVEL now usable in top-level scope
+const apiClient = ApiClient.new({ apiKey: env.API_KEY });
+const LOG_LEVEL = env.LOG_LEVEL || "info";
+
+export default {
+	fetch(req) {
+		// you can use apiClient or LOG_LEVEL, configured before any request is handled
+	},
+};
+```
+
+Note
+
+Workers do not allow I/O from outside a request context. This means that even though `env` is accessible from the top-level scope, you will not be able to access every binding's methods.
+
+For instance, environment variables and secrets are accessible, and you are able to call `env.NAMESPACE.get` to get a [Durable Object stub](https://developers.cloudflare.com/durable-objects/api/stub/) in the top-level context. However, calling methods on the Durable Object stub, making [calls to a KV store](https://developers.cloudflare.com/kv/api/), and [calling to other Workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) will not work.
+
+Additionally, `env` was normally accessed as a argument to a Worker's entrypoint handler, such as [`fetch`](https://developers.cloudflare.com/workers/runtime-apis/fetch/). This meant that if you needed to access a binding from a deeply nested function, you had to pass `env` as an argument through many functions to get it to the right spot. This could be cumbersome in complex codebases.
+
+Now, you can access the bindings from anywhere in your codebase without passing `env` as an argument:
+
+```js
+// helpers.js
+import { env } from "cloudflare:workers";
+
+// env is *not* an argument to this function
+export async function getValue(key) {
+	let prefix = env.KV_PREFIX;
+	return await env.KV.get(`${prefix}-${key}`);
+}
+```
+
+For more information, see [documentation on accessing `env`](https://developers.cloudflare.com/workers/runtime-apis/bindings#how-to-access-env).
+
+Mar 17, 2025
+
+[<h2>Retry Pages & Workers Builds Directly from GitHub</h2>](https://developers.cloudflare.com/changelog/post/2025-03-17-rerun-build/)
+
+[Workers](https://developers.cloudflare.com/workers/) [Pages](https://developers.cloudflare.com/pages/)
+
+You can now retry your Cloudflare Pages and Workers builds directly from GitHub. No need to switch to the Cloudflare Dashboard for a simple retry!
+
+Let\\u2019s say you push a commit, but your build fails due to a spurious error like a network timeout. Instead of going to the Cloudflare Dashboard to manually retry, you can now rerun the build with just a few clicks inside GitHub, keeping you inside your workflow.
+
+For Pages and Workers projects connected to a GitHub repository:
+
+1. When a build fails, go to your GitHub repository or pull request
+2. Select the failed Check Run for the build
+3. Select "Details" on the Check Run
+4. Select "Rerun" to trigger a retry build for that commit
+
+Learn more about [Pages Builds](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/) and [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/).
+
+Mar 13, 2025
+
+[<h2>Cloudflare IP Ranges List</h2>](https://developers.cloudflare.com/changelog/post/2025-03-13-new-managed-iplist/)
+
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)
+
+Magic Firewall now supports a new managed list of Cloudflare IP ranges. This list is available as an option when creating a Magic Firewall policy based on IP source/destination addresses. When selecting "is in list" or "is not in list", the option "**Cloudflare IP Ranges**" will appear in the dropdown menu.
+
+This list is based on the IPs listed in the Cloudflare [IP ranges ↗︎](https://www.cloudflare.com/en-gb/ips/). Updates to this managed list are applied automatically.
+
+![Cloudflare IPs Managed List](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1102,height=677,format=webp/_astro/cloudflare-ips.DetyOndL.png)
+
+Note: IP Lists require a Cloudflare Advanced Network Firewall subscription. For more details about Cloudflare Network Firewall plans, refer to [Plans](https://developers.cloudflare.com/cloudflare-network-firewall/plans).
+
+Mar 13, 2025
+
+[<h2>Use the latest JavaScript features with Wrangler CLI v4</h2>](https://developers.cloudflare.com/changelog/post/2025-03-13-wrangler-v4/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+We've released the next major version of [Wrangler](https://developers.cloudflare.com/workers/wrangler/), the CLI for Cloudflare Workers — `wrangler@4.0.0`. Wrangler v4 is a major release focused on updates to underlying systems and dependencies, along with improvements to keep Wrangler commands consistent and clear.
+
+You can run the following command to install it in your projects:
+
+npmyarnpnpmbun
+
+```
+npm i wrangler@latest
+```
+
+```
+yarn add wrangler@latest
+```
+
+```
+pnpm add wrangler@latest
+```
+
+```
+bun add wrangler@latest
+```
+
+Unlike previous major versions of Wrangler, which were [foundational rewrites ↗︎](https://blog.cloudflare.com/wrangler-v2-beta/) and [rearchitectures ↗︎](https://blog.cloudflare.com/wrangler3/) — Version 4 of Wrangler includes a much smaller set of changes. If you use Wrangler today, your workflow is very unlikely to change.
+
+A [detailed migration guide](https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to-v4) is available and if you find a bug or hit a roadblock when upgrading to Wrangler v4, [open an issue on the `cloudflare/workers-sdk` repository on GitHub ↗︎](https://github.com/cloudflare/workers-sdk/issues/new?template=bug-template.yaml).
+
+Going forward, we'll continue supporting Wrangler v3 with bug fixes and security updates until Q1 2026, and with critical security updates until Q1 2027, at which point it will be out of support.
+
+Mar 13, 2025
+
+[<h2>Set breakpoints and debug your Workers tests with @cloudflare/vitest-pool-workers</h2>](https://developers.cloudflare.com/changelog/post/2025-03-14-breakpoint-debugging-with-vitest/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+You can now debug your Workers tests with our [Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/) by running the following command:
+
+```sh
+vitest --inspect --no-file-parallelism
+```
+
+Attach a debugger to the port 9229 and you can start stepping through your Workers tests. This is available with `@cloudflare/vitest-pool-workers` v0.7.5 or later.
+
+Learn more in our [documentation](https://developers.cloudflare.com/workers/testing/vitest-integration/debugging/).
+
+Mar 12, 2025
+
+[<h2>Threaded replies now possible in Email Workers</h2>](https://developers.cloudflare.com/changelog/post/2025-03-12-reply-limits/)
+
+[Email Service](https://developers.cloudflare.com/email-service/)
+
+We’re removing some of the restrictions in Email Routing so that AI Agents and task automation can better handle email workflows, including how Workers can [reply](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/#reply-to-emails) to incoming emails.
+
+It's now possible to keep a threaded email conversation with an [Email Worker](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) script as long as:
+
+- The incoming email has to have valid [DMARC ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record/).
+- The email can only be replied to once in the same `EmailMessage` event.
+- The recipient in the reply must match the incoming sender.
+- The outgoing sender domain must match the same domain that received the email.
+- Every time an email passes through Email Routing or another MTA, an entry is added to the `References` list. We stop accepting replies to emails with more than 100 `References` entries to prevent abuse or accidental loops.
+
+Here's an example of a Worker responding to Emails using a Workers AI model:
+
+*AI model responding to emailsts*
+
+```ts
+import PostalMime from "postal-mime";
+import { createMimeMessage } from "mimetext";
+import { EmailMessage } from "cloudflare:email";
+
+export default {
+	async email(message, env, ctx) {
+		const email = await PostalMime.parse(message.raw);
+		const res = await env.AI.run("@cf/meta/llama-2-7b-chat-fp16", {
+			messages: [
+				{
+					role: "user",
+					content: email.text ?? "",
+				},
+			],
+		});
+
+		// message-id is generated by mimetext
+		const response = createMimeMessage();
+		response.setHeader("In-Reply-To", message.headers.get("Message-ID")!);
+		response.setSender("agent@example.com");
+		response.setRecipient(message.from);
+		response.setSubject("Llama response");
+		response.addMessage({
+			contentType: "text/plain",
+			data:
+				res instanceof ReadableStream
+					? await new Response(res).text()
+					: res.response!,
+		});
+
+		const replyMessage = new EmailMessage(
+			"<email>",
+			message.from,
+			response.asRaw(),
+		);
+		await message.reply(replyMessage);
+	},
+} satisfies ExportedHandler<Env>;
+```
+
+See [Reply to emails from Workers](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/#reply-to-emails) for more information.
+
+Mar 11, 2025
+
+[<h2>WAF Release - 2025-03-11 - Emergency</h2>](https://developers.cloudflare.com/changelog/post/2025-03-11-emergency-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...73febb31 | 100731 | Apache Camel - Code Injection - CVE:CVE-2025-27636 | N/A | Block | This is a New Detection |
+
+Mar 11, 2025
+
+[<h2>Access your Worker's environment variables from process.env</h2>](https://developers.cloudflare.com/changelog/post/2025-03-11-process-env-support/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+You can now access [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) and [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) on [`process.env`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/process/#processenv) when using the [`nodejs_compat` compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
+
+```js
+const apiClient = ApiClient.new({ apiKey: process.env.API_KEY });
+const LOG_LEVEL = process.env.LOG_LEVEL || "info";
+```
+
+In Node.js, environment variables are exposed via the global `process.env` object. Some libraries assume that this object will be populated, and many developers may be used to accessing variables in this way.
+
+Previously, the `process.env` object was always empty unless written to in Worker code. This could cause unexpected errors or friction when developing Workers using code previously written for Node.js.
+
+Now, [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/), [secrets](https://developers.cloudflare.com/workers/configuration/secrets/), and [version metadata](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) can all be accessed on `process.env`.
+
+To opt-in to the new `process.env` behaviour now, add the [`nodejs_compat_populate_process_env`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-auto-populating-processenv) compatibility flag to your `wrangler.json` configuration:
+
+```jsonc
+{
+	// Rest of your configuration
+	// Add "nodejs_compat_populate_process_env" to your compatibility_flags array
+	"compatibility_flags": ["nodejs_compat", "nodejs_compat_populate_process_env"],
+	// Rest of your configuration
+```
+
+```toml
+compatibility_flags = [ "nodejs_compat", "nodejs_compat_populate_process_env" ]
+```
+
+After April 1, 2025, populating `process.env` will become the default behavior when both `nodejs_compat` is enabled and your Worker's `compatibility_date` is after "2025-04-01".
+
+Mar 10, 2025
+
+[<h2>WAF Release - 2025-03-10</h2>](https://developers.cloudflare.com/changelog/post/2025-03-10-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...b2a51e3d | 100722 | Ivanti - Information Disclosure - CVE:CVE-2025-0282 | Log | Block | This is a New Detection |
+| Cloudflare Managed Ruleset | ...259073d5 | 100723 | Cisco IOS XE - Information Disclosure - CVE:CVE-2023-20198 | Log | Block | This is a New Detection |
+
+Mar 7, 2025
+
+[<h2>Cloudflare One Agent now supports Endpoint Monitoring</h2>](https://developers.cloudflare.com/changelog/post/2025-03-07-cloudflare-one-device-health-monitoring/)
+
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+
+[Digital Experience Monitoring (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) provides visibility into device, network, and application performance across your Cloudflare SASE deployment. The latest release of the Cloudflare One agent (v2025.1.861) now includes device endpoint monitoring capabilities to provide deeper visibility into end-user device performance which can be analyzed directly from the dashboard.
+
+Device health metrics are now automatically collected, allowing administrators to:
+
+- View the last network a user was connected to
+- Monitor CPU and RAM utilization on devices
+- Identify resource-intensive processes running on endpoints
+
+![Device endpoint monitoring dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1226,height=675,format=webp/_astro/cloudflare-one-agent-health-monitoring.XXtiRuOp.gif)
+
+This feature complements existing DEX features like [synthetic application monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) and [network path visualization](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/), creating a comprehensive troubleshooting workflow that connects application performance with device state.
+
+For more details refer to our [DEX](https://developers.cloudflare.com/cloudflare-one/insights/dex/) documentation.
+
+Mar 7, 2025
+
+[<h2>Hyperdrive reduces query latency by up to 90% and now supports IP access control lists</h2>](https://developers.cloudflare.com/changelog/post/2025-03-04-hyperdrive-pooling-near-database-and-ip-range-egress/)
+
+[Hyperdrive](https://developers.cloudflare.com/hyperdrive/)
+
+Hyperdrive now pools database connections in one or more regions close to your database. This means that your uncached queries and new database connections have up to 90% less latency as measured from connection pools.
+
+![Hyperdrive query latency decreases by 90% during Hyperdrive's gradual rollout of regional pooling.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1732,height=836,format=webp/_astro/hyperdrive-regional-pooling-query-latency-improvement.Bzz_xvHZ.png)
+
+By improving placement of Hyperdrive database connection pools, Workers' Smart Placement is now more effective when used with Hyperdrive, ensuring that your Worker can be placed as close to your database as possible.
+
+With this update, Hyperdrive also uses [Cloudflare's standard IP address ranges ↗︎](https://www.cloudflare.com/ips/) to connect to your database. This enables you to configure the firewall policies (IP access control lists) of your database to only allow access from Cloudflare and Hyperdrive.
+
+Refer to [documentation on how Hyperdrive makes connecting to regional databases from Cloudflare Workers fast](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
+
+This improvement is enabled on all Hyperdrive configurations.
+
+Mar 7, 2025
+
+[<h2>Updated leaked credentials database</h2>](https://developers.cloudflare.com/changelog/post/2025-03-07-updated-leaked-credentials-database/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+Added new records to the leaked credentials database. The record sources are: Have I Been Pwned (HIBP) database, RockYou 2024 dataset, and another third-party database.
+
+Mar 6, 2025
+
+[<h2>One-click Logpush Setup with R2 Object Storage</h2>](https://developers.cloudflare.com/changelog/post/2025-03-06-oneclick-logpush/)
+
+[Logs](https://developers.cloudflare.com/logs/)
+
+We’ve streamlined the [Logpush](https://developers.cloudflare.com/logs/logpush/) setup process by integrating R2 bucket creation directly into the Logpush workflow!
+
+Now, you no longer need to navigate multiple pages to manually create an R2 bucket or copy credentials. With this update, you can seamlessly **configure a Logpush job to R2 in just one click**, reducing friction and making setup faster and easier.
+
+This enhancement makes it easier for customers to adopt Logpush and R2.
+
+For more details refer to our [Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/r2/) documentation.
+
+Mar 6, 2025
+
+[<h2>Set retention polices for your R2 bucket with bucket locks</h2>](https://developers.cloudflare.com/changelog/post/2025-03-06-r2-bucket-locks/)
+
+[R2](https://developers.cloudflare.com/r2/)
+
+You can now use [bucket locks](https://developers.cloudflare.com/r2/buckets/bucket-locks/) to set retention policies on your [R2 buckets](https://developers.cloudflare.com/r2/buckets/) (or specific prefixes within your buckets) for a specified period — or indefinitely. This can help ensure compliance by protecting important data from accidental or malicious deletion.
+
+Locks give you a few ways to ensure your objects are retained (not deleted or overwritten). You can:
+
+- Lock objects for a specific duration, for example 90 days.
+- Lock objects until a certain date, for example January 1, 2030.
+- Lock objects indefinitely, until the lock is explicitly removed.
+
+Buckets can have up to 1,000 [bucket lock rules](https://developers.cloudflare.com/r2/buckets/). Each rule specifies which objects it covers (via prefix) and how long those objects must remain retained.
+
+Here are a couple of examples showing how you can configure bucket lock rules using [Wrangler](https://developers.cloudflare.com/workers/wrangler/):
+
+#### Ensure all objects in a bucket are retained for at least 180 days
+
+```sh
+npx wrangler r2 bucket lock add <bucket> --name 180-days-all --retention-days 180
+```
+
+#### Prevent deletion or overwriting of all logs indefinitely (via prefix)
+
+```sh
+npx wrangler r2 bucket lock add <bucket> --name indefinite-logs --prefix logs/ --retention-indefinite
+```
+
+For more information on bucket locks and how to set retention policies for objects in your R2 buckets, refer to our [documentation](https://developers.cloudflare.com/r2/buckets/bucket-locks/).
+
+Mar 6, 2025
+
+[<h2>Introducing Media Transformations from Cloudflare Stream</h2>](https://developers.cloudflare.com/changelog/post/2025-03-06-media-transformations/)
+
+[Stream](https://developers.cloudflare.com/stream/)
+
+Today, we are thrilled to announce Media Transformations, a new service that brings the magic of [Image Transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/) to *short-form video files,* wherever they are stored!
+
+For customers with a huge volume of short video — generative AI output, e-commerce product videos, social media clips, or short marketing content — uploading those assets to Stream is not always practical. Sometimes, the greatest friction to getting started was the thought of all that migrating. Customers want a simpler solution that retains their current storage strategy to deliver small, optimized MP4 files. Now you can do that with Media Transformations.
+
+To transform a video or image, [enable transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) for your zone, then make a simple request with a specially formatted URL. The result is an MP4 that can be used in an HTML video element without a player library. If your zone already has Image Transformations enabled, then it is ready to optimize videos with Media Transformations, too.
+
+*URL formattext*
+
+```text
+https://example.com/cdn-cgi/media/<OPTIONS>/<SOURCE-VIDEO>
+```
+
+For example, we have a short video of the mobile in Austin's office. The original is nearly 30 megabytes and wider than necessary for this layout. Consider a simple width adjustment:
+
+*Example URLtext*
+
+```text
+https://example.com/cdn-cgi/media/width=640/<SOURCE-VIDEO>
+https://developers.cloudflare.com/cdn-cgi/media/width=640/https://middlecache.ced.cloudflare.com/v1/aus-mobile/aus-mobile.mp4
+```
+
+The result is less than 3 megabytes, properly sized, and delivered dynamically so that customers do not have to manage the creation and storage of these transformed assets.
+
+For more information, learn about [Transforming Videos](https://developers.cloudflare.com/stream/transform-videos/).
+
+Mar 4, 2025
+
+[<h2>Gain visibility into user actions in Zero Trust Browser Isolation sessions</h2>](https://developers.cloudflare.com/changelog/post/2025-03-03-user-action-logging/)
+
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
+
+We're excited to announce that new logging capabilities for [Remote Browser Isolation (RBI)](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) through [Logpush](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) are available in Beta starting today!
+
+With these enhanced logs, administrators can gain visibility into end user behavior in the remote browser and track blocked data extraction attempts, along with the websites that triggered them, in an isolated session.
+
+```json
+{
+	"AccountID": "$ACCOUNT_ID",
+	"Decision": "block",
+	"DomainName": "www.example.com",
+	"Timestamp": "2025-02-27T23:15:06Z",
+	"Type": "copy",
+	"UserID": "$USER_ID"
+}
+```
+
+User Actions available:
+
+- **Copy & Paste**
+- **Downloads & Uploads**
+- **Printing**
+
+Learn more about how to get started with Logpush in our [documentation](https://developers.cloudflare.com/logs/logpush/).
+
+Mar 3, 2025
+
+[<h2>New SAML and OIDC Fields and SAML transforms for Access for SaaS</h2>](https://developers.cloudflare.com/changelog/post/2025-03-03-saml-oidc-fields-saml-transformations/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+[Access for SaaS applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/) now include more configuration options to support a wider array of SaaS applications.
+
+**SAML and OIDC Field Additions**
+
+OIDC apps now include:
+
+- Group Filtering via RegEx
+- OIDC Claim mapping from an IdP
+- OIDC token lifetime control
+- Advanced OIDC auth flows including hybrid and implicit flows
+
+![OIDC field additions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1021,height=192,format=webp/_astro/oidc-claims.2di8l9Lv.png)
+
+SAML apps now include improved SAML attribute mapping from an IdP.
+
+![SAML field additions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1051,height=202,format=webp/_astro/saml-attribute-statements.CW45j5Qi.png)
+
+**SAML transformations**
+
+SAML identities sent to Access applications can be fully customized using JSONata expressions. This allows admins to configure the precise identity SAML statement sent to a SaaS application.
+
+![Configured SAML statement sent to application](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1030,height=254,format=webp/_astro/transformation-box.DyKn-DdN.png)
+
+Mar 3, 2025
+
+[<h2>WAF Release - 2025-03-03</h2>](https://developers.cloudflare.com/changelog/post/2025-03-03-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...93e63099 | 100721 | Ivanti - Remote Code Execution - CVE:CVE-2024-13159, CVE:CVE-2024-13160, CVE:CVE-2024-13161 | Log | Block | This is a New Detection |
+| Cloudflare Managed Ruleset | ...cac42ce2 | 100596 | Citrix Content Collaboration ShareFile - Remote Code Execution - CVE:CVE-2023-24489 | N/A | Block | |
+
+Mar 1, 2025
+
+[<h2>Use Logpush for Email security detections</h2>](https://developers.cloudflare.com/changelog/post/2025-03-01-logpush-detections/)
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
+
+You can now send detection logs to an endpoint of your choice with Cloudflare Logpush.
+
+Filter logs matching specific criteria you have set and select from over 25 fields you want to send. When creating a new Logpush job, remember to select **Email security alerts** as the dataset.
+
+![logpush-detections](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=927,height=688,format=webp/_astro/Logpush-Detections.Dc5tHta3.png)
+
+For more information, refer to [Enable detection logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-detection-logs).
+
+This feature is available across these Email security packages:
+
+- **Enterprise**
+- **Enterprise + PhishGuard**
+
+Feb 28, 2025
+
+[<h2>Use the latest JavaScript features with Wrangler CLI v4.0.0-rc.0</h2>](https://developers.cloudflare.com/changelog/post/2025-02-28-wrangler-v4-rc/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+We've released a release candidate of the next major version of [Wrangler](https://developers.cloudflare.com/workers/wrangler/), the CLI for Cloudflare Workers — `wrangler@4.0.0-rc.0`.
+
+You can run the following command to install it and be one of the first to try it out:
+
+npmyarnpnpmbun
+
+```
+npm i wrangler@v4-rc
+```
+
+```
+yarn add wrangler@v4-rc
+```
+
+```
+pnpm add wrangler@v4-rc
+```
+
+```
+bun add wrangler@v4-rc
+```
+
+Unlike previous major versions of Wrangler, which were [foundational rewrites ↗︎](https://blog.cloudflare.com/wrangler-v2-beta/) and [rearchitectures ↗︎](https://blog.cloudflare.com/wrangler3/) — Version 4 of Wrangler includes a much smaller set of changes. If you use Wrangler today, your workflow is very unlikely to change. Before we release Wrangler v4 and advance past the release candidate stage, we'll share a detailed migration guide in the Workers developer docs. But for the vast majority of cases, you won't need to do anything to migrate — things will just work as they do today. We are sharing this release candidate in advance of the official release of v4, so that you can try it out early and share feedback.
+
+#### New JavaScript language features that you can now use with Wrangler v4
+
+Version 4 of Wrangler updates the version of [esbuild ↗︎](https://esbuild.github.io/) that Wrangler uses internally, allowing you to use modern JavaScript language features, including:
+
+##### The `using` keyword from Explicit Resource Management
+
+The [`using` keyword from the Explicit Resource Management standard](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/#explicit-resource-management) makes it easier to work with the [JavaScript-native RPC system built into Workers](https://developers.cloudflare.com/workers/runtime-apis/rpc/). This means that when you obtain a stub, you can ensure that it is automatically disposed when you exit scope it was created in:
+
+```js
+function sendEmail(id, message) {
+  using user = await env.USER_SERVICE.findUser(id);
+  await user.sendEmail(message);
+
+  // user[Symbol.dispose]() is implicitly called at the end of the scope.
+}
+```
+
+##### Import attributes
+
+[Import attributes ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import/with) allow you to denote the type or other attributes of the module that your code imports. For example, you can import a JSON module, using the following syntax:
+
+```js
+import data from "./data.json" with { type: "json" };
+```
+
+#### Other changes
+
+##### `--local` is now the default for all CLI commands
+
+All commands that access resources (for example, `wrangler kv`, `wrangler r2`, `wrangler d1`) now access local datastores by default, ensuring consistent behavior.
+
+##### Clearer policy for the minimum required version of Node.js required to run Wrangler
+
+Moving forward, the [active, maintenance, and current versions of Node.js ↗︎](https://nodejs.org/en/about/previous-releases) will be officially supported by Wrangler. This means the minimum officially supported version of Node.js you must have installed for Wrangler v4 will be Node.js v18 or later. This policy mirrors how many other packages and CLIs support older versions of Node.js, and ensures that as long as you are using a version of Node.js that the Node.js project itself supports, this will be supported by Wrangler as well.
+
+##### Features previously deprecated in Wrangler v3 are now removed in Wrangler v4
+
+All previously deprecated features in [Wrangler v2 ↗︎](https://developers.cloudflare.com/workers/wrangler/deprecations/#wrangler-v2) and in [Wrangler v3 ↗︎](https://developers.cloudflare.com/workers/wrangler/deprecations/#wrangler-v3) have now been removed. Additionally, the following features that were deprecated during the Wrangler v3 release have been removed:
+
+- Legacy Assets (using `wrangler dev/deploy --legacy-assets` or the `legacy_assets` config file property). Instead, we recommend you [migrate to Workers assets ↗︎](https://developers.cloudflare.com/workers/static-assets/).
+- Legacy Node.js compatibility (using `wrangler dev/deploy --node-compat` or the `node_compat` config file property). Instead, use the [`nodejs_compat` compatibility flag ↗︎](https://developers.cloudflare.com/workers/runtime-apis/nodejs). This includes the functionality from legacy `node_compat` polyfills and natively implemented Node.js APIs.
+- `wrangler version`. Instead, use `wrangler --version` to check the current version of Wrangler.
+- `getBindingsProxy()` (via `import { getBindingsProxy } from "wrangler"`). Instead, use the [`getPlatformProxy()` API ↗︎](https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy), which takes exactly the same arguments.
+- `usage_model`. This no longer has any effect, after the [rollout of Workers Standard Pricing ↗︎](https://blog.cloudflare.com/workers-pricing-scale-to-zero/).
+
+We'd love your feedback! If you find a bug or hit a roadblock when upgrading to Wrangler v4, [open an issue on the `cloudflare/workers-sdk` repository on GitHub ↗︎](https://github.com/cloudflare/workers-sdk/issues/new?template=bug-template.yaml).
+
+Feb 27, 2025
+
+[<h2>Check status of Email security or Area 1</h2>](https://developers.cloudflare.com/changelog/post/2025-02-07-check-status/)
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
+
+Concerns about performance for Email security or Area 1? You can now check the operational status of both on the [Cloudflare Status page ↗︎](https://www.cloudflarestatus.com/).
+
+For Email security, look under **Cloudflare Sites and Services**.
+
+- **Dashboard** is the dashboard for Cloudflare, including Email security
+- **Email security (Zero Trust)** is the processing of email
+- **API** are the Cloudflare endpoints, including the ones for Email security
+
+For Area 1, under **Cloudflare Sites and Services**:
+
+- **Area 1 - Dash** is the dashboard for Cloudflare, including Email security
+- **Email security (Area1)** is the processing of email
+- **Area 1 - API** are the Area 1 endpoints
+
+![Status-page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=792,height=348,format=webp/_astro/Status-Page.DcFJ1286.png)
+
+This feature is available across these Email security packages:
+
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
+
+Feb 27, 2025
+
+[<h2>New REST API is in open beta!</h2>](https://developers.cloudflare.com/changelog/post/2025-02-27-br-rest-api-beta/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+We've released a new REST API for [Browser Rendering](https://developers.cloudflare.com/browser-run/) in open beta, making interacting with browsers easier than ever. This new API provides endpoints for common browser actions, with more to be added in the future.
+
+With the **REST API** you can:
+
+- **Capture screenshots** – Use `/screenshot` to take a screenshot of a webpage from provided URL or HTML.
+- **Generate PDFs** – Use `/pdf` to convert web pages into PDFs.
+- **Extract HTML content** – Use `/content` to retrieve the full HTML from a page. **Snapshot (HTML + Screenshot)** – Use `/snapshot` to capture both the page's HTML and a screenshot in one request
+- **Scrape Web Elements** – Use `/scrape` to extract specific elements from a page.
+
+For example, to capture a screenshot:
+
+*Screenshot examplebash*
+
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "html": "Hello World!",
+    "screenshotOptions": {
+      "type": "webp",
+      "omitBackground": true
+    }
+  }' \
+  --output "screenshot.webp"
+```
+
+Learn more in our [documentation](https://developers.cloudflare.com/browser-run/quick-actions/).
+
+Feb 27, 2025
+
+[<h2>DNS Insights in Cloudflare Radar</h2>](https://developers.cloudflare.com/changelog/post/2025-02-27-radar-dns-insights/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Radar**](https://developers.cloudflare.com/radar/) has expanded its DNS insights, providing visibility into aggregated traffic and usage trends observed by our [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/) DNS resolver. In addition to global, location, and ASN traffic trends, we are also providing perspectives on protocol usage, query/response characteristics, and DNSSEC usage.
+
+Previously limited to the [`top`](https://developers.cloudflare.com/api/resources/radar/subresources/dns/subresources/top/) locations and ASes endpoints, we have now introduced the following endpoints:
+
+- [`/dns/timeseries`](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/timeseries/): Retrieves DNS query volume over time.
+- [`/dns/summary/{dimension}`](https://developers.cloudflare.com/api/resources/radar/subresources/dns/subresources/summary/): Retrieves summaries of DNS query distribution across ten different dimensions.
+- [`/dns/timeseries_groups/{dimension}`](https://developers.cloudflare.com/api/resources/radar/subresources/dns/subresources/timeseries_groups/): Retrieves timeseries data for DNS query distribution across ten different dimensions.
+
+For the `summary` and `timeseries_groups` endpoints, the following dimensions are available, displaying the distribution of DNS queries based on:
+
+- `cache_hit`: Cache status (hit vs. miss).
+- `dnsssec`: DNSSEC support status (secure, insecure, invalid or other).
+- `dnsssec_aware`: DNSSEC client awareness (aware vs. not-aware).
+- `dnsssec_e2e`: End-to-end security (secure vs. insecure).
+- `ip_version`: IP version (IPv4 vs. IPv6).
+- `matching_answer`: Matching answer status (match vs. no-match).
+- `protocol`: Transport protocol (UDP, TLS, HTTPS or TCP).
+- `query_type`: Query type ( `A`, `AAAA`, `PTR`, etc.).
+- `response_code`: Response code ( `NOERROR`, `NXDOMAIN`, `REFUSED`, etc.).
+- `response_ttl`: Response TTL.
+
+Learn more about the new Radar DNS insights in our [blog post ↗︎](https://blog.cloudflare.com/new-dns-section-on-cloudflare-radar/), and check out the [new Radar page ↗︎](https://radar.cloudflare.com/dns).
+
+Feb 26, 2025
+
+[<h2>Introducing Guardrails in AI Gateway</h2>](https://developers.cloudflare.com/changelog/post/2025-02-26-guardrails/)
+
+[AI Gateway](https://developers.cloudflare.com/ai-gateway/)
+
+[AI Gateway](https://developers.cloudflare.com/ai-gateway/) now includes [Guardrails](https://developers.cloudflare.com/ai-gateway/features/guardrails/), to help you monitor your AI apps for harmful or inappropriate content and deploy safely.
+
+Within the AI Gateway settings, you can configure:
+
+- **Guardrails**: Enable or disable content moderation as needed.
+- **Evaluation scope**: Select whether to moderate user prompts, model responses, or both.
+- **Hazard categories**: Specify which categories to monitor and determine whether detected inappropriate content should be blocked or flagged.
+
+![Guardrails in AI Gateway](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2524,height=444,format=webp/_astro/Guardrails.BTNc0qeC.png)
+
+Learn more in the [blog ↗︎](https://blog.cloudflare.com/guardrails-in-ai-gateway/) or our [documentation](https://developers.cloudflare.com/ai-gateway/features/guardrails/).
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/49/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/49/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

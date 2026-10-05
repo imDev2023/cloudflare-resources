@@ -1,0 +1,3769 @@
+---
+title: Tags
+---
+
+[Skip to content](#_top)
+
+[API Reference](https://developers.cloudflare.com/api)
+
+[Cloudforce One](https://developers.cloudflare.com/api/resources/cloudforce_one)
+
+[Threat Events](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events)
+
+Copy Markdown
+
+Open in **Claude**Open in **ChatGPT**Open in **Cursor**
+
+---
+
+**Copy Markdown****View as Markdown**
+
+# Tags
+
+##### [Lists all tags (SoT)](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/tags/methods/list)
+
+GET/accounts/{account\_id}/cloudforce-one/events/tags
+
+##### [Creates a new tag](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/tags/methods/create)
+
+POST/accounts/{account\_id}/cloudforce-one/events/tags/create
+
+##### [Updates a tag (SoT)](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/tags/methods/edit)
+
+PATCH/accounts/{account\_id}/cloudforce-one/events/tags/{tag\_uuid}
+
+##### [Deletes a tag (SoT)](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/tags/methods/delete)
+
+DELETE/accounts/{account\_id}/cloudforce-one/events/tags/{tag\_uuid}
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+TagListResponse object {pagination, tags }
+
+</summary>
+
+<details>
+
+<summary>
+
+pagination: object {page, pageSize, totalCount, totalPages }
+
+</summary>
+
+page: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20page">Link to this property</a>
+
+pageSize: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20pageSize">Link to this property</a>
+
+totalCount: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20totalCount">Link to this property</a>
+
+totalPages: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20totalPages">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination">Link to this property</a>
+
+<details>
+
+<summary>
+
+tags: array of object {uuid, value, activeDuration, 34 more }
+
+</summary>
+
+uuid: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20uuid">Link to this property</a>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+activeDuration: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20activeDuration">Link to this property</a>
+
+<details>
+
+<summary>
+
+activeDuration\_annotated: optional object {value, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20activeDuration_annotated">Link to this property</a>
+
+actorCategory: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20actorCategory">Link to this property</a>
+
+<details>
+
+<summary>
+
+actorCategory\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20actorCategory_annotated">Link to this property</a>
+
+<details>
+
+<summary>
+
+aliases: optional array of object {value, confidence, tlp }
+
+Structured aliases ({ value, confidence 1-10, tlp }). Public: returned to all accounts with per-entry TLP filtering (entries with tlp: purple are removed for non-CFONE accounts).
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+maximum10
+
+minimum1
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliases">Link to this property</a>
+
+aliasGroupNames: optional array of string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliasGroupNames">Link to this property</a>
+
+aliasGroupNamesInternal: optional array of string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20aliasGroupNamesInternal">Link to this property</a>
+
+attributionOrganization: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20attributionOrganization">Link to this property</a>
+
+<details>
+
+<summary>
+
+attributionOrganization\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20attributionOrganization_annotated">Link to this property</a>
+
+categoryName: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20categoryName">Link to this property</a>
+
+categoryUuid: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20categoryUuid">Link to this property</a>
+
+confidence: optional number
+
+Overall tag confidence (1-10).
+
+maximum10
+
+minimum1
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20confidence">Link to this property</a>
+
+createdAt: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20createdAt">Link to this property</a>
+
+dateOfDiscovery: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20dateOfDiscovery">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+externalReferenceLinks: optional array of string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferenceLinks">Link to this property</a>
+
+<details>
+
+<summary>
+
+externalReferences: optional array of object {url, description }
+
+Structured external references ({ url, description }). Public: returned to all accounts.
+
+</summary>
+
+url: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences%20%3E%20(items)%20%3E%20(property)%20url">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences">Link to this property</a>
+
+<details>
+
+<summary>
+
+externalReferences\_annotated: optional array of object {value, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20externalReferences_annotated">Link to this property</a>
+
+<details>
+
+<summary>
+
+internalAliases: optional array of object {value, confidence, tlp }
+
+Owner-private structured aliases ({ value, confidence 1-10, tlp }). Returned to the owning account and omitted from shared-catalog non-owner responses.
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+maximum10
+
+minimum1
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20internalAliases">Link to this property</a>
+
+internalDescription: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20internalDescription">Link to this property</a>
+
+lastSeen: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20lastSeen">Link to this property</a>
+
+motive: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20motive">Link to this property</a>
+
+<details>
+
+<summary>
+
+motive\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20motive_annotated">Link to this property</a>
+
+opsecLevel: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20opsecLevel">Link to this property</a>
+
+<details>
+
+<summary>
+
+opsecLevel\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20opsecLevel_annotated">Link to this property</a>
+
+originCountryISO: optional string
+
+ISO country code (alpha-2 or alpha-3). Normalized to uppercase on read. Null when stored value is blank/whitespace.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20originCountryISO">Link to this property</a>
+
+<details>
+
+<summary>
+
+originCountryISO\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20originCountryISO_annotated">Link to this property</a>
+
+priority: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20priority">Link to this property</a>
+
+<details>
+
+<summary>
+
+priority\_annotated: optional object {value, tlp }
+
+</summary>
+
+value: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20priority_annotated">Link to this property</a>
+
+properties: optional map\[unknown]
+
+Parsed custom field values. Null when the tag has no custom fields.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20properties">Link to this property</a>
+
+sophisticationLevel: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20sophisticationLevel">Link to this property</a>
+
+<details>
+
+<summary>
+
+sophisticationLevel\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20sophisticationLevel_annotated">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+Tag-level TLP handling marking.
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20tlp">Link to this property</a>
+
+updatedAt: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20updatedAt">Link to this property</a>
+
+version: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20version">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)%20%3E%20(property)%20tags">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_list_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+TagCreateResponse object {uuid, value, activeDuration, 34 more }
+
+</summary>
+
+uuid: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20uuid">Link to this property</a>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20value">Link to this property</a>
+
+activeDuration: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration">Link to this property</a>
+
+<details>
+
+<summary>
+
+activeDuration\_annotated: optional object {value, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated">Link to this property</a>
+
+actorCategory: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory">Link to this property</a>
+
+<details>
+
+<summary>
+
+actorCategory\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated">Link to this property</a>
+
+<details>
+
+<summary>
+
+aliases: optional array of object {value, confidence, tlp }
+
+Structured aliases ({ value, confidence 1-10, tlp }). Public: returned to all accounts with per-entry TLP filtering (entries with tlp: purple are removed for non-CFONE accounts).
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+maximum10
+
+minimum1
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliases">Link to this property</a>
+
+aliasGroupNames: optional array of string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliasGroupNames">Link to this property</a>
+
+aliasGroupNamesInternal: optional array of string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20aliasGroupNamesInternal">Link to this property</a>
+
+attributionOrganization: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization">Link to this property</a>
+
+<details>
+
+<summary>
+
+attributionOrganization\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated">Link to this property</a>
+
+categoryName: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20categoryName">Link to this property</a>
+
+categoryUuid: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20categoryUuid">Link to this property</a>
+
+confidence: optional number
+
+Overall tag confidence (1-10).
+
+maximum10
+
+minimum1
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20confidence">Link to this property</a>
+
+createdAt: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20createdAt">Link to this property</a>
+
+dateOfDiscovery: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20dateOfDiscovery">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+externalReferenceLinks: optional array of string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferenceLinks">Link to this property</a>
+
+<details>
+
+<summary>
+
+externalReferences: optional array of object {url, description }
+
+Structured external references ({ url, description }). Public: returned to all accounts.
+
+</summary>
+
+url: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences%20%3E%20(items)%20%3E%20(property)%20url">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences">Link to this property</a>
+
+<details>
+
+<summary>
+
+externalReferences\_annotated: optional array of object {value, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated">Link to this property</a>
+
+<details>
+
+<summary>
+
+internalAliases: optional array of object {value, confidence, tlp }
+
+Owner-private structured aliases ({ value, confidence 1-10, tlp }). Returned to the owning account and omitted from shared-catalog non-owner responses.
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+maximum10
+
+minimum1
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases">Link to this property</a>
+
+internalDescription: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20internalDescription">Link to this property</a>
+
+lastSeen: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20lastSeen">Link to this property</a>
+
+motive: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20motive">Link to this property</a>
+
+<details>
+
+<summary>
+
+motive\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated">Link to this property</a>
+
+opsecLevel: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel">Link to this property</a>
+
+<details>
+
+<summary>
+
+opsecLevel\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated">Link to this property</a>
+
+originCountryISO: optional string
+
+ISO country code (alpha-2 or alpha-3). Normalized to uppercase on read. Null when stored value is blank/whitespace.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO">Link to this property</a>
+
+<details>
+
+<summary>
+
+originCountryISO\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated">Link to this property</a>
+
+priority: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20priority">Link to this property</a>
+
+<details>
+
+<summary>
+
+priority\_annotated: optional object {value, tlp }
+
+</summary>
+
+value: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated">Link to this property</a>
+
+properties: optional map\[unknown]
+
+Parsed custom field values. Null when the tag has no custom fields.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20properties">Link to this property</a>
+
+sophisticationLevel: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel">Link to this property</a>
+
+<details>
+
+<summary>
+
+sophisticationLevel\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+Tag-level TLP handling marking.
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20tlp">Link to this property</a>
+
+updatedAt: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20updatedAt">Link to this property</a>
+
+version: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)%20%3E%20(property)%20version">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_create_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+TagEditResponse object {uuid, value, activeDuration, 34 more }
+
+</summary>
+
+uuid: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20uuid">Link to this property</a>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20value">Link to this property</a>
+
+activeDuration: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration">Link to this property</a>
+
+<details>
+
+<summary>
+
+activeDuration\_annotated: optional object {value, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20activeDuration_annotated">Link to this property</a>
+
+actorCategory: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory">Link to this property</a>
+
+<details>
+
+<summary>
+
+actorCategory\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20actorCategory_annotated">Link to this property</a>
+
+<details>
+
+<summary>
+
+aliases: optional array of object {value, confidence, tlp }
+
+Structured aliases ({ value, confidence 1-10, tlp }). Public: returned to all accounts with per-entry TLP filtering (entries with tlp: purple are removed for non-CFONE accounts).
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+maximum10
+
+minimum1
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliases%20%3E%20(items)%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliases">Link to this property</a>
+
+aliasGroupNames: optional array of string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliasGroupNames">Link to this property</a>
+
+aliasGroupNamesInternal: optional array of string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20aliasGroupNamesInternal">Link to this property</a>
+
+attributionOrganization: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization">Link to this property</a>
+
+<details>
+
+<summary>
+
+attributionOrganization\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20attributionOrganization_annotated">Link to this property</a>
+
+categoryName: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20categoryName">Link to this property</a>
+
+categoryUuid: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20categoryUuid">Link to this property</a>
+
+confidence: optional number
+
+Overall tag confidence (1-10).
+
+maximum10
+
+minimum1
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20confidence">Link to this property</a>
+
+createdAt: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20createdAt">Link to this property</a>
+
+dateOfDiscovery: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20dateOfDiscovery">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+externalReferenceLinks: optional array of string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferenceLinks">Link to this property</a>
+
+<details>
+
+<summary>
+
+externalReferences: optional array of object {url, description }
+
+Structured external references ({ url, description }). Public: returned to all accounts.
+
+</summary>
+
+url: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences%20%3E%20(items)%20%3E%20(property)%20url">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences">Link to this property</a>
+
+<details>
+
+<summary>
+
+externalReferences\_annotated: optional array of object {value, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated%20%3E%20(items)%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20externalReferences_annotated">Link to this property</a>
+
+<details>
+
+<summary>
+
+internalAliases: optional array of object {value, confidence, tlp }
+
+Owner-private structured aliases ({ value, confidence 1-10, tlp }). Returned to the owning account and omitted from shared-catalog non-owner responses.
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+maximum10
+
+minimum1
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases%20%3E%20(items)%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20internalAliases">Link to this property</a>
+
+internalDescription: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20internalDescription">Link to this property</a>
+
+lastSeen: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20lastSeen">Link to this property</a>
+
+motive: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20motive">Link to this property</a>
+
+<details>
+
+<summary>
+
+motive\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20motive_annotated">Link to this property</a>
+
+opsecLevel: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel">Link to this property</a>
+
+<details>
+
+<summary>
+
+opsecLevel\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20opsecLevel_annotated">Link to this property</a>
+
+originCountryISO: optional string
+
+ISO country code (alpha-2 or alpha-3). Normalized to uppercase on read. Null when stored value is blank/whitespace.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO">Link to this property</a>
+
+<details>
+
+<summary>
+
+originCountryISO\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20originCountryISO_annotated">Link to this property</a>
+
+priority: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20priority">Link to this property</a>
+
+<details>
+
+<summary>
+
+priority\_annotated: optional object {value, tlp }
+
+</summary>
+
+value: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20priority_annotated">Link to this property</a>
+
+properties: optional map\[unknown]
+
+Parsed custom field values. Null when the tag has no custom fields.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20properties">Link to this property</a>
+
+sophisticationLevel: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel">Link to this property</a>
+
+<details>
+
+<summary>
+
+sophisticationLevel\_annotated: optional object {value, confidence, tlp }
+
+</summary>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20value">Link to this property</a>
+
+confidence: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20confidence">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20sophisticationLevel_annotated">Link to this property</a>
+
+<details>
+
+<summary>
+
+tlp: optional "red"or "amber"or "amber-strict"or 4 more
+
+Tag-level TLP handling marking.
+
+</summary>
+
+One of the following:
+
+"red"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%200">Link to this property</a>
+
+"amber"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%201">Link to this property</a>
+
+"amber-strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%202">Link to this property</a>
+
+"green"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%203">Link to this property</a>
+
+"clear"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%204">Link to this property</a>
+
+"purple"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%205">Link to this property</a>
+
+"amber+strict"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20tlp%20%3E%20(member)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20tlp">Link to this property</a>
+
+updatedAt: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20updatedAt">Link to this property</a>
+
+version: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)%20%3E%20(property)%20version">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_edit_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+TagDeleteResponse object {uuid }
+
+</summary>
+
+uuid: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_delete_response%20%3E%20(schema)%20%3E%20(property)%20uuid">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20cloudforce_one.threat_events.tags%20%3E%20(model)%20tag_delete_response%20%3E%20(schema)>)
+
+#### TagsCategories
+
+##### [Lists all tag categories (SoT)](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/tags/subresources/categories/methods/list)
+
+GET/accounts/{account\_id}/cloudforce-one/events/tags/categories
+
+##### [Creates a new tag category (SoT)](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/tags/subresources/categories/methods/create)
+
+POST/accounts/{account\_id}/cloudforce-one/events/tags/categories/create
+
+##### [Updates a tag category (SoT)](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/tags/subresources/categories/methods/edit)
+
+Deprecated
+
+PATCH/accounts/{account\_id}/cloudforce-one/events/tags/categories/{category\_uuid}
+
+##### [Deletes a tag category (SoT)](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/tags/subresources/categories/methods/delete)
+
+Deprecated
+
+DELETE/accounts/{account\_id}/cloudforce-one/events/tags/categories/{category\_uuid}
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+CategoryListResponse object {categories }
+
+</summary>
+
+<details>
+
+<summary>
+
+categories: array of object {name, uuid, createdAt, 3 more }
+
+</summary>
+
+name: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+uuid: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20uuid">Link to this property</a>
+
+createdAt: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20createdAt">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+<details>
+
+<summary>
+
+schema: optional array of object {key, kind, allowedValues, 11 more }
+
+Parsed FieldDefinition\[] defining custom fields for this category, or null if none.
+
+</summary>
+
+key: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20key">Link to this property</a>
+
+<details>
+
+<summary>
+
+kind: "string"or "number"or "enum"or 3 more
+
+</summary>
+
+One of the following:
+
+"string"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%200">Link to this property</a>
+
+"number"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%201">Link to this property</a>
+
+"enum"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%202">Link to this property</a>
+
+"date"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%203">Link to this property</a>
+
+"array"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%204">Link to this property</a>
+
+"object"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind">Link to this property</a>
+
+allowedValues: optional array of string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20allowedValues">Link to this property</a>
+
+<details>
+
+<summary>
+
+annotations: optional object {confidence, tlp }
+
+</summary>
+
+confidence: optional boolean
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20annotations%20%3E%20(property)%20confidence">Link to this property</a>
+
+tlp: optional boolean
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20annotations%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20annotations">Link to this property</a>
+
+deprecated: optional boolean
+
+Marks a field as unavailable for new values while retaining its definition for historical values.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20deprecated">Link to this property</a>
+
+deprecatedValues: optional array of string
+
+Enum values unavailable for new writes but retained in allowedValues for historical display.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20deprecatedValues">Link to this property</a>
+
+element: optional unknown
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20element">Link to this property</a>
+
+<details>
+
+<summary>
+
+enforcement: optional "error"or "warn"or "off"
+
+</summary>
+
+One of the following:
+
+"error"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20enforcement%20%3E%20(member)%200">Link to this property</a>
+
+"warn"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20enforcement%20%3E%20(member)%201">Link to this property</a>
+
+"off"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20enforcement%20%3E%20(member)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20enforcement">Link to this property</a>
+
+<details>
+
+<summary>
+
+format: optional "date"or "url"or "duration"or "country"
+
+</summary>
+
+One of the following:
+
+"date"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format%20%3E%20(member)%200">Link to this property</a>
+
+"url"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format%20%3E%20(member)%201">Link to this property</a>
+
+"duration"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format%20%3E%20(member)%202">Link to this property</a>
+
+"country"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format">Link to this property</a>
+
+label: optional string
+
+maxLength128
+
+minLength1
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20label">Link to this property</a>
+
+maxLength: optional number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20maxLength">Link to this property</a>
+
+<details>
+
+<summary>
+
+numberConstraint: optional object {integer, max, min }
+
+</summary>
+
+integer: optional boolean
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20numberConstraint%20%3E%20(property)%20integer">Link to this property</a>
+
+max: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20numberConstraint%20%3E%20(property)%20max">Link to this property</a>
+
+min: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20numberConstraint%20%3E%20(property)%20min">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20numberConstraint">Link to this property</a>
+
+properties: optional map\[unknown]
+
+Map of property key to FieldDefinition for object fields. Required when kind is ‘object’. See FieldDefinition (recursive).
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20properties">Link to this property</a>
+
+required: optional boolean
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20required">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20schema">Link to this property</a>
+
+updatedAt: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories%20%3E%20(items)%20%3E%20(property)%20updatedAt">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)%20%3E%20(property)%20categories">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_list_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+CategoryCreateResponse object {name, uuid, createdAt, 3 more }
+
+</summary>
+
+name: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+uuid: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20uuid">Link to this property</a>
+
+createdAt: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20createdAt">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+<details>
+
+<summary>
+
+schema: optional array of object {key, kind, allowedValues, 11 more }
+
+Parsed FieldDefinition\[] defining custom fields for this category, or null if none.
+
+</summary>
+
+key: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20key">Link to this property</a>
+
+<details>
+
+<summary>
+
+kind: "string"or "number"or "enum"or 3 more
+
+</summary>
+
+One of the following:
+
+"string"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%200">Link to this property</a>
+
+"number"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%201">Link to this property</a>
+
+"enum"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%202">Link to this property</a>
+
+"date"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%203">Link to this property</a>
+
+"array"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%204">Link to this property</a>
+
+"object"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind">Link to this property</a>
+
+allowedValues: optional array of string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20allowedValues">Link to this property</a>
+
+<details>
+
+<summary>
+
+annotations: optional object {confidence, tlp }
+
+</summary>
+
+confidence: optional boolean
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20annotations%20%3E%20(property)%20confidence">Link to this property</a>
+
+tlp: optional boolean
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20annotations%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20annotations">Link to this property</a>
+
+deprecated: optional boolean
+
+Marks a field as unavailable for new values while retaining its definition for historical values.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20deprecated">Link to this property</a>
+
+deprecatedValues: optional array of string
+
+Enum values unavailable for new writes but retained in allowedValues for historical display.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20deprecatedValues">Link to this property</a>
+
+element: optional unknown
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20element">Link to this property</a>
+
+<details>
+
+<summary>
+
+enforcement: optional "error"or "warn"or "off"
+
+</summary>
+
+One of the following:
+
+"error"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20enforcement%20%3E%20(member)%200">Link to this property</a>
+
+"warn"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20enforcement%20%3E%20(member)%201">Link to this property</a>
+
+"off"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20enforcement%20%3E%20(member)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20enforcement">Link to this property</a>
+
+<details>
+
+<summary>
+
+format: optional "date"or "url"or "duration"or "country"
+
+</summary>
+
+One of the following:
+
+"date"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format%20%3E%20(member)%200">Link to this property</a>
+
+"url"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format%20%3E%20(member)%201">Link to this property</a>
+
+"duration"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format%20%3E%20(member)%202">Link to this property</a>
+
+"country"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format">Link to this property</a>
+
+label: optional string
+
+maxLength128
+
+minLength1
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20label">Link to this property</a>
+
+maxLength: optional number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20maxLength">Link to this property</a>
+
+<details>
+
+<summary>
+
+numberConstraint: optional object {integer, max, min }
+
+</summary>
+
+integer: optional boolean
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20numberConstraint%20%3E%20(property)%20integer">Link to this property</a>
+
+max: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20numberConstraint%20%3E%20(property)%20max">Link to this property</a>
+
+min: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20numberConstraint%20%3E%20(property)%20min">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20numberConstraint">Link to this property</a>
+
+properties: optional map\[unknown]
+
+Map of property key to FieldDefinition for object fields. Required when kind is ‘object’. See FieldDefinition (recursive).
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20properties">Link to this property</a>
+
+required: optional boolean
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20required">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20schema">Link to this property</a>
+
+updatedAt: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)%20%3E%20(property)%20updatedAt">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_create_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+CategoryEditResponse object {name, uuid, createdAt, 3 more }
+
+</summary>
+
+name: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+uuid: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20uuid">Link to this property</a>
+
+createdAt: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20createdAt">Link to this property</a>
+
+description: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+<details>
+
+<summary>
+
+schema: optional array of object {key, kind, allowedValues, 11 more }
+
+Parsed FieldDefinition\[] defining custom fields for this category, or null if none.
+
+</summary>
+
+key: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20key">Link to this property</a>
+
+<details>
+
+<summary>
+
+kind: "string"or "number"or "enum"or 3 more
+
+</summary>
+
+One of the following:
+
+"string"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%200">Link to this property</a>
+
+"number"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%201">Link to this property</a>
+
+"enum"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%202">Link to this property</a>
+
+"date"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%203">Link to this property</a>
+
+"array"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%204">Link to this property</a>
+
+"object"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind%20%3E%20(member)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20kind">Link to this property</a>
+
+allowedValues: optional array of string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20allowedValues">Link to this property</a>
+
+<details>
+
+<summary>
+
+annotations: optional object {confidence, tlp }
+
+</summary>
+
+confidence: optional boolean
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20annotations%20%3E%20(property)%20confidence">Link to this property</a>
+
+tlp: optional boolean
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20annotations%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20annotations">Link to this property</a>
+
+deprecated: optional boolean
+
+Marks a field as unavailable for new values while retaining its definition for historical values.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20deprecated">Link to this property</a>
+
+deprecatedValues: optional array of string
+
+Enum values unavailable for new writes but retained in allowedValues for historical display.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20deprecatedValues">Link to this property</a>
+
+element: optional unknown
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20element">Link to this property</a>
+
+<details>
+
+<summary>
+
+enforcement: optional "error"or "warn"or "off"
+
+</summary>
+
+One of the following:
+
+"error"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20enforcement%20%3E%20(member)%200">Link to this property</a>
+
+"warn"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20enforcement%20%3E%20(member)%201">Link to this property</a>
+
+"off"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20enforcement%20%3E%20(member)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20enforcement">Link to this property</a>
+
+<details>
+
+<summary>
+
+format: optional "date"or "url"or "duration"or "country"
+
+</summary>
+
+One of the following:
+
+"date"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format%20%3E%20(member)%200">Link to this property</a>
+
+"url"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format%20%3E%20(member)%201">Link to this property</a>
+
+"duration"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format%20%3E%20(member)%202">Link to this property</a>
+
+"country"
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20format">Link to this property</a>
+
+label: optional string
+
+maxLength128
+
+minLength1
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20label">Link to this property</a>
+
+maxLength: optional number
+
+exclusiveMinimum
+
+minimum0
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20maxLength">Link to this property</a>
+
+<details>
+
+<summary>
+
+numberConstraint: optional object {integer, max, min }
+
+</summary>
+
+integer: optional boolean
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20numberConstraint%20%3E%20(property)%20integer">Link to this property</a>
+
+max: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20numberConstraint%20%3E%20(property)%20max">Link to this property</a>
+
+min: optional number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20numberConstraint%20%3E%20(property)%20min">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20numberConstraint">Link to this property</a>
+
+properties: optional map\[unknown]
+
+Map of property key to FieldDefinition for object fields. Required when kind is ‘object’. See FieldDefinition (recursive).
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20properties">Link to this property</a>
+
+required: optional boolean
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema%20%3E%20(items)%20%3E%20(property)%20required">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20schema">Link to this property</a>
+
+updatedAt: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)%20%3E%20(property)%20updatedAt">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_edit_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+CategoryDeleteResponse object {uuid }
+
+</summary>
+
+uuid: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_delete_response%20%3E%20(schema)%20%3E%20(property)%20uuid">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20cloudforce_one.threat_events.tags.categories%20%3E%20(model)%20category_delete_response%20%3E%20(schema)>)
+
+#### TagsIndicators
+
+##### [List indicators related to a tag](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/tags/subresources/indicators/methods/list)
+
+GET/accounts/{account\_id}/cloudforce-one/events/tags/{tag\_uuid}/indicators
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+IndicatorListResponse object {indicators, pagination }
+
+</summary>
+
+<details>
+
+<summary>
+
+indicators: array of object {createdAt, indicatorType, updatedAt, 7 more }
+
+</summary>
+
+createdAt: string
+
+formatdate-time
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20createdAt">Link to this property</a>
+
+indicatorType: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20indicatorType">Link to this property</a>
+
+updatedAt: string
+
+formatdate-time
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20updatedAt">Link to this property</a>
+
+uuid: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20uuid">Link to this property</a>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+datasetId: optional string
+
+The dataset ID this indicator belongs to. Included in list responses.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20datasetId">Link to this property</a>
+
+<details>
+
+<summary>
+
+relatedEvents: optional array of object {datasetId, eventId, eventDate }
+
+Related events, capped by <code>relatedEventsLimit</code> (default 2). Check <code>relatedEventsHasMore</code> to detect a capped list; pass <code>relatedEventsLimit=-1</code> to retrieve all of them.
+
+</summary>
+
+datasetId: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20relatedEvents%20%3E%20(items)%20%3E%20(property)%20datasetId">Link to this property</a>
+
+eventId: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20relatedEvents%20%3E%20(items)%20%3E%20(property)%20eventId">Link to this property</a>
+
+eventDate: optional string
+
+ISO 8601 date of the related event. Null for legacy relationships created before event-date tracking was added.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20relatedEvents%20%3E%20(items)%20%3E%20(property)%20eventDate">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20relatedEvents">Link to this property</a>
+
+relatedEventsHasMore: optional boolean
+
+True when this indicator appears in more events than <code>relatedEvents</code> contains because <code>relatedEventsLimit</code> capped the list. Pass <code>relatedEventsLimit=-1</code> to retrieve every related event.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20relatedEventsHasMore">Link to this property</a>
+
+<details>
+
+<summary>
+
+tags: optional array of object {categoryId, categoryName, uuid, value }
+
+</summary>
+
+categoryId: optional string
+
+The UUID of the tag category, or null when the tag is uncategorized.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20categoryId">Link to this property</a>
+
+categoryName: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20categoryName">Link to this property</a>
+
+uuid: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20uuid">Link to this property</a>
+
+value: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20tags">Link to this property</a>
+
+tlp: optional string
+
+Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators">Link to this property</a>
+
+<details>
+
+<summary>
+
+pagination: object {page, pageSize, totalCount, totalPages }
+
+</summary>
+
+page: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20page">Link to this property</a>
+
+pageSize: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20pageSize">Link to this property</a>
+
+totalCount: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20totalCount">Link to this property</a>
+
+totalPages: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20totalPages">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20cloudforce_one.threat_events.tags.indicators%20%3E%20(model)%20indicator_list_response%20%3E%20(schema)>)
+
+#### TagsIndicatorsBy Dataset
+
+##### [List indicators related to a tag within a dataset (deprecated)](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/tags/subresources/indicators/subresources/by_dataset/methods/list)
+
+Deprecated
+
+GET/accounts/{account\_id}/cloudforce-one/events/dataset/{dataset\_id}/tags/{tag\_uuid}/indicators
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+ByDatasetListResponse object {indicators, pagination }
+
+</summary>
+
+<details>
+
+<summary>
+
+indicators: array of object {createdAt, indicatorType, updatedAt, 7 more }
+
+</summary>
+
+createdAt: string
+
+formatdate-time
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20createdAt">Link to this property</a>
+
+indicatorType: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20indicatorType">Link to this property</a>
+
+updatedAt: string
+
+formatdate-time
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20updatedAt">Link to this property</a>
+
+uuid: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20uuid">Link to this property</a>
+
+value: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+datasetId: optional string
+
+The dataset ID this indicator belongs to. Included in list responses.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20datasetId">Link to this property</a>
+
+<details>
+
+<summary>
+
+relatedEvents: optional array of object {datasetId, eventId, eventDate }
+
+Related events, capped by <code>relatedEventsLimit</code> (default 2). Check <code>relatedEventsHasMore</code> to detect a capped list; pass <code>relatedEventsLimit=-1</code> to retrieve all of them.
+
+</summary>
+
+datasetId: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20relatedEvents%20%3E%20(items)%20%3E%20(property)%20datasetId">Link to this property</a>
+
+eventId: string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20relatedEvents%20%3E%20(items)%20%3E%20(property)%20eventId">Link to this property</a>
+
+eventDate: optional string
+
+ISO 8601 date of the related event. Null for legacy relationships created before event-date tracking was added.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20relatedEvents%20%3E%20(items)%20%3E%20(property)%20eventDate">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20relatedEvents">Link to this property</a>
+
+relatedEventsHasMore: optional boolean
+
+True when this indicator appears in more events than <code>relatedEvents</code> contains because <code>relatedEventsLimit</code> capped the list. Pass <code>relatedEventsLimit=-1</code> to retrieve every related event.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20relatedEventsHasMore">Link to this property</a>
+
+<details>
+
+<summary>
+
+tags: optional array of object {categoryId, categoryName, uuid, value }
+
+</summary>
+
+categoryId: optional string
+
+The UUID of the tag category, or null when the tag is uncategorized.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20categoryId">Link to this property</a>
+
+categoryName: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20categoryName">Link to this property</a>
+
+uuid: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20uuid">Link to this property</a>
+
+value: optional string
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20tags%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20tags">Link to this property</a>
+
+tlp: optional string
+
+Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set.
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators%20%3E%20(items)%20%3E%20(property)%20tlp">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20indicators">Link to this property</a>
+
+<details>
+
+<summary>
+
+pagination: object {page, pageSize, totalCount, totalPages }
+
+</summary>
+
+page: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20page">Link to this property</a>
+
+pageSize: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20pageSize">Link to this property</a>
+
+totalCount: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20totalCount">Link to this property</a>
+
+totalPages: number
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination%20%3E%20(property)%20totalPages">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)%20%3E%20(property)%20pagination">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20cloudforce_one.threat_events.tags.indicators.by_dataset%20%3E%20(model)%20by_dataset_list_response%20%3E%20(schema)>)

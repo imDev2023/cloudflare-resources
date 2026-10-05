@@ -1,0 +1,21 @@
+---
+description: How Protocol validation rules works in Gateway.
+title: Protocol validation rules
+image: https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/protocol-validation-rules/og.png?v=20b80197f1007be6
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Protocol validation rules
+
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/protocol-validation-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Cloudflare Network Firewall can validate [Session Initiation Protocol (SIP) ↗︎](https://datatracker.ietf.org/doc/html/rfc2543) traffic — the protocol used to set up voice and video calls over IP networks (VoIP). This lets you inspect whether SIP packets are properly formatted and enforce a positive security model (only allow well-formed SIP traffic, block everything else).
+
+You can use the `sip` field when creating a rule to check whether packets contain valid SIP data, a Layer 7 (L7) protocol. The `sip` field evaluates to `true` for well-formed SIP packets. Refer to [Cloudflare Network Firewall fields](https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/), specifically the `sip` field, for more information on this topic.
+
+Currently, SIP is the only protocol supported for deep validation. Contact your account manager if you need Cloudflare Network Firewall to support additional protocols.

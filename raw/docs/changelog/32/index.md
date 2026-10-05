@@ -1,0 +1,1037 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Dec 18, 2025
+
+[<h2>New AI Crawl Control Overview tab</h2>](https://developers.cloudflare.com/changelog/post/2025-12-18-overview-tab/)
+
+[AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/)
+
+The **Overview** tab is now the default view in AI Crawl Control. The previous default view with controls for individual AI crawlers is available in the **Crawlers** tab.
+
+#### What's new
+
+- **Executive summary** — Monitor total requests, volume change, most common status code, most popular path, and high-volume activity
+- **Operator grouping** — Track crawlers by their operating companies (OpenAI, Microsoft, Google, ByteDance, Anthropic, Meta)
+- **Customizable filters** — Filter your snapshot by date range, crawler, operator, hostname, or path
+
+![AI Crawl Control Overview tab showing executive summary, metrics, and crawler groups](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1113,height=839,format=webp/_astro/ai-crawl-control-overview-tab.Duwqq4bm.png)
+
+#### Get started
+
+1. Log in to the Cloudflare dashboard and select your account and domain.
+2. Go to **AI Crawl Control**, where the **Overview** tab opens by default with your activity snapshot.
+3. Use filters to customize your view by date range, crawler, operator, hostname, or path.
+4. Navigate to the **Crawlers** tab to manage controls for individual crawlers.
+
+Learn more about [analyzing AI traffic](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/) and [managing AI crawlers](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/).
+
+Dec 18, 2025
+
+[<h2>Improved accuracy of cached request classification in analytics</h2>](https://developers.cloudflare.com/changelog/post/2025-12-18-cached-request-classification/)
+
+[Analytics](https://developers.cloudflare.com/analytics/)
+
+The cached/uncached classification logic used in Zone Overview analytics has been updated to improve accuracy.
+
+Previously, requests were classified as "cached" based on an overly broad condition that included blocked 403 responses, Snippets requests, and other non-cache request types. This caused inflated cache hit ratios — in some cases showing near-100% cached — and affected approximately 15% of requests classified as cached in rollups.
+
+The condition has been removed from the Zone Overview page. Cached/uncached classification now aligns with the heuristics used in [HTTP Analytics](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/), so only requests genuinely served from cache are counted as cached.
+
+**What changed:**
+
+- **Zone Overview** — Cache ratios now reflect actual cache performance.
+- **HTTP Analytics** — No change. HTTP Analytics already used the correct classification logic.
+- **Historical data** — This fix applies to new requests only. Previously logged data is not retroactively updated.
+
+Dec 18, 2025
+
+[<h2>R2 Data Catalog now supports automatic snapshot expiration</h2>](https://developers.cloudflare.com/changelog/post/2025-12-18-r2-data-catalog-snapshot-expiration/)
+
+[Basin Catalog](https://developers.cloudflare.com/basin-catalog/) [Basin](https://developers.cloudflare.com/basin/) [R2](https://developers.cloudflare.com/r2/)
+
+[R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/) now supports automatic snapshot expiration for Apache Iceberg tables.
+
+In Apache Iceberg, a snapshot is metadata that represents the state of a table at a given point in time. Every mutation creates a new snapshot which enable powerful features like time travel queries and rollback capabilities but will accumulate over time.
+
+Without regular cleanup, these accumulated snapshots can lead to:
+
+- Metadata overhead
+- Slower table operations
+- Increased storage costs.
+
+Snapshot expiration in R2 Data Catalog automatically removes old table snapshots based on your configured retention policy, improving performance and storage costs.
+
+```bash
+# Enable catalog-level snapshot expiration
+# Expire snapshots older than 7 days, always retain at least 10 recent snapshots
+npx wrangler r2 bucket catalog snapshot-expiration enable my-bucket \
+  --older-than-days 7 \
+  --retain-last 10
+```
+
+Snapshot expiration uses two parameters to determine which snapshots to remove:
+
+- `--older-than-days`: age threshold in days
+- `--retain-last`: minimum snapshot count to retain
+
+Both conditions must be met before a snapshot is expired, ensuring you always retain recent snapshots even if they exceed the age threshold.
+
+This feature complements [automatic compaction](https://developers.cloudflare.com/basin-catalog/table-maintenance/), which optimizes query performance by combining small data files into larger ones. Together, these automatic maintenance operations keep your Iceberg tables performant and cost-efficient without manual intervention.
+
+For more information, refer to [Table maintenance](https://developers.cloudflare.com/basin-catalog/table-maintenance/) or [Manage catalogs](https://developers.cloudflare.com/basin-catalog/manage-catalogs/).
+
+Dec 18, 2025
+
+[<h2>WAF Release - 2025-12-18</h2>](https://developers.cloudflare.com/changelog/post/2025-12-18-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week's release focuses on improvements to existing detections to enhance coverage.
+
+**Key Findings**
+
+- Existing rule enhancements have been deployed to improve detection resilience against broad classes of web attacks and strengthen behavioral coverage.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...be5ec20c | N/A | Atlassian Confluence - Code Injection - CVE:CVE-2021-26084 - Beta | Log | Block | This rule is merged into the original rule "Atlassian Confluence - Code Injection - CVE:CVE-2021-26084" (ID: ...69e0b97a) |
+| Cloudflare Managed Ruleset | ...0d9206e3
+
+N/A | PostgreSQL - SQLi - Copy - Beta | Log | Block  
+ | This rule is merged into the original rule "PostgreSQL - SQLi - COPY" (ID: ...e7265a4e)
+
+ |
+| Cloudflare Managed Ruleset | ...0cd00ba7
+
+N/A | Generic Rules - Command Execution - Body | Log | Disabled  
+ | This is a new detection.
+
+ |
+| Cloudflare Managed Ruleset | ...cd679ad4 | N/A | Generic Rules - Command Execution - Header | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...fd181fb3 | N/A | Generic Rules - Command Execution - URI | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...7a95bc3a | N/A | SQLi - Tautology - URI - Beta | Log | Block | This rule is merged into the original rule "SQLi - Tautology - URI" (ID: ...b3de2e0a) |
+| Cloudflare Managed Ruleset | ...432ac90d | N/A | SQLi - WaitFor Function - Beta | Log | Block | This rule is merged into the original rule "SQLi - WaitFor Function" (ID: ...d5faba59) |
+| Cloudflare Managed Ruleset | ...596c741e | N/A | SQLi - AND/OR Digit Operator Digit 2 - Beta | Log | Block | This rule is merged into the original rule "SQLi - AND/OR Digit Operator Digit" (ID: ...88d80772) |
+| Cloudflare Managed Ruleset | ...03b2f3fe | N/A | SQLi - Equation 2 - Beta | Log | Block | This rule is merged into the original rule "SQLi - Equation" (ID: ...a72a6b3a) |
+
+Dec 18, 2025
+
+[<h2>Workers for Platforms - Dashboard Improvements</h2>](https://developers.cloudflare.com/changelog/post/2025-12-18-dashboard-improvements/)
+
+[Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/)
+
+[Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) lets you build multi-tenant platforms on [Cloudflare Workers](https://developers.cloudflare.com/workers/), allowing your end users to deploy and run their own code on your platform. It's designed for anyone building an AI vibe coding platform, e-commerce platform, website builder, or any product that needs to securely execute user-generated code at scale.
+
+Previously, setting up Workers for Platforms required using the API. Now, the Workers for Platforms UI supports namespace creation, dispatch worker templates, and tag management, making it easier for Workers for Platforms customers to build and manage multi-tenant platforms directly from the Cloudflare dashboard.
+
+![Workers for Platforms Dashboard Improvements](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2226,height=1364,format=webp/_astro/dashboard-improvements.ChVWUo88.png)
+
+#### Key improvements
+
+- **Namespace Management:** You can now create and configure [dispatch namespaces](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dispatch-namespace) directly within the dashboard to start a new platform setup.
+- **Dispatch Worker Templates:** New Dispatch Worker templates allow you to quickly define how traffic is routed to individual Workers within your namespace. Refer to the [Dynamic Dispatch documentation](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/) for more examples.
+- **Tag Management:** You can now set and update [tags](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/tags/) on User Workers, making it easier to group and manage your Workers.
+- **Binding Visibility:** [Bindings](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/) attached to User Workers are now visible directly within the User Worker view.
+- **Deploy Vibe Coding Platform in one-click:** Deploy a [reference implementation](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/) of an AI vibe coding platform directly from the dashboard. Powered by the Cloudflare's [VibeSDK ↗︎](https://github.com/cloudflare/vibesdk), this starter kit integrates with Workers for Platforms to handle the deployment of AI-generated projects at scale.
+
+To get started, go to **Workers for Platforms** under **Compute & AI** in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
+
+Dec 18, 2025
+
+[<h2>Build image policies for Workers Builds and Cloudflare Pages</h2>](https://developers.cloudflare.com/changelog/post/2025-12-01-build-image-policies-dev-plat/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+We've published build image policies for [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#build-image-policy) and [Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/build-image/#build-image-policy), which establish:
+
+- **Minor version updates**: We typically update preinstalled software to the latest available minor version without notice. For tools that don't follow semantic versioning (e.g., Bun or Hugo), we provide 3 months’ notice.
+- **Major version updates**: Before preinstalled software reaches end-of-life, we update to the next stable LTS version with 3 months’ notice.
+- **Build image version deprecation (Pages only)**: We provide 6 months’ notice before deprecation. Projects on v1 or v2 will be automatically moved to v3 on their specified deprecation dates.
+
+To prepare for updates, monitor the [Cloudflare Changelog ↗︎](https://developers.cloudflare.com/changelog/), dashboard notifications, and email. You can also [override default versions](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#overriding-default-versions) to maintain specific versions.
+
+Dec 18, 2025
+
+[<h2>Retrieve your authentication token with \`wrangler auth token\`</h2>](https://developers.cloudflare.com/changelog/post/2025-12-18-wrangler-auth-token/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Wrangler now includes a new [`wrangler auth token`](https://developers.cloudflare.com/workers/wrangler/commands/general/#auth-token) command that retrieves your current authentication token or credentials for use with other tools and scripts.
+
+```sh
+wrangler auth token
+```
+
+The command returns whichever authentication method is currently configured, in priority order: API token from `CLOUDFLARE_API_TOKEN`, or OAuth token from `wrangler login` (automatically refreshed if expired).
+
+Use the `--json` flag to get structured output including the token type:
+
+```sh
+wrangler auth token --json
+```
+
+The JSON output includes the authentication type:
+
+```jsonc
+// API token
+{ "type": "api_token", "token": "..." }
+
+// OAuth token
+{ "type": "oauth", "token": "..." }
+
+// API key/email (only available with --json)
+{ "type": "api_key", "key": "...", "email": "..." }
+```
+
+API key/email credentials from `CLOUDFLARE_API_KEY` and `CLOUDFLARE_EMAIL` require the `--json` flag since this method uses two values instead of a single token.
+
+Dec 17, 2025
+
+[<h2>Shadow IT - domain level SaaS analytics</h2>](https://developers.cloudflare.com/changelog/post/2025-12-17-shadow-it-domain-analytics/)
+
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+Zero Trust has again upgraded its **Shadow IT analytics**, providing you with unprecedented visibility into your organizations use of SaaS tools. With this dashboard, you can review who is using an application and volumes of data transfer to the application.
+
+With this update, you can review data transfer metrics at the domain level, rather than just the application level, providing more granular insight into your data transfer patterns.
+
+![New Domain Level Metrics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=452,format=webp/_astro/shadow-it-domain.DoZnGAtf.png)
+
+These metrics can be filtered by all available filters on the dashboard, including user, application, or content category.
+
+Both the analytics and policies are accessible in the Cloudflare [Zero Trust dashboard ↗︎](https://one.dash.cloudflare.com/), empowering organizations with better visibility and control.
+
+Dec 16, 2025
+
+[<h2>New duplicate action for supported Cloudflare One resources</h2>](https://developers.cloudflare.com/changelog/post/2025-12-16-new-duplicate-action-for-supported-cloudflare-one-resources/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+You can now duplicate specific Cloudflare One resources with a single click from the dashboard.
+
+Initially supported resources:
+
+- Access Applications
+- Access Policies
+- Gateway Policies
+
+To try this out, simply click on the overflow menu (⋮) from the resource table and click *Duplicate*. We will continue to add the Duplicate action for resources throughout 2026.
+
+Dec 16, 2025
+
+[<h2>Support for ctx.exports in @cloudflare/vitest-pool-workers</h2>](https://developers.cloudflare.com/changelog/post/2025-12-16-vitest-ctx-exports-support/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+The [`@cloudflare/vitest-pool-workers`](https://developers.cloudflare.com/workers/testing/vitest-integration/) package now supports the [`ctx.exports` API](https://developers.cloudflare.com/workers/runtime-apis/context/#exports), allowing you to access your Worker's top-level exports during tests.
+
+You can access `ctx.exports` in unit tests by calling `createExecutionContext()`:
+
+```ts
+import { createExecutionContext } from "cloudflare:test";
+import { it, expect } from "vitest";
+
+it("can access ctx.exports", async () => {
+  const ctx = createExecutionContext();
+  const result = await ctx.exports.MyEntryPoint.myMethod();
+  expect(result).toBe("expected value");
+});
+```
+
+Alternatively, you can import `exports` directly from `cloudflare:workers`:
+
+```ts
+import { exports } from "cloudflare:workers";
+import { it, expect } from "vitest";
+
+it("can access imported exports", async () => {
+  const result = await exports.MyEntryPoint.myMethod();
+  expect(result).toBe("expected value");
+});
+```
+
+See the [context-exports fixture ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/context-exports) for a complete example.
+
+Dec 16, 2025
+
+[<h2>Configure your framework for Cloudflare automatically</h2>](https://developers.cloudflare.com/changelog/post/2025-12-16-wrangler-autoconfig/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Wrangler now supports automatic configuration for popular web frameworks in experimental mode, making it even easier to deploy to Cloudflare Workers.
+
+Previously, if you wanted to deploy an application using a popular web framework like Next.js or Astro, you had to follow tutorials to set up your application for deployment to Cloudflare Workers. This usually involved creating a Wrangler file, installing adapters, or changing configuration options.
+
+Now `wrangler deploy` does this for you. Starting with Wrangler 4.55, you can use `npx wrangler deploy --x-autoconfig` in the directory of any web application using one of the supported frameworks. Wrangler will then proceed to configure and deploy it to your Cloudflare account.
+
+You can also configure your application without deploying it by using the new `npx wrangler setup` command. This enables you to easily review what changes we are making so your application is ready for Cloudflare Workers.
+
+The following application frameworks are supported starting today:
+
+- Next.js
+- Astro
+- Nuxt
+- TanStack Start
+- SolidStart
+- React Router
+- SvelteKit
+- Docusaurus
+- Qwik
+- Analog
+
+Automatic configuration also supports static sites by detecting the assets directory and build command. From a single index.html file to the output of a generator like Jekyll or Hugo, you can just run `npx wrangler deploy --x-autoconfig` to upload to Cloudflare.
+
+We're really excited to bring you automatic configuration so you can do more with Workers. Please let us know if you run into challenges using this experimentally. We’ve opened a [GitHub discussion ↗︎](https://github.com/cloudflare/workers-sdk/discussions/11667) and would love to hear your feedback.
+
+Dec 15, 2025
+
+[<h2>New Best Practices guide for Durable Objects</h2>](https://developers.cloudflare.com/changelog/post/2025-12-15-rules-of-durable-objects/)
+
+[Durable Objects](https://developers.cloudflare.com/durable-objects/) [Workers](https://developers.cloudflare.com/workers/)
+
+A new [Rules of Durable Objects](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/) guide is now available, providing opinionated best practices for building effective Durable Objects applications. This guide covers design patterns, storage strategies, concurrency, and common anti-patterns to avoid.
+
+Key guidance includes:
+
+- **Design around your "atom" of coordination** — Create one Durable Object per logical unit (chat room, game session, user) instead of a global singleton that becomes a bottleneck.
+- **Use SQLite storage with RPC methods** — SQLite-backed Durable Objects with typed RPC methods provide the best developer experience and performance.
+- **Understand input and output gates** — Learn how Cloudflare's runtime prevents data races by default, how write coalescing works, and when to use `blockConcurrencyWhile()`.
+- **Leverage Hibernatable WebSockets** — Reduce costs for real-time applications by allowing Durable Objects to sleep while maintaining WebSocket connections.
+
+The [testing documentation](https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/) has also been updated with modern patterns using `@cloudflare/vitest-pool-workers`, including examples for testing SQLite storage, alarms, and direct instance access:
+
+*test/counter.test.jsjs*
+
+```js
+import { env, runDurableObjectAlarm } from "cloudflare:test";
+import { it, expect } from "vitest";
+
+it("can test Durable Objects with isolated storage", async () => {
+	const stub = env.COUNTER.getByName("test");
+
+	// Call RPC methods directly on the stub
+	await stub.increment();
+	expect(await stub.getCount()).toBe(1);
+
+	// Trigger alarms immediately without waiting
+	await runDurableObjectAlarm(stub);
+});
+```
+
+*test/counter.test.tsts*
+
+```ts
+import { env, runDurableObjectAlarm } from "cloudflare:test";
+import { it, expect } from "vitest";
+
+it("can test Durable Objects with isolated storage", async () => {
+	const stub = env.COUNTER.getByName("test");
+
+	// Call RPC methods directly on the stub
+	await stub.increment();
+	expect(await stub.getCount()).toBe(1);
+
+	// Trigger alarms immediately without waiting
+	await runDurableObjectAlarm(stub);
+});
+```
+
+Dec 12, 2025
+
+[<h2>R2 SQL now supports aggregations and schema discovery</h2>](https://developers.cloudflare.com/changelog/post/2025-12-12-aggregation-support-and-more/)
+
+[Basin SQL](https://developers.cloudflare.com/basin-sql/) [Basin](https://developers.cloudflare.com/basin/)
+
+R2 SQL now supports aggregation functions, `GROUP BY`, `HAVING`, along with schema discovery commands to make it easy to explore your data catalog.
+
+#### Aggregation Functions
+
+You can now perform aggregations on Apache Iceberg tables in [R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/) using standard SQL functions including `COUNT(*)`, `SUM()`, `AVG()`, `MIN()`, and `MAX()`. Combine these with `GROUP BY` to analyze data across dimensions, and use `HAVING` to filter aggregated results.
+
+```sql
+-- Calculate average transaction amounts by department
+SELECT department, COUNT(*), AVG(total_amount)
+FROM my_namespace.sales_data
+WHERE region = 'North'
+GROUP BY department
+HAVING COUNT(*) > 50
+ORDER BY AVG(total_amount) DESC
+```
+
+```sql
+-- Find high-value departments
+SELECT department, SUM(total_amount)
+FROM my_namespace.sales_data
+GROUP BY department
+HAVING SUM(total_amount) > 50000
+```
+
+#### Schema Discovery
+
+New metadata commands make it easy to explore your data catalog and understand table structures:
+
+- `SHOW DATABASES` or `SHOW NAMESPACES` - List all available namespaces
+- `SHOW TABLES IN namespace_name` - List tables within a namespace
+- `DESCRIBE namespace_name.table_name` - View table schema and column types
+
+```bash
+❯ npx wrangler r2 sql query "{ACCOUNT_ID}_{BUCKET_NAME}" "DESCRIBE default.sales_data;"
+
+ ⛅️ wrangler 4.54.0
+─────────────────────────────────────────────
+
+┌──────────────────┬────────────────┬──────────┬─────────────────┬───────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ column_name      │ type           │ required │ initial_default │ write_default │ doc                                                                                               │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ sale_id          │ BIGINT         │ false    │                 │               │ Unique identifier for each sales transaction                                                      │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ sale_timestamp   │ TIMESTAMPTZ    │ false    │                 │               │ Exact date and time when the sale occurred (used for partitioning)                                │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ department       │ TEXT           │ false    │                 │               │ Product department (8 categories: Electronics, Beauty, Home, Toys, Sports, Food, Clothing, Books) │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ category         │ TEXT           │ false    │                 │               │ Product category grouping (4 categories: Premium, Standard, Budget, Clearance)                    │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ region           │ TEXT           │ false    │                 │               │ Geographic sales region (5 regions: North, South, East, West, Central)                            │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ product_id       │ INT            │ false    │                 │               │ Unique identifier for the product sold                                                            │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ quantity         │ INT            │ false    │                 │               │ Number of units sold in this transaction (range: 1-50)                                            │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ unit_price       │ DECIMAL(10, 2) │ false    │                 │               │ Price per unit in dollars (range: $5.00-$500.00)                                                  │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ total_amount     │ DECIMAL(10, 2) │ false    │                 │               │ Total sale amount before tax (quantity × unit_price with discounts applied)                       │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ discount_percent │ INT            │ false    │                 │               │ Discount percentage applied to this sale (0-50%)                                                  │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ tax_amount       │ DECIMAL(10, 2) │ false    │                 │               │ Tax amount collected on this sale                                                                 │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ profit_margin    │ DECIMAL(10, 2) │ false    │                 │               │ Profit margin on this sale as a decimal percentage                                                │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ customer_id      │ INT            │ false    │                 │               │ Unique identifier for the customer who made the purchase                                          │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ is_online_sale   │ BOOLEAN        │ false    │                 │               │ Boolean flag indicating if sale was made online (true) or in-store (false)                        │
+├──────────────────┼────────────────┼──────────┼─────────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ sale_date        │ DATE           │ false    │                 │               │ Calendar date of the sale (extracted from sale_timestamp)                                         │
+└──────────────────┴────────────────┴──────────┴─────────────────┴───────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────┘
+Read 0 B across 0 files from R2
+On average, 0 B / s
+```
+
+To learn more about the new aggregation capabilities and schema discovery commands, check out the [SQL reference](https://developers.cloudflare.com/basin-sql/sql-reference/). If you're new to R2 SQL, visit our [getting started guide](https://developers.cloudflare.com/basin-sql/get-started/) to begin querying your data.
+
+Dec 12, 2025
+
+[<h2>Billing for SQLite Storage</h2>](https://developers.cloudflare.com/changelog/post/2025-12-12-durable-objects-sqlite-storage-billing/)
+
+[Durable Objects](https://developers.cloudflare.com/durable-objects/) [Workers](https://developers.cloudflare.com/workers/)
+
+Storage billing for SQLite-backed Durable Objects will be enabled in January 2026, with a target date of January 7, 2026 (no earlier).
+
+To view your SQLite storage usage, go to the **Durable Objects** page
+
+[Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
+
+If you do not want to incur costs, please take action such as optimizing queries or deleting unnecessary stored data in order to reduce your SQLite storage usage ahead of the January 7th target. Only usage on and after the billing target date will incur charges.
+
+Developers on the Workers Paid plan with Durable Object's SQLite storage usage beyond included limits will incur charges according to [SQLite storage pricing](https://developers.cloudflare.com/durable-objects/platform/pricing/#sqlite-storage-backend) announced in September 2024 with the [public beta ↗︎](https://blog.cloudflare.com/sqlite-in-durable-objects/). Developers on the Workers Free plan will not be charged.
+
+Compute billing for SQLite-backed Durable Objects has been enabled since the initial public beta. SQLite-backed Durable Objects currently incur [charges for requests and duration](https://developers.cloudflare.com/durable-objects/platform/pricing/#compute-billing), and no changes are being made to compute billing.
+
+For more information about SQLite storage pricing and limits, refer to the [Durable Objects pricing documentation](https://developers.cloudflare.com/durable-objects/platform/pricing/#sqlite-storage-backend).
+
+Dec 11, 2025
+
+[<h2>SentinelOne as Logpush destination</h2>](https://developers.cloudflare.com/changelog/post/2025-12-11-sentinelone-destination/)
+
+[Logs](https://developers.cloudflare.com/logs/)
+
+Cloudflare Logpush now supports **SentinelOne** as a native destination.
+
+Logs from Cloudflare can be sent to [SentinelOne AI SIEM ↗︎](https://www.sentinelone.com/) via [Logpush](https://developers.cloudflare.com/logs/logpush/). The destination can be configured through the Logpush UI in the Cloudflare dashboard or by using the [Logpush API](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/).
+
+For more information, refer to the [Destination Configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/sentinelone/) documentation.
+
+Dec 11, 2025
+
+[<h2>WAF Release - 2025-12-11 - Emergency</h2>](https://developers.cloudflare.com/changelog/post/2025-12-11-emergency-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This emergency release introduces rules for CVE-2025-55183 and CVE-2025-55184, targeting server-side function exposure and resource-exhaustion patterns, respectively.
+
+**Key Findings**
+
+Added coverage for Leaking Server Functions (CVE-2025-55183) and React Function DoS detection (CVE-2025-55184).
+
+**Impact**
+
+These updates strengthen protection for server-function abuse techniques (CVE-2025-55183, CVE-2025-55184) that may expose internal logic or disrupt application availability.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...fefb4e9b | N/A | React - Leaking Server Functions - CVE:CVE-2025-55183 | N/A | Block | This was labeled as Generic - Server Function Source Code Exposure. |
+| Cloudflare Free Ruleset | ...251e86aa | N/A | React - Leaking Server Functions - CVE:CVE-2025-55183 | N/A | Block | This was labeled as Generic - Server Function Source Code Exposure. |
+| Cloudflare Managed Ruleset | ...102ec699 | N/A | React - DoS - CVE:CVE-2025-55184 | N/A | Disabled | This was labeled as Generic – Server Function Resource Exhaustion. |
+
+Dec 10, 2025
+
+[<h2>Pay Per Crawl (Private beta) - Discovery API, custom pricing, and advanced configuration</h2>](https://developers.cloudflare.com/changelog/post/2025-12-10-pay-per-crawl-enhancements/)
+
+[AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/)
+
+Pay Per Crawl is introducing enhancements for both AI crawler operators and site owners, focusing on programmatic discovery, flexible pricing models, and granular configuration control.
+
+#### For AI crawler operators
+
+#### Discovery API
+
+A new authenticated API endpoint allows verified crawlers to programmatically discover domains participating in Pay Per Crawl. Crawlers can use this to build optimized crawl queues, cache domain lists, and identify new participating sites. This eliminates the need to discover payable content through trial requests.
+
+The API endpoint is `GET https://crawlers-api.ai-audit.cfdata.org/charged_zones` and requires Web Bot Auth authentication. Refer to [Discover payable content](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/discover-payable-content/) for authentication steps, request parameters, and response schema.
+
+#### Payment header signature requirement
+
+Payment headers (`crawler-exact-price` or `crawler-max-price`) must now be included in the Web Bot Auth `signature-input` header components. This security enhancement prevents payment header tampering, ensures authenticated payment intent, validates crawler identity with payment commitment, and protects against replay attacks with modified pricing. Crawlers must add their payment header to the list of signed components when [constructing the signature-input header](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/crawl-pages/#22-sign-your-request-with-web-bot-auth).
+
+#### New `crawler-error` header
+
+Pay Per Crawl error responses now include a new `crawler-error` header with 11 specific [error codes](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/error-codes/) for programmatic handling. Error response bodies remain unchanged for compatibility. These codes enable robust error handling, automated retry logic, and accurate spending tracking.
+
+#### For site owners
+
+#### Configure free pages
+
+Site owners can now offer free access to specific pages like homepages, navigation, or discovery pages while charging for other content. Create a [Configuration Rule](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/#disable-pay-per-crawl-by-uri-pattern) in **Rules** > **Configuration Rules**, set your URI pattern using wildcard, exact, or prefix matching on the **URI Full** field, and enable the **Disable Pay Per Crawl** setting. When disabled for a URI pattern, crawler requests pass through without blocking or charging.
+
+Some paths are always free to crawl. These paths are: `/robots.txt`, `/sitemap.xml`, `/security.txt`, `/.well-known/security.txt`, `/crawlers.json`.
+
+#### Get started
+
+**AI crawler operators**: [Discover payable content](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/discover-payable-content/) | [Crawl pages](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/crawl-pages/)
+
+**Site owners**: [Advanced configuration](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/)
+
+Dec 10, 2025
+
+[<h2>WAF Release - 2025-12-10 - Emergency</h2>](https://developers.cloudflare.com/changelog/post/2025-12-10-emergency-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This additional week's emergency release introduces improvements to our existing rule for React – Remote Code Execution – CVE-2025-55182 - 2, along with two new generic detections covering server-side function exposure and resource-exhaustion patterns.
+
+**Key Findings**
+
+Enhanced detection logic for React – RCE – CVE-2025-55182, added Generic – Server Function Source Code Exposure, and added Generic – Server Function Resource Exhaustion.
+
+**Impact**
+
+These updates strengthen protection against React RCE exploitation attempts and broaden coverage for common server-function abuse techniques that may expose internal logic or disrupt application availability.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...15fce168 | N/A | React - Remote Code Execution - CVE:CVE-2025-55182 - 2 | N/A | Block | This is an improved detection. |
+| Cloudflare Free Ruleset | ...74746aff | N/A | React - Remote Code Execution - CVE:CVE-2025-55182 - 2 | N/A | Block | This is an improved detection. |
+| Cloudflare Managed Ruleset | ...fefb4e9b | N/A | Generic - Server Function Source Code Exposure | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...251e86aa | N/A | Generic - Server Function Source Code Exposure | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...102ec699 | N/A | Generic - Server Function Resource Exhaustion | N/A | Disabled | This is a new detection. |
+
+Dec 9, 2025
+
+[<h2>WARP client for Windows (version 2025.10.118.1)</h2>](https://developers.cloudflare.com/changelog/post/2025-12-09-warp-windows-beta/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new Beta release for the Windows WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
+
+This release contains minor fixes and improvements.
+
+**Changes and improvements**
+
+- The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
+- Fixed an issue where sending large messages to the WARP daemon by Inter-Process Communication (IPC) could cause WARP to crash and result in service interruptions.
+
+**Known issues**
+
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
+- DNS resolution may be broken when the following conditions are all true:
+  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
+
+  To work around this issue, reconnect the WARP client by toggling off and back on.
+
+Dec 9, 2025
+
+[<h2>WARP client for macOS (version 2025.10.118.1)</h2>](https://developers.cloudflare.com/changelog/post/2025-12-09-warp-macos-beta/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new Beta release for the macOS WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
+
+This release contains minor fixes and improvements.
+
+**Changes and improvements**
+
+- The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
+
+Dec 8, 2025
+
+[<h2>Python cold start improvements</h2>](https://developers.cloudflare.com/changelog/post/2025-12-08-python-cold-start-improvements/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Python Workers now feature improved cold start performance, reducing initialization time for new Worker instances. This improvement is particularly noticeable for Workers with larger dependency sets or complex initialization logic.
+
+Every time you deploy a Python Worker, a memory snapshot is captured after the top level of the Worker is executed. This snapshot captures all imports, including package imports that are often costly to load. The memory snapshot is loaded when the Worker is first started, avoiding the need to reload the Python runtime and all dependencies on each cold start.
+
+We set up a benchmark that imports common packages ([httpx ↗︎](https://www.python-httpx.org/), [fastapi ↗︎](https://fastapi.tiangolo.com/) and [pydantic ↗︎](https://docs.pydantic.dev/latest/)) to see how Python Workers stack up against other platforms:
+
+| Platform | Mean Cold Start (ms) |
+| --- | --- |
+| Cloudflare Python Workers | 1027 |
+| AWS Lambda | 2502 |
+| Google Cloud Run | 3069 |
+
+These benchmarks run continuously. You can view the results and the methodology on our [benchmark page ↗︎](https://cold.edgeworker.net).
+
+In additional testing, we have found that without any memory snapshot, the cold start for this benchmark takes around 10 seconds, so this change improves cold start performance by roughly a factor of 10.
+
+To get started with Python Workers, check out our [Python Workers overview](https://developers.cloudflare.com/workers/languages/python/).
+
+Dec 8, 2025
+
+[<h2>Easy Python package management with Pywrangler</h2>](https://developers.cloudflare.com/changelog/post/2025-12-08-python-pywrangler/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+We are introducing a brand new tool called Pywrangler, which simplifies package management in Python Workers by automatically installing Workers-compatible Python packages into your project.
+
+With Pywrangler, you specify your Worker's Python dependencies in your `pyproject.toml` file:
+
+```toml
+[project]
+name = "python-beautifulsoup-worker"
+version = "0.1.0"
+description = "A simple Worker using beautifulsoup4"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4"
+]
+
+[dependency-groups]
+dev = [
+  "workers-py",
+  "workers-runtime-sdk"
+]
+```
+
+You can then develop and deploy your Worker using the following commands:
+
+```bash
+uv run pywrangler dev
+uv run pywrangler deploy
+```
+
+Pywrangler automatically downloads and vendors the necessary packages for your Worker, and these packages are bundled with the Worker when you deploy.
+
+Consult the [Python packages documentation](https://developers.cloudflare.com/workers/languages/python/packages/) for full details on Pywrangler and Python package management in Workers.
+
+Dec 8, 2025
+
+[<h2>Wrangler config is optional when using Vite plugin</h2>](https://developers.cloudflare.com/changelog/post/2025-12-08-vite-optional-config/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+When using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) to build and deploy Workers, a Wrangler configuration file is now optional for assets-only (static) sites. If no `wrangler.toml`, `wrangler.json`, or `wrangler.jsonc` file is found, the plugin generates sensible defaults for an assets-only site. The `name` is based on the `package.json` or the project directory name, and the `compatibility_date` uses the latest date supported by your installed Miniflare version.
+
+This allows easier setup for static sites using Vite. Note that SPAs will still need to [set `assets.not_found_handling` to `single-page-application` ↗︎](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/) in order to function correctly.
+
+Dec 8, 2025
+
+[<h2>Configure Workers programmatically using the Vite plugin</h2>](https://developers.cloudflare.com/changelog/post/2025-12-08-vite-programmatic-config/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+The [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) now supports programmatic configuration of Workers without a Wrangler configuration file. You can use the `config` option to define Worker settings directly in your Vite configuration, or to modify existing configuration loaded from a Wrangler config file. This is particularly useful when integrating with other build tools or frameworks, as it allows them to control Worker configuration without needing users to manage a separate config file.
+
+#### The `config` option
+
+The Vite plugin's new `config` option accepts either a partial configuration object or a function that receives the current configuration and returns overrides. This option is applied after any config file is loaded, allowing the plugin to override specific values or define Worker configuration entirely in code.
+
+#### Example usage
+
+Setting `config` to an object to provide configuration values that merge with defaults and config file settings:
+
+*vite.config.tsts*
+
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+export default defineConfig({
+	plugins: [
+		cloudflare({
+			config: {
+				name: "my-worker",
+				compatibility_flags: ["nodejs_compat"],
+				send_email: [
+					{
+						name: "EMAIL",
+					},
+				],
+			},
+		}),
+	],
+});
+```
+
+Use a function to modify the existing configuration:
+
+*vite.config.tsts*
+
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({
+	plugins: [
+		cloudflare({
+			config: (userConfig) => {
+				delete userConfig.compatibility_flags;
+			},
+		}),
+	],
+});
+```
+
+Return an object with values to merge:
+
+*vite.config.tsts*
+
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+export default defineConfig({
+	plugins: [
+		cloudflare({
+			config: (userConfig) => {
+				if (!userConfig.compatibility_flags.includes("no_nodejs_compat")) {
+					return { compatibility_flags: ["nodejs_compat"] };
+				}
+			},
+		}),
+	],
+});
+```
+
+#### Auxiliary Workers
+
+Auxiliary Workers also support the `config` option, enabling multi-Worker architectures without config files.
+
+Define auxiliary Workers without config files using `config` inside the `auxiliaryWorkers` array:
+
+*vite.config.tsts*
+
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+export default defineConfig({
+	plugins: [
+		cloudflare({
+			config: {
+				name: "entry-worker",
+				main: "./src/entry.ts",
+				services: [{ binding: "API", service: "api-worker" }],
+			},
+			auxiliaryWorkers: [
+				{
+					config: {
+						name: "api-worker",
+						main: "./src/api.ts",
+					},
+				},
+			],
+		}),
+	],
+});
+```
+
+For more details and examples, see [Programmatic configuration](https://developers.cloudflare.com/workers/vite-plugin/reference/programmatic-configuration/).
+
+Dec 5, 2025
+
+[<h2>Terraform v5.14.0 now available</h2>](https://developers.cloudflare.com/changelog/post/2025-12-05-terraform-v5.14.0-provider/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Terraform](https://developers.cloudflare.com/terraform/)
+
+Earlier this year, we announced the launch of the new Terraform v5 Provider. We are aware of the high number of issues reported by the Cloudflare community related to the v5 release. We have committed to releasing improvements on a [2-3 week cadence ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/5774) to ensure its stability and reliability, including the v5.14 release. We have also pivoted from an [issue-to-issue approach to a resource-per-resource approach ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6237) - we will be focusing on specific resources to not only stabilize the resource but also ensure it is migration-friendly for those migrating from v4 to v5.
+
+Thank you for continuing to raise issues. They make our provider stronger and help us build products that reflect your needs.
+
+This release includes bug fixes, the stabilization of even more popular resources, and more.
+
+#### Deprecation notice
+
+Resource affected: `api_shield_discovery_operation`
+
+Cloudflare continuously discovers and updates API endpoints and web assets of your web applications. To improve the maintainability of these dynamic resources, we are working on reducing the need to actively engage with discovered operations.
+
+The corresponding public API endpoint of [discovered operations ↗︎](https://developers.cloudflare.com/api/resources/api_gateway/subresources/discovery/subresources/operations/) is not affected and will continue to be supported.
+
+#### Features
+
+- **pages\_project**: Add v4 -> v5 migration tests ([#6506 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/pull/6506))
+
+#### Bug fixes
+
+- **account\_members**: Makes member policies a set ([#6488 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6488))
+- **pages\_project**: Ensures non empty refresh plans ([#6515 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6515))
+- **R2**: Improves sweeper ([#6512 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6512))
+- **workers\_kv**: Ignores value import state for verify ([#6521 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6521))
+- **workers\_script**: No longer treats the migrations attribute as WriteOnly ([#6489 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6489))
+- **workers\_script**: Resolves resource drift when worker has unmanaged secret ([#6504 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6504))
+- **zero\_trust\_device\_posture\_rule**: Preserves input.version and other fields ([#6500 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6500)) and ([#6503 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6503))
+- **zero\_trust\_dlp\_custom\_profile**: Adds sweepers for `dlp_custom_profile`
+- **zone\_subscription|account\_subscription**: Adds `partners_ent` as valid enum for `rate_plan.id` ([#6505 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6505))
+- **zone**: Ensures datasource model schema parity ([#6487 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6487))
+- **subscription**: Updates import signature to accept account\_id/subscription\_id to import account subscription ([#6510 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6510))
+
+#### Upgrade to newer version
+
+We suggest waiting to migrate to v5 while we work on stabilization. This helps with avoiding any blocking issues while the Terraform resources are actively being [stabilized ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6237). We will be releasing a new migration tool in March 2026 to help support v4 to v5 transitions for our most popular resources.
+
+#### For more information
+
+- [Terraform Provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs)
+- [Documentation on using Terraform with Cloudflare ↗︎](https://developers.cloudflare.com/terraform/)
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/32/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/32/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

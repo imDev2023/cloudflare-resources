@@ -1,0 +1,1089 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+May 7, 2026
+
+[<h2>WAF and framework adapter mitigations for React and Next.js vulnerabilities</h2>](https://developers.cloudflare.com/changelog/post/2026-05-06-react-nextjs-vulnerabilities/)
+
+[Workers](https://developers.cloudflare.com/workers/) [WAF](https://developers.cloudflare.com/waf/)
+
+Multiple security vulnerabilities were disclosed by the React team and Vercel affecting React Server Components and Next.js. These include denial of service, middleware and proxy bypass, server-side request forgery, cross-site scripting, and cache poisoning issues across a range of severity levels.
+
+**We strongly recommend updating your application and its dependencies immediately.** Patched versions are available for React (`react-server-dom-webpack`, `react-server-dom-parcel`, and `react-server-dom-turbopack` `19.0.6`, `19.1.7`, and `19.2.6`) and Next.js (`15.5.16` and `16.2.5`).
+
+#### WAF protections
+
+Cloudflare WAF rules deployed in response to prior React Server Component CVEs ([`CVE-2025-55184` ↗︎](https://github.com/facebook/react/security/advisories/GHSA-2m3v-v2m8-q956) and [`CVE-2026-23864` ↗︎](https://github.com/facebook/react/security/advisories/GHSA-83fc-fqcc-2hmg)) already provide coverage for the newly disclosed denial-of-service vulnerabilities. These rules are enabled by default with a Block action for all customers using the Cloudflare Managed Ruleset, including Free plan customers using the Free Managed Ruleset.
+
+| Ruleset | Rule description | Rule ID | Default action |
+| --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | React - DoS - [`CVE-2025-55184` ↗︎](https://github.com/facebook/react/security/advisories/GHSA-2m3v-v2m8-q956) | `2694f1610c0b471393b21aef102ec699` | Block |
+| Cloudflare Managed Ruleset | React - DoS - [`CVE-2026-23864` ↗︎](https://github.com/facebook/react/security/advisories/GHSA-83fc-fqcc-2hmg) | `aaede80b4d414dc89c443cea61680354` | Block |
+
+The existing rules detect the underlying attack patterns generically. As a result, they apply to the new [`CVE-2026-23870` ↗︎](https://github.com/facebook/react/security/advisories/GHSA-rv78-f8rc-xrxh) denial-of-service vulnerability in Server Components and the corresponding Next.js advisory [`GHSA-8h8q-6873-q5fj` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-8h8q-6873-q5fj).
+
+Cloudflare is investigating whether WAF rules can be safely and effectively deployed for three of the high-severity advisories: [`CVE-2026-23870` ↗︎](https://github.com/facebook/react/security/advisories/GHSA-rv78-f8rc-xrxh) / [`GHSA-8h8q-6873-q5fj` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-8h8q-6873-q5fj), [`GHSA-267c-6grr-h53f` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-267c-6grr-h53f), and [`GHSA-mg66-mrh9-m8jx` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-mg66-mrh9-m8jx). If it is possible to create a managed WAF rule that mitigates these CVEs and does not potentially break application behavior, Cloudflare will add additional managed WAF rules. These rules will be announced through the [WAF changelog](https://developers.cloudflare.com/waf/change-log/changelog/). Because these vulnerabilities were shared with Cloudflare with minimal advance notice, we are still investigating what WAF mitigations are possible.
+
+Several of the disclosed vulnerabilities are not possible to block in WAF. We strongly recommend updating your applications so they are not purely reliant on WAF mitigations.
+
+Customers on Pro, Business, or Enterprise plans should ensure that [Managed Rules are enabled](https://developers.cloudflare.com/waf/get-started/#1-deploy-the-cloudflare-managed-ruleset).
+
+#### Next.js adapters
+
+**Vinext:** [Vinext ↗︎](https://github.com/cloudflare/vinext) is a Vite plugin that reimplements the Next.js API surface. Vinext's latest release is not vulnerable to any of the disclosed CVEs. Vinext's architecture differs from stock Next.js in ways that sidestep the affected code paths. For example, it does not implement the PPR resume protocol, does not expose Pages Router data-route endpoints, and strips internal headers such as `x-nextjs-data` at request boundaries. As an extra layer of defense, we added a React `19.2.6` or later requirement when running `vinext init` ([PR #1118 ↗︎](https://github.com/cloudflare/vinext/pull/1118), [PR #1112 ↗︎](https://github.com/cloudflare/vinext/pull/1112)) to prevent accidentally running a vulnerable version of React with Vinext.
+
+**OpenNext on Cloudflare:** OpenNext is an adapter that lets you deploy Next.js apps to the Cloudflare Workers platform. OpenNext itself is not directly vulnerable to the React denial-of-service CVE, but users must update the Next.js version in their application. The OpenNext team has updated the adapter to further harden against these vectors and released a new version of the Cloudflare adapter. Test fixtures and examples have been updated to use patched versions ([PR #1255 ↗︎](https://github.com/opennextjs/opennextjs-cloudflare/pull/1255)).
+
+#### Summary of disclosed vulnerabilities
+
+| Advisory | Severity | Issue | WAF status |
+| --- | --- | --- | --- |
+| [`CVE-2026-23870` ↗︎](https://github.com/facebook/react/security/advisories/GHSA-rv78-f8rc-xrxh) / [`GHSA-8h8q-6873-q5fj` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-8h8q-6873-q5fj) | High | Denial of service in Server Components | **WAF rules in place:** `2694f1610c0b471393b21aef102ec699`, `aaede80b4d414dc89c443cea61680354`<br>Cloudflare is investigating additional managed WAF coverage |
+| [`GHSA-267c-6grr-h53f` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-267c-6grr-h53f) | High | Middleware bypass via segment-prefetch routes | Cloudflare is investigating if this can be safely and effectively mitigated by a managed WAF rule |
+| [`GHSA-mg66-mrh9-m8jx` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-mg66-mrh9-m8jx) | High | Denial of service via connection exhaustion in Cache Components | Cloudflare is investigating if this can be safely and effectively mitigated by a managed WAF rule |
+| [`GHSA-492v-c6pp-mqqv` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-492v-c6pp-mqqv) | High | Middleware bypass via dynamic route parameter injection | Not possible to safely enable a managed WAF rule without potentially breaking application behavior |
+| [`GHSA-c4j6-fc7j-m34r` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-c4j6-fc7j-m34r) | High | SSRF via WebSocket upgrades | Not possible to safely enable a managed WAF rule without potentially breaking application behavior |
+| [`GHSA-36qx-fr4f-26g5` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-36qx-fr4f-26g5) | High | Middleware bypass in Pages Router i18n | Custom WAF rule possible; global managed rule could potentially break application behavior |
+| [`GHSA-ffhc-5mcf-pf4q` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-ffhc-5mcf-pf4q) | Moderate | XSS via CSP nonces | Custom WAF rule possible; global managed rule could potentially break application behavior |
+| [`GHSA-gx5p-jg67-6x7h` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-gx5p-jg67-6x7h) | Moderate | XSS in `beforeInteractive` scripts | Not possible to safely enable a managed WAF rule without potentially breaking application behavior |
+| [`GHSA-h64f-5h5j-jqjh` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-h64f-5h5j-jqjh) | Moderate | Denial of service in Image Optimization API | Custom WAF rule possible; global managed rule could potentially break application behavior |
+| [`GHSA-wfc6-r584-vfw7` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-wfc6-r584-vfw7) | Moderate | Cache poisoning in RSC responses | Custom WAF rule possible; global managed rule could potentially break application behavior |
+| [`GHSA-vfv6-92ff-j949` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-vfv6-92ff-j949) | Low | Cache poisoning via RSC cache-busting collisions | Not possible to safely enable a managed WAF rule without potentially breaking application behavior |
+| [`GHSA-3g8h-86w9-wvmq` ↗︎](https://github.com/vercel/next.js/security/advisories/GHSA-3g8h-86w9-wvmq) | Low | Middleware redirect cache poisoning | Custom WAF rule possible; global managed rule could potentially break application behavior |
+
+May 7, 2026
+
+[<h2>Custom DHCP options on Cloudflare One Appliance</h2>](https://developers.cloudflare.com/changelog/post/2026-05-07-appliance-dhcp-options/)
+
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+When the Cloudflare One Appliance is acting as the DHCP server for a LAN, you can now configure custom DHCP options on the leases it issues. This unlocks workflows such as PXE / iPXE boot, VoIP phone provisioning, and vendor-specific client configuration.
+
+Each option is defined by `option_number`, `value`, and one of four value types: `text`, `integer`, `hex`, or `ip`. Configurations are validated on the appliance before being applied — invalid configurations are rejected and the underlying error is returned to the API caller, so a bad option will not disrupt the live DHCP service.
+
+For details, refer to [DHCP server options](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/).
+
+May 7, 2026
+
+[<h2>Source-based breakout and prioritization on Cloudflare One Appliance</h2>](https://developers.cloudflare.com/changelog/post/2026-05-07-appliance-source-based-breakout/)
+
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+Breakout and traffic prioritization rules on the Cloudflare One Appliance can now match by **source** in addition to destination application. You can pin breakout or priority behavior to:
+
+- A source LAN interface — VLANs attached to that LAN are included automatically.
+- A source IP address, range, or CIDR block.
+
+This is the natural way to break out a guest VLAN to the local Internet, or to prioritize traffic from a specific subnet, without enumerating destination applications.
+
+For details, refer to [Breakout traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/#breakout-by-source).
+
+May 7, 2026
+
+[<h2>Self-serve provisioning of Cloudflare One Virtual Appliance via API</h2>](https://developers.cloudflare.com/changelog/post/2026-05-07-virtual-appliance-self-serve-api/)
+
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+You can now create, rotate, and delete Cloudflare One Virtual Appliance instances and their license keys directly via the API and Terraform.
+
+- Create a virtual appliance and receive a license key: `POST /accounts/{account_id}/magic/connectors` with `device.provision_license: true`.
+- Rotate the license key for an existing virtual appliance: `PATCH /accounts/{account_id}/magic/connectors/{connector_id}` with `provision_license: true`. The previous key is immediately and irrevocably revoked.
+- Delete a virtual appliance to release the associated licensed device.
+
+The license key is returned in the response only once, at create or rotate time. Copy and store it securely.
+
+For details, refer to [Configure a Cloudflare One Virtual Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/).
+
+May 7, 2026
+
+[<h2>CSV export and adjustable page density for RFIs</h2>](https://developers.cloudflare.com/changelog/post/2026-05-07-CSV-export-for-RFIs/)
+
+[Security Center](https://developers.cloudflare.com/security-center/)
+
+You can now export your Requests for Information (RFI) history to a **CSV document** and customize your dashboard view by choosing how many RFI records to load per page.
+
+#### Why this matters
+
+These quality-of-life updates focus on data portability and dashboard performance, allowing power users to manage high volumes of requests more efficiently:
+
+- The new **CSV export** allows you to move RFI data into external tools for custom reporting, internal auditing, or cross-referencing with other security projects without manual data entry
+- With **adjustable page density**, you can now choose to load more records at once (10, 25 or 50) to scan through history faster
+
+Cloudforce One subscribers can find these new options in [Cloudflare Dashboard > Application Security > Threat Intelligence > Requests for Information ↗︎](https://dash.cloudflare.com/?to=/:account/application-security/threat-intelligence/requests).
+
+May 7, 2026
+
+[<h2>Introducing Stream Bindings for Workers</h2>](https://developers.cloudflare.com/changelog/post/2026-05-07-stream-workers-binding/)
+
+[Stream](https://developers.cloudflare.com/stream/)
+
+You can now interact with your Stream video library using new bindings for Workers! This allows customers to upload content to Stream, provision direct uploads, manage videos, and generate signed URLs from a Worker without making authenticated API calls. We're excited to bring Stream and Workers closer together to empower more programmatic pipelines, tighter integrations, and support generative AI and inference workloads.
+
+Use the Stream binding when you want to:
+
+- Upload videos from URLs or create basic direct upload links for end users
+- Generate signed playback tokens without managing signing keys
+- Manage video metadata, captions, downloads, and watermarks
+- Build video pipelines entirely within Workers
+
+To get started, add the Stream binding to your Wrangler configuration:
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "stream": {
+    "binding": "STREAM"
+  }
+}
+```
+
+```toml
+[stream]
+binding = "STREAM"
+```
+
+**Generate a video with AI and upload directly to Stream** or send a URL of a file you already have:
+
+```js
+const aiResponse = await env.AI.run(
+	"google/veo-3.1",
+	{
+		prompt: "A dog walking next to a river",
+		duration: "10s",
+		aspect_ratio: "16:9",
+		resolution: "1080p",
+		generate_audio: true,
+	},
+	{
+		gateway: { id: "experiments" },
+	},
+);
+
+// Veo will return a URL of the generated asset.
+const videoUrl = aiResponse.result.video;
+
+// Alternative option: a video of the Austin Office mobile
+// const videoUrl = 'https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/aus-mobile.mp4';
+
+// Upload to Stream by providing a URL
+const streamVideo = await env.STREAM.upload(videoUrl);
+
+// The streamVideo response will include the video ID, playback and manifest
+// URLs, and other information, just like the REST API.
+```
+
+```ts
+const aiResponse = await env.AI.run(
+	'google/veo-3.1',
+	{
+		prompt: 'A dog walking next to a river',
+		duration: '10s',
+		aspect_ratio: '16:9',
+		resolution: '1080p',
+		generate_audio: true,
+	},
+	{
+		gateway: { id: 'experiments' },
+	},
+);
+
+// Veo will return a URL of the generated asset.
+const videoUrl = aiResponse.result.video;
+
+// Alternative option: a video of the Austin Office mobile
+// const videoUrl = 'https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/aus-mobile.mp4';
+
+// Upload to Stream by providing a URL
+const streamVideo = await env.STREAM.upload(videoUrl);
+
+// The streamVideo response will include the video ID, playback and manifest
+// URLs, and other information, just like the REST API.
+```
+
+**Generate a signed URL without using a signing key** or an API call:
+
+```js
+const video_id = "ce800be43a9772f4bb02f35b860fb516";
+const token = await env.STREAM.video(video_id).generateToken();
+
+// Use the "token" in an iframe embed code, manifest URL, or thumbnail:
+const embedUrl = `https://customer-igynxd2rwhmuoxw8.cloudflarestream.com/${token}/iframe`;
+```
+
+```ts
+const video_id = 'ce800be43a9772f4bb02f35b860fb516';
+const token = await env.STREAM.video(video_id).generateToken();
+
+// Use the "token" in an iframe embed code, manifest URL, or thumbnail:
+const embedUrl = `https://customer-igynxd2rwhmuoxw8.cloudflarestream.com/${token}/iframe`;
+```
+
+**Get and set video properties** easily:
+
+```js
+const video_id = "46c8b7f480d410840758c1cb14a72e47";
+const result = await env.STREAM.video(video_id).details();
+
+await env.STREAM.video(video_id).update({
+	meta: { name: "sample video" },
+});
+```
+
+```ts
+const video_id = '46c8b7f480d410840758c1cb14a72e47';
+const result = await env.STREAM.video(video_id).details();
+
+await env.STREAM.video(video_id).update({
+  meta: { name: 'sample video' }
+});
+```
+
+For setup instructions and the full API reference, refer to [Bind to Workers API](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
+
+#### Get started with your Agent
+
+> Add a binding for Cloudflare Stream (env.STREAM). On the watch page, use the Stream binding to get info based on the ID, and leverage video.meta.name as the page title.
+
+May 7, 2026
+
+[<h2>WAF Release - 2026-05-07 - Emergency</h2>](https://developers.cloudflare.com/changelog/post/2026-05-07-emergency-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This emergency release introduces a new rule to detect Next.js App Router middleware and proxy bypass attempts via segment-prefetch routes (CVE-2026-44575).
+
+**Key Findings**
+
+CVE-2026-44575: Next.js Middleware / Proxy Bypass in App Router Applications via Segment-Prefetch Routes
+
+Successful exploitation allows unauthenticated attackers to bypass middleware or proxy-based authorization checks in affected Next.js App Router applications. This leads to unauthorized access to protected content, potential exposure of sensitive application data, and compromise of application security boundaries.
+
+We strongly recommend upgrading to Next.js 15.5.16 or 16.2.5 (or later) immediately to address the underlying vulnerability. If you cannot upgrade immediately, enforce authorization in the underlying route or page logic instead of relying solely on middleware.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...e77e4a53 | N/A | Next.js - Middleware Bypass via Invalid RSC Header - CVE:CVE-2026-44575 | N/A | Disabled | This is a new detection. |
+
+May 7, 2026
+
+[<h2>Automatic tracing across Durable Object and Worker subrequests</h2>](https://developers.cloudflare.com/changelog/post/2026-05-07-automatic-tracing-across-do-and-worker-subrequests/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+You can now get a single unified trace across Worker-to-Worker subrequests, with trace context propagating automatically. Previously, [automatic tracing](https://developers.cloudflare.com/workers/observability/traces/) produced disconnected traces when a Worker called another Worker through a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) or [Durable Object](https://developers.cloudflare.com/durable-objects/).
+
+![Unified trace showing nested spans across a Durable Object subrequest and a service binding call](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1824,height=1156,format=webp/_astro/2026-04-28-worker-to-worker-context-prop.Db1qNQJL.png)
+
+This means you can:
+
+- Follow a request through your entire Worker architecture in one trace view
+- See service binding and Durable Object calls as nested child spans instead of separate traces
+- Debug cross-Worker request flows in the Cloudflare dashboard or in an external observability platform via [OpenTelemetry](https://developers.cloudflare.com/workers/observability/opentelemetry-export/)
+
+[Tracing must be enabled](https://developers.cloudflare.com/workers/observability/traces/#how-to-enable-tracing) in your Wrangler configuration for traces to be recorded. Checkout [Workers tracing](https://developers.cloudflare.com/workers/observability/traces/) to get started.
+
+Up next, we are working on external trace context propagation using [W3C Trace Context standards ↗︎](https://www.w3.org/TR/trace-context/), which will allow traces from your Workers to link with traces from services outside of Cloudflare.
+
+May 6, 2026
+
+[<h2>Cloudy Summaries in PhishNet O365</h2>](https://developers.cloudflare.com/changelog/post/2026-05-06-cloudy-summaries-in-phishnet_o365/)
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
+
+PhishNet users can now access **Cloudy summaries** directly within the email investigation experience. When reviewing a message in PhishNet, users will see an AI-generated summary that provides additional context and key details about the email.
+
+These summaries help users quickly understand the nature of a message without needing to manually parse through headers, body content, and detection signals. Cloudy surfaces the most relevant information so users can make faster, more informed decisions about suspicious emails.
+
+**These summaries are not trained on customer data.** They are generated using the outputs of our existing detection models and analysis systems.
+
+This feature is available for PhishNet with Office 365. Support for Gmail will be available by the end of the quarter.
+
+May 6, 2026
+
+[<h2>IPv6 CIDR routes for Cloudflare Mesh</h2>](https://developers.cloudflare.com/changelog/post/2026-05-06-mesh-ipv6-routes/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) nodes now support IPv6 CIDR routes. You can advertise both IPv4 and IPv6 subnets through your Mesh nodes, making IPv6-only or dual-stack private networks reachable from any enrolled device.
+
+![IPv6 CIDR routes on a Mesh node in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2906,height=1352,format=webp/_astro/mesh-ipv6-routes.CC-jlZkw.png)
+
+To add an IPv6 route, follow the same steps as [adding an IPv4 route](https://developers.cloudflare.com/mesh/features/routes/#add-a-route) — enter the IPv6 CIDR (for example, `fd00::/64`) when configuring the route in the [dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/mesh) or via the API.
+
+May 6, 2026
+
+[<h2>TLD Nameserver Performance in Cloudflare Radar</h2>](https://developers.cloudflare.com/changelog/post/2026-05-06-radar-tld-nameserver-performance/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Radar**](https://developers.cloudflare.com/radar/) now provides TLD authoritative nameserver performance insights, measuring response time (latency) as observed from Cloudflare's [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/) resolver infrastructure when forwarding queries upstream to TLD nameservers.
+
+New widgets on [TLD detail pages ↗︎](https://radar.cloudflare.com/tlds/com):
+
+- [**Aggregate nameserver latency** ↗︎](https://radar.cloudflare.com/tlds/com#tld-ns-latency): Response time percentiles (p25/p50/p75) for all authoritative nameservers of the selected TLD.
+- [**Latency per nameserver** ↗︎](https://radar.cloudflare.com/tlds/com#tld-ns-latency-by-ns): Median response time (p50) broken down by each authoritative nameserver over time.
+
+![Latency per nameserver chart](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=1268,format=webp/_astro/tld-nameserver-latency-by-ns.CZGT23Vk.png)
+
+- [**Median latency geographic distribution** ↗︎](https://radar.cloudflare.com/tlds/com#geographical-distribution): p50 response time by Cloudflare data center country, displayed on a choropleth map.
+- [**TLD ranking over time** ↗︎](https://radar.cloudflare.com/tlds/com#tld-ranking): Daily DNS magnitude rank and magnitude value with a Rank/Magnitude toggle.
+- [**Rank change deltas** ↗︎](https://radar.cloudflare.com/tlds): 1 week, 4 weeks, and 3 months rank changes added to the TLD magnitude table and the TLD detail info panel.
+
+![TLD Rankings by DNS Magnitude table with rank change deltas](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2642,height=1446,format=webp/_astro/tld-magnitude-rank-deltas.BaT-jII_.webp)
+
+The new [`TLD Performance`](https://developers.cloudflare.com/api/resources/radar/subresources/tlds/subresources/performance/) API provides the following endpoints:
+
+- [`/tlds/performance/summary/{dimension}`](https://developers.cloudflare.com/api/resources/radar/subresources/tlds/subresources/performance/methods/summary/) — TLD nameserver performance summarized by dimension.
+- [`/tlds/performance/timeseries_groups/{dimension}`](https://developers.cloudflare.com/api/resources/radar/subresources/tlds/subresources/performance/methods/timeseries_groups/) — TLD nameserver performance over time grouped by dimension.
+
+Available dimensions: `LATENCY` (aggregate p25/p50/p75), `NAMESERVER_LATENCY` (per-nameserver p50), `LOCATION_LATENCY` (per-data-center-country p50).
+
+TLD Performance is also available as a dataset in the [Data Explorer ↗︎](https://radar.cloudflare.com/explorer?dataSet=tlds.performance).
+
+Check out the updated [TLD detail page ↗︎](https://radar.cloudflare.com/tlds/com).
+
+May 6, 2026
+
+[<h2>TAXII support added to Threat Events API</h2>](https://developers.cloudflare.com/changelog/post/2026-05-06-TAXII-support-for-threat-events-api/)
+
+[Security Center](https://developers.cloudflare.com/security-center/)
+
+The Cloudforce One Threat Events API now supports [**TAXII** ↗︎](https://www.cloudflare.com/en-gb/learning/security/what-is-stix-and-taxii/) as an output format, enabling standardized, automated sharing of cyber threat intelligence with your existing security stack.
+
+#### Why this matters
+
+- You can now ingest Cloudforce One threat data directly into your SIEM, TIP or SOAR tools that prefer TAXII-formatted streams without needing custom translation scripts.
+- By supporting the TAXII format parameter in our API, security teams can automate the synchronization of indicator data, reducing the manual overhead of updating blocklists and detection rules.
+- This alignment with industry standards ensures that your threat data remains consistent across different security ecosystems and partner integrations.
+
+#### How to use it
+
+When calling the Threat Events API, you can now specify `taxii` in the `format` query parameter:
+
+`GET /accounts/{account_id}/cloudforce_one/threat_events?format=taxii`
+
+You can find the updated documentation in the [Cloudflare API Reference ↗︎](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list#%28resource%29%20cloudforce_one.threat_events%20%3E%20%28method%29%20list%20%3E%20%28params%29%20default%20%3E%20%28param%29%20format%20%3E%20%28schema%29).
+
+May 4, 2026
+
+[<h2>Pipelines and R2 Data Catalog now supported in Terraform</h2>](https://developers.cloudflare.com/changelog/post/2026-04-27-terraform-support/)
+
+[Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) [Basin](https://developers.cloudflare.com/basin/)
+
+[Cloudflare Pipelines](https://developers.cloudflare.com/basin-pipelines/) ingests streaming data via [Workers](https://developers.cloudflare.com/workers/) or HTTP endpoints, transforms it with SQL, and writes it to [R2](https://developers.cloudflare.com/r2/) as Apache Iceberg tables. [R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/) manages those Iceberg tables, compaction, and compatibility with query engines like [R2 SQL](https://developers.cloudflare.com/basin-sql/), [Spark](https://developers.cloudflare.com/basin-catalog/config-examples/spark-scala/), and [DuckDB](https://developers.cloudflare.com/basin-catalog/config-examples/duckdb/).
+
+You can now create and manage both products using Terraform, supported in the [Cloudflare Terraform provider v5.19.0 ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+
+This adds four new resources that let you define your entire data pipeline as infrastructure-as-code: a data catalog, a stream for ingestion, a sink that writes to R2 Data Catalog or R2, and a pipeline that connects them with SQL.
+
+The new Terraform resources are:
+
+- [`cloudflare_r2_data_catalog` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/r2_data_catalog) — enable the data catalog on an R2 bucket
+- [`cloudflare_pipeline_stream` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline_stream) — create a stream that receives events via HTTP or Worker bindings
+- [`cloudflare_pipeline_sink` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline_sink) — create a sink that writes to R2 Data Catalog or R2
+- [`cloudflare_pipeline` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline) — create a pipeline with SQL connecting a stream to a sink
+
+Here is a minimal example that creates a stream, an R2 Data Catalog sink, and a pipeline:
+
+```hcl
+resource "cloudflare_pipeline_stream" "my_stream" {
+  account_id = var.cloudflare_account_id
+  name       = "my_stream"
+  format     = { type = "json" }
+  schema = {
+    fields = [{
+      name     = "value"
+      type     = "json"
+      required = true
+    }]
+  }
+  http           = { enabled = true, authentication = false, cors = {} }
+  worker_binding = { enabled = false }
+}
+
+resource "cloudflare_pipeline_sink" "my_sink" {
+  account_id = var.cloudflare_account_id
+  name       = "my_sink"
+  type       = "r2_data_catalog"
+  format     = { type = "parquet" }
+  schema     = { fields = [] }
+  config = {
+    account_id = var.cloudflare_account_id
+    bucket     = "my-pipeline-bucket"
+    table_name = "my_table"
+    token      = var.catalog_token
+  }
+}
+
+resource "cloudflare_pipeline" "my_pipeline" {
+  account_id = var.cloudflare_account_id
+  name       = "my_pipeline"
+  sql        = "INSERT INTO ${cloudflare_pipeline_sink.my_sink.name} SELECT * FROM ${cloudflare_pipeline_stream.my_stream.name}"
+}
+```
+
+For a full end-to-end example that includes R2 bucket creation, data catalog setup, and scoped API token provisioning, refer to the [Pipelines Terraform documentation](https://developers.cloudflare.com/basin-pipelines/reference/terraform/).
+
+May 4, 2026
+
+[<h2>Pingora now powers Cloudflare's cache</h2>](https://developers.cloudflare.com/changelog/post/2026-05-04-pingora-powers-cache/)
+
+[Cache / CDN](https://developers.cloudflare.com/cache/)
+
+Cloudflare's cache now runs on a new proxy built on [Pingora ↗︎](https://github.com/cloudflare/pingora), the Rust-based framework that already serves a significant portion of Cloudflare's network traffic. The new proxy is faster, more memory-safe, and designed to evolve our cache architecture. It delivers immediate performance improvements and enables new caching capabilities.
+
+#### What this brings
+
+- **Lower latency**: The new proxy reduces per-request overhead through improved connection reuse.
+- **Reduced cache MISSes**: Enhanced cache retention improves origin offload.
+- **Better RFC compliance**: Caching behavior more closely follows HTTP caching standards.
+- **Foundation for future features**: The new architecture enables upcoming improvements to cache functionality and efficiency.
+
+#### New features
+
+- **Asynchronous `stale-while-revalidate`**: Every request returns stale content immediately while revalidation happens in the background, instead of the first request after expiry blocking on the origin. Refer to the [asynchronous `stale-while-revalidate` changelog](https://developers.cloudflare.com/changelog/post/2026-02-26-async-stale-while-revalidate/) for details.
+- **Unbuffered bypass by default**: Responses that bypass cache are streamed directly to the client without buffering, reducing time-to-first-byte for uncacheable content.
+
+#### Behavioral changes
+
+The new architecture introduces the following behavioral changes to improve RFC compliance and correctness:
+
+- **`Vary: *` results in cache bypass**: According to [RFC 9110 Section 12.5.5 ↗︎](https://httpwg.org/specs/rfc9110.html#field.vary), a `Vary` header value of `*` indicates the response varies on factors beyond request headers and must not be served from cache. Cloudflare now bypasses cache for these responses instead of storing them.
+- **`Set-Cookie` stripped on MISS and EXPIRED**: For cacheable assets, `Set-Cookie` is now stripped on MISS and EXPIRED responses, not only on HITs.
+- **Floating-point TTL values**: Floating-point time-to-live values (for example, `max-age=1.5`) are rounded down to the nearest integer instead of being rejected as invalid.
+
+#### What's next
+
+A deeper look at the new cache proxy is coming soon to the [Cloudflare blog ↗︎](https://blog.cloudflare.com/). For background on the underlying framework, read:
+
+- [Open sourcing Pingora: our Rust framework for building programmable network services ↗︎](https://blog.cloudflare.com/pingora-open-source/)
+- [How we built Pingora, the proxy that connects Cloudflare to the Internet ↗︎](https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/)
+
+May 4, 2026
+
+[<h2>Keyboard shortcuts for the Cloudflare dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-05-04-keyboard-shortcuts/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+You can now navigate, switch context, and take common actions in the Cloudflare dashboard without leaving your keyboard. Press `?` anywhere to see the full list. Keyboard shortcuts can be disabled by visiting your [profile settings ↗︎](https://dash.cloudflare.com/profile/settings).
+
+#### Navigate
+
+| Shortcut | Action |
+| --- | --- |
+| `g h` | Go to Home |
+| `g a` | Go to account overview |
+| `g z` | Go to zone overview |
+| `g p` | Go to your profile |
+| `g w` | Go to Workers & Pages |
+| `g o` | Go to Zero Trust |
+| `g b` | Go to billing |
+| `g 1` – `g 5` | Go to a recent or pinned item (by position in sidebar) |
+| `t →` | Move to the next tab |
+| `t ←` | Move to the previous tab |
+| `p →` | Move to the next page of a table |
+| `p ←` | Move to the previous page of a table |
+
+#### Take action
+
+| Shortcut | Action |
+| --- | --- |
+| `/` | Open quick search |
+| `?` | Show keyboard shortcuts |
+| `s a` | Switch account |
+| `s z` | Switch zone |
+| `s .` | Star or unstar the current zone |
+| `p .` | Pin or unpin the current page |
+| `t s` | Toggle the sidebar open or closed |
+| `t m` | Expand or collapse all sidebar menus |
+| `t a` | Toggle Ask AI sidebar |
+| `d .` | Toggle dark mode |
+| `c u` | Copy the current URL |
+| `c d` | Copy a deep link URL |
+
+May 4, 2026
+
+[<h2>New routing widgets on Cloudflare Radar</h2>](https://developers.cloudflare.com/changelog/post/2026-05-04-radar-routing-widgets/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Radar**](https://developers.cloudflare.com/radar/) is expanding its [Routing section ↗︎](https://radar.cloudflare.com/routing) with two new widgets that give a deeper view into how networks announce address space and how RPKI ROA coverage evolves over time.
+
+#### Top ASes by announced IP space on country pages
+
+Country routing pages now include a **Top ASes by announced IP space** chart, breaking down the IPv4 and IPv6 address space announced from a country across the autonomous systems that originate it. The chart stacks the IPv4 and IPv6 views vertically, with the top contributing ASes called out by color and the remaining networks aggregated as **Other**.
+
+![Screenshot of the top ASes by announced IP space chart on a country routing page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=1322,format=webp/_astro/country-top-ases-ip-space.CoGqJB6W.png)
+
+#### RPKI ROA deployment timeseries
+
+The [RPKI sub-page ↗︎](https://radar.cloudflare.com/routing/rpki) adds an **RPKI ROA deployment** timeseries widget that tracks the share of announced BGP space covered by a valid Route Origin Authorization (ROA) over time, with separate IPv4 and IPv6 lines. A toggle switches the view between the share of covered **prefixes** and the share of covered **IP address space**. The widget is available on global, country, and AS views, so operators can monitor RPKI adoption progress and compare deployment trends across different scopes.
+
+![Screenshot of the RPKI ROA deployment timeseries widget](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=874,format=webp/_astro/rpki-roa-deployment-timeseries.DTsP_V93.png)
+
+#### API endpoints
+
+The data behind these widgets is also available through two new endpoints on the [`BGP`](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/) API:
+
+- [`/bgp/ips/top/ases`](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/ips/subresources/top/methods/ases/) - Returns the top autonomous systems by announced IP space (IPv4 `/24`s or IPv6 `/48`s), globally or filtered by country, snapped to the nearest 8-hour RIB boundary.
+- [`/bgp/rpki/roas/timeseries`](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/rpki/subresources/roas/methods/timeseries/) - Returns RPKI ROA validation coverage over time, by share of prefixes or share of IP address space, split by IP version, with optional ASN or location filters.
+
+Visit the [Radar routing section ↗︎](https://radar.cloudflare.com/routing) to explore both widgets.
+
+May 4, 2026
+
+[<h2>WAF Release - 2026-05-04</h2>](https://developers.cloudflare.com/changelog/post/2026-05-04-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week's release focuses on new detections to expand coverage across command injection, SQL injection, PHP object injection, remote code execution, and XSS attack vectors.
+
+**Key Findings**
+
+- Existing rule enhancements have been deployed to improve detection resilience against broad classes of web attacks and strengthen behavioral coverage.
+
+**Continuous Rule Improvements**
+
+We are continuously refining our managed rules to provide more resilient protection and deeper insights into attack patterns. To ensure an optimal security posture, we recommend consistently monitoring the Security Events dashboard and adjusting rule actions as these enhancements are deployed.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...f0884a68 | N/A | XSS, HTML Injection - Object Tag - Body (beta) | Log | Block | This is a new detection. This rule is merged into the original rule "XSS, HTML Injection - Object Tag" (ID: ...0c14e284). |
+| Cloudflare Managed Ruleset | ...ff012303 | N/A | XSS, HTML Injection - Object Tag - Headers | Log | Block | This is a new detection. The rule previously known as "XSS, HTML Injection - Object Tag - Headers (beta)" is now renamed to "XSS, HTML Injection - Object Tag - Headers". |
+| Cloudflare Managed Ruleset | ...16f921d9 | N/A | XSS, HTML Injection - Object Tag - URI | Log | Block | This is a new detection. The rule previously known as "XSS, HTML Injection - Object Tag - URI (beta)" is now renamed to "XSS, HTML Injection - Object Tag - URI". |
+| Cloudflare Managed Ruleset | ...dc90d21a | N/A | Command Injection - Generic 9 - Body Vector - Beta | N/A | Disabled | This is a new detection. This rule is merged into the original rule "Command Injection - Generic 9 - Body Vector" (ID: ...0677175f) |
+| Cloudflare Managed Ruleset | ...f8960375 | N/A | Command Injection - Generic 9 - Header Vector - Beta | N/A | Disabled | This is a new detection. This rule is merged into the original rule "Command Injection - Generic 9 - Header Vector" (ID: ...1eb7a999) |
+| Cloudflare Managed Ruleset | ...ef47a800 | N/A | Command Injection - Generic 9 - URI Vector - Beta | N/A | Disabled | This is a new detection. This rule is merged into the original rule "Command Injection - Generic 9 - URI Vector" (ID: ...97321c6c) |
+| Cloudflare Managed Ruleset | ...beebf804 | N/A | Command Injection - Sleep - Body | N/A | Disabled | This is a new detection. The rule previously known as "Command Injection<ul><li>Sleep" is now renamed to "Command Injection - Sleep - Body".</li></ul> |
+| Cloudflare Managed Ruleset | ...0d257566 | N/A | Command Injection - Sleep - Headers | N/A | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...1856fe86 | N/A | Command Injection - Sleep - URI | N/A | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...e6e43c37 | N/A | Fortinet FortiSandbox - Command Injection - CVE:CVE-2026-39808 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...88118795 | N/A | Remote Code Execution - Common Bash Bypass - Headers | N/A | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...9299d53b | N/A | Remote Code Execution - Common Bash Bypass - URI | N/A | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...b0bf33f9 | N/A | Remote Code Execution - Common Bash Bypass - Body - Beta | N/A | Disabled | This is a new detection. This rule is merged into the original rule "Remote Code Execution - Common Bash Bypass Body" (ID: ...efb7e5b9). The rule previously known as "Remote Code Execution - Common Bash Bypass Beta" is now renamed to "Remote Code Execution - Common Bash Bypass Body". |
+| Cloudflare Managed Ruleset | ...33bfe8b9 | N/A | PHP Object Injection - 2 - Body - Beta | N/A | Disabled | This is a new detection. This rule is merged into the original rule "PHP Object Injection - 2" (ID: ...161aafdc) |
+| Cloudflare Managed Ruleset | ...29552387 | N/A | PHP Object Injection - 2 - Headers | N/A | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...8104f4c5 | N/A | PHP Object Injection - 2 - URI | N/A | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...6a46201e | N/A | SQLi - DROP - 2 - Beta | N/A | Disabled | This is a new detection. This rule is merged into the original rule "SQLi - DROP - 2" (ID: ...48ac2221) |
+| Cloudflare Managed Ruleset | ...8b7f85ee | N/A | SQLi - DROP - 2 - Headers | N/A | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...1546b5f0 | N/A | SQLi - DROP - 2 - URI | N/A | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...1e053dce | N/A | SmarterMail - Remote Code Execution - CVE:CVE-2026-24423 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...d0023a36 | N/A | SQLi - SELECT Expression - Body | Block | Disabled | Action changed |
+| Cloudflare Managed Ruleset | ...26cc211f | N/A | SQLi - String Concatenation - URI | Block | Disabled | Action changed |
+
+May 1, 2026
+
+[<h2>Run Workflows inside Dynamic Workers with the @cloudflare/dynamic-workflows library</h2>](https://developers.cloudflare.com/changelog/post/2026-05-01-dynamic-workflows/)
+
+[Workflows](https://developers.cloudflare.com/workflows/) [Workers](https://developers.cloudflare.com/workers/)
+
+You can now use [`@cloudflare/dynamic-workflows` ↗︎](https://github.com/cloudflare/dynamic-workflows) to run a [Workflow](https://developers.cloudflare.com/workflows/) inside a [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/), ensuring durable execution for code that is loaded at runtime.
+
+The Worker Loader loads Dynamic Workers on demand, which previously made durability challenging. Even within a Dynamic Worker, a Workflow might sleep for hours or days between steps, and by the time it resumes, the original Dynamic Worker code would no longer be in memory.
+
+The library solves this by tagging each Workflow instance with metadata that identifies which Dynamic Worker to load — for example, a tenant ID — then reloading the matching Dynamic Worker through the Worker Loader whenever a Workflow awakens.
+
+Because Dynamic Workers are created on-demand, you do not have to register each Workflow up front or manage them individually. Load the Workflow code in the Dynamic Worker when it is needed, and the Workflows engine handles persistence and retries behind the scenes. Your Workflow code itself is unaffected by the routing and behaves as normal.
+
+This unlocks patterns where the Workflow code itself is dynamic. For example, this is useful with:
+
+- **SaaS platforms** where each tenant defines their own automation, such as onboarding sequences, approval chains, or billing retry logic.
+- **AI agent frameworks** where agents generate and execute multi-step plans at runtime, surviving restarts and waiting for human approval between tool calls.
+- **Multi-tenant job systems** where each customer submits their own processing logic and every step persists progress and retries on failure.
+
+```ts
+import {
+	createDynamicWorkflowEntrypoint,
+	DynamicWorkflowBinding,
+	wrapWorkflowBinding,
+	type WorkflowRunner,
+} from "@cloudflare/dynamic-workflows";
+
+export { DynamicWorkflowBinding };
+
+interface Env {
+	WORKFLOWS: Workflow;
+	LOADER: WorkerLoader;
+}
+
+function loadTenant(env: Env, tenantId: string) {
+	return env.LOADER.get(tenantId, async () => ({
+		compatibilityDate: "2026-01-01",
+		mainModule: "index.js",
+		modules: { "index.js": await fetchTenantCode(tenantId) },
+		// The Dynamic Worker uses this exactly like a real Workflow binding;
+		// every create() is tagged with { tenantId } automatically.
+		env: { WORKFLOWS: wrapWorkflowBinding({ tenantId }) },
+	}));
+}
+
+// The entrypoint name must match `class_name` in the workflows binding of your Wrangler config file.
+export const DynamicWorkflow = createDynamicWorkflowEntrypoint<Env>(
+	async ({ env, metadata }) => {
+		const stub = loadTenant(env, metadata.tenantId as string);
+		return stub.getEntrypoint("TenantWorkflow") as unknown as WorkflowRunner;
+	},
+);
+
+export default {
+	fetch(request: Request, env: Env) {
+		const tenantId = request.headers.get("x-tenant-id")!;
+		return loadTenant(env, tenantId).getEntrypoint().fetch(request);
+	},
+};
+```
+
+For a full walkthrough, refer to the [Dynamic Workflows guide](https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/).
+
+Apr 30, 2026
+
+[<h2>Post-quantum IPsec interoperability with third-party devices</h2>](https://developers.cloudflare.com/changelog/post/2026-04-30-ipsec-post-quantum-third-party/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+Cloudflare IPsec now supports post-quantum key agreement with compatible third-party devices. [Cisco ↗︎](https://www.cisco.com/) and [Fortinet ↗︎](https://www.fortinet.com/) are the first third-party vendors validated to interoperate with Cloudflare IPsec using ML-KEM (Module-Lattice-Based Key-Encapsulation Mechanism).
+
+Post-quantum IPsec uses [RFC 9370 ↗︎](https://datatracker.ietf.org/doc/rfc9370/) and [draft-ietf-ipsecme-ikev2-mlkem ↗︎](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/) to negotiate hybrid key agreement during the IKEv2 `IKE_INTERMEDIATE` phase. This combines classical Diffie-Hellman (Group 20) with ML-KEM-768 or ML-KEM-1024 to protect against [harvest-now, decrypt-later ↗︎](https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later) attacks.
+
+Key details:
+
+- Compatible with Cisco 8000 Series Secure Routers with IOS XR Release 26.1.1 and Fortinet FortiOS 7.6.6 and later.
+- Uses ML-KEM-768 or ML-KEM-1024 as an additional Key Exchange to DH Group 20.
+- Follows RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem standards.
+- No additional licensing required.
+
+Post-quantum IPsec with third-party devices is now generally available with confirmed interoperability for the platforms listed above. Cloudflare intends to support interoperability with more vendors as they build out support for draft-ietf-ipsecme-ikev2-mlkem. Contact your account team to discuss support for additional vendors.
+
+For supported key exchange methods and the list of validated platforms, refer to [GRE and IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#tested-third-party-vendor-interoperability).
+
+Apr 30, 2026
+
+[<h2>Classify sensitive content with Data Classification</h2>](https://developers.cloudflare.com/changelog/post/2026-04-30-data-classification/)
+
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+
+Cloudflare DLP now includes **Data Classification**, which lets administrators organize and label sensitive content using labels, templates, and reusable data classes.
+
+With Data Classification, administrators can define labels such as sensitivity schemas and levels, and data tag groups and tags. Administrators can also build from Cloudflare-managed templates and create reusable data classes that combine detection entries, other data classes, sensitivity levels, and data tags.
+
+You can then use those classifications in custom DLP profiles to identify the severity of sensitive content, understand where it exists, and apply that logic consistently across DLP profiles.
+
+For more information, refer to [Data Classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/).
+
+Apr 30, 2026
+
+[<h2>New predefined detection entries are available</h2>](https://developers.cloudflare.com/changelog/post/2026-04-30-standalone-predefined-detection-entries/)
+
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+
+Cloudflare DLP now includes new predefined detection entries.
+
+The expanded catalog includes detections for specific credential types, webhooks, addresses, tax identifiers, national IDs, financial data, and crypto wallets.
+
+Examples include `GitHub PAT`, `OpenAI API Key`, `Slack Webhook`, `Discord Webhook`, `US Physical Address`, and `Bitcoin Wallet`.
+
+For the full list, refer to [Predefined detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/predefined-detection-entries/).
+
+Apr 30, 2026
+
+[<h2>Go SDK v7.0.0 Released</h2>](https://developers.cloudflare.com/changelog/post/2026-04-30-go-sdk-v7.0.0/)
+
+[SDK](https://developers.cloudflare.com/fundamentals/api/reference/sdks/) [Go SDK](https://developers.cloudflare.com/fundamentals/api/reference/sdks/)
+
+Full Changelog: [v6.10.0...v7.0.0 ↗︎](https://github.com/cloudflare/cloudflare-go/compare/v6.10.0...v7.0.0)
+
+This is a major version release that includes breaking changes to three packages: `ai_search`, `email_security`, and `workers`. These changes reflect upstream API specification updates that improve type correctness and consistency.
+
+**Please ensure you read through the list of changes below before moving to this version** - this will help you understand any down or upstream issues it may cause to your environments.
+
+#### Breaking Changes
+
+See the [v7.0.0 Migration Guide ↗︎](https://github.com/cloudflare/cloudflare-go/blob/main/docs/migration-guides/v7.0.0-migration-guide.md) for before/after code examples and actions needed for each change.
+
+#### AI Search - SearchForAgents Metadata Removed
+
+The `SearchForAgents` nested type has been removed from all instance metadata structs. This field is no longer part of the API specification.
+
+**Removed Types:**
+
+- `InstanceNewResponseMetadataSearchForAgents`
+- `InstanceUpdateResponseMetadataSearchForAgents`
+- `InstanceListResponseMetadataSearchForAgents`
+- `InstanceDeleteResponseMetadataSearchForAgents`
+- `InstanceReadResponseMetadataSearchForAgents`
+- `InstanceNewParamsMetadataSearchForAgents`
+- `InstanceUpdateParamsMetadataSearchForAgents`
+- `NamespaceInstanceNewResponseMetadataSearchForAgents`
+- `NamespaceInstanceUpdateResponseMetadataSearchForAgents`
+- `NamespaceInstanceListResponseMetadataSearchForAgents`
+- `NamespaceInstanceDeleteResponseMetadataSearchForAgents`
+- `NamespaceInstanceReadResponseMetadataSearchForAgents`
+- `NamespaceInstanceNewParamsMetadataSearchForAgents`
+- `NamespaceInstanceUpdateParamsMetadataSearchForAgents`
+
+#### Email Security - Path Parameter Type Changes
+
+Multiple Email Security settings sub-resources have changed their path parameter types from `int64` to `string`:
+
+- `AllowPolicies` ( `policyID int64` -> `policyID string`)
+- `BlockSenders` ( `patternID int64` -> `patternID string`)
+- `Domains` ( `domainID int64` -> `domainID string`)
+- `ImpersonationRegistry` ( `displayNameID int64` -> `impersonationRegistryID string`)
+- `TrustedDomains` ( `trustedDomainID int64` -> `trustedDomainID string`)
+
+#### Email Security - Investigate Parameter Rename
+
+The `Investigate.Get`, `Investigate.Move.New`, and `Investigate.Reclassify.New` methods now use `investigateID` instead of `postfixID` as the path parameter name.
+
+#### Email Security - Domains BulkDelete Method Removed
+
+The `SettingDomainService.BulkDelete` method and its associated types have been removed:
+
+- `SettingDomainBulkDeleteResponse`
+- `SettingDomainBulkDeleteParams`
+
+#### Email Security - TrustedDomains Return Type Change
+
+`SettingTrustedDomainService.New` now returns `*SettingTrustedDomainNewResponse` instead of `*SettingTrustedDomainNewResponseUnion`.
+
+#### Email Security - Investigate.Move Return Type Change
+
+`InvestigateMoveService.New` now returns `*pagination.SinglePage[InvestigateMoveNewResponse]` instead of `*[]InvestigateMoveNewResponse`.
+
+#### Workers - Observability Telemetry Filter Restructuring
+
+The observability telemetry filter parameter types have been restructured to support nested filter groups. New discriminated union types replace the previous flat filter arrays:
+
+- `ObservabilityTelemetryKeysParams.Filters` now accepts `FiltersObjectFilterUnion` (was `[]interface\{\}`)
+- `ObservabilityTelemetryQueryParams.Parameters.Filters` now accepts `FiltersObjectFilterUnion`
+- `ObservabilityTelemetryValuesParams.Filters` now accepts `FiltersObjectFilterUnion`
+
+New types include `FiltersObjectFiltersObject` (for group filters with `FilterCombination`) and `FiltersWorkersObservabilityFilterLeaf` (for leaf filters with typed `Operation`, `Type`, and `Value` fields).
+
+#### Features
+
+#### Organizations - Audit Logs (`client.Organizations.Logs.Audit`)
+
+**NEW SERVICE:** Query organization audit logs with cursor-based pagination.
+
+- `List()` - Retrieve audit logs
+
+#### Browser Rendering (`client.BrowserRendering`)
+
+- `client.BrowserRendering.Devtools.Browser.Targets.Close()` - Close a specific browser target (tab, page) by ID
+
+#### Queues (`client.Queues`)
+
+- `client.Queues.GetMetrics()` - Retrieve queue metrics for a specific queue
+
+#### AI Search (`client.AISearch`)
+
+- Added `WaitForCompletion` parameter to `NamespaceInstanceItemNewOrUpdateParams` and `NamespaceInstanceItemSyncParams` for synchronous indexing confirmation
+
+#### Bug Fixes
+
+- **Magic Transit**: `ConnectorService.List` parameter name corrected from `query` to `params` (non-functional, affects generated documentation only)
+
+#### Deprecations
+
+None in this release.
+
+#### Get started
+
+- [Download Go SDK v7.0.0 ↗︎](https://github.com/cloudflare/cloudflare-go/releases/tag/v7.0.0)
+- [Go SDK documentation ↗︎](https://developers.cloudflare.com/api/sdks/go/)
+- [Migration Guide ↗︎](https://github.com/cloudflare/cloudflare-go/blob/main/docs/migration-guides/v7.0.0-migration-guide.md)
+
+Apr 30, 2026
+
+[<h2>Empty buckets and delete folders from the R2 dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-04-30-r2-empty-bucket-folder-delete/)
+
+[R2](https://developers.cloudflare.com/r2/)
+
+You can now empty an entire [R2](https://developers.cloudflare.com/r2/) bucket or delete folders directly from the dashboard. Emptying a bucket is required before you can delete it. Previously, this required scripting or configuring [lifecycle rules](https://developers.cloudflare.com/r2/buckets/object-lifecycles/). Now, the dashboard can handle it in a single action.
+
+#### Empty a bucket
+
+Go to your bucket's **Settings** tab and select **Empty** under the **Empty Bucket** section. This deletes all objects in the bucket while preserving the bucket and its configuration. For large buckets, the operation runs in the background and the dashboard displays progress.
+
+Emptying a bucket is also a prerequisite for deleting it. The dashboard now guides you through both steps in one place.
+
+![Empty Bucket and Delete Bucket sections in the R2 dashboard Settings tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3380,height=1776,format=webp/_astro/empty-bucket-changelog.DjuMZppm.png)
+
+#### Delete folders
+
+R2 uses a flat object structure. The dashboard groups objects that share a common prefix into folders when the **View prefixes as directories** checkbox is selected. Deleting a folder removes every object under that prefix.
+
+From the **Objects** tab, you can select one or more folders and delete them alongside individual objects.
+
+For step-by-step instructions, refer to [Delete buckets](https://developers.cloudflare.com/r2/buckets/delete-buckets/) and [Delete objects](https://developers.cloudflare.com/r2/objects/delete-objects/).
+
+Apr 30, 2026
+
+[<h2>Cloud Observatory connection metrics improvements</h2>](https://developers.cloudflare.com/changelog/post/2026-04-30-radar-cloud-observatory-connection-metrics/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+The [Cloud Observatory ↗︎](https://radar.cloudflare.com/cloud-observatory) on [**Radar**](https://developers.cloudflare.com/radar/) now provides improved connection metric insights, offering new ways to explore TCP round-trip time, TCP handshake duration, TLS handshake duration, and response header receive duration across cloud provider origin servers.
+
+The [Cloud Observatory overview ↗︎](https://radar.cloudflare.com/cloud-observatory#connection-metrics) now shows connection metrics broken down by cloud provider, making it easy to compare connection performance across Amazon Web Services, Google Cloud, Microsoft Azure, and Oracle Cloud.
+
+![Screenshot of Cloud Observatory connection metrics broken down by cloud provider](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2338,height=1408,format=webp/_astro/cloud-observatory-connection-metrics-by-provider.Bk9nSitV.png)
+
+Each [provider page ↗︎](https://radar.cloudflare.com/cloud-observatory/amazon#connection-metrics) now shows connection metrics for the top five regions, with a selector to rank by lowest or highest values.
+
+![Screenshot of Cloud Observatory connection metrics broken down by region for a provider](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2338,height=1414,format=webp/_astro/cloud-observatory-connection-metrics-by-region.CbHAKXoc.png)
+
+Each [region page ↗︎](https://radar.cloudflare.com/cloud-observatory/amazon/us-east-1#connection-metrics) now displays connection metrics as percentile distributions (25th percentile, median, and 75th percentile), providing insight into the range and variability of connection times.
+
+![Screenshot of Cloud Observatory connection metrics with percentile distribution for a region](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2340,height=1288,format=webp/_astro/cloud-observatory-connection-metrics-percentiles.DJ9eAE0-.png)
+
+These views are also available through the [`Origins` API](https://developers.cloudflare.com/api/resources/radar/subresources/origins/), using the `timeseries_groups` endpoint with the `ORIGIN`, `REGION`, or `PERCENTILE` dimension.
+
+Apr 30, 2026
+
+[<h2>Dark mode support on Cloudflare Radar</h2>](https://developers.cloudflare.com/changelog/post/2026-04-30-radar-dark-mode/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Radar**](https://developers.cloudflare.com/radar/) now supports **dark mode**. A theme selector in the upper right corner of the page lets users explicitly choose between three display options:
+
+- **Light** — standard light theme
+- **Dark** — full dark theme
+- **System** — follows the operating system preference
+
+![Screenshot of the theme selector showing Light, Dark, and System options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=404,height=296,format=webp/_astro/dark-mode-theme-selector.D5ih8e4q.png)
+
+The selected theme applies consistently across all Radar pages and widgets.
+
+![Screenshot of the Cloudflare Radar overview page in dark mode](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3818,height=1682,format=webp/_astro/dark-mode-overview.D-39RJlY.png)
+
+The theme choice also applies to shared and embedded graphs.
+
+Try it out at [Cloudflare Radar ↗︎](https://radar.cloudflare.com).
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/19/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/19/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

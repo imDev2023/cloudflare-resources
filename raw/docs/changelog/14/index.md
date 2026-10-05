@@ -1,0 +1,999 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Jun 26, 2026
+
+[<h2>New \`us\` jurisdiction for Durable Objects</h2>](https://developers.cloudflare.com/changelog/post/2026-06-26-durable-objects-us-jurisdiction/)
+
+[Durable Objects](https://developers.cloudflare.com/durable-objects/) [Workers](https://developers.cloudflare.com/workers/)
+
+Durable Objects now supports a `us` [jurisdiction](https://developers.cloudflare.com/durable-objects/reference/data-location/#restrict-durable-objects-to-a-jurisdiction), letting you create Durable Objects that only run and store data within the United States. Use the `us` jurisdiction when you need to keep a Durable Object's compute and storage inside the United States to meet data residency requirements.
+
+Create a namespace restricted to the `us` jurisdiction the same way as any other jurisdiction:
+
+```js
+// Worker
+export default {
+	async fetch(request, env) {
+		const usSubnamespace = env.MY_DURABLE_OBJECT.jurisdiction("us");
+		const stub = usSubnamespace.getByName("general");
+		return stub.fetch(request);
+	},
+};
+```
+
+Workers may still access Durable Objects constrained to the `us` jurisdiction from anywhere in the world. The jurisdiction constraint only controls where the Durable Object itself runs and persists data.
+
+For the full list of supported jurisdictions, refer to [Data location — Restrict Durable Objects to a jurisdiction](https://developers.cloudflare.com/durable-objects/reference/data-location/#restrict-durable-objects-to-a-jurisdiction).
+
+Jun 25, 2026
+
+[<h2>Search API tokens by name</h2>](https://developers.cloudflare.com/changelog/post/2026-06-25-api-token-search/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+You can now search API tokens by name, making it easier to find specific tokens across large token lists without manually paginating.
+
+#### What's new
+
+- **Dashboard search**: Both [account API tokens ↗︎](https://dash.cloudflare.com/?to=/:account/account-api-tokens) and [user API tokens ↗︎](https://dash.cloudflare.com/profile/api-tokens) pages now include a search bar. Type a name to filter results.
+- **API search support**: The [`/user/tokens`](https://developers.cloudflare.com/api/resources/user/subresources/tokens/methods/list/) and [`/accounts/{account_id}/tokens`](https://developers.cloudflare.com/api/resources/accounts/subresources/tokens/methods/list/) endpoints now accept a `name` query parameter to filter tokens by name.
+
+For more information, refer to [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) and [Account API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/).
+
+Jun 25, 2026
+
+[<h2>Test Durable Object eviction with new cloudflare:test helpers</h2>](https://developers.cloudflare.com/changelog/post/2026-06-25-durable-object-eviction-test-helpers/)
+
+[Durable Objects](https://developers.cloudflare.com/durable-objects/) [Workers](https://developers.cloudflare.com/workers/)
+
+The `@cloudflare/vitest-pool-workers` package now includes `evictDurableObject` and `evictAllDurableObjects` test helpers, exported from `cloudflare:test`.
+
+These helpers let you test how a Durable Object behaves across evictions, simulating the production lifecycle where an idle Durable Object can be evicted from memory.
+
+For more context, refer to [Lifecycle of a Durable Object](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/).
+
+```ts
+import { evictDurableObject, evictAllDurableObjects } from "cloudflare:test";
+import { env } from "cloudflare:workers";
+
+const id = env.COUNTER.idFromName("my-counter");
+const stub = env.COUNTER.get(id);
+
+// Evict the Durable Object instance pointed to by a specific stub
+await evictDurableObject(stub);
+
+// Close WebSockets instead of hibernating them
+await evictDurableObject(stub, { webSockets: "close" });
+
+// Evict all currently-running Durable Objects in evictable namespaces
+await evictAllDurableObjects();
+```
+
+These helpers are available in `@cloudflare/vitest-pool-workers@0.16.20` and later.
+
+Learn more in the [Test APIs reference](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#durable-objects) and the [Testing Durable Objects guide](https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/#testing-eviction).
+
+Jun 24, 2026
+
+[<h2>Cloudflare One Client for macOS (version 2026.6.782.1)</h2>](https://developers.cloudflare.com/changelog/post/2026-06-24-warp-macos-beta/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new Beta release for the macOS Cloudflare One Client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
+
+This beta release introduces upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the Secure Enclave whenever available to provide stronger protection against device impersonation.
+
+**Additional changes and improvements**
+
+This release also introduces multiple fixes and improvements including:
+
+- Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the macOS Display settings.
+- Path MTU Discovery (PMTUD) is now enabled by default.
+- Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
+- Users can now register with team names in any case format without errors.
+- New UI fixes
+  - Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
+  - Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
+  - Added clear error messaging when the Cloudflare certificate needs to be installed.
+  - Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
+  - New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
+  - Added ability to configure proxy mode for consumer users.
+  - Added back the option to quit for consumer users.
+
+**Known issues**
+
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+
+Jun 24, 2026
+
+[<h2>Control AI Search similarity cache freshness</h2>](https://developers.cloudflare.com/changelog/post/2026-06-24-ai-search-similarity-cache-controls/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/) now gives you more control over [similarity cache](https://developers.cloudflare.com/ai-search/configuration/retrieval/cache/) freshness. Similarity cache helps reduce latency and inference cost by reusing responses for semantically similar queries.
+
+With these updates, you can choose how long responses are eligible for reuse and clear cached responses when they may be stale.
+
+#### Cache duration now defaults to 48 hours
+
+Previously, AI Search cached responses for a fixed duration of 30 days. Cached responses now use the instance's `cache_ttl` setting, and the default is **48 hours**.
+
+You can set `cache_ttl` when creating or updating an instance to choose a cache duration from 10 minutes to 6 days.
+
+Use a shorter TTL when your source content changes frequently and freshness is more important. Use a longer TTL when your content is stable and you want more cache reuse.
+
+For example, set `cache_ttl` to `518400` to retain cached responses for 6 days:
+
+```json
+{
+	"cache_ttl": 518400
+}
+```
+
+#### Purge cached responses
+
+You can also purge all cached responses for an instance on demand. Purging cached responses does not delete indexed content or source files.
+
+It prevents AI Search from reusing previous cached responses, so subsequent similar queries generate fresh answers and repopulate the cache.
+
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/instances/$INSTANCE_NAME/purge_cache" \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+You can also purge cached responses from the instance settings page in the Cloudflare dashboard.
+
+Refer to [similarity cache](https://developers.cloudflare.com/ai-search/configuration/retrieval/cache/) for the full list of supported `cache_ttl` values and more details about cache behavior.
+
+Jun 24, 2026
+
+[<h2>Audit Logs v2 — Organization-level audit logs in Cloudflare dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-06-24-audit-logs-v2-organization-dashboard-ui/)
+
+[Audit Logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/)
+
+You can now, as an [Organization](https://developers.cloudflare.com/fundamentals/organizations/) Super Administrator, view organization-level [audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/) in the Cloudflare dashboard, in addition to the existing [API access](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#organization-activity-logs).
+
+Organization audit logs help you monitor activity across your organization. You can see who performed an action, what changed, when it happened, how it was performed, and whether it succeeded or failed.
+
+You can filter and search logs by actor, action, result, resource, request details, and timestamp. Use these logs to troubleshoot changes, investigate unexpected access, and support security or compliance workflows.
+
+![Organization audit logs in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3450,height=1738,format=webp/_astro/Audit_logs_v2_organization_dashboard.De-uwPva.png)
+
+If you are viewing account-level audit logs and the account belongs to an organization where you are an Organization Super Administrator, select **View Organization Audit Logs** to open the parent organization's audit logs.
+
+![View Organization Audit Logs button](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3456,height=510,format=webp/_astro/Audit_logs_v2_view_organization_button.Ch7CaBB-.png)
+
+To get started, go to **Organizations**, select your organization, then go to **Manage Organization** > **Audit Logs**.
+
+For more information, refer to the [Audit Logs documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
+
+Jun 24, 2026
+
+[<h2>New WebSocket Analytics Logpush dataset and updated fields</h2>](https://developers.cloudflare.com/changelog/post/2026-06-24-log-fields-updated/)
+
+[Logs](https://developers.cloudflare.com/logs/)
+
+Cloudflare has updated [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/):
+
+#### New datasets
+
+- **WebSocket Analytics**: A new dataset with fields including `BytesReceivedClient`, `BytesReceivedOrigin`, `BytesSentClient`, `BytesSentOrigin`, `ClientASN`, `ClientIP`, `ClientRequestHost`, `ClientRequestPath`, `ClientRequestUserAgent`, `ColoCode`, `ConnectionCloseReason`, `ConnectionCloseSource`, `ConnectionID`, `ConnectionTransportCloseCode`, `EdgeEndTimestamp`, `EdgeStartTimestamp`, and `RayID`.
+
+#### Updated fields in existing datasets
+
+- **Firewall events** (added): `ZoneName`. The Firewall events dataset is now also available for [account-scope Logpush](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/firewall_events/), in addition to the existing zone scope.
+- **Email Security Alerts** (added): `BCC`, `DKIMResult`, `DMARCPolicy`, `DMARCResult`, and `SPFResult`.
+
+For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
+
+Jun 24, 2026
+
+[<h2>Precise IP location and richer AS details on the Cloudflare Radar IP page</h2>](https://developers.cloudflare.com/changelog/post/2026-06-24-radar-ip-page-improvements/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Radar**](https://developers.cloudflare.com/radar/) now plots your IPv4 and IPv6 locations on the [IP page ↗︎](https://radar.cloudflare.com/ip), shows the Cloudflare data centers serving your connection, and includes more detail about the autonomous system (AS) your primary IP belongs to.
+
+#### Your IP location on the map
+
+The map of your connection now shows:
+
+- **IP location markers** — The primary IP will show as a red marker. When both IP addresses do not geolocate to the same place, a second marker will appear in blue with a note explaining why IPv4 and IPv6 can resolve to different locations.
+- **Cloudflare data center markers** — Cloudflare data centers now show as orange dots on the map and the one you are connected to is highlighted.
+- **Data center connectors** — Each line connects your IP markers to their respective data centers.
+
+![Map showing Cloudflare data centers and a marker representing the IP location with a line connected to a data center](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3136,height=1305,format=webp/_astro/ip-page-geolocation.BJ53oUtj.png)
+
+Due to the data policies of our geolocation provider, this detailed location is only available for your own IP. Other IP addresses keep the current country-level view.
+
+#### Extended AS information
+
+The AS card on the IP page now shows additional detail about the network an IP belongs to — including alternate names, the operator website, and an estimate of the AS user population — alongside the AS number and country.
+
+Visit the [Cloudflare Radar IP page ↗︎](https://radar.cloudflare.com/ip) to explore more details about your IP.
+
+Jun 23, 2026
+
+[<h2>Workflows rollback handlers now include step context</h2>](https://developers.cloudflare.com/changelog/post/2026-06-16-rollback-options/)
+
+[Workflows](https://developers.cloudflare.com/workflows/)
+
+[Workflows](https://developers.cloudflare.com/workflows/) makes it easier to build reliable multi-step applications that can recover when downstream systems fail. Rollback handlers now receive the original [step context](https://developers.cloudflare.com/workflows/build/step-context/) via a `ctx` object for the step being rolled back. This includes `ctx.step.name`, `ctx.step.count`, `ctx.attempt`, and the step `config` with defaults applied.
+
+The [step configuration](https://developers.cloudflare.com/workflows/build/workers-api/#workflowstepconfig) includes the retry and timeout settings used for that step, so you can customize your step recovery logic according to those fields.
+
+```ts
+await step.do(
+	"create charge",
+	async () => {
+		const charge = await createCharge();
+		return { chargeId: charge.id };
+	},
+	{
+		rollback: async ({ ctx, output, error }) => {
+			// `output` is the value returned by the step being rolled back.
+			const { chargeId } = output as { chargeId: string };
+			await refundCharge(chargeId, {
+				// `ctx` is the original step context, including step name, count, attempt, and config.
+				reason: `${ctx.step.name}: ${error.message}`,
+			});
+		},
+		rollbackConfig: {
+			// `rollbackConfig` controls retries and timeout for the rollback handler.
+			retries: { limit: 3, delay: "30 seconds", backoff: "linear" },
+			timeout: "5 minutes",
+		},
+	},
+);
+```
+
+Refer to [rollback options](https://developers.cloudflare.com/workflows/build/workers-api/#rollback-options) to learn more.
+
+Jun 23, 2026
+
+[<h2>Regionalized IP Bindings for Regional Services</h2>](https://developers.cloudflare.com/changelog/post/2026-06-23-regionalized-ip-bindings/)
+
+[Data Localization Suite](https://developers.cloudflare.com/data-localization/)
+
+Regional Services now supports **Regionalized IP Bindings**, letting you regionalize traffic at the IP layer for prefixes you bring to Cloudflare through [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/).
+
+Where [Regional Hostnames](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/) regionalize traffic by hostname, Regionalized IP Bindings let you bind a CIDR from one of your prefixes to a region — ideal for address-map deployments and any service you address by IP rather than hostname. Cloudflare then terminates TLS and processes traffic to those addresses only within the data centers in that region.
+
+Regionalized IP Bindings requires the Regional Services and Regional Services for BYOIP entitlements. Contact your account team to enable them.
+
+To get started, refer to [Regionalized IP Bindings](https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/).
+
+Jun 23, 2026
+
+[<h2>Cloudflare AMP/SXG is now end of life.</h2>](https://developers.cloudflare.com/changelog/post/2026-06-23-amp-sxg-end-of-life/)
+
+[Speed](https://developers.cloudflare.com/speed/)
+
+Cloudflare Accelerated Mobile Pages (AMP) and Signed Exchanges (SXG) support has reached end of life. The features have been disabled since October 2025, so customers who had them configured should see no change to their traffic.
+
+Customers will no longer be able to configure AMP/SXG through API or rulesets. The Zone API will start throwing errors. Rulesets with the SXG configuration will fail to save until SXG has been removed.
+
+Jun 23, 2026
+
+[<h2>WAF Release - 2026-06-23</h2>](https://developers.cloudflare.com/changelog/post/2026-06-23-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week's release introduces new managed protection to address a critical pre-authentication OS command injection vulnerability in Ivanti Sentry (CVE-2026-10520).
+
+**Key Findings**
+
+- CVE-2026-10520: An OS command injection vulnerability in Ivanti Sentry allows remote, unauthenticated attackers to execute arbitrary system commands with root privileges. The flaw stems from improper sanitization of input strings parsed during internal configuration handling.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...242fdf83 | N/A | Ivanti Sentry - Command Injection - CVE:CVE-2026-10520 | Log | Block | This is a new detection. |
+
+Jun 22, 2026
+
+[<h2>R2 SQL now supports window functions, DISTINCT, and set operations</h2>](https://developers.cloudflare.com/changelog/post/2026-06-21-window-functions-distinct-set-operations/)
+
+[Basin SQL](https://developers.cloudflare.com/basin-sql/) [Basin](https://developers.cloudflare.com/basin/)
+
+R2 SQL now supports window functions, `SELECT DISTINCT`, set operations, and additional aggregates, making it easier to write analytical queries without preprocessing your data elsewhere.
+
+[R2 SQL](https://developers.cloudflare.com/basin-sql/) is Cloudflare's serverless, distributed SQL engine for querying [Apache Iceberg ↗︎](https://iceberg.apache.org/) tables stored in [R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/).
+
+#### New capabilities
+
+- **Window functions** — `ROW_NUMBER`, `RANK`, `DENSE_RANK`, `PERCENT_RANK`, `CUME_DIST`, `NTILE`, `LAG`, `LEAD`, `FIRST_VALUE`, `LAST_VALUE`, `NTH_VALUE`, and aggregates with an `OVER (...)` clause, including `PARTITION BY` and explicit frames
+- **QUALIFY** — filter rows based on a window function result
+- **DISTINCT** — `SELECT DISTINCT`, `DISTINCT ON (...)`, and the `DISTINCT` modifier on aggregates such as `COUNT(DISTINCT ...)`
+- **Set operations** — `UNION`, `UNION ALL`, `INTERSECT`, and `EXCEPT`
+- **Grouping extensions** — `GROUPING SETS`, `ROLLUP`, and `CUBE`
+- **Exact aggregates** — `MEDIAN`, `PERCENTILE_CONT`, `ARRAY_AGG`, and `STRING_AGG`
+
+#### Examples
+
+#### Rank rows with a window function
+
+```sql
+SELECT customer_id, region,
+       ROW_NUMBER() OVER (PARTITION BY region ORDER BY total_amount DESC) AS rank_in_region
+FROM my_namespace.sales_data
+```
+
+#### Filter with QUALIFY
+
+```sql
+SELECT customer_id, region, total_amount
+FROM my_namespace.sales_data
+QUALIFY ROW_NUMBER() OVER (PARTITION BY region ORDER BY total_amount DESC) <= 3
+```
+
+#### Combine tables with a set operation
+
+```sql
+SELECT customer_id FROM my_namespace.sales_data
+EXCEPT
+SELECT customer_id FROM my_namespace.archived_sales
+```
+
+The named `WINDOW` clause is not supported — inline the `OVER (...)` specification at each call site. For the full syntax reference, refer to the [SQL reference](https://developers.cloudflare.com/basin-sql/sql-reference/). For supported features and performance guidance, refer to [Limitations and best practices](https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/).
+
+Jun 19, 2026
+
+[<h2>Manage all your routes from one page in the dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-06-19-unified-routes-page/)
+
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+The **Routes** page in the Cloudflare dashboard now shows the routes across all of your connectors — [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) and [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) routes alongside [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) and [Magic Transit](https://developers.cloudflare.com/magic-transit/) static routes — in a single table, instead of a separate routes view per product.
+
+![The unified Routes page in the Cloudflare dashboard, showing routes across connectors in a single table](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=948,format=webp/_astro/2026-06-19-unified-routes.B3igBY20.gif)
+
+From the unified Routes page you can:
+
+- **Visualize your network with an interactive map** that shows how your destinations flow through to your connectors — including equal-cost multi-path (ECMP) routes where the same prefix is served by several connectors. Select a node to filter the table down to the routes behind it.
+- **See every route in one table**, with its destination, type, connector, priority, and source, and filter or sort to find what you need.
+- **Create, edit, and delete routes** of any supported type without leaving the page. When adding a Cloudflare WAN or Magic Transit static route, you now pick the next hop by **connector name** instead of typing its IP.
+- **Manage [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/)** from a dedicated tab.
+- **Test a route** to see which connector and next hop a destination resolves to before you commit a change.
+
+To find it, go to **Networking** > **Routes** in the dashboard sidebar.
+
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+
+Your existing routes, APIs, and configurations are unchanged — this is a dashboard experience that brings them together in one place. Learn how to [add routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/) and [manage virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/).
+
+Jun 19, 2026
+
+[<h2>New Asia-Pacific location hints: apac-ne and apac-se</h2>](https://developers.cloudflare.com/changelog/post/2026-06-19-apac-ne-apac-se-location-hints/)
+
+[Durable Objects](https://developers.cloudflare.com/durable-objects/) [Workers](https://developers.cloudflare.com/workers/)
+
+Durable Objects now supports two new location hints for Asia-Pacific: `apac-ne` (Northeast Asia-Pacific) and `apac-se` (Southeast Asia-Pacific). Use `apac-ne` or `apac-se` when you want finer-grained placement within Asia-Pacific rather than the broader `apac` hint.
+
+Use the new hints the same way as any other `locationHint`:
+
+```js
+// Northeast Asia-Pacific (Japan, Korea, etc.)
+const stubNE = env.MY_DURABLE_OBJECT.get(id, { locationHint: "apac-ne" });
+
+// Southeast Asia-Pacific (Singapore, Indonesia, etc.)
+const stubSE = env.MY_DURABLE_OBJECT.get(id, { locationHint: "apac-se" });
+```
+
+If your users are spread across all of Asia-Pacific, the existing `apac` hint remains the right choice. Only reach for `apac-ne` or `apac-se` when your traffic is clearly concentrated in one sub-region and you want to minimize round-trip time to that audience. The default behavior and what we generally recommended is not adding a location hint unless absolutely needed, this will create the Durable Object as close to the initializing request as possible to reduce latency.
+
+As with all location hints, these are best-effort suggestions. Cloudflare will place the Durable Object in a nearby data center, not necessarily the exact hinted location.
+
+For the full list of supported hints, refer to [Data location — Provide a location hint](https://developers.cloudflare.com/durable-objects/reference/data-location/#provide-a-location-hint).
+
+Jun 19, 2026
+
+[<h2>Outbound connections keep Durable Objects alive</h2>](https://developers.cloudflare.com/changelog/post/2026-06-19-outbound-connections-keep-dos-alive/)
+
+[Durable Objects](https://developers.cloudflare.com/durable-objects/)
+
+Durable Objects now remain alive for the duration of active outbound connections created via [`connect()`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) or an outbound WebSocket. Previously, a Durable Object would be evicted after 70-140 seconds of no incoming traffic, even if the object had an open outbound connection, which is a common pattern when streaming responses from a large language model (LLM) over TCP or an outbound WebSocket.
+
+With this change, each active outbound connection prevents eviction. Once all outbound connections close, the standard 70-140 second inactivity window applies before the Durable Object is evicted.
+
+#### Before: streaming connections were cut off by eviction
+
+![Timeline showing a Durable Object evicted 70-140 seconds after the last incoming request, cutting off an in-flight LLM stream while the outbound connection is still open](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=360,format=svg/_astro/outbound-connection-before.jZgN3tY3.svg)
+
+#### After: active outbound connections keep the Durable Object alive
+
+![Timeline showing the same outbound stream completing because the active connection keeps the Durable Object alive, with the inactivity window starting only after the connection closes](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=360,format=svg/_astro/outbound-connection-after.CxPT16q0.svg)
+
+If you are [building agents on Cloudflare](https://developers.cloudflare.com/agents/), this is especially relevant. An agent that streams tokens from an LLM while [calling models](https://developers.cloudflare.com/agents/concepts/calling-llms/), or that performs [long-running tasks](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/) over an outbound connection, now stays alive for the duration of that connection instead of being evicted mid-stream.
+
+**Limits:**
+
+- Each outbound connection keeps the Durable Object alive for a maximum of **15 minutes**. After 15 minutes, the connection stops preventing eviction (the connection itself continues operating), and the [standard eviction rules](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/) resume.
+- The Durable Object's existing [per-account instance limits](https://developers.cloudflare.com/durable-objects/platform/limits/) still apply.
+
+For more information, refer to [Lifecycle of a Durable Object](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/).
+
+Jun 19, 2026
+
+[<h2>Temporary accounts for AI agent deployments</h2>](https://developers.cloudflare.com/changelog/post/2026-06-19-temporary-accounts-for-agents/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+AI agents can now deploy Workers to Cloudflare without first requiring a user to sign up, open a browser-based OAuth flow, click through the dashboard, or create an API token. When an agent tries to deploy without Cloudflare credentials, Wrangler can tell it to rerun with `--temporary`, then deploy the Worker to a temporary preview account.
+
+To try this with your agent, update to Wrangler 4.102.0 or later, make sure you are logged out (`wrangler logout`), and then ask your agent to build something and deploy it to Cloudflare. The agent should follow Wrangler's output and deploy using the `--temporary` flag.
+
+![Diagram showing an AI agent deploying, verifying, and redeploying a Worker to a temporary account, then claiming it after authentication and moving it to a permanent account](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1748,height=368,format=webp/_astro/claim-deployments-flow.Co0tUHG4.png)
+
+```sh
+wrangler deploy --temporary
+```
+
+The temporary deployment stays live for 60 minutes. During that window, the agent can verify the Worker, redeploy changes, and return both the live Worker URL and claim URL. Opening the claim URL lets you sign in to or create a Cloudflare account and make the temporary account permanent.
+
+Temporary preview accounts currently support a limited set of products, including Workers, Workers Static Assets, Workers KV, D1, Durable Objects, Hyperdrive, Queues, and SSL/TLS certificates. For supported products, limits, and claim behavior, refer to [Claim deployments (temporary accounts)](https://developers.cloudflare.com/workers/platform/claim-deployments/).
+
+For more context, refer to [Temporary Cloudflare Accounts for Agents ↗︎](https://blog.cloudflare.com/temporary-accounts/).
+
+Jun 18, 2026
+
+[<h2>Cloudflare identity provider is now the default for new accounts</h2>](https://developers.cloudflare.com/changelog/post/2026-06-18-cloudflare-idp-default/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+When you create a new Zero Trust organization, Cloudflare now adds the [Cloudflare identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) as your default login method. Previously, new organizations started with [one-time PIN (OTP)](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/).
+
+With the Cloudflare identity provider, your users authenticate using their existing Cloudflare account credentials, and authentication is restricted to members of your account. You can still add OTP or connect any [third-party identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) whenever you need to.
+
+This change only applies to newly created accounts. Existing organizations keep the login methods they already have configured. If you would like to use the Cloudflare Identity Provider in an existing account, you must enable it.
+
+Jun 18, 2026
+
+[<h2>exec() is now available for Containers</h2>](https://developers.cloudflare.com/changelog/post/2026-06-18-container-exec/)
+
+[Containers](https://developers.cloudflare.com/containers/)
+
+`exec()` is now available for [Containers](https://developers.cloudflare.com/containers/). Use `this.ctx.container.exec()` to start processes inside a running Container, stream standard input and output, inspect exit codes, and signal each process.
+
+Call `exec()` from a class extending `Container`, or from another Durable Object through `this.ctx.container`. The associated Container must already be running.
+
+This example starts the Container when needed, then reads its Node.js version:
+
+*src/index.jsjs*
+
+```js
+import { Container } from "@cloudflare/containers";
+
+export class MyContainer extends Container {
+	async readVersion() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
+
+		const process = await this.ctx.container.exec(["node", "--version"]);
+		const output = await process.output();
+		const decoder = new TextDecoder();
+
+		return {
+			exitCode: output.exitCode,
+			stdout: decoder.decode(output.stdout),
+			stderr: decoder.decode(output.stderr),
+		};
+	}
+}
+```
+
+*src/index.tsts*
+
+```ts
+import { Container } from "@cloudflare/containers";
+
+export class MyContainer extends Container {
+	async readVersion() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
+
+		const process = await this.ctx.container.exec(["node", "--version"]);
+		const output = await process.output();
+		const decoder = new TextDecoder();
+
+		return {
+			exitCode: output.exitCode,
+			stdout: decoder.decode(output.stdout),
+			stderr: decoder.decode(output.stderr),
+		};
+	}
+}
+```
+
+The command array starts an executable directly, without an implicit shell. Invoke a shell explicitly for pipes, redirects, or variable expansion.
+
+One RPC method can coordinate multiple `exec()` calls in one caller-to-Durable Object round trip. It can also pass byte-oriented `ReadableStream` input or return streamed output with flow control.
+
+For options and streaming examples, refer to [Execute commands](https://developers.cloudflare.com/containers/guides/execute-commands/).
+
+Jun 18, 2026
+
+[<h2>Create PlanetScale Postgres and MySQL databases, billed to your Cloudflare account</h2>](https://developers.cloudflare.com/changelog/post/2026-06-18-planetscale-databases-cloudflare-billing/)
+
+[Hyperdrive](https://developers.cloudflare.com/hyperdrive/) [Workers](https://developers.cloudflare.com/workers/)
+
+You can create PlanetScale Postgres and MySQL databases from Cloudflare and bill PlanetScale database usage through your Cloudflare account as a pay-as-you-go customer. Cloudflare contract customers will be able to add PlanetScale usage to their contract in July so reach out to your Cloudflare account team if interested.
+
+Create a PlanetScale database from the Cloudflare dashboard to check out globally distributed Workers optimized for regional data access.
+
+[Go to **Create a PlanetScale database** ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive?modal=1&type=planetscale&step=1) ![Request flow from a user to Workers, Hyperdrive caches, connection pools, and PlanetScale.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1280,height=240,format=svg/_astro/planetscale-request-flow.CYsRfKtG.svg)
+
+PlanetScale databases created from Cloudflare work with [Workers](https://developers.cloudflare.com/workers/) through [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). Hyperdrive manages database connection pools and query caching, so you can use PlanetScale as a centralized relational database for Workers applications without changing your database drivers, object-relational mapping (ORM) libraries, or SQL tooling.
+
+PlanetScale usage appears on your Cloudflare invoice each billing period as a dollar total at PlanetScale's standard [pricing ↗︎](https://planetscale.com/pricing). You can introspect per-database billing usage via PlanetScale's [dashboard ↗︎](https://planetscale.com/docs/billing#organization-usage-and-billing-page).
+
+When you create a PlanetScale database from the Cloudflare dashboard, you receive the same PlanetScale developer experience, including development branches, query insights, and Model Context Protocol (MCP) server support for agents.
+
+To get started, refer to [PlanetScale Postgres and MySQL with Hyperdrive](https://developers.cloudflare.com/hyperdrive/planetscale/).
+
+Jun 18, 2026
+
+[<h2>Updated Workers AI popularity metric in Cloudflare Radar</h2>](https://developers.cloudflare.com/changelog/post/2026-06-18-radar-workers-ai-inference-metric/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Radar**](https://developers.cloudflare.com/radar/) has changed how it measures [Workers AI](https://developers.cloudflare.com/workers-ai/) model and task popularity.
+
+Previously, popularity was based on the number of unique accounts running inferences against each model or task. It is now based on the **number of inferences**, giving a more representative view of actual usage volume. This change will affect all new measurements as well as historical data. As a result, the model and task distributions shown on Radar may differ from what you saw previously, and historical trends may shift accordingly.
+
+The [Workers AI model popularity ↗︎](https://radar.cloudflare.com/ai-insights#workers-ai-model-popularity) chart shows the distribution of inferences across models.
+
+![Screenshot of the Workers AI model popularity chart on the AI Insights page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=938,format=webp/_astro/workers-ai-model-popularity.CMw_WVXg.png)
+
+The [Workers AI task popularity ↗︎](https://radar.cloudflare.com/ai-insights#workers-ai-task-popularity) chart shows the distribution of inferences across tasks.
+
+![Screenshot of the Workers AI task popularity chart on the AI Insights page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=938,format=webp/_astro/workers-ai-task-popularity.ZoA-NO8k.png)
+
+The same data is available via the following API endpoints:
+
+- [`/ai/inference/summary/{dimension}`](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/methods/summary_v2/)
+- [`/ai/inference/timeseries_groups/{dimension}`](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/methods/timeseries_groups_v2/)
+
+Explore the data on the [AI Insights page ↗︎](https://radar.cloudflare.com/ai-insights).
+
+Jun 18, 2026
+
+[<h2>Cloudflare Fonts error handling and security improvements</h2>](https://developers.cloudflare.com/changelog/post/2026-06-18-cloudflare-fonts-error-handling-security/)
+
+[Speed](https://developers.cloudflare.com/speed/)
+
+Cloudflare Fonts now forwards `/cf-fonts` requests to your origin server when it encounters invalid paths or unexpected runtime errors, instead of returning 4xx or 5xx responses directly. This update also adds additional input validation to enhance security.
+
+Jun 17, 2026
+
+[<h2>Manage Artifacts from the Cloudflare dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-06-17-dashboard-management/)
+
+[Artifacts](https://developers.cloudflare.com/artifacts/)
+
+You can now configure [Artifacts](https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/) namespaces, repos, and tokens directly from the Cloudflare dashboard.
+
+Artifacts is Git-compatible storage that lets you store repos on Cloudflare and interact with them using standard Git workflows.
+
+You can view and create [namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/#use-namespaces-as-containers), which are top-level containers for repos:
+
+![Artifacts namespaces dashboard showing namespace search and create namespace controls](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1804,height=598,format=webp/_astro/dashboard-namespaces.0BJelWZh.png)
+
+You can view, create, fork, and search repos within a namespace:
+
+![Artifacts repositories dashboard showing repo source, access, and created columns](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1874,height=592,format=webp/_astro/dashboard-repositories.M9P9JUL_.png)
+
+You can open a repo to view its files and copy its Git remote URL.
+
+![Artifacts repository overview showing files, commits, token management, and quick actions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2194,height=806,format=webp/_astro/dashboard-repo-overview.CSHxrCW2.png)
+
+You can also provision tokens directly from the dashboard to scope Git access to a single repo, with read tokens for clone, fetch, and pull workflows, or write tokens when a client needs to push changes.
+
+To get started, go to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select **Storage & databases** > **Artifacts**.
+
+If you are enrolled in the Artifacts beta, you can use the dashboard to set up Artifacts. If you would like to join the beta, complete the [request form ↗︎](https://forms.gle/DwBoPRa3CWQ8ajFp7).
+
+Jun 17, 2026
+
+[<h2>Post-quantum ML-DSA certificates for Authenticated Origin Pulls and Custom Origin Trust Store</h2>](https://developers.cloudflare.com/changelog/post/2026-06-17-pqc-mldsa-aop-cots/)
+
+[SSL/TLS](https://developers.cloudflare.com/ssl/)
+
+Cloudflare now accepts [ML-DSA ↗︎](https://csrc.nist.gov/pubs/fips/204/final) (FIPS 204) post-quantum certificates on the connection between Cloudflare's edge and your origin server. Combined with our existing [X25519MLKEM768](https://developers.cloudflare.com/ssl/post-quantum-cryptography/#hybrid-key-agreement) key agreement, this lets you establish end-to-end post-quantum authentication on the Cloudflare-to-origin connection.
+
+ML-DSA is supported in two origin-facing features:
+
+- [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/) (AOP) — upload an ML-DSA client certificate that Cloudflare will present during the mTLS handshake to your origin. Available at both zone-level and per-hostname scopes.
+- [Custom Origin Trust Store](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/) (COTS) — upload an ML-DSA certificate authority that Cloudflare will trust when validating your origin server certificate under [Full (strict) encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/).
+
+Refer to [Post-quantum signatures](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/#post-quantum-signatures) for certificate generation and setup guidance, and to [PQC in Cloudflare products](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/) for the current post-quantum deployment status across Cloudflare.
+
+Jun 16, 2026
+
+[<h2>Agents SDK improves browser automation, code execution, and recovery</h2>](https://developers.cloudflare.com/changelog/post/2026-06-16-agents-sdk-v0.16.1/)
+
+[Agents](https://developers.cloudflare.com/agents/) [Workers](https://developers.cloudflare.com/workers/)
+
+The latest release of the [Agents SDK ↗︎](https://github.com/cloudflare/agents) makes it easier to build agents that can safely interact with real systems and keep working through interruptions.
+
+Agents can now browse websites through Browser Run, write code against external tools through Code Mode, use client-provided tools when delegating to Think sub-agents, and recover more reliably from deploys, Durable Object evictions, and connection churn.
+
+#### Safer browser automation
+
+Agents can now use [Browser Run](https://developers.cloudflare.com/browser-run/) through a single durable `browser_execute` tool. Instead of choosing from a fixed list of actions, the model writes code against the Chrome DevTools Protocol (CDP) and can inspect pages, capture screenshots, read rendered content, debug frontend behavior, and interact with live browser sessions.
+
+```js
+const browserTools = createBrowserTools({
+	ctx: this.ctx,
+	browser: this.env.BROWSER,
+	loader: this.env.LOADER,
+	session: { mode: "dynamic" },
+});
+```
+
+```ts
+const browserTools = createBrowserTools({
+	ctx: this.ctx,
+	browser: this.env.BROWSER,
+	loader: this.env.LOADER,
+	session: { mode: "dynamic" },
+});
+```
+
+Browser sessions can be one-time, reused, or promoted from one-time to persistent during a run. This is useful when an agent needs a human to log in, complete MFA, or approve a sensitive action. The run can pause, keep the same tabs and cookies, and resume after approval.
+
+The browser tools also add Live View URLs, optional session recording, and quick actions such as `browser_markdown`, `browser_extract`, `browser_links`, and `browser_scrape` for one-shot browsing tasks.
+
+#### Resumable code execution with approvals
+
+Code Mode now uses `createCodemodeRuntime`, connectors, and a durable execution log. This lets you give a model one `codemode` tool instead of a large prompt full of tool definitions. The model can discover the capabilities it needs, write code against typed globals, and reuse saved snippets.
+
+```js
+const runtime = createCodemodeRuntime({
+	ctx: this.ctx,
+	executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+	connectors: [new GithubConnector(this.ctx, this.env, connection)],
+});
+
+const result = streamText({
+	model,
+	messages,
+	tools: { codemode: runtime.tool() },
+});
+```
+
+```ts
+const runtime = createCodemodeRuntime({
+	ctx: this.ctx,
+	executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+	connectors: [new GithubConnector(this.ctx, this.env, connection)],
+});
+
+const result = streamText({
+	model,
+	messages,
+	tools: { codemode: runtime.tool() },
+});
+```
+
+When the code reaches an approval-gated action, the runtime pauses execution and returns a pending approval. After approval, completed calls replay from the durable log, the approved action runs, and the same code continues. This makes it practical to build agents that create issues, update external systems, or perform other side effects without custom pause-and-resume logic for every tool.
+
+#### Better Think delegation
+
+Think sub-agents can now use client-defined tools over the RPC `chat()` path. A parent agent can pass tool schemas with `clientTools` and resolve tool calls through `onClientToolCall`. This lets delegated agents use caller-provided capabilities without requiring a browser WebSocket.
+
+```js
+await child.chat(message, callback, {
+	signal,
+	clientTools: [
+		{
+			name: "get_user_timezone",
+			description: "Get the caller's timezone",
+			parameters: { type: "object" },
+		},
+	],
+	onClientToolCall: async ({ toolName, input }) => {
+		return runClientTool(toolName, input);
+	},
+});
+```
+
+```ts
+await child.chat(message, callback, {
+	signal,
+	clientTools: [
+		{
+			name: "get_user_timezone",
+			description: "Get the caller's timezone",
+			parameters: { type: "object" },
+		},
+	],
+	onClientToolCall: async ({ toolName, input }) => {
+		return runClientTool(toolName, input);
+	},
+});
+```
+
+Think Workflows also improve `step.prompt()`. A prompt step now runs a full agentic turn before returning structured output, so the agent can call tools before producing the typed result. This makes Workflow steps more useful for durable triage, research, and approval flows.
+
+The unified Think execute tool can also include `cdp.*` browser capabilities alongside `state.*` and `tools.*` when Browser Run is bound.
+
+#### Voice output device selection
+
+Voice clients can route assistant audio to a specific output device. Use `outputDeviceId` with `useVoiceAgent`, or call `client.setOutputDevice()` from the framework-agnostic client.
+
+```js
+const voice = useVoiceAgent({
+	agent: "MyVoiceAgent",
+	outputDeviceId: selectedSpeakerId,
+});
+```
+
+```tsx
+const voice = useVoiceAgent({
+	agent: "MyVoiceAgent",
+	outputDeviceId: selectedSpeakerId,
+});
+```
+
+Browsers without speaker-selection support continue playing through the default output device and report a non-fatal `outputDeviceError`.
+
+#### Reliability fixes
+
+This release includes several fixes for production agents:
+
+- `useAgent` and `AgentClient` handle WebSocket replacement more reliably during reconnects and configuration changes.
+- Chat stream replay is more reliable after reconnects, deploys, and provider errors.
+- Fiber recovery continues across multi-pass scans and backs off when recovery hooks keep failing.
+- Agent teardown continues even when the request that started teardown is canceled.
+- Large session histories use byte-budgeted reads to reduce memory pressure during startup.
+
+#### Upgrade
+
+To update to the latest version:
+
+npmyarnpnpmbun
+
+```
+npm i agents@latest @cloudflare/think@latest @cloudflare/codemode@latest @cloudflare/ai-chat@latest @cloudflare/voice@latest
+```
+
+```
+yarn add agents@latest @cloudflare/think@latest @cloudflare/codemode@latest @cloudflare/ai-chat@latest @cloudflare/voice@latest
+```
+
+```
+pnpm add agents@latest @cloudflare/think@latest @cloudflare/codemode@latest @cloudflare/ai-chat@latest @cloudflare/voice@latest
+```
+
+```
+bun add agents@latest @cloudflare/think@latest @cloudflare/codemode@latest @cloudflare/ai-chat@latest @cloudflare/voice@latest
+```
+
+Refer to the [Code Mode documentation](https://developers.cloudflare.com/agents/tools/codemode/), [Browser tools documentation](https://developers.cloudflare.com/agents/tools/browser/), [Think tools documentation](https://developers.cloudflare.com/agents/harnesses/think/tools/), and [Voice documentation](https://developers.cloudflare.com/agents/communication-channels/voice/) for more information.
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/14/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/14/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

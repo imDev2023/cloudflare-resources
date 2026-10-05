@@ -1,0 +1,265 @@
+---
+description: Alibaba's Wan 2.7 image-to-video model that generates videos from a reference image with optional text prompts. Supports 720P and 1080P output with durations from 2 to 15 seconds.
+title: Wan 2.7 I2V
+image: https://developers.cloudflare.com/og-docs.png
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.BK31NAJz.svg)
+
+# Wan 2.7 I2V
+
+Image-to-Video • Alibaba
+
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+`alibaba/wan-2.7-i2v`
+
+- Third-party
+- Zero data retention
+
+Alibaba's Wan 2.7 image-to-video model that generates videos from a reference image with optional text prompts. Supports 720P and 1080P output with durations from 2 to 15 seconds.
+
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
+| More information | [link ↗](https://wan.video/) |
+| Zero data retention | Yes |
+| Pricing | <ul><li>Default (per second)$0.10</li><li>@720p (per second)$0.10</li><li>@1080p (per second)$0.15</li></ul> |
+
+## Usage
+
+```ts
+const response = await env.AI.run(
+  'alibaba/wan-2.7-i2v',
+  {
+    image:
+      'https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png',
+    prompt: 'A gentle camera push-in on the scene with soft ambient lighting',
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/wan-2.7-i2v",
+  "input": {
+    "image": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",
+    "prompt": "A gentle camera push-in on the scene with soft ambient lighting"
+  }
+}'
+```
+
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/alibaba/wan-2.7-i2v/simple-image-to-video.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
+```
+
+## Examples
+
+<details>
+
+<summary>**High Resolution** — Generate at 1080P with a longer duration</summary>
+
+
+
+```ts
+const response = await env.AI.run(
+  'alibaba/wan-2.7-i2v',
+  {
+    image:
+      'https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png',
+    prompt: 'Subject begins rapping confidently, head bobbing to the beat',
+    duration: 10,
+    resolution: '1080P',
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/wan-2.7-i2v",
+  "input": {
+    "image": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",
+    "prompt": "Subject begins rapping confidently, head bobbing to the beat",
+    "duration": 10,
+    "resolution": "1080P"
+  }
+}'
+```
+
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/alibaba/wan-2.7-i2v/high-resolution.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
+```
+
+</details>
+
+<details>
+
+<summary>**With Negative Prompt** — Guide generation away from unwanted artifacts</summary>
+
+
+
+```ts
+const response = await env.AI.run(
+  'alibaba/wan-2.7-i2v',
+  {
+    image:
+      'https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png',
+    prompt: 'Subject slowly turns their head and smiles',
+    duration: 5,
+    negative_prompt: 'blurry, distorted face, extra limbs',
+    resolution: '720P',
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/wan-2.7-i2v",
+  "input": {
+    "image": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",
+    "prompt": "Subject slowly turns their head and smiles",
+    "duration": 5,
+    "negative_prompt": "blurry, distorted face, extra limbs",
+    "resolution": "720P"
+  }
+}'
+```
+
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/alibaba/wan-2.7-i2v/with-negative-prompt.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
+```
+
+</details>
+
+<details>
+
+<summary>**Reproducible Output** — Use a fixed seed for reproducibility</summary>
+
+
+
+```ts
+const response = await env.AI.run(
+  'alibaba/wan-2.7-i2v',
+  {
+    image:
+      'https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png',
+    prompt: 'Camera orbits slowly around the subject under streetlamp light',
+    duration: 8,
+    resolution: '720P',
+    seed: 42,
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/wan-2.7-i2v",
+  "input": {
+    "image": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",
+    "prompt": "Camera orbits slowly around the subject under streetlamp light",
+    "duration": 8,
+    "resolution": "720P",
+    "seed": 42
+  }
+}'
+```
+
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/alibaba/wan-2.7-i2v/reproducible-output.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
+```
+
+</details>
+
+## Parameters
+
+image
+
+`string`requiredformat: uri
+
+prompt
+
+`string`
+
+negative\_prompt
+
+`string`
+
+resolution
+
+`string`enum: 720P, 1080P
+
+duration
+
+`integer`minimum: 2maximum: 15
+
+seed
+
+`integer`minimum: 0maximum: 2147483647
+
+watermark
+
+`boolean`
+
+video
+
+`string`format: uri
+
+## API Schemas (Raw)
+
+Input [Open](https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/schema-input.json)
+
+Output [Open](https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/schema-output.json)

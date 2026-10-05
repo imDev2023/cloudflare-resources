@@ -1,0 +1,129 @@
+---
+description: More than 2x the size of Medium, with softer post-training. Outputs are rawer, more textured, and more flexible — at its best, Large produces results Medium can't match. Strongest on photorealism, raw looks (motion blur, grain, low dynamic range), and expressive and artistic styles.
+title: Krea 2 Large
+image: https://developers.cloudflare.com/og-docs.png
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+k
+
+# Krea 2 Large
+
+Text-to-Image • krea
+
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/krea/krea-2-large/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+`krea/krea-2-large`
+
+- Third-party
+
+More than 2x the size of Medium, with softer post-training. Outputs are rawer, more textured, and more flexible — at its best, Large produces results Medium can't match. Strongest on photorealism, raw looks (motion blur, grain, low dynamic range), and expressive and artistic styles.
+
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.krea.ai/terms) |
+| More information | [link ↗](https://docs.krea.ai/api-reference/krea/krea-2-large) |
+| Pricing | <ul><li>Default (per second)$0.06</li><li>Per image$0.06</li></ul> |
+
+## Usage
+
+```ts
+const response = await env.AI.run(
+  'krea/krea-2-large',
+  {
+    prompt: 'a cinematic glass cabin beside a frozen lake at sunrise',
+    aspect_ratio: '16:9',
+    resolution: '1K',
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "krea/krea-2-large",
+  "input": {
+    "prompt": "a cinematic glass cabin beside a frozen lake at sunrise",
+    "aspect_ratio": "16:9",
+    "resolution": "1K"
+  }
+}'
+```
+
+![Default](https://examples.aig.cloudflare.com/krea/krea-2-large/default.png)
+
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/krea/krea-2-large/default.png"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
+```
+
+## Parameters
+
+prompt
+
+`string`requiredText prompt describing the image to generate.
+
+aspect\_ratio
+
+`string`requiredenum: 1:1, 4:3, 3:2, 16:9, 2.35:1, 4:5, 2:3, 9:16Aspect ratio of the generated image.
+
+resolution
+
+`string`requiredenum: 1KResolution scale.
+
+seed
+
+`number`Random seed for reproducible generations. Pass null or omit for a random seed.
+
+▶styles\[]
+
+`array`Styles (typically LoRAs) to apply to the generation.
+
+▶image\_style\_references\[]
+
+`array`maxItems: 10Reference images to drive the visual style (up to 10).
+
+creativity
+
+`string`default: lowenum: raw, low, medium, highPrompt expansion mode. \`raw\` disables expansion; \`low\`, \`medium\`, \`high\` control strength. Does not affect the K2 Intensity, Complexity, or Movement slider LoRAs.
+
+intensity
+
+`integer`default: 0minimum: -100maximum: 100K2 Intensity slider (-100 to 100). 0 disables the slider LoRA.
+
+complexity
+
+`integer`default: 0minimum: -100maximum: 100K2 Complexity slider (-100 to 100). 0 disables the slider LoRA.
+
+movement
+
+`integer`default: 0minimum: -100maximum: 100K2 Movement slider (-100 to 100). 0 disables the slider LoRA.
+
+▶moodboards\[]
+
+`array`maxItems: 1Moodboard references (currently limited to one).
+
+image
+
+`string`format: uriPresigned URL for the generated image.
+
+## API Schemas (Raw)
+
+Input [Open](https://developers.cloudflare.com/ai/models/krea/krea-2-large/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/krea/krea-2-large/schema-input.json)
+
+Output [Open](https://developers.cloudflare.com/ai/models/krea/krea-2-large/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/krea/krea-2-large/schema-output.json)

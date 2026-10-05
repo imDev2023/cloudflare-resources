@@ -1,0 +1,21 @@
+---
+description: Configure Keyless SSL with Fortanix Data Security Manager.
+title: Fortanix Data Security Manager
+image: https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/fortanix-dsm/og.png?v=4e99cc83a8ccb339
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Fortanix Data Security Manager
+
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/fortanix-dsm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+You can use Cloudflare Keyless SSL with [Fortanix Data Security Manager (DSM) ↗︎](https://www.fortanix.com/platform/data-security-manager), a FIPS 140-2 Level 3 certified implementation.
+
+You must have a [Data Security Manager Enterprise Tier ↗︎](https://www.fortanix.com/start-your-free-trial) and set up a group and an application assigned to the group.
+
+For detailed guidance, follow the tutorial in the [Fortanix documentation ↗︎](https://support.fortanix.com/docs/fortanix-data-security-manager-with-cloudflare-integration#50-configure-fortanix-dsm). This guide is based on the Keyless SSL [public DNS](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/) option and has been tested using a virtual machine (VM) deployed to Azure running Ubuntu 22.04.3 LTS.

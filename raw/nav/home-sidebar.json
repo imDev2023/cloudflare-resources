@@ -1,0 +1,469 @@
+[
+ {
+  "group": "Get started",
+  "items": [
+   {
+    "label": "Overview",
+    "url": "https://developers.cloudflare.com/"
+   },
+   {
+    "label": "API",
+    "url": "https://developers.cloudflare.com/api/"
+   },
+   {
+    "label": "Agent Setup",
+    "url": "https://developers.cloudflare.com/agent-setup/"
+   },
+   {
+    "label": "Directory",
+    "url": "https://developers.cloudflare.com/directory/"
+   },
+   {
+    "label": "Changelog",
+    "url": "https://developers.cloudflare.com/changelog/"
+   },
+   {
+    "children": [
+     {
+      "label": "Learning paths",
+      "url": "https://developers.cloudflare.com/resources/?filter-pcx_content_type=learning-path"
+     },
+     {
+      "label": "Use cases",
+      "url": "https://developers.cloudflare.com/use-cases/"
+     },
+     {
+      "label": "Reference architecture",
+      "url": "https://developers.cloudflare.com/reference-architecture/"
+     }
+    ],
+    "label": "Resources"
+   },
+   {
+    "children": [
+     {
+      "label": "API reference",
+      "url": "https://developers.cloudflare.com/api/"
+     },
+     {
+      "label": "Terraform",
+      "url": "https://developers.cloudflare.com/terraform/"
+     },
+     {
+      "label": "Pulumi",
+      "url": "https://developers.cloudflare.com/pulumi/"
+     },
+     {
+      "label": "SDKs",
+      "url": "https://developers.cloudflare.com/fundamentals/api/reference/sdks/"
+     }
+    ],
+    "label": "API & IaC"
+   },
+   {
+    "label": "Support",
+    "url": "https://developers.cloudflare.com/support/"
+   }
+  ]
+ },
+ {
+  "group": "Developer Tools",
+  "items": [
+   {
+    "label": "Cloudflare CLI",
+    "url": "https://developers.cloudflare.com/cf/"
+   }
+  ]
+ },
+ {
+  "group": "Build",
+  "items": [
+   {
+    "children": [
+     {
+      "label": "Workers",
+      "url": "https://developers.cloudflare.com/workers/"
+     },
+     {
+      "label": "Containers",
+      "url": "https://developers.cloudflare.com/containers/"
+     },
+     {
+      "label": "Durable Objects",
+      "url": "https://developers.cloudflare.com/durable-objects/"
+     },
+     {
+      "label": "Queues",
+      "url": "https://developers.cloudflare.com/queues/"
+     },
+     {
+      "label": "Workflows",
+      "url": "https://developers.cloudflare.com/workflows/"
+     },
+     {
+      "label": "Flagship",
+      "url": "https://developers.cloudflare.com/flagship/"
+     },
+     {
+      "label": "Browser Run",
+      "url": "https://developers.cloudflare.com/browser-run/"
+     },
+     {
+      "label": "Workers VPC",
+      "url": "https://developers.cloudflare.com/workers-vpc/"
+     },
+     {
+      "label": "Cloudflare for Platforms",
+      "url": "https://developers.cloudflare.com/cloudflare-for-platforms/"
+     },
+     {
+      "label": "Email Service",
+      "url": "https://developers.cloudflare.com/email-service/"
+     }
+    ],
+    "label": "Compute"
+   },
+   {
+    "children": [
+     {
+      "label": "Models",
+      "url": "https://developers.cloudflare.com/ai/models/"
+     },
+     {
+      "label": "Workers AI",
+      "url": "https://developers.cloudflare.com/workers-ai/"
+     },
+     {
+      "label": "AI Gateway",
+      "url": "https://developers.cloudflare.com/ai-gateway/"
+     },
+     {
+      "label": "Agents",
+      "url": "https://developers.cloudflare.com/agents/"
+     },
+     {
+      "label": "Agent Memory",
+      "url": "https://developers.cloudflare.com/agent-memory/"
+     },
+     {
+      "label": "Wallets",
+      "url": "https://developers.cloudflare.com/wallets/"
+     },
+     {
+      "label": "Sandboxes",
+      "url": "https://developers.cloudflare.com/sandbox/"
+     },
+     {
+      "label": "Vectorize",
+      "url": "https://developers.cloudflare.com/vectorize/"
+     },
+     {
+      "label": "AI Search",
+      "url": "https://developers.cloudflare.com/ai-search/"
+     },
+     {
+      "label": "Web Search API",
+      "url": "https://developers.cloudflare.com/web-search/"
+     },
+     {
+      "label": "AI Crawl Control",
+      "url": "https://developers.cloudflare.com/ai-crawl-control/"
+     }
+    ],
+    "label": "AI"
+   },
+   {
+    "children": [
+     {
+      "label": "R2",
+      "url": "https://developers.cloudflare.com/r2/"
+     },
+     {
+      "children": [
+       {
+        "label": "Overview",
+        "url": "https://developers.cloudflare.com/basin/"
+       },
+       {
+        "label": "Basin Pipelines",
+        "url": "https://developers.cloudflare.com/basin-pipelines/"
+       },
+       {
+        "label": "Basin Catalog",
+        "url": "https://developers.cloudflare.com/basin-catalog/"
+       },
+       {
+        "label": "Basin SQL",
+        "url": "https://developers.cloudflare.com/basin-sql/"
+       }
+      ],
+      "label": "Basin"
+     },
+     {
+      "label": "K2",
+      "url": "https://developers.cloudflare.com/k2/"
+     },
+     {
+      "label": "D1",
+      "url": "https://developers.cloudflare.com/d1/"
+     },
+     {
+      "label": "KV",
+      "url": "https://developers.cloudflare.com/kv/"
+     },
+     {
+      "label": "Hyperdrive",
+      "url": "https://developers.cloudflare.com/hyperdrive/"
+     },
+     {
+      "label": "Artifacts",
+      "url": "https://developers.cloudflare.com/artifacts/"
+     }
+    ],
+    "label": "Storage & Database"
+   },
+   {
+    "children": [
+     {
+      "label": "Images",
+      "url": "https://developers.cloudflare.com/images/"
+     },
+     {
+      "label": "Stream",
+      "url": "https://developers.cloudflare.com/stream/"
+     },
+     {
+      "label": "Realtime",
+      "url": "https://developers.cloudflare.com/realtime/"
+     }
+    ],
+    "label": "Media"
+   }
+  ]
+ },
+ {
+  "group": "Protect & Connect",
+  "items": [
+   {
+    "children": [
+     {
+      "label": "WAF",
+      "url": "https://developers.cloudflare.com/waf/"
+     },
+     {
+      "label": "DDoS Protection",
+      "url": "https://developers.cloudflare.com/ddos-protection/"
+     },
+     {
+      "label": "SSL/TLS",
+      "url": "https://developers.cloudflare.com/ssl/"
+     },
+     {
+      "label": "Bots",
+      "url": "https://developers.cloudflare.com/bots/"
+     },
+     {
+      "label": "API Shield",
+      "url": "https://developers.cloudflare.com/api-shield/"
+     },
+     {
+      "label": "Page Shield",
+      "url": "https://developers.cloudflare.com/page-shield/"
+     },
+     {
+      "label": "Turnstile",
+      "url": "https://developers.cloudflare.com/turnstile/"
+     },
+     {
+      "label": "Security Center",
+      "url": "https://developers.cloudflare.com/security-center/"
+     }
+    ],
+    "label": "Application Security"
+   },
+   {
+    "children": [
+     {
+      "label": "Overview",
+      "url": "https://developers.cloudflare.com/cloudflare-one/"
+     },
+     {
+      "label": "Insights & Logs",
+      "url": "https://developers.cloudflare.com/cloudflare-one/insights/"
+     },
+     {
+      "label": "Team & Resources",
+      "url": "https://developers.cloudflare.com/cloudflare-one/team-and-resources/"
+     },
+     {
+      "label": "Networks",
+      "url": "https://developers.cloudflare.com/cloudflare-one/networks/"
+     },
+     {
+      "label": "Access controls",
+      "url": "https://developers.cloudflare.com/cloudflare-one/access-controls/"
+     },
+     {
+      "label": "Traffic policies",
+      "url": "https://developers.cloudflare.com/cloudflare-one/traffic-policies/"
+     },
+     {
+      "label": "Cloud & SaaS findings",
+      "url": "https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/"
+     },
+     {
+      "label": "Email security",
+      "url": "https://developers.cloudflare.com/cloudflare-one/email-security/"
+     },
+     {
+      "label": "Data loss prevention",
+      "url": "https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/"
+     },
+     {
+      "label": "Browser isolation",
+      "url": "https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/"
+     },
+     {
+      "label": "Reusable components",
+      "url": "https://developers.cloudflare.com/cloudflare-one/reusable-components/"
+     },
+     {
+      "label": "Integrations",
+      "url": "https://developers.cloudflare.com/cloudflare-one/integrations/"
+     }
+    ],
+    "label": "Cloudflare One"
+   },
+   {
+    "children": [
+     {
+      "label": "DNS",
+      "url": "https://developers.cloudflare.com/dns/"
+     },
+     {
+      "label": "1.1.1.1",
+      "url": "https://developers.cloudflare.com/1.1.1.1/"
+     },
+     {
+      "label": "Registrar",
+      "url": "https://developers.cloudflare.com/registrar/"
+     },
+     {
+      "label": "Email Routing",
+      "url": "https://developers.cloudflare.com/email-service/"
+     },
+     {
+      "label": "DMARC Management",
+      "url": "https://developers.cloudflare.com/dmarc-management/"
+     }
+    ],
+    "label": "Domains & DNS"
+   },
+   {
+    "children": [
+     {
+      "label": "Tunnel",
+      "url": "https://developers.cloudflare.com/tunnel/"
+     },
+     {
+      "label": "Mesh",
+      "url": "https://developers.cloudflare.com/mesh/"
+     },
+     {
+      "label": "Magic Transit",
+      "url": "https://developers.cloudflare.com/magic-transit/"
+     },
+     {
+      "label": "Magic WAN",
+      "url": "https://developers.cloudflare.com/cloudflare-wan/"
+     },
+     {
+      "label": "Network Interconnect",
+      "url": "https://developers.cloudflare.com/network-interconnect/"
+     },
+     {
+      "label": "Spectrum",
+      "url": "https://developers.cloudflare.com/spectrum/"
+     },
+     {
+      "label": "BYOIP",
+      "url": "https://developers.cloudflare.com/byoip/"
+     }
+    ],
+    "label": "Networking"
+   },
+   {
+    "children": [
+     {
+      "label": "Monetization Gateway",
+      "url": "https://developers.cloudflare.com/monetization-gateway/"
+     }
+    ],
+    "label": "Monetize"
+   },
+   {
+    "children": [
+     {
+      "label": "Cache",
+      "url": "https://developers.cloudflare.com/cache/"
+     },
+     {
+      "label": "Speed",
+      "url": "https://developers.cloudflare.com/speed/"
+     },
+     {
+      "label": "Load Balancing",
+      "url": "https://developers.cloudflare.com/load-balancing/"
+     },
+     {
+      "label": "Waiting Room",
+      "url": "https://developers.cloudflare.com/waiting-room/"
+     },
+     {
+      "label": "Argo Smart Routing",
+      "url": "https://developers.cloudflare.com/argo-smart-routing/"
+     },
+     {
+      "label": "Zaraz",
+      "url": "https://developers.cloudflare.com/zaraz/"
+     }
+    ],
+    "label": "Delivery & Performance"
+   }
+  ]
+ },
+ {
+  "group": "Manage & Observe",
+  "items": [
+   {
+    "children": [
+     {
+      "label": "Observability",
+      "url": "https://developers.cloudflare.com/observability/"
+     },
+     {
+      "label": "Analytics",
+      "url": "https://developers.cloudflare.com/analytics/"
+     },
+     {
+      "label": "Web Analytics",
+      "url": "https://developers.cloudflare.com/web-analytics/"
+     },
+     {
+      "label": "Logs",
+      "url": "https://developers.cloudflare.com/logs/"
+     },
+     {
+      "label": "Log Explorer",
+      "url": "https://developers.cloudflare.com/log-explorer/"
+     },
+     {
+      "label": "Health Checks",
+      "url": "https://developers.cloudflare.com/health-checks/"
+     }
+    ],
+    "label": "Observe"
+   }
+  ]
+ }
+]

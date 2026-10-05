@@ -1,0 +1,901 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Apr 10, 2026
+
+[<h2>Canvas Remoting optimizes performance for productivity applications</h2>](https://developers.cloudflare.com/changelog/post/2026-04-10-canvas-remoting-performance/)
+
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
+
+Remote Browser Isolation now supports **Canvas Remoting**, improving performance for HTML5 Canvas applications by sending vector draw commands instead of rasterized bitmaps.
+
+#### Key improvements
+
+- **10x bandwidth reduction:** Microsoft Word and other Office apps use 90% less bandwidth
+- **Smooth performance:** Google Sheets maintains consistent 30fps rendering
+- **Responsive terminals:** Web-based development environments and AI notebooks work in real-time
+- **Zero configuration:** Enabled by default for all Browser Isolation customers
+
+#### How it works
+
+Instead of sending rasterized bitmaps for every Canvas update, Browser Isolation now:
+
+1. Captures Canvas draw commands at the source
+2. Converts them to lightweight vector instructions
+3. Renders Canvas content on the client
+
+This reduces bandwidth from hundreds of kilobytes per second to tens of kilobytes per second.
+
+#### Managing Canvas Remoting
+
+To temporarily disable for troubleshooting:
+
+- Right-click the isolated webpage background
+- Select **Disable Canvas Remoting**
+- Re-enable the same way by selecting **Enable Canvas Remoting**
+
+#### Limitations
+
+Currently supports 2D Canvas contexts only. WebGL and 3D graphics applications continue using bitmap rendering. For more information, refer to [Canvas Remoting](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/canvas-remoting/).
+
+Apr 10, 2026
+
+[<h2>Browser Rendering adds Chrome DevTools Protocol (CDP) and MCP client support</h2>](https://developers.cloudflare.com/changelog/post/2026-04-10-browser-rendering-cdp-endpoint/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+[Browser Rendering](https://developers.cloudflare.com/browser-run/) now exposes the [Chrome DevTools Protocol (CDP)](https://developers.cloudflare.com/browser-run/cdp/), the low-level protocol that powers browser automation. The growing ecosystem of CDP-based agent tools, along with existing CDP automation scripts, can now use Browser Rendering directly.
+
+Any CDP-compatible client, including [Puppeteer](https://developers.cloudflare.com/browser-run/cdp/puppeteer/) and [Playwright](https://developers.cloudflare.com/browser-run/cdp/playwright/), can connect from any environment, whether that is [Cloudflare Workers](https://developers.cloudflare.com/workers/), your local machine, or a cloud environment. All you need is your Cloudflare API key.
+
+For any existing CDP script, switching to Browser Rendering is a one-line change:
+
+```js
+const puppeteer = require("puppeteer-core");
+
+const browser = await puppeteer.connect({
+	browserWSEndpoint: `wss://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/browser-rendering/devtools/browser?keep_alive=600000`,
+	headers: { Authorization: `Bearer ${API_TOKEN}` },
+});
+
+const page = await browser.newPage();
+await page.goto("https://example.com");
+console.log(await page.title());
+await browser.close();
+```
+
+Additionally, MCP clients like Claude Desktop, Claude Code, Cursor, and OpenCode can now use Browser Rendering as their remote browser via the [chrome-devtools-mcp ↗︎](https://github.com/ChromeDevTools/chrome-devtools-mcp) package.
+
+Here is an example of how to configure Browser Rendering for Claude Desktop:
+
+```json
+{
+	"mcpServers": {
+		"browser-rendering": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"chrome-devtools-mcp@latest",
+				"--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",
+				"--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"
+			]
+		}
+	}
+}
+```
+
+To get started, refer to the [CDP documentation](https://developers.cloudflare.com/browser-run/cdp/).
+
+Apr 10, 2026
+
+[<h2>API tokens now detectable by secret scanning tools</h2>](https://developers.cloudflare.com/changelog/post/2026-04-10-secret-scanning-support/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+Cloudflare API tokens now include **identifiable patterns** that enable secret scanning tools to automatically detect them when leaked in code repositories, configuration files, or other public locations.
+
+#### What changed
+
+API tokens generated by Cloudflare now follow a standardized format that secret scanning tools can recognize. When a Cloudflare token is accidentally committed to GitHub, GitLab, or another platform with secret scanning enabled, the tool will flag it and alert you.
+
+#### Why this matters
+
+Leaked credentials are a common security risk. By making Cloudflare tokens detectable by scanning tools, you can:
+
+- **Detect leaks faster** — Get notified immediately when a token is exposed.
+- **Reduce risk window** — Exposed tokens are deactivated immediately, before they can be exploited.
+- **Automate security** — Leverage existing secret scanning infrastructure without additional configuration.
+
+#### What happens when a leak is detected
+
+When a third-party secret scanning tool detects a leaked Cloudflare API token:
+
+1. **Cloudflare immediately deactivates the token** to prevent unauthorized access.
+2. **The token creator receives an email notification** alerting them to the leak.
+3. **The token is marked as "Exposed"** in the Cloudflare dashboard.
+4. **You can then roll or delete the token** from the token management pages.
+
+#### Supported platforms
+
+- **GitHub Secret Scanning** — Automatically enabled for public repositories
+
+For more information on token formats and secret scanning, refer to [API token formats](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/).
+
+Apr 9, 2026
+
+[<h2>Send CASB posture finding instances with webhooks</h2>](https://developers.cloudflare.com/changelog/post/2026-04-09-casb-webhooks/)
+
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+
+You can now use **CASB webhooks** in Cloudflare One to send posture finding instances to external systems such as chat platforms, ticketing systems, SIEMs, SOAR tools, and custom automation services.
+
+This gives security teams a simple way to route CASB posture findings into the tools and workflows they already use for triage and response.
+
+To get started, go to **Integrations** > **Webhooks** in the Cloudflare One dashboard to create a webhook destination. After you configure a webhook, open a posture finding instance and select **Send webhook** to send it.
+
+#### Key capabilities
+
+- **Flexible authentication** — Configure destinations using **None**, **Basic Auth**, **Bearer Auth**, **Static Headers**, or **HMAC-Signing**.
+- **Built-in testing** — Use **Test delivery** to send a test request before sending a live finding instance.
+- **Posture finding workflows** — Send posture finding instances directly from the finding details workflow in **Cloud & SaaS findings**.
+- **HTTPS destinations** — Configure webhook destinations with public `https://` URLs.
+
+#### Learn more
+
+- Configure [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/) in Cloudflare.
+- Learn how to [manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/) in Cloudflare.
+
+CASB webhooks are now available in Cloudflare One.
+
+Apr 9, 2026
+
+[<h2>Relaxed simultaneous connection limiting for Workers</h2>](https://developers.cloudflare.com/changelog/post/2026-04-09-relaxed-connection-limiting/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+The [simultaneous open connections limit](https://developers.cloudflare.com/workers/platform/limits/#simultaneous-open-connections) has been relaxed. Previously, each Worker invocation was limited to six open connections at a time for the entire lifetime of each connection, including while reading the response body. Now, a connection is freed as soon as response headers arrive, so the six-connection limit only constrains how many connections can be in the initial "waiting for headers" phase simultaneously.
+
+#### Before: New connections are blocked until an earlier connection fully completes
+
+![A 7th fetch is queued until an earlier connection fully completes, including reading its entire response body](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=500,format=svg/_astro/connection-limit-before.BYti-Sxe.svg)
+
+#### After: New connections can start as soon as response headers arrive
+
+![A 7th fetch starts as soon as any earlier connection receives its response headers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=500,format=svg/_astro/connection-limit-after.BfVRyLE8.svg)
+
+This means Workers can now have many more connections open at the same time without queueing, as long as no more than six are waiting for their initial response. This eliminates the `Response closed due to connection limit` exception that could previously occur when the runtime canceled stalled connections to prevent deadlocks.
+
+Previously, the runtime used a deadlock avoidance algorithm that watched each open connection for I/O activity. If all six connections appeared idle — even momentarily — the runtime would cancel the least-recently-used connection to make room for new requests. In practice, this heuristic was fragile. For example, when a response used `Content-Encoding: gzip`, the runtime's internal decompression created brief gaps between read and write operations. During these gaps, the connection appeared stalled despite being actively read by the Worker. If multiple connections hit these gaps at the same time, the runtime could spuriously cancel a connection that was working correctly. By only counting connections during the waiting-for-headers phase — where the runtime is fully in control and there is no ambiguity about whether the connection is active — this class of bug is eliminated entirely.
+
+#### Before: Connections could be canceled during brief internal pauses
+
+![A connection with gaps from gzip decompression appears idle and is canceled by the runtime](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=260,format=svg/_astro/connection-cancel-before.D4As_PDP.svg)
+
+#### After: Connections complete normally regardless of internal pauses
+
+![The same connection completes normally because the body phase is no longer counted against the limit](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=230,format=svg/_astro/connection-cancel-after.RdmZLNge.svg)
+
+Apr 8, 2026
+
+[<h2>Website Source CSS content selectors for precise content extraction in AI Search</h2>](https://developers.cloudflare.com/changelog/post/2026-04-09-ai-search-content-selectors/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/) now supports [CSS content selectors](https://developers.cloudflare.com/ai-search/configuration/data-source/website/content-selectors/) for website data sources. You can now define which parts of a crawled page are extracted and indexed by specifying CSS selectors paired with URL glob patterns.
+
+Content selectors solve the problem of indexing only relevant content while ignoring navigation, sidebars, footers, and other boilerplate. When a page URL matches a glob pattern, only elements matching the corresponding CSS selector are extracted and converted to Markdown for indexing.
+
+Configure content selectors via the dashboard or API:
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai-search/instances" \
+  -H "Authorization: Bearer {api_token}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id": "my-ai-search",
+    "source": "https://example.com",
+    "type": "web-crawler",
+    "source_params": {
+      "web_crawler": {
+        "parse_options": {
+          "content_selector": [
+            {
+              "path": "**/blog/**",
+              "selector": "article .post-body"
+            }
+          ]
+        }
+      }
+    }
+  }'
+```
+
+Selectors are evaluated in order, and the first matching pattern wins. You can define up to 10 content selector entries per instance.
+
+For configuration details and examples, refer to the [content selectors documentation](https://developers.cloudflare.com/ai-search/configuration/data-source/website/content-selectors/).
+
+Apr 8, 2026
+
+[<h2>New Workers AI models for text generation and embedding in AI Search</h2>](https://developers.cloudflare.com/changelog/post/2026-04-09-new-workers-ai-models/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/) now supports four additional [Workers AI](https://developers.cloudflare.com/workers-ai/) models across text generation and embedding.
+
+#### Text generation
+
+| Model | Context window (tokens) |
+| --- | --- |
+| `@cf/zai-org/glm-4.7-flash` | 131,072 |
+| `@cf/qwen/qwen3-30b-a3b-fp8` | 32,000 |
+
+GLM-4.7-Flash is a lightweight model from Zhipu AI with a 131,072 token context window, suitable for long-document summarization and retrieval tasks. Qwen3-30B-A3B is a mixture-of-experts model from Alibaba that activates only 3 billion parameters per forward pass, keeping inference fast while maintaining strong response quality.
+
+#### Embedding
+
+| Model | Vector dims | Input tokens | Metric |
+| --- | --- | --- | --- |
+| `@cf/qwen/qwen3-embedding-0.6b` | 1,024 | 4,096 | cosine |
+| `@cf/google/embeddinggemma-300m` | 768 | 512 | cosine |
+
+Qwen3-Embedding-0.6B supports up to 4,096 input tokens, making it a good fit for indexing longer text chunks. EmbeddingGemma-300M from Google produces 768-dimension vectors and is optimized for low-latency embedding workloads.
+
+All four models are available without additional provider keys since they run on Workers AI. Select them when creating or updating an AI Search instance in the dashboard or through the API.
+
+For the full list of supported models, refer to [Supported models](https://developers.cloudflare.com/ai-search/configuration/models/supported-models/).
+
+Apr 8, 2026
+
+[<h2>User risk scoring for high risk browsing activity</h2>](https://developers.cloudflare.com/changelog/post/2026-04-08-high-risk-browsing/)
+
+[Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/)
+
+Cloudflare One's **User Risk Scoring** now incorporates direct signals from **Gateway DNS traffic patterns**. This update allows security teams to automatically elevate a user's risk score when they visit high-risk or malicious domains, providing a more holistic view of internal threats.
+
+#### Why this matters
+
+Browsing activity is a primary indicator of potential compromise. By tying Gateway DNS logs to specific users, administrators can now flag individuals interacting with:
+
+- **Security threats**: Domains associated with malware, phishing, or command-and-control (C2) centers.
+- **High-risk content**: Categories such as questionable content or violence that may violate corporate compliance.
+
+Even if a Gateway policy is set to **Block** the traffic, the interaction is still captured as a "hit" to ensure the user's risk profile reflects the attempted activity.
+
+#### New risk behaviors
+
+Two new behaviors are now available in the dashboard:
+
+- **Suspicious Security Domain Visited**: Triggers when a user visits a domain in the security threats or security risk categories.
+- **High risk domain visited**: Triggers when a user visits domains categorized as questionable content, violence, or CIPA.
+
+To learn more and get started, refer to the [User Risk Scoring documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/).
+
+Apr 8, 2026
+
+[<h2>Real-time alerts and daily digests for Threat Events</h2>](https://developers.cloudflare.com/changelog/post/2026-04-08-threat-events-notification/)
+
+[Security Center](https://developers.cloudflare.com/security-center/)
+
+You can now automate your threat monitoring by setting up custom alerts in your saved views. Instead of manually checking the dashboard for updates, you can subscribe to notifications that trigger whenever new data matches your specific filter sets, like new activity associated to a particular threat actor or spikes in activity within your industry.
+
+#### Stay ahead of emerging threats
+
+By linking your saved views to the Cloudflare Notifications Center, you can ensure the right information reaches your team at the right time.
+
+- **Immediate Alerts**: receive real-time notifications the moment a critical event is detected that matches your saved criteria. This is essential for high-priority monitoring, such as tracking active campaigns from specific APT groups.
+- **Daily Digests**: opt for a summarized report delivered once a day. This is ideal for maintaining situational awareness of broader trends, like regional activity shifts or industry-wide threat landscapes, without cluttering your inbox.
+
+![Threat Events notifications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2630,height=1424,format=webp/_astro/threat-events-notifications.3Fl8LGOn.png)
+
+#### How to get started
+
+To set up an alert, go to **Application Security** > **Threat Intelligence** > **Threat Events**. From there:
+
+1. Choose your datasets and apply your desired filters and select **Save View** (or select an existing one).
+2. Open the **Manage Saved Views** menu.
+3. Select **Add Alert** next to your chosen view to configure your notification preferences in the Cloudflare dashboard.
+
+For more technical details on configuring notifications, refer to the [Threat Events documentation](https://developers.cloudflare.com/security-center/cloudforce-one/).
+
+Apr 7, 2026
+
+[<h2>Cloudflare One Client for Windows (version 2026.3.851.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-04-07-warp-windows-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release contains minor fixes and improvements.
+
+The next stable release for Windows will introduce the new Cloudflare One Client UI, providing a cleaner and more intuitive design as well as easier access to common actions and information.
+
+**Changes and improvements**
+
+- Fixed an issue causing Windows client tunnel interface initialization failure which prevented clients from establishing a tunnel for connection.
+- Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+- Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+- Added monitoring for tunnel statistics collection timeouts.
+- Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
+- Fixed packet capture failing on tunnel interface when the tunnel interface is renamed by SCCM VPN boundary support.
+- Fixed unnecessary registration deletion caused by RDP connections in multi-user mode.
+- Fixed increased tunnel interface start-up time due to a race between duplicate address detection (DAD) and disabling NetBT.
+- Fixed tunnel failing to connect when the system DNS search list contains unexpected characters.
+- Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+- Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
+- Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
+- Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
+- Fixed an issue where degraded Windows Management Instrumentation (WMI) state could put the client in a failed connection state loop during initialization.
+
+**Known issues**
+
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution. This warning will be omitted from future release notes. This Windows update was released in July 2025.
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later. This warning will be omitted from future release notes. This Microsoft Security Intelligence update was released in May 2025.
+- DNS resolution may be broken when the following conditions are all true:
+  - The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while the client is connected.
+
+  To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
+
+Apr 7, 2026
+
+[<h2>User Submission Triage Status Tracking</h2>](https://developers.cloudflare.com/changelog/post/2026-04-07-triage-status-tracking/)
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
+
+Cloudflare Email security now supports **Triage Status Tracking for User Submissions**. This enhancement gives SOC teams a streamlined way to track, manage, and prioritize user-submitted emails directly within the Cloudflare One dashboard.
+
+- The User Submissions table now includes a **Status** column with three states: **Unreviewed** (new submissions awaiting triage), **Reviewed** (submissions assessed by the SOC team), and **Escalated** (submissions escalated to team submissions for further investigation). Analysts can quickly update statuses and filter the table to focus on what needs attention.
+- SOC teams can now organize their triage workflows, avoid duplicate reviews, and make sure critical threats get escalated for deeper investigation—bringing order to the chaos of high-volume submission management.
+
+Triage Status Tracking is **automatically available** for all Email security customers using the user submissions feature. No additional configuration is required; customers just need to make sure user submissions are being sent to their user submission aliases.
+
+This applies to all Email security packages:
+
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
+
+Apr 7, 2026
+
+[<h2>Link aggregation (LACP) support for Cloudflare One Appliance</h2>](https://developers.cloudflare.com/changelog/post/2026-04-07-link-aggregation-lacp-appliance/)
+
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+Cloudflare One Appliance now supports Link Aggregation Control Protocol (LACP), allowing you to bundle up to six physical LAN ports into a single logical interface. Link aggregation increases available bandwidth and eliminates single points of failure on the LAN side of the appliance.
+
+This feature is available in beta on physical appliance hardware with the latest OS. No entitlement is required.
+
+To configure a Link Aggregation Group, refer to [Configure link aggregation groups](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/link-aggregation/).
+
+Apr 7, 2026
+
+[<h2>Manage mTLS and BYO CA certificates from the Cloudflare dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-04-07-mtls-byoca-dashboard/)
+
+[SSL/TLS](https://developers.cloudflare.com/ssl/)
+
+You can now manage mutual TLS (mTLS) and Bring Your Own Certificate Authority (BYO CA) configurations directly from the Cloudflare dashboard — no API required.
+
+Previously, these advanced workflows required the Cloudflare API. The following are now available in the dashboard:
+
+- **AOP certificate management** — Upload and manage your own certificate authorities for [Authenticated Origin Pulls (AOP)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/) directly from the dashboard.
+- **BYO Client mTLS certificate management** — Upload and manage your own CA certificates for [client mTLS enforcement](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/) without needing API access.
+- **CDN hostname to client mTLS certificate mapping** — Associate client mTLS certificates with specific hostnames directly from the dashboard.
+
+Apr 7, 2026
+
+[<h2>Redesigned Support Portal for faster, personalized help</h2>](https://developers.cloudflare.com/changelog/post/2026-04-06-redesigned-support-portal/)
+
+[Support](https://developers.cloudflare.com/support/)
+
+#### Redesigned "Get Help" Portal for faster, personalized help
+
+Cloudflare has officially launched a redesigned "Get Help" Support Portal to eliminate friction and get you to a resolution faster. Previously, navigating support meant clicking through multiple tiles, categorizing your own technical issues across 50+ conditional fields, and translating your problem into Cloudflare's internal taxonomy.
+
+The new experience replaces that complexity with a personalized front door built around your specific account plan. Whether you are under a DDoS attack or have a simple billing question, the portal now presents a single, clean page that surfaces the direct paths available to you — such as "Ask AI", "Chat with a human", or "Community" — without the manual triage.
+
+#### What's New
+
+- **One Page, Clear Choices**: No more navigating a grid of overlapping categories. The portal now uses action cards tailored to your plan (Free, Pro, Business, or Enterprise), ensuring you only see the support channels you can actually use.
+- **A Radically Simpler Support Form**: We've reduced the ticket submission process from four+ screens and 50+ fields to a single screen with five critical inputs. You describe the issue in your own words, and our backend handles the categorization.
+- **AI-Driven Triage**: Using [Cloudflare Workers AI ↗︎](https://developers.cloudflare.com/workers-ai/) and [Vectorize ↗︎](https://developers.cloudflare.com/vectorize/), the portal now automatically generates case subjects and predicts product categories.
+
+#### Moving complexity to the backend
+
+Behind the scenes, we've moved the complexity from the user to our own developer stack. When you describe an issue, we use semantic embeddings to capture intent rather than just keywords.
+
+By leveraging case-based reasoning, our system compares your request against millions of resolved cases to route your inquiry to the specialist best equipped to help. This ensures that while the front-end experience is simpler for you, the back-end routing is more accurate than ever.
+
+To learn more, refer to the [Support documentation](https://developers.cloudflare.com/support/contacting-cloudflare-support/) or select **Get Help** directly in the [Cloudflare Dashboard ↗︎](https://dash.cloudflare.com/).
+
+Apr 7, 2026
+
+[<h2>WAF Release - 2026-04-07</h2>](https://developers.cloudflare.com/changelog/post/2026-04-07-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week's release introduces new detections for a critical Remote Code Execution (RCE) vulnerability in MCP Server (CVE-2026-23744), alongside targeted protection for an authentication bypass vulnerability in SolarWinds products (CVE-2025-40552). Additionally, this release includes a new generic detection rule designed to identify and block Cross-Site Scripting (XSS) injection attempts leveraging "OnEvent" handlers within HTTP cookies.
+
+**Key Findings**
+
+- MCP Server (CVE-2026-23744): A vulnerability in the Model Context Protocol (MCP) server implementation where malformed input payloads can trigger a memory corruption state, allowing for arbitrary code execution.
+- SolarWinds (CVE-2025-40552): A critical flaw in the authentication module allows unauthenticated attackers to bypass security filters and gain unauthorized access to the management console due to improper identity token validation.
+- XSS OnEvents Cookies: This generic rule identifies malicious event handlers (such as onload or onerror) embedded within HTTP cookie values.
+
+**Impact**
+
+Successful exploitation of the MCP Server and SolarWinds vulnerabilities could allow unauthenticated attackers to execute arbitrary code or gain administrative control, leading to a full system takeover. Additionally, the new generic XSS detection prevents attackers from leveraging browser event handlers in cookies to hijack user sessions or execute malicious scripts.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...0aa410af | N/A | Generic Rules - Command Execution - 5 - Body | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...9131ec2f | N/A | Generic Rules - Command Execution - 5 - Header | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...551eb9e5 | N/A | Generic Rules - Command Execution - 5 - URI | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...d46229eb | N/A | MCP Server - Remote Code Execution - CVE:CVE-2026-23744 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...a864b9c2 | N/A | XSS - OnEvents - Cookies | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...9712a863 | N/A | SQLi - Evasion - Body | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...40732d48 | N/A | SQLi - Evasion - Headers | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...e68a99b5 | N/A | SQLi - Evasion - URI | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...3e8143d2 | N/A | SQLi - LIKE 3 - Body | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...70e7fb97 | N/A | SQLi - LIKE 3 - URI | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...4c538bd9 | N/A | SQLi - UNION - 2 - Body | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...61c439c9 | N/A | SQLi - UNION - 2 - URI | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...cf33ea10 | N/A | SolarWinds - Auth Bypass - CVE:CVE-2025-40552 | Log | Block | This is a new detection. |
+
+Apr 7, 2026
+
+[<h2>WebSockets now automatically reply to Close frames</h2>](https://developers.cloudflare.com/changelog/post/2026-04-07-websocket-auto-reply-to-close/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+The Workers runtime now automatically sends a reciprocal Close frame when it receives a Close frame from the peer. The `readyState` transitions to `CLOSED` before the `close` event fires. This matches the [WebSocket specification ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close_event) and standard browser behavior.
+
+This change is enabled by default for Workers using compatibility dates on or after `2026-04-07` (via the [`web_socket_auto_reply_to_close`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag). Existing code that manually calls `close()` inside the `close` event handler will continue to work — the call is silently ignored when the WebSocket is already closed.
+
+```js
+const [client, server] = Object.values(new WebSocketPair());
+server.accept();
+
+server.addEventListener("close", (event) => {
+	// readyState is already CLOSED — no need to call server.close().
+	console.log(server.readyState); // WebSocket.CLOSED
+	console.log(event.code); // 1000
+	console.log(event.wasClean); // true
+});
+```
+
+#### Half-open mode for WebSocket proxying
+
+The automatic close behavior can interfere with WebSocket proxying, where a Worker sits between a client and a backend and needs to coordinate the close on both sides independently. To support this use case, pass `{ allowHalfOpen: true }` to `accept()`:
+
+```js
+const [client, server] = Object.values(new WebSocketPair());
+
+server.accept({ allowHalfOpen: true });
+
+server.addEventListener("close", (event) => {
+	// readyState is still CLOSING here, giving you time
+	// to coordinate the close on the other side.
+	console.log(server.readyState); // WebSocket.CLOSING
+
+	// Manually close when ready.
+	server.close(event.code, "done");
+});
+```
+
+For more information, refer to [WebSockets Close behavior](https://developers.cloudflare.com/workers/runtime-apis/websockets/#close-behavior).
+
+Apr 6, 2026
+
+[<h2>DANE Support for MX Deployments</h2>](https://developers.cloudflare.com/changelog/post/2026-04-06-dane-support-mx-deployments/)
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
+
+Cloudflare Email Security now supports DANE (DNS-based Authentication of Named Entities) for MX deployments. This enhancement strengthens email transport security by enabling DNSSEC-backed certificate verification for our regional MX records.
+
+- Regional MX hostnames now publish DANE TLSA records backed by DNSSEC, enabling DANE-capable SMTP senders to cryptographically validate certificate identities before establishing TLS connections—moving beyond opportunistic encryption to verified encrypted delivery.
+- DANE support is automatically available for all customers using regional MX deployments. No additional configuration is required; DANE-capable mail infrastructure will automatically validate MX certificates using the published records.
+
+This applies to all Email Security packages:
+
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
+
+Apr 6, 2026
+
+[<h2>Organizations is now in public beta for enterprises</h2>](https://developers.cloudflare.com/changelog/post/2026-04-06-organizations-public-beta/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Organizations](https://developers.cloudflare.com/fundamentals/organizations/)
+
+We're announcing the public beta of **Organizations** for enterprise customers, a new top-level Cloudflare container that lets Cloudflare customers manage multiple accounts, members, analytics, and shared policies from one centralized location.
+
+**What's New**
+
+**Organizations \[BETA]**: [Organizations](https://developers.cloudflare.com/fundamentals/organizations/) are a new top-level container for centrally managing multiple accounts. Each Organization supports up to 500 accounts and 5000 zones, giving larger teams a single place to administer resources at scale.
+
+**Self-serve onboarding**: Enterprise customers can [create an Organization](https://developers.cloudflare.com/fundamentals/organizations/setup/) in the dashboard and assign accounts where they are already Super Administrators.
+
+**Centralized Account Management**: At launch, every Organization member has the Organization Super Admin role. Organization Super Admins can invite other users and manage any child account under the Organization implicitly. **Shared policies**: Share [WAF](https://developers.cloudflare.com/waf/custom-rules/) or [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/) policies across multiple accounts within your Organization to simplify centralized policy management. **Implicit access**: Members of an Organization automatically receive Super Administrator permissions across child accounts, removing the need for explicit membership on each account. Additional Org-level roles will be available over the course of the year.
+
+**Unified analytics**: View, filter, and download aggregate HTTP analytics across all Organization child accounts from a single dashboard for centralized visibility into traffic patterns and security events.
+
+**Terraform provider support**: Manage Organizations with infrastructure as code from day one. Provision organizations, assign accounts, and configure settings programmatically with the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/organization).
+
+**Shared policies**: Share [WAF](https://developers.cloudflare.com/waf/custom-rules/) or [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) policies across multiple accounts within your Organization to simplify centralized policy management.
+
+Note
+
+Organizations is in Public Beta. You must have an Enterprise account to create an organization, but once created, you can add accounts of any plan type where you are a Super Administrator.
+
+For more info:
+
+- [Get started with Organizations](https://developers.cloudflare.com/fundamentals/organizations/)
+- [Set up your Organization](https://developers.cloudflare.com/fundamentals/organizations/setup/)
+- [Review limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/)
+
+Apr 6, 2026
+
+[<h2>New ResponseTimeMs field in Gateway DNS Logpush dataset</h2>](https://developers.cloudflare.com/changelog/post/2026-04-06-gateway-dns-response-time-ms/)
+
+[Logs](https://developers.cloudflare.com/logs/)
+
+Cloudflare has added a new field to the [Gateway DNS](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/#responsetimems) Logpush dataset:
+
+- **ResponseTimeMs**: Total response time of the DNS request in milliseconds.
+
+For the complete field definitions, refer to [Gateway DNS dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/).
+
+Apr 5, 2026
+
+[<h2>Control where your Containers run with regional and jurisdictional placement</h2>](https://developers.cloudflare.com/changelog/post/2026-04-05-regional-placement/)
+
+[Containers](https://developers.cloudflare.com/containers/)
+
+You can now specify placement constraints to control where your [Containers](https://developers.cloudflare.com/containers/) run.
+
+| Constraint | Values | Use case |
+| --- | --- | --- |
+| `regions` | `ENAM`, `WNAM`, `EEUR`, `WEUR` | Geographic placement |
+| `jurisdiction` | `eu`, `fedramp` | Compliance boundaries |
+
+Use `regions` to limit placement to specific geographic areas. Use `jurisdiction` to restrict containers to compliance boundaries — `eu` maps to European regions (EEUR, WEUR) and `fedramp` maps to North American regions (ENAM, WNAM).
+
+Refer to [Containers placement](https://developers.cloudflare.com/containers/concepts/placement/) for more details.
+
+Apr 4, 2026
+
+[<h2>Google Gemma 4 26B A4B now available on Workers AI</h2>](https://developers.cloudflare.com/changelog/post/2026-04-04-gemma-4-26b-a4b-workers-ai/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+We are partnering with Google to bring [`@cf/google/gemma-4-26b-a4b-it`](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/) to Workers AI. Gemma 4 26B A4B is a Mixture-of-Experts (MoE) model built from Gemini 3 research, with 26B total parameters and only 4B active per forward pass. By activating a small subset of parameters during inference, the model runs almost as fast as a 4B-parameter model while delivering the quality of a much larger one.
+
+Gemma 4 is Google's most capable family of open models, designed to maximize intelligence-per-parameter.
+
+#### Key capabilities
+
+- **Mixture-of-Experts architecture** with 8 active experts out of 128 total (plus 1 shared expert), delivering frontier-level performance at a fraction of the compute cost of dense models
+- **256,000 token context window** for retaining full conversation history, tool definitions, and long documents across extended sessions
+- **Built-in thinking mode** that lets the model reason step-by-step before answering, improving accuracy on complex tasks
+- **Vision understanding** for object detection, document and PDF parsing, screen and UI understanding, chart comprehension, OCR (including multilingual), and handwriting recognition, with support for variable aspect ratios and resolutions
+- **Function calling** with native support for structured tool use, enabling agentic workflows and multi-step planning
+- **Multilingual** with out-of-the-box support for 35+ languages, pre-trained on 140+ languages
+- **Coding** for code generation, completion, and correction
+
+Use Gemma 4 26B A4B through the [Workers AI binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/) (`env.AI.run()`), the REST API at `/run` or `/v1/chat/completions`, or the [OpenAI-compatible endpoint](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+
+For more information, refer to the [Gemma 4 26B A4B model page](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/).
+
+Apr 2, 2026
+
+[<h2>Cloudflare One Client for macOS (version 2026.3.846.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-04-02-warp-macos-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the macOS Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release contains minor fixes and improvements.
+
+The next stable release for macOS will introduce the new Cloudflare One Client UI, providing a cleaner and more intuitive design as well as easier access to common actions and information.
+
+**Changes and improvements**
+
+- Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+- Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
+- Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
+- Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+- Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+- Added monitoring for tunnel statistics collection timeouts.
+- Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
+- Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
+
+Apr 2, 2026
+
+[<h2>Cloudflare One Client for Linux (version 2026.3.846.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-04-02-warp-linux-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release contains minor fixes and improvements.
+
+The next stable release for Linux will introduce the new Cloudflare One Client UI, providing a cleaner and more intuitive design as well as easier access to common actions and information.
+
+**Changes and improvements**
+
+- Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+- Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
+- Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
+- Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+- Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+- Added monitoring for tunnel statistics collection timeouts.
+- Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
+- Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
+
+Apr 2, 2026
+
+[<h2>Session management for MCP server portals</h2>](https://developers.cloudflare.com/changelog/post/2026-04-02-mcp-portal-session-management/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) support in-session management of upstream MCP server connections. Users can return to the server selection page at any time to enable or disable servers, reauthenticate, or change which data a server has access to — all without leaving their MCP client.
+
+To return to the server selection page, ask your AI agent with a prompt like "take me back to the server selection page." The portal responds with an authorization URL via [MCP elicitation ↗︎](https://modelcontextprotocol.io/specification/2025-03-26/server/elicitation) that you open in your browser:
+
+```txt
+https://<subdomain>.<domain>/authorize?elicitationId=<ELICITATION_ID>
+```
+
+From the server selection page you can:
+
+- **Enable or disable servers** — Toggle individual upstream MCP servers on or off. Disabling a server removes its tools from the active session, which reduces context window usage.
+- **Log out and reauthenticate** — Log out of a server and log back in to change which data the server has access to, or to reauthenticate with different permissions.
+
+Users can also enable or disable a server inline by asking their AI agent directly, for example "enable the wiki server" or "disable my Jira server."
+
+The portal also automatically prompts connected users to authorize new servers when an admin adds them to the portal. This requires the use of [managed OAuth](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#enable-managed-oauth-on-an-mcp-server-portal).
+
+For more information, refer to [Manage portal sessions](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#manage-portal-sessions).
+
+Apr 2, 2026
+
+[<h2>Automatically retry on upstream provider failures on AI Gateway</h2>](https://developers.cloudflare.com/changelog/post/2026-04-02-auto-retry-upstream-failures/)
+
+[AI Gateway](https://developers.cloudflare.com/ai-gateway/)
+
+AI Gateway now supports automatic retries at the gateway level. When an upstream provider returns an error, your gateway retries the request based on the retry policy you configure, without requiring any client-side changes.
+
+You can configure the retry count (up to 5 attempts), the delay between retries (from 100ms to 5 seconds), and the backoff strategy (Constant, Linear, or Exponential). These defaults apply to all requests through the gateway, and per-request headers can override them.
+
+![Retry Requests settings in the AI Gateway dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2344,height=502,format=webp/_astro/auto-retry-changelog.DoCXZnDy.png)
+
+This is particularly useful when you do not control the client making the request and cannot implement retry logic on the caller side. For more complex failover scenarios — such as failing across different providers — use [Dynamic Routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/).
+
+For more information, refer to [Manage gateways](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#retry-requests).
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/23/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/23/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

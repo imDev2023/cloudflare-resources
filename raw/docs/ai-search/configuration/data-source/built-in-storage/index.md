@@ -1,0 +1,40 @@
+---
+description: Upload files directly to an AI Search instance using built-in storage powered by R2 and Vectorize.
+title: Built-in storage
+image: https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/og.png?v=8152804138aeb1b5
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Built-in storage
+
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Every AI Search instance comes with built-in storage and a built-in vector index, powered by [R2](https://developers.cloudflare.com/r2/) and [Vectorize](https://developers.cloudflare.com/vectorize/). You can upload files directly to an instance without setting up either service yourself.
+
+## Upload and manage files
+
+Upload files to an instance using the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/) (Workers binding or REST API) or the **Items** tab in the dashboard (**AI** > **AI Search** > your instance > **Items**). You can also list, view, and delete uploaded files through the Items API or the dashboard.
+
+For supported file types, refer to [Supported file types](https://developers.cloudflare.com/ai-search/configuration/data-source/#supported-file-types).
+
+## Indexing
+
+Files uploaded to built-in storage are indexed immediately. External data sources like websites and R2 buckets are indexed on a [sync schedule](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/).
+
+## External data sources
+
+An instance can use built-in storage alongside an external data source. The available external data sources are:
+
+- [Website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/): crawl and index a website that you own
+- [R2 Bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/): index documents stored in a Cloudflare R2 bucket
+
+For example, an instance can be backed by a website for shared documentation while also accepting file uploads through the Items API for additional content.
+
+## Limits and pricing
+
+Storage, vector indexing, Browser Run crawling, and Workers AI embedding and reranking usage are included in AI Search billing. Other usage, such as generation through your AI Gateway, is billed separately. For full details, refer to [Limits and pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/).

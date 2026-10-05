@@ -1,0 +1,33 @@
+---
+description: Cloudflare's Network Flow can be used to test a simulated DDoS attack.
+title: DDoS testing guide
+image: https://developers.cloudflare.com/network-flow/tutorials/ddos-testing-guide/og.png?v=9cc77f0b7494a1bd
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# DDoS testing guide
+
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/tutorials/ddos-testing-guide/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+To test Network Flow (formerly Magic Network Monitoring) in a repeatable manner, simulate a DDoS attack. At a high level, you need to:
+
+1. Select and install a trusted, open source DDoS simulation tool.
+2. Conduct a small DDoS test attack in a safe test environment.
+
+## Permission requirements
+
+You need to contact Cloudflare to obtain permission before conducting a DDoS test if:
+
+- Your property is hosted in Cloudflare.
+- Internet traffic goes through Cloudflare before reaching your property.
+
+If you are an Enterprise customer with Network Flow enabled, contact your Cloudflare Account Manager before starting DDoS testing, even if the property is not hosted in Cloudflare.
+
+Refer to [Simulating test DDoS attacks](https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack/) for more information.
+
+If you need help conducting a simulated DDoS attack, [fill out this form ↗︎](https://forms.gle/6tBZNu7shoaCmP9h6).

@@ -1,0 +1,44 @@
+---
+description: Understand how Cloudflare coordinates maintenance across resilient CNI deployments.
+title: Maintenance
+image: https://developers.cloudflare.com/network-interconnect/maintenance/og.png?v=f2f2908d75583bed
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/network-interconnect/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Maintenance
+
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-interconnect/maintenance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+## Planned maintenance
+
+Routine CNI-disruptive maintenance is planned work that can interrupt traffic on an affected CNI connection. Cloudflare coordinates this work across resilient Cloudflare Network Interconnect (CNI) deployments, including across CNI locations.
+
+### Timing and scheduling
+
+For Dataplane v2 connectivity in multi-homed PoPs only:
+
+- **Routine maintenance**: Minimum one week notice.
+- **Emergency maintenance**: Best-effort notice, which may be less than one week.
+- Routine maintenance on redundant devices at the same location will occur on different days.
+- Routine maintenance is not rescheduled to accommodate customer schedule preferences.
+
+| CNI deployment | During routine CNI-disruptive maintenance |
+| --- | --- |
+| One CNI connection at one location | The connection can be interrupted. |
+| Two CNI connections on separate devices at one location | One connection remains in service. |
+| Four CNI connections across two coordinated locations, with two connections on separate devices at each location | Three connections remain in service. |
+
+## Emergency and non-routine maintenance
+
+Non-routine maintenance, such as maintenance that affects an entire PoP, can affect all CNI connections at the affected location. For the four-connection deployment with two connections at each of two locations, a full-PoP non-routine event at one location can interrupt two connections, leaving two in service. Cloudflare avoids performing non-routine maintenance at multiple coordinated locations at the same time.
+
+Cloudflare coordinates emergency maintenance across locations where feasible.
+
+## Receive maintenance notifications
+
+To configure circuit-specific or point-of-presence (PoP) maintenance notifications, refer to [Monitoring and alerts](https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/).

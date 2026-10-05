@@ -1,0 +1,181 @@
+---
+description: Create a Docusaurus application and deploy it to Cloudflare Workers with Workers Assets.
+title: Docusaurus
+image: https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/og.png?v=9a0498f6b16eeda6
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Docusaurus
+
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+**Start from CLI**: Scaffold a Docusaurus project on Workers, and pick your template.
+
+npmyarnpnpm
+
+```
+npm create cloudflare@latest -- my-docusaurus-app --framework=docusaurus
+```
+
+```
+yarn create cloudflare my-docusaurus-app --framework=docusaurus
+```
+
+```
+pnpm create cloudflare@latest my-docusaurus-app --framework=docusaurus
+```
+
+**Or just deploy**: Create a documentation site with Docusaurus and deploy it on Cloudflare Workers, with CI/CD and previews all set up for you.
+
+[![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://dash.cloudflare.com/?to=/:account/workers-and-pages/create/deploy-to-workers&repository=https://github.com/cloudflare/templates/tree/staging/astro-blog-starter-template)
+
+## What is Docusaurus?
+
+[Docusaurus ↗︎](https://docusaurus.io/) is an open-source framework for building, deploying, and maintaining documentation websites. It is built on React and provides an intuitive way to create static websites with a focus on documentation.
+
+Docusaurus is designed to be easy to use and customizable, making it a popular choice for developers and organizations looking to create documentation sites quickly.
+
+## Deploy a new Docusaurus project on Workers
+
+1. **Create a new project with the create-cloudflare CLI (C3).**npmyarnpnpm
+
+   ```
+   npm create cloudflare@latest -- my-docusaurus-app --framework=docusaurus --platform=workers
+   ```
+
+   ```
+   yarn create cloudflare my-docusaurus-app --framework=docusaurus --platform=workers
+   ```
+
+   ```
+   pnpm create cloudflare@latest my-docusaurus-app --framework=docusaurus --platform=workers
+   ```
+
+   <details><summary>
+
+   What's happening behind the scenes?</summary>
+
+When you run this command, C3 creates a new project directory, initiates <a href="https://docusaurus.io/docs/installation">Docusaurus' official setup tool ↗︎</a>, and configures the project for Cloudflare. It then offers the option to instantly deploy your application to Cloudflare.</details>
+
+2. **Develop locally.**
+
+   After creating your project, run the following command in your project directory to start a local development server.npmyarnpnpm
+
+   ```
+   npm run dev
+   ```
+
+   ```
+   yarn run dev
+   ```
+
+   ```
+   pnpm run dev
+   ```
+
+
+3. **Deploy your project.**
+
+   Your project can be deployed to a [\*.workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), from your local machine or any CI/CD system, (including [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/#workers-builds/)).
+
+   Use the following command to build and deploy your project. If you're using a CI service, be sure to update your "deploy command" accordingly.npmyarnpnpm
+
+   ```
+   npm run deploy
+   ```
+
+   ```
+   yarn run deploy
+   ```
+
+   ```
+   pnpm run deploy
+   ```
+
+
+
+## Deploy an existing Docusaurus project on Workers
+
+### If you have a static site
+
+If your Docusaurus project is entirely pre-rendered (which it usually is), follow these steps:
+
+1. **Add a Wrangler configuration file.**
+
+   In your project root, create a Wrangler configuration file with the following content:
+
+   ```jsonc
+   	{
+   		"name": "my-docusaurus-app",
+   		// Update to today's date
+   		// Set this to today's date
+   		"compatibility_date": "2026-10-05",
+   		"assets": {
+   			"directory": "./build"
+   		}
+   	}
+   ```
+
+   ```toml
+   name = "my-docusaurus-app"
+   # Set this to today's date
+   compatibility_date = "2026-10-05"
+
+   [assets]
+   directory = "./build"
+   ```
+
+   <details><summary>
+
+   What's this configuration doing?</summary>
+
+The key part of this config is the <code>assets</code> field, which tells Wrangler where to find your static assets. In this case, we're telling Wrangler to look in the <code>./build</code> directory. If your assets are in a different directory, update the <code>directory</code> value accordingly. Refer to other <a href="https://developers.cloudflare.com/workers/static-assets/routing/">asset configuration options</a>.
+
+   Also note how there's no <code>main</code> field in this config - this is because you're only serving static assets, so no Worker code is needed for on demand rendering/SSR.</details>
+
+2. **Build and deploy your project.**
+
+   You can deploy your project to a [`*.workers.dev` subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) from your local machine or any CI/CD system (including [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/#workers-builds)). Use the following command to build and deploy. If you're using a CI service, be sure to update your "deploy command" accordingly.npmyarnpnpm
+
+   ```
+   npx docusaurus build
+   ```
+
+   ```
+   yarn docusaurus build
+   ```
+
+   ```
+   pnpm docusaurus build
+   ```
+
+   npmyarnpnpm
+
+   ```
+   npx wrangler@latest deploy
+   ```
+
+   ```
+   yarn wrangler@latest deploy
+   ```
+
+   ```
+   pnpm wrangler@latest deploy
+   ```
+
+
+
+## Use bindings with Docusaurus
+
+Bindings are a way to connect your Docusaurus project to other Cloudflare services, enabling you to store and retrieve data within your application.
+
+With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
+
+### [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
+
+Access to compute, storage, AI and more.

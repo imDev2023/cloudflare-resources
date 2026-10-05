@@ -1,0 +1,51 @@
+---
+description: API reference for RtkMeetingTitleLabel component (iOS Library)
+title: RtkMeetingTitleLabel
+image: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-meeting-title-label/og.png?v=9c7201f732c9c87b
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# RtkMeetingTitleLabel
+
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-meeting-title-label/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+A label that displays the meeting title from the meeting metadata.
+
+## Initializer parameters
+
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `meeting` | `RealtimeKitClient` | ✅ | - | The RealtimeKit client instance for the active meeting |
+| `appearance` | `RtkTextAppearance` | ❌ | `AppTheme.shared.meetingTitleAppearance` | Text appearance configuration for font and color |
+
+## Usage Examples
+
+### Basic Usage
+
+```swift
+import RealtimeKitUI
+
+let titleLabel = RtkMeetingTitleLabel(meeting: rtkClient)
+view.addSubview(titleLabel)
+```
+
+### With custom appearance
+
+```swift
+import RealtimeKitUI
+
+let appearance = RtkTextAppearance(
+    font: UIFont.systemFont(ofSize: 18, weight: .bold),
+    textColor: .white
+)
+let titleLabel = RtkMeetingTitleLabel(
+    meeting: rtkClient,
+    appearance: appearance
+)
+view.addSubview(titleLabel)
+```

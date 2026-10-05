@@ -1,0 +1,1051 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Jul 4, 2026
+
+[<h2>Declare Durable Object class lifecycle with \`exports\`</h2>](https://developers.cloudflare.com/changelog/post/2026-06-30-declarative-do-class-exports/)
+
+[Durable Objects](https://developers.cloudflare.com/durable-objects/) [Workers](https://developers.cloudflare.com/workers/)
+
+A new declarative [`exports`](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field in your Wrangler configuration file replaces the imperative [`migrations`](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) array for managing Durable Object class lifecycle. Instead of writing an ordered list of migration steps with unique tags, you declare each Durable Object class your Worker exports and Cloudflare compares that against what's already deployed to determine what Durable Object state needs to be created, renamed, or deleted.
+
+With legacy migrations, renaming `ChatRoom` to `Room` requires retaining both tagged steps:
+
+*Before — legacy migrationsjsonc*
+
+```jsonc
+{
+	"migrations": [
+		{ "tag": "v1", "new_sqlite_classes": ["ChatRoom"] },
+		{
+			"tag": "v2",
+			"renamed_classes": [{ "from": "ChatRoom", "to": "Room" }],
+		},
+	],
+}
+```
+
+With `exports`, you instead declare `Room` as the current class and mark `ChatRoom` as renamed:
+
+*After — declarative exportsjsonc*
+
+```jsonc
+{
+	"exports": {
+		"ChatRoom": {
+			"type": "durable-object",
+			"state": "renamed",
+			"renamed_to": "Room",
+		},
+		"Room": { "type": "durable-object", "storage": "sqlite" },
+	},
+}
+```
+
+Each entry is keyed by class name. The `state` field carries the lifecycle (`created` by default — a live class — plus tombstone states `deleted`, `renamed`, and `transferred`, and the `expecting-transfer` receiving state for cross-Worker transfers).
+
+Key improvements over the legacy `migrations` array:
+
+- **No migration tags.** The current `exports` map is the source of truth — there is no historical chain of `v1`, `v2`, `v3` entries to maintain.
+- **Structured deployment output.** Wrangler reports when it creates, updates, deletes, renames, or transfers Durable Object classes. It also identifies stale configuration entries that are safe to remove. Deployments with no changes or notices do not print this output.
+- **Zero-downtime rename and transfer patterns are first-class.** Tombstones may coexist with the source class still in code, enabling a [three-deploy rename](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#avoid-downtime-during-a-rename) and a [four-deploy cross-Worker transfer](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#transfer-a-durable-object-class-between-workers) without runtime errors during the rollout window.
+- **Cross-Worker safety.** When you delete or rename a class, Cloudflare lists every other Worker in your account whose bindings still reference the namespace, so you can redeploy them before the change goes live.
+
+Existing Workers using the legacy [`migrations`](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) array continue to work unchanged. To move to `exports`, refer to the [migration guide](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#migrate-from-the-legacy-migrations-flow). `exports` and `migrations` are mutually exclusive within a single Worker.
+
+For the full reference, refer to [Durable Object class exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/).
+
+Jul 3, 2026
+
+[<h2>Simpler runtime types with @cloudflare/workers-types v5</h2>](https://developers.cloudflare.com/changelog/post/2026-07-03-workers-types-v5/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+We have released version 5 of [`@cloudflare/workers-types` ↗︎](https://www.npmjs.com/package/@cloudflare/workers-types). This release simplifies the package to expose only the latest runtime types.
+
+We still recommend that you generate types for your Worker using [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types), but if you want to use the package directly, you can install it with your package manager of choice:
+
+npmyarnpnpmbun
+
+```
+npm i -D @cloudflare/workers-types@latest
+```
+
+```
+yarn add -D @cloudflare/workers-types@latest
+```
+
+```
+pnpm add -D @cloudflare/workers-types@latest
+```
+
+```
+bun add -d @cloudflare/workers-types@latest
+```
+
+The package now exposes two entrypoints:
+
+- `@cloudflare/workers-types` reflects the latest compatibility date, using the latest stable compatibility flags.
+- `@cloudflare/workers-types/experimental` reflects APIs behind experimental compatibility flags.
+
+The dated entrypoints, such as `@cloudflare/workers-types/2022-11-30` and `@cloudflare/workers-types/2023-03-01`, are removed. With runtime type generation in [Wrangler v4](https://developers.cloudflare.com/workers/wrangler/), you can generate these with the `wrangler types` command to create types locked to your Worker's compatibility date.
+
+For more information, refer to [TypeScript language support](https://developers.cloudflare.com/workers/languages/typescript/).
+
+Jul 2, 2026
+
+[<h2>Manage AI Search sync jobs with Wrangler CLI</h2>](https://developers.cloudflare.com/changelog/post/2026-07-02-manage-sync-jobs/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+When you connect a [data source](https://developers.cloudflare.com/ai-search/configuration/data-source/) to your [AI Search](https://developers.cloudflare.com/ai-search/) instance, AI Search runs sync jobs to keep your index up to date with your content. You can now manage those jobs directly from [Wrangler](https://developers.cloudflare.com/ai-search/wrangler-commands/).
+
+For example, you can trigger a sync job from your CI/CD or automated pipelines with the `jobs create` command so your index refreshes when you push a change:
+
+```sh
+wrangler ai-search jobs create my-instance
+```
+
+This creates an asynchronous sync job that checks for changes in your data source, and sends new, modified, or deleted files to be indexed. The following commands are available:
+
+| Command | Description |
+| --- | --- |
+| `wrangler ai-search jobs create` | Trigger a new sync job |
+| `wrangler ai-search jobs list` | List sync jobs for an instance |
+| `wrangler ai-search jobs get` | Get details for a job |
+| `wrangler ai-search jobs cancel` | Cancel a running job |
+| `wrangler ai-search jobs logs` | View log entries for a job |
+
+All commands accept `--namespace`/`-n` (defaults to `default`) and `--json` for structured output that automation and AI agents can parse directly. The `list` and `logs` commands also support `--page` and `--per-page` for pagination, and `cancel` prompts for confirmation unless you pass `-y`/`--force`.
+
+For full usage details, refer to the [AI Search Wrangler commands documentation](https://developers.cloudflare.com/ai-search/wrangler-commands/).
+
+Jul 2, 2026
+
+[<h2>Cache multiple versions of a URL with Vary</h2>](https://developers.cloudflare.com/changelog/post/2026-07-02-vary-for-cache-rules/)
+
+[Cache / CDN](https://developers.cloudflare.com/cache/)
+
+Your origin can serve different responses for the same URL — different languages based on `Accept-Language`, or different formats based on `Accept` — by returning a [`Vary` ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#name-vary) response header. Cloudflare's cache now honors that header directly in [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), so the same URL can hold multiple cached versions and each request is matched to the right one. Content that previously had to bypass cache to stay correct can now be cached, following standard [HTTP caching behavior ↗︎](https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with).
+
+#### What changed
+
+Your origin now decides which request headers matter by listing them in its `Vary` response, and you control how Cloudflare treats each one. When you have enabled Vary using a cache rule and a response includes a `Vary` header, the request headers listed become part of the cache key.
+
+For each header your origin varies on, choose one of three actions:
+
+| Action | Behavior | Best for |
+| --- | --- | --- |
+| `normalize` | Converts equivalent header values to the same cache key value before matching, collapsing redundant versions. | Most `Accept`, `Accept-Language`, and `Accept-Encoding` use cases. |
+| `passthrough` | Uses the raw header value to select the cached version and forwards it to the origin unchanged. | When byte-for-byte differences in the header value should create versions. |
+| `bypass` | Bypasses cache whenever this header name appears in the origin's `Vary` response. | Per-user values, or headers with too many possible values to cache safely. |
+
+#### Benefits
+
+- **Higher cache hit ratios**: `normalize` treats semantically equivalent headers as one version. For example, `Accept-Language: en-US, fr;q=0.8` and `Accept-Language: fr;q=0.8, en-GB` both resolve to the same cache key, so you serve more requests from cache instead of the origin.
+- **Correct content negotiation**: Requests always receive the cached version that matches their headers, so language and format variants stay accurate.
+- **No origin or Worker changes required**: If your origin already sends `Vary`, you configure the behavior entirely in Cache Rules.
+- **Standards-aligned**: Cache key calculation follows RFC 9111, and `Vary: *` continues to bypass cache as required by RFC 9110.
+
+#### Availability
+
+Vary in Cache Rules is available on all plans (Free, Pro, Business, and Enterprise). For per-request control in Workers subrequests, use the [`cf.vary`](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cfvary-property) property.
+
+#### Get started
+
+Configure Vary in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** > **Cache Rules**, or through the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). To learn how Vary affects cache keys and how each action works, refer to [Vary](https://developers.cloudflare.com/cache/concepts/vary/) and the [Cache Rules Vary setting](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary).
+
+Jul 2, 2026
+
+[<h2>Updated fields across multiple Logpush datasets in Cloudflare Logs</h2>](https://developers.cloudflare.com/changelog/post/2026-07-02-log-fields-updated/)
+
+[Logs](https://developers.cloudflare.com/logs/)
+
+Cloudflare has updated [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/):
+
+#### Updated fields in existing datasets
+
+- **Gateway DNS** (added): `AppliedMaxTTL` and `UpstreamRecordTTLs`.
+- **Gateway HTTP** (added): `Warnings`.
+- **HTTP requests** (added): `CacheLockWaitedMs`.
+
+For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
+
+Jul 2, 2026
+
+[<h2>Hostname routing for Cloudflare Mesh</h2>](https://developers.cloudflare.com/changelog/post/2026-07-02-mesh-hostname-routing/)
+
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+You can now add [hostname routes](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes) to a Cloudflare Mesh node, in addition to CIDR routes.
+
+1. [Client device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+   Requests `wiki.internal.local`
+2. DNS query↓
+3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+
+   Returns a token IP, then rewrites the destination to the real private IP. `172.64.128.0/20`
+4. [Hostname route](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes)↓
+5. [Mesh node](https://developers.cloudflare.com/mesh/)
+
+   Forwards traffic to the host on the local network
+6. ↓
+7. Private host
+
+   `wiki.internal.local` · `10.0.0.50`
+
+Instead of managing IP ranges, you can attract traffic for a hostname to a Mesh node:
+
+- **Private hostname** (for example, `wiki.internal.local`) — reach an internal application by name, which is useful when it has an unknown or ephemeral IP. On Mesh you do not need to run a DNS server; a local hosts-file entry on the node is enough, or you can use a Gateway resolver policy for split DNS.
+- **Public hostname** (for example, `www.example.com`) — route that hostname's traffic through the node and egress via the node's public IP.
+
+[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+
+For setup steps, prerequisites, and DNS options, refer to [Hostname routes](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes).
+
+Jul 2, 2026
+
+[<h2>Work across multiple accounts with Wrangler auth profiles</h2>](https://developers.cloudflare.com/changelog/post/2026-07-02-wrangler-auth-profiles/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+[Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/) now supports auth profiles: named logins that you scope to specific Cloudflare accounts and switch between automatically, based on the directory you are working in.
+
+A profile is a named OAuth login bound to a directory. Commands run in that directory, and its subdirectories, use the matching account — so you can move between accounts without re-running `wrangler login`.
+
+Use profiles to keep a separate login for each client when working at an agency, or to separate staging and production into different accounts. Pair a profile with an `account_id` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) so a command cannot reach the wrong account.
+
+```sh
+# Create a profile for each account, choosing which accounts it can reach
+wrangler auth create client-a
+wrangler auth activate client-a ~/clients/client-a
+
+wrangler auth create client-b
+wrangler auth activate client-b ~/clients/client-b
+```
+
+Use the `--profile` flag to run a single command with a specific profile:
+
+```sh
+wrangler deploy --profile personal
+```
+
+In CI and other automated environments, `CLOUDFLARE_API_TOKEN` still takes precedence over all profiles.
+
+For setup, the resolution order, and the full command reference, refer to [Authentication profiles](https://developers.cloudflare.com/workers/wrangler/profiles/).
+
+Jul 1, 2026
+
+[<h2>Cloudflare One Client for Linux (version 2026.6.836.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-07-01-warp-linux-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This package is the same release as 2026.6.822.0, with a fix for our RPM package. Previously the repository served a single build to every OS version, so an install could pull a dependency that isn't available on that release. The repository now serves the correct build for each operating system version, so installs automatically pull the dependencies that version requires. Debian and Ubuntu were not affected.
+
+If you installed version 2026.6.822.0 on an RPM-based distribution, we recommend refreshing your repository configuration:
+
+```bash
+sudo curl -fsSL https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
+sudo dnf clean all
+sudo dnf install cloudflare-warp
+```
+
+Jul 1, 2026
+
+[<h2>Fix redirect URL fragment encoding for single-page applications</h2>](https://developers.cloudflare.com/changelog/post/2026-07-01-spa-redirect-fragment-fix/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+Access now correctly preserves URL fragment characters (`/`, `?`, `=`, `&`, `;`) when redirecting users back to an application after login. Previously, these characters were encoded with `encodeURIComponent`, which mangled fragment-based routes used by single-page applications (SPAs).
+
+For example, an SPA URL like `https://app.example.com/#/dashboard?tab=settings&view=advanced` would previously redirect to a broken URL after login. This is now handled correctly.
+
+If your SPA users were experiencing broken navigation after authenticating through Access, this fix resolves the issue without any configuration changes.
+
+Jul 1, 2026
+
+[<h2>Independent MFA for infrastructure applications</h2>](https://developers.cloudflare.com/changelog/post/2026-07-01-ssh-mfa-piv-keys/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+[Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) now supports independent multi-factor authentication (MFA) for SSH connections using YubiKey PIV keys. This adds a hardware-backed second factor to SSH access, ensuring that a compromised device session alone is not sufficient to reach your servers.
+
+With per-application and per-policy configuration, you can enforce PIV key authentication for sensitive usernames (for example, `root`) while applying different requirements for other usernames. You can also set an MFA session duration to control how often users must re-authenticate.
+
+#### Enrollment
+
+Users enroll their YubiKey PIV key through the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/). For enrollment instructions and SSH client setup, refer to [Enroll a PIV key for infrastructure apps](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#enroll-a-piv-key-for-infrastructure-apps).
+
+#### Configuration
+
+For setup instructions, refer to [Enforce MFA for infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#infrastructure-applications).
+
+Jul 1, 2026
+
+[<h2>New options to manage AI traffic</h2>](https://developers.cloudflare.com/changelog/post/2026-07-01-ai-traffic-options/)
+
+[Bots](https://developers.cloudflare.com/bots/)
+
+Not all AI traffic is the same. Now, all customers — including those on the Free plan — can manage AI crawlers based on what they actually do on your site. Cloudflare groups AI traffic into three behaviors you can control independently: [Search, Agent, and Training](https://developers.cloudflare.com/bots/concepts/bot/#ai-bots). This lets you keep the automated traffic that sends readers and revenue back to you, while blocking the traffic that only takes from your content.
+
+Each behavior maps to a real use case. **Search** covers crawlers that index your content so they can answer questions about it later, where you should expect referral traffic or other equitable compensation in return. **Agent** covers automated activity acting in real time on a person's behalf, such as chat fetch bots and browser-use agents. **Training** covers crawlers that take your content to train or fine-tune a model. For each preset you can choose to block on all pages, block only on pages that display ads, or choose not to block.
+
+![The Configure AI bot traffic policies screen, where Search, Agent, and Training can each be set to allow, block, or block only on pages with ads](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=4720,height=2966,format=webp/_astro/ai-bot-traffic-policies.BqXU7Gmv.png)
+
+Starting **September 15, 2026**, new domains onboarding to Cloudflare receive updated defaults: Bots classified as Training or as Agent are blocked on pages that display ads, while **Search** remains allowed. On that date, multi-purpose crawlers that combine Search and Training will be affected by the new defaults to block Training. All customers can [opt out of the new defaults ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/security/settings) at any time before September 15.
+
+Jul 1, 2026
+
+[<h2>More visibility into bot traffic with BotBase and Business Insights</h2>](https://developers.cloudflare.com/changelog/post/2026-07-01-botbase-attribution-business-insights/)
+
+[Bots](https://developers.cloudflare.com/bots/)
+
+With Content Independence Day 2026, [Enterprise Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) customers get two new tools that make bot traffic far easier to see and reason about: [BotBase](https://developers.cloudflare.com/bots/botbase/), a searchable directory of every bot Cloudflare tracks, and [Business Insights](https://developers.cloudflare.com/bots/business-insights/), a dashboard that shows how much value each crawler sends back to your business.
+
+BotBase is Cloudflare's directory of all known bots and agents, available directly in the dashboard. It shows how Cloudflare classifies each bot by behavior — Search, Agent, Training, and other categories such as Transact, Data Collection, SEO, and Ads Verification — so you can understand why a given crawler is visiting you. You can search and filter the full catalogue, filter your own traffic down to a single bot to investigate its activity on your zone, and copy any bot's detection ID to target it precisely in [Security rules](https://developers.cloudflare.com/security/rules/). Every tracked bot in BotBase is also published in [Cloudflare Radar's bots and agents directory ↗︎](https://radar.cloudflare.com/bots/directory).
+
+Business Insights is built for content owners and business decision-makers who want to know which bots help or harm their business, without reading rule syntax. The dashboard reports crawl-to-referral ratios both site-wide and per bot operator — comparing how often a company crawls your content against how many visitors it actually refers back — over the last 24 hours, 7 days, or 30 days. Each operator is labeled with Cloudflare's [updated classification](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) and an action status of Allowed, Blocked, or Partially blocked, giving stakeholders a shared, at-a-glance view of the AI traffic reaching your site.
+
+![The Business Insights dashboard, showing bot traffic, content page requests, crawl-to-referral ratio, and a per-operator bot activity table](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=8192,height=5064,format=webp/_astro/attribution-business-insights.Cu-ZtxkX.png)
+
+Jul 1, 2026
+
+[<h2>Use Google Artifact Registry images with Containers</h2>](https://developers.cloudflare.com/changelog/post/2026-07-01-google-artifact-registry-images/)
+
+[Containers](https://developers.cloudflare.com/containers/)
+
+Containers now support [Google Artifact Registry ↗︎](https://cloud.google.com/artifact-registry) images. After you configure credentials, you can use a fully qualified Google Artifact Registry image reference in your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) instead of first pushing the image to Cloudflare Registry.
+
+Provide the service account email with `--gar-email` and pipe the service account JSON key through `stdin`:
+
+```bash
+cat <PATH_TO_KEY> | npx wrangler containers registries configure <REGION>-docker.pkg.dev --gar-email=<SERVICE_ACCOUNT_EMAIL> --secret-name=<SECRET_NAME>
+```
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "containers": [
+    {
+      "image": "<REGION>-docker.pkg.dev/<PROJECT_ID>/<REPOSITORY>/<IMAGE>:<TAG>"
+    }
+  ]
+}
+```
+
+```toml
+# Example: us-central1-docker.pkg.dev/my-project/my-repo/my-image:latest
+[[containers]]
+image = "<REGION>-docker.pkg.dev/<PROJECT_ID>/<REPOSITORY>/<IMAGE>:<TAG>"
+```
+
+Only `*-docker.pkg.dev` hosts are supported. To configure credentials, refer to [Use private Google Artifact Registry images](https://developers.cloudflare.com/containers/guides/image-management/#use-private-google-artifact-registry-images).
+
+For more information, refer to [Image management](https://developers.cloudflare.com/containers/guides/image-management/).
+
+Jul 1, 2026
+
+[<h2>Images binding is now billed per unique transformation</h2>](https://developers.cloudflare.com/changelog/post/2026-07-01-binding-unique-transformations/)
+
+[Cloudflare Images](https://developers.cloudflare.com/images/)
+
+The [Images binding](https://developers.cloudflare.com/images/optimization/binding/) is now billed per unique transformation, matching the model already used for URL-based transformations. Repeat requests for the same combination of source image and parameters within the same calendar month are counted only once.
+
+Previously, every call to the binding counted as a separate transformation regardless of whether the image or parameters were unique. With this change, you can call the binding on hot paths without paying for each individual request.
+
+Calls to [`.info()`](https://developers.cloudflare.com/images/optimization/binding/#infostream) are no longer billed.
+
+For more information, refer to [Images pricing](https://developers.cloudflare.com/images/pricing/#images-transformed) and the [Images binding documentation](https://developers.cloudflare.com/images/optimization/binding/).
+
+Jul 1, 2026
+
+[<h2>Reduced end-to-end latency for vector changes</h2>](https://developers.cloudflare.com/changelog/post/2026-06-30-improved-wal-throughput/)
+
+[Vectorize](https://developers.cloudflare.com/vectorize/)
+
+We have greatly improved the throughput of the Vectorize [write-ahead log (WAL) ↗︎](https://blog.cloudflare.com/building-vectorize-a-distributed-vector-database-on-cloudflare-developer-platform/#the-wal). As a result, we have significantly reduced the end-to-end latency for a vector change to become queryable: median latency has dropped from 2 minutes to under 30 seconds, and p99 latency from 5 minutes to under 2 minutes.
+
+![Vectorize p99 WAL batch end-to-end latency improved](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2542,height=1184,format=webp/_astro/vectorize-p99-wal-batch-end-to-end-latency-improvement.k8gtzlG7.png)
+
+This means inserts, upserts, and deletes are reflected in query results faster, improving the freshness of semantic search, recommendation, and retrieval-augmented generation (RAG) workloads. You do not need to change your code or configuration to benefit from this improvement.
+
+For more information, refer to the [Vectorize documentation](https://developers.cloudflare.com/vectorize/).
+
+Jul 1, 2026
+
+[<h2>WAF Release - 2026-07-01</h2>](https://developers.cloudflare.com/changelog/post/2026-07-01-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This release adds targeted coverage for a path traversal flaw in Fortinet FortiSandbox (CVE-2026-39813) and transitions the Anomaly:Header:User-Agent - Fake Bing or MSN Bot rule action from Block to Disabled.
+
+**Key Findings**
+
+- CVE-2026-39813: A path traversal vulnerability in Fortinet FortiSandbox allows remote, unauthenticated attackers to read arbitrary files from the underlying filesystem due to insufficient validation of user-supplied input paths.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...d84c92c9 | N/A | Fortinet FortiSandbox - Path Traversal - CVE:CVE-2026-39813 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...c12cf9c8 | N/A | Anomaly:Header:User-Agent - Fake Bing or MSN Bot | Enabled | Disabled | We are changing the action for this rule from BLOCK to Disabled |
+
+Jun 30, 2026
+
+[<h2>New permissions and roles for Gateway policies and lists</h2>](https://developers.cloudflare.com/changelog/post/2026-06-30-gateway-granular-permissions/)
+
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+You can now assign granular, resource-scoped roles for [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) firewall policies and [Zero Trust lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Administrators can delegate access to specific policy types or list management without granting account-wide or product-wide control.
+
+#### What is new
+
+When you [add a member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) or create a [permission policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/), the following resource-scoped roles are now available:
+
+| Role | Description |
+| --- | --- |
+| Zero Trust Gateway Firewall Policies Admin | Can view and edit all Gateway firewall policies, including DNS, HTTP, and Network policies. |
+| Zero Trust Gateway DNS Policies Admin | Can view and edit Gateway DNS policies. |
+| Zero Trust Gateway HTTP Policies Admin | Can view and edit Gateway HTTP policies. |
+| Zero Trust Gateway Network Policies Admin | Can view and edit Gateway Network policies. |
+| Zero Trust Gateway Egress Policies Admin | Can view and edit Gateway Egress policies. |
+| Zero Trust Gateway Resolver Policies Admin | Can view and edit Gateway Resolver policies. |
+| Zero Trust Gateway Policies Admin | Can view and edit all Gateway policies. |
+| Zero Trust Gateway Policies Read | Can view all Gateway policies. |
+| Zero Trust Gateway Read Only | Can view all Gateway resources. |
+| Zero Trust DNS Locations Admin | Can view and edit DNS locations. |
+| Zero Trust Proxy Endpoints Admin | Can view and edit Gateway Proxy Endpoints. |
+| Zero Trust Account Lists Admin | Can view and edit all Gateway and Access lists. |
+| Zero Trust Account Lists Read | Can view all Gateway and Access lists. |
+
+These roles allow you to:
+
+- Grant a network engineer write access to Network policies only, without exposing DNS or HTTP policy configuration.
+- Allow a security analyst to view all Gateway policies in read-only mode for auditing purposes.
+- Delegate list management to a team that maintains block and allow lists without giving them access to policy configuration.
+
+You can also now assign *Resource-scoped roles*. These roles are complementary to existing account-level roles, and allow you to grant access to a specific resource, like an individual Gateway policy or Cloudflare One list. **Existing account-level roles continue to work.** A member with the `Cloudflare Gateway` or `Cloudflare Zero Trust` role retains full access to all Gateway resources. This ensures backward compatibility for existing automation and API tokens.
+
+#### Get started
+
+- Refer to [Granular permissions for Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/granular-permissions/) for setup instructions and supported resources.
+- Learn how to [create permission policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/) that use these roles.
+
+Jun 30, 2026
+
+[<h2>Account-scoped firewall events dataset in Logpush</h2>](https://developers.cloudflare.com/changelog/post/2026-06-30-account-level-firewall-events/)
+
+[Logs](https://developers.cloudflare.com/logs/)
+
+Cloudflare Logpush now supports [firewall events as an account-scoped dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/firewall_events/). Configure a single Logpush job at the account level to receive firewall events for every zone in the account, instead of creating and maintaining a separate job per zone.
+
+The dataset includes a new [`ZoneName`](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/firewall_events/#zonename) field so you can identify which zone each event came from when consuming logs in your downstream pipeline.
+
+#### What's available
+
+- A new account-scoped `firewall_events` dataset, configurable via the [Logpush API](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/) or the Cloudflare dashboard.
+- The same fields and filter expressions supported by the existing [zone-scoped firewall events dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall_events/), plus the new `ZoneName` field.
+- Support for all existing Logpush destinations.
+
+Jun 30, 2026
+
+[<h2>Track memory usage for Workers and Durable Objects in the dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-06-30-memory-usage-metrics/)
+
+[Workers](https://developers.cloudflare.com/workers/) [Durable Objects](https://developers.cloudflare.com/durable-objects/)
+
+You can now monitor how much memory your [Workers](https://developers.cloudflare.com/workers/) and [Durable Objects](https://developers.cloudflare.com/durable-objects/) consume across invocations with the new **Memory Usage** chart in the Workers Metrics tab, broken down by P50, P90, P99, and P999 percentiles.
+
+![Memory usage chart showing P50, P90, P99, and P999 percentiles with deployment markers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1210,height=782,format=webp/_astro/2026-06-26-memory-usage.B20y2uNp.png)
+
+Memory usage measures the V8 [isolate](https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates) memory at the time of each invocation, subject to the [128 MB per-isolate limit](https://developers.cloudflare.com/workers/platform/limits/#memory) — a single isolate can handle many concurrent requests and shares memory across them.
+
+Use the Memory Usage chart to:
+
+- **Track memory trends** — Spot gradual increases that may indicate a memory leak before they cause `Exceeded Memory` errors.
+- **Correlate with deployments** — Deployment markers on the chart help you identify whether a new version introduced a memory regression.
+- **Right-size your Worker** — Understand your baseline memory footprint and how much headroom you have before hitting the 128 MB limit.
+
+For Durable Objects, memory usage reflects the in-memory state an object holds (class properties, caches, active WebSocket connections), which persists across invocations until the object is [hibernated or evicted](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/). This state is not preserved across eviction, hibernation, or a crash, so persist anything important to [storage](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/).
+
+To view memory usage, open the **Metrics** tab for your [Worker ↗︎](https://dash.cloudflare.com/?to=/:account/workers/services/view/:worker/production/metrics) or [Durable Object namespace ↗︎](https://dash.cloudflare.com/?to=/:account/workers/durable-objects). For Durable Objects, you can filter by DO ID or name to drill down into memory usage for a specific object. You can also query memory usage programmatically via the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-workers-metrics/) using the `workersInvocationsAdaptive` dataset — the `quantiles.memoryUsageBytesP50` through `quantiles.memoryUsageBytesP999` fields return percentile values in bytes.
+
+For local memory debugging, you can also [profile memory with DevTools](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/) to take heap snapshots and identify specific objects causing high memory usage.
+
+Jun 29, 2026
+
+[<h2>Cloudflare One Client for Windows (version 2026.6.822.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-06-29-warp-windows-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release introduces multiple features from our previous beta release into stable release, including:
+
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- Added mandatory authentication. When enabled via MDM, the Cloudflare One Client blocks all Internet traffic from the moment the machine boots until the user authenticates, closing the visibility gap on newly deployed devices and during re-authentication. See the [announcement blog](https://blog.cloudflare.com/mandatory-authentication-mfa/) and [documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/) for details.
+- Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the TPM (with TPM 2.0+) whenever it is available to provide stronger protection against device impersonation. See [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/) for details.
+- Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
+- Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
+- The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
+- Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization_configs) for details.
+- Added support for dashboard-managed client version deployments. Administrators can now upgrade or downgrade the client version on enrolled devices directly from the Zero Trust dashboard. See [Client version assignments](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) for details.
+
+**Additional Changes and improvements**
+
+- Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
+- Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
+- Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in Windows Accessibility settings.
+- Path MTU Discovery (PMTUD) is now enabled by default.
+- The UseWebView2 registry value (HKLM\\SOFTWARE\\Cloudflare\\CloudflareWARP\\UseWebView2 = y) is once again honored by the new GUI for authentication, so administrators who prefer the embedded WebView2 browser for sign-in can opt back in. This setting was effectively ignored in the previous release; the default browser was always used. This key is now also honored for re-authentications.
+- Fixed a crash in the authentication browser when navigating to a site that prompts for browser permissions (microphone, camera, notifications, etc.). The same fix had previously landed for the captive-portal browser; this extends it to the auth browser.
+- Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
+- Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
+- Fixed a high CPU issue when the device wakes from sleep.
+- Users can now register with team names in any case format without errors.
+- New UI fixes
+  - Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
+  - Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
+  - Added clear error messaging when the Cloudflare certificate needs to be installed.
+  - Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
+  - New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
+  - Added ability to configure proxy mode for consumer users.
+  - Added back the option to quit for consumer users.
+
+**Known issues**
+
+- Single sign-on in the embedded WebView2 authentication browser may fail to use the Windows primary account, prompting for an interactive sign-in.
+- An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
+- In rare cases, a registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Windows ARM may prompt the user to close running applications while trying to install this version. Simply click "Ok" with the default highlighted option.
+
+Jun 29, 2026
+
+[<h2>Cloudflare One Client for macOS (version 2026.6.822.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-06-29-warp-macos-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the macOS Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release introduces multiple features from our previous beta release into stable release, including:
+
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the Secure Enclave whenever available to provide stronger protection against device impersonation. See [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/) for details.
+- Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
+- Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
+- The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
+- Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization_configs) for details.
+- Added support for dashboard-managed client version deployments. Administrators can now upgrade or downgrade the client version on enrolled devices directly from the Zero Trust dashboard. See [Client version assignments](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) for details.
+
+**Additional Changes and improvements**
+
+- Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
+- Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
+- Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the macOS Display settings.
+- Path MTU Discovery (PMTUD) is now enabled by default.
+- Fixed the in-client captive-portal browser rendering a blank "Success" page on some airline Wi-Fi networks. The browser now more consistently loads the airline's real portal page so users can complete sign-in from inside the client instead of having to open a separate browser.
+- Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
+- Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
+- Users can now register with team names in any case format without errors.
+- New UI fixes
+  - Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
+  - Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
+  - Added clear error messaging when the Cloudflare certificate needs to be installed.
+  - Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
+  - New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
+  - Added ability to configure proxy mode for consumer users.
+  - Added back the option to quit for consumer users.
+
+**Known issues**
+
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- When deploying with Microsoft Intune, the client may be repeatedly reinstalled because Intune adds the client's embedded framework bundles to its install-detection list, and those frameworks cannot be detected as installed on their own. See [Repeated reinstalls on macOS with Microsoft Intune](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#repeated-reinstalls-on-macos-with-microsoft-intune) for the workaround.
+
+Jun 29, 2026
+
+[<h2>Cloudflare One Client for Linux (version 2026.6.822.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-06-29-warp-linux-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release introduces multiple features from our previous beta release into stable release, including:
+
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the TPM (with TPM 2.0+) whenever it is available to provide stronger protection against device impersonation. See [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/) for details.
+- Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
+- Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
+- The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
+- Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization_configs) for details.
+
+**Additional changes and improvements**
+
+- Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
+- [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) functionality using the Cloudflare One Client is now supported on RHEL 9 and 10.
+- Cloudflare Mesh now supports [hostname-based routing](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes).
+- Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
+- Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the system display settings.
+- Path MTU Discovery (PMTUD) is now enabled by default.
+- Fixed the in-client captive-portal browser rendering a blank "Success" page on some airline Wi-Fi networks. The browser now more consistently loads the airline's real portal page so users can complete sign-in from inside the client instead of having to open a separate browser.
+- Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
+- Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
+- Fixed an issue where some Debian releases experienced inaccurate version reporting for posture checks.
+- Users can now register with team names in any case format without errors.
+- New UI fixes
+  - Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
+  - Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
+  - Added clear error messaging when the Cloudflare certificate needs to be installed.
+  - Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
+  - New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
+  - Added ability to configure proxy mode for consumer users.
+  - Added back the option to quit for consumer users.
+
+For RHEL deployments, this release introduces a dependency on the [Extra Packages for Enterprise Linux](https://docs.fedoraproject.org/en-US/epel/) repository (EPEL). The EPEL repository provides packages that support the captive portal detection’s in-app browser authentication and system tray icon. See [Getting started with EPEL](https://docs.fedoraproject.org/en-US/epel/getting-started/) for instructions on enabling EPEL.
+
+**Known issues**
+
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+
+Jun 28, 2026
+
+[<h2>Workers fetch requests now support cf.vary</h2>](https://developers.cloudflare.com/changelog/post/2026-06-28-cf-vary-request-option/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Workers `fetch()` requests now support the `cf.vary` request option. Use `cf.vary` to control how Cloudflare caches origin responses with a `Vary` header for a single subrequest.
+
+*src/index.jsjs*
+
+```js
+export default {
+	async fetch(request) {
+		return fetch(request, {
+			cf: {
+				vary: {
+					default: { action: "bypass" },
+					headers: {
+						accept: {
+							action: "normalize",
+							media_types: ["text/html", "application/json"],
+						},
+						"accept-language": {
+							action: "normalize",
+							languages: ["en", "fr", "de"],
+						},
+					},
+				},
+			},
+		});
+	},
+};
+```
+
+*src/index.tsts*
+
+```ts
+export default {
+	async fetch(request): Promise<Response> {
+		return fetch(request, {
+			cf: {
+				vary: {
+					default: { action: "bypass" },
+					headers: {
+						accept: {
+							action: "normalize",
+							media_types: ["text/html", "application/json"],
+						},
+						"accept-language": {
+							action: "normalize",
+							languages: ["en", "fr", "de"],
+						},
+					},
+				},
+			},
+		});
+	},
+} satisfies ExportedHandler;
+```
+
+For more information, refer to [`cf.vary`](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cfvary-property).
+
+Jun 26, 2026
+
+[<h2>Agents SDK adds background sub-agents and a unified turn entry point</h2>](https://developers.cloudflare.com/changelog/post/2026-06-26-agents-sdk-v0.17.0/)
+
+[Agents](https://developers.cloudflare.com/agents/) [Workers](https://developers.cloudflare.com/workers/)
+
+The latest release of the [Agents SDK ↗︎](https://github.com/cloudflare/agents) makes it easier to run long work in the background, drive turns through one entry point, and keep chat agents working through deploys, evictions, and reconnects.
+
+This release adds first-class detached (background) sub-agent runs with live progress and durable milestones, a single `runTurn` turn-admission entry point, and a large round of recovery and reliability fixes that continue converging `@cloudflare/think` and `@cloudflare/ai-chat` onto one model.
+
+#### Background sub-agents with progress and milestones
+
+`runAgentTool` can now dispatch a sub-agent without blocking the calling turn. A detached run returns a handle immediately and is owned by a durable, eviction-surviving backbone instead of being abandoned when the dispatching turn ends.
+
+```js
+class OrdersAgent extends Think {
+	async startImport(input) {
+		// Fire-and-forget, or wire a durable completion callback
+		// (by method name, like schedule()):
+		await this.runAgentTool(ImportAgent, {
+			input,
+			detached: { onFinish: "onImportDone", maxBudgetMs: 60 * 60 * 1000 },
+		});
+	}
+
+	// result.status: "completed" | "error" | "aborted" | "interrupted"
+	async onImportDone(run, result) {}
+}
+```
+
+```ts
+class OrdersAgent extends Think {
+	async startImport(input) {
+		// Fire-and-forget, or wire a durable completion callback
+		// (by method name, like schedule()):
+		await this.runAgentTool(ImportAgent, {
+			input,
+			detached: { onFinish: "onImportDone", maxBudgetMs: 60 * 60 * 1000 },
+		});
+	}
+
+	// result.status: "completed" | "error" | "aborted" | "interrupted"
+	async onImportDone(run, result) {}
+}
+```
+
+Highlights:
+
+- **Durable, exactly-once-on-the-happy-path completion** via a warm fast path plus a self-scheduling reconcile backbone that survives eviction and deploys.
+- **Bounded.** An absolute `maxBudgetMs` ceiling (default 24h) and `cancelAgentTool(runId)` keep abandoned runs from holding a concurrency slot forever.
+- **`detached: { notify: true }`** lets a finished background run inject a message back into the chat so the model reacts to the result — no hand-wired `onFinish` needed.
+
+Sub-agents can also report mid-run progress that rides their own turn stream back to the parent's connected clients:
+
+```js
+// Inside the child sub-agent:
+await this.reportProgress({
+	fraction: 0.6,
+	phase: "deploying",
+	message: "Generating menu page…",
+});
+```
+
+```ts
+// Inside the child sub-agent:
+await this.reportProgress({
+	fraction: 0.6,
+	phase: "deploying",
+	message: "Generating menu page…",
+});
+```
+
+Progress surfaces on `AgentToolRunState.progress` via `useAgentToolEvents`, so a background-runs tray can render a live bar without drilling in, and the latest snapshot is persisted for inspection after eviction. Naming a `milestone` promotes a signal to a durable, replayable row, and `detached: { onMilestones }` can surface a milestone as a synthetic chat message (`"narrate"` for a cheap status line, or `"react"` to drive a model turn).
+
+#### One entry point for turns: `runTurn`
+
+`@cloudflare/think` adds a public `runTurn(options)` facade that unifies turn admission behind a single `mode`:
+
+```js
+await this.runTurn({ mode: "wait", messages }); // saveMessages / continueLastTurn
+await this.runTurn({ mode: "submit", messages }); // durable submitMessages
+await this.runTurn({ mode: "stream", messages }); // chat()
+```
+
+```ts
+await this.runTurn({ mode: "wait", messages }); // saveMessages / continueLastTurn
+await this.runTurn({ mode: "submit", messages }); // durable submitMessages
+await this.runTurn({ mode: "stream", messages }); // chat()
+```
+
+`stream` mode accepts array and function inputs to match `wait` mode, and all entry points now route through a shared internal admission path that throws a clear error on nested blocking admissions that previously could deadlock.
+
+#### Recovery and reliability
+
+A large part of this release continues hardening recovery and converging `@cloudflare/think` and `@cloudflare/ai-chat` onto one model:
+
+- **Stream stall watchdog.** `AIChatAgent` can detect and recover from a hung model/transport stream via the opt-in `chatStreamStallTimeoutMs` watchdog. With `chatRecovery` enabled the stall routes into the same bounded-recovery machinery a deploy or eviction uses; otherwise it surfaces as a terminal stream error so the spinner clears.
+- **Interrupted tool-call repair.** `AIChatAgent` now repairs a transcript with a dead server-tool call before re-entering inference (parity with `@cloudflare/think`), so a recovered turn no longer fails with `AI_MissingToolResultsError`. An overridable `repairInterruptedToolPart(part)` hook lets apps customize the repaired shape.
+- **Stuck status after reconnect.** Fixed AI SDK `status` getting stuck when a reconnect races a turn that has been accepted but has not started streaming yet, so the UI now renders the in-flight turn instead of settling on `ready`.
+- **Live "recovering…" on connect.** `AIChatAgent` now replays the recovering status to a client that connects mid-recovery, so `useAgentChat`'s `isRecovering` reflects in-progress recovery immediately instead of appearing frozen.
+- **Terminal connection failures.** The client stops reconnecting on terminal WebSocket close events and exposes them via `connectionError` / `onConnectionError` on `AgentClient`, `useAgent`, and `useAgentChat`.
+- **Agent-tool child recovery.** A healthy long-running sub-agent run is no longer abandoned as `interrupted` after a deploy (both `@cloudflare/think` and `AIChatAgent`).
+- **Workflows from sub-agent facets.** Agent Workflows can now start from sub-agent facets, with callbacks and Workflow RPC routed back to the originating facet.
+- Plus forward-progress crediting convergence, broadcast-first give-up ordering, an event-driven auto-continuation barrier, and structured row-size compaction in `AIChatAgent`.
+
+#### Other improvements
+
+- **Shared chat React core.** A new `agents/chat/react` entry exposes `useAgentChat`, transport helpers, and shared wire types, with `syncMessagesToServer` for server-authoritative transcript storage. `@cloudflare/think/react` and `@cloudflare/ai-chat/react` are now thin wrappers over it.
+- **Optional `ai` peer.** The root `agents` and `@cloudflare/codemode` runtimes no longer reference AI SDK types, so they bundle without `ai` / `zod` installed; AI-specific entry points still require the peer when imported. `just-bash` likewise moves to an optional peer used only by the skills bash runner.
+- **Code Mode.** The default `DynamicWorkerExecutor` timeout increases from 30s to 60s, executions now dispose the dynamically-loaded Worker and its RPC stub after each run (fixing a flaky isolate-shutdown assertion), connector imports are cleaned up, and the outer MCP tool-call context is passed to `openApiMcpServer` request callbacks.
+- **Voice.** Voice turns now support AI SDK `fullStream` responses (and warn when `textStream` is used).
+- **MCP.** `McpAgent` server-to-client requests can now be sent from callbacks that do not inherit the agent's async context, including callbacks reached through Worker Loader RPC.
+- **Experimental: server actions and channels.** This release lays groundwork for guarded server actions ( `action()` / `getActions()` with a durable replay ledger and approvals) and a unified channels surface ( `configureChannels()`, `deliverNotice()`). Both are experimental and their APIs may change, so we don't recommend depending on them yet.
+
+#### Upgrade
+
+To update to the latest version:
+
+npmyarnpnpmbun
+
+```
+npm i agents@latest @cloudflare/think@latest @cloudflare/ai-chat@latest @cloudflare/codemode@latest @cloudflare/voice@latest
+```
+
+```
+yarn add agents@latest @cloudflare/think@latest @cloudflare/ai-chat@latest @cloudflare/codemode@latest @cloudflare/voice@latest
+```
+
+```
+pnpm add agents@latest @cloudflare/think@latest @cloudflare/ai-chat@latest @cloudflare/codemode@latest @cloudflare/voice@latest
+```
+
+```
+bun add agents@latest @cloudflare/think@latest @cloudflare/ai-chat@latest @cloudflare/codemode@latest @cloudflare/voice@latest
+```
+
+Refer to the [Think documentation](https://developers.cloudflare.com/agents/harnesses/think/), [Code Mode documentation](https://developers.cloudflare.com/agents/tools/codemode/), and [Agents documentation](https://developers.cloudflare.com/agents/) for more information.
+
+Jun 26, 2026
+
+[<h2>Service token support for MCP server portals</h2>](https://developers.cloudflare.com/changelog/post/2026-06-26-mcp-portal-service-tokens/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+You can now connect autonomous agents and bots to an [MCP server portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) using an [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/). Service token sessions can reach upstream MCP servers through the portal without a browser-based OAuth flow.
+
+To set this up:
+
+- Add a [Service Auth policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth) that matches your service token to the portal's Access application.
+- Add a Service Auth policy that matches the same token to each linked MCP server's Access application.
+- Turn **Require user auth** off ( `on_behalf: false`) for each linked server so the portal uses the admin credential instead of a per-user OAuth grant.
+
+The bot connects with `CF-Access-Client-Id` and `CF-Access-Client-Secret` headers and sees the tools from every linked server it is authorized for. Servers that still require per-user OAuth are excluded from service token sessions because a service token cannot complete a per-user OAuth grant.
+
+For step-by-step setup, refer to [Connect with a service token](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#connect-with-a-service-token).
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/13/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/13/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

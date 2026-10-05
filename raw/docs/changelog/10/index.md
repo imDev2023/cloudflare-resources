@@ -1,0 +1,1263 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Jul 31, 2026
+
+[<h2>Cloudflare One Client for macOS (version 2026.7.1210.1)</h2>](https://developers.cloudflare.com/changelog/post/2026-07-31-warp-macos-beta/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new Beta release for the macOS Cloudflare One Client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
+
+This beta release includes the following changes and improvements:
+
+- Improved connection reliability: the client now swaps protocol order after repeated connectivity-check failures, which helps when HTTP/3 is blocked after the QUIC handshake.
+- Fixed issue where a certificate error could be incorrectly displayed right after the connection is established.
+- A [DNS search domain](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) parsing failure no longer prevents connection.
+- Fixed a [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) issue where the tunnel could stall while uploading at a high rate.
+- Fixed being unable to [switch organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/) when the client was stuck in the "Device not in organization" state.
+- Fixed the Home Screen dropdown popup not anchoring correctly.
+- Fixed a crash during dialog dismissal.
+- Increased tolerance for configurations with a large number of [local domain fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) resolver IPs, so DNS resolution behaves correctly even when more fallback resolvers are configured than recommended.
+- Fixed the WARP client stealing window focus (for example, during reauth).
+- Fixed a client crash when connecting to a captive portal over Wi-Fi.
+- Fixed the system tray icon showing "disconnected" while the UI showed "connected".
+- A successful re-authentication will cause the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) to be re-evaluated.
+- Improved [dashboard-managed client updates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) by running the updater only when needed.
+
+Jul 31, 2026
+
+[<h2>Static OAuth client credentials for MCP server portals</h2>](https://developers.cloudflare.com/changelog/post/2026-07-31-mcp-portal-manual-oauth/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) can now connect to upstream MCP servers that require a pre-registered OAuth client. This supports OAuth providers that do not offer Dynamic Client Registration or have disabled it. This unlocks portal connections to major SaaS providers such as Slack and GitHub, whose MCP servers do not yet support DCR.
+
+When adding an MCP server, administrators can enter the client ID and client secret from an OAuth application registered with the upstream provider. The configuration also supports custom OAuth endpoints, scopes, and the `client_secret_post` and `client_secret_basic` token endpoint authentication methods.
+
+Cloudflare stores the client secret encrypted. Users still authenticate to the upstream server with their own accounts when they connect through a portal.
+
+For setup instructions, refer to [Configure manual OAuth credentials](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#configure-manual-oauth-credentials).
+
+Jul 31, 2026
+
+[<h2>Browser Run adds a Playground to the Cloudflare dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-07-31-br-dashboard-playground/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/) now includes a Playground in the Cloudflare dashboard. Use it to try Quick Actions against a live browser without creating a Worker, installing an SDK, or deploying code first.
+
+The Playground helps you test a target URL or raw HTML input, tune viewport and page-load settings, preview the output, and copy working code for the same request.
+
+![Browser Run Playground in the Cloudflare dashboard showing a generated screenshot preview and output settings](https://developers.cloudflare.com/images/browser-run/playground.png)
+
+With the Playground, you can:
+
+- Capture visuals as [screenshots](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/) or [PDFs](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/).
+- Generate multiple output formats in one request with the [snapshot endpoint](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/).
+- Extract [HTML](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/), [Markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/), [links](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/), or [scraped data](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/).
+- Extract [structured data with AI](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/) using a prompt and optional JSON Schema.
+
+You can also configure desktop, laptop, tablet, mobile, or custom viewport sizes, set browser scale, choose page-load conditions, set timeouts, and wait for selectors before running a request.
+
+Select **Show Code** to generate the same request as cURL, TypeScript SDK, Python, or Workers Binding code. For example, a screenshot request can be copied as a Workers Binding call:
+
+```ts
+interface Env {
+	BROWSER: BrowserRun;
+}
+
+export default {
+	async fetch(request, env): Promise<Response> {
+		return await env.BROWSER.quickAction("screenshot", {
+			url: "https://developers.cloudflare.com",
+			viewport: {
+				width: 1920,
+				height: 1080,
+			},
+		});
+	},
+} satisfies ExportedHandler<Env>;
+```
+
+Requests made in the Playground incur [Browser Run charges](https://developers.cloudflare.com/browser-run/pricing/). AI extraction also incurs Workers AI charges.
+
+To try the Playground, go to **Browser Run** in the Cloudflare dashboard and select **Playground**.
+
+[Go to **Browser Run** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
+
+For more information, refer to the [Quick Actions documentation](https://developers.cloudflare.com/browser-run/quick-actions/).
+
+Jul 31, 2026
+
+[<h2>Rotate Stream broadcast keys for live inputs</h2>](https://developers.cloudflare.com/changelog/post/2026-07-30-rotate-stream-broadcast-keys/)
+
+[Stream](https://developers.cloudflare.com/stream/)
+
+You can now rotate the broadcast credentials for a Stream live input without changing the live input identifier.
+
+Use key rotation when live input credentials may have been shared with the wrong audience, exposed in client code or a screenshare, or need to be refreshed as part of your security process. Rotating keys revokes the old credentials, disconnects broadcasts using stale credentials, and returns refreshed credentials in the API response.
+
+To rotate keys for a live input, make a `POST` request to the `rotate_keys` endpoint:
+
+```bash
+curl --request POST \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{live_input_identifier}/rotate_keys \
+--header "Authorization: Bearer <API_TOKEN>"
+```
+
+Live input responses now also include `keysRotatedAt`, which indicates when the live input keys were last rotated. This field is omitted for live inputs whose keys have never been rotated.
+
+For endpoint details, refer to [Rotate keys for a live input](https://developers.cloudflare.com/api/resources/stream/subresources/live_inputs/methods/rotate_keys/). For usage guidance, refer to [Manage live inputs](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#manage-live-inputs).
+
+Jul 31, 2026
+
+[<h2>Inspect Worker startup performance with Wrangler</h2>](https://developers.cloudflare.com/changelog/post/2026-07-31-wrangler-startup-profile-summary/)
+
+[Workers](https://developers.cloudflare.com/workers/) [Durable Objects](https://developers.cloudflare.com/durable-objects/)
+
+`wrangler check startup` now reports your Worker's raw and compressed bundle sizes. It also summarizes local CPU activity during startup directly in your terminal.
+
+Large bundles and costly startup work can introduce cold-start latency, so use this command to find code and large dependencies that slow your Worker before it handles requests.
+
+The summary includes sampled, active, garbage collection, and idle time. Wrangler continues to save a `.cpuprofile` file for detailed flamegraph analysis in Chrome DevTools or VS Code.
+
+```bash
+⛅️ wrangler 4.116.0
+───────────────────────────────────────────────
+├ Building your Worker
+│ Worker Built! 🎉
+│
+├ Analysing
+│ Startup phase analysed
+│
+│ Bundle: 7171.25 KiB / gzip: 2197.00 KiB
+│
+│ Local startup profile:
+│   Profile window: 70.3 ms
+│   Sampled time: 70.3 ms
+│   Active: 38.5 ms (including 3.7 ms garbage collection)
+│   Idle: 31.8 ms
+│   Samples: 36
+│
+│ CPU Profile has been written to worker-startup.cpuprofile. Load it into the Chrome DevTools profiler (or directly in VSCode) to view a flamegraph.
+│
+│ Note that the CPU Profile was measured on your Worker running locally on your machine, which has a different CPU than when your Worker runs on Cloudflare.
+│
+│ As such, CPU Profile can be used to understand where time is spent at startup, but the overall startup time in the profile should not be expected to exactly match what your Worker's startup time will be when deploying to Cloudflare.
+```
+
+The profile runs locally, so its duration will differ from startup time on Cloudflare. For authoritative startup time, deploy your Worker or upload a version.
+
+Available in Wrangler version 4.116.0 or later. For more information, refer to [`wrangler check startup`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#startup).
+
+Jul 30, 2026
+
+[<h2>Admins can turn on Code Mode by default for MCP portal users</h2>](https://developers.cloudflare.com/changelog/post/2026-07-30-mcp-portal-code-mode-policies/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) now support four Code Mode policies: *Off*, *Opt-in*, *On by default*, and *Enforced*. Admins can choose whether Code Mode is unavailable, optional, enabled by default, or required for every session.
+
+Existing portals retain their current behavior. Portals that previously allowed Code Mode use *Opt-in*, while portals that did not allow Code Mode use *Off*. New portals also use *Opt-in* by default.
+
+Clients turn on Code Mode for an *Opt-in* portal with `?codemode=search_and_execute`. The *On by default* policy lets clients opt out with `?codemode=off`, which avoids nested code execution when a client runs its own Code Mode implementation. The *Off* and *Enforced* policies ignore client overrides.
+
+The Cloudflare API exposes these policies through the `code_mode` field:
+
+```json
+{
+	"code_mode": "default_on"
+}
+```
+
+The supported values are `off`, `opt_in`, `default_on`, and `enforced`. The previous `allow_code_mode` boolean is deprecated.
+
+For configuration details and client behavior, refer to [Code Mode policies](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#code-mode-policies).
+
+Jul 30, 2026
+
+[<h2>Use AI Search with the Agents SDK, AI SDK, and LangChain</h2>](https://developers.cloudflare.com/changelog/post/2026-07-30-ai-search-agent-sdks/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+You can now use [AI Search](https://developers.cloudflare.com/ai-search/) directly from popular agent frameworks, adding grounded retrieval to an existing app instead of calling the REST API by hand. The new [Agents](https://developers.cloudflare.com/ai-search/agent-sdks/) section has guides for the [Vercel AI SDK](https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/), [LangChain](https://developers.cloudflare.com/ai-search/agent-sdks/langchain/), and the [Cloudflare Agents SDK](https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/). The AI SDK integration is a new package, and the LangChain integration is a new retriever in the existing `langchain-cloudflare` package.
+
+#### Vercel AI SDK
+
+The [`ai-search-provider` ↗︎](https://www.npmjs.com/package/ai-search-provider) package connects AI Search to the AI SDK, and targets AI SDK v6 (`ai@^6`). Pass `instance.chat()` to `generateText` or `streamText` to generate a response grounded in your indexed content, with the retrieved chunks returned as `sources`. You can also expose `instance.search()` as a tool for agent loops.
+
+```js
+import { createAISearchNamespace } from "ai-search-provider";
+import { generateText } from "ai";
+
+const aiSearch = createAISearchNamespace({ binding: env.AI_SEARCH });
+
+const { text, sources } = await generateText({
+	model: aiSearch.get("knowledge-base").chat(),
+	messages: [{ role: "user", content: "How does caching work?" }],
+});
+```
+
+```ts
+import { createAISearchNamespace } from "ai-search-provider";
+import { generateText } from "ai";
+
+const aiSearch = createAISearchNamespace({ binding: env.AI_SEARCH });
+
+const { text, sources } = await generateText({
+	model: aiSearch.get("knowledge-base").chat(),
+	messages: [{ role: "user", content: "How does caching work?" }],
+});
+```
+
+#### LangChain
+
+The `langchain-cloudflare` package ([PyPI ↗︎](https://pypi.org/project/langchain-cloudflare/), [GitHub ↗︎](https://github.com/cloudflare/langchain-cloudflare)) provides `CloudflareAISearchRetriever`, a standard LangChain retriever backed by AI Search. Use it on its own, wrap it with `create_retriever_tool` to give an agent a search tool, or drop it into a RAG chain. It works with REST credentials or a Worker binding inside a Python Worker.
+
+```python
+from langchain_cloudflare import CloudflareAISearchRetriever
+
+retriever = CloudflareAISearchRetriever(
+    account_id=ACCOUNT_ID,
+    api_token=API_TOKEN,
+    instance_name="knowledge-base",
+    retrieval_type="hybrid",
+)
+
+docs = retriever.invoke("How do I configure Workers AI?")
+```
+
+#### Cloudflare Agents SDK
+
+The [Cloudflare Agents SDK](https://developers.cloudflare.com/agents/) could already reach AI Search through the Workers binding. The new [guide](https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/) walks through building a stateful chat agent that provisions its own instance, indexes content, and searches it from a tool.
+
+```js
+import { tool } from "ai";
+import { z } from "zod";
+
+const instance = env.AI_SEARCH.get("knowledge-base");
+
+// Expose AI Search to the agent's model as a tool it can call.
+const searchKnowledgeBase = tool({
+	description: "Search the knowledge base for relevant content.",
+	inputSchema: z.object({ query: z.string() }),
+	execute: ({ query }) => instance.search({ query }),
+});
+```
+
+```ts
+import { tool } from "ai";
+import { z } from "zod";
+
+const instance = env.AI_SEARCH.get("knowledge-base");
+
+// Expose AI Search to the agent's model as a tool it can call.
+const searchKnowledgeBase = tool({
+	description: "Search the knowledge base for relevant content.",
+	inputSchema: z.object({ query: z.string() }),
+	execute: ({ query }) => instance.search({ query }),
+});
+```
+
+For the full walkthroughs, including creating an instance and indexing content, refer to the [Agents](https://developers.cloudflare.com/ai-search/agent-sdks/) guides.
+
+Jul 30, 2026
+
+[<h2>Node.js 24 is now the default for Workers Builds</h2>](https://developers.cloudflare.com/changelog/post/2026-07-30-workers-builds-nodejs-24/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Workers Builds now uses Node.js 24.18.0 by default. The build image preinstalls Node.js 22.23.2 and 24.18.0.
+
+You can continue to override the default with the `NODE_VERSION` environment variable, an `.nvmrc` file, or a `.node-version` file. For more information, refer to [Override default versions](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#overriding-default-versions).
+
+Jul 29, 2026
+
+[<h2>WAF Release - 2026-07-29</h2>](https://developers.cloudflare.com/changelog/post/2026-07-29-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This release introduces new rules and updates existing threat signatures to provide targeted protections for vulnerabilities in Nuxt Server Island components and Alibaba Fastjson deserialization routines, alongside enhanced protections for cloud metadata Server-Side Request Forgery (SSRF) and obfuscated command injection attempts.
+
+**Key Findings**
+
+- Nuxt Server Island - RCE(GHSA-9473-5f9j-94wq): An unauthenticated vulnerability in Nuxt Server Islands where remote attackers can supply arbitrary component names or props to endpoints. Manipulating these parameters allows unauthenticated component Remote Code Execution (RCE) on the server.
+- Alibaba Fastjson JSONType Remote Code Execution: A unauthenticated remote code execution vulnerability in Alibaba Fastjson (≤ 1.2.83) during JSON deserialization. Under default configurations, attackers can execute arbitrary system commands, bypassing traditional classpath and gadget-based defenses.
+- Generic Protections (SSRF & Command Injection): Added improved detection logic targeting Server-Side Request Forgery (SSRF) in cloud-hosted applications, alongside new rules targeting obfuscated command injection patterns across request parameters.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...c2e84e2d | N/A | SSRF - Cloud - Beta | Log | Block | This is an improved detection. |
+| Cloudflare Managed Ruleset | ...761e7a4c | N/A | Command Injection - Obfuscation | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...7347c892 | N/A | Alibaba Fastjson JSONType Remote Code Execution - Body | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...8ec012ea | N/A | Nuxt Server Island - RCE | N/A | Block | This is a new detection.This was labeled as Generic Rules - RCE. |
+| Cloudflare Managed Ruleset | ...3590a4ad | N/A | Generic Rules - RCE | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...9c6dff1c | N/A | Generic Rules - XSS | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...3a5b40d6 | N/A | File Upload - RCE | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...cfe1a93c | N/A | Generic Rules - RCE | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...9ab5ed95 | N/A | Generic Rules - XSS | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...1b7f9c67 | N/A | File Upload - RCE | N/A | Block | This is a new detection. |
+
+Jul 28, 2026
+
+[<h2>Improved DoH JSON formatting for additional record types</h2>](https://developers.cloudflare.com/changelog/post/2026-07-28-improved-record-display-format/)
+
+[1.1.1.1 (DNS Resolver)](https://developers.cloudflare.com/1.1.1.1/)
+
+Cloudflare is rolling out updated formatting for the `data` field in the 1.1.1.1 [DoH JSON API](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-json/) (`application/dns-json`). During the roll out responses may use either the old or new format.
+
+Note
+
+These are breaking changes. The DoH JSON format has no formal RFC and its schema is not guaranteed to be stable. If you need a stable format, use the [DoH wireformat](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-wireformat/) instead.
+
+#### Human-readable display for additional record types
+
+Several record types previously returned their `data` field in [RFC 3597 ↗︎](https://datatracker.ietf.org/doc/html/rfc3597) generic hex encoding (`\# <length> <hex>`). These now use standard presentation format:
+
+```txt
+CAA:        0 issue "letsencrypt.org"
+NAPTR:      100 10 "s" "SIP+D2U" "" _sip._udp.example.com.
+RP:         admin.example.com. txt.example.com.
+IPSECKEY:   10 1 2 192.0.2.1 AwEA...
+SVCB:       1 target.example.com. alpn=h2
+HTTPS:      1 . alpn=h3,h2 ipv4hint=192.0.2.1
+TLSA:       3 1 1 aabbccdd...
+SSHFP:      1 2 aabbccdd...
+OPENPGPKEY: AwEA...
+```
+
+#### Numeric DNSSEC algorithm identifiers
+
+DNSSEC-related records now use numeric algorithm identifiers as defined in [RFC 4034 ↗︎](https://datatracker.ietf.org/doc/html/rfc4034) instead of mnemonic names. This affects `RRSIG`, `DS`, `CDS`, `DNSKEY`, and `CDNSKEY` records. For example, `RSASHA256` becomes `8`, `ECDSAP256SHA256` becomes `13`, and `ED25519` becomes `15`. DS digest types also change from mnemonic to numeric: `SHA-256` becomes `2`.
+
+*Beforetxt*
+
+```txt
+RRSIG:  A RSASHA256 2 300 ...
+DS:     12345 RSASHA256 SHA-256 aabb...
+DNSKEY: 257 3 RSASHA256 AwEA...
+```
+
+*Aftertxt*
+
+```txt
+RRSIG:  A 8 2 300 ...
+DS:     12345 8 2 aabb...
+DNSKEY: 257 3 8 AwEA...
+```
+
+#### Other formatting changes
+
+`HINFO` character-strings are now individually quoted to remove ambiguity when values contain spaces:
+
+*Beforetxt*
+
+```txt
+"data": "Intel Xeon Linux"
+```
+
+*Aftertxt*
+
+```txt
+"data": "\"Intel Xeon\" \"Linux\""
+```
+
+Jul 28, 2026
+
+[<h2>Cloudflare MCP servers support the new MCP 2026-07-28 Specification</h2>](https://developers.cloudflare.com/changelog/post/2026-07-28-cloudflare-mcp-servers-mcp-2026-07-28/)
+
+[Agents](https://developers.cloudflare.com/agents/) [Workers](https://developers.cloudflare.com/workers/)
+
+Cloudflare's [product-specific MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/#product-specific-mcp-servers) now support the new MCP 2026-07-28 Specification. Each request runs on a fresh stateless server without an MCP protocol session or protocol-specific Durable Object.
+
+The `/mcp` endpoint also accepts stateless requests from 2025 Streamable HTTP clients. Most clients can reconnect without configuration changes.
+
+Use `/mcp` for new connections. Historical `/sse` URLs continue to work as aliases for the same Streamable HTTP handler, but they no longer serve the deprecated HTTP+SSE transport. If a client forces SSE transport, change it to Streamable HTTP or automatic transport detection.
+
+Jul 28, 2026
+
+[<h2>Browser Run adds structured handoff for Human in the Loop</h2>](https://developers.cloudflare.com/changelog/post/2026-07-28-human-in-the-loop/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/) now supports structured handoff for [Human in the Loop](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/) workflows. Using Cloudflare-specific [CDP commands](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/#cloudflare-cdp-commands), your agent can signal that it needs help, a human steps in through [Live View](https://developers.cloudflare.com/browser-run/features/live-view/) to handle the task, and the agent resumes once the work is done.
+
+For agents running multi-step browser workflows, a single login wall or unexpected prompt can fail the entire run. Previously, scripts had to manage human intervention manually by sharing a Live View URL and polling for completion. Structured handoff replaces this with a formal pause-and-resume flow.
+
+The following example requests human intervention for a login page and waits for the human to finish before continuing:
+
+```js
+const cdp = await page.createCDPSession();
+
+// Get Live View URL for the human operator
+const { devtoolsFrontendUrl } = await cdp.send("Cloudflare.getLiveView", {
+	mode: "tab",
+});
+console.log(`Human input needed: ${devtoolsFrontendUrl}`);
+
+// Request human intervention and wait for completion
+const handoffComplete = new Promise((resolve) => {
+	cdp.once("Cloudflare.handoffComplete", resolve);
+});
+
+await cdp.send("Cloudflare.handoff", {
+	instructions: "Please log in with your credentials",
+	timeout: 600000,
+});
+
+const result = await handoffComplete;
+console.log(result.success ? "Handoff complete" : `Failed: ${result.reason}`);
+```
+
+Refer to the [Human in the Loop documentation](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/) for the full API reference, examples, and best practices.
+
+Jul 28, 2026
+
+[<h2>Control Cloudflare Gateway DNS caching with a maximum TTL setting</h2>](https://developers.cloudflare.com/changelog/post/2026-07-28-gateway-maximum-dns-ttl/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+
+You can now set a maximum time-to-live (TTL) for DNS responses returned by Gateway. When an upstream DNS record has a TTL that exceeds the configured maximum, Gateway caps it to your specified value. This ensures that DNS policy changes - such as blocking a newly identified malicious domain - take effect faster across all clients.
+
+![The maximum DNS TTL setting in Traffic policies > Traffic settings, showing a numeric input field that accepts values between 60 and 36,000 seconds](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2170,height=294,format=webp/_astro/gateway-max-ttl-traffic-settings.BRF3NUMp.png)
+
+The setting is available at two levels:
+
+- **Account level** - In **Traffic Policies** > **Traffic Settings**, under **Proxy and inspection**. This sets the default cap for all DNS locations.
+- **Per-location** - Each [DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-proxies/) can inherit the account setting, disable the cap, or override it with a custom value.
+
+Two new fields are also available in DNS logs: `upstream_record_ttls` (the original TTL from the upstream response) and `applied_max_ttl` (the cap Gateway applied). These appear in the DNS logs column picker and in Logpush datasets.
+
+For more information, refer to [Maximum DNS TTL](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/maximum-dns-ttl/).
+
+Jul 28, 2026
+
+[<h2>Select models now require the Workers Paid plan</h2>](https://developers.cloudflare.com/changelog/post/2026-07-28-models-require-workers-paid/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+We are limiting Workers Free plan access to a few resource-intensive models so we can prioritize capacity for the broader Workers AI user base. This helps everyone get a more reliable inference experience, with fewer `429` and `3040` (Out of Capacity) errors.
+
+The following models now require the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/#workers):
+
+- [`@cf/moonshotai/kimi-k2.6`](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/)
+- [`@cf/moonshotai/kimi-k2.7-code`](https://developers.cloudflare.com/workers-ai/models/kimi-k2.7-code/)
+- [`@cf/zai-org/glm-5.2`](https://developers.cloudflare.com/workers-ai/models/glm-5.2/)
+
+On the Workers Free plan, requests to these models now return a `403` HTTP error ([internal error `5035`](https://developers.cloudflare.com/workers-ai/platform/errors/)) prompting you to upgrade. The Workers Paid plan starts at $5 per month and still includes the 10,000 free Neurons per day allocation, with usage beyond that billed at each [model's pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/).
+
+Many models remain available on the Workers Free plan, including:
+
+- [`@cf/zai-org/glm-4.7-flash`](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/)
+- [`@cf/google/gemma-4-26b-a4b-it`](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/)
+- [`@cf/nvidia/nemotron-3-120b-a12b`](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/)
+
+For the full list, refer to the [Workers AI model catalog](https://developers.cloudflare.com/workers-ai/models/).
+
+Jul 28, 2026
+
+[<h2>Workers tracing — write custom spans with new startActiveSpan() and span.end() runtime APIs</h2>](https://developers.cloudflare.com/changelog/post/2026-07-28-start-active-span/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+The Workers runtime now provides built-in `tracing.startActiveSpan()` and `span.end()` APIs, allowing you to write custom spans for operations that last beyond a single callback — for example, instrumenting a stream pipeline where the span should stay open until the stream is fully consumed.
+
+This augments the [existing API for writing custom spans](https://developers.cloudflare.com/changelog/post/2026-06-16-custom-spans/), `tracing.enterSpan()`, which automatically ends a span when its callback is returned. With `startActiveSpan()`, the span remains open after the callback returns, and you call `span.end()` when the work is complete:
+
+*src/index.jsjs*
+
+```js
+import { tracing } from "cloudflare:workers";
+
+const encoder = new TextEncoder();
+
+export default {
+	fetch() {
+		return tracing.startActiveSpan("stream-response", (span) => {
+			let timer;
+
+			const body = new ReadableStream({
+				start(controller) {
+					controller.enqueue(encoder.encode("Starting...\n"));
+
+					timer = setTimeout(() => {
+						controller.enqueue(encoder.encode("Complete.\n"));
+						controller.close();
+
+						span.setAttribute("stream.status", "complete");
+						span.end();
+					}, 1000);
+				},
+
+				cancel() {
+					if (timer !== undefined) clearTimeout(timer);
+
+					span.setAttribute("stream.status", "cancelled");
+					span.end();
+				},
+			});
+
+			return new Response(body, {
+				headers: { "content-type": "text/plain" },
+			});
+		});
+	},
+};
+```
+
+*src/index.tsts*
+
+```ts
+import { tracing } from "cloudflare:workers";
+
+const encoder = new TextEncoder();
+
+export default {
+	fetch(): Response {
+		return tracing.startActiveSpan("stream-response", (span) => {
+			let timer: ReturnType<typeof setTimeout> | undefined;
+
+			const body = new ReadableStream<Uint8Array>({
+				start(controller) {
+					controller.enqueue(encoder.encode("Starting...\n"));
+
+					timer = setTimeout(() => {
+						controller.enqueue(encoder.encode("Complete.\n"));
+						controller.close();
+
+						span.setAttribute("stream.status", "complete");
+						span.end();
+					}, 1000);
+				},
+
+				cancel() {
+					if (timer !== undefined) clearTimeout(timer);
+
+					span.setAttribute("stream.status", "cancelled");
+					span.end();
+				},
+			});
+
+			return new Response(body, {
+				headers: { "content-type": "text/plain" },
+			});
+		});
+	},
+};
+```
+
+For more details, refer to the [custom spans documentation](https://developers.cloudflare.com/workers/observability/traces/custom-spans/).
+
+Jul 27, 2026
+
+[<h2>Agents SDK adds MCP Specification 2026-07-28 support</h2>](https://developers.cloudflare.com/changelog/post/2026-07-27-agents-sdk-v0.20.0-mcp-sdk-v2/)
+
+[Agents](https://developers.cloudflare.com/agents/) [Workers](https://developers.cloudflare.com/workers/)
+
+Agents SDK v0.20.0 adds client and server support for the [MCP 2026-07-28 release candidate ↗︎](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/). Workers can serve tools, prompts, resources, and elicitation without an MCP transport session or Durable Object. Agents can connect to both MCP 2026-07-28 servers and existing legacy servers.
+
+#### Client support
+
+The MCP client manager now uses `@modelcontextprotocol/client`. For each connection, it probes for MCP 2026-07-28 support with `server/discover`. If the server does not support the stateless protocol, the client continues with the legacy `initialize` handshake on the same connection. Existing `addMcpServer` calls do not need a protocol-version setting or separate clients for each protocol generation.
+
+For stateless requests, elicitation uses `input_required` through multi-round-trip requests (MRTR). The legacy path uses the same form and URL handlers for pushed requests. The SDK collects input, retries the original operation, and resolves the original `callTool`, `getPrompt`, or `readResource` promise with its final result.
+
+OAuth callbacks now validate issuer metadata through the v2 SDK. Discovery state and issuer-bound credentials persist across browser redirects and Durable Object hibernation.
+
+#### Run stateless servers
+
+`createMcpHandler` now accepts a factory that returns a server from `@modelcontextprotocol/server`. The factory creates an isolated server for each request.
+
+```js
+import { McpServer } from "@modelcontextprotocol/server";
+import { createMcpHandler } from "agents/mcp/server";
+
+function createServer() {
+	return new McpServer({ name: "example", version: "1.0.0" });
+}
+
+export default {
+	fetch(request, env, ctx) {
+		return createMcpHandler(createServer)(request, env, ctx);
+	},
+};
+```
+
+```ts
+import { McpServer } from "@modelcontextprotocol/server";
+import { createMcpHandler } from "agents/mcp/server";
+
+function createServer() {
+	return new McpServer({ name: "example", version: "1.0.0" });
+}
+
+export default {
+	fetch(request, env, ctx) {
+		return createMcpHandler(createServer)(request, env, ctx);
+	},
+} satisfies ExportedHandler;
+```
+
+The isolated `agents/mcp/server` entry keeps `McpAgent`, `WorkerTransport`, MCP client transports, and SDK v1 modules out of stateless server bundles.
+
+The Workers wrapper validates present browser Origins, supports explicit delegation to trusted Origin middleware, and exposes request handling plus typed change notifications.
+
+#### Backward compatibility
+
+The same `createMcpHandler(createServer)(request, env, ctx)` route serves MCP 2026-07-28 clients and legacy clients that use stateless requests. You do not need separate routes or tool definitions for ordinary tools, prompts, and resources.
+
+`McpAgent` is deprecated and feature-frozen. Migrate existing `McpAgent` servers to the stateless handler at your earliest convenience. If a server depends on protocol sessions, RPC, pushed server-to-client requests, standalone streams, or replay, use the [migration guide](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/) to design stateless equivalents and run both routes while clients transition.
+
+#### Migrate existing SDK v1 servers
+
+Upgrade the Agents SDK:
+
+npmyarnpnpmbun
+
+```
+npm i agents@latest
+```
+
+```
+yarn add agents@latest
+```
+
+```
+pnpm add agents@latest
+```
+
+```
+bun add agents@latest
+```
+
+Move ordinary SDK v1 server definitions into an SDK v2 factory and serve them with `createMcpHandler`. The handler's default legacy compatibility means most stateless deployments need only one route.
+
+If an existing `McpAgent` server still needs sessionful features, add the stateless path beside it. Use `isLegacyRequest()` to send only legacy traffic to the existing route:
+
+```js
+import { isLegacyRequest } from "@modelcontextprotocol/server";
+import { createMcpHandler } from "agents/mcp/server";
+import { MyMcpAgent } from "./legacy-server";
+import { createServer } from "./server";
+
+const stateless = createMcpHandler(createServer, {
+	route: "/mcp",
+	legacy: "reject",
+});
+const legacy = MyMcpAgent.serve("/mcp");
+
+export default {
+	async fetch(request, env, ctx) {
+		if (await isLegacyRequest(request)) {
+			return legacy.fetch(request, env, ctx);
+		}
+		return stateless(request, env, ctx);
+	},
+};
+```
+
+```ts
+import { isLegacyRequest } from "@modelcontextprotocol/server";
+import { createMcpHandler } from "agents/mcp/server";
+import { MyMcpAgent } from "./legacy-server";
+import { createServer } from "./server";
+
+const stateless = createMcpHandler(createServer, {
+	route: "/mcp",
+	legacy: "reject",
+});
+const legacy = MyMcpAgent.serve("/mcp");
+
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+		if (await isLegacyRequest(request)) {
+			return legacy.fetch(request, env, ctx);
+		}
+		return stateless(request, env, ctx);
+	},
+} satisfies ExportedHandler<Env>;
+```
+
+Migrate the remaining sessionful features, allow existing sessions to drain, then remove the legacy route. Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/) for package changes, compatibility limits, and rollout steps.
+
+#### Deprecations in v0.20.0
+
+This release deprecates the following Agents SDK APIs:
+
+| Deprecated API | Replacement | Status |
+| --- | --- | --- |
+| `McpAgent` | Use an SDK v2 factory with `createMcpHandler` for stateless servers. Use the migration guide to replace stateful features before removing a legacy route. | Feature-frozen. No removal version is announced. |
+| `createMcpHandler(v1Server, options)` | Move the server to an SDK v2 factory and call `createMcpHandler(factory, options)`. Use `createLegacyMcpHandler` only as a temporary bridge for sessionful features. | Scheduled for removal in the next major version. |
+| `MCPClientManager.callTool(params, resultSchema, options)` and the equivalent `withX402Client` overload | Use `callTool(params, options)` or `callTool(confirm, params, options)`. | Compatibility overload. No removal version is announced. |
+
+The MCP 2026-07-28 draft separately deprecates Roots, Sampling, Logging, the old HTTP+SSE transport, and Dynamic Client Registration.
+
+Jul 27, 2026
+
+[<h2>Audit Logs v2 — Resource History</h2>](https://developers.cloudflare.com/changelog/post/2026-07-27-audit-logs-v2-resource-history/)
+
+[Audit Logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/)
+
+Audit Logs v2 now includes **Resource History**. For any audit log entry, you can see the sequence of previous changes to the same resource and view a side-by-side diff of what was modified.
+
+Resource History uses the audit log entries you already have. There is no additional configuration, no backend recapture, and no changes to how audit logs are generated.
+
+![Resource History in Audit Logs v2](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1578,height=840,format=webp/_astro/Audit_logs_v2_resource_history.tpxHc9ML.png)
+
+**Dashboard:**
+
+1. Go to **Manage Account** > **Audit Logs**.
+2. Open any audit log entry.
+3. Select the **History** tab to see the full history for that resource.
+4. Select any earlier entry to see a side-by-side diff of the fields that changed between it and the current entry.
+
+**API:**
+
+Use the History endpoint to retrieve the change history for any audit log entry:
+
+```txt
+GET https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/audit/{id}/history
+```
+
+The endpoint is also available for organization-scoped audit logs at `/organizations/{organization_id}/logs/audit/{id}/history`.
+
+For more information, refer to the [Resource History documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#resource-history).
+
+Jul 27, 2026
+
+[<h2>Run integration tests against your Worker's production build</h2>](https://developers.cloudflare.com/changelog/post/2026-07-21-integration-test-harness/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Wrangler now provides `createTestHarness()`, an API for running integration tests against Workers built with [Wrangler or the Cloudflare Vite plugin](https://developers.cloudflare.com/workers/testing/test-harness/configure/#configure-worker-projects) from any Node.js test runner.
+
+The test harness starts a local Worker server with [helpers for dispatching requests, resetting storage, and inspecting runtime logs](https://developers.cloudflare.com/workers/wrangler/api/#createtestharness).
+
+This is useful for tests that need to:
+
+- [Route requests across multiple Workers](https://developers.cloudflare.com/workers/testing/test-harness/interact-with-workers/#test-route-dispatch-across-workers)
+- [Mock outbound `fetch()` requests](https://developers.cloudflare.com/workers/testing/test-harness/integrations/#mock-service-worker) with Node.js request mocking libraries such as [MSW ↗︎](https://mswjs.io/)
+- [Run Playwright tests against a Worker](https://developers.cloudflare.com/workers/testing/test-harness/integrations/#playwright)
+
+For example, this test starts two Workers and mocks an upstream API:
+
+*tests/vitest.test.jsjs*
+
+```js
+import { afterAll, afterEach, beforeAll, test } from "vitest";
+import { http, HttpResponse } from "msw";
+import { setupServer } from "msw/node";
+import { createTestHarness } from "wrangler";
+
+const network = setupServer();
+const server = createTestHarness({
+	workers: [
+		/** Includes `"routes": ["example.com/*"]` */
+		{ configPath: "./workers/web/wrangler.jsonc" },
+		/** Includes `"routes": ["api.example.com/v1/*"]` */
+		{ configPath: "./workers/api/wrangler.jsonc" },
+	],
+});
+
+beforeAll(async () => {
+	network.listen({ onUnhandledRequest: "error" });
+	await server.listen();
+});
+
+afterEach(async () => {
+	network.resetHandlers();
+	await server.reset();
+});
+
+afterAll(async () => {
+	network.close();
+	await server.close();
+});
+
+test("routes requests to each Worker", async ({ expect }) => {
+	// Mock the outbound fetch used to load user profiles.
+	network.use(
+		http.get("http://identity.example.com/profile/123", ({ params }) => {
+			return HttpResponse.json({ id: 123, name: "Ada" });
+		}),
+	);
+
+	const apiWorkerResponse = await server.fetch(
+		"http://api.example.com/v1/users/123",
+	);
+	expect(await apiWorkerResponse.json()).toEqual({
+		id: 123,
+		name: "Ada",
+	});
+
+	const webWorkerResponse = await server.fetch("http://example.com/users/123");
+	expect(await webWorkerResponse.text()).toBe("Profile: Ada");
+});
+```
+
+*tests/vitest.test.tsts*
+
+```ts
+import { afterAll, afterEach, beforeAll, test } from "vitest";
+import { http, HttpResponse } from "msw";
+import { setupServer } from "msw/node";
+import { createTestHarness } from "wrangler";
+
+const network = setupServer();
+const server = createTestHarness({
+	workers: [
+		/** Includes `"routes": ["example.com/*"]` */
+		{ configPath: "./workers/web/wrangler.jsonc" },
+		/** Includes `"routes": ["api.example.com/v1/*"]` */
+		{ configPath: "./workers/api/wrangler.jsonc" },
+	],
+});
+
+beforeAll(async () => {
+	network.listen({ onUnhandledRequest: "error" });
+	await server.listen();
+});
+
+afterEach(async () => {
+	network.resetHandlers();
+	await server.reset();
+});
+
+afterAll(async () => {
+	network.close();
+	await server.close();
+});
+
+test("routes requests to each Worker", async ({ expect }) => {
+	// Mock the outbound fetch used to load user profiles.
+	network.use(
+		http.get("http://identity.example.com/profile/123", ({ params }) => {
+			return HttpResponse.json({ id: 123, name: "Ada" });
+		}),
+	);
+
+	const apiWorkerResponse = await server.fetch(
+		"http://api.example.com/v1/users/123",
+	);
+	expect(await apiWorkerResponse.json()).toEqual({
+		id: 123,
+		name: "Ada",
+	});
+
+	const webWorkerResponse = await server.fetch("http://example.com/users/123");
+	expect(await webWorkerResponse.text()).toBe("Profile: Ada");
+});
+```
+
+Cloudflare now recommends `createTestHarness()` for integration tests instead of [`unstable_startWorker()`](https://developers.cloudflare.com/workers/testing/unstable_startworker/) or [`unstable_dev()`](https://developers.cloudflare.com/workers/wrangler/api/#unstable_dev). To start a development server programmatically, use the Vite [`createServer()` ↗︎](https://vite.dev/guide/api-javascript.html#createserver) API with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
+
+For more information about `createTestHarness()`, refer to the [Integration test harness guide](https://developers.cloudflare.com/workers/testing/test-harness/).
+
+Jul 24, 2026
+
+[<h2>Sippy now supports Azure Blob Storage and S3-compatible storage providers</h2>](https://developers.cloudflare.com/changelog/post/2026-07-24-r2-sippy-azure-s3-compatible-support/)
+
+[R2](https://developers.cloudflare.com/r2/)
+
+[Sippy](https://developers.cloudflare.com/r2/data-migration/sippy/) can now incrementally migrate data from Azure Blob Storage and any S3-compatible object storage provider to [Cloudflare R2](https://developers.cloudflare.com/r2/), in addition to Amazon S3 and Google Cloud Storage. Sippy copies objects to R2 as your application requests them, so you can start serving data from R2 without first moving your entire dataset or paying migration-specific egress fees.
+
+#### Enable Sippy
+
+Run the following command and follow the prompts to select and configure your source storage provider:
+
+```sh
+npx wrangler r2 bucket sippy enable "<BUCKET_NAME>"
+```
+
+For Azure Blob Storage, provide your storage account name, container name, and either an account key or a shared access signature (SAS) token with read and list permissions. For an S3-compatible provider, provide the S3 API endpoint URL and read-only Access Key ID and Secret Access Key.
+
+![Azure Blob Storage source configuration in the R2 dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=400,height=650,format=webp/_astro/sippy-azure-source-configuration.j9uacYgX.png)
+
+After you enable Sippy, requests for objects that are not yet in R2 are served from your source bucket and copied to R2. Subsequent requests for those objects are served from R2.
+
+For setup instructions and credential requirements, refer to the [Sippy documentation](https://developers.cloudflare.com/r2/data-migration/sippy/).
+
+Jul 24, 2026
+
+[<h2>Filter Durable Object logs and traces by instance ID</h2>](https://developers.cloudflare.com/changelog/post/2026-07-24-durable-object-instance-observability/)
+
+[Workers](https://developers.cloudflare.com/workers/) [Durable Objects](https://developers.cloudflare.com/durable-objects/)
+
+[Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) and [OpenTelemetry](https://developers.cloudflare.com/observability/export/opentelemetry/) spans for [Durable Object](https://developers.cloudflare.com/durable-objects/) requests include the Durable Object instance ID.
+
+Use `$workers.durableObjectId` to filter logs for a specific instance. Root and child spans include the same ID in `cloudflare.durable_object.id`.
+
+![Query Builder filtering traces by Durable Object instance ID](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2000,height=666,format=webp/_astro/2026-07-24-durable-object-trace-filter.DW-BwlKL.png)
+
+Use these fields to isolate a specific instance and correlate its logs and traces.
+
+For more information, refer to [Durable Objects metrics and analytics](https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/) and [Workers tracing spans and attributes](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/).
+
+Jul 24, 2026
+
+[<h2>Workers Builds now skips superseded queued builds</h2>](https://developers.cloudflare.com/changelog/post/2026-07-24-skip-superseded-builds/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Workers Builds now automatically skips a queued build when a newer build for the same build trigger is also queued.
+
+Jul 23, 2026
+
+[<h2>Agents SDK packages support AI SDK v6 and v7</h2>](https://developers.cloudflare.com/changelog/post/2026-07-23-ai-sdk-v6-v7-support/)
+
+[Agents](https://developers.cloudflare.com/agents/)
+
+The `agents`, `@cloudflare/ai-chat`, `@cloudflare/codemode`, and `@cloudflare/think` packages now support AI SDK v6 and v7. Existing applications can remain on v6 when updating these packages. Applications can also adopt v7 without changing the Cloudflare Agents APIs they use.
+
+The supported peer ranges are `ai@^6 || ^7` and `@ai-sdk/react@^3 || ^4`. Use matching major versions: pair AI SDK v6 with `@ai-sdk/react` v3, or pair AI SDK v7 with `@ai-sdk/react` v4.
+
+To install the latest packages with AI SDK v7:
+
+npmyarnpnpmbun
+
+```
+npm i agents@latest @cloudflare/ai-chat@latest @cloudflare/codemode@latest @cloudflare/think@latest ai@^7 @ai-sdk/react@^4
+```
+
+```
+yarn add agents@latest @cloudflare/ai-chat@latest @cloudflare/codemode@latest @cloudflare/think@latest ai@^7 @ai-sdk/react@^4
+```
+
+```
+pnpm add agents@latest @cloudflare/ai-chat@latest @cloudflare/codemode@latest @cloudflare/think@latest ai@^7 @ai-sdk/react@^4
+```
+
+```
+bun add agents@latest @cloudflare/ai-chat@latest @cloudflare/codemode@latest @cloudflare/think@latest ai@^7 @ai-sdk/react@^4
+```
+
+Think normalizes streaming, tool completion events, and telemetry across both AI SDK versions. Existing v6 applications do not need to migrate these integrations before updating Think.
+
+For setup and usage details, refer to the [Think documentation](https://developers.cloudflare.com/agents/harnesses/think/).
+
+Jul 22, 2026
+
+[<h2>Agents SDK reduces MCP schema conversion, adds exposure controls for MCP in Think and Code Mode SDK adds direct host APIs</h2>](https://developers.cloudflare.com/changelog/post/2026-07-22-mcp-codemode-updates/)
+
+[Agents](https://developers.cloudflare.com/agents/) [Workers](https://developers.cloudflare.com/workers/)
+
+This release reduces repeated MCP schema conversion and adds an opt-out for Think's automatic MCP tool exposure. It also lets non-AI-SDK hosts invoke the durable Code Mode runtime directly.
+
+#### Control direct MCP tool exposure in Think
+
+Agents SDK MCP clients now reuse converted input and output schemas while a live connection keeps the same tool catalog. This avoids converting every MCP JSON Schema to Zod again for each model turn.
+
+`@cloudflare/think` also adds `includeMcpTools`. Set it to `false` when you expose MCP tools through Code Mode or another mechanism outside Think's automatic tool set:
+
+```js
+import { Think } from "@cloudflare/think";
+
+export class MyAgent extends Think {
+	includeMcpTools = false;
+	waitForMcpConnections = true;
+}
+```
+
+```ts
+import { Think } from "@cloudflare/think";
+
+export class MyAgent extends Think<Env> {
+	includeMcpTools = false;
+	waitForMcpConnections = true;
+}
+```
+
+This setting skips Think's automatic `getAITools()` call. MCP registration, restoration, discovery, raw catalog access, direct calls, and Code Mode connectors continue to work.
+
+Use [`listTools()`](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#thismcplisttools) when you only need the raw MCP catalog. For connector setup, refer to [Use MCP tools with Code Mode](https://developers.cloudflare.com/agents/tools/codemode/mcp/).
+
+#### Invoke the Code Mode runtime without the AI SDK
+
+`@cloudflare/codemode@latest` adds `execute()`, `search()`, and `describe()` to the durable runtime handle. MCP servers and other hosts can now execute code and discover connector methods without adapting the runtime to an AI SDK tool.
+
+```js
+const matches = await runtime.search("create issue");
+const docs = await runtime.describe(matches.results[0].path);
+const outcome = await runtime.execute({
+	code: `async () => github.create_issue({ title: "Bug" })`,
+});
+```
+
+```ts
+const matches = await runtime.search("create issue");
+const docs = await runtime.describe(matches.results[0].path);
+const outcome = await runtime.execute({
+	code: `async () => github.create_issue({ title: "Bug" })`,
+});
+```
+
+Search and describe results include `requiresApproval: true` for protected connector methods. Resolve a paused execution with the existing `approve()` and `reject()` methods.
+
+For setup and exact method types, refer to [Create a durable Code Mode runtime](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/) and the [Code Mode API reference](https://developers.cloudflare.com/agents/tools/codemode/api-reference/).
+
+#### Upgrade
+
+npmyarnpnpmbun
+
+```
+npm i agents@latest @cloudflare/think@latest @cloudflare/codemode@latest
+```
+
+```
+yarn add agents@latest @cloudflare/think@latest @cloudflare/codemode@latest
+```
+
+```
+pnpm add agents@latest @cloudflare/think@latest @cloudflare/codemode@latest
+```
+
+```
+bun add agents@latest @cloudflare/think@latest @cloudflare/codemode@latest
+```
+
+Jul 21, 2026
+
+[<h2>Cloudflare One Client for Windows (version 2026.6.880.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-07-21-warp-windows-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
+
+Jul 21, 2026
+
+[<h2>Cloudflare One Client for macOS (version 2026.6.880.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-07-21-warp-macos-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the macOS Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/10/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/10/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

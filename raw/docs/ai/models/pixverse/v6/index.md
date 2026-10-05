@@ -1,0 +1,277 @@
+---
+description: Pixverse v6 is the latest Pixverse video model with support for up to 15-second videos, customizable duration from 1 to 15 seconds, and audio generation.
+title: Pixverse v6
+image: https://developers.cloudflare.com/og-docs.png
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+![PixVerse logo](https://developers.cloudflare.com/_astro/pixverse.DSyGEAYR.svg)
+
+# Pixverse v6
+
+Text-to-Video • PixVerse
+
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/pixverse/v6/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+`pixverse/v6`
+
+- Third-party
+- Zero data retention
+
+Pixverse v6 is the latest Pixverse video model with support for up to 15-second videos, customizable duration from 1 to 15 seconds, and audio generation.
+
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://pixverse.ai/terms) |
+| More information | [link ↗](https://pixverse.ai/) |
+| Zero data retention | Yes |
+| Pricing | <ul><li>Default (per second)$0.06</li><li>@360p (per second)$0.025</li><li>@540p (per second)$0.035</li><li>@720p (per second)$0.045</li><li>@1080p (per second)$0.09</li><li>@360p w/ audio (per second)$0.035</li><li>@540p w/ audio (per second)$0.045</li><li>@720p w/ audio (per second)$0.06</li><li>@1080p w/ audio (per second)$0.115</li></ul> |
+
+## Usage
+
+```ts
+const response = await env.AI.run(
+  'pixverse/v6',
+  {
+    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
+    aspect_ratio: '16:9',
+    duration: 5,
+    generate_audio: true,
+    quality: '720p',
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "pixverse/v6",
+  "input": {
+    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
+    "aspect_ratio": "16:9",
+    "duration": 5,
+    "generate_audio": true,
+    "quality": "720p"
+  }
+}'
+```
+
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "video": "https://media.pixverse.ai/pixverse%2Fmp4%2Fmedia%2Fweb%2Fori%2Fda2a0d44-a700-4c6b-a36b-fff6951fd1d4_seed1150795460.mp4"
+  },
+  "state": "Completed"
+}
+```
+
+## Examples
+
+<details>
+
+<summary>**Long Duration Video** — Extended 15-second video with audio (v6 supports 1-15 seconds)</summary>
+
+
+
+```ts
+const response = await env.AI.run(
+  'pixverse/v6',
+  {
+    prompt:
+      'A time-lapse of a bustling city street from dawn to dusk, showing the flow of people and vehicles',
+    aspect_ratio: '16:9',
+    duration: 15,
+    generate_audio: true,
+    quality: '720p',
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "pixverse/v6",
+  "input": {
+    "prompt": "A time-lapse of a bustling city street from dawn to dusk, showing the flow of people and vehicles",
+    "aspect_ratio": "16:9",
+    "duration": 15,
+    "generate_audio": true,
+    "quality": "720p"
+  }
+}'
+```
+
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "video": "https://media.pixverse.ai/pixverse%2Fmp4%2Fmedia%2Fweb%2Fori%2F46e3adfb-a95f-4c03-bdad-a6d7131a98b8_seed61570270.mp4"
+  },
+  "state": "Completed"
+}
+```
+
+</details>
+
+<details>
+
+<summary>**Ultra-wide Cinematic** — Cinematic 21:9 aspect ratio video</summary>
+
+
+
+```ts
+const response = await env.AI.run(
+  'pixverse/v6',
+  {
+    prompt:
+      'A dramatic aerial shot flying over misty mountain peaks at sunrise, cinematic lighting with volumetric fog',
+    aspect_ratio: '21:9',
+    duration: 10,
+    generate_audio: true,
+    quality: '720p',
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "pixverse/v6",
+  "input": {
+    "prompt": "A dramatic aerial shot flying over misty mountain peaks at sunrise, cinematic lighting with volumetric fog",
+    "aspect_ratio": "21:9",
+    "duration": 10,
+    "generate_audio": true,
+    "quality": "720p"
+  }
+}'
+```
+
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "video": "https://media.pixverse.ai/pixverse%2Fmp4%2Fmedia%2Fweb%2Fori%2F54327d38-e03a-44de-9a21-2052356779e5_seed286185598.mp4"
+  },
+  "state": "Completed"
+}
+```
+
+</details>
+
+<details>
+
+<summary>**Silent Video** — Video without audio generation</summary>
+
+
+
+```ts
+const response = await env.AI.run(
+  'pixverse/v6',
+  {
+    prompt: 'Abstract ink drops spreading through water, vivid colors mixing in slow motion',
+    aspect_ratio: '1:1',
+    duration: 3,
+    generate_audio: false,
+    negative_prompt: 'blurry, low quality',
+    quality: '540p',
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "pixverse/v6",
+  "input": {
+    "prompt": "Abstract ink drops spreading through water, vivid colors mixing in slow motion",
+    "aspect_ratio": "1:1",
+    "duration": 3,
+    "generate_audio": false,
+    "negative_prompt": "blurry, low quality",
+    "quality": "540p"
+  }
+}'
+```
+
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "video": "https://media.pixverse.ai/pixverse%2Fmp4%2Fmedia%2Fweb%2Fori%2F06c27c41-cadd-44c5-b418-a78b96555479_seed1048443720.mp4"
+  },
+  "state": "Completed"
+}
+```
+
+</details>
+
+## Parameters
+
+prompt
+
+`string`requiredmaxLength: 2048Text prompt describing the video to generate
+
+negative\_prompt
+
+`string`maxLength: 2048Negative text prompt
+
+image\_input
+
+`string`Base64-encoded reference image for image-to-video generation (data:image/...;base64,...). The image will be uploaded to Pixverse automatically.
+
+duration
+
+`integer`requireddefault: 5minimum: 1maximum: 15Video duration in seconds (1 to 15)
+
+aspect\_ratio
+
+`string`requireddefault: 16:9enum: 16:9, 4:3, 1:1, 3:4, 9:16, 2:3, 3:2, 21:9Video aspect ratio
+
+quality
+
+`string`requireddefault: 720penum: 360p, 540p, 720p, 1080pVideo quality
+
+seed
+
+`integer`minimum: 0maximum: 2147483647Random seed for reproducibility
+
+generate\_audio
+
+`boolean`requireddefault: trueWhether to generate audio with the video
+
+video
+
+`string`format: uriURL to the generated video
+
+## API Schemas (Raw)
+
+Input [Open](https://developers.cloudflare.com/ai/models/pixverse/v6/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/pixverse/v6/schema-input.json)
+
+Output [Open](https://developers.cloudflare.com/ai/models/pixverse/v6/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/pixverse/v6/schema-output.json)

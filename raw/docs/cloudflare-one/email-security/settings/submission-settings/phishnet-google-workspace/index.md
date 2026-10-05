@@ -1,0 +1,34 @@
+---
+description: PhishNet for Google Workspace in Email Security.
+title: PhishNet for Google Workspace
+image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/phishnet-google-workspace/og.png?v=8b62273b7daf7e61
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# PhishNet for Google Workspace
+
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/phishnet-google-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+To set up PhishNet with Google Workspace you need admin access to your Google Workspace account.
+
+## Set up PhishNet for Google Workspace
+
+1. Log in to [Google Workspace Marketplace apps ↗︎](https://workspace.google.com/marketplace/app/cloudflare_phishnet/11369379045) using this direct link and an administrator account.
+2. Select **Admin install** to install Cloudflare PhishNet. Read the warning, and select **Continue**.
+3. You will be redirected to the **Allow data access** page, where you can choose to install Cloudflare PhishNet for **Everyone at your organization**, or **Certain groups or organizational units**. If you choose the latter option, you will have to select the users in the next step.
+4. After choosing the groups you want to install PhishNet for, agree with Google's terms of service, and select **Finish**.
+5. Cloudflare PhishNet has been installed. Select **DONE**.
+
+You have now successfully installed Cloudflare PhishNet.
+
+## Submit phish with PhishNet
+
+1. In your Gmail web client, open the message you would like to flag as either spam or phish.
+2. Select the PhishNet logo on the side panel.
+3. Under **Select Submission Type**, select **Spam** or **Phish**.
+4. Select **Submit Report**.

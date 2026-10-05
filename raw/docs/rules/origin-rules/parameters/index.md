@@ -1,0 +1,77 @@
+---
+description: Configurable parameters for origin rules.
+title: Origin Rules API parameter reference
+image: https://developers.cloudflare.com/rules/origin-rules/parameters/og.png?v=ee32d4229e06534a
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Origin Rules API parameter reference
+
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/origin-rules/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Create [different overrides](https://developers.cloudflare.com/rules/origin-rules/features/) by including different action parameters in the `action_parameters` field:
+
+| Override type | What to include |
+| --- | --- |
+| Host header override | [`host_header` parameter](#host-header-override-parameters) |
+| SNI override | [`sni` object](#sni-override-parameters) |
+| DNS record override / Destination port override | [`origin` object](#dns-record-override-and-destination-port-override-parameters) |
+
+Note
+
+The same origin rule can have different types of overrides. Refer to [Configuring several overrides in the same rule](#configuring-several-overrides-in-the-same-rule) for a syntax example.
+
+## Host header override parameters
+
+The full syntax of the `action_parameters` field for overriding the HTTP `Host` header is the following:
+
+```json
+"action_parameters": {
+  "host_header": "<HOST_HEADER_VALUE>"
+}
+```
+
+## SNI override parameters
+
+The full syntax of the `action_parameters` field for overriding the SNI value of incoming requests is the following:
+
+```json
+"action_parameters": {
+  "sni": {
+    "value": "<SNI_VALUE>"
+  }
+}
+```
+
+## DNS record override and destination port override parameters
+
+The full syntax of the `action_parameters` field for overriding both the hostname and the destination port of incoming requests is the following:
+
+```json
+"action_parameters": {
+  "origin": {
+    "host": "<HOSTNAME>",
+    "port": <PORT>
+  }
+}
+```
+
+If you are only overriding the hostname or the port, omit the `port` or `host` parameter, respectively.
+
+## Configuring several overrides in the same rule
+
+The same origin rule can have different types of overrides. For example, a single origin rule can perform an HTTP `Host` header override and a destination port override. The syntax of such a rule would be the following:
+
+```json
+"action_parameters": {
+  "host_header": "<HOST_HEADER_VALUE>",
+  "origin": {
+    "port": <PORT>
+  }
+}
+```

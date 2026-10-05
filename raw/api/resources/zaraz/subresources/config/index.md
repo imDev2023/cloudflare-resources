@@ -1,0 +1,1593 @@
+---
+title: Config
+---
+
+[Skip to content](#_top)
+
+[API Reference](https://developers.cloudflare.com/api)
+
+[Zaraz](https://developers.cloudflare.com/api/resources/zaraz)
+
+Copy Markdown
+
+Open in **Claude**Open in **ChatGPT**Open in **Cursor**
+
+---
+
+**Copy Markdown****View as Markdown**
+
+# Config
+
+##### [Get Zaraz configuration](https://developers.cloudflare.com/api/resources/zaraz/subresources/config/methods/get)
+
+GET/zones/{zone\_id}/settings/zaraz/config
+
+##### [Update Zaraz configuration](https://developers.cloudflare.com/api/resources/zaraz/subresources/config/methods/update)
+
+PUT/zones/{zone\_id}/settings/zaraz/config
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+Configuration object {dataLayer, debugKey, settings, 7 more }
+
+Zaraz configuration.
+
+</summary>
+
+dataLayer: boolean
+
+Data layer compatibility mode enabled.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20dataLayer">Link to this property</a>
+
+debugKey: string
+
+The key for Zaraz debug mode.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20debugKey">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {autoInjectScript, contextEnricher, cookieDomain, 11 more }
+
+General Zaraz settings.
+
+</summary>
+
+autoInjectScript: boolean
+
+Automatic injection of Zaraz scripts enabled.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20autoInjectScript">Link to this property</a>
+
+<details>
+
+<summary>
+
+contextEnricher: optional object {escapedWorkerName, workerTag }
+
+Details of the worker that receives and edits Zaraz Context object.
+
+</summary>
+
+escapedWorkerName: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20contextEnricher%20%3E%20(property)%20escapedWorkerName">Link to this property</a>
+
+workerTag: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20contextEnricher%20%3E%20(property)%20workerTag">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20contextEnricher">Link to this property</a>
+
+cookieDomain: optional string
+
+The domain Zaraz will use for writing and reading its cookies.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20cookieDomain">Link to this property</a>
+
+ecommerce: optional boolean
+
+Ecommerce API enabled.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20ecommerce">Link to this property</a>
+
+eventsApiPath: optional string
+
+Custom endpoint for server-side track events.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20eventsApiPath">Link to this property</a>
+
+hideExternalReferer: optional boolean
+
+Hiding external referrer URL enabled.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20hideExternalReferer">Link to this property</a>
+
+hideIPAddress: optional boolean
+
+Trimming IP address enabled.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20hideIPAddress">Link to this property</a>
+
+hideQueryParams: optional boolean
+
+Removing URL query params enabled.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20hideQueryParams">Link to this property</a>
+
+hideUserAgent: optional boolean
+
+Removing sensitive data from User Agent string enabled.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20hideUserAgent">Link to this property</a>
+
+initPath: optional string
+
+Custom endpoint for Zaraz init script.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20initPath">Link to this property</a>
+
+injectIframes: optional boolean
+
+Injection of Zaraz scripts into iframes enabled.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20injectIframes">Link to this property</a>
+
+mcRootPath: optional string
+
+Custom path for Managed Components server functionalities.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20mcRootPath">Link to this property</a>
+
+scriptPath: optional string
+
+Custom endpoint for Zaraz main script.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20scriptPath">Link to this property</a>
+
+trackPath: optional string
+
+Custom endpoint for Zaraz tracking requests.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings%20%3E%20(property)%20trackPath">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20settings">Link to this property</a>
+
+<details>
+
+<summary>
+
+tools: map\[object {blockingTriggers, component, defaultFields, 10 more } or object {blockingTriggers, component, defaultFields, 11 more } ]
+
+Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+ZarazManagedComponent object {blockingTriggers, component, defaultFields, 10 more }
+
+</summary>
+
+blockingTriggers: array of string
+
+List of blocking trigger IDs.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20blockingTriggers">Link to this property</a>
+
+component: string
+
+Tool’s internal name.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20component">Link to this property</a>
+
+<details>
+
+<summary>
+
+defaultFields: map\[stringor boolean]
+
+Default fields for tool’s actions.
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20defaultFields%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20defaultFields%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20defaultFields">Link to this property</a>
+
+enabled: boolean
+
+Whether tool is enabled.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20enabled">Link to this property</a>
+
+name: string
+
+Tool’s name defined by the user.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20name">Link to this property</a>
+
+permissions: array of string
+
+List of permissions granted to the component.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20permissions">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: map\[stringor boolean]
+
+Tool’s settings.
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20settings%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20settings%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20settings">Link to this property</a>
+
+type: "component"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+<details>
+
+<summary>
+
+actions: optional map\[<a href="https://developers.cloudflare.com/api/resources/zaraz#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)">NeoEvent</a> { actionType, blockingTriggers, data, firingTriggers } ]
+
+Actions configured on a tool. Either this or neoEvents field is required.
+
+</summary>
+
+actionType: string
+
+Tool event type.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20actionType">Link to this property</a>
+
+blockingTriggers: array of string
+
+List of blocking triggers IDs.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20blockingTriggers">Link to this property</a>
+
+data: unknown
+
+Event payload.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20data">Link to this property</a>
+
+firingTriggers: array of string
+
+List of firing triggers IDs.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20firingTriggers">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20actions">Link to this property</a>
+
+defaultPurpose: optional string
+
+Default consent purpose ID.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20defaultPurpose">Link to this property</a>
+
+<details>
+
+<summary>
+
+neoEvents: optional array of <a href="https://developers.cloudflare.com/api/resources/zaraz#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)">NeoEvent</a> { actionType, blockingTriggers, data, firingTriggers }
+
+DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.
+
+</summary>
+
+actionType: string
+
+Tool event type.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20actionType">Link to this property</a>
+
+blockingTriggers: array of string
+
+List of blocking triggers IDs.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20blockingTriggers">Link to this property</a>
+
+data: unknown
+
+Event payload.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20data">Link to this property</a>
+
+firingTriggers: array of string
+
+List of firing triggers IDs.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20firingTriggers">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20neoEvents">Link to this property</a>
+
+vendorName: optional string
+
+Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20vendorName">Link to this property</a>
+
+vendorPolicyUrl: optional string
+
+Vendor’s Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20vendorPolicyUrl">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+Worker object {blockingTriggers, component, defaultFields, 11 more }
+
+</summary>
+
+blockingTriggers: array of string
+
+List of blocking trigger IDs.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20blockingTriggers">Link to this property</a>
+
+component: string
+
+Tool’s internal name.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20component">Link to this property</a>
+
+<details>
+
+<summary>
+
+defaultFields: map\[stringor boolean]
+
+Default fields for tool’s actions.
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20defaultFields%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20defaultFields%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20defaultFields">Link to this property</a>
+
+enabled: boolean
+
+Whether tool is enabled.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20enabled">Link to this property</a>
+
+name: string
+
+Tool’s name defined by the user.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20name">Link to this property</a>
+
+permissions: array of string
+
+List of permissions granted to the component.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20permissions">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: map\[stringor boolean]
+
+Tool’s settings.
+
+</summary>
+
+One of the following:
+
+string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+boolean
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings">Link to this property</a>
+
+type: "custom-mc"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+<details>
+
+<summary>
+
+worker: object {escapedWorkerName, workerTag }
+
+Cloudflare worker that acts as a managed component.
+
+</summary>
+
+escapedWorkerName: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20worker%20%3E%20(property)%20escapedWorkerName">Link to this property</a>
+
+workerTag: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20worker%20%3E%20(property)%20workerTag">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20worker">Link to this property</a>
+
+<details>
+
+<summary>
+
+actions: optional map\[<a href="https://developers.cloudflare.com/api/resources/zaraz#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)">NeoEvent</a> { actionType, blockingTriggers, data, firingTriggers } ]
+
+Actions configured on a tool. Either this or neoEvents field is required.
+
+</summary>
+
+actionType: string
+
+Tool event type.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20actionType">Link to this property</a>
+
+blockingTriggers: array of string
+
+List of blocking triggers IDs.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20blockingTriggers">Link to this property</a>
+
+data: unknown
+
+Event payload.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20data">Link to this property</a>
+
+firingTriggers: array of string
+
+List of firing triggers IDs.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20firingTriggers">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20actions">Link to this property</a>
+
+defaultPurpose: optional string
+
+Default consent purpose ID.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20defaultPurpose">Link to this property</a>
+
+<details>
+
+<summary>
+
+neoEvents: optional array of <a href="https://developers.cloudflare.com/api/resources/zaraz#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)">NeoEvent</a> { actionType, blockingTriggers, data, firingTriggers }
+
+DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.
+
+</summary>
+
+actionType: string
+
+Tool event type.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20actionType">Link to this property</a>
+
+blockingTriggers: array of string
+
+List of blocking triggers IDs.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20blockingTriggers">Link to this property</a>
+
+data: unknown
+
+Event payload.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20data">Link to this property</a>
+
+firingTriggers: array of string
+
+List of firing triggers IDs.
+
+<a href="#(resource)%20zaraz%20%3E%20(model)%20neo_event%20%3E%20(schema)%20%3E%20(property)%20firingTriggers">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20neoEvents">Link to this property</a>
+
+vendorName: optional string
+
+Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20vendorName">Link to this property</a>
+
+vendorPolicyUrl: optional string
+
+Vendor’s Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20vendorPolicyUrl">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20tools">Link to this property</a>
+
+<details>
+
+<summary>
+
+triggers: map\[object {excludeRules, loadRules, name, 2 more } ]
+
+Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration.
+
+</summary>
+
+<details>
+
+<summary>
+
+excludeRules: array of object {id, match, op, value } or object {id, action, settings } or object {id, action, settings } or 4 more
+
+Rules defining when the trigger is not fired.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+ZarazLoadRule object {id, match, op, value }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20id">Link to this property</a>
+
+match: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20match">Link to this property</a>
+
+<details>
+
+<summary>
+
+op: "CONTAINS"or "EQUALS"or "STARTS\_WITH"or 7 more
+
+</summary>
+
+One of the following:
+
+"CONTAINS"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%200">Link to this property</a>
+
+"EQUALS"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%201">Link to this property</a>
+
+"STARTS\_WITH"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%202">Link to this property</a>
+
+"ENDS\_WITH"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%203">Link to this property</a>
+
+"MATCH\_REGEX"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%204">Link to this property</a>
+
+"NOT\_MATCH\_REGEX"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%205">Link to this property</a>
+
+"GREATER\_THAN"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%206">Link to this property</a>
+
+"GREATER\_THAN\_OR\_EQUAL"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%207">Link to this property</a>
+
+"LESS\_THAN"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%208">Link to this property</a>
+
+"LESS\_THAN\_OR\_EQUAL"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%209">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op">Link to this property</a>
+
+value: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+ZarazClickListenerRule object {id, action, settings }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20id">Link to this property</a>
+
+action: "clickListener"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {selector, type, waitForTags }
+
+</summary>
+
+selector: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings%20%3E%20(property)%20selector">Link to this property</a>
+
+<details>
+
+<summary>
+
+type: "xpath"or "css"
+
+</summary>
+
+One of the following:
+
+"xpath"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings%20%3E%20(property)%20type%20%3E%20(member)%200">Link to this property</a>
+
+"css"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings%20%3E%20(property)%20type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings%20%3E%20(property)%20type">Link to this property</a>
+
+waitForTags: number
+
+minimum0
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings%20%3E%20(property)%20waitForTags">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+ZarazTimerRule object {id, action, settings }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20id">Link to this property</a>
+
+action: "timer"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {interval, limit }
+
+</summary>
+
+interval: number
+
+minimum50
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20settings%20%3E%20(property)%20interval">Link to this property</a>
+
+limit: number
+
+minimum0
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20settings%20%3E%20(property)%20limit">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20settings">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+<details>
+
+<summary>
+
+ZarazFormSubmissionRule object {id, action, settings }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20id">Link to this property</a>
+
+action: "formSubmission"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {selector, validate }
+
+</summary>
+
+selector: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20settings%20%3E%20(property)%20selector">Link to this property</a>
+
+validate: boolean
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20settings%20%3E%20(property)%20validate">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20settings">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%203">Link to this property</a>
+
+<details>
+
+<summary>
+
+ZarazVariableMatchRule object {id, action, settings }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20id">Link to this property</a>
+
+action: "variableMatch"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {match, variable }
+
+</summary>
+
+match: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20settings%20%3E%20(property)%20match">Link to this property</a>
+
+variable: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20settings%20%3E%20(property)%20variable">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20settings">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%204">Link to this property</a>
+
+<details>
+
+<summary>
+
+ZarazScrollDepthRule object {id, action, settings }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20id">Link to this property</a>
+
+action: "scrollDepth"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {positions }
+
+</summary>
+
+positions: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20settings%20%3E%20(property)%20positions">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20settings">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%205">Link to this property</a>
+
+<details>
+
+<summary>
+
+ZarazElementVisibilityRule object {id, action, settings }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%206%20%3E%20(property)%20id">Link to this property</a>
+
+action: "elementVisibility"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%206%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {selector }
+
+</summary>
+
+selector: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%206%20%3E%20(property)%20settings%20%3E%20(property)%20selector">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%206%20%3E%20(property)%20settings">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules%20%3E%20(items)%20%3E%20(variant)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20excludeRules">Link to this property</a>
+
+<details>
+
+<summary>
+
+loadRules: array of object {id, match, op, value } or object {id, action, settings } or object {id, action, settings } or 4 more
+
+Rules defining when the trigger is fired.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+ZarazLoadRule object {id, match, op, value }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20id">Link to this property</a>
+
+match: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20match">Link to this property</a>
+
+<details>
+
+<summary>
+
+op: "CONTAINS"or "EQUALS"or "STARTS\_WITH"or 7 more
+
+</summary>
+
+One of the following:
+
+"CONTAINS"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%200">Link to this property</a>
+
+"EQUALS"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%201">Link to this property</a>
+
+"STARTS\_WITH"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%202">Link to this property</a>
+
+"ENDS\_WITH"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%203">Link to this property</a>
+
+"MATCH\_REGEX"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%204">Link to this property</a>
+
+"NOT\_MATCH\_REGEX"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%205">Link to this property</a>
+
+"GREATER\_THAN"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%206">Link to this property</a>
+
+"GREATER\_THAN\_OR\_EQUAL"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%207">Link to this property</a>
+
+"LESS\_THAN"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%208">Link to this property</a>
+
+"LESS\_THAN\_OR\_EQUAL"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op%20%3E%20(member)%209">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20op">Link to this property</a>
+
+value: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+ZarazClickListenerRule object {id, action, settings }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20id">Link to this property</a>
+
+action: "clickListener"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {selector, type, waitForTags }
+
+</summary>
+
+selector: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings%20%3E%20(property)%20selector">Link to this property</a>
+
+<details>
+
+<summary>
+
+type: "xpath"or "css"
+
+</summary>
+
+One of the following:
+
+"xpath"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings%20%3E%20(property)%20type%20%3E%20(member)%200">Link to this property</a>
+
+"css"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings%20%3E%20(property)%20type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings%20%3E%20(property)%20type">Link to this property</a>
+
+waitForTags: number
+
+minimum0
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings%20%3E%20(property)%20waitForTags">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20settings">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+ZarazTimerRule object {id, action, settings }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20id">Link to this property</a>
+
+action: "timer"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {interval, limit }
+
+</summary>
+
+interval: number
+
+minimum50
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20settings%20%3E%20(property)%20interval">Link to this property</a>
+
+limit: number
+
+minimum0
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20settings%20%3E%20(property)%20limit">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20settings">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+<details>
+
+<summary>
+
+ZarazFormSubmissionRule object {id, action, settings }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20id">Link to this property</a>
+
+action: "formSubmission"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {selector, validate }
+
+</summary>
+
+selector: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20settings%20%3E%20(property)%20selector">Link to this property</a>
+
+validate: boolean
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20settings%20%3E%20(property)%20validate">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%203%20%3E%20(property)%20settings">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%203">Link to this property</a>
+
+<details>
+
+<summary>
+
+ZarazVariableMatchRule object {id, action, settings }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20id">Link to this property</a>
+
+action: "variableMatch"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {match, variable }
+
+</summary>
+
+match: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20settings%20%3E%20(property)%20match">Link to this property</a>
+
+variable: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20settings%20%3E%20(property)%20variable">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%204%20%3E%20(property)%20settings">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%204">Link to this property</a>
+
+<details>
+
+<summary>
+
+ZarazScrollDepthRule object {id, action, settings }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20id">Link to this property</a>
+
+action: "scrollDepth"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {positions }
+
+</summary>
+
+positions: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20settings%20%3E%20(property)%20positions">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%205%20%3E%20(property)%20settings">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%205">Link to this property</a>
+
+<details>
+
+<summary>
+
+ZarazElementVisibilityRule object {id, action, settings }
+
+</summary>
+
+id: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%206%20%3E%20(property)%20id">Link to this property</a>
+
+action: "elementVisibility"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%206%20%3E%20(property)%20action">Link to this property</a>
+
+<details>
+
+<summary>
+
+settings: object {selector }
+
+</summary>
+
+selector: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%206%20%3E%20(property)%20settings%20%3E%20(property)%20selector">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%206%20%3E%20(property)%20settings">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules%20%3E%20(items)%20%3E%20(variant)%206">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20loadRules">Link to this property</a>
+
+name: string
+
+Trigger name.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+description: optional string
+
+Trigger description.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+system: optional "pageload"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers%20%3E%20(items)%20%3E%20(property)%20system">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20triggers">Link to this property</a>
+
+<details>
+
+<summary>
+
+variables: map\[object {name, type, value } or object {name, type, value } or object {name, type, value } ]
+
+Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+String object {name, type, value }
+
+</summary>
+
+name: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20name">Link to this property</a>
+
+type: "string"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+value: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+Secret object {name, type, value }
+
+</summary>
+
+name: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20name">Link to this property</a>
+
+type: "secret"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+value: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+Worker object {name, type, value }
+
+</summary>
+
+name: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20name">Link to this property</a>
+
+type: "worker"
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20type">Link to this property</a>
+
+<details>
+
+<summary>
+
+value: object {escapedWorkerName, workerTag }
+
+</summary>
+
+escapedWorkerName: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20value%20%3E%20(property)%20escapedWorkerName">Link to this property</a>
+
+workerTag: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20value%20%3E%20(property)%20workerTag">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%202%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables%20%3E%20(items)%20%3E%20(variant)%202">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20variables">Link to this property</a>
+
+zarazVersion: number
+
+Zaraz internal version of the config.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20zarazVersion">Link to this property</a>
+
+<details>
+
+<summary>
+
+analytics: optional object {defaultPurpose, enabled, sessionExpTime }
+
+Cloudflare Monitoring settings.
+
+</summary>
+
+defaultPurpose: optional string
+
+Consent purpose assigned to Monitoring.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20analytics%20%3E%20(property)%20defaultPurpose">Link to this property</a>
+
+enabled: optional boolean
+
+Whether Advanced Monitoring reports are enabled.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20analytics%20%3E%20(property)%20enabled">Link to this property</a>
+
+sessionExpTime: optional number
+
+Session expiration time (seconds).
+
+maximum86400
+
+minimum60
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20analytics%20%3E%20(property)%20sessionExpTime">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20analytics">Link to this property</a>
+
+<details>
+
+<summary>
+
+consent: optional object {enabled, buttonTextTranslations, companyEmail, 12 more }
+
+Consent management configuration.
+
+</summary>
+
+enabled: boolean
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20enabled">Link to this property</a>
+
+buttonTextTranslations: optional <a href="https://developers.cloudflare.com/api/resources/zaraz#(resource)%20zaraz%20%3E%20(model)%20button_text_translation%20%3E%20(schema)">ButtonTextTranslation</a> { accept\_all, confirm\_my\_choices, reject\_all }
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20buttonTextTranslations">Link to this property</a>
+
+companyEmail: optional string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20companyEmail">Link to this property</a>
+
+companyName: optional string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20companyName">Link to this property</a>
+
+companyStreetAddress: optional string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20companyStreetAddress">Link to this property</a>
+
+consentModalIntroHTML: optional string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20consentModalIntroHTML">Link to this property</a>
+
+consentModalIntroHTMLWithTranslations: optional map\[string]
+
+Object where keys are language codes.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20consentModalIntroHTMLWithTranslations">Link to this property</a>
+
+cookieName: optional string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20cookieName">Link to this property</a>
+
+customCSS: optional string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20customCSS">Link to this property</a>
+
+customIntroDisclaimerDismissed: optional boolean
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20customIntroDisclaimerDismissed">Link to this property</a>
+
+defaultLanguage: optional string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20defaultLanguage">Link to this property</a>
+
+hideModal: optional boolean
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20hideModal">Link to this property</a>
+
+<details>
+
+<summary>
+
+purposes: optional map\[object {description, name } ]
+
+Object where keys are purpose alpha-numeric IDs.
+
+</summary>
+
+description: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20purposes%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20purposes%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20purposes">Link to this property</a>
+
+<details>
+
+<summary>
+
+purposesWithTranslations: optional map\[object {description, name, order } ]
+
+Object where keys are purpose alpha-numeric IDs.
+
+</summary>
+
+description: map\[string]
+
+Object where keys are language codes.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20purposesWithTranslations%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+name: map\[string]
+
+Object where keys are language codes.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20purposesWithTranslations%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+order: number
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20purposesWithTranslations%20%3E%20(items)%20%3E%20(property)%20order">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20purposesWithTranslations">Link to this property</a>
+
+tcfCompliant: optional boolean
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent%20%3E%20(property)%20tcfCompliant">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20consent">Link to this property</a>
+
+historyChange: optional boolean
+
+Single Page Application support enabled.
+
+<a href="#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)%20%3E%20(property)%20historyChange">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20zaraz.config%20%3E%20(model)%20configuration%20%3E%20(schema)>)

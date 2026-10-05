@@ -1,0 +1,1162 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Dec 5, 2025
+
+[<h2>Increased WAF payload limit for all plans</h2>](https://developers.cloudflare.com/changelog/post/2025-12-05-rcs-vuln/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+Cloudflare WAF now inspects request-payload size of up to 1 MB across all plans to enhance our detection capabilities for React RCE (CVE-2025-55182).
+
+**Key Findings**
+
+React payloads commonly have a default maximum size of 1 MB. Cloudflare WAF previously inspected up to 128 KB on Enterprise plans, with even lower limits on other plans.
+
+**Update:** We later reinstated the maximum request-payload size the Cloudflare WAF inspects. Refer to [Updating the WAF maximum payload values](https://developers.cloudflare.com/changelog/2025-12-05-waf-max-payload-size-change/) for details.
+
+Dec 5, 2025
+
+[<h2>Updating the WAF maximum payload values</h2>](https://developers.cloudflare.com/changelog/post/2025-12-05-waf-max-payload-size-change/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+We are reinstating the maximum request-payload size the Cloudflare WAF inspects, with WAF on Enterprise zones inspecting up to 128 KB.
+
+**Key Findings**
+
+On [December 5, 2025](https://developers.cloudflare.com/changelog/2025-12-05-rcs-vuln/), we initially attempted to increase the maximum WAF payload limit to 1 MB across all plans. However, an automatic rollout for all customers proved impractical because the increase led to a surge in false positives for existing managed rules.
+
+This issue was particularly notable within the Cloudflare Managed Ruleset and the Cloudflare OWASP Core Ruleset, impacting customer traffic.
+
+**Impact**
+
+Customers on paid plans can increase the limit to 1 MB for any of their zones by contacting Cloudflare Support. Free zones are already protected up to 1 MB and do not require any action.
+
+Dec 4, 2025
+
+[<h2>Connect to remote databases during local development with wrangler dev</h2>](https://developers.cloudflare.com/changelog/post/2025-12-04-hyperdrive-remote-database-local-dev/)
+
+[Hyperdrive](https://developers.cloudflare.com/hyperdrive/)
+
+You can now connect directly to remote databases and databases requiring TLS with `wrangler dev`. This lets you run your Worker code locally while connecting to remote databases, without needing to use `wrangler dev --remote`.
+
+The `localConnectionString` field and `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_<BINDING_NAME>` environment variable can be used to configure the connection string used by `wrangler dev`.
+
+```jsonc
+{
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "your-hyperdrive-id",
+      "localConnectionString": "postgres://user:password@remote-host.example.com:5432/database?sslmode=require"
+    }
+  ]
+}
+```
+
+Learn more about [local development with Hyperdrive](https://developers.cloudflare.com/hyperdrive/configuration/local-development/).
+
+Dec 4, 2025
+
+[<h2>One-click Access protection for Workers now creates reusable Cloudflare Access policies</h2>](https://developers.cloudflare.com/changelog/post/2025-12-03-reusable-access-policies/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Workers applications now use reusable [Cloudflare Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to reduce duplication and simplify access management across multiple Workers.
+
+Previously, enabling Cloudflare Access on a Worker created per-application policies, unique to each application. Now, we create reusable policies that can be shared across applications:
+
+- **Preview URLs**: All Workers preview URLs share a single "Cloudflare Workers Preview URLs" policy across your account. This policy is automatically created the first time you enable Access on any preview URL. By sharing a single policy across all preview URLs, you can configure access rules once and have them apply company-wide to all Workers which protect preview URLs. This makes it much easier to manage who can access preview environments without having to update individual policies for each Worker.
+- **Production workers.dev URLs**: When enabled, each Worker gets its own reusable policy (named `<worker-name> - Production`) by default. We recognize production services often have different access requirements and having individual policies here makes it easier to configure service-to-service authentication or protect internal dashboards or applications with specific user groups. Keeping these policies separate gives you the flexibility to configure exactly the right access rules for each production service. When you disable Access on a production Worker, the associated policy is automatically cleaned up if it's not being used by other applications.
+
+This change reduces policy duplication, simplifies cross-company access management for preview environments, and provides the flexibility needed for production services. You can still customize access rules by editing the reusable policies in the Zero Trust dashboard.
+
+To enable Cloudflare Access on your Worker:
+
+1. In the Cloudflare dashboard, go to **Workers & Pages**.
+2. Select your Worker.
+3. Go to **Settings** > **Domains & Routes**.
+4. For `workers.dev` or Preview URLs, click **Enable Cloudflare Access**.
+5. Optionally, click **Manage Cloudflare Access** to customize the policy.
+
+For more information on configuring Cloudflare Access for Workers, refer to the [Workers Access documentation](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#manage-access-to-workersdev).
+
+Dec 3, 2025
+
+[<h2>Reclassifications to Submissions</h2>](https://developers.cloudflare.com/changelog/post/2025-12-03-submission-terminology-update/)
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
+
+We have updated the terminology “Reclassify” and “Reclassifications” to “Submit” and “Submissions” respectively. This update more accurately reflects the outcome of providing these items to Cloudflare.
+
+Submissions are leveraged to tune future variants of campaigns. To respect data sanctity, providing a submission does not change the original disposition of the emails submitted.
+
+![nav\_example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=756,height=628,format=webp/_astro/reclassification-submission.B6nL5Hw7.png)
+
+This applies to all Email Security packages:
+
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
+
+Dec 3, 2025
+
+[<h2>WAF Release - 2025-12-03 - Emergency</h2>](https://developers.cloudflare.com/changelog/post/2025-12-03-emergency-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+The WAF rule deployed yesterday to block unsafe deserialization-based RCE has been updated. The rule description now reads “React – RCE – CVE-2025-55182”, explicitly mapping to the recently disclosed React Server Components vulnerability. Detection logic remains unchanged.
+
+**Key Findings**
+
+Rule description updated to reference React – RCE – CVE-2025-55182 while retaining existing unsafe-deserialization detection.
+
+**Impact**
+
+Improved classification and traceability with no change to coverage against remote code execution attempts.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...5fb92fba | N/A | React - RCE - CVE:CVE-2025-55182 | N/A | Block | Rule metadata description changed. Detection unchanged. |
+| Cloudflare Free Ruleset | ...99702280 | N/A | React - RCE - CVE:CVE-2025-55182 | N/A | Block | Rule metadata description changed. Detection unchanged. |
+
+Dec 2, 2025
+
+[<h2>WAF Release - 2025-12-02 - Emergency</h2>](https://developers.cloudflare.com/changelog/post/2025-12-02-emergency-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week's emergency release introduces a new rule to block a critical RCE vulnerability in widely-used web frameworks through unsafe deserialization patterns.
+
+**Key Findings**
+
+New WAF rule deployed for RCE Generic Framework to block malicious POST requests containing unsafe deserialization patterns. If successfully exploited, this vulnerability allows attackers with network access via HTTP to execute arbitrary code remotely.
+
+**Impact**
+
+- Successful exploitation allows unauthenticated attackers to execute arbitrary code remotely through crafted serialization payloads, enabling complete system compromise, data exfiltration, and potential lateral movement within affected environments.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...5fb92fba | N/A | RCE Generic - Framework | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...99702280 | N/A | RCE Generic - Framework | N/A | Block | This is a new detection. |
+
+Dec 1, 2025
+
+[<h2>WAF Release - 2025-12-01</h2>](https://developers.cloudflare.com/changelog/post/2025-12-01-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week’s release introduces new detections for remote code execution attempts targeting Monsta FTP (CVE-2025-34299), alongside improvements to an existing XSS detection to enhance coverage.
+
+**Key Findings**
+
+- CVE-2025-34299 is a critical remote code execution flaw in Monsta FTP, arising from improper handling of user-supplied parameters within the file-handling interface. Certain builds allow crafted requests to bypass sanitization and reach backend PHP functions that execute arbitrary commands. Attackers can send manipulated parameters through the web panel to trigger command execution within the application’s runtime environment.
+
+**Impact**
+
+If exploited, the vulnerability enables full remote command execution on the underlying server, allowing takeover of the hosting environment, unauthorized file access, and potential lateral movement. As the flaw can be triggered without authentication on exposed Monsta FTP instances, it represents a severe risk for publicly reachable deployments.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...a4fcc8a8 | N/A | Monsta FTP - Remote Code Execution - CVE:CVE-2025-34299 | Log | Block | This is a new detection |
+| Cloudflare Managed Ruleset | ...b7492846 | N/A | XSS - JS Context Escape - Beta | Log | Block | This rule is merged into the original rule "XSS - JS Context Escape" (ID: ...7a3769d3) |
+
+Nov 26, 2025
+
+[<h2>Agents SDK v0.2.24 with resumable streaming, MCP improvements, and schedule fixes</h2>](https://developers.cloudflare.com/changelog/post/2025-11-26-agents-resumable-streaming/)
+
+[Agents](https://developers.cloudflare.com/agents/) [Workers](https://developers.cloudflare.com/workers/)
+
+The latest release of [@cloudflare/agents ↗︎](https://github.com/cloudflare/agents) brings resumable streaming, significant MCP client improvements, and critical fixes for schedules and Durable Object lifecycle management.
+
+#### Resumable streaming
+
+`AIChatAgent` now supports resumable streaming, allowing clients to reconnect and continue receiving streamed responses without losing data. This is useful for:
+
+- Long-running AI responses
+- Users on unreliable networks
+- Users switching between devices mid-conversation
+- Background tasks where users navigate away and return
+- Real-time collaboration where multiple clients need to stay in sync
+
+Streams are maintained across page refreshes, broken connections, and syncing across open tabs and devices.
+
+#### Other improvements
+
+- Default JSON schema validator added to MCP client
+- [Schedules ↗︎](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) can now safely destroy the agent
+
+#### MCP client API improvements
+
+The `MCPClientManager` API has been redesigned for better clarity and control:
+
+- **New `registerServer()` method**: Register MCP servers without immediately connecting
+- **New `connectToServer()` method**: Establish connections to registered servers
+- **Improved reconnect logic**: `restoreConnectionsFromStorage()` now properly handles failed connections
+
+```ts
+// Register a server to Agent
+const { id } = await this.mcp.registerServer({
+	name: "my-server",
+	url: "https://my-mcp-server.example.com",
+});
+
+// Connect when ready
+await this.mcp.connectToServer(id);
+
+// Discover tools, prompts and resources
+await this.mcp.discoverIfConnected(id);
+```
+
+The SDK now includes a formalized `MCPConnectionState` enum with states: `idle`, `connecting`, `authenticating`, `connected`, `discovering`, and `ready`.
+
+#### Enhanced MCP discovery
+
+MCP discovery fetches the available tools, prompts, and resources from an MCP server so your agent knows what capabilities are available. The `MCPClientConnection` class now includes a dedicated `discover()` method with improved reliability:
+
+- Supports cancellation via AbortController
+- Configurable timeout (default 15s)
+- Discovery failures now throw errors immediately instead of silently continuing
+
+#### Bug fixes
+
+- Fixed a bug where [schedules ↗︎](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) meant to fire immediately with this.schedule(0, ...) or `this.schedule(new Date(), ...)` would not fire
+- Fixed an issue where schedules that took longer than 30 seconds would occasionally time out
+- Fixed SSE transport now properly forwards session IDs and request headers
+- Fixed AI SDK stream events conversion to UIMessageStreamPart
+
+#### Upgrade
+
+To update to the latest version:
+
+```sh
+npm i agents@latest
+```
+
+Nov 25, 2025
+
+[<h2>New Zombie API detection for API Shield</h2>](https://developers.cloudflare.com/changelog/post/2025-11-25-zombie-endpoint-risk-label/)
+
+[API Shield](https://developers.cloudflare.com/api-shield/)
+
+API Shield now automatically detects zombie endpoints — saved endpoints that have not received traffic for an extended period. When detected, the `cf-risk-zombie` [risk label](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#risk-labels) is applied.
+
+The scan runs daily alongside existing risk scans. Endpoints are labeled after 32 days without traffic.
+
+Zombie endpoints may indicate deprecated or forgotten API surface area that could pose a security risk. Review these endpoints and consider removing them from Endpoint Management if they are no longer in use. Also consider using a [fallthrough rule](https://developers.cloudflare.com/api-shield/security/schema-validation/#add-validation-by-adding-a-fallthrough-rule) to prevent communication with endpoints removed from Endpoint Management.
+
+Nov 25, 2025
+
+[<h2>Audit Logs for Cache Purge Events</h2>](https://developers.cloudflare.com/changelog/post/2025-11-25-audit-logs-for-cache-purge-events/)
+
+[Cache / CDN](https://developers.cloudflare.com/cache/)
+
+You can now review detailed audit logs for cache purge events, giving you visibility into what purge requests were sent, what they contained, and by whom. Audit your purge requests via the Dashboard or API for all purge methods:
+
+- Purge everything
+- List of prefixes
+- List of tags
+- List of hosts
+- List of files
+
+#### Example
+
+The detailed audit payload is visible within the Cloudflare Dashboard (under **Manage Account** > **Audit Logs**) and via the API. Below is an example of the Audit Logs v2 payload structure:
+
+```json
+{
+  "action": {
+    "result": "success",
+    "type": "create"
+  },
+  "actor": {
+    "id": "1234567890abcdef",
+    "email": "user@example.com",
+    "type": "user"
+  },
+  "resource": {
+    "product": "purge_cache",
+    "request": {
+      "files": [
+        "https://example.com/images/logo.png",
+        "https://example.com/css/styles.css"
+      ]
+    }
+  },
+  "zone": {
+    "id": "023e105f4ecef8ad9ca31a8372d0c353",
+    "name": "example.com"
+  }
+}
+```
+
+#### Get started
+
+To get started, refer to the [Audit Logs documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
+
+Nov 25, 2025
+
+[<h2>Launching FLUX.2 \[dev\] on Workers AI</h2>](https://developers.cloudflare.com/changelog/post/2025-11-25-flux-2-dev-workers-ai/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+We've partnered with Black Forest Labs (BFL) to bring their latest FLUX.2 \[dev] model to Workers AI! This model excels in generating high-fidelity images with physical world grounding, multi-language support, and digital asset creation. You can also create specific super images with granular controls like JSON prompting.
+
+Read the [BFL blog ↗︎](https://bfl.ai/flux2) to learn more about the model itself. Read our [Cloudflare blog ↗︎](https://blog.cloudflare.com/flux-2-workers-ai) to see the model in action, or try it out yourself on our [multi modal playground ↗︎](https://multi-modal.ai.cloudflare.com/).
+
+Pricing documentation is available on the [model page](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/) or [pricing page](https://developers.cloudflare.com/workers-ai/platform/pricing/). Note, we expect to drop pricing in the next few days after iterating on the model performance.
+
+#### Workers AI Platform specifics
+
+The model hosted on Workers AI is able to support up to 4 image inputs (512x512 per input image). Note, this image model is one of the most powerful in the catalog and is expected to be slower than the other image models we currently support. One catch to look out for is that this model takes multipart form data inputs, even if you just have a prompt.
+
+With the REST API, the multipart form data input looks like this:
+
+```bash
+curl --request POST \
+  --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT}/ai/run/@cf/black-forest-labs/flux-2-dev' \
+  --header 'Authorization: Bearer {TOKEN}' \
+  --header 'Content-Type: multipart/form-data' \
+  --form 'prompt=a sunset at the alps' \
+  --form steps=25
+  --form width=1024
+  --form height=1024
+```
+
+With the Workers AI binding, you can use it as such:
+
+```javascript
+const form = new FormData();
+form.append('prompt', 'a sunset with a dog');
+form.append('width', '1024');
+form.append('height', '1024');
+
+//this dummy request is temporary hack
+//we're pushing a change to address this soon
+const formRequest = new Request('http://dummy', {
+  method: 'POST',
+  body: form
+});
+const formStream = formRequest.body;
+const formContentType = formRequest.headers.get('content-type') || 'multipart/form-data';
+
+const resp = await env.AI.run("@cf/black-forest-labs/flux-2-dev", {
+  multipart: {
+    body: formStream,
+    contentType: formContentType
+  }
+});
+```
+
+The parameters you can send to the model are detailed here:
+
+<details>
+
+<summary>JSON Schema for Model</summary>
+
+
+
+**Required Parameters**
+
+- <code>prompt</code> (string) - Text description of the image to generate
+
+**Optional Parameters**
+
+- <code>input_image_0</code> (string) - Binary image
+- <code>input_image_1</code> (string) - Binary image
+- <code>input_image_2</code> (string) - Binary image
+- <code>input_image_3</code> (string) - Binary image
+- <code>steps</code> (integer) - Number of inference steps. Higher values may improve quality but increase generation time
+- <code>guidance</code> (float) - Guidance scale for generation. Higher values follow the prompt more closely
+- <code>width</code> (integer) - Width of the image, default <code>1024</code> Range: 256-1920
+- <code>height</code> (integer) - Height of the image, default <code>768</code> Range: 256-1920
+- <code>seed</code> (integer) - Seed for reproducibility
+
+</details>
+
+````plaintext
+## Multi-Reference Images
+
+The FLUX.2 model is great at generating images based on reference images. You can use this feature to apply the style of one image to another, add a new character to an image, or iterate on past generate images. You would use it with the same multipart form data structure, with the input images in binary.
+
+For the prompt, you can reference the images based on the index, like `take the subject of image 1 and style it like image 0` or even use natural language like `place the dog beside the woman`.
+
+Note: you have to name the input parameter as `input_image_0`, `input_image_1`, `input_image_2` for it to work correctly. All input images must be smaller than 512x512.
+
+```bash
+curl --request POST \
+  --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT}/ai/run/@cf/black-forest-labs/flux-2-dev' \
+  --header 'Authorization: Bearer {TOKEN}' \
+  --header 'Content-Type: multipart/form-data' \
+  --form 'prompt=take the subject of image 1 and style it like image 0' \
+  --form input_image_0=@/Users/johndoe/Desktop/icedoutkeanu.png \
+  --form input_image_1=@/Users/johndoe/Desktop/me.png \
+  --form steps=25
+  --form width=1024
+  --form height=1024
+````
+
+Through Workers AI Binding:
+
+```javascript
+//helper function to convert ReadableStream to Blob
+async function streamToBlob(stream: ReadableStream, contentType: string): Promise<Blob> {
+  const reader = stream.getReader();
+  const chunks = [];
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+  }
+
+  return new Blob(chunks, { type: contentType });
+}
+
+const image0 = await fetch("http://image-url");
+const image1 = await fetch("http://image-url");
+const form = new FormData();
+
+const image_blob0 = await streamToBlob(image0.body, "image/png");
+const image_blob1 = await streamToBlob(image1.body, "image/png");
+form.append('input_image_0', image_blob0)
+form.append('input_image_1', image_blob1)
+form.append('prompt', 'take the subject of image 1and style it like image 0')
+
+//this dummy request is temporary hack
+//we're pushing a change to address this soon
+const formRequest = new Request('http://dummy', {
+  method: 'POST',
+  body: form
+});
+const formStream = formRequest.body;
+const formContentType = formRequest.headers.get('content-type') || 'multipart/form-data';
+
+const resp = await env.AI.run("@cf/black-forest-labs/flux-2-dev", {
+    multipart: {
+        body: form,
+        contentType: "multipart/form-data"
+    }
+})
+```
+
+#### JSON Prompting
+
+The model supports prompting in JSON to get more granular control over images. You would pass the JSON as the value of the 'prompt' field in the multipart form data. See the JSON schema below on the base parameters you can pass to the model.
+
+<details>
+
+<summary>JSON Prompting Schema</summary>
+
+
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "scene": {
+      "type": "string",
+      "description": "Overall scene setting or location"
+    },
+    "subjects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { 
+            "type": "string", 
+            "description": "Type of subject (e.g., desert nomad, blacksmith, DJ, falcon)" 
+          },
+          "description": { 
+            "type": "string", 
+            "description": "Physical attributes, clothing, accessories" 
+          },
+          "pose": { 
+            "type": "string", 
+            "description": "Action or stance" 
+          },
+          "position": { 
+            "type": "string",
+            "enum": ["foreground", "midground", "background"],
+            "description": "Depth placement in scene"
+          }
+        },
+        "required": ["type", "description", "pose", "position"]
+      }
+    },
+    "style": {
+      "type": "string",
+      "description": "Artistic rendering style (e.g., digital painting, photorealistic, pixel art, noir sci-fi, lifestyle photo, wabi-sabi photo)"
+    },
+    "color_palette": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 3,
+      "maxItems": 3,
+      "description": "Exactly 3 main colors for the scene (e.g., ['navy', 'neon yellow', 'magenta'])"
+    },
+    "lighting": {
+      "type": "string",
+      "description": "Lighting condition and direction (e.g., fog-filtered sun, moonlight with star glints, dappled sunlight)"
+    },
+    "mood": {
+      "type": "string",
+      "description": "Emotional atmosphere (e.g., harsh and determined, playful and modern, peaceful and dreamy)"
+    },
+    "background": {
+      "type": "string",
+      "description": "Background environment details"
+    },
+    "composition": {
+      "type": "string",
+      "enum": [
+        "rule of thirds",
+        "circular arrangement",
+        "framed by foreground",
+        "minimalist negative space",
+        "S-curve",
+        "vanishing point center",
+        "dynamic off-center",
+        "leading leads",
+        "golden spiral",
+        "diagonal energy",
+        "strong verticals",
+        "triangular arrangement"
+      ],
+      "description": "Compositional technique"
+    },
+    "camera": {
+      "type": "object",
+      "properties": {
+        "angle": { 
+          "type": "string",
+          "enum": ["eye level", "low angle", "slightly low", "bird's-eye", "worm's-eye", "over-the-shoulder", "isometric"],
+          "description": "Camera perspective"
+        },
+        "distance": { 
+          "type": "string",
+          "enum": ["close-up", "medium close-up", "medium shot", "medium wide", "wide shot", "extreme wide"],
+          "description": "Framing distance"
+        },
+        "focus": { 
+          "type": "string",
+          "enum": ["deep focus", "macro focus", "selective focus", "sharp on subject", "soft background"],
+          "description": "Focus type"
+        },
+        "lens": { 
+          "type": "string",
+          "enum": ["14mm", "24mm", "35mm", "50mm", "70mm", "85mm"],
+          "description": "Focal length (wide to telephoto)"
+        },
+        "f-number": { 
+          "type": "string", 
+          "description": "Aperture (e.g., f/2.8, the smaller the number the more blurry the background)" 
+        },
+        "ISO": { 
+          "type": "number", 
+          "description": "Light sensitivity value (comfortable range between 100 & 6400, lower = less sensitivity)" 
+        }
+      }
+    },
+    "effects": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Post-processing effects (e.g., 'lens flare small', 'subtle film grain', 'soft bloom', 'god rays', 'chromatic aberration mild')"
+    }
+  },
+  "required": ["scene", "subjects"]
+}
+```
+
+</details>
+
+#### Other features to try
+
+- The model also supports the most common latin and non-latin character languages
+- You can prompt the model with specific hex codes like `#2ECC71`
+- Try creating digital assets like landing pages, comic strips, infographics too!
+
+Nov 24, 2025
+
+[<h2>Cloud Services Observability in Cloudflare Radar</h2>](https://developers.cloudflare.com/changelog/post/2025-11-24-radar-cloud-observability/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Radar**](https://developers.cloudflare.com/radar/) introduces HTTP Origins insights, providing visibility into the status of traffic between Cloudflare's global network and cloud-based origin infrastructure.
+
+The new [`Origins`](https://developers.cloudflare.com/api/resources/radar/subresources/origins/) API provides provides the following endpoints:
+
+- [`/origins`](https://developers.cloudflare.com/api/resources/radar/subresources/origins/methods/list/) - Lists all origins (cloud providers and associated regions).
+- [`/origins/{origin}`](https://developers.cloudflare.com/api/resources/radar/subresources/origins/methods/get/) - Retrieves information about a specific origin (cloud provider).
+- [`/origins/timeseries`](https://developers.cloudflare.com/api/resources/radar/subresources/origins/methods/timeseries/) - Retrieves normalized time series data for a specific origin, including the following metrics:
+  - `REQUESTS`: Number of requests
+  - `CONNECTION_FAILURES`: Number of connection failures
+  - `RESPONSE_HEADER_RECEIVE_DURATION`: Duration of the response header receive
+  - `TCP_HANDSHAKE_DURATION`: Duration of the TCP handshake
+  - `TCP_RTT`: TCP round trip time
+  - `TLS_HANDSHAKE_DURATION`: Duration of the TLS handshake
+- [`/origins/summary`](https://developers.cloudflare.com/api/resources/radar/subresources/origins/methods/summary/) - Retrieves HTTP requests to origins summarized by a dimension.
+- [`/origins/timeseries_groups`](https://developers.cloudflare.com/api/resources/radar/subresources/origins/methods/timeseries_groups/) - Retrieves timeseries data for HTTP requests to origins grouped by a dimension.
+
+The following dimensions are available for the `summary` and `timeseries_groups` endpoints:
+
+- `region`: Origin region
+- `success_rate`: Success rate of requests (2XX versus 5XX response codes)
+- `percentile`: Percentiles of metrics listed above
+
+Additionally, the [`Annotations`](https://developers.cloudflare.com/api/resources/radar/subresources/annotations/) and [`Traffic Anomalies`](https://developers.cloudflare.com/api/resources/radar/subresources/traffic_anomalies/) APIs have been extended to support origin outages and anomalies, enabling automated detection and alerting for origin infrastructure issues.
+
+![Screenshot of the cloud service status heatmap](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=970,format=webp/_astro/cloud-service-status.DoGHSNmz.png)
+
+Check out the [new Radar page ↗︎](https://radar.cloudflare.com/cloud-observatory).
+
+Nov 24, 2025
+
+[<h2>WAF Release - 2025-11-24</h2>](https://developers.cloudflare.com/changelog/post/2025-11-24-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week highlights enhancements to detection signatures improving coverage for vulnerabilities in FortiWeb, linked to CVE-2025-64446, alongside new detection logic expanding protection against PHP Wrapper Injection techniques.
+
+**Key Findings**
+
+This vulnerability enables an unauthenticated attacker to bypass access controls by abusing the `CGIINFO` header. The latest update strengthens detection logic to ensure a reliable identification of crafted requests attempting to exploit this flaw.
+
+**Impact**
+
+- FortiWeb (CVE-2025-64446): Exploitation allows a remote unauthenticated adversary to circumvent authentication mechanisms by sending a manipulated `CGIINFO` header to FortiWeb’s backend CGI handler. Successful exploitation grants unintended access to restricted administrative functionality, potentially enabling configuration tampering or system-level actions.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...4e2e1a2e | N/A | FortiWeb - Authentication Bypass via CGIINFO Header - CVE:CVE-2025-64446 | Log | Block | This is a new detection |
+| Cloudflare Managed Ruleset | ...b6c44ed5 | N/A | PHP Wrapper Injection - Body - Beta | Log | Disabled | This rule has been merged into the original rule "PHP Wrapper Injection - Body" (ID:...1a3e521e) |
+| Cloudflare Managed Ruleset | ...900f4015 | N/A | PHP Wrapper Injection - URI - Beta | Log | Disabled | This rule has been merged into the original rule "PHP Wrapper Injection - URI" (ID:...8f76bd74) |
+
+Nov 21, 2025
+
+[<h2>Mount R2 buckets in Containers</h2>](https://developers.cloudflare.com/changelog/post/2025-11-21-fuse-support-in-containers/)
+
+[Containers](https://developers.cloudflare.com/containers/) [R2](https://developers.cloudflare.com/r2/)
+
+[Containers](https://developers.cloudflare.com/containers/) now support mounting R2 buckets as FUSE (Filesystem in Userspace) volumes, allowing applications to interact with [R2](https://developers.cloudflare.com/r2/) using standard filesystem operations.
+
+Common use cases include:
+
+- Bootstrapping containers with datasets, models, or dependencies for [sandboxes](https://developers.cloudflare.com/sandbox/) and [agent](https://developers.cloudflare.com/agents/) environments
+- Persisting user configuration or application state without managing downloads
+- Accessing large static files without bloating container images or downloading at startup
+
+FUSE adapters like [tigrisfs ↗︎](https://github.com/tigrisdata/tigrisfs), [s3fs ↗︎](https://github.com/s3fs-fuse/s3fs-fuse), and [gcsfuse ↗︎](https://github.com/GoogleCloudPlatform/gcsfuse) can be installed in your container image and configured to mount buckets at startup.
+
+```dockerfile
+FROM alpine:3.20
+
+# Install FUSE and dependencies
+RUN apk update && \
+    apk add --no-cache ca-certificates fuse curl bash
+
+# Install tigrisfs
+RUN ARCH=$(uname -m) && \
+    if [ "$ARCH" = "x86_64" ]; then ARCH="amd64"; fi && \
+    if [ "$ARCH" = "aarch64" ]; then ARCH="arm64"; fi && \
+    VERSION=$(curl -s https://api.github.com/repos/tigrisdata/tigrisfs/releases/latest | grep -o '"tag_name": "[^"]*' | cut -d'"' -f4) && \
+    curl -L "https://github.com/tigrisdata/tigrisfs/releases/download/${VERSION}/tigrisfs_${VERSION#v}_linux_${ARCH}.tar.gz" -o /tmp/tigrisfs.tar.gz && \
+    tar -xzf /tmp/tigrisfs.tar.gz -C /usr/local/bin/ && \
+    rm /tmp/tigrisfs.tar.gz && \
+    chmod +x /usr/local/bin/tigrisfs
+
+# Create startup script that mounts bucket
+RUN printf '#!/bin/sh\n\
+    set -e\n\
+    mkdir -p /mnt/r2\n\
+    R2_ENDPOINT="https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com"\n\
+    /usr/local/bin/tigrisfs --endpoint "${R2_ENDPOINT}" -f "${BUCKET_NAME}" /mnt/r2 &\n\
+    sleep 3\n\
+    ls -lah /mnt/r2\n\
+    ' > /startup.sh && chmod +x /startup.sh
+
+CMD ["/startup.sh"]
+```
+
+See the [Mount R2 buckets with FUSE](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/) example for a complete guide on mounting R2 buckets and/or other S3-compatible storage buckets within your containers.
+
+Nov 21, 2025
+
+[<h2>New CPU Pricing for Containers and Sandboxes</h2>](https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing/)
+
+[Containers](https://developers.cloudflare.com/containers/)
+
+[Containers](https://developers.cloudflare.com/containers/) and [Sandboxes](https://developers.cloudflare.com/sandbox/) pricing for CPU time is now based on active usage only, instead of provisioned resources.
+
+This means that you now pay less for Containers and Sandboxes.
+
+#### An Example Before and After
+
+Imagine running the `standard-2` instance type for one hour, which can use up to 1 vCPU, but on average you use only 20% of your CPU capacity.
+
+CPU-time is priced at *$0.00002 per vCPU-second*.
+
+Previously, you would be charged for the CPU allocated to the instance multiplied by the time it was active, in this case 1 hour.
+
+CPU cost would have been: **$0.072** — 1 vCPU \* 3600 seconds \* $0.00002
+
+Now, since you are only using 20% of your CPU capacity, your CPU cost is cut to 20% of the previous amount.
+
+CPU cost is now: **$0.0144** — 1 vCPU \* 3600 seconds \* $0.00002 \* 20% utilization
+
+This can significantly reduce costs for Containers and Sandboxes.
+
+Note
+
+Memory cost and disk pricing remain unchanged, and is still calculated based on *provisioned* resources.
+
+See the documentation to learn more about [Containers](https://developers.cloudflare.com/containers/get-started/), [Sandboxes](https://developers.cloudflare.com/sandbox/), and [associated pricing](https://developers.cloudflare.com/containers/platform/pricing).
+
+Nov 21, 2025
+
+[<h2>Threat insights are now available in the Threat Events platform</h2>](https://developers.cloudflare.com/changelog/post/2025-11-21-Threat-Events-now-show-events-insights/)
+
+[Security Center](https://developers.cloudflare.com/security-center/)
+
+The threat events platform now has threat insights available for some relevant parent events. Threat intelligence analyst users can access these insights for their threat hunting activity. Insights are also highlighted in the Cloudflare dashboard by a small `lightning icon` and the insights can refer to multiple, connected events, potentially part of the same attack or campaign and associated with the same threat actor.
+
+For more information, refer to [Analyze threat events](https://developers.cloudflare.com/security-center/cloudforce-one/#analyze-threat-events).
+
+Nov 21, 2025
+
+[<h2>WAF Release - 2025-11-21</h2>](https://developers.cloudflare.com/changelog/post/2025-11-21-emergency-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week’s release introduces a critical detection for CVE-2025-61757, a vulnerability in the Oracle Identity Manager REST WebServices component.
+
+**Key Findings**
+
+This flaw allows unauthenticated attackers with network access over HTTP to fully compromise the Identity Manager, potentially leading to a complete takeover.
+
+**Impact**
+
+Oracle Identity Manager (CVE-2025-61757): Exploitation could allow an unauthenticated remote attacker to bypass security checks by sending specially crafted requests to the application's message processor. This enables the creation of arbitrary employee accounts, which can be leveraged to modify system configurations and achieve full system compromise.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...39fdbe7e | N/A | Oracle Identity Manager - Pre-Auth RCE - CVE:CVE-2025-61757 | N/A | Block | This is a new detection. |
+
+Nov 21, 2025
+
+[<h2>Environment variable limits increase for Workers Builds</h2>](https://developers.cloudflare.com/changelog/post/2025-11-21-builds-env-var-increase/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+[Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) now supports up to 64 environment variables, and each environment variable can be up to 5 KB in size. The previous limit was 5 KB total across all environment variables.
+
+This change enables better support for complex build configurations, larger application settings, and more flexible CI/CD workflows.
+
+For more details, refer to the [build limits documentation](https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/#definitions).
+
+Nov 21, 2025
+
+[<h2>Better local deployment flow for Cloudflare Workers</h2>](https://developers.cloudflare.com/changelog/post/2025-11-21-wrangler-deploy-remote-config-management/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Until now, if a Worker had been previously deployed via the [Cloudflare Dashboard ↗︎](https://dash.cloudflare.com), a subsequent deployment done via the Cloudflare Workers CLI, [**Wrangler**](https://developers.cloudflare.com/workers/wrangler/) (through the [`deploy` command](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy)), would allow the user to override the Worker's dashboard settings without providing details on what dashboard settings would be lost.
+
+Now instead, `wrangler deploy` presents a helpful representation of the differences between the [local configuration](https://developers.cloudflare.com/workers/wrangler/configuration/) and the remote dashboard settings, and offers to update your local configuration file for you.
+
+See example below showing a before and after for `wrangler deploy` when a local configuration is expected to override a Worker's dashboard settings:
+
+### Before
+
+![wrangler deploy run before the improved workflow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=785,height=257,format=webp/_astro/before.Bz-MOePT.png)
+
+### After
+
+![wrangler deploy run after the improved workflow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=788,height=492,format=webp/_astro/after.BrkkBaRL.png)
+
+Also, if instead Wrangler detects that a deployment would override remote dashboard settings but in an additive way, without modifying or removing any of them, it will simply proceed with the deployment without requesting any user interaction.
+
+Update to [Wrangler](https://developers.cloudflare.com/workers/wrangler/) v4.50.0 or greater to take advantage of this improved deploy flow.
+
+Nov 20, 2025
+
+[<h2>Terraform v5.13.0 now available</h2>](https://developers.cloudflare.com/changelog/post/2025-11-20-terraform-v5.13.0-provider/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Terraform](https://developers.cloudflare.com/terraform/)
+
+Earlier this year, we announced the launch of the new Terraform v5 Provider. We are aware of the high number of issues reported by the Cloudflare community related to the v5 release. We have committed to releasing improvements on a [2-3 week cadence ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/5774) to ensure its stability and reliability, including the v5.13 release. We have also pivoted from an [issue-to-issue approach to a resource-per-resource approach ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6237) - we will be focusing on specific resources to not only stabilize the resource but also ensure it is migration-friendly for those migrating from v4 to v5.
+
+Thank you for continuing to raise issues. They make our provider stronger and help us build products that reflect your needs.
+
+This release includes new features, new resources and data sources, bug fixes, updates to our Developer Documentation, and more.
+
+#### Breaking Change
+
+Please be aware that there are breaking changes for the `cloudflare_api_token` and `cloudflare_account_token` resources. These changes eliminate configuration drift caused by policy ordering differences in the Cloudflare API.
+
+For more specific information about the changes or the actions required, please see the [detailed Repository changelog ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/releases/tag/v5.13.0).
+
+#### Features
+
+- **New resources and data sources added**
+  - cloudflare\_connectivity\_directory
+  - cloudflare\_sso\_connector
+  - cloudflare\_universal\_ssl\_setting
+- **api\_token+account\_tokens:** state upgrader and schema bump ([#6472 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6472))
+- **docs:** make docs explicit when a resource does not have import support
+- **magic\_transit\_connector:** support self-serve license key ([#6398 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6398))
+- **worker\_version:** add content\_base64 support
+- **worker\_version:** boolean support for run\_worker\_first ([#6407 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6407))
+- **workers\_script\_subdomains:** add import support ([#6375 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6375))
+- **zero\_trust\_access\_application:** add proxy\_endpoint for ZT Access Application ([#6453 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6453))
+- **zero\_trust\_dlp\_predefined\_profile:** Switch DLP Predefined Profile endpoints, introduce enabled\_entries attribute
+
+#### Bug Fixes
+
+- **account\_token:** token policy order and nested resources ([#6440 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6440))
+- allow r2\_bucket\_event\_notification to be applied twice without failing ([#6419 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6419))
+- **cloudflare\_worker+cloudflare\_worker\_version:** import for the resources ([#6357 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6357))
+- **dns\_record:** inconsistent apply error ([#6452 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6452))
+- **pages\_domain:** resource tests ([#6338 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6338))
+- **pages\_project:** unintended resource state drift ([#6377 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6377))
+- **queue\_consumer:** id population ([#6181 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6181))
+- **workers\_kv:** multipart request ([#6367 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6367))
+- **workers\_kv:** updating workers metadata attribute to be read from endpoint ([#6386 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6386))
+- **workers\_script\_subdomain:** add note to cloudflare\_workers\_script\_subdomain about redundancy with cloudflare\_worker ([#6383 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6383))
+- **workers\_script:** allow config.run\_worker\_first to accept list input
+- **zero\_trust\_device\_custom\_profile\_local\_domain\_fallback:** drift issues ([#6365 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6365))
+- **zero\_trust\_device\_custom\_profile:** resolve drift issues ([#6364 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6364))
+- **zero\_trust\_dex\_test:** correct configurability for 'targeted' attribute to fix drift
+- **zero\_trust\_tunnel\_cloudflared\_config:** remove warp\_routing from cloudflared\_config ([#6471 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6471))
+
+#### Upgrading
+
+We suggest holding off on migration to v5 while we work on stabilization. This help will you avoid any blocking issues while the Terraform resources are actively being stabilized. We will be releasing a new migration tool in March 2026 to help support v4 to v5 transitions for our most popular resources.
+
+#### For more info
+
+- [Terraform Provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs)
+- [Documentation on using Terraform with Cloudflare ↗︎](https://developers.cloudflare.com/terraform/)
+
+Nov 19, 2025
+
+[<h2>AI Search support for crawling login protected website content</h2>](https://developers.cloudflare.com/changelog/post/2025-11-19-add-extra-headers-for-website-crawling/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/) now supports [custom HTTP headers](https://developers.cloudflare.com/ai-search/configuration/data-source/website/authentication-headers/) for website crawling, solving a common problem where valuable content behind authentication or access controls could not be indexed.
+
+Previously, AI Search could only crawl publicly accessible pages, leaving knowledge bases, documentation, and other protected content out of your search results. With custom headers support, you can now include authentication credentials that allow the crawler to access this protected content.
+
+This is particularly useful for indexing content like:
+
+- **Internal documentation** behind corporate login systems
+- **Premium content** that requires users to provide access to unlock
+- **Sites protected by Cloudflare Access** using service tokens
+
+To add custom headers when creating an AI Search instance, select **Parse options**. In the **Extra headers** section, you can add up to five custom headers per Website data source.
+
+![Custom headers configuration in AI Search](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1098,height=287,format=webp/_astro/ai-search-extra-headers.B7A2spby.png)
+
+For example, to crawl a site protected by [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/), you can add service token credentials as custom headers:
+
+```plaintext
+CF-Access-Client-Id: your-token-id.access
+CF-Access-Client-Secret: your-token-secret
+```
+
+The crawler will automatically include these headers in all requests, allowing it to access protected pages that would otherwise be blocked.
+
+Learn more about [configuring custom headers for website crawling](https://developers.cloudflare.com/ai-search/configuration/data-source/website/authentication-headers/) in AI Search.
+
+Nov 18, 2025
+
+[<h2>Adjustment to Final Disposition Column</h2>](https://developers.cloudflare.com/changelog/post/2025-11-18-temporary-adjustment-to-final-disposition-column/)
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
+
+#### Adjustment to Final Disposition column
+
+#### The **Final Disposition** column in **Submissions** > **Team Submissions** tab is changing for non-Phishguard customers.
+
+#### What's Changing
+
+- Column will be called **Status** instead of **Final Disposition**
+- Column status values will now be: **Submitted**, **Accepted** or **Rejected**.
+
+#### Next Steps
+
+We will listen carefully to your feedback and continue to find comprehensive ways to communicate updates on your submissions. Your submissions will continue to be addressed at an even greater rate than before, fuelling faster and more accurate email security improvement.
+
+Nov 17, 2025
+
+[<h2>New Cloudflare One Navigation and Product Experience</h2>](https://developers.cloudflare.com/changelog/post/new-cloudflare-one-navigation-and-product-experience/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+The Zero Trust dashboard and navigation is receiving significant and exciting updates. The dashboard is being restructured to better support common tasks and workflows, and various pages have been moved and consolidated.
+
+There is a new guided experience on login detailing the changes, and you can use the Zero Trust dashboard search to find product pages by both their new and old names, as well as your created resources. To replay the guided experience, you can find it in Overview > Get Started.
+
+![Cloudflare One Dash Changes](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1388,height=1546,format=webp/_astro/cf1-dash-changes.Uk_Y-2V-.png)
+
+Notable changes
+
+- Product names have been removed from many top-level navigation items to help bring clarity to what they help you accomplish. For example, you can find Gateway policies under ‘Traffic policies' and CASB findings under ‘Cloud & SaaS findings.'
+- You can view all analytics, logs, and real-time monitoring tools from ‘Insights.'
+- ‘Networks' better maps the ways that your corporate network interacts with Cloudflare. Some pages like Tunnels, are now a tab rather than a full page as part of these changes. You can find them at Networks > Connectors.
+- Settings are now located closer to the tools and resources they impact. For example, this means you'll find your WARP configurations at Team & Resources > Devices.
+
+![New Cloudflare One Navigation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=514,height=1112,format=webp/_astro/new-cf1-navigation.B7-E-9CV.png)
+
+No changes to our API endpoint structure or to any backend services have been made as part of this effort.
+
+Nov 17, 2025
+
+[<h2>WAF Release - 2025-11-17</h2>](https://developers.cloudflare.com/changelog/post/2025-11-17-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week highlights enhancements to detection signatures improving coverage for vulnerabilities in DELMIA Apriso, linked to CVE-2025-6205.
+
+**Key Findings**
+
+This vulnerability allows unauthenticated attackers to gain privileged access to the application. The latest update provides enhanced detection logic for resilient protection against exploitation attempts.
+
+**Impact**
+
+- DELMIA Apriso (CVE-2025-6205): Exploitation could allow an unauthenticated remote attacker to bypass security checks by sending specially crafted requests to the application's message processor. This enables the creation of arbitrary employee accounts, which can be leveraged to modify system configurations and achieve full system compromise.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...d256f4bc | N/A | DELMIA Apriso - Auth Bypass - CVE:CVE-2025-6205 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...1a3e521e | N/A | PHP Wrapper Injection - Body | N/A | Disabled | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Managed Ruleset | ...8f76bd74 | N/A | PHP Wrapper Injection - URI | N/A | Disabled | Rule metadata description refined. Detection unchanged. |
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/33/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/33/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

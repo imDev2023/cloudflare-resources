@@ -1,0 +1,298 @@
+---
+description: Create a new ruleset using the Rulesets API.
+title: Create a ruleset
+image: https://developers.cloudflare.com/ruleset-engine/rulesets-api/create/og.png?v=c403c538fee4a24b
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Create a ruleset
+
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/create/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Creates a ruleset of a given kind in the specified phase. Allows you to create phase entry point rulesets.
+
+Use one of the following API endpoints:
+
+- [Create an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/)  
+  `POST /accounts/{account_id}/rulesets`
+- [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/)  
+  `POST /zones/{zone_id}/rulesets`
+
+## Parameters
+
+A `POST` request to create a ruleset supports the following parameters in the request body:
+
+- `name` `String`
+  - A human-readable name for the ruleset.
+  - The name is immutable. You cannot change it over the lifetime of the ruleset.
+- `description` `String` Optional
+  - Optional description for the ruleset.
+  - You can change the description over the lifetime of the ruleset.
+- `kind` `String`
+  - The kind of ruleset the JSON object represents.
+  - Allowed values:
+    - `custom`: Creates a custom ruleset
+    - `root`: Creates a phase [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) at the account level
+    - `zone`: Creates a phase entry point ruleset at the zone level
+- `phase` `String`
+  - The name of the [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) where the ruleset will be created.
+  - Check the [phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) or the specific Cloudflare product documentation for more information on the phases where you can create rulesets for that product.
+- `rules` `Array<Rule>` Optional
+  - A list of [rules](https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/#rule-object-structure-and-properties) to include in the ruleset.
+
+For additional details on these parameters, refer to [JSON objects](https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/).
+
+## Example - Create a custom ruleset
+
+The following `POST` request creates a custom ruleset in the `http_request_firewall_custom` phase at the account level containing a single rule.
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Create an account rulesetbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Example custom ruleset",
+		"kind": "custom",
+		"description": "Example ruleset description",
+		"rules": [
+				{
+						"action": "log",
+						"expression": "cf.zone.name eq \"example.com\""
+				}
+		],
+		"phase": "http_request_firewall_custom"
+	}'
+```
+
+```json
+{
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Example custom ruleset",
+		"description": "Example ruleset description",
+		"kind": "custom",
+		"version": "1",
+		"rules": [
+			{
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "log",
+				"expression": "cf.zone.name eq \"example.com\"",
+				"last_updated": "2025-03-17T15:42:37.917815Z"
+			}
+		],
+		"last_updated": "2025-03-17T15:42:37.917815Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
+}
+```
+
+## Example - Create a zone-level phase entry point ruleset
+
+The following `POST` request creates a zone-level phase entry point ruleset at the `http_request_firewall_managed` phase with a single rule that executes a managed ruleset.
+
+Note
+
+You do not have to use this method to create a phase entry point ruleset. Cloudflare automatically creates the entry point ruleset when you add a rule to it, if it does not exist. Refer to [Add rules to phase entry point rulesets](https://developers.cloudflare.com/ruleset-engine/basic-operations/add-rule-phase-rulesets/) for more information.
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Config Settings Write</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Cache Settings Write</code>
+- <code>Custom Errors Write</code>
+- <code>Origin Write</code>
+- <code>Managed headers Write</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>Sanitize Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Bot Management Write</code>
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Create a zone rulesetbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Zone-level phase entry point",
+		"kind": "zone",
+		"description": "This ruleset executes a managed ruleset.",
+		"rules": [
+				{
+						"action": "execute",
+						"expression": "true",
+						"action_parameters": {
+								"id": "<MANAGED_RULESET_ID>"
+						}
+				}
+		],
+		"phase": "http_request_firewall_managed"
+	}'
+```
+
+```json
+{
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Zone-level phase entry point",
+		"description": "This ruleset executes a managed ruleset.",
+		"kind": "zone",
+		"version": "1",
+		"rules": [
+			{
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"expression": "true",
+				"action_parameters": {
+					"id": "<MANAGED_RULESET_ID>"
+				},
+				"last_updated": "2025-03-17T15:42:37.917815Z"
+			}
+		],
+		"last_updated": "2025-03-17T15:42:37.917815Z",
+		"phase": "http_request_firewall_managed"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
+}
+```
+
+## Example - Create an account-level phase entry point ruleset
+
+The following `POST` request creates an account-level phase entry point ruleset for the `http_ratelimit` phase with a single rule that executes a rate limiting ruleset for all Enterprise zones in the account.
+
+Note
+
+You do not have to use this method to create a phase entry point ruleset. Cloudflare automatically creates the entry point ruleset when you add a rule to it, if it does not exist. Refer to [Add rules to phase entry point rulesets](https://developers.cloudflare.com/ruleset-engine/basic-operations/add-rule-phase-rulesets/) for more information.
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Create an account rulesetbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Account-level phase entry point",
+		"kind": "root",
+		"description": "This ruleset executes a rate limiting ruleset.",
+		"rules": [
+				{
+						"action": "execute",
+						"expression": "(cf.zone.plan eq \"ENT\")",
+						"action_parameters": {
+								"id": "<RATE_LIMITING_RULESET_ID>"
+						}
+				}
+		],
+		"phase": "http_ratelimit"
+	}'
+```
+
+```json
+{
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Account-level phase entry point",
+		"description": "This ruleset executes a rate limiting ruleset.",
+		"kind": "root",
+		"version": "1",
+		"rules": [
+			{
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"expression": "(cf.zone.plan eq \"ENT\")",
+				"action_parameters": {
+					"id": "<RATE_LIMITING_RULESET_ID>"
+				},
+				"last_updated": "2024-09-17T15:42:37.917815Z"
+			}
+		],
+		"last_updated": "2024-09-17T15:42:37.917815Z",
+		"phase": "http_ratelimit"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
+}
+```
+
+Caution
+
+You can only apply rate limiting rulesets to incoming traffic of zones on an Enterprise plan. To enforce this requirement, you must include `cf.zone.plan eq "ENT"` in the expression of the `execute` rule deploying the rate limiting ruleset.

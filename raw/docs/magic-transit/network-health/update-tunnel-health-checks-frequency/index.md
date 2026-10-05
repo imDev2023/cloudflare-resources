@@ -1,0 +1,43 @@
+---
+description: Update tunnel health check frequency.
+title: Update tunnel health checks frequency
+image: https://developers.cloudflare.com/magic-transit/network-health/update-tunnel-health-checks-frequency/og.png?v=7b35d6a849d9b328
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Update tunnel health checks frequency
+
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/network-health/update-tunnel-health-checks-frequency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+By default, Cloudflare servers send [health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/) to each GRE, Cloudflare Network Interconnect (CNI), or IPsec tunnel endpoint you configure to receive traffic from Magic Transit.
+
+You can configure the health check frequency through the dashboard or [the API](https://developers.cloudflare.com/api/resources/magic_transit/subresources/gre_tunnels/methods/update/) to suit your use case. For example, if you are connecting a lower-traffic site that does not need immediate failover and you prefer a lower volume of health check traffic, set the frequency to `low`. On the other hand, if you are connecting a site that is extremely sensitive to any issues and you want proactive failover at the earliest sign of a potential problem, set this to `high`.
+
+Available options are `low`, `mid`, and `high`.
+
+1. To create or edit your tunnel, refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#add-tunnels).
+2. Change the **Health check rate** to your desired rate. For example, *Low*.
+3. Save your changes.
+
+You can adjust the health check frequency by updating your [GRE](https://developers.cloudflare.com/api/resources/magic_transit/subresources/gre_tunnels/methods/update/), [IPsec](https://developers.cloudflare.com/api/resources/magic_transit/subresources/ipsec_tunnels/methods/update/), or [CNI](https://developers.cloudflare.com/api/resources/magic_transit/subresources/cf_interconnects/methods/update/) tunnels.
+
+The following example adjusts tunnel health check frequency to `low`. Note that this command applies to GRE, IPsec and CNI tunnels:
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec_tunnels/%7Bipsec_tunnel_id%7D" \
+	--request PUT \
+	--json '{
+		"health_check": {
+				"rate": "low"
+		}
+	}'
+```
+
+Note
+
+Magic Transit customers with [Customer Metadata Boundary](https://developers.cloudflare.com/data-localization/metadata-boundary/) enabled for the European Union can access GRE, IPsec, and CNI (Cloudflare Network Interconnect) health check and traffic volume data in the Cloudflare dashboard and through the API. This ensures that customers who need to be General Data Protection Regulation (GDPR) compliant can access all Magic Transit features.

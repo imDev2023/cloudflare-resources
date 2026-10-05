@@ -1,0 +1,1697 @@
+---
+title: Policies
+---
+
+[Skip to content](#_top)
+
+[API Reference](https://developers.cloudflare.com/api)
+
+[Zero Trust](https://developers.cloudflare.com/api/resources/zero_trust)
+
+[Devices](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices)
+
+Copy Markdown
+
+Open in **Claude**Open in **ChatGPT**Open in **Cursor**
+
+---
+
+**Copy Markdown****View as Markdown**
+
+# Policies
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+DevicePolicyCertificates object {enabled }
+
+</summary>
+
+enabled: boolean
+
+The current status of the device policy certificate provisioning feature for WARP clients.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20device_policy_certificates%20%3E%20(schema)%20%3E%20(property)%20enabled">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20device_policy_certificates%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+FallbackDomain object {suffix, description, dns\_server }
+
+</summary>
+
+suffix: string
+
+The domain suffix to match when resolving locally.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)%20%3E%20(property)%20suffix">Link to this property</a>
+
+description: optional string
+
+A description of the fallback domain, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+dns\_server: optional array of string
+
+A list of IP addresses to handle domain resolution.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)%20%3E%20(property)%20dns_server">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+SettingsPolicy object {allow\_mode\_switch, allow\_updates, allowed\_to\_leave, 30 more }
+
+</summary>
+
+allow\_mode\_switch: optional boolean
+
+Whether to allow the user to switch WARP between modes.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20allow_mode_switch">Link to this property</a>
+
+allow\_updates: optional boolean
+
+Whether to receive update notifications when a new version of the client is available.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20allow_updates">Link to this property</a>
+
+allowed\_to\_leave: optional boolean
+
+Whether to allow devices to leave the organization.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20allowed_to_leave">Link to this property</a>
+
+auto\_connect: optional number
+
+The amount of time in seconds to reconnect after having been disabled.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20auto_connect">Link to this property</a>
+
+<details>
+
+<summary>
+
+browser\_extension\_config: optional object {proxy\_control, proxy\_enabled }
+
+Browser extension proxy settings. Required when profile\_type is browser\_extension and invalid for WARP profiles.
+
+</summary>
+
+<details>
+
+<summary>
+
+proxy\_control: "unlocked"or "locked"
+
+Whether the user may disable the browser extension proxy.
+
+</summary>
+
+One of the following:
+
+"unlocked"
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20browser_extension_config%20%3E%20(property)%20proxy_control%20%3E%20(member)%200">Link to this property</a>
+
+"locked"
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20browser_extension_config%20%3E%20(property)%20proxy_control%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20browser_extension_config%20%3E%20(property)%20proxy_control">Link to this property</a>
+
+proxy\_enabled: boolean
+
+Whether the browser extension proxy is active.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20browser_extension_config%20%3E%20(property)%20proxy_enabled">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20browser_extension_config">Link to this property</a>
+
+captive\_portal: optional number
+
+Turn on the captive portal after the specified amount of time.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20captive_portal">Link to this property</a>
+
+default: optional boolean
+
+Whether the policy is the account default. WARP group profiles cannot set this field.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20default">Link to this property</a>
+
+description: optional string
+
+A description of the policy.
+
+maxLength500
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+disable\_auto\_fallback: optional boolean
+
+If the <code>dns_server</code> field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to <code>true</code>.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20disable_auto_fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+dns\_search\_suffixes: optional array of object {suffix, description }
+
+List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+
+</summary>
+
+suffix: string
+
+The DNS search suffix to append when resolving short hostnames.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20dns_search_suffixes%20%3E%20(items)%20%3E%20(property)%20suffix">Link to this property</a>
+
+description: optional string
+
+A description of the DNS search suffix.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20dns_search_suffixes%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20dns_search_suffixes">Link to this property</a>
+
+enabled: optional boolean
+
+Whether the policy will be applied to matching devices.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+exclude: optional array of <a href="https://developers.cloudflare.com/api/resources/zero_trust#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)">SplitTunnelExclude</a>
+
+List of routes excluded in the WARP client’s tunnel.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+TeamsDevicesExcludeSplitTunnelWithAddress object {address, description }
+
+</summary>
+
+address: string
+
+The address in CIDR format to exclude from the tunnel. If <code>address</code> is present, <code>host</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20address">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+TeamsDevicesExcludeSplitTunnelWithHost object {host, description }
+
+</summary>
+
+host: string
+
+The domain name to exclude from the tunnel. If <code>host</code> is present, <code>address</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20host">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20exclude">Link to this property</a>
+
+exclude\_office\_ips: optional boolean
+
+Whether to add Microsoft IPs to Split Tunnel exclusions.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20exclude_office_ips">Link to this property</a>
+
+<details>
+
+<summary>
+
+fallback\_domains: optional array of <a href="https://developers.cloudflare.com/api/resources/zero_trust#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)">FallbackDomain</a> { suffix, description, dns\_server }
+
+</summary>
+
+suffix: string
+
+The domain suffix to match when resolving locally.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)%20%3E%20(property)%20suffix">Link to this property</a>
+
+description: optional string
+
+A description of the fallback domain, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+dns\_server: optional array of string
+
+A list of IP addresses to handle domain resolution.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)%20%3E%20(property)%20dns_server">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20fallback_domains">Link to this property</a>
+
+gateway\_unique\_id: optional string
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20gateway_unique_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+global\_acceleration: optional object {api\_endpoints, enabled, masque\_endpoints, 2 more }
+
+Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See <a href="https://developers.cloudflare.com/china-network/concepts/global-acceleration/">https://developers.cloudflare.com/china-network/concepts/global-acceleration/</a>.
+
+</summary>
+
+api\_endpoints: array of string
+
+IP:port entries for the API endpoints.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20api_endpoints">Link to this property</a>
+
+enabled: boolean
+
+Global acceleration settings are used only when “enabled”.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20enabled">Link to this property</a>
+
+masque\_endpoints: array of string
+
+IP:port entries for the MASQUE tunnel endpoints. Either wireguard\_endpoints or masque\_endpoints must be provided.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20masque_endpoints">Link to this property</a>
+
+wireguard\_endpoints: array of string
+
+IP:port entries for the WireGuard tunnel endpoints. Either wireguard\_endpoints or masque\_endpoints must be provided.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20wireguard_endpoints">Link to this property</a>
+
+autoswitch: optional boolean
+
+Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20autoswitch">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20global_acceleration">Link to this property</a>
+
+<details>
+
+<summary>
+
+include: optional array of <a href="https://developers.cloudflare.com/api/resources/zero_trust#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)">SplitTunnelInclude</a>
+
+List of routes included in the WARP client’s tunnel.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+TeamsDevicesIncludeSplitTunnelWithAddress object {address, description }
+
+</summary>
+
+address: string
+
+The address in CIDR format to include in the tunnel. If <code>address</code> is present, <code>host</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20address">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+TeamsDevicesIncludeSplitTunnelWithHost object {host, description }
+
+</summary>
+
+host: string
+
+The domain name to include in the tunnel. If <code>host</code> is present, <code>address</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20host">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20include">Link to this property</a>
+
+lan\_allow\_minutes: optional number
+
+The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20lan_allow_minutes">Link to this property</a>
+
+lan\_allow\_subnet\_size: optional number
+
+The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20lan_allow_subnet_size">Link to this property</a>
+
+match: optional string
+
+The wirefilter expression to match devices. Available values: “identity.email”, “identity.groups.id”, “identity.groups.name”, “identity.groups.email”, “identity.service\_token\_uuid”, “identity.saml\_attributes”, “network”, “os.name”, “os.version”.
+
+maxLength500
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20match">Link to this property</a>
+
+name: optional string
+
+The name of the device settings profile.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20name">Link to this property</a>
+
+policy\_id: optional string
+
+maxLength36
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20policy_id">Link to this property</a>
+
+precedence: optional number
+
+The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20precedence">Link to this property</a>
+
+<details>
+
+<summary>
+
+profile\_type: optional "warp"or "browser\_extension"
+
+The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+
+</summary>
+
+One of the following:
+
+"warp"
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20profile_type%20%3E%20(member)%200">Link to this property</a>
+
+"browser\_extension"
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20profile_type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20profile_type">Link to this property</a>
+
+register\_interface\_ip\_with\_dns: optional boolean
+
+Determines if the operating system will register WARP’s local interface IP with your on-premises DNS server.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20register_interface_ip_with_dns">Link to this property</a>
+
+sccm\_vpn\_boundary\_support: optional boolean
+
+Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20sccm_vpn_boundary_support">Link to this property</a>
+
+<details>
+
+<summary>
+
+service\_mode\_v2: optional object {mode, port }
+
+</summary>
+
+mode: optional string
+
+The mode to run the WARP client under.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20service_mode_v2%20%3E%20(property)%20mode">Link to this property</a>
+
+port: optional number
+
+The port number when used with proxy mode.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20service_mode_v2%20%3E%20(property)%20port">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20service_mode_v2">Link to this property</a>
+
+support\_url: optional string
+
+The URL to launch when the Send Feedback button is clicked.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20support_url">Link to this property</a>
+
+switch\_locked: optional boolean
+
+Whether to allow the user to turn off the WARP switch and disconnect the client.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20switch_locked">Link to this property</a>
+
+<details>
+
+<summary>
+
+Deprecatedtarget\_tests: optional array of object {id, name }
+
+</summary>
+
+id: optional string
+
+The id of the DEX test targeting this policy.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20target_tests%20%3E%20(items)%20%3E%20(property)%20id">Link to this property</a>
+
+name: optional string
+
+The name of the DEX test targeting this policy.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20target_tests%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20target_tests">Link to this property</a>
+
+tunnel\_protocol: optional string
+
+Determines which tunnel protocol to use.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20tunnel_protocol">Link to this property</a>
+
+uninstall\_protection: optional boolean
+
+Determines whether uninstalling the WARP client requires an override code. (Windows only).
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20uninstall_protection">Link to this property</a>
+
+<details>
+
+<summary>
+
+virtual\_networks: optional object {allowed, default }
+
+Virtual network access settings for the device.
+
+</summary>
+
+allowed: array of string
+
+List of virtual network IDs the device is allowed to access. When virtual\_networks is set, at least one entry is required.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20virtual_networks%20%3E%20(property)%20allowed">Link to this property</a>
+
+default: string
+
+The default virtual network ID. Must be included in the <code>allowed</code> list.
+
+formatuuid
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20virtual_networks%20%3E%20(property)%20default">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)%20%3E%20(property)%20virtual_networks">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20settings_policy%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+SplitTunnelExclude = object {address, description } or object {host, description }
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+TeamsDevicesExcludeSplitTunnelWithAddress object {address, description }
+
+</summary>
+
+address: string
+
+The address in CIDR format to exclude from the tunnel. If <code>address</code> is present, <code>host</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20address">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+TeamsDevicesExcludeSplitTunnelWithHost object {host, description }
+
+</summary>
+
+host: string
+
+The domain name to exclude from the tunnel. If <code>host</code> is present, <code>address</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20host">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+SplitTunnelInclude = object {address, description } or object {host, description }
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+TeamsDevicesIncludeSplitTunnelWithAddress object {address, description }
+
+</summary>
+
+address: string
+
+The address in CIDR format to include in the tunnel. If <code>address</code> is present, <code>host</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20address">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+TeamsDevicesIncludeSplitTunnelWithHost object {host, description }
+
+</summary>
+
+host: string
+
+The domain name to include in the tunnel. If <code>host</code> is present, <code>address</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20host">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)>)
+
+#### PoliciesDefault
+
+##### [Get the default device settings profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/default/methods/get)
+
+GET/accounts/{account\_id}/devices/policy
+
+##### [Update the default device settings profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/default/methods/edit)
+
+PATCH/accounts/{account\_id}/devices/policy
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+DefaultGetResponse object {allow\_mode\_switch, allow\_updates, allowed\_to\_leave, 22 more }
+
+</summary>
+
+allow\_mode\_switch: optional boolean
+
+Whether to allow the user to switch WARP between modes.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20allow_mode_switch">Link to this property</a>
+
+allow\_updates: optional boolean
+
+Whether to receive update notifications when a new version of the client is available.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20allow_updates">Link to this property</a>
+
+allowed\_to\_leave: optional boolean
+
+Whether to allow devices to leave the organization.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20allowed_to_leave">Link to this property</a>
+
+auto\_connect: optional number
+
+The amount of time in seconds to reconnect after having been disabled.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20auto_connect">Link to this property</a>
+
+captive\_portal: optional number
+
+Turn on the captive portal after the specified amount of time.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20captive_portal">Link to this property</a>
+
+default: optional boolean
+
+Whether the policy will be applied to matching devices.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20default">Link to this property</a>
+
+disable\_auto\_fallback: optional boolean
+
+If the <code>dns_server</code> field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to <code>true</code>.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20disable_auto_fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+dns\_search\_suffixes: optional array of object {suffix, description }
+
+List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+
+</summary>
+
+suffix: string
+
+The DNS search suffix to append when resolving short hostnames.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20dns_search_suffixes%20%3E%20(items)%20%3E%20(property)%20suffix">Link to this property</a>
+
+description: optional string
+
+A description of the DNS search suffix.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20dns_search_suffixes%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20dns_search_suffixes">Link to this property</a>
+
+enabled: optional boolean
+
+Whether the policy will be applied to matching devices.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+exclude: optional array of <a href="https://developers.cloudflare.com/api/resources/zero_trust#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)">SplitTunnelExclude</a>
+
+List of routes excluded in the WARP client’s tunnel.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+TeamsDevicesExcludeSplitTunnelWithAddress object {address, description }
+
+</summary>
+
+address: string
+
+The address in CIDR format to exclude from the tunnel. If <code>address</code> is present, <code>host</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20address">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+TeamsDevicesExcludeSplitTunnelWithHost object {host, description }
+
+</summary>
+
+host: string
+
+The domain name to exclude from the tunnel. If <code>host</code> is present, <code>address</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20host">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20exclude">Link to this property</a>
+
+exclude\_office\_ips: optional boolean
+
+Whether to add Microsoft IPs to Split Tunnel exclusions.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20exclude_office_ips">Link to this property</a>
+
+<details>
+
+<summary>
+
+fallback\_domains: optional array of <a href="https://developers.cloudflare.com/api/resources/zero_trust#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)">FallbackDomain</a> { suffix, description, dns\_server }
+
+</summary>
+
+suffix: string
+
+The domain suffix to match when resolving locally.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)%20%3E%20(property)%20suffix">Link to this property</a>
+
+description: optional string
+
+A description of the fallback domain, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+dns\_server: optional array of string
+
+A list of IP addresses to handle domain resolution.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)%20%3E%20(property)%20dns_server">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20fallback_domains">Link to this property</a>
+
+gateway\_unique\_id: optional string
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20gateway_unique_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+global\_acceleration: optional object {api\_endpoints, enabled, masque\_endpoints, 2 more }
+
+Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See <a href="https://developers.cloudflare.com/china-network/concepts/global-acceleration/">https://developers.cloudflare.com/china-network/concepts/global-acceleration/</a>.
+
+</summary>
+
+api\_endpoints: array of string
+
+IP:port entries for the API endpoints.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20api_endpoints">Link to this property</a>
+
+enabled: boolean
+
+Global acceleration settings are used only when “enabled”.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20enabled">Link to this property</a>
+
+masque\_endpoints: array of string
+
+IP:port entries for the MASQUE tunnel endpoints. Either wireguard\_endpoints or masque\_endpoints must be provided.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20masque_endpoints">Link to this property</a>
+
+wireguard\_endpoints: array of string
+
+IP:port entries for the WireGuard tunnel endpoints. Either wireguard\_endpoints or masque\_endpoints must be provided.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20wireguard_endpoints">Link to this property</a>
+
+autoswitch: optional boolean
+
+Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20autoswitch">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20global_acceleration">Link to this property</a>
+
+<details>
+
+<summary>
+
+include: optional array of <a href="https://developers.cloudflare.com/api/resources/zero_trust#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)">SplitTunnelInclude</a>
+
+List of routes included in the WARP client’s tunnel.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+TeamsDevicesIncludeSplitTunnelWithAddress object {address, description }
+
+</summary>
+
+address: string
+
+The address in CIDR format to include in the tunnel. If <code>address</code> is present, <code>host</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20address">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+TeamsDevicesIncludeSplitTunnelWithHost object {host, description }
+
+</summary>
+
+host: string
+
+The domain name to include in the tunnel. If <code>host</code> is present, <code>address</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20host">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20include">Link to this property</a>
+
+policy\_id: optional string
+
+maxLength36
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20policy_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+profile\_type: optional "warp"or "browser\_extension"
+
+The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+
+</summary>
+
+One of the following:
+
+"warp"
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20profile_type%20%3E%20(member)%200">Link to this property</a>
+
+"browser\_extension"
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20profile_type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20profile_type">Link to this property</a>
+
+register\_interface\_ip\_with\_dns: optional boolean
+
+Determines if the operating system will register WARP’s local interface IP with your on-premises DNS server.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20register_interface_ip_with_dns">Link to this property</a>
+
+sccm\_vpn\_boundary\_support: optional boolean
+
+Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20sccm_vpn_boundary_support">Link to this property</a>
+
+<details>
+
+<summary>
+
+service\_mode\_v2: optional object {mode, port }
+
+</summary>
+
+mode: optional string
+
+The mode to run the WARP client under.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20service_mode_v2%20%3E%20(property)%20mode">Link to this property</a>
+
+port: optional number
+
+The port number when used with proxy mode.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20service_mode_v2%20%3E%20(property)%20port">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20service_mode_v2">Link to this property</a>
+
+support\_url: optional string
+
+The URL to launch when the Send Feedback button is clicked.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20support_url">Link to this property</a>
+
+switch\_locked: optional boolean
+
+Whether to allow the user to turn off the WARP switch and disconnect the client.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20switch_locked">Link to this property</a>
+
+tunnel\_protocol: optional string
+
+Determines which tunnel protocol to use.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20tunnel_protocol">Link to this property</a>
+
+uninstall\_protection: optional boolean
+
+Determines whether uninstalling the WARP client requires an override code. (Windows only).
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20uninstall_protection">Link to this property</a>
+
+<details>
+
+<summary>
+
+virtual\_networks: optional object {allowed, default }
+
+Virtual network access settings for the device.
+
+</summary>
+
+allowed: array of string
+
+List of virtual network IDs the device is allowed to access. When virtual\_networks is set, at least one entry is required.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20virtual_networks%20%3E%20(property)%20allowed">Link to this property</a>
+
+default: string
+
+The default virtual network ID. Must be included in the <code>allowed</code> list.
+
+formatuuid
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20virtual_networks%20%3E%20(property)%20default">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)%20%3E%20(property)%20virtual_networks">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_get_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DefaultEditResponse object {allow\_mode\_switch, allow\_updates, allowed\_to\_leave, 22 more }
+
+</summary>
+
+allow\_mode\_switch: optional boolean
+
+Whether to allow the user to switch WARP between modes.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20allow_mode_switch">Link to this property</a>
+
+allow\_updates: optional boolean
+
+Whether to receive update notifications when a new version of the client is available.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20allow_updates">Link to this property</a>
+
+allowed\_to\_leave: optional boolean
+
+Whether to allow devices to leave the organization.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20allowed_to_leave">Link to this property</a>
+
+auto\_connect: optional number
+
+The amount of time in seconds to reconnect after having been disabled.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20auto_connect">Link to this property</a>
+
+captive\_portal: optional number
+
+Turn on the captive portal after the specified amount of time.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20captive_portal">Link to this property</a>
+
+default: optional boolean
+
+Whether the policy will be applied to matching devices.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20default">Link to this property</a>
+
+disable\_auto\_fallback: optional boolean
+
+If the <code>dns_server</code> field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to <code>true</code>.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20disable_auto_fallback">Link to this property</a>
+
+<details>
+
+<summary>
+
+dns\_search\_suffixes: optional array of object {suffix, description }
+
+List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+
+</summary>
+
+suffix: string
+
+The DNS search suffix to append when resolving short hostnames.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20dns_search_suffixes%20%3E%20(items)%20%3E%20(property)%20suffix">Link to this property</a>
+
+description: optional string
+
+A description of the DNS search suffix.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20dns_search_suffixes%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20dns_search_suffixes">Link to this property</a>
+
+enabled: optional boolean
+
+Whether the policy will be applied to matching devices.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20enabled">Link to this property</a>
+
+<details>
+
+<summary>
+
+exclude: optional array of <a href="https://developers.cloudflare.com/api/resources/zero_trust#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)">SplitTunnelExclude</a>
+
+List of routes excluded in the WARP client’s tunnel.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+TeamsDevicesExcludeSplitTunnelWithAddress object {address, description }
+
+</summary>
+
+address: string
+
+The address in CIDR format to exclude from the tunnel. If <code>address</code> is present, <code>host</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20address">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+TeamsDevicesExcludeSplitTunnelWithHost object {host, description }
+
+</summary>
+
+host: string
+
+The domain name to exclude from the tunnel. If <code>host</code> is present, <code>address</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20host">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_exclude%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20exclude">Link to this property</a>
+
+exclude\_office\_ips: optional boolean
+
+Whether to add Microsoft IPs to Split Tunnel exclusions.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20exclude_office_ips">Link to this property</a>
+
+<details>
+
+<summary>
+
+fallback\_domains: optional array of <a href="https://developers.cloudflare.com/api/resources/zero_trust#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)">FallbackDomain</a> { suffix, description, dns\_server }
+
+</summary>
+
+suffix: string
+
+The domain suffix to match when resolving locally.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)%20%3E%20(property)%20suffix">Link to this property</a>
+
+description: optional string
+
+A description of the fallback domain, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)%20%3E%20(property)%20description">Link to this property</a>
+
+dns\_server: optional array of string
+
+A list of IP addresses to handle domain resolution.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20fallback_domain%20%3E%20(schema)%20%3E%20(property)%20dns_server">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20fallback_domains">Link to this property</a>
+
+gateway\_unique\_id: optional string
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20gateway_unique_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+global\_acceleration: optional object {api\_endpoints, enabled, masque\_endpoints, 2 more }
+
+Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See <a href="https://developers.cloudflare.com/china-network/concepts/global-acceleration/">https://developers.cloudflare.com/china-network/concepts/global-acceleration/</a>.
+
+</summary>
+
+api\_endpoints: array of string
+
+IP:port entries for the API endpoints.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20api_endpoints">Link to this property</a>
+
+enabled: boolean
+
+Global acceleration settings are used only when “enabled”.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20enabled">Link to this property</a>
+
+masque\_endpoints: array of string
+
+IP:port entries for the MASQUE tunnel endpoints. Either wireguard\_endpoints or masque\_endpoints must be provided.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20masque_endpoints">Link to this property</a>
+
+wireguard\_endpoints: array of string
+
+IP:port entries for the WireGuard tunnel endpoints. Either wireguard\_endpoints or masque\_endpoints must be provided.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20wireguard_endpoints">Link to this property</a>
+
+autoswitch: optional boolean
+
+Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20global_acceleration%20%3E%20(property)%20autoswitch">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20global_acceleration">Link to this property</a>
+
+<details>
+
+<summary>
+
+include: optional array of <a href="https://developers.cloudflare.com/api/resources/zero_trust#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)">SplitTunnelInclude</a>
+
+List of routes included in the WARP client’s tunnel.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+TeamsDevicesIncludeSplitTunnelWithAddress object {address, description }
+
+</summary>
+
+address: string
+
+The address in CIDR format to include in the tunnel. If <code>address</code> is present, <code>host</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20address">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+TeamsDevicesIncludeSplitTunnelWithHost object {host, description }
+
+</summary>
+
+host: string
+
+The domain name to include in the tunnel. If <code>host</code> is present, <code>address</code> must not be present.
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20host">Link to this property</a>
+
+description: optional string
+
+A description of the Split Tunnel item, displayed in the client UI.
+
+maxLength100
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies%20%3E%20(model)%20split_tunnel_include%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20include">Link to this property</a>
+
+policy\_id: optional string
+
+maxLength36
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20policy_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+profile\_type: optional "warp"or "browser\_extension"
+
+The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+
+</summary>
+
+One of the following:
+
+"warp"
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20profile_type%20%3E%20(member)%200">Link to this property</a>
+
+"browser\_extension"
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20profile_type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20profile_type">Link to this property</a>
+
+register\_interface\_ip\_with\_dns: optional boolean
+
+Determines if the operating system will register WARP’s local interface IP with your on-premises DNS server.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20register_interface_ip_with_dns">Link to this property</a>
+
+sccm\_vpn\_boundary\_support: optional boolean
+
+Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20sccm_vpn_boundary_support">Link to this property</a>
+
+<details>
+
+<summary>
+
+service\_mode\_v2: optional object {mode, port }
+
+</summary>
+
+mode: optional string
+
+The mode to run the WARP client under.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20service_mode_v2%20%3E%20(property)%20mode">Link to this property</a>
+
+port: optional number
+
+The port number when used with proxy mode.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20service_mode_v2%20%3E%20(property)%20port">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20service_mode_v2">Link to this property</a>
+
+support\_url: optional string
+
+The URL to launch when the Send Feedback button is clicked.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20support_url">Link to this property</a>
+
+switch\_locked: optional boolean
+
+Whether to allow the user to turn off the WARP switch and disconnect the client.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20switch_locked">Link to this property</a>
+
+tunnel\_protocol: optional string
+
+Determines which tunnel protocol to use.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20tunnel_protocol">Link to this property</a>
+
+uninstall\_protection: optional boolean
+
+Determines whether uninstalling the WARP client requires an override code. (Windows only).
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20uninstall_protection">Link to this property</a>
+
+<details>
+
+<summary>
+
+virtual\_networks: optional object {allowed, default }
+
+Virtual network access settings for the device.
+
+</summary>
+
+allowed: array of string
+
+List of virtual network IDs the device is allowed to access. When virtual\_networks is set, at least one entry is required.
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20virtual_networks%20%3E%20(property)%20allowed">Link to this property</a>
+
+default: string
+
+The default virtual network ID. Must be included in the <code>allowed</code> list.
+
+formatuuid
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20virtual_networks%20%3E%20(property)%20default">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)%20%3E%20(property)%20virtual_networks">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20zero_trust.devices.policies.default%20%3E%20(model)%20default_edit_response%20%3E%20(schema)>)
+
+#### PoliciesDefaultExcludes
+
+##### [Get the Split Tunnel exclude list](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/default/subresources/excludes/methods/get)
+
+GET/accounts/{account\_id}/devices/policy/exclude
+
+##### [Set the Split Tunnel exclude list](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/default/subresources/excludes/methods/update)
+
+PUT/accounts/{account\_id}/devices/policy/exclude
+
+#### PoliciesDefaultIncludes
+
+##### [Get the Split Tunnel include list](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/default/subresources/includes/methods/get)
+
+GET/accounts/{account\_id}/devices/policy/include
+
+##### [Set the Split Tunnel include list](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/default/subresources/includes/methods/update)
+
+PUT/accounts/{account\_id}/devices/policy/include
+
+#### PoliciesDefaultFallback Domains
+
+##### [Get your Local Domain Fallback list](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/default/subresources/fallback_domains/methods/get)
+
+GET/accounts/{account\_id}/devices/policy/fallback\_domains
+
+##### [Set your Local Domain Fallback list](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/default/subresources/fallback_domains/methods/update)
+
+PUT/accounts/{account\_id}/devices/policy/fallback\_domains
+
+#### PoliciesDefaultCertificates
+
+##### [Get device certificate provisioning status](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/default/subresources/certificates/methods/get)
+
+GET/zones/{zone\_id}/devices/policy/certificates
+
+##### [Update device certificate provisioning status](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/default/subresources/certificates/methods/edit)
+
+PATCH/zones/{zone\_id}/devices/policy/certificates
+
+#### PoliciesCustom
+
+##### [List device settings profiles](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/custom/methods/list)
+
+GET/accounts/{account\_id}/devices/policies
+
+##### [Get device settings profile by ID](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/custom/methods/get)
+
+GET/accounts/{account\_id}/devices/policy/{policy\_id}
+
+##### [Create a device settings profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/custom/methods/create)
+
+POST/accounts/{account\_id}/devices/policy
+
+##### [Update a device settings profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/custom/methods/edit)
+
+PATCH/accounts/{account\_id}/devices/policy/{policy\_id}
+
+##### [Delete a device settings profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/custom/methods/delete)
+
+DELETE/accounts/{account\_id}/devices/policy/{policy\_id}
+
+#### PoliciesCustomExcludes
+
+##### [Get the Split Tunnel exclude list for a device settings profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/custom/subresources/excludes/methods/get)
+
+GET/accounts/{account\_id}/devices/policy/{policy\_id}/exclude
+
+##### [Set the Split Tunnel exclude list for a device settings profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/custom/subresources/excludes/methods/update)
+
+PUT/accounts/{account\_id}/devices/policy/{policy\_id}/exclude
+
+#### PoliciesCustomIncludes
+
+##### [Get the Split Tunnel include list for a device settings profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/custom/subresources/includes/methods/get)
+
+GET/accounts/{account\_id}/devices/policy/{policy\_id}/include
+
+##### [Set the Split Tunnel include list for a device settings profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/custom/subresources/includes/methods/update)
+
+PUT/accounts/{account\_id}/devices/policy/{policy\_id}/include
+
+#### PoliciesCustomFallback Domains
+
+##### [Get the Local Domain Fallback list for a device settings profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/custom/subresources/fallback_domains/methods/get)
+
+GET/accounts/{account\_id}/devices/policy/{policy\_id}/fallback\_domains
+
+##### [Set the Local Domain Fallback list for a device settings profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/custom/subresources/fallback_domains/methods/update)
+
+PUT/accounts/{account\_id}/devices/policy/{policy\_id}/fallback\_domains

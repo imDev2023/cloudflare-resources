@@ -1,0 +1,258 @@
+---
+description: Learn how to deploy a custom ruleset to your Cloudflare account.
+title: Deploy a custom ruleset
+image: https://developers.cloudflare.com/ruleset-engine/custom-rulesets/deploy-custom-ruleset/og.png?v=3fc201759c49886e
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Deploy a custom ruleset
+
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/deploy-custom-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+To deploy a custom ruleset, add a rule with `execute` action to the list of rules of a phase [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) at the account or zone level. The expression of the new rule will define when the custom ruleset will run.
+
+You can only deploy custom rulesets in an entry point ruleset with the same scope. For example, a custom ruleset defined at the account level can only be deployed at the account level.
+
+If you are using Terraform, refer to [WAF custom rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/#create-and-deploy-a-custom-ruleset) for examples of creating and deploying custom rulesets.
+
+If you are using the Cloudflare dashboard, refer to [Work with custom rulesets in the dashboard](https://developers.cloudflare.com/waf/account/custom-rulesets/create-dashboard/).
+
+Note
+
+Currently, zone-level custom rulesets are only available in the [`http_request_firewall_custom`](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/#deploy-a-custom-ruleset-via-api) phase.
+
+## Before you begin
+
+1. Obtain the name of the [phase](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) where you want to deploy the custom ruleset.
+2. [Create a custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/create-custom-ruleset/) and keep the ID of the new custom ruleset.
+3. [Fetch the rules already present in the phase entry point ruleset](https://developers.cloudflare.com/ruleset-engine/basic-operations/view-rulesets/#view-the-rules-included-in-a-ruleset). You must include in the `PUT` request all existing rules you want to keep.
+
+## Example A - Account-level deployment
+
+The following `PUT` request adds a rule that executes a custom ruleset when the zone name matches `example.com`.
+
+In the `PUT` request, you must include the IDs of all existing rules you want to keep. The response will include all the rules in the phase entry point ruleset after the update.
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Update an account entry point rulesetbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"description": "Execute custom ruleset",
+						"expression": "(cf.zone.name == \"example.com\") and cf.zone.plan eq \"ENT\"",
+						"action_parameters": {
+								"id": "<CUSTOM_RULESET_ID>"
+						}
+				},
+				{
+						"id": "<EXISTING_PHASE_RULE_ID_1>"
+				},
+				{
+						"id": "<EXISTING_PHASE_RULE_ID_2>"
+				}
+		]
+	}'
+```
+
+```json
+{
+	"result": {
+		"id": "<ACCOUNT_PHASE_RULESET_ID>",
+		"name": "http_request_firewall_custom phase entry point ruleset for my account",
+		"description": "Execute several rulesets",
+		"kind": "root",
+		"version": "3",
+		"rules": [
+			{
+				"id": "<PHASE_RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"description": "Execute custom ruleset",
+				"action_parameters": {
+					"id": "<CUSTOM_RULESET_ID>",
+					"version": "latest"
+				},
+				"expression": "(cf.zone.name == \"example.com\") and cf.zone.plan eq \"ENT\"",
+				"last_updated": "2021-03-18T18:35:14.135697Z",
+				"ref": "<PHASE_RULE_REF>",
+				"enabled": true
+			},
+			{
+				"id": "<EXISTING_PHASE_RULE_ID_1>",
+				"version": "1",
+				"action": "execute",
+				"action_parameters": {
+					"id": "<EXECUTED_RULESET_ID_1>",
+					"version": "latest"
+				},
+				"expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",
+				"last_updated": "2021-03-16T15:51:49.180378Z",
+				"ref": "<EXISTING_PHASE_RULE_REF_1>",
+				"enabled": true
+			},
+			{
+				"id": "<EXISTING_PHASE_RULE_ID_2>",
+				"version": "1",
+				"action": "execute",
+				"action_parameters": {
+					"id": "<EXECUTED_RULESET_ID_2>",
+					"version": "latest"
+				},
+				"expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",
+				"last_updated": "2021-03-16T15:50:29.861157Z",
+				"ref": "<EXISTING_PHASE_RULE_REF_2>",
+				"enabled": true
+			}
+		],
+		"last_updated": "2021-03-18T18:35:14.135697Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
+}
+```
+
+Caution
+
+When deploying the custom ruleset at the account level, you must use parentheses to enclose any custom conditions and end your expression with `and cf.zone.plan eq "ENT"` like in the example above, or else the API operation will fail.
+
+## Example B - Zone-level deployment
+
+The following `PUT` request adds a rule to a zone-level entry point ruleset that executes a custom ruleset with ID `"<CUSTOM_RULESET_ID>"` for requests targeting the `/login` URI path.
+
+You must include in the `PUT` request the IDs of all existing rules you want to keep. The response will include all the rules in the phase entry point ruleset after the update.
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Config Settings Write</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Cache Settings Write</code>
+- <code>Custom Errors Write</code>
+- <code>Origin Write</code>
+- <code>Managed headers Write</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>Sanitize Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Bot Management Write</code>
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Update a zone entry point rulesetbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"description": "Execute custom ruleset (zone)",
+						"expression": "(http.request.uri.path eq \"/login\")",
+						"action_parameters": {
+								"id": "<CUSTOM_RULESET_ID>"
+						}
+				},
+				{
+						"id": "<EXISTING_PHASE_RULE_ID_1>"
+				}
+		]
+	}'
+```
+
+```json
+{
+	"result": {
+		"id": "<ZONE_PHASE_RULESET_ID>",
+		"name": "http_request_firewall_custom phase entry point ruleset for my zone",
+		"description": "",
+		"kind": "zone",
+		"version": "3",
+		"rules": [
+			{
+				"id": "<PHASE_RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"description": "Execute custom ruleset (zone)",
+				"action_parameters": {
+					"id": "<CUSTOM_RULESET_ID>",
+					"version": "latest"
+				},
+				"expression": "(http.request.uri.path eq \"/login\")",
+				"last_updated": "2025-08-18T18:35:14.135697Z",
+				"ref": "<PHASE_RULE_REF>",
+				"enabled": true
+			},
+			{
+				"id": "<EXISTING_PHASE_RULE_ID_1>",
+				"version": "1",
+				"action": "managed_challenge",
+				"expression": "(cf.waf.score lt 20 and http.request.uri.path wildcard \"/admin/*\")",
+				"last_updated": "2025-08-16T15:51:49.180378Z",
+				"ref": "<EXISTING_PHASE_RULE_REF_1>",
+				"enabled": true
+			}
+		],
+		"last_updated": "2025-08-18T18:35:14.135697Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
+}
+```
+
+Note
+
+Currently, zone-level custom rulesets are only available in the [`http_request_firewall_custom`](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/#deploy-a-custom-ruleset-via-api) phase.

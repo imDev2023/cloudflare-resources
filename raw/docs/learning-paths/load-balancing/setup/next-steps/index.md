@@ -1,0 +1,54 @@
+---
+description: Explore advanced load balancing configurations.
+title: Next steps
+image: https://developers.cloudflare.com/learning-paths/load-balancing/setup/next-steps/og.png?v=9d90ce9d227200f8
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Next steps
+
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/setup/next-steps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Your load balancer should be receiving production traffic (and you can confirm this by reviewing the [analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/)).
+
+Though your product is officially set up, you may want to consider the following suggestions.
+
+## Usage-based notifications
+
+Since this is a service with [usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/), Cloudflare recommends that you set up usage-based billing notifications to avoid unexpected bills.
+
+To set up those notifications:
+
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+2. On **Alert Type** of **Usage Based Billing**, click **Select**.
+3. Fill out the following information:
+   - **Name**
+   - **Product**
+   - **Notification limit** (exact metric will vary based on product)
+   - **Notification email**
+
+   Note
+
+   All plans can send alerts through [webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/). Business and higher plans can also use [PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/).
+4. Select **Save**.
+
+## Additional configuration options
+
+You may want to further customize how your load balancer routes traffic or integrate your load balancer with other Cloudflare products:
+
+- [Cloudflare Tunnel (published applications)](https://developers.cloudflare.com/load-balancing/additional-options/cloudflare-tunnel/)
+- [Spectrum](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/)
+- [Perform planned maintenance](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/)
+- [Load shedding](https://developers.cloudflare.com/load-balancing/additional-options/load-shedding/)
+- [DNS persistence](https://developers.cloudflare.com/load-balancing/additional-options/dns-persistence/)
+- [Load Balancing with the China Network](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/)
+- [Override HTTP Host headers](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/)
+- [CNAME flattening for endpoints](https://developers.cloudflare.com/load-balancing/additional-options/cname-flattening/)
+- [Custom load balancing rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/)
+- [Integrate with PagerDuty](https://developers.cloudflare.com/load-balancing/additional-options/pagerduty-integration/)
+- [Additional DNS records](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/)

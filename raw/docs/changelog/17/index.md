@@ -1,0 +1,940 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+May 28, 2026
+
+[<h2>R2 Data Catalog pricing announced</h2>](https://developers.cloudflare.com/changelog/post/2026-05-11-r2-data-catalog-pricing-announced/)
+
+[Basin Catalog](https://developers.cloudflare.com/basin-catalog/) [Basin](https://developers.cloudflare.com/basin/) [R2](https://developers.cloudflare.com/r2/)
+
+[R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/) is a managed [Apache Iceberg ↗︎](https://iceberg.apache.org/) data catalog built directly into R2 buckets, queryable by any Iceberg-compatible engine such as Spark, Snowflake, and DuckDB. R2 Data Catalog now has published pricing for catalog operations and table compaction, in addition to standard [R2 storage and operations](https://developers.cloudflare.com/r2/pricing/).
+
+Billing is not yet enabled. We will provide at least 30 days notice before we start charging for R2 Data Catalog usage.
+
+Pricing is based on two dimensions:
+
+- **Catalog operations**: $9.00 / million operations for metadata requests such as creating tables, reading table metadata, and updating table properties.
+- **Compaction**: $0.005 / GB processed and $2.00 / million objects processed. These charges only apply when automatic compaction is turned on for a table.
+
+Both dimensions include a monthly free tier: 1 million catalog operations, 10 GB of compaction data processed, and 1 million compaction objects processed.
+
+For full pricing details and billing examples, refer to [R2 Data Catalog pricing](https://developers.cloudflare.com/basin-catalog/platform/pricing/).
+
+May 28, 2026
+
+[<h2>R2 Data Catalog gets a dedicated dashboard experience</h2>](https://developers.cloudflare.com/changelog/post/2026-05-28-r2-data-catalog-dashboard/)
+
+[Basin Catalog](https://developers.cloudflare.com/basin-catalog/) [Basin](https://developers.cloudflare.com/basin/) [R2](https://developers.cloudflare.com/r2/)
+
+[R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/) is a managed [Apache Iceberg ↗︎](https://iceberg.apache.org/) data catalog built directly into your R2 bucket. It exposes a standard Iceberg REST catalog interface so you can connect query engines like [Spark](https://developers.cloudflare.com/basin-catalog/config-examples/spark-scala/), [Snowflake](https://developers.cloudflare.com/basin-catalog/config-examples/snowflake/), [DuckDB](https://developers.cloudflare.com/basin-catalog/config-examples/duckdb/), and [R2 SQL](https://developers.cloudflare.com/basin-sql/) to your data in R2.
+
+R2 Data Catalog now has a dedicated section in the Cloudflare dashboard, replacing the previous settings panel embedded in R2 bucket configuration. The new experience includes:
+
+![R2 Data Catalog dashboard overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3070,height=1486,format=webp/_astro/data-catalog-dashboard.BsKDvUQn.png)
+
+- **Catalog overview** — View all your catalogs in one place with catalog request counts, bucket sizes, and table maintenance status at a glance.
+- **Guided setup wizard** — Create a catalog in three steps: choose or create an R2 bucket, configure table maintenance (compaction and snapshot expiration), and review. The wizard creates the bucket and generates a service credential automatically.
+- **Settings management** — A dedicated settings page for each catalog with sections for general configuration, table maintenance, service credentials, and disabling the catalog. You can now enable and configure [snapshot expiration](https://developers.cloudflare.com/basin-catalog/table-maintenance/) directly from the dashboard.
+- **Built-in metrics** — Five charts on each catalog's metrics tab: bytes compacted, files compacted, catalog requests, storage size, and snapshots expired.
+
+To get started, go to **R2 Data Catalog** in the Cloudflare dashboard or refer to the [getting started guide](https://developers.cloudflare.com/basin-catalog/get-started/) and [manage catalogs documentation](https://developers.cloudflare.com/basin-catalog/manage-catalogs/).
+
+May 28, 2026
+
+[<h2>Pipelines pricing announced</h2>](https://developers.cloudflare.com/changelog/post/2026-05-11-pipelines-pricing-announced/)
+
+[Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) [Basin](https://developers.cloudflare.com/basin/)
+
+[Cloudflare Pipelines](https://developers.cloudflare.com/basin-pipelines/) is a streaming data platform that ingests events, transforms them with SQL, and writes to [R2](https://developers.cloudflare.com/r2/) as JSON, Parquet, or [Apache Iceberg ↗︎](https://iceberg.apache.org/) tables. Pipelines now has published pricing based on two usage dimensions: the volume of data processed by SQL transforms and the volume of data delivered to sinks. Ingress into a Pipeline stream is free.
+
+**Billing is not yet enabled. We will provide at least 30 days notice before we start charging for Pipelines usage.**
+
+Pipelines pricing model is designed to charge per GB based on what you use:
+
+- **Streams (ingress)**: Free, regardless of volume.
+- **SQL transforms**: $0.04 / GB for stateless transforms (filter, reshape, unnest, cast, compute).
+- **Sinks**: $0.03 / GB for JSON, $0.06 / GB for Parquet or Iceberg output.
+
+Workers Free plans include 1 GB / month for each dimension. Workers Paid plans include 50 GB / month.
+
+For full pricing details and billing examples, refer to [Pipelines pricing](https://developers.cloudflare.com/basin-pipelines/platform/pricing/).
+
+May 28, 2026
+
+[<h2>R2 SQL pricing announced</h2>](https://developers.cloudflare.com/changelog/post/2026-05-11-r2-sql-pricing-announced/)
+
+[Basin SQL](https://developers.cloudflare.com/basin-sql/) [Basin](https://developers.cloudflare.com/basin/)
+
+[R2 SQL](https://developers.cloudflare.com/basin-sql/) is a serverless, distributed query engine that runs SQL against [Apache Iceberg ↗︎](https://iceberg.apache.org/) tables stored in [R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/). R2 SQL now has published pricing based on a single dimension: the volume of compressed data scanned to execute your queries. At $2.50 / TB ($0.0025 / GB), R2 SQL is priced at half the cost of AWS Athena and less than half of Google BigQuery on-demand.
+
+Billing is not yet enabled. We will provide at least 30 days notice before we start charging for R2 SQL usage.
+
+Data scanned is measured on compressed bytes read from R2 object storage. This matches what you see in your R2 bucket — if a Parquet file is 100 MB on disk, scanning that file bills for 100 MB. Each query has a minimum billing increment of 10 MB.
+
+All plans include 10 GB of data scanned per month. Standard [R2 storage and operations](https://developers.cloudflare.com/r2/pricing/) and [R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/platform/pricing/) charges apply separately.
+
+For full pricing details and billing examples, refer to [R2 SQL pricing](https://developers.cloudflare.com/basin-sql/platform/pricing/).
+
+May 28, 2026
+
+[<h2>Use Browser Run Quick Actions directly from Workers</h2>](https://developers.cloudflare.com/changelog/post/2026-05-28-use-browser-run-quick-actions-directly-from-workers/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+You can now call [Browser Run Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the `quickAction()` method on the browser binding. This simplifies how Workers interact with Browser Run by removing the need for API tokens or external HTTP requests. Your Worker communicates with Browser Run directly over Cloudflare's network, resulting in simpler code and lower latency.
+
+With the `quickAction()` method you can:
+
+- [Capture screenshots](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/) from URLs or HTML
+- [Generate PDFs](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/) with custom styling, headers, and footers
+- [Extract HTML content](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/) from fully rendered pages
+- [Convert pages to Markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/)
+- [Extract structured JSON](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/) using AI
+- [Scrape elements](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/) with CSS selectors
+- [Get all links](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/) from a page
+- [Capture snapshots](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/) (HTML + screenshot in one request)
+
+To get started, add a browser binding to your Wrangler configuration:
+
+```jsonc
+{
+  "compatibility_date": "2026-03-24",
+  "browser": {
+    "binding": "BROWSER"
+  }
+}
+```
+
+```toml
+compatibility_date = "2026-03-24"
+
+[browser]
+binding = "BROWSER"
+```
+
+Then call any Quick Action directly from your Worker. For example, to capture a screenshot:
+
+```js
+const screenshot = await env.BROWSER.quickAction("screenshot", {
+	url: "https://www.cloudflare.com/",
+});
+```
+
+```ts
+const screenshot = await env.BROWSER.quickAction("screenshot", {
+  url: "https://www.cloudflare.com/",
+});
+```
+
+The `quickAction()` method requires a compatibility date of `2026-03-24` or later.
+
+For setup instructions and the full list of available actions, refer to [Browser Run Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/).
+
+May 28, 2026
+
+[<h2>High availability replica management for Cloudflare Mesh</h2>](https://developers.cloudflare.com/changelog/post/2026-05-28-mesh-ha-replica-ui/)
+
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+The [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) dashboard now shows per-replica details for [high availability](https://developers.cloudflare.com/mesh/features/high-availability/) nodes. You can see which replica is active, view each replica's Mesh IP and connection details, and manually trigger failover — all from the node detail page.
+
+![Mesh HA replica tabs showing active and passive replicas with per-replica Mesh IPs and a manual failover option](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1155,format=webp/_astro/mesh-ha-replicas.Dvf1GMmQ.gif)
+
+#### What's new
+
+- **Replica tabs** on the node detail page — switch between replicas to see each one's Mesh IP, edge data center, origin IP, platform, version, and uptime.
+- **Active/passive badges** identify which replica is currently routing traffic.
+- **Manual failover** — promote a passive replica to active with a single click. The previous active replica switches to standby.
+- **HA badge** in the overview table identifies nodes running multiple replicas.
+- **Active replica IP** shown in the overview table — the dashboard now resolves which replica is active and displays the correct Mesh IP.
+
+#### Manual failover
+
+To manually promote a passive replica:
+
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/mesh), go to **Networking** > **Mesh**.
+2. Select an HA-enabled node.
+3. Select the passive replica tab.
+4. Select **Promote to active** and confirm.
+
+Traffic reroutes to the promoted replica immediately. Refer to [High availability](https://developers.cloudflare.com/mesh/features/high-availability/) for details on failover behavior.
+
+May 28, 2026
+
+[<h2>Wrangler supports SSH ProxyCommand for Containers</h2>](https://developers.cloudflare.com/changelog/post/2026-05-28-ssh-proxy-command/)
+
+[Containers](https://developers.cloudflare.com/containers/)
+
+[Wrangler](https://developers.cloudflare.com/workers/wrangler/) supports using `wrangler containers ssh` as an OpenSSH `ProxyCommand` for [Containers](https://developers.cloudflare.com/containers/). This lets your local SSH client connect to a running Container through Wrangler.
+
+```sh
+ssh -o ProxyCommand="wrangler containers ssh %h" cloudchamber@<INSTANCE_ID>
+```
+
+When standard input and output are piped, Wrangler forwards data to the SSH server in the Container. You can also pass `--stdio` to force this mode.
+
+For more information, refer to the [SSH documentation](https://developers.cloudflare.com/containers/guides/ssh/).
+
+May 28, 2026
+
+[<h2>Send emails with named recipient addresses</h2>](https://developers.cloudflare.com/changelog/post/2026-05-28-named-email-recipients/)
+
+[Email Service](https://developers.cloudflare.com/email-service/)
+
+You can now send emails with display names on recipient addresses in addition to the existing `from` support. Pass an object with `email` and an optional `name` field for `to`, `cc`, `bcc`, `replyTo`, or `from`:
+
+*src/index.jsjs*
+
+```js
+export default {
+	async fetch(request, env) {
+		const response = await env.EMAIL.send({
+			from: { email: "support@example.com", name: "Support Team" },
+			to: { email: "jane@example.com", name: "Jane Doe" },
+			cc: [
+				"manager@company.com",
+				{ email: "team@company.com", name: "Engineering Team" },
+			],
+			subject: "Welcome!",
+			html: "<h1>Thanks for joining!</h1>",
+			text: "Thanks for joining!",
+		});
+
+		return Response.json({ messageId: response.messageId });
+	},
+};
+```
+
+*src/index.tsts*
+
+```ts
+export default {
+	async fetch(request, env): Promise<Response> {
+		const response = await env.EMAIL.send({
+			from: { email: "support@example.com", name: "Support Team" },
+			to: { email: "jane@example.com", name: "Jane Doe" },
+			cc: [
+				"manager@company.com",
+				{ email: "team@company.com", name: "Engineering Team" },
+			],
+			subject: "Welcome!",
+			html: "<h1>Thanks for joining!</h1>",
+			text: "Thanks for joining!",
+		});
+
+		return Response.json({ messageId: response.messageId });
+	},
+} satisfies ExportedHandler<Env>;
+```
+
+Plain strings remain fully supported for backward compatibility, and you can mix strings and named objects in the same array.
+
+Refer to the [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) and [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) documentation for full request examples.
+
+May 28, 2026
+
+[<h2>Record specific participant audio tracks in RealtimeKit</h2>](https://developers.cloudflare.com/changelog/post/2026-05-28-realtimekit-track-recording/)
+
+[Realtime](https://developers.cloudflare.com/realtime/)
+
+You can now record specific participant audio tracks in RealtimeKit with [track recording](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/). Track recording creates separate WebM files for each participant instead of a single composite recording, which is useful for post-processing, transcription, and regulated or content-sensitive workflows.
+
+To record specific participants, pass `user_ids` when starting a track recording:
+
+```bash
+curl --request POST \
+  --url https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings/track \
+  --header 'Authorization: Bearer <api_token>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
+  "user_ids": ["user-123", "user-456"]
+}'
+```
+
+To pass `user_ids` for selective track recording, use the following minimum SDK versions:
+
+- Web Core: `@cloudflare/realtimekit` version `1.4.0` or later
+- Web UI Kit: `@cloudflare/realtimekit-ui`, `@cloudflare/realtimekit-react-ui`, or `@cloudflare/realtimekit-angular-ui` version `1.1.2` or later
+- Android Core or iOS Core: version `2.0.0` or later
+- Android UI Kit or iOS UI Kit: version `1.1.0` or later
+
+[RealtimeKit](https://developers.cloudflare.com/realtime/realtimekit/) provides SDKs and UI components so that you can build your own meeting experience on Cloudflare's [global WebRTC infrastructure](https://developers.cloudflare.com/realtime/#realtime-sfu). Teams today build products ranging from telehealth to education on RealtimeKit for global audiences. You can get started today with our [Quickstart](https://developers.cloudflare.com/realtime/realtimekit/quickstart/) or take a look at our [Cloudflare Meet repo ↗︎](https://github.com/cloudflare/meet) as a reference.
+
+May 27, 2026
+
+[<h2>Write regex using natural language in Cloudflare One</h2>](https://developers.cloudflare.com/changelog/post/2026-05-27-cloudy-regex-assistance/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+
+[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) policy selectors which support regular expressions can now be authored in the dashboard using natural language. When building a [policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/expression-syntax/) with a regex-based selector (like `matches regex`), you can describe what you want to match in plain English and the Cloudflare Agent will generate and validate a corresponding regular expression.
+
+![Write policy regex using natural language](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1000,height=638,format=webp/_astro/gateway-regex-ai-generation.CtJ0S6FS.png)
+
+To get started, select a regex-compatible selector in the [Gateway policy builder](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) and select the icon. You'll see an input field for natural language, such as "any URL starting with /api/v1" or ".com, .net, and .app hosts which contain `gooogle` in the host."
+
+You can also use the tool to explain existing regular expressions. If a policy already contains a regex pattern, you can instantly generate a plain-language description.
+
+A built-in feedback mechanism allows you to rate each interaction to help improve output quality over time.
+
+For more information, refer to [Cloudflare One firewall policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) and expect to see the same functionality supported soon in [Data loss prevention profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/).
+
+May 27, 2026
+
+[<h2>Transformation flows in Images</h2>](https://developers.cloudflare.com/changelog/post/2026-05-27-transformation-flows/)
+
+[Cloudflare Images](https://developers.cloudflare.com/images/)
+
+![Custom flow configuration panel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1654,height=1398,format=webp/_astro/custom-flow.DeAGR8BY.png)
+
+Flows are automated rules that pair conditions (such as file extension, URL path, or query parameter) with parameters. Set up a flow to automatically apply image optimization to matching requests on your zone without writing code or changing URLs.
+
+There are two modes for transformation flows:
+
+- **[Provider flows](https://developers.cloudflare.com/images/optimization/transformations/flows/#set-up-a-provider-flow)** — Migrate from another image optimization service. Your existing URLs continue to work while Cloudflare rewrites provider-specific parameters to their Cloudflare equivalents. Currently, Cloudflare supports provider flows for Fastly Image Optimizer.
+- **[Custom flows](https://developers.cloudflare.com/images/optimization/transformations/flows/#set-up-a-custom-flow)** — Define your own conditions and actions for use cases like automatic format conversion, [responsive sizing](https://developers.cloudflare.com/images/optimization/make-responsive-images/#using-widthauto) with `width=auto`, or directory-based optimization.
+
+To get started, go to **Images** > **Transformations** > **Automation** in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/images/transformations).
+
+Learn more about [transformation flows](https://developers.cloudflare.com/images/optimization/transformations/flows/).
+
+May 27, 2026
+
+[<h2>Cloudflare Tunnel now runs connectivity pre-checks at startup</h2>](https://developers.cloudflare.com/changelog/post/2026-05-27-cloudflared-connectivity-prechecks/)
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+
+Starting with [`cloudflared` version 2026.5.2 ↗︎](https://github.com/cloudflare/cloudflared/releases), [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) automates the entire [connectivity pre-checks workflow](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/) directly inside the binary. Previously, customers had to install `dig` and `netcat` and run those commands by hand to verify their environment. Now `cloudflared` does it natively at startup — and surfaces actionable remediation when something is blocked.
+
+![cloudflared connectivity pre-checks output](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1012,format=webp/_astro/cloudflared-connectivity-prechecks.DRwN6tGe.gif)
+
+On every `cloudflared tunnel run` (and `cloudflared tunnel diag`), the binary now natively checks:
+
+- **DNS resolution** — `region1.v2.argotunnel.com` and `region2.v2.argotunnel.com` resolve to valid Cloudflare IPs.
+- **Transport connectivity** — outbound `UDP (QUIC)` and `TCP (HTTP/2)` on port `7844`.
+- **Management API** — outbound `TCP/443` to `api.cloudflare.com` for software updates.
+
+Results are printed in a scannable CLI table with three states:
+
+- ✅ **Pass** — the check succeeded.
+- ⚠️ **Warn** — a non-blocking issue, for example the Management API is unreachable so automatic updates will not work, but the tunnel will still come up.
+- ❌ **Fail** — a blocking issue, with a specific remediation hint (for example, `Allow outbound UDP on port 7844`).
+
+If DNS is unresolvable, or **both** UDP and TCP fail on port 7844, `cloudflared` exits early with the failure rather than looping on opaque `failed to dial` errors.
+
+Pre-checks now run automatically on every start, which also catches regressions like overnight firewall policy changes — no need to remember to rerun the troubleshooting guide.
+
+To get the new behavior, upgrade `cloudflared` to version `2026.5.2` or later. For more details, refer to the [Connectivity pre-checks documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/).
+
+May 26, 2026
+
+[<h2>Cloudflare One Client for macOS (version 2026.4.1390.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-05-26-warp-macos-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the macOS Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release introduces the new Cloudflare One Client UI for macOS! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
+
+- Right click context menu to access the most common client actions quickly
+- Built-in captive portal login experience
+
+**Additional Changes and improvements**
+
+- Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+- Fixed a proxy mode connection stall issue.
+
+**Known issues**
+
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+
+May 26, 2026
+
+[<h2>Cloudflare One Client for Windows (version 2026.4.1390.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-05-26-warp-windows-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release introduces the new Cloudflare One Client UI for Windows! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
+
+- Right click context menu to access the most common client actions quickly
+- Built-in captive portal login experience
+
+**Additional Changes and improvements**
+
+- Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+- Fixed a proxy mode connection stall issue.
+
+**Known issues**
+
+- Registration authentication for devices via the integrated WebView2 browser is unavailable in this version as a temporary measure. As a result, the client will utilize the default browser on the device to complete the authentication process.
+- An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+- Windows ARM may prompt the user to close running applications while trying to install this version. Simply click “Ok” with the default highlighted option.
+- DNS resolution may be broken when the following conditions are all true:
+  - The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while the client is connected.  
+     To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
+
+May 26, 2026
+
+[<h2>Cloudflare One Client for Linux (version 2026.4.1390.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-05-26-warp-linux-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release introduces the new Cloudflare One Client UI for Linux! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
+
+- Right click context menu to access the most common client actions quickly
+- Built-in captive portal login experience
+
+**Changes and improvements**
+
+- Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+- Official support for RHEL 9 has been added for Cloudflare Mesh nodes. To install the RHEL 9 package, the Extra Packages for Enterprise Linux (EPEL) repository must be active, as it contains dependencies required for the tray icon and captive portal webview.
+- Fixed a proxy mode connection stall issue.
+
+**Known issues**
+
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+
+May 26, 2026
+
+[<h2>BYPASS status now returned for uncacheable responses</h2>](https://developers.cloudflare.com/changelog/post/2026-05-26-bypass-status-for-uncacheable-responses/)
+
+[Cache / CDN](https://developers.cloudflare.com/cache/)
+
+Cloudflare now returns a `BYPASS` [cache status](https://developers.cloudflare.com/cache/concepts/cache-responses/) whenever a response is not cacheable, instead of the previous mix of `BYPASS` and `MISS` that depended on why Cloudflare chose not to cache the response.
+
+There are multiple reasons Cloudflare may refuse to cache a response — for example, the response exceeds the [maximum cacheable file size](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#cacheable-size-limits) for your plan, the origin sends `Cache-Control: no-cache`, `private`, or `max-age=0`, the response includes a `Set-Cookie` header, or the request includes an `Authorization` header.
+
+Previously, only some of these conditions returned `BYPASS`. Others — such as responses exceeding the maximum cacheable file size — returned `MISS` on every request, regardless of whether [Origin Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/#origin-cache-control-behavior) was on or off. Because the response could never be cached, every subsequent request also returned `MISS`, which looked indistinguishable from a broken cache and made it hard to tell whether Cloudflare was trying and failing to cache the asset or had deliberately chosen not to cache it.
+
+`BYPASS` now consistently signals that Cloudflare refused to cache the response, regardless of the reason. `MISS` is reserved for cacheable responses that simply were not in the local cache at request time.
+
+#### What to expect in your analytics
+
+After this change rolls out, you should see:
+
+- **MISS rate decreases**: Uncacheable responses no longer count as cache misses.
+- **BYPASS rate increases**: These same responses are now reported as bypasses.
+- **Cache hit ratio increases**: Hit ratio calculations no longer include uncacheable traffic that could never have been cached, giving you a more accurate view of cache effectiveness.
+
+Your total request volume and origin traffic are unchanged — only the cache status label is different.
+
+#### Browser cache TTL behavior is preserved
+
+The cache status label is the only thing changing — browser cache TTL handling for any given response is identical to what it was before:
+
+- Responses that historically returned `MISS` because Cloudflare refused to cache them (for example, responses over the maximum cacheable file size) now return `BYPASS`, but continue to have browser cache TTL applied — exactly as they did when they were labeled `MISS`.
+- Responses that historically returned `BYPASS` and skipped browser cache TTL continue to skip browser cache TTL.
+
+In both cases, the decision to apply browser cache TTL depends on the underlying reason Cloudflare did not cache the response, not on the new `BYPASS` label.
+
+May 26, 2026
+
+[<h2>Flagship now in public beta</h2>](https://developers.cloudflare.com/changelog/post/2026-05-26-public-beta/)
+
+[Flagship](https://developers.cloudflare.com/flagship/)
+
+**[Flagship](https://developers.cloudflare.com/flagship/)** is now in public beta. Evaluate feature flags directly from Cloudflare Workers with no outbound HTTP calls, using globally distributed flag configuration backed by Workers KV and Durable Objects. Flagship supports typed flag values, targeting rules, percentage rollouts, audit history, and OpenFeature-compatible SDKs.
+
+Evaluate a flag from a Worker in a few lines of code:
+
+*src/index.jsjs*
+
+```js
+export default {
+	async fetch(request, env) {
+		const showNewCheckout = await env.FLAGS.getBooleanValue(
+			"new-checkout",
+			false,
+		);
+
+		return new Response(showNewCheckout ? "New checkout" : "Standard checkout");
+	},
+};
+```
+
+*src/index.tsts*
+
+```ts
+export default {
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const showNewCheckout = await env.FLAGS.getBooleanValue("new-checkout", false);
+
+		return new Response(
+			showNewCheckout ? "New checkout" : "Standard checkout",
+		);
+	},
+} satisfies ExportedHandler<Env>;
+```
+
+Start creating flags from the Cloudflare dashboard today. Refer to the [Flagship documentation](https://developers.cloudflare.com/flagship/get-started/) to get started.
+
+May 21, 2026
+
+[<h2>Call any AI model through AI Gateway's new REST API</h2>](https://developers.cloudflare.com/changelog/post/2026-05-21-rest-api/)
+
+[AI Gateway](https://developers.cloudflare.com/ai-gateway/)
+
+AI Gateway now uses the AI REST API on `api.cloudflare.com`. You can call any model — whether from OpenAI, Anthropic, Google, or hosted on Workers AI — through one unified API, using the same endpoints and authentication regardless of provider. Four endpoints are available:
+
+- `POST /ai/run` — universal endpoint for all models and modalities
+- `POST /ai/v1/chat/completions` — OpenAI SDK compatible
+- `POST /ai/v1/responses` — OpenAI Responses API compatible
+- `POST /ai/v1/messages` — Anthropic SDK compatible
+
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "openai/gpt-5.5",
+    "messages": [{"role": "user", "content": "What is Cloudflare?"}]
+  }'
+```
+
+All AI Gateway features — logging, caching, rate limiting, and guardrails — are applied automatically. Third-party models are billed through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so you do not need to manage separate provider API keys.
+
+Third-party model requests are routed through your account's default gateway, which is created automatically on first use. To route requests through a specific gateway, add the `cf-aig-gateway-id` header.
+
+If you are already calling Workers AI models through the existing REST API, that path (`/ai/run/@cf/{model}`) continues to work. To call Workers AI models through AI Gateway, use the `@cf/` model prefix (for example, `@cf/moonshotai/kimi-k2.6`) and include the `cf-aig-gateway-id` header to specify which gateway to route through.
+
+For more details and examples, refer to the [REST API documentation](https://developers.cloudflare.com/ai-gateway/usage/rest-api/).
+
+May 21, 2026
+
+[<h2>Modernized Billing Profile with new payment options</h2>](https://developers.cloudflare.com/changelog/post/2026-05-21-modernised-billing-profile/)
+
+[Billing](https://developers.cloudflare.com/billing/)
+
+The [Billing Profile](https://developers.cloudflare.com/billing/get-started/update-billing-info/) now has a modern UI and a single space that unifies billing information, payment method management and an enhanced subscriptions view under a single **Subscriptions** tab.
+
+#### What changed
+
+The **Subscriptions** tab brings billing information, payment method management, and your subscriptions together in one place. The payment management and **Pay overdue balances** flows now use the latest checkout as product purchase flows, so you can pay with Apple Pay, Google Pay, Link, and [Instant Bank Payments via Link](https://developers.cloudflare.com/billing/payment-methods/instant-bank-payments-link/) alongside cards and PayPal.
+
+New cards complete 3D Secure authentication when the issuer requires it — for example, the EU under PSD2 and India under RBI.
+
+![Modernized Billing Profile with the Subscriptions tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=909,height=676,format=webp/_astro/2026-05-21-modernised-billing-profile.D6PysUnl.png)
+
+For details, refer to the [Billing Home](https://developers.cloudflare.com/billing/) documentation.
+
+May 21, 2026
+
+[<h2>Granular permissions for Cloudflare Tunnel and Cloudflare Mesh</h2>](https://developers.cloudflare.com/changelog/post/2026-05-21-tunnel-mesh-granular-permissions/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/)
+
+You can now scope Cloudflare permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances and [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) nodes. Administrators can delegate access to specific Tunnels or Mesh nodes without granting account-wide control over private networking.
+
+#### What is new
+
+When you [add a member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) or create a [permission policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/), the resource picker now lists [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances and [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) nodes as scopable resource types. You can:
+
+- Grant a read-only role on a single Cloudflare Tunnel instance to a support operator for log streaming and diagnostics — without exposing other Tunnels or destructive actions.
+- Grant a write role on a specific Cloudflare Mesh node to an application team — without giving them access to the rest of your private network.
+- Scope a single policy to one or many Tunnels and Mesh nodes at once.
+
+#### How it works
+
+Granular permissions are a parallel layer to existing account-level roles — they do not replace them.
+
+- **Existing account-level roles continue to work.** A member with `Cloudflare Access` or `Cloudflare Zero Trust` retains write access to every Tunnel and Mesh node in the account. This ensures backward compatibility for existing automation and tokens.
+- **Granular permissions are additive.** For any API request on a specific Tunnel or Mesh node, access is granted if the principal has **either** the account-level role **or** a granular permission for that resource.
+- **Resource enumeration is authorization-aware.** Listing endpoints ( `GET /accounts/{id}/cfd_tunnel`, `GET /accounts/{id}/warp_connector`) return only the resources the principal has at least read access to.
+
+#### Get started
+
+- Configure [granular permissions for Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/guides/granular-permissions/).
+- Configure [granular permissions for Cloudflare Tunnel and Cloudflare Mesh in Cloudflare One](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/).
+- Review the [resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) on the Cloudflare role reference.
+
+May 21, 2026
+
+[<h2>Reach Cloudflare WAN destinations from Workers VPC</h2>](https://developers.cloudflare.com/changelog/post/2026-05-21-vpc-networks-cloudflare-wan/)
+
+[Workers VPC](https://developers.cloudflare.com/workers-vpc/)
+
+You can now use [VPC Network](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) bindings with `network_id: "cf1:network"` to reach your full private network from Workers, including:
+
+- [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) nodes and client devices
+- Subnet routes and hostname routes announced through [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) or Cloudflare Mesh
+- Destinations connected through [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramps — GRE, IPsec, and CNI
+
+This means a single VPC Network binding can route Worker requests to private services regardless of how those services are connected to Cloudflare: through a Cloudflare Tunnel from a cloud VPC, a Mesh node on a private subnet, or a Cloudflare WAN on-ramp from your data center or branch site.
+
+```jsonc
+{
+	"vpc_networks": [
+		{
+			"binding": "PRIVATE_NETWORK",
+			"network_id": "cf1:network",
+			"remote": true,
+		},
+	],
+}
+```
+
+```toml
+[[vpc_networks]]
+binding = "PRIVATE_NETWORK"
+network_id = "cf1:network"
+remote = true
+```
+
+At runtime, the URL you pass to `fetch()` determines the destination:
+
+```js
+// Reach a service behind a Cloudflare WAN IPsec on-ramp
+const response = await env.PRIVATE_NETWORK.fetch("http://10.50.0.100:8080/api");
+```
+
+Note
+
+For destinations behind Cloudflare WAN on-ramps (GRE, IPsec, or CNI), your network must route the [Cloudflare source IP range](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/) back through the on-ramp so reply traffic returns to Cloudflare. Without this route, stateful flows will fail. This is part of standard Cloudflare WAN onboarding.
+
+For configuration options, refer to [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/).
+
+May 20, 2026
+
+[<h2>New DNS records UX is rolling out</h2>](https://developers.cloudflare.com/changelog/post/2026-05-20-new-dns-records-ux/)
+
+[DNS](https://developers.cloudflare.com/dns/)
+
+Starting today, everyone can opt in to a refreshed DNS records page in the Cloudflare dashboard. Over the coming weeks, the new experience will become the default for Free plan users first, followed by paid plans.
+
+![New DNS records UX](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3706,height=2070,format=webp/_astro/new-dns-ux.Bfs_yXPa.png)
+
+#### What is new
+
+- **Better table experience**: resizable and hideable columns, row pinning, advanced filters with logical operators (AND/OR), configurable pagination, and expanded input fields so long values are no longer cut off.
+- **First-class mobile experience**: responsive layout with a touch-friendly, card-based UI and compact controls for small screens.
+- **DNS quick reference**: bite-sized explainers for DNS, proxy status, and TTL, available directly in the product to help users configure records without leaving the page.
+- **Modern frontend**: a refactor onto Cloudflare's new UI framework that improves performance and lays the foundation for future improvements.
+
+![New DNS records UX](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=754,height=572,format=webp/_astro/new-dns-ux.DV6gCbme.gif)
+
+#### Rollout plan
+
+Dates are subject to change based on feedback received during the rollout.
+
+- **20 May - 05 June**: ramped rollout to Free, then Pro and Business plans.
+- **08 June - 03 July**: ramped rollout to Enterprise plans.
+
+#### Share your feedback
+
+Once the new experience is turned on for your account, look for the feedback link at the top of the DNS records page in the Cloudflare dashboard and let us know what you think. Your input helps us prioritize the next round of improvements.
+
+May 20, 2026
+
+[<h2>Content type distribution and API traffic share on Cloudflare Radar</h2>](https://developers.cloudflare.com/changelog/post/2026-05-20-radar-content-type-and-api-traffic/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Radar**](https://developers.cloudflare.com/radar/) now includes two new charts on the [traffic page ↗︎](https://radar.cloudflare.com/traffic) that provide deeper insights into the composition of HTTP traffic: a content type distribution chart and an API traffic share chart.
+
+#### Content type distribution
+
+The new [**Content type** ↗︎](https://radar.cloudflare.com/traffic#content-type) chart displays the distribution of HTTP response content types, grouped into high-level categories. A traffic type selector allows filtering by human, bot, or all traffic. The existing [**Bot vs. Human** ↗︎](https://radar.cloudflare.com/traffic#bot-vs-human) chart also gained a content type category filter, allowing users to see the bot/human split for specific content categories.
+
+![Screenshot of the content type distribution chart on the Radar traffic page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=878,format=webp/_astro/content-type-distribution.Dz2q1n6W.png)
+
+Content type categories:
+
+- **HTML** — Web pages ( `text/html`)
+- **Images** — All image formats ( `image/*`)
+- **JSON** — JSON data and API responses ( `application/json`, `*+json`)
+- **JavaScript** — Scripts ( `application/javascript`, `text/javascript`)
+- **CSS** — Stylesheets ( `text/css`)
+- **Plain Text** — Unformatted text ( `text/plain`)
+- **Fonts** — Web fonts ( `font/*`, `application/font-*`)
+- **XML** — XML documents and feeds ( `text/xml`, `application/xml`, `application/rss+xml`, `application/atom+xml`)
+- **YAML** — Configuration files ( `text/yaml`, `application/yaml`)
+- **Video** — Video content and streaming ( `video/*`, `application/ogg`, `*mpegurl`)
+- **Audio** — Audio content ( `audio/*`)
+- **Markdown** — Markdown documents ( `text/markdown`)
+- **Documents** — PDFs, Office documents, ePub, CSV ( `application/pdf`, `application/msword`, `text/csv`)
+- **Binary** — Executables, archives, WebAssembly ( `application/octet-stream`, `application/zip`, `application/wasm`)
+- **Serialization** — Binary API formats ( `application/protobuf`, `application/grpc`, `application/msgpack`)
+- **Other** — All other content types
+
+The `CONTENT_TYPE` dimension and `contentType` filter are available on the HTTP [summary](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/), [timeseries groups](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries_groups_v2/), and [timeseries](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries/) endpoints.
+
+#### API traffic share
+
+The new [**API traffic** ↗︎](https://radar.cloudflare.com/traffic#api-traffic) chart shows the percentage of dynamic (non-cacheable) HTTP request traffic that is API-related. API traffic is identified by JSON or XML response content types (`application/json`, `application/xml`, `text/xml`) on HTTP requests that returned a 200 status code. A traffic type selector allows switching between human traffic, bot traffic, or all traffic.
+
+![Screenshot of the API traffic share chart on the Radar traffic page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=1006,format=webp/_astro/api-traffic-share._xl0TThn.png)
+
+The `API_TRAFFIC` dimension is available on the existing HTTP [summary](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/) and [timeseries groups](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries_groups_v2/) endpoints. An `apiTraffic` filter (`API` or `NON_API`) can also be applied to [HTTP timeseries](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries/) requests to retrieve raw request counts for API-only or non-API traffic.
+
+Visit the [Radar traffic page ↗︎](https://radar.cloudflare.com/traffic) to explore these new charts.
+
+May 20, 2026
+
+[<h2>WAF Release - 2026-05-20</h2>](https://developers.cloudflare.com/changelog/post/2026-05-20-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+**Key Findings**
+
+- Existing rule enhancements have been deployed to improve detection resilience against broad classes of web attacks and strengthen behavioral coverage.
+
+**Continuous Rule Improvements**
+
+We are continuously refining our managed rules to provide more resilient protection and deeper insights into attack patterns. To ensure an optimal security posture, we recommend consistently monitoring the Security Events dashboard and adjusting rule actions as these enhancements are deployed.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...9e9c068d | N/A | Sitecore - Cache Poisoning - CVE:CVE-2025-53693 Beta | N/A | Block | This rule is merged into the original rule "Sitecore - Cache Poisoning - CVE:CVE-2025-53693" (ID: ...7c5b669c). |
+
+May 19, 2026
+
+[<h2>Cloudflare as identity provider and account membership selector</h2>](https://developers.cloudflare.com/changelog/post/2026-05-19-cloudflare-as-identity-provider/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+Cloudflare Access now supports using Cloudflare itself as an [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/). If you publish an Access application and select Cloudflare as the login method, users can sign in with their existing Cloudflare account — no one-time PINs, no third-party IdP configuration, and no shared email inboxes. Authentication is backed by Cloudflare's own account security (including multi-factor authentication), making it both simpler to set up and more secure than OTP-based login for most use cases.
+
+Cloudflare is now the **default identity provider for all newly created Zero Trust accounts**, replacing One-time PIN.
+
+This also enables two new capabilities:
+
+- **Cloudflare Account Member selector** — A new [policy selector](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors) that matches users based on their membership in a Cloudflare account. You can target the current account or specify a different account ID for cross-account access scenarios.
+- **Restrict to account members** — An identity provider configuration option that limits authentication to users who are members of your Cloudflare account.
+
+To get started, add Cloudflare as an [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) in your Zero Trust settings.
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/17/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/17/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

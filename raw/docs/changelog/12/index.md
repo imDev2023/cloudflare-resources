@@ -1,0 +1,960 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Jul 13, 2026
+
+[<h2>Precursor introduces session-based bot detection</h2>](https://developers.cloudflare.com/changelog/post/2026-07-13-precursor-session-based-detection/)
+
+[Bots](https://developers.cloudflare.com/bots/)
+
+Precursor is rolling out to all customers starting today. Precursor is client-side JavaScript that enables session-based bot detection.
+
+You can [read the announcement blog ↗︎](https://blog.cloudflare.com/introducing-precursor) for background on why we built Precursor and how session-level behavioral detection works.
+
+With Precursor enabled, Cloudflare can:
+
+- Continuously evaluate behavioral signals across a session
+- Re-validate challenge clearance as behavior changes
+- Update bot scores with session context
+- Provide client-side visibility where none previously existed
+
+It integrates with existing protections, including Security Rules, and can be enabled directly from the Cloudflare dashboard with configurable modes to balance security and user experience.
+
+![Animated walkthrough of enabling Precursor in the Cloudflare dashboard](https://developers.cloudflare.com/images/precursor/enabling_precursor.gif)
+
+To learn more, refer to the [Precursor documentation](https://developers.cloudflare.com/cloudflare-challenges/precursor/).
+
+Jul 13, 2026
+
+[<h2>Origin Content Signals for Markdown for Agents</h2>](https://developers.cloudflare.com/changelog/post/2026-07-13-markdown-for-agents-header-preservation/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+[Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/) now preserves security- and cache-relevant response headers from your origin when converting HTML to Markdown:
+
+- Markdown for Agents preserves security headers such as `Strict-Transport-Security` (HSTS), `Content-Security-Policy` (CSP), `X-Frame-Options`, `Set-Cookie`, and CORS headers (for example, `Access-Control-Allow-Origin`) on the converted response.
+- Caching headers ( `Cache-Control`, `Expires`, `Age`) continue to pass through.
+
+Your origin's [Content Signals ↗︎](https://contentsignals.org/) policy is now authoritative. If your origin sets a `content-signal` header, Markdown for Agents preserves it. When the origin does not send one, Cloudflare adds the default `Content-Signal: ai-train=yes, search=yes, ai-input=yes`.
+
+This release also fixes relative link resolution for directory-style base URLs (those ending in a trailing slash). Previously, relative links such as `../page/` could resolve one path segment too high and return a `404`. Links are now resolved correctly per [RFC 3986 ↗︎](https://www.rfc-editor.org/rfc/rfc3986#section-5.2.3).
+
+Refer to our [developer documentation](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/) for more details.
+
+Jul 10, 2026
+
+[<h2>Source code detection improvements</h2>](https://developers.cloudflare.com/changelog/post/2026-07-10-source-code-detection-improvements/)
+
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+
+Data Loss Prevention (DLP) source code detection now focuses on identifying whole source code file uploads and downloads. Previously, source code detection performed partial scans resulting in a higher rate of false positives. Since only whole source code files are evaluated, code embedded in other content — such as chat messages, documentation, or code samples — is no longer flagged as source code, removing a common source of false positives.
+
+Source code detection requires a minimum of 500 characters to evaluate a file. Files below this threshold are not flagged to reduce noise. This threshold filters out small fragments that lack enough context for reliable classification.
+
+Enable and set [confidence levels](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/#confidence-thresholds) to tune match sensitivity. A higher confidence level reduces false positives by requiring stronger signals that the content is truly source code. A lower confidence level catches more files at the cost of additional noise.
+
+Source code detection applies to standalone source code files in [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/). It does not detect source code embedded within other file types or payloads, such as `.docx` files or chat messages.
+
+For more information, refer to [Source Code predefined profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#source-code).
+
+Jul 10, 2026
+
+[<h2>Plain text output for Markdown Conversion</h2>](https://developers.cloudflare.com/changelog/post/2026-07-13-markdown-conversion-text-output/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+The [Markdown Conversion](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) service now supports a new `output` conversion option that controls the format of the converted content.
+
+Set `output.format` to `text` to receive plain text with Markdown syntax removed. The default value is `markdown`, so existing conversions are unchanged.
+
+Use the [`env.AI`](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/) binding:
+
+```js
+await env.AI.toMarkdown(
+	{ name: "page.html", blob: new Blob([html]) },
+	{
+		conversionOptions: {
+			output: { format: "text" },
+		},
+	},
+);
+```
+
+```typescript
+await env.AI.toMarkdown(
+	{ name: "page.html", blob: new Blob([html]) },
+	{
+		conversionOptions: {
+			output: { format: "text" },
+		},
+	},
+);
+```
+
+Or call the REST API:
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/tomarkdown \
+  -H 'Authorization: Bearer {API_TOKEN}' \
+  -F 'files=@index.html' \
+  -F 'conversionOptions={"output": {"format": "text"}}'
+```
+
+When you request text output, the `format` field of each result is set to `text`. For more details, refer to [Conversion Options](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/#output).
+
+Jul 9, 2026
+
+[<h2>Workflows now supports delay functions when retrying</h2>](https://developers.cloudflare.com/changelog/post/2026-07-09-dynamic-retry-delays/)
+
+[Workflows](https://developers.cloudflare.com/workflows/)
+
+With [Workflows](https://developers.cloudflare.com/workflows/), you can configure built-in retry behavior for each step. Previously, you could configure step retries with fixed delay durations, such as seconds, minutes, or hours, and backoff strategies such as `constant`, `linear`, or `exponential`.
+
+Step retries now support dynamic delay functions. Instead of choosing only a base delay and backoff strategy, pass a function to `retries.delay` and calculate the next delay from the failed attempt and thrown error.
+
+This is useful when retries should depend on the failure. Your Workflow may need to wait longer after a rate-limit error, but retry sooner after a short network failure. The delay function can also accommodate provider guidance if, for example, a downstream API returns a `Retry-After` value in its error messaging.
+
+```js
+await step.do(
+	"sync customer",
+	{
+		retries: {
+			limit: 5,
+			delay: ({ ctx, error }) => {
+				if (error.message.includes("rate limit")) {
+					return `${ctx.attempt * 30} seconds`;
+				}
+
+				return "10 seconds";
+			},
+		},
+	},
+	async () => {
+		await syncCustomer();
+	},
+);
+```
+
+```ts
+await step.do(
+	"sync customer",
+	{
+		retries: {
+			limit: 5,
+			delay: ({ ctx, error }) => {
+				if (error.message.includes("rate limit")) {
+					return `${ctx.attempt * 30} seconds`;
+				}
+
+				return "10 seconds";
+			},
+		},
+	},
+	async () => {
+		await syncCustomer();
+	},
+);
+```
+
+Dynamic delay functions can return a duration string, a number, or a promise that resolves to a duration. Use them to add adaptive retry behavior without writing separate queue or scheduling logic. For more information, refer to [Sleeping and retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/).
+
+Jul 9, 2026
+
+[<h2>Wi-Fi signal and network performance analytics for Cloudflare One Client devices</h2>](https://developers.cloudflare.com/changelog/post/2026-07-09-warp-wifi-network-performance-analytics/)
+
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+
+[Digital Experience Monitoring (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) provides visibility into device, network, and application performance across your Cloudflare SASE deployment.
+
+The **Device Monitoring** page now analyzes hardware and network data between a Cloudflare One Client device and Cloudflare's edge, so you can diagnose connectivity and performance issues. Previously, this data was only available in raw DEX Device State Event logs, which required you to build your own analytics to interpret it.
+
+![Device Monitoring summary with connection status, connection mode, Wi-Fi signal strength, traffic performance, and device health](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1652,height=664,format=webp/_astro/dex-device-monitoring-summary.CBxeSd6b.png)
+
+A summary at the top of the page shows the health of each category at a glance, using **Good**, **Fair**, and **Poor** labels:
+
+- **Connection** — connection status, Cloudflare One Client mode, and tunnel type over time
+- **Wi-Fi signal strength** — signal measured in dBm over time, with thresholds that flag a weak signal
+- **Traffic performance** — upstream and downstream performance, including network throughput on the active interface
+- **Device health** — hardware metrics such as CPU, memory, and disk
+
+![Wi-Fi signal strength and network throughput charts on the Device Monitoring page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1666,height=732,format=webp/_astro/dex-device-monitoring-wifi-network.CoEBznAm.png)
+
+You can filter by category and adjust the time range to correlate a device's metrics with a user's reported issue.
+
+These analytics are available to all Cloudflare One customers at no additional cost.
+
+To learn more, refer to the [DEX monitoring documentation](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/).
+
+Jul 9, 2026
+
+[<h2>New DNS Firewall UX with more dashboard settings</h2>](https://developers.cloudflare.com/changelog/post/2026-07-09-new-dns-firewall-ux/)
+
+[DNS](https://developers.cloudflare.com/dns/)
+
+The DNS Firewall page in the Cloudflare dashboard has been refreshed, bringing several settings that were previously API-only into the UI and modernizing how you view and manage your DNS Firewall clusters.
+
+![New DNS Firewall UX](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2694,height=1247,format=webp/_astro/dnsfw-new-ux.vHgdhBZD.png)
+
+#### What is new
+
+- **More settings in the dashboard**: cluster options that were previously only configurable through the API — such as attack mitigation, rate limiting, negative TTL, and resolver subnet — are now available directly in the dashboard.
+- **Better table experience**: the DNS Firewall cluster table has been revised to surface cluster details at a glance, with resizable columns and the option to show or hide columns to tailor the view to your workflow.
+- **New create and edit UX**: adding and editing clusters now uses a modernized form that groups related settings together, making configuration faster and clearer.
+
+#### Availability
+
+Available to all DNS Firewall customers as part of their existing subscription.
+
+#### Where to find it
+
+In the Cloudflare dashboard, go to the **DNS Firewall** page.
+
+[Go to **Clusters** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)
+
+For more information, refer to [DNS Firewall](https://developers.cloudflare.com/dns/dns-firewall/).
+
+Jul 9, 2026
+
+[<h2>New Durable Object namespaces must use the SQLite storage backend</h2>](https://developers.cloudflare.com/changelog/post/2026-07-09-restrict-new-kv-backed-namespaces/)
+
+[Durable Objects](https://developers.cloudflare.com/durable-objects/) [Workers](https://developers.cloudflare.com/workers/)
+
+If your account does not already have a key-value (KV) backed Durable Object namespace, you can no longer create new ones. New Durable Object namespaces must use the [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class), which has been recommended for all new Durable Objects since it became [generally available ↗︎](https://blog.cloudflare.com/sqlite-in-durable-objects/) in 2024.
+
+Create a new class with a `new_sqlite_classes` migration:
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "MyDurableObject"
+      ]
+    }
+  ]
+}
+```
+
+```toml
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["MyDurableObject"]
+```
+
+SQLite-backed Durable Objects have feature parity with the key-value backend — including the [key-value storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#synchronous-kv-api) — and additionally support relational [SQL queries](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#sql-api) and [point-in-time recovery](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#pitr-point-in-time-recovery-api) to restore an object's storage to any point in the past 30 days.
+
+If you attempt to create a new key-value backed namespace (a `new_classes` migration) on an affected account, the deployment fails with the following error:
+
+```txt
+Creating new key-value backed Durable Object namespaces is no longer supported on this account. Please create a namespace using a `new_sqlite_classes` migration instead.
+```
+
+This change only affects accounts that are not already using the key-value storage backend. Accounts with at least one existing key-value backed namespace can still create new ones for now, and the Workers Free plan has only ever supported SQLite-backed Durable Objects. It is part of a broader move toward SQLite as the single storage backend for Durable Objects, ahead of a future migration path for existing key-value backed objects.
+
+For more information, refer to [Durable Objects migrations](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/).
+
+Jul 9, 2026
+
+[<h2>Zero Trust Networks route endpoints and Cloudflare Tunnel connections field retiring on October 5, 2026</h2>](https://developers.cloudflare.com/changelog/post/2026-07-09-tunnel-routes-and-connections-api-changes/)
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/)
+
+On **October 5, 2026**, two changes take effect across the [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/) and [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/): the CIDR-encoded route endpoints are removed, and tunnel list and get responses no longer include the `connections` field. If you manage private network routes or read tunnel connection details through the API, `cloudflared`, Terraform, or another integration, review the changes in the following sections and migrate before the removal date.
+
+#### Route endpoints
+
+The CIDR-encoded route endpoints are deprecated in favor of the standard, `route_id`-based endpoints that already exist today. Both sets of endpoints route a private network through [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) or [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (the API still refers to Mesh nodes as `warp_connector`) — only the request shape changes.
+
+**Deprecated endpoints (removed October 5, 2026):**
+
+- Create a tunnel route (CIDR Endpoint): [`POST /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/subresources/networks/methods/create/)
+- Update a tunnel route (CIDR Endpoint): [`PATCH /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/subresources/networks/methods/edit/)
+- Delete a tunnel route (CIDR Endpoint): [`DELETE /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/subresources/networks/methods/delete/)
+
+**Replacement endpoints:**
+
+- Create a tunnel route: [`POST /accounts/{account_id}/teamnet/routes`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/create/)
+- Update a tunnel route: [`PATCH /accounts/{account_id}/teamnet/routes/{route_id}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/edit/)
+- Delete a tunnel route: [`DELETE /accounts/{account_id}/teamnet/routes/{route_id}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/delete/)
+
+#### What is changing
+
+|  | Deprecated (CIDR-encoded path) | Replacement |
+| --- | --- | --- |
+| Route identifier | URL-encoded CIDR in the path (`/network/{ip_network_encoded}`) | `route_id` in the path (`network` moves to the request body on create) |
+| Create | `POST .../teamnet/routes/network/{ip_network_encoded}` | `POST .../teamnet/routes` with `network` and `tunnel_id` in the body |
+| Update | `PATCH .../teamnet/routes/network/{ip_network_encoded}` | `PATCH .../teamnet/routes/{route_id}` |
+| Delete | `DELETE .../teamnet/routes/network/{ip_network_encoded}` | `DELETE .../teamnet/routes/{route_id}` |
+
+#### Action required
+
+1. Capture each route's `route_id` by calling [List tunnel routes](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/list/), or read it from the response the first time you create a route with the replacement endpoint.
+2. Update any scripts, backend services, or CI/CD pipelines that call the CIDR-encoded endpoints directly.
+3. If you manage routes with the `cloudflared tunnel route ip add | delete` commands, upgrade `cloudflared` to the [latest version ↗︎](https://github.com/cloudflare/cloudflared/releases).
+4. If you manage routes with Terraform, make sure you are on a current version of the [`cloudflare_zero_trust_tunnel_cloudflared_route` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_cloudflared_route) resource and the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+
+```bash
+# Before: create a route by URL-encoding the CIDR into the path
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/network/172.16.0.0%2F16 \
+     -H 'Content-Type: application/json' \
+     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+     -d '{"tunnel_id": "'$TUNNEL_ID'", "comment": "Example comment for this route."}'
+
+# After: create a route with the network in the request body
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes \
+     -H 'Content-Type: application/json' \
+     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+     -d '{"network": "172.16.0.0/16", "tunnel_id": "'$TUNNEL_ID'", "comment": "Example comment for this route."}'
+
+# After: update or delete a route using its route_id
+curl -X PATCH https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID \
+     -H 'Content-Type: application/json' \
+     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+     -d '{"comment": "Updated comment for this route."}'
+
+curl -X DELETE https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID \
+     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+#### Cloudflare Tunnel and Cloudflare Mesh connections
+
+Starting the same day, the `connections` array is removed from list and get responses for [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) and [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) nodes (the `cfd_tunnel` and `warp_connector` API resources). Query the dedicated connections endpoint instead of reading the field off the tunnel or node object.
+
+This affects:
+
+- [`GET /accounts/{account_id}/cfd_tunnel`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/cloudflared/methods/list/) — `connections` removed from each item in `result`
+- [`GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/cloudflared/methods/get/) — `connections` removed from `result`
+- [`GET /accounts/{account_id}/warp_connector`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/warp_connector/methods/list/) — `connections` removed from each item in `result`
+- [`GET /accounts/{account_id}/warp_connector/{tunnel_id}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/warp_connector/methods/get/) — `connections` removed from `result`
+
+#### Action required
+
+Fetch connection details from the tunnel-specific connections endpoint instead of parsing it off the list or get response. For Cloudflare Tunnel, call [`GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/cloudflared/subresources/connections/methods/get/). For Cloudflare Mesh, call [`GET /accounts/{account_id}/warp_connector/{tunnel_id}/connections`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/warp_connector/subresources/connections/methods/get/).
+
+```bash
+# Before: read connections off the tunnel object
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID \
+     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+# After: query connections directly
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/connections \
+     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+Update any dashboards, monitoring scripts, or automation that parses `connections` from the tunnel list or get response. `cloudflared` and the Cloudflare Terraform provider do not read this field, so no changes are required on their side for this part of the update.
+
+#### Why we are making these changes
+
+- **Smaller, faster responses.** Cloudflare Tunnel and Cloudflare Mesh nodes with many connections no longer inflate every list and get call — connection detail is only fetched when you need it.
+- **A single way to identify a route.** Consolidating on `route_id` removes the need to URL-encode CIDR ranges into the path and matches how every other resource in the Zero Trust Networks API is addressed.
+- **Consistency across the API.** Both changes align these endpoints with Cloudflare's standard REST conventions for resource identifiers and nested detail endpoints.
+
+To learn more, refer to the [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/), the [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/), and [Routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/) documentation.
+
+Jul 9, 2026
+
+[<h2>Send npm package dependency metadata with Worker uploads</h2>](https://developers.cloudflare.com/changelog/post/2026-07-07-wrangler-deploy-upload-dependencies-metadata/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Wrangler now collects npm package dependency information from your project's `package.json` during [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) and [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/general/#upload), and includes it in the upload metadata sent to the Cloudflare API. This data, each dependency's name, declared version range, and exact installed version, enables dependency analytics and future supply chain security features such as vulnerability alerting.
+
+To opt out, set [`dependencies_instrumentation.enabled`](https://developers.cloudflare.com/workers/wrangler/configuration/#top-level-only-keys) to `false` in your Wrangler configuration file:
+
+```jsonc
+{
+	"dependencies_instrumentation": {
+		"enabled": false
+	}
+}
+```
+
+```toml
+[dependencies_instrumentation]
+enabled = false
+```
+
+For more details, refer to [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#top-level-only-keys).
+
+Jul 8, 2026
+
+[<h2>Filter AI Search list items by exact object key</h2>](https://developers.cloudflare.com/changelog/post/2026-07-08-ai-search-list-items-key-filter/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+In [AI Search](https://developers.cloudflare.com/ai-search/), you can upload files to an instance, or connect a [data source](https://developers.cloudflare.com/ai-search/configuration/data-source/) such as an R2 bucket, to make your content searchable with natural language. Each file becomes an **item** identified by an object **key** (its filename or path). The [list items endpoint](https://developers.cloudflare.com/ai-search/api/items/rest-api/) returns the items in an instance.
+
+That endpoint now accepts a `key` query parameter, so you can look up a single item by its exact object key without paging through the full list. This complements the existing `item_id` filter for when you know the key but not the ID.
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/items?key=docs/readme.md" \
+  -H "Authorization: Bearer <API_TOKEN>"
+```
+
+Keys are unique per data source, so combine `key` with `source` (for example, `source=builtin`) to disambiguate when the same key exists across multiple sources.
+
+For more information, refer to [managing items](https://developers.cloudflare.com/ai-search/api/items/rest-api/).
+
+Jul 8, 2026
+
+[<h2>Workers AI toMarkdown and AI Search now supports GIF and BMP image conversion</h2>](https://developers.cloudflare.com/changelog/post/2026-07-08-gif-bmp-image-support/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/) [AI Search](https://developers.cloudflare.com/ai-search/)
+
+Workers AI [Markdown conversion](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) (`toMarkdown`) now supports `.gif` and `.bmp` image files, in addition to the JPEG, PNG, WebP, and SVG formats already supported.
+
+GIF and BMP files run through the same [image pipeline](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#images) as other formats. Each image is resized if needed (and for animated GIFs, only the first frame is used), then passed to an object-detection model to identify what it contains. Those detected objects prompt a vision model that writes a natural-language description of the image, which becomes searchable, machine-readable Markdown.
+
+[AI Search](https://developers.cloudflare.com/ai-search/) uses `toMarkdown` automatically to process the files it ingests, so any `.gif` and `.bmp` files are included the next time your index syncs, with no configuration changes required. This helps when your content mixes formats, for example a support knowledge base full of screenshots or an archive of BMP scans.
+
+Learn more about [Markdown conversion](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) and the full list of [AI Search's supported file types](https://developers.cloudflare.com/ai-search/configuration/data-source/#supported-file-types).
+
+Jul 8, 2026
+
+[<h2>Query R2 Data Catalog tables with R2 SQL from the dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-07-08-query-r2-sql-from-dashboard/)
+
+[Basin SQL](https://developers.cloudflare.com/basin-sql/) [Basin](https://developers.cloudflare.com/basin/)
+
+You can now query your [R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/) tables with [R2 SQL](https://developers.cloudflare.com/basin-sql/) directly from the Cloudflare dashboard, without installing a CLI or wiring up a client. This makes it easy to explore your [Apache Iceberg ↗︎](https://iceberg.apache.org/) data, validate queries, and inspect results in one place.
+
+![R2 SQL Query Editor](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3080,height=1696,format=webp/_astro/r2-sql-studio.DCmHJaqy.png)
+
+To get started, go to [R2 Data Catalog ↗︎](https://dash.cloudflare.com/?to=/:account/data-catalog/overview) in the Cloudflare dashboard and select **Query data** to launch the built-in SQL editor. From there you can:
+
+- **Write and run queries interactively** — Iterate on R2 SQL directly in the browser with syntax highlighting and autocomplete, instead of re-running commands through Wrangler or the REST API.
+- **Explore your data** — Explore your namespaces and tables alongside the editor so you can discover what's queryable without leaving the page or using other tools.
+- **Understand results and performance** — View result sets with per-query statistics, export them, and get helpful `EXPLAIN` outputs to see exactly how a query runs.
+
+Note
+
+Your R2 SQL credential is generated and stored for you and can be rotated in the R2 Data Catalog settings page.
+
+Jul 8, 2026
+
+[<h2>IPsec downgrade protection (beta)</h2>](https://developers.cloudflare.com/changelog/post/2026-07-08-ipsec-downgrade-protection/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+Cloudflare IPsec now supports the [`IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` ↗︎](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/) IKEv2 extension to protect against downgrade attacks on IPsec tunnels.
+
+IKEv2's original authentication design has each endpoint sign only its own outbound messages, not the full handshake transcript. A quantum-capable [on-path attacker ↗︎](https://www.cloudflare.com/learning/security/threats/on-path-attack/) can exploit this to bypass post-quantum key exchange by downgrading the connection to classical cryptography. The `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` extension addresses this by having both peers sign the entire handshake transcript during the authentication exchange, preventing an attacker from manipulating the negotiation without detection.
+
+Key details:
+
+- Available in beta for Cloudflare WAN and Magic Transit IPsec tunnels.
+- Cloudflare sends the `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` notification unconditionally as a responder when the feature flag is enabled.
+- Both the initiator (your device) and responder (Cloudflare) must support the extension for downgrade protection to be effective.
+- This feature is currently gated by a per-account feature flag. Contact your account team to turn it on.
+
+Refer to [Downgrade protection](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#improved-downgrade-protection-beta) for more details.
+
+Jul 8, 2026
+
+[<h2>IP lists, IDS, and SIP rules supported in Unified Routing</h2>](https://developers.cloudflare.com/changelog/post/2026-07-08-unified-routing-iplist-ids-sip/)
+
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+[Cloudflare Advanced Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) IP lists, IDS, and SIP rules are now supported for accounts using [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing) mode. These features require a Cloudflare Advanced Network Firewall subscription.
+
+Support for additional features - Threat Intel Lists, Rate Limiting, and Managed Rulesets - is planned.
+
+For the full list of current beta limitations, refer to [Traffic steering beta limitations](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#check-feature-availability-before-upgrading).
+
+Jul 8, 2026
+
+[<h2>Moondream 3.1 now available on Workers AI</h2>](https://developers.cloudflare.com/changelog/post/2026-07-08-moondream3.1-workers-ai/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+Partnering with [Moondream ↗︎](https://moondream.ai/) to bring their latest model [`@cf/moondream/moondream3.1-9B-A2B`](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/) to Workers AI. Moondream 3.1 is a fast vision language model built on a mixture-of-experts architecture with 9B total parameters and 2B active, delivering frontier-level visual reasoning while retaining fast, cost-efficient inference.
+
+Moondream 3.1 is designed for real-world vision tasks, with a 32K token context window for handling complex queries and structured outputs.
+
+#### Key capabilities
+
+- **Query** — ask open-ended questions about an image, with an optional reasoning parameter
+- **Caption** — generate short, normal, or long descriptions of an image
+- **Point** — return coordinates for objects matching a target phrase
+- **Detect** — return bounding boxes for objects matching a target phrase
+
+#### Real-time vision at the edge
+
+Vision workloads like live camera feeds, robotics, content moderation, and interactive agents need answers in milliseconds, not seconds. Moondream 3.1's small active footprint (2B active parameters) pairs well with Workers AI's serverless, globally distributed inference: requests run close to your users, and streaming responses start returning tokens almost immediately.
+
+In our testing, first tokens streamed back in roughly 20–30 ms, and results were fast across every task. The example end-to-end times below (client-observed median, including network round trip) are for a simple, single-subject image. Actual latency depends heavily on the image and how much detail you ask for.
+
+| Task | End-to-end (p50) |
+| --- | --- |
+| `query` | \~770 ms |
+| `caption` | \~480 ms |
+| `point` | \~145 ms |
+| `detect` | \~160 ms |
+
+At these speeds you can call the model inline while handling a request rather than pushing the work to a background queue or a separate service. That opens up use cases where a slow response breaks the experience: moderating user-uploaded images before they are stored, locating an object in a video frame to drive a live overlay, extracting fields from a document during a form submission, or letting an agent inspect a screenshot and decide its next step within a single turn.
+
+#### Get started
+
+Use Moondream 3.1 through the [Workers AI binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/) (`env.AI.run()`) or the REST API at `/ai/run`. You can also use [AI Gateway](https://developers.cloudflare.com/ai-gateway/) with these endpoints.
+
+For more information, refer to the [Moondream 3.1 model page](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/) and [pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/).
+
+Jul 8, 2026
+
+[<h2>Cloudflare Drop</h2>](https://developers.cloudflare.com/changelog/post/2026-07-08-cloudflare-drag-and-drop/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+[Cloudflare Drop ↗︎](https://cloudflare.com/drop) lets you deploy a static site to Cloudflare without requiring a Cloudflare account to get started.
+
+![Cloudflare Drag and Drop upload screen for browsing folders or ZIP files](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2498,height=1294,format=webp/_astro/cloudflare-drag-and-drop-upload.KujM69eS.png)
+
+Upload a folder or zip file of static assets (static HTML, CSS, JavaScript, images, and fonts) and get a temporary live preview that stays live for 1 hour. During that window, you can test the site, share the preview URL, or [claim the deployment](https://developers.cloudflare.com/workers/platform/claim-deployments/) to keep it.
+
+![Cloudflare Drag and Drop temporary live preview screen with claim and copy claim link actions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2936,height=1594,format=webp/_astro/cloudflare-drag-and-drop-preview.BQ1__XRX.png)
+
+When you are ready to make the deployment permanent, click **Claim** to sign in or create a Cloudflare account. You can claim the site into an existing Cloudflare account or create a new account for the deployment.
+
+Note
+
+If you are creating a new account, you will need to verify your email address before continuing.
+
+![Cloudflare Drag and Drop claim account screen with a countdown before the claim link expires](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1712,height=812,format=webp/_astro/cloudflare-drag-and-drop-claim.8Zv6px9B.png)
+
+After claiming the site, you can:
+
+- **Add a domain**: [Connect](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) an existing domain or purchase a new one for your site.
+- **Enable [observability](https://developers.cloudflare.com/workers/observability/)**: Monitor your site's performance and usage.
+- **Enable [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/)**: Allow AI agents to access your site's content in Markdown.
+- **Control access**: Make your site [private](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and choose who can view it.
+
+![Claimed Cloudflare Drag and Drop site setup screen showing options to add a domain, control access, enable observability, and enable Markdown for agents](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1812,height=1266,format=webp/_astro/cloudflare-drag-and-drop-post-claim.DvlaNmI7.png)
+
+Jul 7, 2026
+
+[<h2>Cloudflare One Client for Windows (version 2026.6.850.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-07-07-warp-windows-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix addresses a Windows authentication issue in the embedded WebView2 browser. Single sign-on could fail to use the Windows primary account, causing users to be prompted for an interactive sign-in. The embedded authentication browser now allows SSO providers to use the OS primary account when available.
+
+Jul 7, 2026
+
+[<h2>Workflows pricing adds per-step billing. Step and storage billing to start no earlier than August 10, 2026.</h2>](https://developers.cloudflare.com/changelog/post/2026-07-07-workflows-billing-updates/)
+
+[Workflows](https://developers.cloudflare.com/workflows/)
+
+[Workflows](https://developers.cloudflare.com/workflows/) pricing now includes per-step billing. Requests and CPU time billing have been enabled since the initial public beta and is not changing.
+
+#### Workflows adds step billing
+
+A step is each unit of work executed by a Workflow, including step operations such as [sleeping](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/) or [waiting for events](https://developers.cloudflare.com/workflows/build/events-and-parameters/).
+
+You can query Workflows analytics, including `stepCount` for a Workflow instance, with the [GraphQL Analytics API](https://developers.cloudflare.com/workflows/observability/metrics-analytics/#query-via-the-graphql-api).
+
+#### Steps and storage billing to take effect August 10th, 2026
+
+Starting no earlier than August 10th, 2026, Cloudflare will begin billing for step and storage usage on Workers Paid plans.
+
+Storage pricing has been published since Workflows became generally available and is not changing. Storage is measured as persisted Workflow state in GB-months.
+
+| Dimension | Workers Free | Workers Paid |
+| --- | --- | --- |
+| Steps | 3,000 included per day | 500,000 included per month, then $0.80 per additional 100,000 steps |
+| Storage | 1 GB-month included | 1 GB-month included, then $0.20 per additional GB-month |
+
+Developers on the Workers Free plan will not be charged for steps or storage beyond the included amounts.
+
+Cloudflare will not bill step and storage usage before August 10, 2026.
+
+You can review Workflows usage in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) before this change takes effect. To reduce costs, consider reducing the number of steps per Workflow or improving the memory efficiency of your stored state.
+
+Refer to the [Workflows pricing](https://developers.cloudflare.com/workflows/reference/pricing/) page for full details.
+
+Jul 7, 2026
+
+[<h2>File transfer controls for browser-based RDP (beta)</h2>](https://developers.cloudflare.com/changelog/post/2026-07-07-rdp-file-transfer-beta/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+You can now configure file transfer controls for browser-based RDP with Cloudflare Access, allowing you to restrict whether users can upload or download files between their local machine and the remote Windows server.
+
+![File transfer connection settings in the Access policy configuration.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1356,height=692,format=webp/_astro/file-transfer-policy-control.CiSEa5rr.png)
+
+This feature is useful for organizations that support bring-your-own-device (BYOD) policies or third-party contractors using unmanaged devices. By restricting file transfers, you can prevent sensitive data from being moved out of the remote session to a user's personal device.
+
+#### Configuration options
+
+File transfer controls are configured per policy within your Access application, alongside existing [text clipboard controls](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#connection-settings). For each policy, you can select one of the following options:
+
+- **Client to remote RDP session allowed** — Users can upload files from their local machine into the browser-based RDP session.
+- **Remote RDP session to client allowed** — Users can download files from the browser-based RDP session to their local machine.
+- **Both directions allowed** — Users can upload and download files between their local machine and the browser-based RDP session.
+- **Disable copying/pasting** — Users are not allowed to transfer files between their local machine and the browser-based RDP session.
+
+By default, file transfer is denied for new policies. For existing Access applications created before this feature was available, file transfer remains denied.
+
+#### How it works
+
+To upload, drag files into the browser window or select the settings gear icon on the left side of the RDP session. To download, copy a file in the remote session and select the settings gear to download it, download multiple files as a zip, or print PDFs to a local printer.
+
+![The clipboard side panel showing files available for transfer.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=812,height=532,format=webp/_astro/clipboard-side-panel.Us2RfXfs.png) ![A remote document ready for download or local printing.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=770,height=442,format=webp/_astro/remote-doc-ready-for-download-or-print-local.Dcm5hrGD.png)
+
+This feature is in beta and available on all Zero Trust plans. For more information, refer to [File transfer for browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#transfer-files).
+
+Jul 7, 2026
+
+[<h2>R2 Data Catalog warns before you delete data manually</h2>](https://developers.cloudflare.com/changelog/post/2026-07-06-r2-data-catalog-delete-warnings/)
+
+[Basin Catalog](https://developers.cloudflare.com/basin-catalog/) [Basin](https://developers.cloudflare.com/basin/) [R2](https://developers.cloudflare.com/r2/)
+
+[R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/) is a managed [Apache Iceberg ↗︎](https://iceberg.apache.org/) catalog built directly into your R2 bucket. Iceberg tracks your data through a tree of metadata files, so every insert, update, and delete must go through a catalog transaction. Manually adding, modifying, or deleting objects outside the catalog can leave pointers referencing files that no longer exist, corrupting the table into an inconsistent state that is difficult to recover from.
+
+To help prevent this, the R2 dashboard and Wrangler now warn you when you attempt a manual delete operation on a Data Catalog-enabled bucket.
+
+#### Dashboard
+
+When you try to delete objects from a bucket that has R2 Data Catalog enabled, the dashboard displays a warning explaining that the operation could leave the catalog in an invalid state, with a link to the documentation for deleting data correctly. You can cancel the operation or choose to proceed anyway.
+
+![R2 dashboard warning shown before deleting objects from a Data Catalog-enabled bucket](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1886,height=684,format=webp/_astro/data-catalog-delete-warning.DoBR0sFO.png)
+
+#### Wrangler
+
+Wrangler now checks whether a bucket is Data Catalog-enabled before running a delete and warns you before continuing:
+
+```txt
+Data Catalog is enabled for this bucket. 
+Proceeding may leave the data catalog in an invalid state. Continue?
+```
+
+To learn how to safely manage and delete data in your tables, refer to the [R2 Data Catalog documentation](https://developers.cloudflare.com/basin-catalog/).
+
+Jul 7, 2026
+
+[<h2>Browser Isolation support for authorization proxy endpoints</h2>](https://developers.cloudflare.com/changelog/post/2026-07-07-authorization-proxy-endpoint-support/)
+
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) now supports Gateway [authorization proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint). You can apply [HTTP Isolate policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) to traffic routed through authorization proxy endpoints, the same way you can for traffic from the Cloudflare One Client.
+
+Previously, only [source IP proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#source-ip-endpoint) supported Browser Isolation, and only with non-identity policies. Because authorization proxy endpoints authenticate users through an identity provider, you can now apply identity-based Isolate policies to PAC file-proxied traffic without requiring the Cloudflare One Client.
+
+To get started, [create an authorization proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint) and [build an Isolate policy](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/).
+
+Jul 7, 2026
+
+[<h2>New Browser Run endpoint for accessibility trees</h2>](https://developers.cloudflare.com/changelog/post/2026-07-07-browser-run-accessibility-tree-endpoint/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/) now supports a standalone `/accessibilityTree` endpoint, giving agent and automation workflows direct access to the browser's accessibility tree for a rendered webpage.
+
+An accessibility tree is the browser's structured view of a rendered page: roles, names, states, values, and hierarchy. It is useful for accessibility tooling, but also for AI agents and automation workflows that need page structure without the noise of raw HTML or the cost of screenshots.
+
+For AI agents, this means less inference from pixels and less parsing HTML. You can provide the page structure directly, helping agents identify available elements and determine which actions they can take.
+
+With the new `/accessibilityTree` endpoint, you can request the accessibility tree directly when you only need the semantic structure of a page. If you need multiple page formats in a single API call, you can use the [`/snapshot`](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/) endpoint, which also returns Markdown, HTML, and screenshots.
+
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-run/accessibilityTree' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://example.com/"
+}'
+```
+
+```json
+{
+	"success": true,
+	"result": {
+		"accessibilityTree": {
+			"role": "RootWebArea",
+			"name": "Example Domain",
+			"children": [
+				{
+					"role": "heading",
+					"name": "Example Domain",
+					"level": 1
+				},
+				{
+					"role": "link",
+					"name": "Learn more"
+				}
+			]
+		}
+	}
+}
+```
+
+Use `interestingOnly` to return only semantically meaningful nodes, or `root` to capture the accessibility tree for a specific subtree.
+
+Refer to the [`/accessibilityTree` documentation](https://developers.cloudflare.com/browser-run/quick-actions/accessibility-tree-endpoint/) for usage examples and supported parameters.
+
+Jul 7, 2026
+
+[<h2>New WebSocket Analytics Logpush dataset</h2>](https://developers.cloudflare.com/changelog/post/2026-07-07-websocket-analytics-dataset/)
+
+[Logs](https://developers.cloudflare.com/logs/)
+
+Enterprise customers can now push per-connection WebSocket analytics to any [Logpush destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/) using the new `websocket_analytics` dataset. Each log record is emitted when a WebSocket connection closes and includes fields that were previously only available to Cloudflare engineers via internal tooling.
+
+Key fields include:
+
+- **`ConnectionCloseReason`** — why the connection ended: `peerReset`, `peerNoError`, `timedOut`, `upstreamReset`, `protocolViolation`, `unspecifiedError`, or `none`.
+- **`ConnectionCloseSource`** — which side initiated the close: `upstream`, `downstream`, `me`, or `both`.
+- **`ConnectionTransportCloseCode`** — the TLS alert code or TCP-level close code for additional precision.
+- **`RayID`** — correlate WebSocket connection events with your existing HTTP Request logs.
+
+The dataset also includes directional byte counts (`BytesSentClient`, `BytesReceivedClient`, `BytesSentOrigin`, `BytesReceivedOrigin`), connection timestamps, client IP, colo code, and request metadata from the original WebSocket upgrade.
+
+This data lets you build alerts on connection close patterns — for example, detecting spikes in TCP resets (`ConnectionCloseReason == "peerReset"`) grouped by host and data center — directly in your existing log analysis tools.
+
+For the full list of available fields, refer to [WebSocket Analytics](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/websocket_analytics/).
+
+Jul 6, 2026
+
+[<h2>Self-serve registration of Cloudflare One Virtual Appliance in the dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-07-06-virtual-appliance-self-serve-ui/)
+
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+You can now register a [Cloudflare One Virtual Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) and generate its license key directly from the dashboard, without contacting your account team.
+
+![Registering a Cloudflare One Virtual Appliance and generating its authentication key from the Connectors page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=988,format=webp/_astro/2026-07-06-virtual-appliance-self-serve-ui.Dn2NC_ql.gif)
+
+- On the **Connectors** page, select **Add an appliance** and choose **Virtual appliance** to register a virtual appliance and generate its authentication key.
+- Use **Regenerate authentication key** from a virtual appliance connector's menu to rotate its key. The previous key is immediately and irrevocably revoked.
+- The authentication key is shown only once — copy and store it securely.
+
+This complements the existing [API and Terraform self-serve workflow](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key) for provisioning virtual appliances. Hardware appliances continue to use the existing account-team fulfillment workflow.
+
+For details, refer to [Configure a Cloudflare One Virtual Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/).
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/12/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/12/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

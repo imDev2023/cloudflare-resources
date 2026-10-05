@@ -1,0 +1,31 @@
+---
+description: Compare API Shield feature availability and endpoint limits across Cloudflare plans.
+title: Plans
+image: https://developers.cloudflare.com/api-shield/plans/og.png?v=261ae43b8dc50384
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Plans
+
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/plans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Customers with API Security already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is opening a closed beta to invited Enterprise customers without API Security. Interested customers can contact their account team to express interest. Closed beta access does not imply future plan availability or pricing.
+
+To subscribe to API Shield, upgrade to an Enterprise plan and contact your account team.
+
+Existing operation and uploaded schema limits remain based on your zone plan. These limits do not determine Application Profiles availability.
+
+The uploaded schema allowance counts schemas enabled for validation. Cloudflare calculates schema size after processing an upload, so it may differ from the original file size.
+
+| Plan type | Saved endpoints | Enabled uploaded schemas | Combined size of enabled schemas | Rule action |
+| --- | --- | --- | --- | --- |
+| **Free** | 100 | 5 | 200 KiB | `Block` only |
+| **Pro** | 250 | 5 | 500 KiB | `Block` only |
+| **Business** | 500 | 10 | 2 MiB | `Block` only |
+| **Enterprise without API Shield** | 3000 | 10 | 5 MiB | `Log` or `Block` |
+| **Enterprise with API Shield** | 10,000 | 10 | 10+ MiB | `Log` or `Block` |

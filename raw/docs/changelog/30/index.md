@@ -1,0 +1,1478 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Jan 28, 2026
+
+[<h2>Launching FLUX.2 \[klein\] 9B on Workers AI</h2>](https://developers.cloudflare.com/changelog/post/2026-01-28-flux-2-klein-9b-workers-ai/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+We have partnered with Black Forest Labs (BFL) again to bring their optimized FLUX.2 \[klein] 9B model to Workers AI. This distilled model offers enhanced quality compared to the 4B variant, while maintaining cost-effective pricing. With a fixed 4-step inference process, Klein 9B is ideal for rapid prototyping and real-time applications where both speed and quality matter.
+
+Read the [BFL blog ↗︎](https://bfl.ai/blog) to learn more about the model itself, or try it out yourself on our [multi modal playground ↗︎](https://multi-modal.ai.cloudflare.com/).
+
+Pricing documentation is available on the [model page](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/) or [pricing page](https://developers.cloudflare.com/workers-ai/platform/pricing/).
+
+#### Workers AI platform specifics
+
+The model hosted on Workers AI is optimized for speed with a **fixed 4-step inference process** and supports up to 4 image inputs. Since this is a distilled model, the `steps` parameter is fixed at 4 and cannot be adjusted. Like FLUX.2 \[dev] and FLUX.2 \[klein] 4B, this image model uses multipart form data inputs, even if you just have a prompt.
+
+With the REST API, the multipart form data input looks like this:
+
+```bash
+curl --request POST \
+  --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT}/ai/run/@cf/black-forest-labs/flux-2-klein-9b' \
+  --header 'Authorization: Bearer {TOKEN}' \
+  --header 'Content-Type: multipart/form-data' \
+  --form 'prompt=a sunset at the alps' \
+  --form width=1024 \
+  --form height=1024
+```
+
+With the Workers AI binding, you can use it as such:
+
+```javascript
+const form = new FormData();
+form.append("prompt", "a sunset with a dog");
+form.append("width", "1024");
+form.append("height", "1024");
+
+// FormData doesn't expose its serialized body or boundary. Passing it to a
+// Request (or Response) constructor serializes it and generates the Content-Type
+// header with the boundary, which is required for the server to parse the multipart fields.
+const formResponse = new Response(form);
+const formStream = formResponse.body;
+const formContentType = formResponse.headers.get('content-type');
+
+const resp = await env.AI.run("@cf/black-forest-labs/flux-2-klein-9b", {
+	multipart: {
+		body: formStream,
+		contentType: formContentType,
+	},
+});
+```
+
+The parameters you can send to the model are detailed here:
+
+<details>
+
+<summary>JSON Schema for Model</summary>
+
+
+
+**Required Parameters**
+
+- <code>prompt</code> (string) - Text description of the image to generate
+
+**Optional Parameters**
+
+- <code>input_image_0</code> (string) - Binary image
+- <code>input_image_1</code> (string) - Binary image
+- <code>input_image_2</code> (string) - Binary image
+- <code>input_image_3</code> (string) - Binary image
+- <code>guidance</code> (float) - Guidance scale for generation. Higher values follow the prompt more closely
+- <code>width</code> (integer) - Width of the image, default <code>1024</code> Range: 256-1920
+- <code>height</code> (integer) - Height of the image, default <code>768</code> Range: 256-1920
+- <code>seed</code> (integer) - Seed for reproducibility
+
+**Note:** Since this is a distilled model, the <code>steps</code> parameter is fixed at 4 and cannot be adjusted.
+
+</details>
+
+#### Multi-reference images
+
+The FLUX.2 klein-9b model supports generating images based on reference images, just like FLUX.2 \[dev] and FLUX.2 \[klein] 4B. You can use this feature to apply the style of one image to another, add a new character to an image, or iterate on past generated images. You would use it with the same multipart form data structure, with the input images in binary. The model supports up to 4 input images.
+
+For the prompt, you can reference the images based on the index, like `take the subject of image 1 and style it like image 0` or even use natural language like `place the dog beside the woman`.
+
+You must name the input parameter as `input_image_0`, `input_image_1`, `input_image_2`, `input_image_3` for it to work correctly. All input images must be smaller than 512x512.
+
+```bash
+curl --request POST \
+  --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT}/ai/run/@cf/black-forest-labs/flux-2-klein-9b' \
+  --header 'Authorization: Bearer {TOKEN}' \
+  --header 'Content-Type: multipart/form-data' \
+  --form 'prompt=take the subject of image 1 and style it like image 0' \
+  --form input_image_0=@/Users/johndoe/Desktop/icedoutkeanu.png \
+  --form input_image_1=@/Users/johndoe/Desktop/me.png \
+  --form width=1024 \
+  --form height=1024
+```
+
+Through Workers AI Binding:
+
+```javascript
+//helper function to convert ReadableStream to Blob
+async function streamToBlob(stream: ReadableStream, contentType: string): Promise<Blob> {
+  const reader = stream.getReader();
+  const chunks = [];
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+  }
+
+  return new Blob(chunks, { type: contentType });
+}
+
+const image0 = await fetch("http://image-url");
+const image1 = await fetch("http://image-url");
+const form = new FormData();
+
+const image_blob0 = await streamToBlob(image0.body, "image/png");
+const image_blob1 = await streamToBlob(image1.body, "image/png");
+form.append('input_image_0', image_blob0)
+form.append('input_image_1', image_blob1)
+form.append('prompt', 'take the subject of image 1 and style it like image 0')
+
+// FormData doesn't expose its serialized body or boundary. Passing it to a
+// Request (or Response) constructor serializes it and generates the Content-Type
+// header with the boundary, which is required for the server to parse the multipart fields.
+const formResponse = new Response(form);
+const formStream = formResponse.body;
+const formContentType = formResponse.headers.get('content-type');
+
+const resp = await env.AI.run("@cf/black-forest-labs/flux-2-klein-9b", {
+    multipart: {
+        body: formStream,
+        contentType: formContentType
+    }
+})
+```
+
+Jan 27, 2026
+
+[<h2>WARP client for Windows (version 2026.1.89.1)</h2>](https://developers.cloudflare.com/changelog/post/2026-01-27-warp-windows-beta/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new Beta release for the Windows WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
+
+This release contains minor fixes, improvements, and new features.
+
+**Changes and improvements**
+
+- Improvements to [multi-user mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/). Fixed an issue where when switching from a pre-login registration to a user registration, Mobile Device Management (MDM) configuration association could be lost.
+- Added a new feature to [manage NetBIOS over TCP/IP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#netbios-over-tcpip) functionality on the Windows client. NetBIOS over TCP/IP on the Windows client is now disabled by default and can be enabled in [device profile settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/).
+- Fixed an issue causing failure of the [local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) feature when configured with a timeout of `0`.
+- Improvement for the Windows [client certificate posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/client-certificate/) to ensure logged results are from checks that run once users log in.
+- Improvement for more accurate reporting of device colocation information in the Cloudflare One dashboard.
+
+**Known issues**
+
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
+- DNS resolution may be broken when the following conditions are all true:
+  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
+
+  To work around this issue, reconnect the WARP client by toggling off and back on.
+
+Jan 27, 2026
+
+[<h2>WARP client for macOS (version 2026.1.89.1)</h2>](https://developers.cloudflare.com/changelog/post/2026-01-27-warp-macos-beta/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new Beta release for the macOS WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
+
+This release contains minor fixes and improvements.
+
+**Changes and improvements**
+
+- Fixed an issue causing failure of the [local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) feature when configured with a timeout of `0`.
+- Improvement for more accurate reporting of device colocation information in the Cloudflare One dashboard.
+
+Jan 27, 2026
+
+[<h2>Configure Cloudflare source IPs (beta)</h2>](https://developers.cloudflare.com/changelog/post/2026-01-27-configure-cloudflare-source-ips/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+Cloudflare source IPs are the IP addresses used by Cloudflare services (such as Load Balancing, Gateway, and Browser Isolation) when sending traffic to your private networks.
+
+For customers using legacy mode routing, traffic to private networks is sourced from public Cloudflare IPs, which may cause IP conflicts. For customers using Unified Routing mode (beta), traffic to private networks is sourced from dedicated, non-Internet-routable private IPv4 range to ensure:
+
+- Symmetric routing over private network connections
+- Proper firewall state preservation
+- Private traffic stays on secure paths
+
+Key details:
+
+- **IPv4**: Sourced from `100.64.0.0/12` by default, configurable to any `/12` CIDR
+- **IPv6**: Sourced from `2606:4700:cf1:5000::/64` (not configurable)
+- **Affected connectors**: GRE, IPsec, CNI, WARP Connector, and WARP Client (Cloudflare Tunnel is not affected)
+
+Configuring Cloudflare source IPs requires Unified Routing (beta) and the `Cloudflare One Networks Write` permission.
+
+For configuration details, refer to [Configure Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/).
+
+Jan 27, 2026
+
+[<h2>Added Timezone preferences settings</h2>](https://developers.cloudflare.com/changelog/post/2026-01-27-timezone-preferences/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+You can now set the timezone in the Cloudflare dashboard as Coordinated Universal Time (UTC) or your browser or system's timezone.
+
+#### What's New
+
+Unless otherwise specified in the user interface, all dates and times in the Cloudflare dashboard are now displayed in the selected timezone.
+
+You can change the timezone setting from the user profile dropdown.
+
+![Timezone preference dropdown](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=848,height=682,format=webp/_astro/2026-01-27-set-timezone.CUmMl54E.png)
+
+The page will reload to apply the new timezone setting.
+
+Jan 27, 2026
+
+[<h2>Control request and response body buffering in Configuration Rules</h2>](https://developers.cloudflare.com/changelog/post/2026-01-27-body-buffering-settings/)
+
+[Rules](https://developers.cloudflare.com/rules/)
+
+You can now control how Cloudflare buffers HTTP request and response bodies using two new settings in [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/).
+
+#### Request body buffering
+
+Controls how Cloudflare buffers HTTP request bodies before forwarding them to your origin server:
+
+| Mode | Behavior |
+| --- | --- |
+| **Standard** (default) | Cloudflare can inspect a prefix of the request body for enabled functionality such as WAF and Bot Management. |
+| **Full** | Buffers the entire request body before sending to origin. |
+| **None** | No buffering — the request body streams directly to origin without inspection. |
+
+#### Response body buffering
+
+Controls how Cloudflare buffers HTTP response bodies before forwarding them to the client:
+
+| Mode | Behavior |
+| --- | --- |
+| **Standard** (default) | Cloudflare can inspect a prefix of the response body for enabled functionality. |
+| **None** | No buffering — the response body streams directly to the client without inspection. |
+
+Caution
+
+Setting body buffering to **None** may break security functionality that requires body inspection, including the Web Application Firewall (WAF) and Bot Management. Ensure that any paths where you disable buffering do not require security inspection.
+
+#### API example
+
+```json
+{
+  "action": "set_config",
+  "action_parameters": {
+    "request_body_buffering": "standard",
+    "response_body_buffering": "none"
+  }
+}
+```
+
+For more information, refer to [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/).
+
+Jan 26, 2026
+
+[<h2>WAF Release - 2026-01-26</h2>](https://developers.cloudflare.com/changelog/post/2026-01-26-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week’s release introduces new detections for denial-of-service attempts targeting React CVE-2026-23864 ([https://www.cve.org/CVERecord?id=CVE-2026-23864 ↗︎](https://www.cve.org/CVERecord?id=CVE-2026-23864)).
+
+**Key Findings**
+
+- CVE-2026-23864 ([https://www.cve.org/CVERecord?id=CVE-2026-23864 ↗︎](https://www.cve.org/CVERecord?id=CVE-2026-23864)) affects `react-server-dom-parcel`, `react-server-dom-turbopack`, and `react-server-dom-webpack` packages.
+- Attackers can send crafted HTTP requests to Server Function endpoints, causing server crashes, out-of-memory exceptions, or excessive CPU usage.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...61680354 | N/A | React Server - DOS - CVE:CVE-2026-23864 - 1 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...dcdffcf8 | N/A | React Server - DOS - CVE:CVE-2026-23864 - 2 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...349edbc6 | N/A | React Server - DOS - CVE:CVE-2026-23864 - 3 | N/A | Block | This is a new detection. |
+
+Jan 23, 2026
+
+[<h2>New 2FA Experience for Login</h2>](https://developers.cloudflare.com/changelog/post/2026-01-23-New-2FA-Experience/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+![Screenshot of new 2FA enrollment experience](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2721,height=1820,format=webp/_astro/2026-01-23-2fa-interstitial.TXFGNSth.png)
+
+In an effort to improve overall user security, users without 2FA will be prompted upon login to enroll in email 2FA. This will improve user security posture while minimizing friction. Users without email 2FA enabled will see a prompt to secure their account with additional factors upon logging in. Enrolling in 2FA remains optional, but strongly encouraged as it is the best way to prevent account takeovers.
+
+We also made changes to existing 2FA screens to improve the user experience. Now we have distinct experiences for each 2FA factor type, reflective of the way that factor works.
+
+#### For more information
+
+- [Configure Email Two Factor Authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-email-two-factor-authentication)
+
+Jan 23, 2026
+
+[<h2>Increased Pages file limit to 100,000 for paid plans</h2>](https://developers.cloudflare.com/changelog/post/2026-01-23-pages-file-limit-increase/)
+
+[Pages](https://developers.cloudflare.com/pages/)
+
+Paid plans can now have up to 100,000 files per Pages site, increased from the previous limit of 20,000 files.
+
+To enable this increased limit, set the environment variable `PAGES_WRANGLER_MAJOR_VERSION=4` in your Pages project settings.
+
+The Free plan remains at 20,000 files per site.
+
+For more details, refer to the [Pages limits documentation](https://developers.cloudflare.com/pages/platform/limits/#files).
+
+Jan 23, 2026
+
+[<h2>Vectorize indexes now support up to 10 million vectors</h2>](https://developers.cloudflare.com/changelog/post/2026-01-23-increased-index-capacity/)
+
+[Vectorize](https://developers.cloudflare.com/vectorize/)
+
+You can now store up to 10 million vectors in a single Vectorize index, doubling the previous limit of 5 million vectors. This enables larger-scale semantic search, recommendation systems, and retrieval-augmented generation (RAG) applications without splitting data across multiple indexes.
+
+Vectorize continues to support indexes with up to 1,536 dimensions per vector at 32-bit precision. Refer to the [Vectorize limits documentation](https://developers.cloudflare.com/vectorize/platform/limits/) for complete details.
+
+Jan 22, 2026
+
+[<h2>Require Access protection for zones</h2>](https://developers.cloudflare.com/changelog/post/2026-01-22-deny-by-default-for-zones/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+You can now require Cloudflare Access protection for all hostnames in your account. When enabled, traffic to any hostname that does not have a matching Access application is automatically blocked.
+
+This deny-by-default approach prevents accidental exposure of internal resources to the public Internet. If a developer deploys a new application or creates a DNS record without configuring an Access application, the traffic is blocked rather than exposed.
+
+![Require Cloudflare Access protection in the dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2160,height=738,format=webp/_astro/require-cloudflare-access-protection.BAUmTYOs.png)
+
+#### How it works
+
+- **Blocked by default**: Traffic to all hostnames in the account is blocked unless an Access application exists for that hostname.
+- **Explicit access required**: To allow traffic, create an Access application with an Allow or Bypass policy.
+- **Hostname exemptions**: You can exempt specific hostnames from this requirement.
+
+To turn on this feature, refer to [Require Access protection](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/).
+
+Jan 22, 2026
+
+[<h2>New granular API token permissions for Cloudflare Access</h2>](https://developers.cloudflare.com/changelog/post/2026-01-22-granular-api-token-permissions/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+Three new API token permissions are available for Cloudflare Access, giving you finer-grained control when building automations and integrations:
+
+- **Access: Organizations Revoke** — Grants the ability to [revoke user sessions](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#revoke-user-sessions) in a Zero Trust organization. Use this permission when you need a token that can terminate active sessions without broader write access to organization settings.
+- **Access: Population Read** — Grants read access to the [SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) synced from an identity provider to Cloudflare Access. Use this permission for tokens that only need to read synced user and group data.
+- **Access: Population Write** — Grants write access to the [SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) synced from an identity provider to Cloudflare Access. Use this permission for tokens that need to create or modify synced user and group data.
+
+These permissions are scoped at the account level and can be combined with existing Access permissions.
+
+For a full list of available permissions, refer to [API token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/).
+
+Jan 22, 2026
+
+[<h2>New cryptographic functions — encode\_base64() and sha256()</h2>](https://developers.cloudflare.com/changelog/post/2026-01-22-sha256-base64-encode-functions/)
+
+[Rules](https://developers.cloudflare.com/rules/)
+
+Cloudflare Rulesets now includes `encode_base64()` and `sha256()` functions, enabling you to generate signed request headers directly in rule expressions. These functions support common patterns like constructing a canonical string from request attributes, computing a SHA256 digest, and Base64-encoding the result.
+
+---
+
+#### New functions
+
+| Function | Description | Availability |
+| --- | --- | --- |
+| `encode_base64(input, flags)` | Encodes a string to Base64 format. Optional `flags` parameter: `u` for URL-safe encoding, `p` for padding (adds `=` characters to make the output length a multiple of 4, as required by some systems). By default, output is standard Base64 without padding. | All plans (in header transform rules) |
+| `sha256(input)` | Computes a SHA256 hash of the input string. | Requires enablement |
+
+Note
+
+The `sha256()` function is available as an Enterprise add-on and requires a specific entitlement. Contact your account team to enable it.
+
+---
+
+#### Examples
+
+**Encode a string to Base64 format:**
+
+```txt
+encode_base64("hello world")
+```
+
+Returns: `aGVsbG8gd29ybGQ`
+
+**Encode a string to Base64 format with padding:**
+
+```txt
+encode_base64("hello world", "p")
+```
+
+Returns: `aGVsbG8gd29ybGQ=`
+
+**Perform a URL-safe Base64 encoding of a string:**
+
+```txt
+encode_base64("hello world", "u")
+```
+
+Returns: `aGVsbG8gd29ybGQ`
+
+**Compute the SHA256 hash of a secret token:**
+
+```txt
+sha256("my-token")
+```
+
+Returns a hash that your origin can validate to authenticate requests.
+
+**Compute the SHA256 hash of a string and encode the result to Base64 format:**
+
+```txt
+encode_base64(sha256("my-token"))
+```
+
+Combines hashing and encoding for systems that expect Base64-encoded signatures.
+
+For more information, refer to the [Functions reference](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/).
+
+Jan 22, 2026
+
+[<h2>New Placement Hints for Workers</h2>](https://developers.cloudflare.com/changelog/post/2026-01-22-explicit-placement-hints/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+You can now configure Workers to run close to infrastructure in legacy cloud regions to minimize latency to existing services and databases. This is most useful when your Worker makes multiple round trips.
+
+To [set a placement hint](https://developers.cloudflare.com/workers/configuration/placement/#configure-explicit-placement-hints), set the `placement.region` property in your Wrangler configuration file:
+
+```jsonc
+{
+	"placement": {
+		"region": "aws:us-east-1",
+	},
+}
+```
+
+```toml
+[placement]
+region = "aws:us-east-1"
+```
+
+Placement hints support Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure region identifiers. Workers run in the [Cloudflare data center ↗︎](https://www.cloudflare.com/network/) with the lowest latency to the specified cloud region.
+
+If your existing infrastructure is not in these cloud providers, expose it to placement probes with `placement.host` for layer 4 checks or `placement.hostname` for layer 7 checks. These probes are designed to locate single-homed infrastructure and are not suitable for anycasted or multicasted resources.
+
+```jsonc
+{
+	"placement": {
+		"host": "my_database_host.com:5432",
+	},
+}
+```
+
+```toml
+[placement]
+host = "my_database_host.com:5432"
+```
+
+```jsonc
+{
+	"placement": {
+		"hostname": "my_api_server.com",
+	},
+}
+```
+
+```toml
+[placement]
+hostname = "my_api_server.com"
+```
+
+This is an extension of [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/#enable-smart-placement), which automatically places your Workers closer to back-end APIs based on measured latency. When you do not know the location of your back-end APIs or have multiple back-end APIs, set `mode: "smart"`:
+
+```jsonc
+{
+	"placement": {
+		"mode": "smart",
+	},
+}
+```
+
+```toml
+[placement]
+mode = "smart"
+```
+
+Jan 20, 2026
+
+[<h2>AI Search path filtering for website and R2 data sources</h2>](https://developers.cloudflare.com/changelog/post/2026-01-20-ai-search-path-filtering/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/) now includes [path filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/) for both [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/#path-filtering) and [R2](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/#path-filtering) data sources. You can now control which content gets indexed by defining include and exclude rules for paths.
+
+By controlling what gets indexed, you can improve the relevance and quality of your search results. You can also use path filtering to split a single data source across multiple AI Search instances for specialized search experiences.
+
+![Path filtering configuration in AI Search](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2346,height=1360,format=webp/_astro/path-filtering.BCH7HN-Q.png)
+
+Path filtering uses [micromatch ↗︎](https://github.com/micromatch/micromatch) patterns, so you can use `*` to match within a directory and `**` to match across directories.
+
+| Use case | Include | Exclude |
+| --- | --- | --- |
+| Index docs but skip drafts | `**/docs/**` | `**/docs/drafts/**` |
+| Keep admin pages out of results | — | `**/admin/**` |
+| Index only English content | `**/en/**` | — |
+
+Configure path filters when creating a new instance or update them anytime from **Settings**. Check out [path filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/) to learn more.
+
+Jan 20, 2026
+
+[<h2>Create AI Search instances programmatically via REST API</h2>](https://developers.cloudflare.com/changelog/post/2026-01-20-ai-search-simplified-api/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+You can now create [AI Search](https://developers.cloudflare.com/ai-search/) instances programmatically using the [API](https://developers.cloudflare.com/ai-search/get-started/api/). For example, use the API to create instances for each customer in a multi-tenant application or manage AI Search alongside your other infrastructure.
+
+If you have created an AI Search instance via the [dashboard](https://developers.cloudflare.com/ai-search/get-started/dashboard/) before, you already have a [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) registered and can start creating instances programmatically right away. If not, follow the [API guide](https://developers.cloudflare.com/ai-search/get-started/api/) to set up your first instance.
+
+For example, you can now create separate search instances for each language on your website:
+
+```bash
+for lang in en fr es de; do
+  curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/instances" \
+    -H "Authorization: Bearer $API_TOKEN" \
+    -H "Content-Type: application/json" \
+    --data '{
+      "id": "docs-'"$lang"'",
+      "type": "web-crawler",
+      "source": "example.com",
+      "source_params": {
+        "path_include": ["**/'"$lang"'/**"]
+      }
+    }'
+done
+```
+
+Refer to the [REST API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/create/) for additional configuration options.
+
+Jan 20, 2026
+
+[<h2>New Workers KV Dashboard UI</h2>](https://developers.cloudflare.com/changelog/post/2026-01-20-kv-dash-ui-homepage/)
+
+[KV](https://developers.cloudflare.com/kv/)
+
+[Workers KV](https://developers.cloudflare.com/kv/) has an updated dashboard UI with new dashboard styling that makes it easier to navigate and see analytics and settings for a KV namespace.
+
+The new dashboard features a **streamlined homepage** for easy access to your namespaces and key operations, with consistent design with the rest of the dashboard UI updates. It also provides an **improved analytics view**.
+
+![New KV Dashboard Homepage](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3444,height=1968,format=webp/_astro/kv-dash-ui-homepage.BT5hNntj.png)
+
+The updated dashboard is now available for all Workers KV users. Log in to the [Cloudflare Dashboard ↗︎](https://dash.cloudflare.com/) to start exploring the new interface.
+
+Jan 20, 2026
+
+[<h2>New functions for array and map operations</h2>](https://developers.cloudflare.com/changelog/post/2026-01-20-array-map-functions/)
+
+[Rules](https://developers.cloudflare.com/rules/)
+
+#### New functions for array and map operations
+
+Cloudflare Rulesets now include new functions that enable advanced expression logic for evaluating arrays and maps. These functions allow you to build rules that match against lists of values in request or response headers, enabling use cases like country-based blocking using custom headers.
+
+---
+
+#### New functions
+
+| Function | Description |
+| --- | --- |
+| `split(source, delimiter)` | Splits a string into an array of strings using the specified delimiter. |
+| `join(array, delimiter)` | Joins an array of strings into a single string using the specified delimiter. |
+| `has_key(map, key)` | Returns `true` if the specified key exists in the map. |
+| `has_value(map, value)` | Returns `true` if the specified value exists in the map. |
+
+---
+
+#### Example use cases
+
+**Check if a country code exists in a header list:**
+
+```txt
+has_value(split(http.response.headers["x-allow-country"][0], ","), ip.src.country)
+```
+
+**Check if a specific header key exists:**
+
+```txt
+has_key(http.request.headers, "x-custom-header")
+```
+
+**Join array values for logging or comparison:**
+
+```txt
+join(http.request.headers.names, ", ")
+```
+
+For more information, refer to the [Functions reference](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/).
+
+Jan 20, 2026
+
+[<h2>Cloudflare Typescript SDK v6.0.0-beta.1 now available</h2>](https://developers.cloudflare.com/changelog/post/2026-01-20-cloudflare-typescript-v6.0.0-beta.1/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [SDK](https://developers.cloudflare.com/fundamentals/api/reference/sdks/)
+
+> **Disclaimer:** Please note that v6.0.0-beta.1 is in Beta and we are still testing it for stability.
+
+Full Changelog: [v5.2.0...v6.0.0-beta.1 ↗︎](https://github.com/cloudflare/cloudflare-typescript/compare/v5.2.0...v6.0.0-beta.1)
+
+In this release, you'll see a large number of breaking changes. This is primarily due to a change in OpenAPI definitions, which our libraries are based off of, and codegen updates that we rely on to read those OpenAPI definitions and produce our SDK libraries. As the codegen is always evolving and improving, so are our code bases.
+
+Some breaking changes were introduced due to bug fixes, also listed below.
+
+Please ensure you read through the list of changes below before moving to this version - this will help you understand any down or upstream issues it may cause to your environments.
+
+---
+
+#### Breaking Changes
+
+#### Addressing - Parameter Requirements Changed
+
+- `BGPPrefixCreateParams.cidr`: optional → **required**
+- `PrefixCreateParams.asn`: `number | null` → `number`
+- `PrefixCreateParams.loa_document_id`: required → **optional**
+- `ServiceBindingCreateParams.cidr`: optional → **required**
+- `ServiceBindingCreateParams.service_id`: optional → **required**
+
+#### API Gateway
+
+- `ConfigurationUpdateResponse` removed
+- `PublicSchema` → `OldPublicSchema`
+- `SchemaUpload` → `UserSchemaCreateResponse`
+- `ConfigurationUpdateParams.properties` removed; use `normalize`
+
+#### CloudforceOne - Response Type Changes
+
+- `ThreatEventBulkCreateResponse`: `number` → complex object with counts and errors
+
+#### D1 Database - Query Parameters
+
+- `DatabaseQueryParams`: simple interface → union type ( `D1SingleQuery | MultipleQueries`)
+- `DatabaseRawParams`: same change
+- Supports batch queries via `batch` array
+
+#### DNS Records - Type Renames (21 types)
+
+All record type interfaces renamed from `*Record` to short names:
+
+- `RecordResponse.ARecord` → `RecordResponse.A`
+- `RecordResponse.AAAARecord` → `RecordResponse.AAAA`
+- `RecordResponse.CNAMERecord` → `RecordResponse.CNAME`
+- `RecordResponse.MXRecord` → `RecordResponse.MX`
+- `RecordResponse.NSRecord` → `RecordResponse.NS`
+- `RecordResponse.PTRRecord` → `RecordResponse.PTR`
+- `RecordResponse.TXTRecord` → `RecordResponse.TXT`
+- `RecordResponse.CAARecord` → `RecordResponse.CAA`
+- `RecordResponse.CERTRecord` → `RecordResponse.CERT`
+- `RecordResponse.DNSKEYRecord` → `RecordResponse.DNSKEY`
+- `RecordResponse.DSRecord` → `RecordResponse.DS`
+- `RecordResponse.HTTPSRecord` → `RecordResponse.HTTPS`
+- `RecordResponse.LOCRecord` → `RecordResponse.LOC`
+- `RecordResponse.NAPTRRecord` → `RecordResponse.NAPTR`
+- `RecordResponse.SMIMEARecord` → `RecordResponse.SMIMEA`
+- `RecordResponse.SRVRecord` → `RecordResponse.SRV`
+- `RecordResponse.SSHFPRecord` → `RecordResponse.SSHFP`
+- `RecordResponse.SVCBRecord` → `RecordResponse.SVCB`
+- `RecordResponse.TLSARecord` → `RecordResponse.TLSA`
+- `RecordResponse.URIRecord` → `RecordResponse.URI`
+- `RecordResponse.OpenpgpkeyRecord` → `RecordResponse.Openpgpkey`
+
+#### IAM Resource Groups
+
+- `ResourceGroupCreateResponse.scope`: optional single → **required array**
+- `ResourceGroupCreateResponse.id`: optional → **required**
+
+#### Origin CA Certificates - Parameter Requirements Changed
+
+- `OriginCACertificateCreateParams.csr`: optional → **required**
+- `OriginCACertificateCreateParams.hostnames`: optional → **required**
+- `OriginCACertificateCreateParams.request_type`: optional → **required**
+
+#### Pages
+
+- Renamed: `DeploymentsSinglePage` → `DeploymentListResponsesV4PagePaginationArray`
+- Domain response fields: many optional → **required**
+
+#### Pipelines - v0 to v1 Migration
+
+- Entire v0 API deprecated; use v1 methods ( `createV1`, `listV1`, etc.)
+- New sub-resources: `Sinks`, `Streams`
+
+#### R2
+
+- `EventNotificationUpdateParams.rules`: optional → **required**
+- Super Slurper: `bucket`, `secret` now required in source params
+
+#### Radar
+
+- `dataSource`: `string` → typed enum (23 values)
+- `eventType`: `string` → typed enum (6 values)
+- V2 methods require `dimension` parameter (breaking signature change)
+
+#### Resource Sharing
+
+- Removed: `status_message` field from all recipient response types
+
+#### Schema Validation
+
+- Consolidated `SchemaCreateResponse`, `SchemaListResponse`, `SchemaEditResponse`, `SchemaGetResponse` → `PublicSchema`
+- Renamed: `SchemaListResponsesV4PagePaginationArray` → `PublicSchemasV4PagePaginationArray`
+
+#### Spectrum
+
+- Renamed union members: `AppListResponse.UnionMember0` → `SpectrumConfigAppConfig`
+- Renamed union members: `AppListResponse.UnionMember1` → `SpectrumConfigPaygoAppConfig`
+
+#### Workers
+
+- Removed: `WorkersBindingKindTailConsumer` type (all occurrences)
+- Renamed: `ScriptsSinglePage` → `ScriptListResponsesSinglePage`
+- Removed: `DeploymentsSinglePage`
+
+#### Zero-Trust DLP
+
+- `datasets.create()`, `update()`, `get()` return types changed
+- `PredefinedGetResponse` union members renamed to `UnionMember0-5`
+
+#### Zero-Trust Tunnels
+
+- Removed: `CloudflaredCreateResponse`, `CloudflaredListResponse`, `CloudflaredDeleteResponse`, `CloudflaredEditResponse`, `CloudflaredGetResponse`
+- Removed: `CloudflaredListResponsesV4PagePaginationArray`
+
+---
+
+#### Features
+
+#### Abuse Reports (`client.abuseReports`)
+
+- **Reports**: `create`, `list`, `get`
+- **Mitigations**: sub-resource for abuse mitigations
+
+#### AI Search (`client.aisearch`)
+
+- **Instances**: `create`, `update`, `list`, `delete`, `read`, `stats`
+- **Items**: `list`, `get`
+- **Jobs**: `create`, `list`, `get`, `logs`
+- **Tokens**: `create`, `update`, `list`, `delete`, `read`
+
+#### Connectivity (`client.connectivity`)
+
+- **Directory Services**: `create`, `update`, `list`, `delete`, `get`
+- Supports IPv4, IPv6, dual-stack, and hostname configurations
+
+#### Organizations (`client.organizations`)
+
+- **Organizations**: `create`, `update`, `list`, `delete`, `get`
+- **OrganizationProfile**: `update`, `get`
+- Hierarchical organization support with parent/child relationships
+
+#### R2 Data Catalog (`client.r2DataCatalog`)
+
+- **Catalog**: `list`, `enable`, `disable`, `get`
+- **Credentials**: `create`
+- **MaintenanceConfigs**: `update`, `get`
+- **Namespaces**: `list`
+- **Tables**: `list`, maintenance config management
+- Apache Iceberg integration
+
+#### Realtime Kit (`client.realtimeKit`)
+
+- **Apps**: `get`, `post`
+- **Meetings**: `create`, `get`, participant management
+- **Livestreams**: 10+ methods for streaming
+- **Recordings**: start, pause, stop, get
+- **Sessions**: transcripts, summaries, chat
+- **Webhooks**: full CRUD
+- **ActiveSession**: polls, kick participants
+- **Analytics**: organization analytics
+
+#### Token Validation (`client.tokenValidation`)
+
+- **Configuration**: `create`, `list`, `delete`, `edit`, `get`
+- **Credentials**: `update`
+- **Rules**: `create`, `list`, `delete`, `bulkCreate`, `bulkEdit`, `edit`, `get`
+- JWT validation with RS256/384/512, PS256/384/512, ES256, ES384
+
+#### Alerting Silences (`client.alerting.silences`)
+
+- `create`, `update`, `list`, `delete`, `get`
+
+#### IAM SSO (`client.iam.sso`)
+
+- `create`, `update`, `list`, `delete`, `get`, `beginVerification`
+
+#### Pipelines v1 (`client.pipelines`)
+
+- **Sinks**: `create`, `list`, `delete`, `get`
+- **Streams**: `create`, `update`, `list`, `delete`, `get`
+
+#### Zero-Trust AI Controls / MCP (`client.zeroTrust.access.aiControls.mcp`)
+
+- **Portals**: `create`, `update`, `list`, `delete`, `read`
+- **Servers**: `create`, `update`, `list`, `delete`, `read`, `sync`
+
+#### Accounts
+
+- `managed_by` field with `parent_org_id`, `parent_org_name`
+
+#### Addressing LOA Documents
+
+- `auto_generated` field on `LOADocumentCreateResponse`
+
+#### Addressing Prefixes
+
+- `delegate_loa_creation`, `irr_validation_state`, `ownership_validation_state`, `ownership_validation_token`, `rpki_validation_state`
+
+#### AI
+
+- Added `toMarkdown.supported()` method to get all supported conversion formats
+
+#### AI Gateway
+
+- `zdr` field added to all responses and params
+
+#### Alerting
+
+- New alert type: `abuse_report_alert`
+- `type` field added to PolicyFilter
+
+#### Browser Rendering
+
+- `ContentCreateParams`: refined to discriminated union ( `Variant0 | Variant1`)
+- Split into URL-based and HTML-based parameter variants for better type safety
+
+#### Client Certificates
+
+- `reactivate` parameter in edit
+
+#### CloudforceOne
+
+- `ThreatEventCreateParams.indicatorType`: required → optional
+- `hasChildren` field added to all threat event response types
+- `datasetIds` query parameter on `AttackerListParams`, `CategoryListParams`, `TargetIndustryListParams`
+- `categoryUuid` field on `TagCreateResponse`
+- `indicators` array for multi-indicator support per event
+- `uuid` and `preserveUuid` fields for UUID preservation in bulk create
+- `format` query parameter ( `'json' | 'stix2'`) on `ThreatEventListParams`
+- `createdAt`, `datasetId` fields on `ThreatEventEditParams`
+
+#### Content Scanning
+
+- Added `create()`, `update()`, `get()` methods
+
+#### Custom Pages
+
+- New page types: `basic_challenge`, `under_attack`, `waf_challenge`
+
+#### D1
+
+- `served_by_colo` - colo that handled query
+- `jurisdiction` - `'eu' | 'fedramp'`
+- **Time Travel** ( `client.d1.database.timeTravel`): `getBookmark()`, `restore()` - point-in-time recovery
+
+#### Email Security
+
+- New fields on `InvestigateListResponse`/ `InvestigateGetResponse`: `envelope_from`, `envelope_to`, `postfix_id_outbound`, `replyto`
+- New detection classification: `'outbound_ndr'`
+- Enhanced `Finding` interface with `attachment`, `detection`, `field`, `portion`, `reason`, `score`
+- Added `cursor` query parameter to `InvestigateListParams`
+
+#### Gateway Lists
+
+- New list types: `CATEGORY`, `LOCATION`, `DEVICE`
+
+#### Intel
+
+- New issue type: `'configuration_suggestion'`
+- `payload` field: `unknown` → typed `Payload` interface with `detection_method`, `zone_tag`
+
+#### Leaked Credential Checks
+
+- Added `detections.get()` method
+
+#### Logpush
+
+- New datasets: `dex_application_tests`, `dex_device_state_events`, `ipsec_logs`, `warp_config_changes`, `warp_toggle_changes`
+
+#### Load Balancers
+
+- `Monitor.port`: `number` → `number | null`
+- `Pool.load_shedding`: `LoadShedding` → `LoadShedding | null`
+- `Pool.origin_steering`: `OriginSteering` → `OriginSteering | null`
+
+#### Magic Transit
+
+- `license_key` field on connectors
+- `provision_license` parameter for auto-provisioning
+- IPSec: `custom_remote_identities` with FQDN support
+- Snapshots: Bond interface, `probed_mtu` field
+
+#### Pages
+
+- New response types: `ProjectCreateResponse`, `ProjectListResponse`, `ProjectEditResponse`, `ProjectGetResponse`
+- Deployment methods return specific response types instead of generic `Deployment`
+
+#### Queues
+
+- Added `subscriptions.get()` method
+- Enhanced `SubscriptionGetResponse` with typed event source interfaces
+- New event source types: Images, KV, R2, Vectorize, Workers AI, Workers Builds, Workflows
+
+#### R2
+
+- Sippy: new provider `s3` (S3-compatible endpoints)
+- Sippy: `bucketUrl` field for S3-compatible sources
+- Super Slurper: `keys` field on source response schemas (specify specific keys to migrate)
+- Super Slurper: `pathPrefix` field on source schemas
+- Super Slurper: `region` field on S3 source params
+
+#### Radar
+
+- Added `geolocations.list()`, `geolocations.get()` methods
+- Added V2 dimension-based methods ( `summaryV2`, `timeseriesGroupsV2`) to radar sub-resources
+
+#### Resource Sharing
+
+- Added `terminal` boolean field to Resource Error interfaces
+
+#### Rules
+
+- Added `id` field to `ItemDeleteParams.Item`
+
+#### Rulesets
+
+- New buffering fields on `SetConfigRule`: `request_body_buffering`, `response_body_buffering`
+
+#### Secrets Store
+
+- New scopes: `'dex'`, `'access'` (in addition to `'workers'`, `'ai_gateway'`)
+
+#### SSL Certificate Packs
+
+- Response types now proper interfaces (was `unknown`)
+- Fields now required: `id`, `certificates`, `hosts`, `status`, `type`
+
+#### Security Center
+
+- `payload` field: `unknown` → typed `Payload` interface with `detection_method`, `zone_tag`
+
+#### Shared Types
+
+- Added: `CloudflareTunnelsV4PagePaginationArray` pagination class
+
+#### Workers
+
+- Added `subdomains.delete()` method
+- `Worker.references` - track external dependencies (domains, Durable Objects, queues)
+- `Worker.startup_time_ms` - startup timing
+- `Script.observability` - observability settings with logging
+- `Script.tag`, `Script.tags` - immutable ID and tags
+- Placement: support for region, hostname, host-based placement
+- `tags`, `tail_consumers` now accept `| null`
+- Telemetry: `traces` field, `$containers` event info, `durableObjectId`, `transactionName`, `abr_level` fields
+
+#### Workers for Platforms
+
+- `ScriptUpdateResponse`: new fields `entry_point`, `observability`, `tag`, `tags`
+- `placement` field now union of 4 variants (smart mode, region, hostname, host)
+- `tags`, `tail_consumers` now nullable
+- `TagUpdateParams.body` now accepts `null`
+
+#### Workflows
+
+- `instance_retention`: `unknown` → typed `InstanceRetention` interface with `error_retention`, `success_retention`
+- New status option: `'restart'` added to `StatusEditParams.status`
+
+#### Zero-Trust Devices
+
+- External emergency disconnect settings (4 new fields)
+- `antivirus` device posture check type
+- `os_version_extra` documentation improvements
+
+#### Zones
+
+- New response types: `SubscriptionCreateResponse`, `SubscriptionUpdateResponse`, `SubscriptionGetResponse`
+
+#### Zero-Trust Access Applications
+
+- New `ApplicationType` values: `'mcp'`, `'mcp_portal'`, `'proxy_endpoint'`
+- New destination type: `ViaMcpServerPortalDestination` for MCP server access
+
+#### Zero-Trust Gateway
+
+- Added `rules.listTenant()` method
+
+#### Zero-Trust Gateway - Proxy Endpoints
+
+- `ProxyEndpoint`: interface → discriminated union ( `ZeroTrustGatewayProxyEndpointIP | ZeroTrustGatewayProxyEndpointIdentity`)
+- `ProxyEndpointCreateParams`: interface → union type
+- Added `kind` field: `'ip' | 'identity'`
+
+#### Zero-Trust Tunnels
+
+- `WARPConnector*Response`: union type → interface
+
+---
+
+#### Deprecations
+
+- **API Gateway**: `UserSchemas`, `Settings`, `SchemaValidation` resources
+- **Audit Logs**: `auditLogId.not` (use `id.not`)
+- **CloudforceOne**: `ThreatEvents.get()`, `IndicatorTypes.list()`
+- **Devices**: `public_ip` field (use DEX API)
+- **Email Security**: `item_count` field in Move responses
+- **Pipelines**: v0 methods (use v1)
+- **Radar**: old `summary()` and `timeseriesGroups()` methods (use V2)
+- **Rulesets**: `disable_apps`, `mirage` fields
+- **WARP Connector**: `connections` field
+- **Workers**: `environment` parameter in Domains
+- **Zones**: `ResponseBuffering` page rule
+
+---
+
+#### Bug Fixes
+
+- **mcp:** correct code tool API endpoint ([599703c ↗︎](https://github.com/cloudflare/cloudflare-typescript/commit/599703c45672dc899455d74b124018efd4b75095))
+- **mcp:** return correct lines on typescript errors ([5d6f999 ↗︎](https://github.com/cloudflare/cloudflare-typescript/commit/5d6f9998ed9999aaa95e1bda8cf50929f3555cf1))
+- **organization\_profile:** fix bad reference ([d84ea77 ↗︎](https://github.com/cloudflare/cloudflare-typescript/commit/d84ea77094400055c06554812b84c2f0c8d00cc4))
+- **schema\_validation:** correctly reflect model to openapi mapping ([bb86151 ↗︎](https://github.com/cloudflare/cloudflare-typescript/commit/bb861516774b159d80e0f46a5f3abc5a4c9f9d49))
+- **workers:** fix tests ([2ee37f7 ↗︎](https://github.com/cloudflare/cloudflare-typescript/commit/2ee37f7adf5a4637d65f61fc225e135eec2579fc))
+
+---
+
+#### Documentation
+
+- Added deprecation notices with migration paths
+- **api\_gateway:** deprecate API Shield Schema Validation resources ([8a4b20f ↗︎](https://github.com/cloudflare/cloudflare-typescript/commit/8a4b20f7a572422f74179fbdb4f1c4fb555e3e40))
+- Improved JSDoc examples across all resources
+- **workers:** expose subdomain delete documentation ([4f7cc1f ↗︎](https://github.com/cloudflare/cloudflare-typescript/commit/4f7cc1f2b8861a5b8abc193d287f78264a425062))
+
+Jan 20, 2026
+
+[<h2>Terraform v5.16.0 now available</h2>](https://developers.cloudflare.com/changelog/post/2026-01-20-terraform-v5.16.0-provider/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Terraform](https://developers.cloudflare.com/terraform/)
+
+In January 2025, we announced the launch of the new Terraform v5 Provider. We greatly appreciate the proactive engagement and valuable feedback from the Cloudflare community following the v5 release. In response, we've established a consistent and rapid [2-3 week cadence ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/5774) for releasing targeted improvements, demonstrating our commitment to stability and reliability.
+
+With the help of the community, we have a growing number of resources that we have marked as [stable ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6237), with that list continuing to grow with every release. The most used [resources ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6237) are on track to be stable by the end of March 2026, when we will also be releasing a new migration tool to you migrate from v4 to v5 with ease.
+
+Thank you for continuing to raise issues. They make our provider stronger and help us build products that reflect your needs.
+
+This release includes bug fixes, the stabilization of even more popular resources, and more.
+
+#### Features
+
+- **custom\_pages:** add "waf\_challenge" as new supported error page type identifier in both resource and data source schemas
+- **list:** enhance CIDR validator to check for normalized CIDR notation requiring network address for IPv4 and IPv6
+- **magic\_wan\_gre\_tunnel:** add automatic\_return\_routing attribute for automatic routing control
+- **magic\_wan\_gre\_tunnel:** add BGP configuration support with new BGP model attribute
+- **magic\_wan\_gre\_tunnel:** add bgp\_status computed attribute for BGP connection status information
+- **magic\_wan\_gre\_tunnel:** enhance schema with BGP-related attributes and validators
+- **magic\_wan\_ipsec\_tunnel:** add automatic\_return\_routing attribute for automatic routing control
+- **magic\_wan\_ipsec\_tunnel:** add BGP configuration support with new BGP model attribute
+- **magic\_wan\_ipsec\_tunnel:** add bgp\_status computed attribute for BGP connection status information
+- **magic\_wan\_ipsec\_tunnel:** add custom\_remote\_identities attribute for custom identity configuration
+- **magic\_wan\_ipsec\_tunnel:** enhance schema with BGP and identity-related attributes
+- **ruleset:** add request body buffering support
+- **ruleset:** enhance ruleset data source with additional configuration options
+- **workers\_script:** add observability logs attributes to list data source model
+- **workers\_script:** enhance list data source schema with additional configuration options
+
+#### Bug Fixes
+
+- **account\_member**: fix resource importability issues
+- **dns\_record:** remove unnecessary fmt.Sprintf wrapper around LoadTestCase call in test configuration helper function
+- **load\_balancer:** fix session\_affinity\_ttl type expectations to match Float64 in initial creation and Int64 after migration
+- **workers\_kv:** handle special characters correctly in URL encoding
+
+#### Documentation
+
+- **account\_subscription:** update schema description for rate\_plan.sets attribute to clarify it returns an array of strings
+- **api\_shield:** add resource-level description for API Shield management of auth ID characteristics
+- **api\_shield:** enhance auth\_id\_characteristics.name attribute description to include JWT token configuration format requirements
+- **api\_shield:** specify JSONPath expression format for JWT claim locations
+- **hyperdrive\_config:** add description attribute to name attribute explaining its purpose in dashboard and API identification
+- **hyperdrive\_config:** apply description improvements across resource, data source, and list data source schemas
+- **hyperdrive\_config:** improve schema descriptions for cache settings to clarify default values
+- **hyperdrive\_config:** update port description to clarify defaults for different database types
+
+#### For more information
+
+- [Terraform Provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs)
+- [Documentation on using Terraform with Cloudflare](https://developers.cloudflare.com/terraform/)
+- [List of stabilized resources ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6237)
+
+Jan 20, 2026
+
+[<h2>WAF Release - 2026-01-20</h2>](https://developers.cloudflare.com/changelog/post/2026-01-20-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week's release focuses on improvements to existing detections to enhance coverage.
+
+**Key Findings**
+
+- Existing rule enhancements have been deployed to improve detection resilience against SQL injection.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...68d90c8f | N/A | SQLi - Comment - Beta | Log | Block | This rule is merged into the original rule "SQLi - Comment" (ID: ...6d8d8fe4) |
+| Cloudflare Managed Ruleset | ...faa045cf
+
+N/A | SQLi - Comparison - Beta | Log | Block  
+ | This rule is merged into the original rule "SQLi - Comparison" (ID: ...e7907480)
+
+ |
+
+Jan 20, 2026
+
+[<h2>Use auxiliary Workers alongside full-stack frameworks</h2>](https://developers.cloudflare.com/changelog/post/2026-01-20-auxiliary-workers/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Auxiliary Workers are now fully supported when using full-stack frameworks, such as [React Router](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/) and [TanStack Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/), that integrate with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/reference/api/). They are included alongside the framework's build output in the build output directory. Note that this feature requires Vite 7 or above.
+
+Auxiliary Workers are additional Workers that can be called via [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) from your main (entry) Worker. They are defined in the plugin config, as in the example below:
+
+*vite.config.tsts*
+
+```ts
+import { defineConfig } from "vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+export default defineConfig({
+	plugins: [
+		tanstackStart(),
+		cloudflare({
+			viteEnvironment: { name: "ssr" },
+			auxiliaryWorkers: [{ configPath: "./wrangler.aux.jsonc" }],
+		}),
+	],
+});
+```
+
+See the Vite plugin [API docs](https://developers.cloudflare.com/workers/vite-plugin/reference/api/) for more info.
+
+Jan 20, 2026
+
+[<h2>Import SQL files as additional modules by default</h2>](https://developers.cloudflare.com/changelog/post/2026-01-20-sql-module-rule/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+The `.sql` file extension is now automatically configured to be importable in your Worker code when using [Wrangler](https://developers.cloudflare.com/workers/wrangler/bundling/#including-non-javascript-modules) or the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/reference/non-javascript-modules/). This is particular useful for importing migrations in Durable Objects and means you no longer need to configure custom rules when using [Drizzle ↗︎](https://orm.drizzle.team/docs/connect-cloudflare-do).
+
+SQL files are imported as JavaScript strings:
+
+```ts
+// `example` will be a JavaScript string
+import example from "./example.sql";
+```
+
+Jan 19, 2026
+
+[<h2>Enhanced HTTP/3 request cancellation visibility</h2>](https://developers.cloudflare.com/changelog/post/2026-01-19-http3-499-reporting-improvement/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+#### Enhanced HTTP/3 request cancellation visibility
+
+Cloudflare now provides more accurate visibility into HTTP/3 client request cancellations, giving you better insight into real client behavior and reducing unnecessary load on your origins.
+
+Previously, when an HTTP/3 client cancelled a request, the cancellation was not always actioned immediately. This meant requests could continue through the CDN — potentially all the way to your origin — even after the client had abandoned them. In these cases, logs would show the upstream response status (such as `200` or a timeout-related code) rather than reflecting the client cancellation.
+
+Now, Cloudflare terminates cancelled HTTP/3 requests immediately and accurately logs them with a `499` status code.
+
+---
+
+#### Better observability for client behavior
+
+When HTTP/3 clients cancel requests, Cloudflare now immediately reflects this in your logs with a `499` status code. This gives you:
+
+- **More accurate traffic analysis**: Understand exactly when and how often clients cancel requests.
+- **Clearer debugging**: Distinguish between true errors and intentional client cancellations.
+- **Better availability metrics**: Separate client-initiated cancellations from server-side issues.
+
+---
+
+#### Reduced origin load
+
+Cloudflare now terminates cancelled requests faster, which means:
+
+- **Less wasted compute**: Your origin no longer processes requests that clients have already abandoned.
+- **Lower bandwidth usage**: Responses are no longer generated and transmitted for cancelled requests.
+- **Improved efficiency**: Resources are freed up to handle active requests.
+
+---
+
+#### What to expect in your logs
+
+You may notice an increase in `499` status codes for HTTP/3 traffic. For HTTP/3, a `499` indicates the client [cancelled the request stream ↗︎](https://datatracker.ietf.org/doc/html/rfc9114#section-4.1.1) before receiving a complete response — the underlying connection may remain open. This is a normal part of web traffic.
+
+**Tip**: If you use `499` codes in availability calculations, consider whether client-initiated cancellations should be excluded from error rates. These typically represent normal user behavior — such as closing a browser, navigating away from a page, mobile network drops, or cancelling a download — rather than service issues.
+
+---
+
+For more information, refer to [Error 499](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-499/).
+
+Jan 15, 2026
+
+[<h2>Network Services navigation update</h2>](https://developers.cloudflare.com/changelog/post/2026-01-15-networking-navigation-update/)
+
+[Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Network Flow](https://developers.cloudflare.com/network-flow/)
+
+The Network Services menu structure in Cloudflare's dashboard has been updated to reflect solutions and capabilities instead of product names. This will make it easier for you to find what you need and better reflects how our services work together.
+
+Your existing configurations will remain the same, and you will have access to all of the same features and functionality.
+
+The changes visible in your dashboard may vary based on the products you use. Overall, changes relate to [Magic Transit ↗︎](https://developers.cloudflare.com/magic-transit/), [Magic WAN ↗︎](https://developers.cloudflare.com/magic-wan/), and [Magic Firewall ↗︎](https://developers.cloudflare.com/cloudflare-network-firewall/).
+
+**Summary of changes:**
+
+- A new **Overview** page provides access to the most common tasks across Magic Transit and Magic WAN.
+- Product names have been removed from top-level navigation.
+- Magic Transit and Magic WAN configuration is now organized under **Routes** and **Connectors**. For example, you will find IP Prefixes under **Routes**, and your GRE/IPsec Tunnels under **Connectors.**
+- Magic Firewall policies are now called **Firewall Policies.**
+- Magic WAN Connectors and Connector On-Ramps are now referenced in the dashboard as **Appliances** and **Appliance profiles.** They can be found under **Connectors > Appliances.**
+- Network analytics, network health, and real-time analytics are now available under **Insights.**
+- Packet Captures are found under **Insights > Diagnostics.**
+- You can manage your Sites from **Insights > Network health.**
+- You can find Magic Network Monitoring under **Insights > Network flow**.
+
+If you would like to provide feedback, complete [this form ↗︎](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI] Upcoming Network Services Dashboard Navigation Update**.
+
+Preview: ![Networking Navigation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3000,height=1052,format=webp/_astro/networking-overview-and-navigation.CeMgEFaZ.png)
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/30/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/30/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

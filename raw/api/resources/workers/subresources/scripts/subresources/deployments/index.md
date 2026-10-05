@@ -1,0 +1,345 @@
+---
+title: Deployments
+---
+
+[Skip to content](#_top)
+
+[API Reference](https://developers.cloudflare.com/api)
+
+[Workers](https://developers.cloudflare.com/api/resources/workers)
+
+[Scripts](https://developers.cloudflare.com/api/resources/workers/subresources/scripts)
+
+Copy Markdown
+
+Open in **Claude**Open in **ChatGPT**Open in **Cursor**
+
+---
+
+**Copy Markdown****View as Markdown**
+
+# Deployments
+
+##### [List Worker Deployments](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/deployments/methods/list)
+
+GET/accounts/{account\_id}/workers/scripts/{script\_name}/deployments
+
+##### [Create Worker Deployment](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/deployments/methods/create)
+
+POST/accounts/{account\_id}/workers/scripts/{script\_name}/deployments
+
+##### [Get Worker Deployment](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/deployments/methods/get)
+
+GET/accounts/{account\_id}/workers/scripts/{script\_name}/deployments/{deployment\_id}
+
+##### [Delete Worker Deployment](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/deployments/methods/delete)
+
+DELETE/accounts/{account\_id}/workers/scripts/{script\_name}/deployments/{deployment\_id}
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+Deployment object {id, created\_on, source, 4 more }
+
+</summary>
+
+id: string
+
+formatuuid
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_on: string
+
+formatdate-time
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20created_on">Link to this property</a>
+
+source: string
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20source">Link to this property</a>
+
+strategy: "percentage"
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20strategy">Link to this property</a>
+
+<details>
+
+<summary>
+
+versions: array of object {percentage, version\_id }
+
+Worker versions included in this deployment. Each object must contain a <code>version_id</code> UUID and a <code>percentage</code>; percentages across all objects must total 100. In the <code>cf</code> CLI, pass the entire array as one JSON value to <code>--versions</code>, either inline, for example <code>--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'</code>, or from a JSON file with <code>--versions @versions.json</code>.
+
+</summary>
+
+percentage: number
+
+Percentage of traffic served by this version.
+
+maximum100
+
+minimum0.01
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20versions%20%3E%20(items)%20%3E%20(property)%20percentage">Link to this property</a>
+
+version\_id: string
+
+Identifier of the Worker Version.
+
+formatuuid
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20versions%20%3E%20(items)%20%3E%20(property)%20version_id">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20versions">Link to this property</a>
+
+<details>
+
+<summary>
+
+annotations: optional object {"workers/message", "workers/triggered\_by" }
+
+</summary>
+
+"workers/message": optional string
+
+Human-readable message about the deployment. Truncated to 1000 bytes if longer.
+
+maxLength1000
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20annotations%20%3E%20(property)%20workers%2Fmessage">Link to this property</a>
+
+"workers/triggered\_by": optional string
+
+Operation that triggered the creation of the deployment.
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20annotations%20%3E%20(property)%20workers%2Ftriggered_by">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20annotations">Link to this property</a>
+
+author\_email: optional string
+
+formatemail
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20author_email">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DeploymentListResponse object {deployments }
+
+</summary>
+
+<details>
+
+<summary>
+
+deployments: array of <a href="https://developers.cloudflare.com/api/resources/workers#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)">Deployment</a> { id, created\_on, source, 4 more }
+
+</summary>
+
+id: string
+
+formatuuid
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20id">Link to this property</a>
+
+created\_on: string
+
+formatdate-time
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20created_on">Link to this property</a>
+
+source: string
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20source">Link to this property</a>
+
+strategy: "percentage"
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20strategy">Link to this property</a>
+
+<details>
+
+<summary>
+
+versions: array of object {percentage, version\_id }
+
+Worker versions included in this deployment. Each object must contain a <code>version_id</code> UUID and a <code>percentage</code>; percentages across all objects must total 100. In the <code>cf</code> CLI, pass the entire array as one JSON value to <code>--versions</code>, either inline, for example <code>--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'</code>, or from a JSON file with <code>--versions @versions.json</code>.
+
+</summary>
+
+percentage: number
+
+Percentage of traffic served by this version.
+
+maximum100
+
+minimum0.01
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20versions%20%3E%20(items)%20%3E%20(property)%20percentage">Link to this property</a>
+
+version\_id: string
+
+Identifier of the Worker Version.
+
+formatuuid
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20versions%20%3E%20(items)%20%3E%20(property)%20version_id">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20versions">Link to this property</a>
+
+<details>
+
+<summary>
+
+annotations: optional object {"workers/message", "workers/triggered\_by" }
+
+</summary>
+
+"workers/message": optional string
+
+Human-readable message about the deployment. Truncated to 1000 bytes if longer.
+
+maxLength1000
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20annotations%20%3E%20(property)%20workers%2Fmessage">Link to this property</a>
+
+"workers/triggered\_by": optional string
+
+Operation that triggered the creation of the deployment.
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20annotations%20%3E%20(property)%20workers%2Ftriggered_by">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20annotations">Link to this property</a>
+
+author\_email: optional string
+
+formatemail
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment%20%3E%20(schema)%20%3E%20(property)%20author_email">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_list_response%20%3E%20(schema)%20%3E%20(property)%20deployments">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_list_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+DeploymentDeleteResponse object {errors, messages, success }
+
+</summary>
+
+<details>
+
+<summary>
+
+errors: array of object {code, message, documentation\_url, source }
+
+</summary>
+
+code: number
+
+minimum1000
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20errors%20%3E%20(items)%20%3E%20(property)%20code">Link to this property</a>
+
+message: string
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20errors%20%3E%20(items)%20%3E%20(property)%20message">Link to this property</a>
+
+documentation\_url: optional string
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20errors%20%3E%20(items)%20%3E%20(property)%20documentation_url">Link to this property</a>
+
+<details>
+
+<summary>
+
+source: optional object {pointer }
+
+</summary>
+
+pointer: optional string
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20errors%20%3E%20(items)%20%3E%20(property)%20source%20%3E%20(property)%20pointer">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20errors%20%3E%20(items)%20%3E%20(property)%20source">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20errors">Link to this property</a>
+
+<details>
+
+<summary>
+
+messages: array of object {code, message, documentation\_url, source }
+
+</summary>
+
+code: number
+
+minimum1000
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20code">Link to this property</a>
+
+message: string
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20message">Link to this property</a>
+
+documentation\_url: optional string
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20documentation_url">Link to this property</a>
+
+<details>
+
+<summary>
+
+source: optional object {pointer }
+
+</summary>
+
+pointer: optional string
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20source%20%3E%20(property)%20pointer">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20source">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20messages">Link to this property</a>
+
+success: true
+
+Whether the API call was successful.
+
+<a href="#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)%20%3E%20(property)%20success">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20workers.scripts.deployments%20%3E%20(model)%20deployment_delete_response%20%3E%20(schema)>)

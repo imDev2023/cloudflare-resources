@@ -1,0 +1,1380 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Mar 24, 2026
+
+[<h2>Interconnects moved to Connectors</h2>](https://developers.cloudflare.com/changelog/post/2026-03-24-interconnects-navigation-update/)
+
+[Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
+
+The top-level **Interconnects** page in the Cloudflare dashboard has been removed. Interconnects are now located under **Connectors** > **Interconnects**.
+
+Your existing configurations and functionality remain the same.
+
+Mar 24, 2026
+
+[<h2>Dynamic Workers, now in open beta</h2>](https://developers.cloudflare.com/changelog/post/2026-03-24-dynamic-workers-open-beta/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+[Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/) are now in [open beta ↗︎](https://blog.cloudflare.com/dynamic-workers/) for all paid Workers users. You can now have a Worker spin up other Workers, called Dynamic Workers, at runtime to execute code on-demand in a secure, sandboxed environment. Dynamic Workers start in milliseconds, making them well suited for fast, secure code execution at scale.
+
+#### Use Dynamic Workers for
+
+- **[Code Mode](https://developers.cloudflare.com/agents/tools/codemode/)**: LLMs are trained to write code. Run tool-calling logic written in code instead of stepping through many tool calls, which can save up to 80% in inference tokens and cost.
+- **AI agents executing code**: Run code for tasks like data analysis, file transformation, API calls, and chained actions.
+- **Running AI-generated code**: Run generated code for prototypes, projects, and automations in a secure, isolated sandboxed environment.
+- **Fast development and previews**: Load prototypes, previews, and playgrounds in milliseconds.
+- **Custom automations**: Create custom tools on the fly that execute a task, call an integration, or automate a workflow.
+
+#### Executing Dynamic Workers
+
+Dynamic Workers support two loading modes:
+
+- `load(code)` — for one-time code execution (equivalent to calling `get()` with a null ID).
+- `get(id, callback)` — caches a Dynamic Worker by ID so it can stay warm across requests. Use this when the same code will receive subsequent requests.
+
+```js
+export default {
+	async fetch(request, env) {
+		const worker = env.LOADER.load({
+			compatibilityDate: "2026-01-01",
+			mainModule: "src/index.js",
+			modules: {
+				"src/index.js": `
+					export default {
+						fetch() {
+							return new Response("Hello from a dynamic Worker");
+						},
+					};
+				`,
+			},
+			// Block all outbound network access from the Dynamic Worker.
+			globalOutbound: null,
+		});
+
+		return worker.getEntrypoint().fetch(request);
+	},
+};
+```
+
+```ts
+export default {
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const worker = env.LOADER.load({
+			compatibilityDate: "2026-01-01",
+			mainModule: "src/index.js",
+			modules: {
+				"src/index.js": `
+					export default {
+						fetch() {
+							return new Response("Hello from a dynamic Worker");
+						},
+					};
+				`,
+			},
+			// Block all outbound network access from the Dynamic Worker.
+			globalOutbound: null,
+		});
+
+		return worker.getEntrypoint().fetch(request);
+	},
+};
+```
+
+#### Helper libraries for Dynamic Workers
+
+Here are 3 new libraries to help you build with Dynamic Workers:
+
+- **[`@cloudflare/codemode` ↗︎](https://www.npmjs.com/package/@cloudflare/codemode)**: Replace individual tool calls with a single `code()` tool, so LLMs write and execute TypeScript that orchestrates multiple API calls in one pass.
+- **[`@cloudflare/worker-bundler` ↗︎](https://www.npmjs.com/package/@cloudflare/worker-bundler)**: Resolve npm dependencies and bundle source files into ready-to-load modules for Dynamic Workers, all at runtime.
+- **[`@cloudflare/shell` ↗︎](https://www.npmjs.com/package/@cloudflare/shell)**: Give your agent a virtual filesystem inside a Dynamic Worker with persistent storage backed by SQLite and R2.
+
+#### Try it out
+
+**Dynamic Workers Starter**
+
+[![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers)
+
+Use this [starter ↗︎](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers) to deploy a Worker that can load and execute Dynamic Workers.
+
+**Dynamic Workers Playground**
+
+[![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground)
+
+Deploy the [Dynamic Workers Playground ↗︎](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground) to write or import code, bundle it at runtime with `@cloudflare/worker-bundler`, execute it through a Dynamic Worker, and see real-time responses and execution logs.
+
+For the full API reference and configuration options, refer to the [Dynamic Workers documentation](https://developers.cloudflare.com/dynamic-workers/).
+
+#### Pricing
+
+Dynamic Workers [pricing](https://developers.cloudflare.com/dynamic-workers/pricing/) is based on three dimensions: Dynamic Workers created daily, requests, and CPU time.
+
+|  | Included | Additional usage |
+| --- | --- | --- |
+| **Dynamic Workers created daily** | 1,000 unique Dynamic Workers per month | +$0.002 per Dynamic Worker per day |
+| **Requests** ¹ | 10 million per month | +$0.30 per million requests |
+| **CPU time** ¹ | 30 million CPU milliseconds per month | +$0.02 per million CPU milliseconds |
+
+¹ Uses [Workers Standard rates](https://developers.cloudflare.com/workers/platform/pricing/#workers) and will appear as part of your existing Workers bill, not as separate Dynamic Workers charges.
+
+Note: Dynamic Workers requests and CPU time are already billed as part of your Workers plan and will count toward your Workers requests and CPU usage. The Dynamic Workers created daily charge is not yet active — you will not be billed for the number of Dynamic Workers created at this time. Pricing information is shared in advance so you can estimate future costs.
+
+Mar 23, 2026
+
+[<h2>Workflow instances now support pause(), resume(), restart(), and terminate() methods in local development</h2>](https://developers.cloudflare.com/changelog/post/2026-03-23-local-dev-instance-methods/)
+
+[Workflows](https://developers.cloudflare.com/workflows/) [Workers](https://developers.cloudflare.com/workers/)
+
+Workflow instance methods `pause()`, `resume()`, `restart()`, and `terminate()` are now available in local development when using `wrangler dev`.
+
+You can now test the full Workflow instance lifecycle locally:
+
+```ts
+const instance = await env.MY_WORKFLOW.create({
+	id: "my-instance-id",
+});
+
+await instance.pause(); // pauses a running workflow instance
+await instance.resume(); // resumes a paused instance
+await instance.restart(); // restarts the instance from the beginning
+await instance.terminate(); // terminates the instance immediately
+```
+
+Mar 23, 2026
+
+[<h2>Agents SDK v0.8.0: readable state, idempotent schedules, typed AgentClient, and Zod 4</h2>](https://developers.cloudflare.com/changelog/post/2026-03-23-agents-sdk-v0.8.0/)
+
+[Agents](https://developers.cloudflare.com/agents/) [Workers](https://developers.cloudflare.com/workers/)
+
+The latest release of the [Agents SDK ↗︎](https://github.com/cloudflare/agents) exposes agent state as a readable property, prevents duplicate schedule rows across Durable Object restarts, brings full TypeScript inference to `AgentClient`, and migrates to Zod 4.
+
+#### Readable `state` on `useAgent` and `AgentClient`
+
+Both `useAgent` (React) and `AgentClient` (vanilla JS) now expose a `state` property that reflects the current agent state. Previously, reading state required manually tracking it through the `onStateUpdate` callback.
+
+**React (`useAgent`)**
+
+```js
+const agent = useAgent({
+	agent: "game-agent",
+	name: "room-123",
+});
+
+// Read state directly — no separate useState + onStateUpdate needed
+return <div>Score: {agent.state?.score}</div>;
+
+// Spread for partial updates
+agent.setState({ ...agent.state, score: (agent.state?.score ?? 0) + 10 });
+```
+
+```tsx
+const agent = useAgent<GameAgent, GameState>({
+	agent: "game-agent",
+	name: "room-123",
+});
+
+// Read state directly — no separate useState + onStateUpdate needed
+return <div>Score: {agent.state?.score}</div>;
+
+// Spread for partial updates
+agent.setState({ ...agent.state, score: (agent.state?.score ?? 0) + 10 });
+```
+
+`agent.state` is reactive — the component re-renders when state changes from either the server or a client-side `setState()` call.
+
+**Vanilla JS (`AgentClient`)**
+
+```js
+const client = new AgentClient({
+	agent: "game-agent",
+	name: "room-123",
+	host: "your-worker.workers.dev",
+});
+
+client.setState({ score: 100 });
+console.log(client.state); // { score: 100 }
+```
+
+```ts
+const client = new AgentClient<GameAgent>({
+	agent: "game-agent",
+	name: "room-123",
+	host: "your-worker.workers.dev",
+});
+
+client.setState({ score: 100 });
+console.log(client.state); // { score: 100 }
+```
+
+State starts as `undefined` and is populated when the server sends the initial state on connect (from `initialState`) or when `setState()` is called. Use optional chaining (`agent.state?.field`) for safe access. The `onStateUpdate` callback continues to work as before — the new `state` property is additive.
+
+#### Idempotent `schedule()`
+
+`schedule()` now supports an `idempotent` option that deduplicates by `(type, callback, payload)`, preventing duplicate rows from accumulating when called in places that run on every Durable Object restart such as `onStart()`.
+
+**Cron schedules are idempotent by default.** Calling `schedule("0 * * * *", "tick")` multiple times with the same callback, expression, and payload returns the existing schedule row instead of creating a new one. Pass `{ idempotent: false }` to override.
+
+Delayed and date-scheduled types support opt-in idempotency:
+
+```js
+import { Agent } from "agents";
+
+class MyAgent extends Agent {
+	async onStart() {
+		// Safe across restarts — only one row is created
+		await this.schedule(60, "maintenance", undefined, { idempotent: true });
+	}
+}
+```
+
+```ts
+import { Agent } from "agents";
+
+class MyAgent extends Agent {
+	async onStart() {
+		// Safe across restarts — only one row is created
+		await this.schedule(60, "maintenance", undefined, { idempotent: true });
+	}
+}
+```
+
+Two new warnings help catch common foot-guns:
+
+- Calling `schedule()` inside `onStart()` without `{ idempotent: true }` emits a `console.warn` with actionable guidance (once per callback; skipped for cron and when `idempotent` is set explicitly).
+- If an alarm cycle processes 10 or more stale one-shot rows for the same callback, the SDK emits a `console.warn` and a `schedule:duplicate_warning` diagnostics channel event.
+
+#### Typed `AgentClient` with `call` inference and `stub` proxy
+
+`AgentClient` now accepts an optional agent type parameter for full type inference on RPC calls, matching the typed experience already available with `useAgent`.
+
+```js
+const client = new AgentClient({
+	agent: "my-agent",
+	host: window.location.host,
+});
+
+// Typed call — method name autocompletes, args and return type inferred
+const value = await client.call("getValue");
+
+// Typed stub — direct RPC-style proxy
+await client.stub.getValue();
+await client.stub.add(1, 2);
+```
+
+```ts
+const client = new AgentClient<MyAgent>({
+	agent: "my-agent",
+	host: window.location.host,
+});
+
+// Typed call — method name autocompletes, args and return type inferred
+const value = await client.call("getValue");
+
+// Typed stub — direct RPC-style proxy
+await client.stub.getValue();
+await client.stub.add(1, 2);
+```
+
+State is automatically inferred from the agent type, so `onStateUpdate` is also typed:
+
+```js
+const client = new AgentClient({
+	agent: "my-agent",
+	host: window.location.host,
+	onStateUpdate: (state) => {
+		// state is typed as MyAgent's state type
+	},
+});
+```
+
+```ts
+const client = new AgentClient<MyAgent>({
+	agent: "my-agent",
+	host: window.location.host,
+	onStateUpdate: (state) => {
+		// state is typed as MyAgent's state type
+	},
+});
+```
+
+Existing untyped usage continues to work without changes. The RPC type utilities (`AgentMethods`, `AgentStub`, `RPCMethods`) are now exported from `agents/client` for advanced typing scenarios. `agents`, `@cloudflare/ai-chat`, and `@cloudflare/codemode` now require `zod ^4.0.0`. Zod v3 is no longer supported.
+
+#### `@cloudflare/ai-chat` fixes
+
+- **Turn serialization** — `onChatMessage()` and `_reply()` work is now queued so user requests, tool continuations, and `saveMessages()` never stream concurrently.
+- **Duplicate messages on stop** — Clicking stop during an active stream no longer splits the assistant message into two entries.
+- **Duplicate messages after tool calls** — Orphaned client IDs no longer leak into persistent storage.
+
+#### `keepAlive()` and `keepAliveWhile()` are no longer experimental
+
+`keepAlive()` now uses a lightweight in-memory ref count instead of schedule rows. Multiple concurrent callers share a single alarm cycle. The `@experimental` tag has been removed from both `keepAlive()` and `keepAliveWhile()`.
+
+#### `@cloudflare/codemode`: TanStack AI integration
+
+A new entry point `@cloudflare/codemode/tanstack-ai` adds support for [TanStack AI's ↗︎](https://tanstack.com/ai) `chat()` as an alternative to the Vercel AI SDK's `streamText()`:
+
+```js
+import {
+	createCodeTool,
+	tanstackTools,
+} from "@cloudflare/codemode/tanstack-ai";
+import { chat } from "@tanstack/ai";
+
+const codeTool = createCodeTool({
+	tools: [tanstackTools(myServerTools)],
+	executor,
+});
+
+const stream = chat({ adapter, tools: [codeTool], messages });
+```
+
+```ts
+import { createCodeTool, tanstackTools } from "@cloudflare/codemode/tanstack-ai";
+import { chat } from "@tanstack/ai";
+
+const codeTool = createCodeTool({
+	tools: [tanstackTools(myServerTools)],
+	executor,
+});
+
+const stream = chat({ adapter, tools: [codeTool], messages });
+```
+
+#### Upgrade
+
+To update to the latest version:
+
+```sh
+npm i agents@latest @cloudflare/ai-chat@latest
+```
+
+Mar 23, 2026
+
+[<h2>New AI Search REST API endpoints for /search and /chat/completions</h2>](https://developers.cloudflare.com/changelog/post/2026-03-23-ai-search-new-rest-api/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/) now offers new [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/) endpoints for search and chat that use an OpenAI compatible format. This means you can use the familiar `messages` array structure that works with existing OpenAI SDKs and tools. The messages array also lets you pass previous messages within a session, so the model can maintain context across multiple turns.
+
+| Endpoint | Path |
+| --- | --- |
+| Chat Completions | `POST /accounts/{account_id}/ai-search/instances/{name}/chat/completions` |
+| Search | `POST /accounts/{account_id}/ai-search/instances/{name}/search` |
+
+Here is an example request to the Chat Completions endpoint using the new `messages` array format:
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai-search/instances/{NAME}/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer {API_TOKEN}" \
+  -d '{
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful documentation assistant."
+      },
+      {
+        "role": "user",
+        "content": "How do I get started?"
+      }
+    ]
+  }'
+```
+
+For more details, refer to the [AI Search REST API guide](https://developers.cloudflare.com/ai-search/api/search/rest-api/).
+
+#### Migration from existing AutoRAG API (recommended)
+
+If you are using the previous AutoRAG API endpoints (`/autorag/rags/`), we recommend migrating to the new endpoints. The previous AutoRAG API endpoints will continue to be fully supported.
+
+Refer to the [migration guide](https://developers.cloudflare.com/ai-search/api/migration/rest-api/) for step-by-step instructions.
+
+Mar 23, 2026
+
+[<h2>AI Search UI snippets and MCP support</h2>](https://developers.cloudflare.com/changelog/post/2026-03-23-ai-search-public-endpoint-and-snippets/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/) now supports public endpoints, UI snippets, and MCP, making it easy to add search to your website or connect AI agents.
+
+Public endpoints allow you to expose AI Search capabilities without requiring API authentication. To enable public endpoints:
+
+1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+2. Select your instance, and turn on **Public Endpoint** in **Settings**. For more details, refer to [Public endpoint configuration](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/).
+
+#### UI snippets
+
+UI snippets are pre-built search and chat components you can embed in your website. Visit [search.ai.cloudflare.com ↗︎](https://search.ai.cloudflare.com/) to configure and preview components for your AI Search instance.
+
+![Example of the search-modal-snippet component](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1842,height=806,format=webp/_astro/ui-snippet-search-modal.nSXbvcsi.png)
+
+To add a search modal to your page:
+
+```html
+<script
+	type="module"
+	src="https://<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com/assets/v0.0.25/search-snippet.es.js"
+></script>
+
+<search-modal-snippet
+	api-url="https://<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com/"
+	placeholder="Search..."
+>
+</search-modal-snippet>
+```
+
+For more details, refer to the [UI snippets documentation](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/embed-search-snippets/).
+
+#### MCP
+
+The MCP endpoint allows AI agents to search your content via the Model Context Protocol. Connect your MCP client to:
+
+```txt
+https://<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com/mcp
+```
+
+For more details, refer to the [MCP documentation](https://developers.cloudflare.com/ai-search/api/search/mcp/).
+
+Mar 23, 2026
+
+[<h2>Custom metadata filtering for AI Search</h2>](https://developers.cloudflare.com/changelog/post/2026-03-23-custom-metadata-filtering/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/) now supports custom metadata filtering, allowing you to define your own metadata fields and filter search results based on attributes like category, version, or any custom field you define.
+
+#### Define a custom metadata schema
+
+You can define up to 5 custom metadata fields per AI Search instance. Each field has a name and data type (`text`, `number`, or `boolean`):
+
+```bash
+curl -X POST https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai-search/instances \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer {API_TOKEN}" \
+  -d '{
+    "id": "my-instance",
+    "type": "r2",
+    "source": "my-bucket",
+    "custom_metadata": [
+      { "field_name": "category", "data_type": "text" },
+      { "field_name": "version", "data_type": "number" },
+      { "field_name": "is_public", "data_type": "boolean" }
+    ]
+  }'
+```
+
+#### Add metadata to your documents
+
+How you attach metadata depends on your data source:
+
+- **R2 bucket**: Set metadata using S3-compatible custom headers ( `x-amz-meta-*`) when uploading objects. Refer to [R2 custom metadata](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/#custom-metadata) for examples.
+- **Website**: Add `<meta>` tags to your HTML pages. Refer to [Website custom metadata](https://developers.cloudflare.com/ai-search/configuration/data-source/website/custom-metadata/) for details.
+
+#### Filter search results
+
+Use custom metadata fields in your search queries alongside built-in attributes like `folder` and `timestamp`:
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai-search/instances/{NAME}/search \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer {API_TOKEN}" \
+  -d '{
+    "messages": [
+      {
+        "content": "How do I configure authentication?",
+        "role": "user"
+      }
+    ],
+    "ai_search_options": {
+      "retrieval": {
+        "filters": {
+          "category": "documentation",
+          "version": { "$gte": 2.0 }
+        }
+      }
+    }
+  }'
+```
+
+Learn more in the [metadata filtering documentation](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/).
+
+Mar 23, 2026
+
+[<h2>Web Assets fields now available in GraphQL Analytics API</h2>](https://developers.cloudflare.com/changelog/post/2026-03-23-web-assets-graphql-fields/)
+
+[API Shield](https://developers.cloudflare.com/api-shield/)
+
+Two new fields are now available in the `httpRequestsAdaptive` and `httpRequestsAdaptiveGroups` [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) datasets:
+
+- `webAssetsOperationId` — the ID of the [saved endpoint](https://developers.cloudflare.com/api-shield/management-and-monitoring/) that matched the incoming request.
+- `webAssetsLabelsManaged` — the [managed labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#managed-labels) mapped to the matched operation at the time of the request (for example, `cf-llm`, `cf-log-in`). At most 10 labels are returned per request.
+
+Both fields are empty when no operation matched. `webAssetsLabelsManaged` is also empty when no managed labels are assigned to the matched operation.
+
+These fields allow you to determine, per request, which Web Assets operation was matched and which managed labels were active. This is useful for troubleshooting downstream security detection verdicts — for example, understanding why [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/) did or did not flag a request.
+
+Refer to [Endpoint labeling service](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#analytics) for GraphQL query examples.
+
+Mar 23, 2026
+
+[<h2>R2 SQL now supports over 190 new functions, expressions, and complex types</h2>](https://developers.cloudflare.com/changelog/post/2026-03-23-expanded-sql-functions-expressions-complex-types/)
+
+[Basin SQL](https://developers.cloudflare.com/basin-sql/) [Basin](https://developers.cloudflare.com/basin/)
+
+[R2 SQL](https://developers.cloudflare.com/basin-sql/) now supports an expanded SQL grammar so you can write richer analytical queries without exporting data. This release adds CASE expressions, column aliases, arithmetic in clauses, 163 scalar functions, 33 aggregate functions, EXPLAIN, Common Table Expressions (CTEs),and full struct/array/map access. R2 SQL is Cloudflare's serverless, distributed, analytics query engine for querying [Apache Iceberg ↗︎](https://iceberg.apache.org/) tables stored in [R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/). This page documents the supported SQL syntax.
+
+#### Highlights
+
+- **Column aliases** — `SELECT col AS alias` now works in all clauses
+- **CASE expressions** — conditional logic directly in SQL (searched and simple forms)
+- **Scalar functions** — 163 new functions across math, string, datetime, regex, crypto, encoding, and type inspection categories
+- **Aggregate functions** — statistical (variance, stddev, correlation, regression), bitwise, boolean, and positional aggregates join the existing basic and approximate functions
+- **Complex types** — query struct fields with bracket notation, use 46 array functions, and extract map keys/values
+- **Common table expressions (CTEs)** — use `WITH ... AS` to define named temporary result sets. Chained CTEs are supported. All CTEs must reference the same single table.
+- **Full expression support** — arithmetic, type casting ( `CAST`, `TRY_CAST`, `::` shorthand), and `EXTRACT` in SELECT, WHERE, GROUP BY, HAVING, and ORDER BY
+
+#### Examples
+
+#### CASE expressions with statistical aggregates
+
+```sql
+SELECT source,
+    CASE
+        WHEN AVG(price) > 30 THEN 'premium'
+        WHEN AVG(price) > 10 THEN 'mid-tier'
+        ELSE 'budget'
+    END AS tier,
+    round(stddev(price), 2) AS price_volatility,
+    approx_percentile_cont(price, 0.95) AS p95_price
+FROM my_namespace.sales_data
+GROUP BY source
+```
+
+#### Struct and array access
+
+```sql
+SELECT product_name,
+    pricing['price'] AS price,
+    array_to_string(tags, ', ') AS tag_list
+FROM my_namespace.products
+WHERE array_has(tags, 'Action')
+ORDER BY pricing['price'] DESC
+LIMIT 10
+```
+
+#### Chained CTEs with time-series analysis
+
+```sql
+WITH monthly AS (
+    SELECT date_trunc('month', sale_timestamp) AS month,
+        department,
+        COUNT(*) AS transactions,
+        round(AVG(total_amount), 2) AS avg_amount
+    FROM my_namespace.sales_data
+    WHERE sale_timestamp BETWEEN '2025-01-01T00:00:00Z' AND '2025-12-31T23:59:59Z'
+    GROUP BY date_trunc('month', sale_timestamp), department
+),
+ranked AS (
+    SELECT month, department, transactions, avg_amount,
+        CASE
+            WHEN avg_amount > 1000 THEN 'high-value'
+            WHEN avg_amount > 500 THEN 'mid-value'
+            ELSE 'standard'
+        END AS tier
+    FROM monthly
+    WHERE transactions > 100
+)
+SELECT * FROM ranked
+ORDER BY month, avg_amount DESC
+```
+
+For the full function reference and syntax details, refer to the [SQL reference](https://developers.cloudflare.com/basin-sql/sql-reference/). For limitations and best practices, refer to [Limitations and best practices](https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/).
+
+Mar 23, 2026
+
+[<h2>WAF Release - 2026-03-23</h2>](https://developers.cloudflare.com/changelog/post/2026-03-23-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week's release focuses on new improvements to enhance coverage.
+
+**Key Findings**
+
+- Existing rule enhancements have been deployed to improve detection resilience against broad classes of web attacks and strengthen behavioral coverage.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...97321c6c | N/A | Command Injection - Generic 9 - URI Vector | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...1eb7a999
+
+N/A | Command Injection - Generic 9 - Header Vector | Log | Disabled  
+ | This is a new detection.
+
+ |
+| Cloudflare Managed Ruleset | ...0677175f
+
+N/A | Command Injection - Generic 9 - Body Vector | Log | Disabled  
+ | This is a new detection.
+
+ |
+| Cloudflare Managed Ruleset | ...479da68f | N/A | PHP, vBulletin, jQuery File Upload - Code Injection, Dangerous File Upload - CVE:CVE-2018-9206, CVE:CVE-2019-17132 (beta) | Log | Block | This rule has been merged into the original rule "PHP, vBulletin, jQuery File Upload - Code Injection, Dangerous File Upload - CVE:CVE-2018-9206, CVE:CVE-2019-17132" (ID: ...824b817c) |
+
+Mar 20, 2026
+
+[<h2>Managed OAuth for Cloudflare Access</h2>](https://developers.cloudflare.com/changelog/post/2026-03-20-managed-oauth/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+Cloudflare Access supports managed OAuth, which allows non-browser clients — such as CLIs, AI agents, SDKs, and scripts — to authenticate with Access-protected applications using a standard OAuth 2.0 authorization code flow.
+
+Previously, non-browser clients that attempted to access a protected application received a `302` redirect to a login page they could not complete. The established workaround was `cloudflared access curl`, which required installing additional tooling.
+
+With managed OAuth, clients instead receive a `401` response with a `WWW-Authenticate` header that points to Access's OAuth discovery endpoints ([RFC 8414 ↗︎](https://datatracker.ietf.org/doc/html/rfc8414) and [RFC 9728 ↗︎](https://datatracker.ietf.org/doc/html/rfc9728)). The client opens the end user's browser to the Access login page. The end user authenticates with their identity provider, and the client receives an OAuth access token for subsequent requests.
+
+Access enforces the same policies as a browser login; the OAuth layer is a new transport mechanism, not a separate authentication path.
+
+Managed OAuth can be enabled on any self-hosted Access application or [MCP server portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/). It is opt-in for existing applications to avoid interfering with those that run their own OAuth servers and rely on their own `WWW-Authenticate` headers.
+
+Note
+
+For MCP server portals, managed OAuth is enabled by default on new portals. It remains opt-in for self-hosted applications.
+
+To enable managed OAuth, go to **Zero Trust** > **Access controls** > **Applications**, edit the application, and turn on **Managed OAuth** under **Advanced settings**.
+
+You can also enable it via the API by setting `oauth_configuration.enabled` to `true` on the [Access applications endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/update/).
+
+![Managed OAuth settings in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2914,height=1042,format=webp/_astro/managed-oauth.BirLnBpy.png)
+
+For setup instructions, refer to [Enable managed OAuth](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/).
+
+Mar 20, 2026
+
+[<h2>Route MCP server portal traffic through Cloudflare Gateway</h2>](https://developers.cloudflare.com/changelog/post/2026-03-20-mcp-portal-gateway-routing/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) can now route traffic through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) for richer HTTP request logging and data loss prevention (DLP) scanning.
+
+When Gateway routing is turned on, portal traffic appears in your [Gateway HTTP logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/). You can create [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) with [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) to detect and block sensitive data sent to upstream MCP servers.
+
+Note
+
+DLP [AI prompt profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#ai-prompt) do not apply to MCP server portal traffic.
+
+To enable Gateway routing, go to **Access controls** > **AI controls**, edit the portal, and turn on **Route traffic through Cloudflare Gateway** under **Basic information**.
+
+![Route MCP server portal traffic through Cloudflare Gateway](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1568,height=158,format=webp/_astro/portal-route-through-gateway.0KMUAXBm.png)
+
+For more details, refer to [Route traffic through Gateway](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#route-portal-traffic-through-gateway).
+
+Mar 20, 2026
+
+[<h2>DNS Analytics for Customer Metadata Boundary set to EU region</h2>](https://developers.cloudflare.com/changelog/post/2026-03-20-dns-analytics-cmb-eu/)
+
+[DNS](https://developers.cloudflare.com/dns/)
+
+DNS Analytics is now available for customers with [Customer Metadata Boundary](https://developers.cloudflare.com/data-localization/metadata-boundary/) (CMB) set to EU. Query your DNS analytics data while keeping metadata stored in the EU region.
+
+This update includes:
+
+- **DNS Analytics** — Access the same DNS analytics experience for zones in CMB=EU accounts.
+- **EU data residency** — Analytics data is stored and queried from the EU region, meeting data localization requirements.
+- **DNS Firewall Analytics** — DNS Firewall analytics is now supported for CMB=EU customers.
+
+#### Availability
+
+Available to customers with the [Data Localization Suite](https://developers.cloudflare.com/data-localization/) who have Customer Metadata Boundary configured for the EU region.
+
+#### Where to find it
+
+- **Authoritative DNS:** In the Cloudflare dashboard, select your zone and go to the **Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/analytics)
+- **DNS Firewall:** In the Cloudflare dashboard, go to the **DNS Firewall Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
+
+For more information, refer to [DNS Analytics](https://developers.cloudflare.com/dns/additional-options/analytics/) and [DNS Firewall Analytics](https://developers.cloudflare.com/dns/dns-firewall/analytics/).
+
+Mar 20, 2026
+
+[<h2>Stream logs from multiple replicas of Cloudflare Tunnel simultaneously</h2>](https://developers.cloudflare.com/changelog/post/2026-03-20-tunnel-replica-overview-and-multi-log-streaming/)
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+
+In the Cloudflare One dashboard, the overview page for a specific Cloudflare Tunnel now shows all [replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) of that tunnel and supports streaming logs from multiple replicas at once.
+
+![View replicas and stream logs from multiple connectors](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1040,format=webp/_astro/tunnel-multiconn.DEOEaLlu.gif)
+
+Previously, you could only stream logs from one replica at a time. With this update:
+
+- **Replicas on the tunnel overview** — All active replicas for the selected tunnel now appear on that tunnel's overview page under **Connectors**. Select any replica to stream its logs.
+- **Multi-connector log streaming** — Stream logs from multiple replicas simultaneously, making it easier to correlate events across your infrastructure during debugging or incident response. To try it out, log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/) and go to **Networks** > **Connectors** > **Cloudflare Tunnels**. Select **View logs** next to the tunnel you want to monitor.
+
+For more information, refer to [Tunnel log streams](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) and [Deploy replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/deploy-replicas/).
+
+Mar 20, 2026
+
+[<h2>Observability for Workers VPC Services</h2>](https://developers.cloudflare.com/changelog/post/2026-03-20-metrics-and-settings-dashboard/)
+
+[Workers VPC](https://developers.cloudflare.com/workers-vpc/)
+
+Each VPC Service now has a **Metrics** tab so you can monitor connection health and debug failures without leaving the dashboard.
+
+![Workers VPC Metrics dashboard showing connections, latency, and errors charts](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3336,height=3204,format=webp/_astro/2026-03-20-metrics-dashboard.6kfnbqQd.png)
+
+- **Connections** — See successful and failed connections over time, broken down by what is responsible: your origin (Bad Upstream), your configuration (Client), or Cloudflare (Internal).
+- **Latency** — Track connection and DNS resolution latency trends.
+- **Errors** — Drill into specific error codes grouped by category, with filters to isolate upstream, client, or internal failures.
+
+You can also view and edit your VPC Service configuration, host details, and port assignments from the **Settings** tab.
+
+For a full list of error codes and what they mean, refer to [Troubleshooting](https://developers.cloudflare.com/workers-vpc/reference/troubleshooting/).
+
+Mar 19, 2026
+
+[<h2>Service Key authentication deprecated</h2>](https://developers.cloudflare.com/changelog/post/2026-03-19-service-key-authentication-deprecated/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+Service Key authentication for the Cloudflare API is deprecated. Service Keys will stop working on September 30, 2026.
+
+[API Tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) replace Service Keys with fine-grained permissions, expiration, and revocation.
+
+#### What you need to do
+
+Replace any use of the `X-Auth-User-Service-Key` header with an [API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) scoped to the permissions your integration requires.
+
+If you use `cloudflared`, update to a version from November 2022 or later. These versions already use API Tokens.
+
+If you use [origin-ca-issuer ↗︎](https://github.com/cloudflare/origin-ca-issuer), update to a version that supports API Token authentication.
+
+For more information, refer to [API deprecations](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/).
+
+Mar 19, 2026
+
+[<h2>Hyperdrive now supports custom TLS/SSL certificates for MySQL</h2>](https://developers.cloudflare.com/changelog/post/2026-03-19-hyperdrive-mysql-custom-certificate-support/)
+
+[Hyperdrive](https://developers.cloudflare.com/hyperdrive/)
+
+Hyperdrive now supports custom TLS/SSL certificates for MySQL databases, bringing the same certificate options previously available for PostgreSQL to MySQL connections.
+
+You can now configure:
+
+- **Server certificate verification** with `VERIFY_CA` or `VERIFY_IDENTITY` SSL modes to verify that your MySQL database server's certificate is signed by the expected certificate authority (CA).
+- **Client certificates** (mTLS) for Hyperdrive to authenticate itself to your MySQL database with credentials beyond username and password.
+
+Create a Hyperdrive configuration with custom certificates for MySQL:
+
+```bash
+# Upload a CA certificate
+npx wrangler cert upload certificate-authority --ca-cert your-ca-cert.pem --name your-custom-ca-name
+
+# Create a Hyperdrive with VERIFY_IDENTITY mode
+npx wrangler hyperdrive create your-hyperdrive-config \
+  --connection-string="mysql://user:password@hostname:port/database" \
+  --ca-certificate-id <CA_CERT_ID> \
+  --sslmode VERIFY_IDENTITY
+```
+
+For more information, refer to [SSL/TLS certificates for Hyperdrive](https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/) and [MySQL TLS/SSL modes](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/).
+
+Mar 19, 2026
+
+[<h2>Manage Cloudflare Tunnels with Wrangler</h2>](https://developers.cloudflare.com/changelog/post/2026-03-19-wrangler-tunnel-commands/)
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Workers](https://developers.cloudflare.com/workers/)
+
+You can now manage [Cloudflare Tunnels](https://developers.cloudflare.com/tunnel/) directly from [Wrangler](https://developers.cloudflare.com/workers/wrangler/), the CLI for the Cloudflare Developer Platform. The new [`wrangler tunnel`](https://developers.cloudflare.com/workers/wrangler/commands/tunnel/) commands let you create, run, and manage tunnels without leaving your terminal.
+
+![Wrangler tunnel commands demo](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1094,format=webp/_astro/wrangler-tunnel.DOqrtGGg.gif)
+
+Available commands:
+
+- `wrangler tunnel create` — Create a new remotely managed tunnel.
+- `wrangler tunnel list` — List all tunnels in your account.
+- `wrangler tunnel info` — Display details about a specific tunnel.
+- `wrangler tunnel delete` — Delete a tunnel.
+- `wrangler tunnel run` — Run a tunnel using the cloudflared daemon.
+- `wrangler tunnel quick-start` — Start a free, temporary tunnel without an account using [Quick Tunnels](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/).
+
+Wrangler handles downloading and managing the [cloudflared](https://developers.cloudflare.com/tunnel/downloads/) binary automatically. On first use, you will be prompted to download `cloudflared` to a local cache directory.
+
+These commands are currently experimental and may change without notice.
+
+To get started, refer to the [Wrangler tunnel commands documentation](https://developers.cloudflare.com/workers/wrangler/commands/tunnel/).
+
+Mar 19, 2026
+
+[<h2>Moonshot AI Kimi K2.5 now available on Workers AI</h2>](https://developers.cloudflare.com/changelog/post/2026-03-19-kimi-k2-5-workers-ai/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+Workers AI is officially in the big models game. [`@cf/moonshotai/kimi-k2.5`](https://developers.cloudflare.com/workers-ai/models/kimi-k2.5/) is the first frontier-scale open-source model on our AI inference platform — a large model with a full 256k context window, multi-turn tool calling, vision inputs, and structured outputs. By bringing a frontier-scale model directly onto the Cloudflare Developer Platform, you can now run the entire agent lifecycle on a single, unified platform.
+
+The model has proven to be a fast, efficient alternative to larger proprietary models without sacrificing quality. As AI adoption increases, the volume of inference is skyrocketing — now you can access frontier intelligence at a fraction of the cost.
+
+#### Key capabilities
+
+- **256,000 token context window** for retaining full conversation history, tool definitions, and entire codebases across long-running agent sessions
+- **Multi-turn tool calling** for building agents that invoke tools across multiple conversation turns
+- **Vision inputs** for processing images alongside text
+- **Structured outputs** with JSON mode and JSON Schema support for reliable downstream parsing
+- **Function calling** for integrating external tools and APIs into agent workflows
+
+#### Prefix caching and session affinity
+
+When an agent sends a new prompt, it resends all previous prompts, tools, and context from the session. The delta between consecutive requests is usually just a few new lines of input. Prefix caching avoids reprocessing the shared context, saving time and compute from the prefill stage. This means faster Time to First Token (TTFT) and higher Tokens Per Second (TPS) throughput.
+
+Workers AI has done prefix caching, but we are now surfacing cached tokens as a usage metric and offering a discount on cached tokens compared to input tokens (pricing is listed on the [model page](https://developers.cloudflare.com/workers-ai/models/kimi-k2.5/)).
+
+```bash
+curl -X POST \
+  "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/@cf/moonshotai/kimi-k2.5" \
+  -H "Authorization: Bearer {api_token}" \
+  -H "Content-Type: application/json" \
+  -H "x-session-affinity: ses_12345678" \
+  -d '{
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "What is prefix caching and why does it matter?"
+      }
+    ],
+    "max_tokens": 2400,
+    "stream": true
+  }'
+```
+
+Some clients like [OpenCode ↗︎](https://opencode.ai) implement session affinity automatically. The [Agents SDK ↗︎](https://github.com/cloudflare/agents) starter also sets up the wiring for you.
+
+#### Redesigned asynchronous API
+
+For volumes of requests that exceed synchronous rate limits, you can submit batches of inferences to be completed asynchronously. We have revamped the [Asynchronous Batch API](https://developers.cloudflare.com/workers-ai/features/batch-api/) with a pull-based system that processes queued requests as soon as capacity is available. With internal testing, async requests usually execute within 5 minutes, but this depends on live traffic.
+
+The async API is the best way to avoid capacity errors in durable workflows. It is ideal for use cases that are not real-time, such as code scanning agents or research agents.
+
+To use the asynchronous API, pass `queueRequest: true`:
+
+```js
+// 1. Push a batch of requests into the queue
+const res = await env.AI.run(
+	"@cf/moonshotai/kimi-k2.5",
+	{
+		requests: [
+			{
+				messages: [{ role: "user", content: "Tell me a joke" }],
+			},
+			{
+				messages: [{ role: "user", content: "Explain the Pythagoras theorem" }],
+			},
+		],
+	},
+	{ queueRequest: true },
+);
+
+// 2. Grab the request ID
+const requestId = res.request_id;
+
+// 3. Poll for the result
+const result = await env.AI.run("@cf/moonshotai/kimi-k2.5", {
+	request_id: requestId,
+});
+
+if (result.status === "queued" || result.status === "running") {
+	// Retry by polling again
+} else {
+	return Response.json(result);
+}
+```
+
+You can also set up [event notifications](https://developers.cloudflare.com/workers-ai/platform/event-subscriptions/) to know when inference is complete instead of polling.
+
+#### Get started
+
+Use Kimi K2.5 through the [Workers AI binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/) (`env.AI.run()`), the REST API at `/run` or `/v1/chat/completions`, [AI Gateway](https://developers.cloudflare.com/ai-gateway/), or via the [OpenAI-compatible endpoint](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+
+For more information, refer to the [Kimi K2.5 model page](https://developers.cloudflare.com/workers-ai/models/kimi-k2.5/), [pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/), and [prompt caching](https://developers.cloudflare.com/workers-ai/features/prompt-caching/).
+
+Mar 18, 2026
+
+[<h2>SCIM provisioning for Authentik is now Generally Available</h2>](https://developers.cloudflare.com/changelog/post/2026-03-17-scim-authentik-support/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+Cloudflare dashboard SCIM provisioning now supports [Authentik ↗︎](https://goauthentik.io/) as an identity provider, joining Okta and Microsoft Entra ID as explicitly supported providers.
+
+Customers can now sync users and group information from Authentik to Cloudflare, apply Permission Policies to those groups, and manage the lifecycle of users & groups directly from your Authentik Identity Provider.
+
+Note
+
+SCIM provisioning for the Cloudflare dashboard is available to Enterprise customers. You must be a Super Administrator to complete the initial setup.
+
+For more information:
+
+- [SCIM provisioning overview](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/)
+- [Provision with Authentik](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/authentik/)
+
+Mar 18, 2026
+
+[<h2>SCIM audit logging Support</h2>](https://developers.cloudflare.com/changelog/post/2026-03-18-scim-audit-logging/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+Cloudflare dashboard SCIM provisioning operations are now captured in [Audit Logs v2](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/), giving you visibility into user and group changes made by your identity provider.
+
+![SCIM audit logging](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2556,height=1332,format=webp/_astro/2026-03-18-scim-audit-logging.DPKMiE8X.png)
+
+**Logged actions:**
+
+| Action Type | Description |
+| --- | --- |
+| Create SCIM User | User provisioned from IdP |
+| Replace SCIM User | User fully replaced (PUT) |
+| Update SCIM User | User attributes modified (PATCH) |
+| Delete SCIM User | Member deprovisioned |
+| Create SCIM Group | Group provisioned from IdP |
+| Update SCIM Group | Group membership or attributes modified |
+| Delete SCIM Group | Group deprovisioned |
+
+For more details, refer to the [Audit Logs v2 documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
+
+Mar 18, 2026
+
+[<h2>Worker execution timing field now available in Rules</h2>](https://developers.cloudflare.com/changelog/post/2026-03-18-worker-timing-field/)
+
+[Rules](https://developers.cloudflare.com/rules/)
+
+The `cf.timings.worker_msec` field is now available in the Ruleset Engine. This field reports the wall-clock time that a Cloudflare Worker spent handling a request, measured in milliseconds.
+
+You can use this field to identify slow Worker executions, detect performance regressions, or build rules that respond differently based on Worker processing time, such as logging requests that exceed a latency threshold.
+
+#### Field details
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cf.timings.worker_msec` | Integer | The time spent executing a Cloudflare Worker in milliseconds. Returns `0` if no Worker was invoked. |
+
+Example filter expression:
+
+```plaintext
+cf.timings.worker_msec > 500
+```
+
+For more information, refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.timings.worker_msec/).
+
+Mar 18, 2026
+
+[<h2>Real-time logo match preview</h2>](https://developers.cloudflare.com/changelog/post/2026-03-18-brand-protection-logo-match-preview/)
+
+[Security Center](https://developers.cloudflare.com/security-center/)
+
+We are introducing **Logo Match Preview**, bringing the same pre-save visibility to visual assets that was previously only available for string-based queries. This update allows you to fine-tune your brand detection strategy before committing to a live monitor.
+
+#### What’s new:
+
+- Upload your brand logo and immediately see a sample of potential matches from recently detected sites before finalizing the query
+- Adjust your similarity score (from 75% to 100%) and watch the results refresh in real-time to find the balance between broad detection and noise reduction
+- Review the specific logos triggered by your current settings to ensure your query is capturing the right level of brand infringement
+
+If you are ready to test your brand assets, go to the [Brand Protection dashboard ↗︎](https://developers.cloudflare.com/security-center/brand-protection/) to try the new preview tool.
+
+Mar 18, 2026
+
+[<h2>Media Transformations binding for Workers</h2>](https://developers.cloudflare.com/changelog/post/2026-03-18-media-transformations-workers-binding/)
+
+[Stream](https://developers.cloudflare.com/stream/)
+
+You can now use a Workers binding to transform videos with Media Transformations. This allows you to resize, crop, extract frames, and extract audio from videos stored anywhere, even in private locations like R2 buckets.
+
+The Media Transformations binding is useful when you want to:
+
+- Transform videos stored in private or protected sources
+- Optimize videos and store the output directly back to R2 for re-use
+- Extract still frames for classification or description with Workers AI
+- Extract audio tracks for transcription using Workers AI
+
+To get started, add the Media binding to your Wrangler configuration:
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "media": {
+    "binding": "MEDIA"
+  }
+}
+```
+
+```toml
+[media]
+binding = "MEDIA"
+```
+
+Then use the binding in your Worker to transform videos:
+
+```js
+export default {
+	async fetch(request, env) {
+		const video = await env.R2_BUCKET.get("input.mp4");
+
+		const result = env.MEDIA.input(video.body)
+			.transform({ width: 480, height: 270 })
+			.output({ mode: "video", duration: "5s" });
+
+		return await result.response();
+	},
+};
+```
+
+```ts
+export default {
+	async fetch(request, env) {
+		const video = await env.R2_BUCKET.get("input.mp4");
+
+		const result = env.MEDIA.input(video.body)
+			.transform({ width: 480, height: 270 })
+			.output({ mode: "video", duration: "5s" });
+
+		return await result.response();
+	},
+};
+```
+
+Output modes include `video` for optimized MP4 clips, `frame` for still images, `spritesheet` for multiple frames, and `audio` for M4A extraction.
+
+For more information, refer to the [Media Transformations binding documentation](https://developers.cloudflare.com/stream/transform-videos/bindings/).
+
+Mar 17, 2026
+
+[<h2>@cloudflare/codemode v0.2.1: MCP barrel export, zero-dependency main entry point, and custom sandbox modules</h2>](https://developers.cloudflare.com/changelog/post/2026-03-17-codemode-sdk-v0.2.1/)
+
+[Agents](https://developers.cloudflare.com/agents/) [Workers](https://developers.cloudflare.com/workers/)
+
+The latest releases of [`@cloudflare/codemode` ↗︎](https://www.npmjs.com/package/@cloudflare/codemode) add a new MCP barrel export, remove `ai` and `zod` as required peer dependencies from the main entry point, and give you more control over the sandbox.
+
+#### New `@cloudflare/codemode/mcp` export
+
+A new `@cloudflare/codemode/mcp` entry point provides two functions that wrap MCP servers with Code Mode:
+
+- **`codeMcpServer({ server, executor })`** — wraps an existing MCP server with a single `code` tool where each upstream tool becomes a typed `codemode.*` method.
+- **`openApiMcpServer({ spec, executor, request })`** — creates `search` and `execute` MCP tools from an OpenAPI spec with host-side request proxying and automatic `$ref` resolution.
+
+```js
+import { codeMcpServer } from "@cloudflare/codemode/mcp";
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+
+const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
+
+// Wrap an existing MCP server — all its tools become
+// typed methods the LLM can call from generated code
+const server = await codeMcpServer({ server: upstreamMcp, executor });
+```
+
+```ts
+import { codeMcpServer } from "@cloudflare/codemode/mcp";
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+
+const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
+
+// Wrap an existing MCP server — all its tools become
+// typed methods the LLM can call from generated code
+const server = await codeMcpServer({ server: upstreamMcp, executor });
+```
+
+#### Zero-dependency main entry point
+
+**Breaking change in v0.2.0:** `generateTypes` and the `ToolDescriptor` / `ToolDescriptors` types have moved to `@cloudflare/codemode/ai`:
+
+```js
+// Before
+import { generateTypes } from "@cloudflare/codemode";
+
+// After
+import { generateTypes } from "@cloudflare/codemode/ai";
+```
+
+```ts
+// Before
+import { generateTypes } from "@cloudflare/codemode";
+
+// After
+import { generateTypes } from "@cloudflare/codemode/ai";
+```
+
+The main entry point (`@cloudflare/codemode`) no longer requires the `ai` or `zod` peer dependencies. It now exports:
+
+| Export | Description |
+| --- | --- |
+| `sanitizeToolName` | Sanitize tool names into valid JS identifiers |
+| `normalizeCode` | Normalize LLM-generated code into async arrow functions |
+| `generateTypesFromJsonSchema` | Generate TypeScript type definitions from plain JSON Schema |
+| `jsonSchemaToType` | Convert a single JSON Schema to a TypeScript type string |
+| `DynamicWorkerExecutor` | Sandboxed code execution via Dynamic Worker Loader |
+| `ToolDispatcher` | RPC target for dispatching tool calls from sandbox to host |
+
+The `ai` and `zod` peer dependencies are now optional — only required when importing from `@cloudflare/codemode/ai`.
+
+#### Custom sandbox modules
+
+`DynamicWorkerExecutor` now accepts an optional `modules` option to inject custom ES modules into the sandbox:
+
+```js
+const executor = new DynamicWorkerExecutor({
+	loader: env.LOADER,
+	modules: {
+		"utils.js": `export function add(a, b) { return a + b; }`,
+	},
+});
+
+// Sandbox code can then: import { add } from "utils.js"
+```
+
+```ts
+const executor = new DynamicWorkerExecutor({
+	loader: env.LOADER,
+	modules: {
+		"utils.js": `export function add(a, b) { return a + b; }`,
+	},
+});
+
+// Sandbox code can then: import { add } from "utils.js"
+```
+
+#### Internal normalization and sanitization
+
+`DynamicWorkerExecutor` now normalizes code and sanitizes tool names internally. You no longer need to call `normalizeCode()` or `sanitizeToolName()` before passing code and functions to `execute()`.
+
+#### Upgrade
+
+```sh
+npm i @cloudflare/codemode@latest
+```
+
+See the [Code Mode documentation](https://developers.cloudflare.com/agents/tools/codemode/) for the full API reference.
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/25/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/25/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

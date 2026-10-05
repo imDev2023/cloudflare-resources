@@ -1,0 +1,131 @@
+# llms.txt probe, run 2026-10-05 with curl -L (User-Agent Mozilla/5.0). kind=html means the URL answered with an HTML page, not an llms file.
+slug	url	http_code	content_type	bytes	final_url	kind
+akamai	https://techdocs.akamai.com/llms-full.txt	200	text/html; charset=utf-8	3767281	https://techdocs.akamai.com/home	html
+akamai	https://techdocs.akamai.com/llms.txt	200	text/plain; charset=utf-8	122062	https://techdocs.akamai.com/llms.txt	text
+akamai	https://www.akamai.com/llms.txt	403	text/html	380	https://www.akamai.com/llms.txt	html
+akamai2	https://techdocs.akamai.com/akamai-functions/llms.txt	200	text/plain; charset=utf-8	1270	https://techdocs.akamai.com/akamai-functions/llms.txt	text
+akash	https://akash.network/docs/llms.txt	404	text/html; charset=utf-8	45397	https://akash.network/docs/llms.txt	html
+akash	https://akash.network/llms.txt	200	text/plain; charset=utf-8	18138	https://akash.network/llms.txt	text
+akash	https://docs.akash.network/llms.txt	200	text/html; charset=utf-8	138771	https://akash.network/docs/	html
+akash2	https://akash.network/llms-full.txt	200	text/plain; charset=utf-8	49540	https://akash.network/llms-full.txt	text
+alchemy	https://www.alchemy.com/docs/llms-full.txt	200	text/markdown; charset=utf-8	11502580	https://www.alchemy.com/docs/llms-full.txt	text
+alchemy	https://www.alchemy.com/docs/llms.txt	200	text/markdown; charset=utf-8	472	https://www.alchemy.com/docs/llms.txt	text
+alchemy	https://www.alchemy.com/llms.txt	200	text/plain; charset=utf-8	25740	https://www.alchemy.com/llms.txt	text
+ankr	https://www.ankr.com/docs/llms.txt	200	text/plain	73066	https://www.ankr.com/docs/llms.txt	text
+ankr	https://www.ankr.com/llms.txt	200	text/plain	3136	https://www.ankr.com/llms.txt	text
+ankr2	https://www.ankr.com/docs/llms-full.txt	200	text/plain	9591508	https://www.ankr.com/docs/llms-full.txt	text
+ario	https://ar.io/llms.txt	200	text/plain; charset=utf-8	1208	https://ar.io/llms.txt	text
+ario	https://docs.ar.io/llms-full.txt	200	text/plain; charset=utf-8	1343695	https://docs.ar.io/llms-full.txt	text
+ario	https://docs.ar.io/llms.txt	200	text/plain; charset=utf-8	2163	https://docs.ar.io/llms.txt	text
+aws	https://aws.amazon.com/llms.txt	404	text/html;charset=UTF-8	322675	https://aws.amazon.com/llms.txt	html
+aws	https://docs.amplify.aws/llms.txt	404	text/html	314011	https://docs.amplify.aws/llms.txt	html
+aws	https://docs.aws.amazon.com/lambda/latest/dg/llms.txt	200	text/plain	92833	https://docs.aws.amazon.com/lambda/latest/dg/llms.txt	text
+aws	https://docs.aws.amazon.com/llms.txt	200	text/plain	417631	https://docs.aws.amazon.com/llms.txt	text
+azure	https://azure.microsoft.com/llms.txt	404	text/html; charset=utf-8	94521	https://azure.microsoft.com/llms.txt	html
+azure	https://learn.microsoft.com/en-us/azure/llms.txt	404	text/html	17972	https://learn.microsoft.com/en-us/azure/llms.txt	html
+azure	https://learn.microsoft.com/llms.txt	404	text/html	17972	https://learn.microsoft.com/en-us/llms.txt	html
+azure2	https://learn.microsoft.com/en-us/azure/azure-functions/llms.txt	404	text/html	17972	https://learn.microsoft.com/en-us/azure/azure-functions/llms.txt	html
+bunny	https://bunny.net/llms.txt	200	text/plain	3365	https://bunny.net/llms.txt	text
+bunny	https://docs.bunny.net/llms-full.txt	200	text/plain; charset=utf-8	1653335	https://bunny.net/docs/llms-full.txt	text
+bunny	https://docs.bunny.net/llms.txt	200	text/plain; charset=utf-8	72797	https://bunny.net/docs/llms.txt	text
+cdp	https://docs.cdp.coinbase.com/llms-full.txt	200	text/plain; charset=utf-8	11541893	https://docs.cdp.coinbase.com/llms-full.txt	text
+cdp	https://docs.cdp.coinbase.com/llms.txt	200	text/plain; charset=utf-8	59286	https://docs.cdp.coinbase.com/llms.txt	text
+chainstack	https://chainstack.com/llms.txt	200	text/plain	122322	https://chainstack.com/llms.txt	text
+chainstack	https://docs.chainstack.com/llms-full.txt	200	text/plain; charset=utf-8	9654524	https://docs.chainstack.com/llms-full.txt	text
+chainstack	https://docs.chainstack.com/llms.txt	200	text/plain; charset=utf-8	1594	https://docs.chainstack.com/llms.txt	text
+convex	https://docs.convex.dev/llms-full.txt	200	text/plain; charset=UTF-8	2638472	https://docs.convex.dev/llms-full.txt	text
+convex	https://docs.convex.dev/llms.txt	200	text/plain; charset=UTF-8	46360	https://docs.convex.dev/llms.txt	text
+convex	https://www.convex.dev/llms.txt	200	text/plain; charset=utf-8	34430	https://www.convex.dev/llms.txt	text
+crossmint	https://docs.crossmint.com/llms-full.txt	200	text/plain; charset=utf-8	4223936	https://docs.crossmint.com/llms-full.txt	text
+crossmint	https://docs.crossmint.com/llms.txt	200	text/plain; charset=utf-8	69954	https://docs.crossmint.com/llms.txt	text
+deno	https://deno.com/llms.txt	200	text/html; charset=utf-8	58427	https://deno.com/llms.txt	html
+deno	https://docs.deno.com/llms-full.txt	200	text/plain; charset=utf-8	2500535	https://docs.deno.com/llms-full.txt	text
+deno	https://docs.deno.com/llms.txt	200	text/plain; charset=utf-8	5055	https://docs.deno.com/llms.txt	text
+drpc	https://docs.drpc.org/llms.txt	404	text/html; charset=utf-8	3857	https://drpc.org/docs/llms.txt	html
+drpc	https://drpc.org/docs/llms.txt	404	text/html; charset=utf-8	3857	https://drpc.org/docs/llms.txt	html
+drpc	https://drpc.org/llms.txt	200	text/plain; charset=UTF-8	3575	https://drpc.org/llms.txt	text
+drpc2	https://drpc.org/llms-full.txt	200	text/plain; charset=UTF-8	7946	https://drpc.org/llms-full.txt	text
+dynamic	https://docs.dynamic.xyz/llms-full.txt	200	text/plain; charset=utf-8	4513	https://www.dynamic.xyz/docs/llms-full.txt	text
+dynamic	https://docs.dynamic.xyz/llms.txt	200	text/plain; charset=utf-8	4556	https://www.dynamic.xyz/docs/llms.txt	text
+dynamic	https://www.dynamic.xyz/docs/llms.txt	200	text/plain; charset=utf-8	4556	https://www.dynamic.xyz/docs/llms.txt	text
+dynamic2	https://www.dynamic.xyz/docs/embedded-wallets/llms.txt	200	text/plain	5222	https://www.dynamic.xyz/docs/embedded-wallets/llms.txt	text
+fastly	https://docs.fastly.com/llms.txt	200	text/plain	13921	https://docs.fastly.com/llms.txt	text
+fastly	https://www.fastly.com/documentation/llms-full.txt	404	text/html	345733	https://www.fastly.com/documentation/llms-full.txt	html
+fastly	https://www.fastly.com/documentation/llms.txt	200	text/plain	13979	https://www.fastly.com/documentation/llms.txt	text
+fastly	https://www.fastly.com/llms.txt	200	text/plain; charset=utf-8	16618	https://www.fastly.com/llms.txt	text
+fastly2	https://docs.fastly.com/llms-full.txt	404	text/html	284209	https://docs.fastly.com/llms-full.txt	html
+firebase	https://firebase.google.com/docs/llms.txt	200	text/markdown; charset=utf-8	1849492	https://firebase.google.com/docs/llms.txt	text
+firebase	https://firebase.google.com/llms.txt	404	text/html; charset=utf-8	98414	https://firebase.google.com/llms.txt	html
+fleek	https://docs.fleek.xyz/llms-full.txt	000		0	https://docs.fleek.xyz/llms-full.txt000\t\t0\t	text
+fleek	https://docs.fleek.xyz/llms.txt	000		0	https://docs.fleek.xyz/llms.txt000\t\t0\t	text
+fleek	https://fleek.xyz/docs/llms.txt	200	text/html; charset=utf-8	28551	https://www.fleek.sh/	html
+fleek	https://fleek.xyz/llms.txt	200	text/html; charset=utf-8	28551	https://www.fleek.sh/	html
+fleek2	https://www.fleek.sh/llms.txt	404	text/html; charset=utf-8	14210	https://www.fleek.sh/llms.txt	html
+fleek2	https://www.fleek.xyz/docs/llms.txt	404	text/html; charset=utf-8	6873	https://www.fleek.xyz/docs/llms.txt	html
+flyio	https://fly.io/docs/llms-full.txt	200	text/plain; charset=utf-8	2860678	https://docs.fly.io/llms-full.txt	text
+flyio	https://fly.io/docs/llms.txt	200	text/plain; charset=utf-8	82790	https://docs.fly.io/llms.txt	text
+flyio	https://fly.io/llms.txt	200	text/plain	4951	https://fly.io/llms.txt	text
+foureverland	https://docs.4everland.org/llms-full.txt	200	text/markdown; charset=utf-8	374442	https://docs.4everland.org/llms-full.txt	text
+foureverland	https://docs.4everland.org/llms.txt	200	text/markdown; charset=utf-8	12984	https://docs.4everland.org/llms.txt	text
+foureverland	https://www.4everland.org/llms.txt	404	text/plain; charset=utf-8	185	https://www.4everland.org/llms.txt	text
+gcloud	https://cloud.google.com/llms.txt	200	text/html; charset=utf-8	40910	https://cloud.google.com/llms.txt	html
+gcloud	https://cloud.google.com/run/docs/llms.txt	404	text/html; charset=utf-8	95757	https://docs.cloud.google.com/run/docs/llms.txt	html
+gcloud	https://docs.cloud.google.com/llms.txt	404	text/html; charset=utf-8	95748	https://docs.cloud.google.com/llms.txt	html
+gcloud2	https://docs.cloud.google.com/run/llms.txt	404	text/html; charset=utf-8	95756	https://docs.cloud.google.com/run/llms.txt	html
+helius	https://helius.dev/llms.txt	200	text/plain; charset=utf-8	11526	https://www.helius.dev/llms.txt	text
+helius	https://www.helius.dev/docs/llms-full.txt	200	text/plain; charset=utf-8	2650451	https://www.helius.dev/docs/llms-full.txt	text
+helius	https://www.helius.dev/docs/llms.txt	200	text/plain; charset=utf-8	33641	https://www.helius.dev/docs/llms.txt	text
+infura	https://docs.infura.io/llms.txt	200	text/markdown; charset=utf-8	3603	https://docs.infura.io/llms.txt	text
+infura	https://docs.metamask.io/llms-full.txt	404	text/markdown; charset=utf-8	52073	https://docs.metamask.io/llms-full.txt	html
+infura	https://docs.metamask.io/llms.txt	200	text/markdown; charset=utf-8	4473	https://docs.metamask.io/llms.txt	text
+infura	https://www.infura.io/llms.txt	404	text/html; charset=utf-8	60552	https://www.infura.io/llms.txt	html
+infura2	https://docs.infura.io/llms-reference-robinhood.txt	404	text/markdown; charset=utf-8	10583	https://docs.infura.io/llms-reference-robinhood.txt	html
+infura2	https://docs.infura.io/llms-reference-solana.txt	200	text/markdown; charset=utf-8	9336	https://docs.infura.io/llms-reference-solana.txt	text
+linode	https://techdocs.akamai.com/cloud-computing/llms.txt	200	text/plain; charset=utf-8	1320	https://techdocs.akamai.com/cloud-computing/llms.txt	text
+linode	https://www.linode.com/docs/llms.txt	403	text/html	2982	https://www.linode.com/docs/llms.txt	html
+linode	https://www.linode.com/llms.txt	403	text/html	2982	https://www.linode.com/llms.txt	html
+netlify	https://docs.netlify.com/llms-full.txt	404	text/html; charset=utf-8	56010	https://docs.netlify.com/llms-full.txt	html
+netlify	https://docs.netlify.com/llms.txt	200	text/plain; charset=UTF-8	25089	https://docs.netlify.com/llms.txt	text
+netlify	https://www.netlify.com/llms.txt	200	text/plain; charset=UTF-8	2818	https://www.netlify.com/llms.txt	text
+northflank	https://northflank.com/docs/llms.txt	200	text/markdown	75943	https://northflank.com/docs/llms.txt	text
+northflank	https://northflank.com/llms.txt	404	text/html; charset=utf-8	72890	https://northflank.com/llms.txt	html
+pinata	https://docs.pinata.cloud/llms-full.txt	200	text/plain; charset=utf-8	717318	https://docs.pinata.cloud/llms-full.txt	text
+pinata	https://docs.pinata.cloud/llms.txt	200	text/plain; charset=utf-8	22960	https://docs.pinata.cloud/llms.txt	text
+pinata	https://pinata.cloud/llms.txt	404	text/html; charset=utf-8	10	https://pinata.cloud/llms.txt	text
+privy	https://docs.privy.io/llms-full.txt	200	text/plain; charset=utf-8	4506383	https://docs.privy.io/llms-full.txt	text
+privy	https://docs.privy.io/llms.txt	200	text/plain; charset=utf-8	57879	https://docs.privy.io/llms.txt	text
+puter	https://developer.puter.com/llms.txt	200	text/plain	4605	https://developer.puter.com/llms.txt	text
+puter	https://docs.puter.com/llms.txt	200	text/plain	31933	https://docs.puter.com/llms.txt	text
+quicknode	https://www.quicknode.com/docs/llms-full.txt	200	text/plain; charset=utf-8	494067	https://www.quicknode.com/docs/llms-full.txt	text
+quicknode	https://www.quicknode.com/docs/llms.txt	200	text/plain; charset=utf-8	17507	https://www.quicknode.com/docs/llms.txt	text
+quicknode	https://www.quicknode.com/llms.txt	200	text/plain; charset=utf-8	29955	https://www.quicknode.com/llms.txt	text
+quicknode2	https://www.quicknode.com/docs/robinhood/llms.txt	200	text/plain; charset=utf-8	9341	https://www.quicknode.com/docs/robinhood/llms.txt	text
+quicknode2	https://x402.quicknode.com/llms.txt	200	text/plain; charset=UTF-8	26495	https://x402.quicknode.com/llms.txt	text
+railway	https://docs.railway.com/llms-full.txt	200	text/plain; charset=utf-8	2626762	https://docs.railway.com/llms-full.txt	text
+railway	https://docs.railway.com/llms.txt	200	text/plain; charset=utf-8	76651	https://docs.railway.com/llms.txt	text
+railway	https://railway.com/llms.txt	200	text/plain; charset=utf-8	6677	https://railway.com/llms.txt	text
+render	https://render.com/docs/llms-full.txt	200	text/markdown; charset=utf-8	1075228	https://render.com/docs/llms-full.txt	text
+render	https://render.com/docs/llms.txt	200	text/markdown; charset=utf-8	46471	https://render.com/docs/llms.txt	text
+render	https://render.com/llms.txt	200	text/markdown; charset=utf-8	46471	https://render.com/llms.txt	text
+spheron	https://docs.spheron.ai/llms.txt	200	text/plain; charset=utf-8	19124	https://docs.spheron.ai/llms.txt	text
+spheron	https://docs.spheron.network/llms.txt	200	text/plain; charset=utf-8	19124	https://docs.spheron.ai/llms.txt	text
+spheron	https://spheron.network/llms.txt	200	text/plain; charset=utf-8	193865	https://www.spheron.network/llms.txt	text
+spheron2	https://www.spheron.network/llms-full.txt	404	text/html; charset=utf-8	4672	https://www.spheron.network/llms-full.txt	html
+storacha	https://docs.storacha.network/llms-full.txt	200	text/plain; charset=utf-8	9914	https://www.fil.one/llms-full.txt	text
+storacha	https://docs.storacha.network/llms.txt	200	text/plain; charset=utf-8	5485	https://www.fil.one/llms.txt	text
+storacha	https://storacha.network/llms.txt	200	text/plain; charset=utf-8	5485	https://www.fil.one/llms.txt	text
+supabase	https://supabase.com/docs/llms.txt	404	text/html; charset=utf-8	93022	https://supabase.com/docs/llms.txt	html
+supabase	https://supabase.com/llms-full.txt	200	text/plain; charset=utf-8	7230752	https://supabase.com/llms-full.txt	text
+supabase	https://supabase.com/llms.txt	200	text/plain; charset=utf-8	3242	https://supabase.com/llms.txt	text
+triton	https://docs.triton.one/llms-full.txt	200	text/markdown; charset=utf-8	495176	https://docs.triton.one/llms-full.txt	text
+triton	https://docs.triton.one/llms.txt	200	text/markdown; charset=utf-8	10094	https://docs.triton.one/llms.txt	text
+triton	https://triton.one/llms.txt	404	text/html;charset=utf-8	14022	https://triton.one/llms.txt	html
+turnkey	https://docs.turnkey.com/llms-full.txt	200	text/plain; charset=utf-8	4639772	https://docs.turnkey.com/llms-full.txt	text
+turnkey	https://docs.turnkey.com/llms.txt	200	text/plain; charset=utf-8	3938	https://docs.turnkey.com/llms.txt	text
+vercel	https://vercel.com/docs/llms-full.txt	200	text/plain; charset=utf-8	10299653	https://vercel.com/docs/llms-full.txt	text
+vercel	https://vercel.com/docs/llms.txt	200	text/plain; charset=utf-8	4868	https://vercel.com/llms.txt	text
+vercel	https://vercel.com/llms-full.txt	200	text/html; charset=utf-8	2607009	https://vercel.com/llms-full.txt	html
+vercel	https://vercel.com/llms.txt	200	text/plain; charset=utf-8	4868	https://vercel.com/llms.txt	text
+x402	https://docs.x402.org/llms.txt	200	text/plain; charset=utf-8	6302	https://docs.x402.org/llms.txt	text
+x402	https://x402.gitbook.io/x402/llms.txt	200	text/markdown; charset=utf-8	1509	https://x402.gitbook.io/x402/llms.txt	text
+x402	https://x402.org/llms.txt	200	text/plain; charset=utf-8	2899	https://x402.org/llms.txt/	text

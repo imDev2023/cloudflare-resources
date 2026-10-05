@@ -1,0 +1,71 @@
+---
+title: Logs
+---
+
+[Skip to content](#_top)
+
+[API Reference](https://developers.cloudflare.com/api)
+
+[Pages](https://developers.cloudflare.com/api/resources/pages)
+
+[Projects](https://developers.cloudflare.com/api/resources/pages/subresources/projects)
+
+[Deployments](https://developers.cloudflare.com/api/resources/pages/subresources/projects/subresources/deployments)
+
+[History](https://developers.cloudflare.com/api/resources/pages/subresources/projects/subresources/deployments/subresources/history)
+
+Copy Markdown
+
+Open in **Claude**Open in **ChatGPT**Open in **Cursor**
+
+---
+
+**Copy Markdown****View as Markdown**
+
+# Logs
+
+##### [Get Pages deployment logs](https://developers.cloudflare.com/api/resources/pages/subresources/projects/subresources/deployments/subresources/history/subresources/logs/methods/get)
+
+GET/accounts/{account\_id}/pages/projects/{project\_name}/deployments/{deployment\_id}/history/logs
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+LogGetResponse object {data, includes\_container\_logs, total }
+
+</summary>
+
+<details>
+
+<summary>
+
+data: array of object {line, ts }
+
+</summary>
+
+line: string
+
+<a href="#(resource)%20pages.projects.deployments.history.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(items)%20%3E%20(property)%20line">Link to this property</a>
+
+ts: string
+
+<a href="#(resource)%20pages.projects.deployments.history.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20data%20%3E%20(items)%20%3E%20(property)%20ts">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20pages.projects.deployments.history.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20data">Link to this property</a>
+
+includes\_container\_logs: boolean
+
+<a href="#(resource)%20pages.projects.deployments.history.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20includes_container_logs">Link to this property</a>
+
+total: number
+
+<a href="#(resource)%20pages.projects.deployments.history.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)%20%3E%20(property)%20total">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20pages.projects.deployments.history.logs%20%3E%20(model)%20log_get_response%20%3E%20(schema)>)

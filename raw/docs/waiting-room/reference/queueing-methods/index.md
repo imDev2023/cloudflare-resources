@@ -1,0 +1,66 @@
+---
+description: Queueing methods including FIFO, random, and passthrough.
+title: Queueing method
+image: https://developers.cloudflare.com/waiting-room/reference/queueing-methods/og.png?v=68c595800879514d
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Queueing method
+
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/reference/queueing-methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+The **queueing method** determines the order that visitors exit an active waiting room and reach your application.
+
+Only certain customers can use queue methods besides First In First Out (FIFO). For more details, refer to [Plans](https://developers.cloudflare.com/waiting-room/plans/) page.
+
+Note:
+
+Regardless of the queueing method, if `queueAll` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always get a waiting room page that refreshes automatically.
+
+## First In First Out (FIFO)
+
+Your waiting room orders visitors according to when they entered the waiting room.
+
+![First In First Out flow showing visitors entering the origin by order of arrival to the waiting room](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1011,height=386,format=webp/_astro/fifo-queueing-method.CkJk7UcN.png)
+
+Technically, each user receives a [cookie](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/) that contains a timestamp of when their request first hit an actively queueing waiting room. Cloudflare uses that timestamp to order visitors and provide the estimated wait time.
+
+Use this method when you want to reward visitors who get in the queue first and wait longer.
+
+## Random
+
+When your application has open spots, your waiting room chooses visitors at random to exit the waiting room and enter your application.
+
+![Random queueing flow showing visitors randomly exiting the waiting room and entering an origin](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1405,height=633,format=webp/_astro/random-queueing-method.S1VxQnOu.png)
+
+Use this method when you want to distribute products or services more equitably. Earlier users have a better chance of exiting the waiting room before the estimated wait time because they have more chances to be selected.
+
+## Passthrough
+
+Allow all traffic to pass immediately through your waiting room and into your application by setting its `queueing_method` to **passthrough**.
+
+Use this setup when you only want to use your waiting room for events — where you can update the queueing method — and otherwise avoid queueing during low-traffic hours.
+
+Additionally, you can use this queuing method when you want to gather analytics on your traffic but do not want to queue any users. With passthrough on, all traffic will be sent directly to your origin. However, analytics will be gathered on `total active users`, `new users per minute` and `time on origin`. We recommend this as a useful test to gather insights into your traffic patterns to help determine appropriate threshold settings.
+
+## Reject
+
+Prevent any traffic from reaching your application by setting its `queueing_method` to **reject**. Users will get a static page.
+
+Use this setup for event-only endpoints or to perform application maintenance.
+
+## Change queueing methods
+
+Though you can change your [queueing method](https://developers.cloudflare.com/waiting-room/reference/queueing-methods/), it may affect users if your waiting room is actively queueing:
+
+- **From FIFO to Random**: Users will no longer be ordered based on their cookie timestamp, which may affect the displayed wait time.
+- **From Random to FIFO**: Users will be ordered based on their cookie timestamp, meaning any new users move to the end of the FIFO queue.
+
+Note
+
+If you change the queueing method from FIFO > Random > FIFO, users will be ordered by their original entry time.

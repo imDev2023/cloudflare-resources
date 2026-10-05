@@ -1,0 +1,1745 @@
+---
+title: Run a Workers AI model
+---
+
+[Skip to content](#_top)
+
+[API Reference](https://developers.cloudflare.com/api)
+
+[AI](https://developers.cloudflare.com/api/resources/ai)
+
+Copy Markdown
+
+Open in **Claude**Open in **ChatGPT**Open in **Cursor**
+
+---
+
+**Copy Markdown****View as Markdown**
+
+# Run a Workers AI model
+
+POST/accounts/{account\_id}/ai/run/{model\_name}
+
+Runs the Workers AI model specified in the URL path. Send the model’s inputs directly in the request body, without a model/input/options wrapper.
+
+Accepts model-specific JSON or binary input. The response format depends on the model and the requested output.
+
+See the [model catalog](https://developers.cloudflare.com/workers-ai/models/) for supported models and their input formats.
+
+##### Security
+
+<details>
+
+<summary>API Token</summary>
+
+
+
+The preferred authorization scheme for interacting with the Cloudflare API. <a href="https://developers.cloudflare.com/fundamentals/api/get-started/create-token/">Create a token</a>.
+
+**Example:**<code>Authorization: Bearer Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY</code>
+
+</details>
+
+<details>
+
+<summary>API Email + API Key</summary>
+
+
+
+The previous authorization scheme for interacting with the Cloudflare API, used in conjunction with a Global API key.
+
+**Example:**<code>X-Auth-Email: user@example.com</code>
+
+The previous authorization scheme for interacting with the Cloudflare API. When possible, use API tokens instead of Global API keys.
+
+**Example:**<code>X-Auth-Key: 144c9defac04969c7bfad8efaa8ea194</code>
+
+</details>
+
+##### Accepted Permissions (at least one required)
+
+`Workers AI Write``Workers AI Read`
+
+##### P ath ParametersExpand Collapse
+
+account\_id: string
+
+Cloudflare account ID used for this AI model request.
+
+[Link to this property](<#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20account_id%20%3E%20(schema)>)
+
+model\_name: string
+
+Workers AI model identifier, including its namespace and model name.
+
+[Link to this property](<#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20model_name%20%3E%20(schema)>)
+
+##### Body ParametersJSONExpand Collapse
+
+<details>
+
+<summary>
+
+body: optional object {text } or object {prompt, guidance, height, 8 more } or object {prompt, lang } or 12 more
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+TextClassification object {text }
+
+</summary>
+
+text: string
+
+The text that you want to classify
+
+minLength1
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20text">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+TextToImage object {prompt, guidance, height, 8 more }
+
+</summary>
+
+prompt: string
+
+A text description of the image you want to generate
+
+minLength1
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20prompt">Link to this property</a>
+
+guidance: optional number
+
+Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20guidance">Link to this property</a>
+
+height: optional number
+
+The height of the generated image in pixels
+
+maximum2048
+
+minimum256
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20height">Link to this property</a>
+
+image: optional array of number
+
+For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20image">Link to this property</a>
+
+image\_b64: optional string
+
+For use with img2img tasks. A base64-encoded string of the input image
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20image_b64">Link to this property</a>
+
+mask: optional array of number
+
+An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20mask">Link to this property</a>
+
+negative\_prompt: optional string
+
+Text describing elements to avoid in the generated image
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20negative_prompt">Link to this property</a>
+
+num\_steps: optional number
+
+The number of diffusion steps; higher values can improve quality but take longer
+
+maximum20
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20num_steps">Link to this property</a>
+
+seed: optional number
+
+Random seed for reproducibility of the image generation
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20seed">Link to this property</a>
+
+strength: optional number
+
+A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20strength">Link to this property</a>
+
+width: optional number
+
+The width of the generated image in pixels
+
+maximum2048
+
+minimum256
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20width">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+TextToSpeech object {prompt, lang }
+
+</summary>
+
+prompt: string
+
+A text description of the audio you want to generate
+
+minLength1
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%202%20%3E%20(property)%20prompt">Link to this property</a>
+
+lang: optional string
+
+The speech language (e.g., ‘en’ for English, ‘fr’ for French). Defaults to ‘en’ if not specified
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%202%20%3E%20(property)%20lang">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%202">Link to this property</a>
+
+<details>
+
+<summary>
+
+TextEmbeddings object {text }
+
+</summary>
+
+<details>
+
+<summary>
+
+text: stringor array of string
+
+The text to embed
+
+</summary>
+
+One of the following:
+
+string
+
+The text to embed
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%203%20%3E%20(property)%20text%20%3E%20(variant)%200">Link to this property</a>
+
+array of string
+
+Batch of text values to embed
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%203%20%3E%20(property)%20text%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%203%20%3E%20(property)%20text">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%203">Link to this property</a>
+
+<details>
+
+<summary>
+
+AutomaticSpeechRecognition object {audio, source\_lang, target\_lang }
+
+</summary>
+
+audio: array of number
+
+An array of integers that represent the audio data constrained to 8-bit unsigned integer values
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%204%20%3E%20(property)%20audio">Link to this property</a>
+
+source\_lang: optional string
+
+The language of the recorded audio
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%204%20%3E%20(property)%20source_lang">Link to this property</a>
+
+target\_lang: optional string
+
+The language to translate the transcription into. Currently only English is supported.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%204%20%3E%20(property)%20target_lang">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%204">Link to this property</a>
+
+<details>
+
+<summary>
+
+ImageClassification object {image }
+
+</summary>
+
+image: array of number
+
+An array of integers that represent the image data constrained to 8-bit unsigned integer values
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%205%20%3E%20(property)%20image">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%205">Link to this property</a>
+
+<details>
+
+<summary>
+
+ObjectDetection object {image }
+
+</summary>
+
+image: optional array of number
+
+An array of integers that represent the image data constrained to 8-bit unsigned integer values
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%206%20%3E%20(property)%20image">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%206">Link to this property</a>
+
+<details>
+
+<summary>
+
+Prompt object {prompt, frequency\_penalty, lora, 10 more }
+
+</summary>
+
+prompt: string
+
+The input text prompt for the model to generate a response.
+
+minLength1
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20prompt">Link to this property</a>
+
+frequency\_penalty: optional number
+
+Decreases the likelihood of the model repeating the same lines verbatim.
+
+maximum2
+
+minimum-2
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20frequency_penalty">Link to this property</a>
+
+lora: optional string
+
+Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20lora">Link to this property</a>
+
+max\_tokens: optional number
+
+The maximum number of tokens to generate in the response.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20max_tokens">Link to this property</a>
+
+presence\_penalty: optional number
+
+Increases the likelihood of the model introducing new topics.
+
+maximum2
+
+minimum-2
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20presence_penalty">Link to this property</a>
+
+raw: optional boolean
+
+If true, a chat template is not applied and you must adhere to the specific model’s expected formatting.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20raw">Link to this property</a>
+
+repetition\_penalty: optional number
+
+Penalty for repeated tokens; higher values discourage repetition.
+
+maximum2
+
+minimum0
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20repetition_penalty">Link to this property</a>
+
+<details>
+
+<summary>
+
+response\_format: optional object {json\_schema, type }
+
+</summary>
+
+json\_schema: optional unknown
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20response_format%20%3E%20(property)%20json_schema">Link to this property</a>
+
+<details>
+
+<summary>
+
+type: optional "json\_object"or "json\_schema"
+
+</summary>
+
+One of the following:
+
+"json\_object"
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20response_format%20%3E%20(property)%20type%20%3E%20(member)%200">Link to this property</a>
+
+"json\_schema"
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20response_format%20%3E%20(property)%20type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20response_format%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20response_format">Link to this property</a>
+
+seed: optional number
+
+Random seed for reproducibility of the generation.
+
+maximum9999999999
+
+minimum1
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20seed">Link to this property</a>
+
+stream: optional boolean
+
+If true, the response will be streamed back incrementally using SSE, Server Sent Events.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20stream">Link to this property</a>
+
+temperature: optional number
+
+Controls the randomness of the output; higher values produce more random results.
+
+maximum5
+
+minimum0
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20temperature">Link to this property</a>
+
+top\_k: optional number
+
+Limits the AI to choose from the top ‘k’ most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.
+
+maximum50
+
+minimum1
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20top_k">Link to this property</a>
+
+top\_p: optional number
+
+Adjusts the creativity of the AI’s responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.
+
+maximum1
+
+minimum0.001
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(property)%20top_p">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%207">Link to this property</a>
+
+<details>
+
+<summary>
+
+TextGeneration object {messages, frequency\_penalty, functions, 11 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+messages: array of object {content, role }
+
+An array of message objects representing the conversation history.
+
+</summary>
+
+<details>
+
+<summary>
+
+content: stringor array of object {text, type }
+
+The content of the message as a string.
+
+</summary>
+
+One of the following:
+
+string
+
+The content of the message as a string.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20content%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+array of object {text, type }
+
+Array of text content parts.
+
+</summary>
+
+text: optional string
+
+Text content
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20content%20%3E%20(variant)%201%20%3E%20(items)%20%3E%20(property)%20text">Link to this property</a>
+
+type: optional string
+
+Type of the content (text)
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20content%20%3E%20(variant)%201%20%3E%20(items)%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20content%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20content">Link to this property</a>
+
+role: string
+
+The role of the message sender (e.g., ‘user’, ‘assistant’, ‘system’, ‘tool’).
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20role">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20messages">Link to this property</a>
+
+frequency\_penalty: optional number
+
+Decreases the likelihood of the model repeating the same lines verbatim.
+
+maximum2
+
+minimum-2
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20frequency_penalty">Link to this property</a>
+
+<details>
+
+<summary>
+
+functions: optional array of object {code, name }
+
+</summary>
+
+code: string
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20functions%20%3E%20(items)%20%3E%20(property)%20code">Link to this property</a>
+
+name: string
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20functions%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20functions">Link to this property</a>
+
+max\_tokens: optional number
+
+The maximum number of tokens to generate in the response.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20max_tokens">Link to this property</a>
+
+presence\_penalty: optional number
+
+Increases the likelihood of the model introducing new topics.
+
+maximum2
+
+minimum-2
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20presence_penalty">Link to this property</a>
+
+raw: optional boolean
+
+If true, a chat template is not applied and you must adhere to the specific model’s expected formatting.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20raw">Link to this property</a>
+
+repetition\_penalty: optional number
+
+Penalty for repeated tokens; higher values discourage repetition.
+
+maximum2
+
+minimum0
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20repetition_penalty">Link to this property</a>
+
+<details>
+
+<summary>
+
+response\_format: optional object {json\_schema, type }
+
+</summary>
+
+json\_schema: optional unknown
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20response_format%20%3E%20(property)%20json_schema">Link to this property</a>
+
+<details>
+
+<summary>
+
+type: optional "json\_object"or "json\_schema"
+
+</summary>
+
+One of the following:
+
+"json\_object"
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20response_format%20%3E%20(property)%20type%20%3E%20(member)%200">Link to this property</a>
+
+"json\_schema"
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20response_format%20%3E%20(property)%20type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20response_format%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20response_format">Link to this property</a>
+
+seed: optional number
+
+Random seed for reproducibility of the generation.
+
+maximum9999999999
+
+minimum1
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20seed">Link to this property</a>
+
+stream: optional boolean
+
+If true, the response will be streamed back incrementally using SSE, Server Sent Events.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20stream">Link to this property</a>
+
+temperature: optional number
+
+Controls the randomness of the output; higher values produce more random results.
+
+maximum5
+
+minimum0
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20temperature">Link to this property</a>
+
+<details>
+
+<summary>
+
+tools: optional array of object {description, name, parameters } or object {function, type }
+
+A list of tools available for the assistant to use.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+object {description, name, parameters }
+
+</summary>
+
+description: string
+
+A brief description of what the tool does.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20description">Link to this property</a>
+
+name: string
+
+The name of the tool. More descriptive the better.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20name">Link to this property</a>
+
+<details>
+
+<summary>
+
+parameters: object {properties, type, required }
+
+Schema defining the parameters accepted by the tool.
+
+</summary>
+
+<details>
+
+<summary>
+
+properties: map\[object {description, type } ]
+
+Definitions of each parameter.
+
+</summary>
+
+description: string
+
+A description of the expected parameter.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20parameters%20%3E%20(property)%20properties%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+type: string
+
+The data type of the parameter.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20parameters%20%3E%20(property)%20properties%20%3E%20(items)%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20parameters%20%3E%20(property)%20properties">Link to this property</a>
+
+type: string
+
+The type of the parameters object (usually ‘object’).
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20parameters%20%3E%20(property)%20type">Link to this property</a>
+
+required: optional array of string
+
+List of required parameter names.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20parameters%20%3E%20(property)%20required">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20parameters">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+Function object {function, type }
+
+</summary>
+
+<details>
+
+<summary>
+
+function: object {description, name, parameters }
+
+Details of the function tool.
+
+</summary>
+
+description: string
+
+A brief description of what the function does.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20function%20%3E%20(property)%20description">Link to this property</a>
+
+name: string
+
+The name of the function.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20function%20%3E%20(property)%20name">Link to this property</a>
+
+<details>
+
+<summary>
+
+parameters: object {properties, type, required }
+
+Schema defining the parameters accepted by the function.
+
+</summary>
+
+<details>
+
+<summary>
+
+properties: map\[object {description, type } ]
+
+Definitions of each parameter.
+
+</summary>
+
+description: string
+
+A description of the expected parameter.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20function%20%3E%20(property)%20parameters%20%3E%20(property)%20properties%20%3E%20(items)%20%3E%20(property)%20description">Link to this property</a>
+
+type: string
+
+The data type of the parameter.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20function%20%3E%20(property)%20parameters%20%3E%20(property)%20properties%20%3E%20(items)%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20function%20%3E%20(property)%20parameters%20%3E%20(property)%20properties">Link to this property</a>
+
+type: string
+
+The type of the parameters object (usually ‘object’).
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20function%20%3E%20(property)%20parameters%20%3E%20(property)%20type">Link to this property</a>
+
+required: optional array of string
+
+List of required parameter names.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20function%20%3E%20(property)%20parameters%20%3E%20(property)%20required">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20function%20%3E%20(property)%20parameters">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20function">Link to this property</a>
+
+type: string
+
+Specifies the type of tool (e.g., ‘function’).
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tools">Link to this property</a>
+
+top\_k: optional number
+
+Limits the AI to choose from the top ‘k’ most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.
+
+maximum50
+
+minimum1
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20top_k">Link to this property</a>
+
+top\_p: optional number
+
+Adjusts the creativity of the AI’s responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.
+
+maximum1
+
+minimum0.001
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20top_p">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%208">Link to this property</a>
+
+<details>
+
+<summary>
+
+Translation object {target\_lang, text, source\_lang }
+
+</summary>
+
+target\_lang: string
+
+The language code to translate the text into (e.g., ‘es’ for Spanish)
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%209%20%3E%20(property)%20target_lang">Link to this property</a>
+
+text: string
+
+The text to be translated
+
+minLength1
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%209%20%3E%20(property)%20text">Link to this property</a>
+
+source\_lang: optional string
+
+The language code of the source text (e.g., ‘en’ for English). Defaults to ‘en’ if not specified
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%209%20%3E%20(property)%20source_lang">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%209">Link to this property</a>
+
+<details>
+
+<summary>
+
+Summarization object {input\_text, max\_length }
+
+</summary>
+
+input\_text: string
+
+The text that you want the model to summarize
+
+minLength1
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2010%20%3E%20(property)%20input_text">Link to this property</a>
+
+max\_length: optional number
+
+The maximum length of the generated summary in tokens
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2010%20%3E%20(property)%20max_length">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2010">Link to this property</a>
+
+<details>
+
+<summary>
+
+ImageToText object {image, frequency\_penalty, max\_tokens, 8 more }
+
+</summary>
+
+image: array of number
+
+An array of integers that represent the image data constrained to 8-bit unsigned integer values
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2011%20%3E%20(property)%20image">Link to this property</a>
+
+frequency\_penalty: optional number
+
+Decreases the likelihood of the model repeating the same lines verbatim.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2011%20%3E%20(property)%20frequency_penalty">Link to this property</a>
+
+max\_tokens: optional number
+
+The maximum number of tokens to generate in the response.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2011%20%3E%20(property)%20max_tokens">Link to this property</a>
+
+presence\_penalty: optional number
+
+Increases the likelihood of the model introducing new topics.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2011%20%3E%20(property)%20presence_penalty">Link to this property</a>
+
+prompt: optional string
+
+The input text prompt for the model to generate a response.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2011%20%3E%20(property)%20prompt">Link to this property</a>
+
+raw: optional boolean
+
+If true, a chat template is not applied and you must adhere to the specific model’s expected formatting.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2011%20%3E%20(property)%20raw">Link to this property</a>
+
+repetition\_penalty: optional number
+
+Penalty for repeated tokens; higher values discourage repetition.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2011%20%3E%20(property)%20repetition_penalty">Link to this property</a>
+
+seed: optional number
+
+Random seed for reproducibility of the generation.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2011%20%3E%20(property)%20seed">Link to this property</a>
+
+temperature: optional number
+
+Controls the randomness of the output; higher values produce more random results.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2011%20%3E%20(property)%20temperature">Link to this property</a>
+
+top\_k: optional number
+
+Limits the AI to choose from the top ‘k’ most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2011%20%3E%20(property)%20top_k">Link to this property</a>
+
+top\_p: optional number
+
+Controls the creativity of the AI’s responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2011%20%3E%20(property)%20top_p">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2011">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {image, prompt, frequency\_penalty, 8 more }
+
+</summary>
+
+image: string
+
+Image in base64 encoded format.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2012%20%3E%20(property)%20image">Link to this property</a>
+
+prompt: string
+
+The input text prompt for the model to generate a response.
+
+minLength1
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2012%20%3E%20(property)%20prompt">Link to this property</a>
+
+frequency\_penalty: optional number
+
+Decreases the likelihood of the model repeating the same lines verbatim.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2012%20%3E%20(property)%20frequency_penalty">Link to this property</a>
+
+ignore\_eos: optional boolean
+
+Whether to ignore the EOS token and continue generating tokens after the EOS token is generated.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2012%20%3E%20(property)%20ignore_eos">Link to this property</a>
+
+max\_tokens: optional number
+
+The maximum number of tokens to generate in the response.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2012%20%3E%20(property)%20max_tokens">Link to this property</a>
+
+presence\_penalty: optional number
+
+Increases the likelihood of the model introducing new topics.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2012%20%3E%20(property)%20presence_penalty">Link to this property</a>
+
+repetition\_penalty: optional number
+
+Penalty for repeated tokens; higher values discourage repetition.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2012%20%3E%20(property)%20repetition_penalty">Link to this property</a>
+
+seed: optional number
+
+Random seed for reproducibility of the generation.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2012%20%3E%20(property)%20seed">Link to this property</a>
+
+temperature: optional number
+
+Controls the randomness of the output; higher values produce more random results.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2012%20%3E%20(property)%20temperature">Link to this property</a>
+
+top\_k: optional number
+
+Limits the AI to choose from the top ‘k’ most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2012%20%3E%20(property)%20top_k">Link to this property</a>
+
+top\_p: optional number
+
+Controls the creativity of the AI’s responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2012%20%3E%20(property)%20top_p">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2012">Link to this property</a>
+
+<details>
+
+<summary>
+
+ImageTextToText object {image, messages, frequency\_penalty, 8 more }
+
+</summary>
+
+image: string
+
+Image in base64 encoded format.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20image">Link to this property</a>
+
+<details>
+
+<summary>
+
+messages: array of object {content, role }
+
+An array of message objects representing the conversation history.
+
+</summary>
+
+<details>
+
+<summary>
+
+content: stringor array of object {type, image\_url, text }
+
+The content of the message as a string.
+
+</summary>
+
+One of the following:
+
+string
+
+The content of the message as a string.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20content%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+array of object {type, image\_url, text }
+
+Array of content parts (text, image\_url, etc.).
+
+</summary>
+
+type: string
+
+Type of the content part (e.g. ‘text’, ‘image\_url’).
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20content%20%3E%20(variant)%201%20%3E%20(items)%20%3E%20(property)%20type">Link to this property</a>
+
+<details>
+
+<summary>
+
+image\_url: optional object {url }
+
+Image URL object (when type is ‘image\_url’).
+
+</summary>
+
+url: string
+
+Image URI with data (e.g. data:image/jpeg;base64,/9j/…).
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20content%20%3E%20(variant)%201%20%3E%20(items)%20%3E%20(property)%20image_url%20%3E%20(property)%20url">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20content%20%3E%20(variant)%201%20%3E%20(items)%20%3E%20(property)%20image_url">Link to this property</a>
+
+text: optional string
+
+Text content (when type is ‘text’).
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20content%20%3E%20(variant)%201%20%3E%20(items)%20%3E%20(property)%20text">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20content%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20content">Link to this property</a>
+
+role: string
+
+The role of the message sender (e.g., ‘user’, ‘assistant’, ‘system’, ‘tool’).
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20messages%20%3E%20(items)%20%3E%20(property)%20role">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20messages">Link to this property</a>
+
+frequency\_penalty: optional number
+
+Decreases the likelihood of the model repeating the same lines verbatim.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20frequency_penalty">Link to this property</a>
+
+ignore\_eos: optional boolean
+
+Whether to ignore the EOS token and continue generating tokens after the EOS token is generated.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20ignore_eos">Link to this property</a>
+
+max\_tokens: optional number
+
+The maximum number of tokens to generate in the response.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20max_tokens">Link to this property</a>
+
+presence\_penalty: optional number
+
+Increases the likelihood of the model introducing new topics.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20presence_penalty">Link to this property</a>
+
+repetition\_penalty: optional number
+
+Penalty for repeated tokens; higher values discourage repetition.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20repetition_penalty">Link to this property</a>
+
+seed: optional number
+
+Random seed for reproducibility of the generation.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20seed">Link to this property</a>
+
+temperature: optional number
+
+Controls the randomness of the output; higher values produce more random results.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20temperature">Link to this property</a>
+
+top\_k: optional number
+
+Limits the AI to choose from the top ‘k’ most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20top_k">Link to this property</a>
+
+top\_p: optional number
+
+Controls the creativity of the AI’s responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20top_p">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2013">Link to this property</a>
+
+<details>
+
+<summary>
+
+MultimodalEmbeddings object {image, text }
+
+</summary>
+
+image: optional string
+
+Image in base64 encoded format.
+
+minLength1
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2014%20%3E%20(property)%20image">Link to this property</a>
+
+text: optional array of string
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2014%20%3E%20(property)%20text">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)%20%3E%20(variant)%2014">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(params)%200%20%3E%20(param)%20body%20%3E%20(schema)>)
+
+##### ReturnsExpand Collapse
+
+<details>
+
+<summary>
+
+result: optional array of object {label, score } or stringor object {audio } or 12 more
+
+An array of classification results for the input text
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+TextClassification = array of object {label, score }
+
+An array of classification results for the input text
+
+</summary>
+
+label: optional string
+
+The classification label assigned to the text (e.g., ‘POSITIVE’ or ‘NEGATIVE’)
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(items)%20%3E%20(property)%20label">Link to this property</a>
+
+score: optional number
+
+Confidence score indicating the likelihood that the text belongs to the specified label
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(items)%20%3E%20(property)%20score">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+TextToImage = string
+
+The generated image in PNG format
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+<details>
+
+<summary>
+
+Audio object {audio }
+
+</summary>
+
+audio: optional string
+
+The generated audio in MP3 format, base64-encoded
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%202%20%3E%20(property)%20audio">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%202">Link to this property</a>
+
+string
+
+The generated audio in MP3 format
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%203">Link to this property</a>
+
+<details>
+
+<summary>
+
+TextEmbeddings object {data, shape }
+
+</summary>
+
+data: optional array of array of number
+
+Embeddings of the requested text values
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%204%20%3E%20(property)%20data">Link to this property</a>
+
+shape: optional array of number
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%204%20%3E%20(property)%20shape">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%204">Link to this property</a>
+
+<details>
+
+<summary>
+
+AutomaticSpeechRecognition object {text, vtt, word\_count, words }
+
+</summary>
+
+text: string
+
+The transcription
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%205%20%3E%20(property)%20text">Link to this property</a>
+
+vtt: optional string
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%205%20%3E%20(property)%20vtt">Link to this property</a>
+
+word\_count: optional number
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%205%20%3E%20(property)%20word_count">Link to this property</a>
+
+<details>
+
+<summary>
+
+words: optional array of object {end, start, word }
+
+</summary>
+
+end: optional number
+
+The ending second when the word completes
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%205%20%3E%20(property)%20words%20%3E%20(items)%20%3E%20(property)%20end">Link to this property</a>
+
+start: optional number
+
+The second this word begins in the recording
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%205%20%3E%20(property)%20words%20%3E%20(items)%20%3E%20(property)%20start">Link to this property</a>
+
+word: optional string
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%205%20%3E%20(property)%20words%20%3E%20(items)%20%3E%20(property)%20word">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%205%20%3E%20(property)%20words">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%205">Link to this property</a>
+
+<details>
+
+<summary>
+
+ImageClassification = array of object {label, score }
+
+</summary>
+
+label: optional string
+
+The predicted category or class for the input image based on analysis
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%206%20%3E%20(items)%20%3E%20(property)%20label">Link to this property</a>
+
+score: optional number
+
+A confidence value, between 0 and 1, indicating how certain the model is about the predicted label
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%206%20%3E%20(items)%20%3E%20(property)%20score">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%206">Link to this property</a>
+
+<details>
+
+<summary>
+
+ObjectDetection = array of object {box, label, score }
+
+An array of detected objects within the input image
+
+</summary>
+
+<details>
+
+<summary>
+
+box: optional object {xmax, xmin, ymax, ymin }
+
+Coordinates defining the bounding box around the detected object
+
+</summary>
+
+xmax: optional number
+
+The x-coordinate of the bottom-right corner of the bounding box
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(items)%20%3E%20(property)%20box%20%3E%20(property)%20xmax">Link to this property</a>
+
+xmin: optional number
+
+The x-coordinate of the top-left corner of the bounding box
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(items)%20%3E%20(property)%20box%20%3E%20(property)%20xmin">Link to this property</a>
+
+ymax: optional number
+
+The y-coordinate of the bottom-right corner of the bounding box
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(items)%20%3E%20(property)%20box%20%3E%20(property)%20ymax">Link to this property</a>
+
+ymin: optional number
+
+The y-coordinate of the top-left corner of the bounding box
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(items)%20%3E%20(property)%20box%20%3E%20(property)%20ymin">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(items)%20%3E%20(property)%20box">Link to this property</a>
+
+label: optional string
+
+The class label or name of the detected object
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(items)%20%3E%20(property)%20label">Link to this property</a>
+
+score: optional number
+
+Confidence score indicating the likelihood that the detection is correct
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%207%20%3E%20(items)%20%3E%20(property)%20score">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%207">Link to this property</a>
+
+<details>
+
+<summary>
+
+object {response, tool\_calls, usage }
+
+</summary>
+
+response: string
+
+The generated text response from the model
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20response">Link to this property</a>
+
+<details>
+
+<summary>
+
+tool\_calls: optional array of object {arguments, name }
+
+An array of tool calls requests made during the response generation
+
+</summary>
+
+arguments: optional unknown
+
+The arguments passed to be passed to the tool call request
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tool_calls%20%3E%20(items)%20%3E%20(property)%20arguments">Link to this property</a>
+
+name: optional string
+
+The name of the tool to be called
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tool_calls%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20tool_calls">Link to this property</a>
+
+<details>
+
+<summary>
+
+usage: optional object {completion\_tokens, prompt\_tokens, total\_tokens }
+
+Usage statistics for the inference request
+
+</summary>
+
+completion\_tokens: optional number
+
+Total number of tokens in output
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20usage%20%3E%20(property)%20completion_tokens">Link to this property</a>
+
+prompt\_tokens: optional number
+
+Total number of tokens in input
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20usage%20%3E%20(property)%20prompt_tokens">Link to this property</a>
+
+total\_tokens: optional number
+
+Total number of input and output tokens
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20usage%20%3E%20(property)%20total_tokens">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%208%20%3E%20(property)%20usage">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%208">Link to this property</a>
+
+string
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%209">Link to this property</a>
+
+<details>
+
+<summary>
+
+Translation object {translated\_text }
+
+</summary>
+
+translated\_text: optional string
+
+The translated text in the target language
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%2010%20%3E%20(property)%20translated_text">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%2010">Link to this property</a>
+
+<details>
+
+<summary>
+
+Summarization object {summary }
+
+</summary>
+
+summary: optional string
+
+The summarized version of the input text
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%2011%20%3E%20(property)%20summary">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%2011">Link to this property</a>
+
+<details>
+
+<summary>
+
+ImageToText object {description }
+
+</summary>
+
+description: optional string
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%2012%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%2012">Link to this property</a>
+
+<details>
+
+<summary>
+
+ImageTextToText object {description }
+
+</summary>
+
+description: optional string
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%2013%20%3E%20(property)%20description">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%2013">Link to this property</a>
+
+<details>
+
+<summary>
+
+MultimodalEmbeddings object {data, shape }
+
+</summary>
+
+data: optional array of array of number
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%2014%20%3E%20(property)%20data">Link to this property</a>
+
+shape: optional array of number
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%2014%20%3E%20(property)%20shape">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result%20%2B%20(resource)%20ai%20%3E%20(model)%20ai_run_response%20%3E%20(schema)%20%3E%20(variant)%2014">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20ai%20%3E%20(method)%20run%20%3E%20(network%20schema)%20%3E%20(property)%20result>)
+
+### Run a Workers AI model
+
+HTTP
+
+HTTPTypeScriptPythonGoTerraform
+
+```
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/run/$MODEL_NAME \
+    -X POST \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+200 example
+
+```
+{
+  "result": [
+    {
+      "label": "label",
+      "score": 0
+    }
+  ]
+}
+```
+
+##### Returns Examples
+
+200 example
+
+```
+{
+  "result": [
+    {
+      "label": "label",
+      "score": 0
+    }
+  ]
+}
+```

@@ -1,0 +1,26 @@
+---
+description: Review Cloudflare Mesh availability and platform requirements.
+title: Platform
+image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/platform/og.png?v=d30c5ac81c9f6488
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Platform
+
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Cloudflare Mesh is available in beta to Cloudflare One accounts, including accounts on the Free plan.
+
+## Platform requirements
+
+- Mesh nodes require a [supported Linux distribution](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#linux) or the [`cloudflare/mesh` container image](https://developers.cloudflare.com/mesh/guides/run-mesh-in-containers/).
+- Client devices can use any [operating system supported by the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+- Mesh nodes must use the MASQUE device tunnel protocol. Hostname routes, IPv6 CIDR routes, and high availability do not work with WireGuard.
+- Using Cloudflare Mesh with Cloudflare WAN requires [Unified Routing mode](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing).
+
+For deployment recommendations and interoperability constraints, refer to [Best practices](https://developers.cloudflare.com/mesh/best-practices/).

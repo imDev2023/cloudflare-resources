@@ -1,0 +1,724 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Sep 8, 2026
+
+[<h2>Radar search now includes Internet events</h2>](https://developers.cloudflare.com/changelog/post/2026-09-08-radar-search-events/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Cloudflare Radar**](https://developers.cloudflare.com/radar/) search now includes Internet events and outages alongside existing results. Search event descriptions or related entities, such as locations, ASes, bots, and top-level domains, to find relevant events and open the most relevant Radar view.
+
+![Radar search results showing Internet outage events associated with locations and autonomous systems](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2512,height=1130,format=webp/_astro/radar-search-events.DpZAk59G.png)
+
+Event links preserve the event date range, making it easier to investigate what changed before, during, and after an event. These results are also available to browser-based AI agents through [WebMCP](https://developers.cloudflare.com/browser-run/features/webmcp/).
+
+Sep 8, 2026
+
+[<h2>WAF Release - 2026-09-08</h2>](https://developers.cloudflare.com/changelog/post/2026-09-08-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This release enhances detection logic for existing rules targeting Next.js remote code execution (RCE) vulnerabilities by consolidating active beta rules into baseline signatures.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...c76ba662 | N/A | Next.js - Image Optimizer Remote Code Execution via Crafted AVIF - Beta | Log | Block | This rule is merged into the original rule "Next.js - Image Optimizer Remote Code Execution via Crafted AVIF" (ID: ...80256efe). |
+| Cloudflare Managed Ruleset | ...208457cf | N/A | Next.js - Remote Code Execution - CVE:CVE-2026-75604 - Beta | Log | Block | This rule is merged into the original rule "Next.js - Remote Code Execution - CVE:CVE-2026-75604" (ID: ...2ca6cce3). |
+
+Sep 8, 2026
+
+[<h2>Miniflare v5 prepares local development for the cf CLI</h2>](https://developers.cloudflare.com/changelog/post/2026-09-08-miniflare-v5/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Miniflare v5 prepares Cloudflare local development tooling for the upcoming `cf` CLI.
+
+Miniflare powers local Workers development behind `wrangler dev`, the Cloudflare Vite plugin, and `@cloudflare/vitest-plugin`. Most projects should use those tools instead of depending on Miniflare directly, and Miniflare v5 will not require any action.
+
+The most significant change is a new configuration shape which aligns Miniflare with `cloudflare.config.ts`, the programmatic Cloudflare configuration format now available for testing.
+
+Other breaking changes include:
+
+- Removed deprecated APIs and options, such as legacy alpha D1 bindings.
+- Removed now-unused, internal APIs like `wrappedBindings`
+- Removed Miniflare's built-in module discovery; higher-level tools like Wrangler and the Vite plugin should be providing the module graph.
+- Moved local-only /cdn-cgi routes under /cdn-cgi/local.
+- Replaced per-resource persistence options with shared persistence root options.
+
+For a more comprehensive list, refer to [Miniflare's changelog ↗︎](https://github.com/cloudflare/workers-sdk/blob/main/packages/miniflare/CHANGELOG.md#5202607300-alpha)
+
+This work sets up a cleaner foundation for the next generation of local development tooling, including the new `cf` CLI.
+
+Sep 8, 2026
+
+[<h2>Python 3.14 for Python Workers</h2>](https://developers.cloudflare.com/changelog/post/2026-09-08-python-workers-314/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Python workers now use Python 3.14 by default.
+
+This change applies to all new Python workers using compatibility date `2026-09-08` or later.
+
+Internally, this change updates the Pyodide runtime to 314.0.6.
+
+Sep 7, 2026
+
+[<h2>Enforce positive security with Application Profiles</h2>](https://developers.cloudflare.com/changelog/post/2026-09-07-application-profiles/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+Application Profiles add a positive-security layer to Cloudflare WAF. Instead of looking only for requests that resemble known attacks, Application Profiles learn what valid requests to your application look like and identify traffic that deviates from the expected structure.
+
+The first available profile type, Schema Profiles, can learn path variables, query parameters, headers, cookies, JSON bodies, and form-encoded bodies. Profiles model field types and constraints such as numeric ranges, string lengths, and character classes. After a profile becomes available, an always-on detection classifies requests as conforming or non-conforming without blocking traffic.
+
+Use **Profile Analysis** in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to review conformance trends and sampled violation details before enforcing a profile. When you are ready to mitigate traffic, use a [Custom Rule](https://developers.cloudflare.com/waf/custom-rules/) to scope enforcement by hostname, path, operation, or other security signals such as Attack Score.
+
+Customers with API Security already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is also opening a closed beta to invited Enterprise customers without API Security. Contact your Cloudflare account team to express interest.
+
+For more information, refer to [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/).
+
+Sep 7, 2026
+
+[<h2>Attack Signature Detection is now available in Early Access</h2>](https://developers.cloudflare.com/changelog/post/2026-09-07-attack-signature-detection/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+Attack Signature Detection is now available in Early Access. It evaluates requests against Cloudflare attack signatures and records matches without applying a mitigation action, allowing you to investigate detected traffic before deciding how to respond.
+
+In **Security Analytics** > **Attack Analysis**, you can review matching signature references, categories, confidence levels, and request outcomes. You can then use these fields in [Security Rules](https://developers.cloudflare.com/security/rules/) and combine them with request properties such as hostname, path, and HTTP method to apply scoped mitigation.
+
+Attack Signature Detection uses the same signature definitions as [Cloudflare Managed Rules](https://developers.cloudflare.com/waf/managed-rules/), but it does not inherit your Managed Rules actions, overrides, or deployment configuration. Managed Rules remain the recommended baseline protection during Early Access.
+
+Contact your Cloudflare account team to request access. For more information, refer to [Attack Signature Detection](https://developers.cloudflare.com/waf/detections/attack-signature-detection/).
+
+Sep 4, 2026
+
+[<h2>Manage Email Routing rules with Wrangler</h2>](https://developers.cloudflare.com/changelog/post/2026-09-04-email-routing-rules-wrangler/)
+
+[Email Service](https://developers.cloudflare.com/email-service/) [Workers](https://developers.cloudflare.com/workers/)
+
+You can now manage Email Routing rules that route emails to Workers from your Wrangler configuration. Add literal addresses or a catch-all address to the top-level `addresses` field:
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "invoice-handler",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-10-05",
+  "addresses": [
+    "invoice@yourdomain.com"
+  ]
+}
+```
+
+```toml
+name = "invoice-handler"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-10-05"
+addresses = ["invoice@yourdomain.com"]
+```
+
+When you run `wrangler deploy`, Wrangler creates rules for new addresses, updates existing rules managed by the Worker, and removes managed rules that are no longer in the configuration. Wrangler shows the planned changes and asks for confirmation before applying potentially destructive changes.
+
+Email Routing rules created by Wrangler also appear in the dashboard but with an icon that identifies them.
+
+![Email Routing rule created by Wrangler in dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2440,height=526,format=webp/_astro/wrangler-email-routing-rules-dash.BZQZlAJI.png)
+
+Refer to [Configure rules with Wrangler](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#configure-rules-with-wrangler) for more information.
+
+Sep 4, 2026
+
+[<h2>Enterprise customers can self-serve CDN upload limits up to 5 GB</h2>](https://developers.cloudflare.com/changelog/post/2026-09-04-enterprise-self-serve-upload-limits/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Workers](https://developers.cloudflare.com/workers/)
+
+Enterprise customers can now configure a zone's CDN **Maximum Upload Size** up to 5 GB directly from the **Network** page in the Cloudflare dashboard. This removes the need to contact your account team or Cloudflare Support when applications need to accept request bodies larger than 500 MB and no greater than 5 GB.
+
+The default maximum upload size remains 500 MB. Upload limits above 5 GB still require additional configuration through your account team or [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+
+Very large uploads may reach connection or read timeouts before reaching the configured size limit. Make sure clients and origins allow enough time to complete the transfer when increasing this setting.
+
+Refer to [Cache upload limits](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#upload-limits) and [Workers request body size limits](https://developers.cloudflare.com/workers/platform/limits/#request-and-response-limits) for details.
+
+Sep 4, 2026
+
+[<h2>R2 Data Access Logs</h2>](https://developers.cloudflare.com/changelog/post/2026-09-04-r2-data-access-logs/)
+
+[R2](https://developers.cloudflare.com/r2/)
+
+R2 Data Access Logs are now generally available. Turn on logging for a bucket to record object read, write, list, multipart upload, and delete operations with response status codes below `400`.
+
+Data Access Logs cover requests made through the S3-compatible API, Cloudflare API and dashboard, Workers bindings, and public buckets through `r2.dev` or custom domains. Events are available in Workers Observability, where you can filter by bucket, operation, interface, actor, and other request fields.
+
+Log delivery is asynchronous and best effort. Events may be delayed or omitted, so do not rely on Data Access Logs as a complete record of bucket activity.
+
+Data Access Logs are available for non-jurisdictional buckets. For setup instructions, supported operations, and the event field reference, refer to [R2 Data Access Logs](https://developers.cloudflare.com/r2/buckets/data-access-logs/).
+
+Sep 4, 2026
+
+[<h2>Deploy larger Workers — up to 64 MiB for both free and paid plans</h2>](https://developers.cloudflare.com/changelog/post/2026-09-04-increased-worker-size-limit/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+You can now deploy Workers with larger dependencies, heavier frameworks, and more code without hitting size limits.
+
+When you deploy a Worker, Wrangler bundles your code and compresses it before uploading. Previously, Cloudflare checked that compressed size and rejected deploys over 3 MB (Free) or 10 MB (Paid). That limit has been removed. Cloudflare now only checks the uncompressed size of your bundle, which is 64 MiB across all plans.
+
+To check your Worker's bundle size before deploying:
+
+```sh
+wrangler deploy --outdir bundled/ --dry-run
+```
+
+```sh
+Total Upload: 259.61 KiB / gzip: 47.23 KiB
+```
+
+The `Total Upload` value is your uncompressed bundle size. This is what counts against the 64 MiB limit. The `gzip` value is shown for reference but is no longer a limit.
+
+For more information, refer to the [Worker size limits documentation](https://developers.cloudflare.com/workers/platform/limits/#worker-size).
+
+Sep 2, 2026
+
+[<h2>Configure Origin Range Requests with the Rulesets API</h2>](https://developers.cloudflare.com/changelog/post/2026-09-02-origin-range-requests-rulesets-api/)
+
+[Cache / CDN](https://developers.cloudflare.com/cache/)
+
+The Rulesets API now supports Origin Range Requests in Cache Rules. This setting lets Cloudflare fetch large files from your origin in cache-aligned byte ranges. Cloudflare may expand a client range and issue several single-range origin requests.
+
+Set `origin_range_requests.mode` to `on`, `off`, or `default` for any traffic matched by a Cache Rule.
+
+To override Cloudflare's default Origin Range Requests behavior, set the mode to `off`. The following rule turns off generated origin range requests for all traffic without changing cache eligibility:
+
+```json
+{
+  "expression": "true",
+  "action": "set_cache_settings",
+  "action_parameters": {
+    "origin_range_requests": {
+      "mode": "off"
+    }
+  }
+}
+```
+
+Origin Range Requests do not make otherwise ineligible content cacheable. If your origin ignores `Range` and returns a complete `200 OK`, Cloudflare can use the response but must download the complete file. Origins should honor `Accept-Encoding: identity` and return consistent, unencoded partial responses.
+
+For configuration details and mode behavior, refer to [Origin Range Requests in Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#origin-range-requests). For client responses and the complete origin contract, refer to [Range request behavior](https://developers.cloudflare.com/cache/reference/range-requests/).
+
+Sep 2, 2026
+
+[<h2>Define custom applications for breakout and prioritized traffic from the Cloudflare One Appliance dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-09-02-appliance-custom-application-traffic-steering/)
+
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+You can now define [custom applications](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/#create-edit-or-delete-a-custom-application) for [breakout](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/) and [prioritized](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/) traffic on the [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) directly from the dashboard, without calling the API.
+
+![Adding a custom application by hostname, IP subnet, and source subnet from the Traffic Steering tab of an appliance profile](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1034,format=webp/_astro/2026-09-01-appliance-custom-application-traffic-steering.D25Ga9-d.gif)
+
+- In **Traffic Steering** > **Breakout traffic** or **Prioritized traffic**, select **Assign application traffic** > **Add** to create a custom application matched by **Hostnames**, **IP subnets**, and/or the new **Source subnets** field, alongside Cloudflare-managed applications.
+- Edit or delete an existing custom application from the same panel, no API round-trip required.
+- **Source subnets** lets you match traffic by its source IP range, complementing the existing [source LAN interface breakout criteria](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/#breakout-by-source).
+
+This complements the existing API and Terraform workflow for managing applications.
+
+For details, refer to [Breakout traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/) and [Prioritized traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/).
+
+Sep 2, 2026
+
+[<h2>Configure DHCP options from the dashboard on Cloudflare One Appliance</h2>](https://developers.cloudflare.com/changelog/post/2026-09-02-appliance-dhcp-options-ui/)
+
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+You can now configure [custom DHCP options](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/) directly from the dashboard when the [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) is acting as the DHCP server for a LAN.
+
+![Adding a custom DHCP option to a LAN's DHCP server from the Network Configuration tab of an appliance profile](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1034,format=webp/_astro/2026-09-01-appliance-dhcp-options-ui.B5OEZmib.gif)
+
+- In **LAN configuration**, under **DHCP server options**, select **Add DHCP option** to choose from common options for PXE / iPXE boot, VoIP phone provisioning, and vendor-specific configuration, or select **Add custom option** to enter your own option code, type, and value.
+- This complements the existing [API and Terraform workflow](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/#configure-dhcp-options) for configuring DHCP options.
+
+For details, refer to [DHCP server options](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/).
+
+Sep 2, 2026
+
+[<h2>New in Images: text rasterization and updates to the binding</h2>](https://developers.cloudflare.com/changelog/post/2026-09-02-images-binding-updates/)
+
+[Cloudflare Images](https://developers.cloudflare.com/images/)
+
+We've added more ways to manage and manipulate images with the [Images binding](https://developers.cloudflare.com/images/optimization/binding/). Here's what's new:
+
+**Render text into an image.** Output a string of text into its own image or draw it over another image.
+
+- Use the [`.text()`](https://developers.cloudflare.com/images/optimization/binding/#textcontent-options) method to rasterize text with the Images binding.
+- Style content using the `font`, `size`, and `color` options.
+- The [`draw`](https://developers.cloudflare.com/images/optimization/draw-overlays/#draw-with-cfimage) array in `cf.image` now accepts a `text` key.
+
+**Manage hosted images without an API token.**
+
+- **Metadata filtering:** Pass `filter.metadata` to [`.list()`](https://developers.cloudflare.com/images/storage/binding/#listoptions) to return images by custom metadata. Match a bounded range by setting two operators in one condition, for example, `priority: { gte: 2, lte: 5 }`.
+- **Server-side signing:** Get a signed URL for a private image with [`.signedUrl()`](https://developers.cloudflare.com/images/storage/binding/#imageimageidsignedurloptions).
+- **User uploads:** Create a Direct Creator Upload link with [`.createDirectUpload()`](https://developers.cloudflare.com/images/storage/binding/#createdirectuploadoptions) so that a client can upload an image to your storage.
+
+**Set headers in a single call.**
+
+- Pass a `headers` option to [`.response()`](https://developers.cloudflare.com/images/optimization/binding/#responseoptions) to set headers without rebuilding the `Response`.
+- `Content-Type` is always taken from the optimized image and can't be overridden by a specified header.
+- Set `Cache-Control` with [Workers Cache](https://developers.cloudflare.com/workers/cache/) to cache your optimized image at the edge.
+
+For more information, refer to [Optimize with Workers](https://developers.cloudflare.com/images/optimization/binding/), [Draw overlays and watermarks](https://developers.cloudflare.com/images/optimization/draw-overlays/), and [Manage hosted images with Workers](https://developers.cloudflare.com/images/storage/binding/).
+
+Sep 2, 2026
+
+[<h2>Create multiple Cloudflare Tunnel and Cloudflare Mesh routes at once</h2>](https://developers.cloudflare.com/changelog/post/2026-09-02-tunnel-mesh-bulk-route-creation/)
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/)
+
+You can now create multiple [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) and [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) routes from the Routes page in a single action, instead of submitting one route at a time.
+
+![Creating multiple Cloudflare Tunnel and Cloudflare Mesh routes at once from the Routes page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1034,format=webp/_astro/2026-09-01-tunnel-mesh-bulk.zu4fOWN3.gif)
+
+When creating a route, you can now:
+
+- **Add multiple destinations at once** — Enter a comma-separated list of CIDR ranges or hostnames to create several routes of the same type and connector together.
+- **Queue up multiple routes** — Select **Add another** to stage additional routes, including different types or connectors, before creating them all in one action.
+- **Retry only what failed** — If some routes in a batch fail (for example, an invalid CIDR), the routes that were created successfully are removed from the form automatically, so you only need to fix and resubmit the ones that failed.
+
+The same Routes UI already supports bulk creation for [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) static routes, so you can add multiple WAN destinations or queue up several WAN routes before creating them together as well.
+
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+
+For setup steps, refer to [Add routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/).
+
+Sep 2, 2026
+
+[<h2>Run Cursor Cloud Agents on Cloudflare via self-hosted machines</h2>](https://developers.cloudflare.com/changelog/post/2026-09-02-cursor-cloud-agents/)
+
+[Sandboxes](https://developers.cloudflare.com/sandbox/)
+
+[Cursor self-hosted machines ↗︎](https://cursor.com/docs/cloud-agent/self-hosted) let you run Cursor Cloud Agents on Cloudflare. Each assigned session runs in its own isolated environment backed by [Cloudflare Containers](https://developers.cloudflare.com/containers/).
+
+![Cursor Cloud Agents environment selector showing the cloudflare-pool self-hosted machine pool](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3308,height=1916,format=webp/_astro/cursor-cloud-agents-self-hosted-pool.XNeWCXB2.png)
+
+Cursor hosts the agent loop, inference, and planning. Cloudflare runs commands, file edits, repository operations, and other tools inside infrastructure that you control. The open-source [Cursor Cloudflare Workers template ↗︎](https://github.com/anysphere/cloudflare-workers) deploys the Worker, Durable Object namespace, container application, R2 bucket binding, and cron trigger used by the integration.
+
+To get started, refer to [Run Cursor Cloud Agents on Cloudflare via self-hosted machines](https://developers.cloudflare.com/sandbox/coding-agents/cursor/).
+
+Sep 2, 2026
+
+[<h2>Python Workers now support WSGI web frameworks like Django and Flask</h2>](https://developers.cloudflare.com/changelog/post/2026-09-02-python-workers-web-framework-support/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Python web frameworks following the [Web Server Gateway Interface (WSGI) ↗︎](https://peps.python.org/pep-3333/) or [Asynchronous Server Gateway Interface (ASGI) ↗︎](https://asgi.readthedocs.io/) specification can now be used in Python Workers.
+
+#### Using web frameworks with Python Workers
+
+Based on the web framework you are using, you can use either `wsgi` or `asgi` from the `workers` module.
+
+#### WSGI frameworks
+
+For WSGI frameworks like Django or Flask:
+
+```python
+from workers import wsgi
+
+from django.core.wsgi import get_wsgi_application
+
+app = get_wsgi_application()
+Default = wsgi.entrypoint(app)
+```
+
+The `wsgi.entrypoint` is equivalent to creating a `WorkerEntrypoint` class and using the `wsgi.fetch` method. If you want more control over the `WorkerEntrypoint` class, you can do so:
+
+```python
+from workers import wsgi, WorkerEntrypoint
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        return await wsgi.fetch(app, request, self.env)
+```
+
+#### ASGI frameworks
+
+For ASGI frameworks like FastAPI or Starlette:
+
+```python
+from workers import asgi
+
+from fastapi import FastAPI
+
+app = FastAPI()
+Default = asgi.entrypoint(app)
+```
+
+For more information about using individual web frameworks, refer to the [packages documentation in Python Workers](https://developers.cloudflare.com/workers/languages/python/packages/).
+
+Sep 1, 2026
+
+[<h2>AI Gateway consolidates monthly usage invoice line items and standardizes model names</h2>](https://developers.cloudflare.com/changelog/post/2026-09-01-billing-and-model-names/)
+
+[AI Gateway](https://developers.cloudflare.com/ai-gateway/)
+
+AI Gateway monthly usage invoices, issued at the beginning of each month for the previous month's usage, now show a single total cost for each model. These invoices no longer break out input and output token quantities and unit prices into separate line items. This change does not apply to invoices for AI Gateway credit purchases.
+
+For example, an invoice that previously included these separate line items:
+
+- `anthropic claude-haiku-4-5-20251001 Input Tokens`: 40,000 tokens at $0.000001 ($0.04)
+- `anthropic claude-haiku-4-5-20251001 Output Tokens`: 24,000 tokens at $0.000005 ($0.12)
+
+The updated invoice includes one line item: `anthropic/claude-haiku-4.5`: $0.16.
+
+AI Gateway has also standardized model names across invoices and logs. Model variants that previously appeared with provider-specific version suffixes now use a consistent `provider/model` identifier.
+
+For more information, refer to the [Unified Billing documentation](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) and [AI Gateway logging documentation](https://developers.cloudflare.com/ai-gateway/observability/logging/).
+
+Sep 1, 2026
+
+[<h2>D1 enforces free tier daily query limits</h2>](https://developers.cloudflare.com/changelog/post/2026-09-01-d1-free-tier-limit-enforcement/)
+
+[D1](https://developers.cloudflare.com/d1/)
+
+Beginning September 1, 2026, D1 queries on the [Workers Free plan](https://developers.cloudflare.com/workers/platform/pricing/#workers) will fail when an account exceeds the daily [row read or row write limits](https://developers.cloudflare.com/d1/platform/pricing/). Queries via the [Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) and the [REST API](https://developers.cloudflare.com/d1/rest-api/) will return errors until the limit resets at midnight UTC. Stored data is not affected.
+
+You will receive email alerts when the daily limit is reached. The following errors indicate that a limit has been exceeded:
+
+| Error | Description |
+| --- | --- |
+| Your account has exceeded D1's free tier daily row read limit. Upgrade to a paid plan or wait until tomorrow (midnight UTC) to continue. | The account has reached its daily row read limit. |
+| Your account has exceeded D1's free tier daily row write limit. Upgrade to a paid plan or wait until tomorrow (midnight UTC) to continue. | The account has reached its daily row write limit. |
+
+Inspect database query activity before the enforcement date to identify queries that may exceed these limits. To reduce row reads, add [indexes](https://developers.cloudflare.com/d1/best-practices/use-indexes/) to tables and review queries that perform full table scans. If usage requires higher limits after optimization, upgrade to a [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/#workers).
+
+For more information on D1 errors and how to handle them, refer to the [D1 error list](https://developers.cloudflare.com/d1/observability/debug-d1/#error-list).
+
+Sep 1, 2026
+
+[<h2>WAF Release - 2026-09-01</h2>](https://developers.cloudflare.com/changelog/post/2026-09-01-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This release introduces a new threat detection to enhance protection against SQL injection (SQLi) attempts exploiting complex query syntax.
+
+**Key Findings**
+
+- SQLi Protection: Improved coverage for SQL injection patterns involving WHERE comparisons combined with WITH clauses.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...bcfa0966 | N/A | SQLi - WHERE Comparison With WITH Clause | Log | Block | This is a new detection. |
+
+Aug 31, 2026
+
+[<h2>Crawl endpoint now respects the Content Signals \`use\` directive</h2>](https://developers.cloudflare.com/changelog/post/2026-08-31-crawl-content-use/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+The [`/crawl`](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) endpoint now respects the `use` directive of the [Content Signals ↗︎](https://contentsignals.org/) standard, letting site owners express the maximum level at which their content may be used.
+
+You can declare your intended level with the new `contentUse` parameter. Allowed values, from least to most permissive, are `reference` and `full`, and the default is `full`. If a target site's `robots.txt` sets a `use` level that is more restrictive than your declared `contentUse`, the crawl request is rejected with a `400` error.
+
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://example.com",
+    "contentUse": "reference",
+    "formats": ["markdown"]
+  }'
+```
+
+For more information, refer to [Content Signals](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/#content-signals) in the `/crawl` endpoint documentation.
+
+Aug 31, 2026
+
+[<h2>Load Balancing now supports pool sets</h2>](https://developers.cloudflare.com/changelog/post/2026-08-31-pool-sets/)
+
+[Load Balancing](https://developers.cloudflare.com/load-balancing/)
+
+Cloudflare Load Balancing now supports pool sets through the API. Pool sets combine geographic matching with location-specific traffic steering. One load balancer can now use different routing behavior for different locations.
+
+Each pool set can match a Cloudflare data center, country, or region. It then supplies the candidate pools and can apply its own steering policy, pool weights, and fallback pool. Cloudflare evaluates pool sets in array order and applies the first matching pool set.
+
+For example, this pool set uses Dynamic Latency steering for traffic from Germany:
+
+```json
+{
+	"pool_sets": [
+		{
+			"name": "germany-lowest-latency",
+			"match": { "topology": { "countries": ["DE"] } },
+			"overrides": {
+				"pools": [
+					"0930eec54a4c7ae6616985b79f678210",
+					"c8b4f5a6d7e84910a2b3c4d5e6f70819"
+				],
+				"steering_policy": "dynamic_latency"
+			}
+		}
+	]
+}
+```
+
+Use pool sets for active-active traffic distribution, location-specific failover, and regional routing policies. For proxied traffic, a pool set can also return a fixed HTTP response instead of selecting a pool.
+
+For configuration details and more examples, refer to [Pool sets](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/pool-sets/).
+
+Aug 30, 2026
+
+[<h2>AI Search now supports GLM-5.3 Flash</h2>](https://developers.cloudflare.com/changelog/post/2026-08-30-glm-5.3-flash/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/) now supports [`@cf/zai-org/glm-5.3-flash`](https://developers.cloudflare.com/workers-ai/models/glm-5.3-flash/) for text generation. The model has a 1,048,576-token context window and runs on Workers AI.
+
+To configure the model for an AI Search instance, refer to [Supported models](https://developers.cloudflare.com/ai-search/configuration/models/supported-models/).
+
+Aug 28, 2026
+
+[<h2>Cloudflare One Client for macOS (version 2026.7.1376.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-08-28-warp-macos-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the macOS Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.
+
+Aug 28, 2026
+
+[<h2>Cloudflare One Client for Windows (version 2026.7.1376.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-08-28-warp-windows-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+Fixed a rare but critical issue where the client could fail to connect or switch organizations due to an invalid registration after switching installed client versions. Additionally, this hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/5/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

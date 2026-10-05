@@ -1,0 +1,286 @@
+---
+description: Wrangler CLI commands for creating and managing Workers VPC services.
+title: Wrangler commands
+image: https://developers.cloudflare.com/workers-vpc/reference/wrangler-commands/og.png?v=1a83f97c0ea64356
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Wrangler commands
+
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+The following [Wrangler commands](https://developers.cloudflare.com/workers/wrangler/) allow you to manage Workers VPC services.
+
+## `vpc service create`
+
+Create a new VPC service
+
+npmyarnpnpm
+
+```
+npx wrangler vpc service create <NAME>
+```
+
+```
+yarn wrangler vpc service create <NAME>
+```
+
+```
+pnpm wrangler vpc service create <NAME>
+```
+
+- `<NAME>` `string` required
+
+  The name of the VPC service
+- `--type` `string` required
+
+  The type of the VPC service
+- `--tcp-port` `number` TCP port number
+- `--app-protocol` `string` Application protocol for the TCP service
+- `--http-port` `number` HTTP port (default: 80)
+- `--https-port` `number` HTTPS port number (default: 443)
+- `--ipv4` `string` IPv4 address for the host \[conflicts with --ipv6]
+- `--ipv6` `string` IPv6 address for the host \[conflicts with --ipv4]
+- `--hostname` `string` Hostname for the host
+- `--resolver-ips` `string` Comma-separated list of resolver IPs
+- `--tunnel-id` `string` required
+
+  UUID of the Cloudflare tunnel
+- `--cert-verification-mode` `string` TLS certificate verification mode for the connection to the origin
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+## `vpc service delete`
+
+Delete a VPC service
+
+npmyarnpnpm
+
+```
+npx wrangler vpc service delete <SERVICE-ID>
+```
+
+```
+yarn wrangler vpc service delete <SERVICE-ID>
+```
+
+```
+pnpm wrangler vpc service delete <SERVICE-ID>
+```
+
+- `<SERVICE-ID>` `string` required
+
+  The ID of the service to delete
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+## `vpc service get`
+
+Get a VPC service
+
+npmyarnpnpm
+
+```
+npx wrangler vpc service get <SERVICE-ID>
+```
+
+```
+yarn wrangler vpc service get <SERVICE-ID>
+```
+
+```
+pnpm wrangler vpc service get <SERVICE-ID>
+```
+
+- `<SERVICE-ID>` `string` required
+
+  The ID of the VPC service
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+## `vpc service list`
+
+List VPC services
+
+npmyarnpnpm
+
+```
+npx wrangler vpc service list
+```
+
+```
+yarn wrangler vpc service list
+```
+
+```
+pnpm wrangler vpc service list
+```
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+## `vpc service update`
+
+Update a VPC service
+
+npmyarnpnpm
+
+```
+npx wrangler vpc service update <SERVICE-ID>
+```
+
+```
+yarn wrangler vpc service update <SERVICE-ID>
+```
+
+```
+pnpm wrangler vpc service update <SERVICE-ID>
+```
+
+- `<SERVICE-ID>` `string` required
+
+  The ID of the VPC service to update
+- `--name` `string` required
+
+  The name of the VPC service
+- `--type` `string` required
+
+  The type of the VPC service
+- `--tcp-port` `number` TCP port number
+- `--app-protocol` `string` Application protocol for the TCP service
+- `--http-port` `number` HTTP port (default: 80)
+- `--https-port` `number` HTTPS port number (default: 443)
+- `--ipv4` `string` IPv4 address for the host \[conflicts with --ipv6]
+- `--ipv6` `string` IPv6 address for the host \[conflicts with --ipv4]
+- `--hostname` `string` Hostname for the host
+- `--resolver-ips` `string` Comma-separated list of resolver IPs
+- `--tunnel-id` `string` required
+
+  UUID of the Cloudflare tunnel
+- `--cert-verification-mode` `string` TLS certificate verification mode for the connection to the origin
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>

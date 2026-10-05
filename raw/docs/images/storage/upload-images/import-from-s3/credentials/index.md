@@ -1,0 +1,45 @@
+---
+description: Configure AWS IAM credentials for Amazon S3 read access.
+title: Credentials
+image: https://developers.cloudflare.com/images/storage/upload-images/import-from-s3/credentials/og.png?v=beed56cd70e92eb0
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Credentials
+
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/import-from-s3/credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+To import images, Cloudflare Images requires access to your Amazon S3 bucket. You can use credentials for any AWS Identity and Access Management (IAM) user with the correct permissions.
+
+Cloudflare recommends creating a user with narrowly scoped permissions.
+
+To create the required permissions:
+
+1. Log in to your AWS IAM account.
+2. Create a policy with the following format (replace `<BUCKET_NAME>` with the bucket you want to grant access to):
+
+   ```json
+   {
+   	"Version": "2012-10-17",
+   	"Statement": [
+   		{
+   			"Effect": "Allow",
+   			"Action": ["s3:Get*", "s3:List*"],
+   			"Resource": [
+   				"arn:aws:s3:::<BUCKET_NAME>",
+   				"arn:aws:s3:::<BUCKET_NAME>/*"
+   			]
+   		}
+   	]
+   }
+   ```
+
+
+3. Next, create a new user and attach the created policy to that user.
+
+You can now use both the Access Key ID and Secret Access Key to create a new source. Refer to [Import images from S3](https://developers.cloudflare.com/images/storage/upload-images/import-from-s3/enable/) for setup instructions.

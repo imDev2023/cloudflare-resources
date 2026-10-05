@@ -1,0 +1,650 @@
+---
+description: Wrangler commands for managing Workers KV namespaces and key-value pairs.
+title: KV
+image: https://developers.cloudflare.com/workers/wrangler/commands/kv/og.png?v=4876bc91e9008329
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# KV
+
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/kv/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Manage [Workers KV](https://developers.cloudflare.com/kv/) using Wrangler.
+
+## `kv namespace`
+
+Manage Workers KV namespaces.
+
+Note
+
+The `kv ...` commands allow you to manage your Workers KV resources in the Cloudflare network. Learn more about using Workers KV with Wrangler in the [Workers KV guide](https://developers.cloudflare.com/kv/get-started/).
+
+Caution
+
+Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using versions below 3.60.0, the command follows the `kv:...` syntax. Learn more about the deprecation of the `kv:...` syntax in the [Wrangler commands](https://developers.cloudflare.com/kv/reference/kv-commands/#deprecations) for KV page.
+
+### `kv namespace create`
+
+Create a new namespace
+
+npmyarnpnpm
+
+```
+npx wrangler kv namespace create <NAMESPACE>
+```
+
+```
+yarn wrangler kv namespace create <NAMESPACE>
+```
+
+```
+pnpm wrangler kv namespace create <NAMESPACE>
+```
+
+- `<NAMESPACE>` `string` required
+
+  The name of the new namespace
+- `--preview` `boolean` Interact with a preview namespace
+- `--jurisdiction` `string` The jurisdiction where the new namespace will be created (e.g. "us", "eu", "fedramp")
+- `--use-remote` `boolean` Use a remote binding when adding the newly created resource to your config
+- `--update-config` `boolean` Automatically update your config file with the newly added resource
+- `--binding` `string` The binding name of this resource in your Worker
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+To restrict where a namespace durably stores data, specify `--jurisdiction` when creating it. Refer to [Data location](https://developers.cloudflare.com/kv/reference/data-location/) for supported jurisdictions.
+
+### `kv namespace list`
+
+Output a list of all KV namespaces associated with your account id
+
+npmyarnpnpm
+
+```
+npx wrangler kv namespace list
+```
+
+```
+yarn wrangler kv namespace list
+```
+
+```
+pnpm wrangler kv namespace list
+```
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+### `kv namespace delete`
+
+Delete a given namespace.
+
+npmyarnpnpm
+
+```
+npx wrangler kv namespace delete [NAMESPACE]
+```
+
+```
+yarn wrangler kv namespace delete [NAMESPACE]
+```
+
+```
+pnpm wrangler kv namespace delete [NAMESPACE]
+```
+
+- `[NAMESPACE]` `string` The name of the namespace to delete
+- `--binding` `string` The binding name to the namespace to delete from
+- `--namespace-id` `string` The id of the namespace to delete
+- `--preview` `boolean` Interact with a preview namespace
+- `--skip-confirmation` `boolean` alias: --ydefault: false
+
+  Skip confirmation
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+### `kv namespace rename`
+
+Rename a KV namespace
+
+npmyarnpnpm
+
+```
+npx wrangler kv namespace rename [OLD-NAME]
+```
+
+```
+yarn wrangler kv namespace rename [OLD-NAME]
+```
+
+```
+pnpm wrangler kv namespace rename [OLD-NAME]
+```
+
+- `[OLD-NAME]` `string` The current name of the namespace to rename
+- `--namespace-id` `string` The id of the namespace to rename
+- `--new-name` `string` required
+
+  The new name for the namespace
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+## `kv key`
+
+Manage key-value pairs within a Workers KV namespace.
+
+Note
+
+The `kv ...` commands allow you to manage your Workers KV resources in the Cloudflare network. Learn more about using Workers KV with Wrangler in the [Workers KV guide](https://developers.cloudflare.com/kv/get-started/).
+
+Caution
+
+Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using versions below 3.60.0, the command follows the `kv:...` syntax. Learn more about the deprecation of the `kv:...` syntax in the [Wrangler commands](https://developers.cloudflare.com/kv/reference/kv-commands/) for KV page.
+
+### `kv key put`
+
+Write a single key/value pair to the given namespace
+
+npmyarnpnpm
+
+```
+npx wrangler kv key put <KEY> [VALUE]
+```
+
+```
+yarn wrangler kv key put <KEY> [VALUE]
+```
+
+```
+pnpm wrangler kv key put <KEY> [VALUE]
+```
+
+- `<KEY>` `string` required
+
+  The key to write to
+- `[VALUE]` `string` The value to write
+- `--path` `string` Read value from the file at a given path
+- `--binding` `string` The binding name to the namespace to write to
+- `--namespace-id` `string` The id of the namespace to write to
+- `--preview` `boolean` Interact with a preview namespace
+- `--ttl` `number` Time for which the entries should be visible
+- `--expiration` `number` Time since the UNIX epoch after which the entry expires
+- `--metadata` `string` Arbitrary JSON that is associated with a key
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+### `kv key list`
+
+Output a list of all keys in a given namespace
+
+npmyarnpnpm
+
+```
+npx wrangler kv key list
+```
+
+```
+yarn wrangler kv key list
+```
+
+```
+pnpm wrangler kv key list
+```
+
+- `--binding` `string` The binding name to the namespace to list
+- `--namespace-id` `string` The id of the namespace to list
+- `--preview` `boolean` default: false
+
+  Interact with a preview namespace
+- `--prefix` `string` A prefix to filter listed keys
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+### `kv key get`
+
+Read a single value by key from the given namespace
+
+npmyarnpnpm
+
+```
+npx wrangler kv key get <KEY>
+```
+
+```
+yarn wrangler kv key get <KEY>
+```
+
+```
+pnpm wrangler kv key get <KEY>
+```
+
+- `<KEY>` `string` required
+
+  The key value to get.
+- `--text` `boolean` default: false
+
+  Decode the returned value as a utf8 string
+- `--binding` `string` The binding name to the namespace to get from
+- `--namespace-id` `string` The id of the namespace to get from
+- `--preview` `boolean` default: false
+
+  Interact with a preview namespace
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+### `kv key delete`
+
+Remove a single key value pair from the given namespace
+
+npmyarnpnpm
+
+```
+npx wrangler kv key delete <KEY>
+```
+
+```
+yarn wrangler kv key delete <KEY>
+```
+
+```
+pnpm wrangler kv key delete <KEY>
+```
+
+- `<KEY>` `string` required
+
+  The key value to delete.
+- `--binding` `string` The binding name to the namespace to delete from
+- `--namespace-id` `string` The id of the namespace to delete from
+- `--preview` `boolean` Interact with a preview namespace
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+## `kv bulk`
+
+Manage multiple key-value pairs within a Workers KV namespace in batches.
+
+Note
+
+The `kv ...` commands allow you to manage your Workers KV resources in the Cloudflare network. Learn more about using Workers KV with Wrangler in the [Workers KV guide](https://developers.cloudflare.com/kv/get-started/).
+
+Caution
+
+Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using versions below 3.60.0, the command follows the `kv:...` syntax. Learn more about the deprecation of the `kv:...` syntax in the [Wrangler commands](https://developers.cloudflare.com/kv/reference/kv-commands/) for KV page.
+
+### `kv bulk get`
+
+Gets multiple key-value pairs from a namespace
+
+npmyarnpnpm
+
+```
+npx wrangler kv bulk get <FILENAME>
+```
+
+```
+yarn wrangler kv bulk get <FILENAME>
+```
+
+```
+pnpm wrangler kv bulk get <FILENAME>
+```
+
+- `<FILENAME>` `string` required
+
+  The file containing the keys to get
+- `--binding` `string` The binding name to the namespace to get from
+- `--namespace-id` `string` The id of the namespace to get from
+- `--preview` `boolean` default: false
+
+  Interact with a preview namespace
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+### `kv bulk put`
+
+Upload multiple key-value pairs to a namespace
+
+npmyarnpnpm
+
+```
+npx wrangler kv bulk put <FILENAME>
+```
+
+```
+yarn wrangler kv bulk put <FILENAME>
+```
+
+```
+pnpm wrangler kv bulk put <FILENAME>
+```
+
+- `<FILENAME>` `string` required
+
+  The file containing the key/value pairs to write
+- `--binding` `string` The binding name to the namespace to write to
+- `--namespace-id` `string` The id of the namespace to write to
+- `--preview` `boolean` Interact with a preview namespace
+- `--ttl` `number` Time for which the entries should be visible
+- `--expiration` `number` Time since the UNIX epoch after which the entry expires
+- `--metadata` `string` Arbitrary JSON that is associated with a key
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+### `kv bulk delete`
+
+Delete multiple key-value pairs from a namespace
+
+npmyarnpnpm
+
+```
+npx wrangler kv bulk delete <FILENAME>
+```
+
+```
+yarn wrangler kv bulk delete <FILENAME>
+```
+
+```
+pnpm wrangler kv bulk delete <FILENAME>
+```
+
+- `<FILENAME>` `string` required
+
+  The file containing the keys to delete
+- `--force` `boolean` alias: --f
+
+  Do not ask for confirmation before deleting
+- `--binding` `string` The binding name to the namespace to delete from
+- `--namespace-id` `string` The id of the namespace to delete from
+- `--preview` `boolean` Interact with a preview namespace
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>

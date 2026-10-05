@@ -1,0 +1,50 @@
+---
+description: Agent Lee can now package the code it generates into a temporary, cloneable repository so you can pull it onto your own machine.
+title: Export the code Agent Lee generates
+image: https://developers.cloudflare.com/changelog/post/2026-08-12-agent-lee-take-home-code/og.png?v=f99fedd535af0bc1
+---
+
+[Skip to content](#main-content)
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+[Back to all posts](https://developers.cloudflare.com/changelog)
+
+August 12, 2026
+
+## Export the code Agent Lee generates
+
+[Agent Lee](https://developers.cloudflare.com/agent-lee/)
+
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/changelog/post/2026-08-12-agent-lee-take-home-code/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+When Agent Lee generates a project for you — a starter static site, a Worker, a scaffold — you can now take the source with you. Agent Lee packages the generated files into a temporary repository and gives you a one-time command to clone it to your own machine.
+
+Previously, generated code lived only in the conversation. You had to copy files out of the chat by hand, which is tedious for anything larger than a single snippet and easy to get wrong.
+
+#### How it works
+
+- Ask Agent Lee to build something, then ask it to export the code.
+- An export card appears listing the files and a countdown to expiry.
+- Select **Copy clone command**. Agent Lee fetches a fresh command and copies it to your clipboard.
+- Run it in your terminal, then point the repository at your own Git host and push:
+
+```sh
+git remote set-url origin https://your-git-host.example/you/your-repo.git
+git push -u origin main
+```
+
+#### Good to know
+
+- **The export is temporary.** The repository expires about 36 hours after it is created and is then deleted automatically. The clone credential expires about an hour after it is issued. Clone promptly, then push to a repository you control.
+- **No credential appears in the chat.** The clone command and its read-only credential are delivered only when you select **Copy clone command** — never in the message text or conversation history.
+- **Nothing is written to your account.** The temporary repository lives in Cloudflare-managed storage, and connecting a GitHub or GitLab account is not required.
+- **Intended for small projects.** An export can include up to 50 files, up to 100 KB per file and 2 MB in total.
+
+Agent Lee remains in beta. Features and behaviors may change as the product evolves.
+
+For details, see [Export generated code](https://developers.cloudflare.com/agent-lee/take-home-code/).
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/post/2026-08-12-agent-lee-take-home-code/#page","headline":"Export the code Agent Lee generates","description":"Agent Lee can now package the code it generates into a temporary, cloneable repository so you can pull it onto your own machine.","url":"https://developers.cloudflare.com/changelog/post/2026-08-12-agent-lee-take-home-code/","inLanguage":"en","image":"https://developers.cloudflare.com/changelog/post/2026-08-12-agent-lee-take-home-code/og.png?v=f99fedd535af0bc1","dateModified":"2026-08-12","datePublished":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

@@ -1,0 +1,1081 @@
+---
+title: Messages
+---
+
+[Skip to content](#_top)
+
+[API Reference](https://developers.cloudflare.com/api)
+
+[Email Security](https://developers.cloudflare.com/api/resources/email_security)
+
+[Investigate](https://developers.cloudflare.com/api/resources/email_security/subresources/investigate)
+
+[Bulk](https://developers.cloudflare.com/api/resources/email_security/subresources/investigate/subresources/bulk)
+
+Copy Markdown
+
+Open in **Claude**Open in **ChatGPT**Open in **Cursor**
+
+---
+
+**Copy Markdown****View as Markdown**
+
+# Messages
+
+##### [List messages for a bulk action job](https://developers.cloudflare.com/api/resources/email_security/subresources/investigate/subresources/bulk/subresources/messages/methods/list)
+
+GET/accounts/{account\_id}/email-security/investigate/bulk/{job\_id}/messages
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+MessageListResponse object {action\_params, action\_type, created\_at, 10 more }
+
+</summary>
+
+<details>
+
+<summary>
+
+action\_params: object {client\_recipient, destination, type, expected\_disposition } or object {client\_recipient, type }
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+Move object {client\_recipient, destination, type, expected\_disposition }
+
+</summary>
+
+client\_recipient: string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20client_recipient">Link to this property</a>
+
+<details>
+
+<summary>
+
+destination: "Inbox"or "JunkEmail"or "DeletedItems"or 2 more
+
+The mailbox folder to move messages to.
+
+</summary>
+
+One of the following:
+
+"Inbox"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20destination%20%3E%20(member)%200">Link to this property</a>
+
+"JunkEmail"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20destination%20%3E%20(member)%201">Link to this property</a>
+
+"DeletedItems"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20destination%20%3E%20(member)%202">Link to this property</a>
+
+"RecoverableItemsDeletions"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20destination%20%3E%20(member)%203">Link to this property</a>
+
+"RecoverableItemsPurges"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20destination%20%3E%20(member)%204">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20destination">Link to this property</a>
+
+type: "MOVE"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+<details>
+
+<summary>
+
+Deprecatedexpected\_disposition: optional "MALICIOUS"or "MALICIOUS-BEC"or "SUSPICIOUS"or 7 more
+
+This field is nonfunctional.
+
+Nonfunctional field. End of life: December 1, 2026.
+
+</summary>
+
+One of the following:
+
+"MALICIOUS"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20expected_disposition%20%3E%20(member)%200">Link to this property</a>
+
+"MALICIOUS-BEC"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20expected_disposition%20%3E%20(member)%201">Link to this property</a>
+
+"SUSPICIOUS"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20expected_disposition%20%3E%20(member)%202">Link to this property</a>
+
+"SPOOF"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20expected_disposition%20%3E%20(member)%203">Link to this property</a>
+
+"SPAM"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20expected_disposition%20%3E%20(member)%204">Link to this property</a>
+
+"BULK"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20expected_disposition%20%3E%20(member)%205">Link to this property</a>
+
+"ENCRYPTED"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20expected_disposition%20%3E%20(member)%206">Link to this property</a>
+
+"EXTERNAL"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20expected_disposition%20%3E%20(member)%207">Link to this property</a>
+
+"UNKNOWN"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20expected_disposition%20%3E%20(member)%208">Link to this property</a>
+
+"NONE"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20expected_disposition%20%3E%20(member)%209">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200%20%3E%20(property)%20expected_disposition">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+Release object {client\_recipient, type }
+
+</summary>
+
+client\_recipient: string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%201%20%3E%20(property)%20client_recipient">Link to this property</a>
+
+type: "RELEASE"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_params">Link to this property</a>
+
+<details>
+
+<summary>
+
+action\_type: "MOVE"or "RELEASE"
+
+</summary>
+
+One of the following:
+
+"MOVE"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_type%20%3E%20(member)%200">Link to this property</a>
+
+"RELEASE"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_type%20%3E%20(member)%201">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20action_type">Link to this property</a>
+
+created\_at: string
+
+formatdate-time
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20created_at">Link to this property</a>
+
+message\_id: string
+
+formatuuid
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message_id">Link to this property</a>
+
+postfix\_id: string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20postfix_id">Link to this property</a>
+
+retry\_count: number
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20retry_count">Link to this property</a>
+
+<details>
+
+<summary>
+
+status: "PENDING"or "PROCESSING"or "COMPLETED"or 3 more
+
+Status of a message within a bulk action job.
+
+</summary>
+
+One of the following:
+
+"PENDING"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%200">Link to this property</a>
+
+"PROCESSING"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%201">Link to this property</a>
+
+"COMPLETED"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%202">Link to this property</a>
+
+"FAILED"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%203">Link to this property</a>
+
+"CANCELLED"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%204">Link to this property</a>
+
+"SKIPPED"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20status%20%3E%20(member)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20status">Link to this property</a>
+
+alert\_id: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20alert_id">Link to this property</a>
+
+email\_message\_id: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20email_message_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+message: optional object {id, action\_log, client\_recipients, 32 more }
+
+</summary>
+
+id: string
+
+Unique identifier for a message retrieved from investigation.
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20id">Link to this property</a>
+
+<details>
+
+<summary>
+
+Deprecatedaction\_log: array of object {completed\_at, operation, completed\_timestamp, 2 more }
+
+Use GET /investigate/{investigate\_id}/action\_log instead.
+
+Deprecated, use <code>GET /investigate/{investigate_id}/action_log</code> instead. End of life: November 1, 2026.
+
+</summary>
+
+completed\_at: string
+
+Timestamp when action completed.
+
+formatdate-time
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20completed_at">Link to this property</a>
+
+<details>
+
+<summary>
+
+operation: "MOVE"or "RELEASE"or "RECLASSIFY"or 3 more
+
+Type of action performed.
+
+</summary>
+
+One of the following:
+
+"MOVE"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20operation%20%3E%20(member)%200">Link to this property</a>
+
+"RELEASE"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20operation%20%3E%20(member)%201">Link to this property</a>
+
+"RECLASSIFY"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20operation%20%3E%20(member)%202">Link to this property</a>
+
+"SUBMISSION"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20operation%20%3E%20(member)%203">Link to this property</a>
+
+"QUARANTINE\_RELEASE"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20operation%20%3E%20(member)%204">Link to this property</a>
+
+"PREVIEW"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20operation%20%3E%20(member)%205">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20operation">Link to this property</a>
+
+Deprecatedcompleted\_timestamp: optional string
+
+Use <code>completed_at</code> instead.
+
+Deprecated, use <code>completed_at</code> instead. End of life: November 1, 2026.
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20completed_timestamp">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: optional object {folder, requested\_by }
+
+Additional properties for the action.
+
+</summary>
+
+folder: optional string
+
+Target folder for move operations.
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20properties%20%3E%20(property)%20folder">Link to this property</a>
+
+requested\_by: optional string
+
+User who requested the action.
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20properties%20%3E%20(property)%20requested_by">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20properties">Link to this property</a>
+
+status: optional string
+
+Status of the action.
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log%20%3E%20(items)%20%3E%20(property)%20status">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20action_log">Link to this property</a>
+
+client\_recipients: array of string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20client_recipients">Link to this property</a>
+
+detection\_reasons: array of string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20detection_reasons">Link to this property</a>
+
+is\_phish\_submission: boolean
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20is_phish_submission">Link to this property</a>
+
+is\_quarantined: boolean
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20is_quarantined">Link to this property</a>
+
+postfix\_id: string
+
+The identifier of the message.
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20postfix_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+properties: object {allowlisted\_pattern, allowlisted\_pattern\_type, blocklisted\_message, 2 more }
+
+Message processing properties.
+
+</summary>
+
+allowlisted\_pattern: optional string
+
+Pattern that allowlisted this message.
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20allowlisted_pattern">Link to this property</a>
+
+<details>
+
+<summary>
+
+allowlisted\_pattern\_type: optional "quarantine\_release"or "acceptable\_sender"or "allowed\_sender"or 5 more
+
+Type of allowlist pattern.
+
+</summary>
+
+One of the following:
+
+"quarantine\_release"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20allowlisted_pattern_type%20%3E%20(member)%200">Link to this property</a>
+
+"acceptable\_sender"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20allowlisted_pattern_type%20%3E%20(member)%201">Link to this property</a>
+
+"allowed\_sender"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20allowlisted_pattern_type%20%3E%20(member)%202">Link to this property</a>
+
+"allowed\_recipient"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20allowlisted_pattern_type%20%3E%20(member)%203">Link to this property</a>
+
+"domain\_similarity"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20allowlisted_pattern_type%20%3E%20(member)%204">Link to this property</a>
+
+"domain\_recency"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20allowlisted_pattern_type%20%3E%20(member)%205">Link to this property</a>
+
+"managed\_acceptable\_sender"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20allowlisted_pattern_type%20%3E%20(member)%206">Link to this property</a>
+
+"outbound\_ndr"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20allowlisted_pattern_type%20%3E%20(member)%207">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20allowlisted_pattern_type">Link to this property</a>
+
+blocklisted\_message: optional boolean
+
+Whether message was blocklisted.
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20blocklisted_message">Link to this property</a>
+
+blocklisted\_pattern: optional string
+
+Pattern that blocklisted this message.
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20blocklisted_pattern">Link to this property</a>
+
+<details>
+
+<summary>
+
+whitelisted\_pattern\_type: optional "quarantine\_release"or "acceptable\_sender"or "allowed\_sender"or 5 more
+
+Legacy field for allowlist pattern type.
+
+</summary>
+
+One of the following:
+
+"quarantine\_release"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20whitelisted_pattern_type%20%3E%20(member)%200">Link to this property</a>
+
+"acceptable\_sender"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20whitelisted_pattern_type%20%3E%20(member)%201">Link to this property</a>
+
+"allowed\_sender"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20whitelisted_pattern_type%20%3E%20(member)%202">Link to this property</a>
+
+"allowed\_recipient"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20whitelisted_pattern_type%20%3E%20(member)%203">Link to this property</a>
+
+"domain\_similarity"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20whitelisted_pattern_type%20%3E%20(member)%204">Link to this property</a>
+
+"domain\_recency"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20whitelisted_pattern_type%20%3E%20(member)%205">Link to this property</a>
+
+"managed\_acceptable\_sender"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20whitelisted_pattern_type%20%3E%20(member)%206">Link to this property</a>
+
+"outbound\_ndr"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20whitelisted_pattern_type%20%3E%20(member)%207">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties%20%3E%20(property)%20whitelisted_pattern_type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20properties">Link to this property</a>
+
+Deprecatedts: string
+
+Use <code>scanned_at</code> instead.
+
+Deprecated, use <code>scanned_at</code> instead. End of life: November 1, 2026.
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20ts">Link to this property</a>
+
+alert\_id: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20alert_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+delivery\_mode: optional "DIRECT"or "BCC"or "JOURNAL"or 8 more
+
+</summary>
+
+One of the following:
+
+"DIRECT"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_mode%20%3E%20(member)%200">Link to this property</a>
+
+"BCC"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_mode%20%3E%20(member)%201">Link to this property</a>
+
+"JOURNAL"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_mode%20%3E%20(member)%202">Link to this property</a>
+
+"REVIEW\_SUBMISSION"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_mode%20%3E%20(member)%203">Link to this property</a>
+
+"DMARC\_UNVERIFIED"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_mode%20%3E%20(member)%204">Link to this property</a>
+
+"DMARC\_FAILURE\_REPORT"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_mode%20%3E%20(member)%205">Link to this property</a>
+
+"DMARC\_AGGREGATE\_REPORT"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_mode%20%3E%20(member)%206">Link to this property</a>
+
+"THREAT\_INTEL\_SUBMISSION"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_mode%20%3E%20(member)%207">Link to this property</a>
+
+"SIMULATION\_SUBMISSION"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_mode%20%3E%20(member)%208">Link to this property</a>
+
+"API"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_mode%20%3E%20(member)%209">Link to this property</a>
+
+"RETRO\_SCAN"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_mode%20%3E%20(member)%2010">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_mode">Link to this property</a>
+
+<details>
+
+<summary>
+
+delivery\_status: optional array of "delivered"or "moved"or "quarantined"or 5 more
+
+</summary>
+
+One of the following:
+
+"delivered"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_status%20%3E%20(items)%20%3E%20(member)%200">Link to this property</a>
+
+"moved"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_status%20%3E%20(items)%20%3E%20(member)%201">Link to this property</a>
+
+"quarantined"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_status%20%3E%20(items)%20%3E%20(member)%202">Link to this property</a>
+
+"rejected"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_status%20%3E%20(items)%20%3E%20(member)%203">Link to this property</a>
+
+"deferred"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_status%20%3E%20(items)%20%3E%20(member)%204">Link to this property</a>
+
+"bounced"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_status%20%3E%20(items)%20%3E%20(member)%205">Link to this property</a>
+
+"queued"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_status%20%3E%20(items)%20%3E%20(member)%206">Link to this property</a>
+
+"move\_failed"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_status%20%3E%20(items)%20%3E%20(member)%207">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20delivery_status">Link to this property</a>
+
+edf\_hash: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20edf_hash">Link to this property</a>
+
+envelope\_from: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20envelope_from">Link to this property</a>
+
+envelope\_to: optional array of string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20envelope_to">Link to this property</a>
+
+<details>
+
+<summary>
+
+final\_disposition: optional "MALICIOUS"or "MALICIOUS-BEC"or "SUSPICIOUS"or 7 more
+
+The verdict Email Security assigns to a message.
+
+</summary>
+
+One of the following:
+
+"MALICIOUS"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20final_disposition%20%3E%20(member)%200">Link to this property</a>
+
+"MALICIOUS-BEC"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20final_disposition%20%3E%20(member)%201">Link to this property</a>
+
+"SUSPICIOUS"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20final_disposition%20%3E%20(member)%202">Link to this property</a>
+
+"SPOOF"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20final_disposition%20%3E%20(member)%203">Link to this property</a>
+
+"SPAM"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20final_disposition%20%3E%20(member)%204">Link to this property</a>
+
+"BULK"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20final_disposition%20%3E%20(member)%205">Link to this property</a>
+
+"ENCRYPTED"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20final_disposition%20%3E%20(member)%206">Link to this property</a>
+
+"EXTERNAL"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20final_disposition%20%3E%20(member)%207">Link to this property</a>
+
+"UNKNOWN"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20final_disposition%20%3E%20(member)%208">Link to this property</a>
+
+"NONE"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20final_disposition%20%3E%20(member)%209">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20final_disposition">Link to this property</a>
+
+<details>
+
+<summary>
+
+Deprecatedfindings: optional array of object {attachment, detail, detection, 6 more }
+
+Use the <code>findings</code> field from GET /investigate/{investigate\_id}/detections instead.
+
+Deprecated, use the <code>findings</code> field from <code>GET /investigate/{investigate_id}/detections</code> instead. End of life: November 1, 2026. Detection findings for this message.
+
+</summary>
+
+attachment: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20attachment">Link to this property</a>
+
+detail: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20detail">Link to this property</a>
+
+<details>
+
+<summary>
+
+detection: optional "MALICIOUS"or "MALICIOUS-BEC"or "SUSPICIOUS"or 7 more
+
+The verdict Email Security assigns to a message.
+
+</summary>
+
+One of the following:
+
+"MALICIOUS"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20detection%20%3E%20(member)%200">Link to this property</a>
+
+"MALICIOUS-BEC"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20detection%20%3E%20(member)%201">Link to this property</a>
+
+"SUSPICIOUS"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20detection%20%3E%20(member)%202">Link to this property</a>
+
+"SPOOF"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20detection%20%3E%20(member)%203">Link to this property</a>
+
+"SPAM"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20detection%20%3E%20(member)%204">Link to this property</a>
+
+"BULK"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20detection%20%3E%20(member)%205">Link to this property</a>
+
+"ENCRYPTED"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20detection%20%3E%20(member)%206">Link to this property</a>
+
+"EXTERNAL"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20detection%20%3E%20(member)%207">Link to this property</a>
+
+"UNKNOWN"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20detection%20%3E%20(member)%208">Link to this property</a>
+
+"NONE"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20detection%20%3E%20(member)%209">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20detection">Link to this property</a>
+
+field: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20field">Link to this property</a>
+
+name: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20name">Link to this property</a>
+
+portion: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20portion">Link to this property</a>
+
+reason: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20reason">Link to this property</a>
+
+score: optional number
+
+formatdouble
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20score">Link to this property</a>
+
+value: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings%20%3E%20(items)%20%3E%20(property)%20value">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20findings">Link to this property</a>
+
+from: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20from">Link to this property</a>
+
+from\_name: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20from_name">Link to this property</a>
+
+htmltext\_structure\_hash: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20htmltext_structure_hash">Link to this property</a>
+
+message\_id: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20message_id">Link to this property</a>
+
+<details>
+
+<summary>
+
+post\_delivery\_operations: optional array of "PREVIEW"or "QUARANTINE\_RELEASE"or "SUBMISSION"or "MOVE"
+
+Post-delivery operations performed on this message.
+
+</summary>
+
+One of the following:
+
+"PREVIEW"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20post_delivery_operations%20%3E%20(items)%20%3E%20(member)%200">Link to this property</a>
+
+"QUARANTINE\_RELEASE"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20post_delivery_operations%20%3E%20(items)%20%3E%20(member)%201">Link to this property</a>
+
+"SUBMISSION"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20post_delivery_operations%20%3E%20(items)%20%3E%20(member)%202">Link to this property</a>
+
+"MOVE"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20post_delivery_operations%20%3E%20(items)%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20post_delivery_operations">Link to this property</a>
+
+postfix\_id\_outbound: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20postfix_id_outbound">Link to this property</a>
+
+replyto: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20replyto">Link to this property</a>
+
+scanned\_at: optional string
+
+When the message was scanned (UTC).
+
+formatdate-time
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20scanned_at">Link to this property</a>
+
+sent\_at: optional string
+
+When the message was sent (UTC).
+
+formatdate-time
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20sent_at">Link to this property</a>
+
+sent\_date: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20sent_date">Link to this property</a>
+
+smtp\_helo\_server\_ip: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20smtp_helo_server_ip">Link to this property</a>
+
+smtp\_previous\_hop\_ip: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20smtp_previous_hop_ip">Link to this property</a>
+
+subject: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20subject">Link to this property</a>
+
+threat\_categories: optional array of string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20threat_categories">Link to this property</a>
+
+to: optional array of string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20to">Link to this property</a>
+
+to\_name: optional array of string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20to_name">Link to this property</a>
+
+<details>
+
+<summary>
+
+validation: optional object {comment, dkim, dmarc, spf }
+
+</summary>
+
+comment: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20comment">Link to this property</a>
+
+<details>
+
+<summary>
+
+dkim: optional "pass"or "neutral"or "fail"or 2 more
+
+</summary>
+
+One of the following:
+
+"pass"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20dkim%20%3E%20(member)%200">Link to this property</a>
+
+"neutral"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20dkim%20%3E%20(member)%201">Link to this property</a>
+
+"fail"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20dkim%20%3E%20(member)%202">Link to this property</a>
+
+"error"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20dkim%20%3E%20(member)%203">Link to this property</a>
+
+"none"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20dkim%20%3E%20(member)%204">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20dkim">Link to this property</a>
+
+<details>
+
+<summary>
+
+dmarc: optional "pass"or "neutral"or "fail"or 2 more
+
+</summary>
+
+One of the following:
+
+"pass"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20dmarc%20%3E%20(member)%200">Link to this property</a>
+
+"neutral"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20dmarc%20%3E%20(member)%201">Link to this property</a>
+
+"fail"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20dmarc%20%3E%20(member)%202">Link to this property</a>
+
+"error"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20dmarc%20%3E%20(member)%203">Link to this property</a>
+
+"none"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20dmarc%20%3E%20(member)%204">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20dmarc">Link to this property</a>
+
+<details>
+
+<summary>
+
+spf: optional "pass"or "neutral"or "fail"or 2 more
+
+</summary>
+
+One of the following:
+
+"pass"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20spf%20%3E%20(member)%200">Link to this property</a>
+
+"neutral"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20spf%20%3E%20(member)%201">Link to this property</a>
+
+"fail"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20spf%20%3E%20(member)%202">Link to this property</a>
+
+"error"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20spf%20%3E%20(member)%203">Link to this property</a>
+
+"none"
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20spf%20%3E%20(member)%204">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation%20%3E%20(property)%20spf">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20validation">Link to this property</a>
+
+x\_originating\_ip: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message%20%3E%20(property)%20x_originating_ip">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20message">Link to this property</a>
+
+processed\_at: optional string
+
+formatdate-time
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20processed_at">Link to this property</a>
+
+retry\_after: optional string
+
+When to retry the action if it failed.
+
+formatdate-time
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20retry_after">Link to this property</a>
+
+status\_message: optional string
+
+<a href="#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)%20%3E%20(property)%20status_message">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20email_security.investigate.bulk.messages%20%3E%20(model)%20message_list_response%20%3E%20(schema)>)

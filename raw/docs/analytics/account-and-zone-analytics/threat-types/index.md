@@ -1,0 +1,81 @@
+---
+description: Review threat categories blocked by Cloudflare.
+title: Threat types
+image: https://developers.cloudflare.com/analytics/account-and-zone-analytics/threat-types/og.png?v=af3e3875aae6d705
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Threat types
+
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/threat-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Cloudflare classifies the threats that it blocks or challenges. To help you understand more about your site’s traffic, the 'Type of Threats Mitigated' metric on the analytics page measures threats blocked or challenged by the following categories:
+
+## Bad browser
+
+The source of the request was not legitimate or the request itself was malicious. Users would receive a  [1010 error page](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/) in their browser.
+
+Cloudflare's [Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/) looks for common HTTP headers abused most commonly by spammers and denies them access to your page. It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by bots, crawlers, or visitors).
+
+## Blocked hotlink
+
+[Hotlink Protection](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/) ensures that other sites cannot use your bandwidth by building pages that link to images hosted on your origin server. This feature can be turned on and off by Cloudflare's customers.
+
+## Human challenged
+
+Visitors were presented with an interactive challenge page and failed to pass.
+
+*Note: An interactive challenge page is a difficult to read word or set of numbers that only a human can translate. If entered incorrectly or not answered in a timely fashion, the request is blocked.*
+
+## Browser challenge
+
+A bot gave an invalid answer to the JavaScript challenge (in most cases this will not happen, bots typically do not respond to the challenge at all, so "failed" JavaScript challenges would not get logged).
+
+*Note: During a JavaScript challenge you will be shown an interstitial page for about five seconds while Cloudflare performs a series of mathematical challenges to make sure it is a legitimate human visitor.*
+
+## Bad IP
+
+A request that came from an IP address that is not trusted by Cloudflare based on the threat score.
+
+Previously, the threat score was a score from `0` (zero risk) to `100` (high risk) classifying the IP reputation of a visitor. Currently, the threat score is always `0` (zero).
+
+## Country block
+
+Requests from countries that were blocked based on the [user configuration](https://developers.cloudflare.com/waf/tools/ip-access-rules/) set in the WAF.
+
+## IP block (user)
+
+Requests from specific IP addresses that were blocked based on the [user configuration](https://developers.cloudflare.com/waf/tools/ip-access-rules/) set in the WAF.
+
+## IP range block (/16)
+
+A /16 IP range that was blocked based on the [user configuration](https://developers.cloudflare.com/waf/tools/ip-access-rules/) set in the WAF.
+
+## IP range block (/24)
+
+A /24 IP range that was blocked based on the [user configuration](https://developers.cloudflare.com/waf/tools/ip-access-rules/) set in the WAF.
+
+## New Challenge (user)
+
+[Challenge](https://developers.cloudflare.com/cloudflare-challenges/) based on user configurations set for visitor's IP in either WAF managed rules or custom rules, configured in **Security** > **WAF**.
+
+## Challenge error
+
+Requests made by a bot that failed to pass the challenge.
+
+*Note: An interactive challenge page is a difficult to read word or set of numbers that only a human can translate. If entered incorrectly or not answered in a timely fashion, the request is blocked.*
+
+## Bot Request
+
+Request that came from a bot.
+
+## Unclassified
+
+Unclassified threats comprises a number of automatic blocks that are not related to the Browser Integrity Challenge (Bad Browser). These threats usually relate to Hotlink Protection, and other actions that happen on Cloudflare's global network based on the composition of the request (and not its content).
+
+Unclassified means a number of conditions under which we group common threats related to Hotlink Protection as well as specific requests that are blocked at Cloudflare's global network before reaching your servers.

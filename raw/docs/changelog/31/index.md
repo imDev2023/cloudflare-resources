@@ -1,0 +1,1268 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Jan 15, 2026
+
+[<h2>Support for CrowdStrike device scores in User Risk Scoring</h2>](https://developers.cloudflare.com/changelog/post/2026-1-15-crowdstrike-score/)
+
+[Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/)
+
+Cloudflare One has expanded its \[User Risk Scoring] (/cloudflare-one/insights/risk-score/) capabilities by introducing two new behaviors for organizations using the \[CrowdStrike integration] (/cloudflare-one/integrations/service-providers/crowdstrike/).
+
+Administrators can now automatically escalate the risk score of a user if their device matches specific CrowdStrike Zero Trust Assessment (ZTA) score ranges. This allows for more granular security policies that respond dynamically to the health of the endpoint.
+
+New risk behaviors The following risk scoring behaviors are now available:
+
+- CrowdStrike low device score: Automatically increases a user's risk score when the connected device reports a "Low" score from CrowdStrike.
+- CrowdStrike medium device score: Automatically increases a user's risk score when the connected device reports a "Medium" score from CrowdStrike.
+
+These scores are derived from \[CrowdStrike device posture attributes] (/cloudflare-one/integrations/service-providers/crowdstrike/#device-posture-attributes), including OS signals and sensor configurations.
+
+Jan 15, 2026
+
+[<h2>Verify WARP Connector connectivity with a simple ping</h2>](https://developers.cloudflare.com/changelog/post/2026-01-15-warp-connector-ping-support/)
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+
+We have made it easier to validate connectivity when deploying [WARP Connector](https://developers.cloudflare.com/mesh/) as part of your [software-defined private network](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks).
+
+You can now `ping` the WARP Connector host directly on its LAN IP address immediately after installation. This provides a fast, familiar way to confirm that the Connector is online and reachable within your network before testing access to downstream services.
+
+Starting with [version 2025.10.186.0](https://developers.cloudflare.com/changelog/2026-01-13-warp-linux-ga/), WARP Connector responds to traffic addressed to its own LAN IP, giving you immediate visibility into Connector reachability.
+
+Learn more about deploying [WARP Connector](https://developers.cloudflare.com/mesh/) and building private network connectivity with [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/).
+
+Jan 15, 2026
+
+[<h2>WAF Release - 2026-01-15</h2>](https://developers.cloudflare.com/changelog/post/2026-01-15-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week's release focuses on improvements to existing detections to enhance coverage.
+
+**Key Findings**
+
+- Existing rule enhancements have been deployed to improve detection resilience against SQL Injection.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...ad7dad3e | N/A | SQLi - String Function - Beta | Log | Block | This rule is merged into the original rule "SQLi - String Function" (ID: ...d32b798c) |
+| Cloudflare Managed Ruleset | ...9e553ad3
+
+N/A | SQLi - Sub Query - Beta | Log | Block  
+ | This rule is merged into the original rule "SQLi - Sub Query" (ID: ...743e66b1)
+
+ |
+
+Jan 15, 2026
+
+[<h2>Launching FLUX.2 \[klein\] 4B on Workers AI</h2>](https://developers.cloudflare.com/changelog/post/2026-01-15-flux-2-klein-4b-workers-ai/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+We've partnered with Black Forest Labs (BFL) again to bring their optimized FLUX.2 \[klein] 4B model to Workers AI! This distilled model offers faster generation and cost-effective pricing, while maintaining great output quality. With a fixed 4-step inference process, Klein 4B is ideal for rapid prototyping and real-time applications where speed matters.
+
+Read the [BFL blog ↗︎](https://bfl.ai/blog) to learn more about the model itself, or try it out yourself on our [multi modal playground ↗︎](https://multi-modal.ai.cloudflare.com/).
+
+Pricing documentation is available on the [model page](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-4b/) or [pricing page](https://developers.cloudflare.com/workers-ai/platform/pricing/).
+
+#### Workers AI Platform specifics
+
+The model hosted on Workers AI is optimized for speed with a **fixed 4-step inference process** and supports up to 4 image inputs. Since this is a distilled model, the `steps` parameter is fixed at 4 and cannot be adjusted. Like FLUX.2 \[dev], this image model uses multipart form data inputs, even if you just have a prompt.
+
+With the REST API, the multipart form data input looks like this:
+
+```bash
+curl --request POST \
+  --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT}/ai/run/@cf/black-forest-labs/flux-2-klein-4b' \
+  --header 'Authorization: Bearer {TOKEN}' \
+  --header 'Content-Type: multipart/form-data' \
+  --form 'prompt=a sunset at the alps' \
+  --form width=1024 \
+  --form height=1024
+```
+
+With the Workers AI binding, you can use it as such:
+
+```javascript
+const form = new FormData();
+form.append("prompt", "a sunset with a dog");
+form.append("width", "1024");
+form.append("height", "1024");
+
+// FormData doesn't expose its serialized body or boundary. Passing it to a
+// Request (or Response) constructor serializes it and generates the Content-Type
+// header with the boundary, which is required for the server to parse the multipart fields.
+const formResponse = new Response(form);
+const formStream = formResponse.body;
+const formContentType = formResponse.headers.get('content-type');
+
+const resp = await env.AI.run("@cf/black-forest-labs/flux-2-klein-4b", {
+	multipart: {
+		body: formStream,
+		contentType: formContentType,
+	},
+});
+```
+
+The parameters you can send to the model are detailed here:
+
+<details>
+
+<summary>JSON Schema for Model</summary>
+
+
+
+**Required Parameters**
+
+- <code>prompt</code> (string) - Text description of the image to generate
+
+**Optional Parameters**
+
+- <code>input_image_0</code> (string) - Binary image
+- <code>input_image_1</code> (string) - Binary image
+- <code>input_image_2</code> (string) - Binary image
+- <code>input_image_3</code> (string) - Binary image
+- <code>guidance</code> (float) - Guidance scale for generation. Higher values follow the prompt more closely
+- <code>width</code> (integer) - Width of the image, default <code>1024</code> Range: 256-1920
+- <code>height</code> (integer) - Height of the image, default <code>768</code> Range: 256-1920
+- <code>seed</code> (integer) - Seed for reproducibility
+
+**Note:** Since this is a distilled model, the <code>steps</code> parameter is fixed at 4 and cannot be adjusted.
+
+</details>
+
+````plaintext
+## Multi-Reference Images
+
+The FLUX.2 klein-4b model supports generating images based on reference images, just like FLUX.2 [dev]. You can use this feature to apply the style of one image to another, add a new character to an image, or iterate on past generated images. You would use it with the same multipart form data structure, with the input images in binary. The model supports up to 4 input images.
+
+For the prompt, you can reference the images based on the index, like `take the subject of image 1 and style it like image 0` or even use natural language like `place the dog beside the woman`.
+
+Note: you have to name the input parameter as `input_image_0`, `input_image_1`, `input_image_2`, `input_image_3` for it to work correctly. All input images must be smaller than 512x512.
+
+```bash
+curl --request POST \
+  --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT}/ai/run/@cf/black-forest-labs/flux-2-klein-4b' \
+  --header 'Authorization: Bearer {TOKEN}' \
+  --header 'Content-Type: multipart/form-data' \
+  --form 'prompt=take the subject of image 1 and style it like image 0' \
+  --form input_image_0=@/Users/johndoe/Desktop/icedoutkeanu.png \
+  --form input_image_1=@/Users/johndoe/Desktop/me.png \
+  --form width=1024 \
+  --form height=1024
+````
+
+Through Workers AI Binding:
+
+```javascript
+//helper function to convert ReadableStream to Blob
+async function streamToBlob(stream: ReadableStream, contentType: string): Promise<Blob> {
+  const reader = stream.getReader();
+  const chunks = [];
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+  }
+
+  return new Blob(chunks, { type: contentType });
+}
+
+const image0 = await fetch("http://image-url");
+const image1 = await fetch("http://image-url");
+const form = new FormData();
+
+const image_blob0 = await streamToBlob(image0.body, "image/png");
+const image_blob1 = await streamToBlob(image1.body, "image/png");
+form.append('input_image_0', image_blob0)
+form.append('input_image_1', image_blob1)
+form.append('prompt', 'take the subject of image 1 and style it like image 0')
+
+// FormData doesn't expose its serialized body or boundary. Passing it to a
+// Request (or Response) constructor serializes it and generates the Content-Type
+// header with the boundary, which is required for the server to parse the multipart fields.
+const formResponse = new Response(form);
+const formStream = formResponse.body;
+const formContentType = formResponse.headers.get('content-type');
+
+const resp = await env.AI.run("@cf/black-forest-labs/flux-2-klein-4b", {
+    multipart: {
+        body: formStream,
+        contentType: formContentType
+    }
+})
+```
+
+Jan 14, 2026
+
+[<h2>URL Scanner now supports PDF report downloads</h2>](https://developers.cloudflare.com/changelog/post/2026-01-14-Download-URL-Scanner-Report-PDF/)
+
+[Security Center](https://developers.cloudflare.com/security-center/)
+
+We have expanded the reporting capabilities of the Cloudflare URL Scanner. In addition to existing JSON and HAR exports, users can now generate and download a **PDF report** directly from the Cloudflare dashboard. This update streamlines how security analysts can share findings with stakeholders who may not have access to the Cloudflare dashboard or specialized tools to parse JSON and HAR files.
+
+**Key Benefits:**
+
+- Consolidate scan results, including screenshots, security signatures, and metadata, into a single, portable document
+- Easily share professional-grade summaries with non-technical stakeholders or legal teams for faster incident response
+
+**What’s new:**
+
+- **PDF Export Button:** A new download option is available in the URL Scanner results page within the Cloudflare dashboard
+- **Unified Documentation:** Access all scan details—from high-level summaries to specific security flags—in one offline-friendly file
+
+To get started with the URL Scanner and explore our reporting capabilities, visit the [URL Scanner API documentation ↗︎](https://developers.cloudflare.com/api/resources/url_scanner/).
+
+---
+
+Jan 13, 2026
+
+[<h2>WARP client for Windows (version 2025.10.186.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-01-13-warp-windows-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Windows WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release contains minor fixes, improvements, and new features. New features include the ability to manage WARP client connectivity for all devices in your fleet using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect), and a new WARP client device posture check for [Antivirus](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/antivirus/).
+
+**Changes and improvements**
+
+- Added a new feature to manage WARP client connectivity for all devices using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect). This feature allows administrators to send a global signal from an on-premises HTTPS endpoint that force disconnects or reconnects all WARP clients in an account based on configuration set on the endpoint.
+- Fixed an issue that caused occasional audio degradation and increased CPU usage on Windows by optimizing route configurations for large [domain-based split tunnel rules](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#domain-based-split-tunnels).
+- The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
+- Fixed an issue where sending large messages to the daemon by Inter-Process Communication (IPC) could cause the daemon to fail and result in service interruptions.
+- Added support for a new WARP client device posture check for [Antivirus](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/antivirus/). The check confirms the presence of an antivirus program on a Windows device with the option to check if the antivirus is up to date.
+
+**Known issues**
+
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
+- DNS resolution may be broken when the following conditions are all true:
+  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
+
+  To work around this issue, reconnect the WARP client by toggling off and back on.
+
+Jan 13, 2026
+
+[<h2>WARP client for macOS (version 2025.10.186.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-01-13-warp-macos-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the macOS WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release contains minor fixes, improvements, and new features, including the ability to manage WARP client connectivity for all devices in your fleet using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect).
+
+**Changes and improvements**
+
+- The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
+- Added a new feature to manage WARP client connectivity for all devices using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect). This feature allows administrators to send a global signal from an on-premises HTTPS endpoint that force disconnects or reconnects all WARP clients in an account based on configuration set on the endpoint.
+
+Jan 13, 2026
+
+[<h2>WARP client for Linux (version 2025.10.186.0)</h2>](https://developers.cloudflare.com/changelog/post/2026-01-13-warp-linux-ga/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new GA release for the Linux WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release contains minor fixes, improvements, and new features, including the ability to manage WARP client connectivity for all devices in your fleet using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect).
+
+WARP client version 2025.8.779.0 introduced an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025. Instructions to make this update are available at [pkg.cloudflareclient.com](https://pkg.cloudflareclient.com).
+
+**Changes and improvements**
+
+- The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
+- Linux [disk encryption posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/disk-encryption/) now supports non-filesystem encryption types like `dm-crypt`.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
+- Fixed an issue where the GUI becomes unresponsive when the **Re-Authenticate in browser** button is clicked.
+- Added a new feature to manage WARP client connectivity for all devices using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect). This feature allows administrators to send a global signal from an on-premises HTTPS endpoint that force disconnects or reconnects all WARP clients in an account based on configuration set on the endpoint.
+
+Jan 13, 2026
+
+[<h2>AI Crawl Control Read Only role now available</h2>](https://developers.cloudflare.com/changelog/post/2026-01-13-ai-crawl-control-read-only-role/)
+
+[AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/)
+
+Account administrators can now assign the **AI Crawl Control Read Only** role to provide read-only access to AI Crawl Control at the domain level.
+
+Users with this role can view the **Overview**, **Crawlers**, **Metrics**, **Robots.txt**, and **Settings** tabs but cannot modify crawler actions or settings.
+
+This role is specific for AI Crawl Control. You still require correct permissions to access other areas / features of the dashboard.
+
+To assign, go to **Manage Account** > **Members** and add a policy with the **AI Crawl Control Read Only** role scoped to the desired domain.
+
+Jan 13, 2026
+
+[<h2>\`wrangler types\` now generates types for all environments</h2>](https://developers.cloudflare.com/changelog/post/2026-01-13-wrangler-types-multi-environment/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+The `wrangler types` command now generates TypeScript types for bindings from **all environments** defined in your Wrangler configuration file by default.
+
+Previously, `wrangler types` only generated types for bindings in the top-level configuration (or a single environment when using the `--env` flag). This meant that if you had environment-specific bindings — for example, a KV namespace only in production or an R2 bucket only in staging — those bindings would be missing from your generated types, causing TypeScript errors when accessing them.
+
+Now, running `wrangler types` collects bindings from all environments and includes them in the generated `Env` type. This ensures your types are complete regardless of which environment you deploy to.
+
+#### Generating types for a specific environment
+
+If you want the previous behavior of generating types for only a specific environment, you can use the `--env` flag:
+
+```sh
+wrangler types --env production
+```
+
+Learn more about [generating types for your Worker](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) in the Wrangler documentation.
+
+Jan 12, 2026
+
+[<h2>Enhanced visibility for post-delivery actions</h2>](https://developers.cloudflare.com/changelog/post/2026-01-12-enhanced-visibility-post-delivery-actions/)
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
+
+The Action Log now provides enriched data for post-delivery actions to improve troubleshooting. In addition to success confirmations, failed actions now display the targeted Destination folder and a specific failure reason within the Activity field.
+
+Note
+
+Error messages will vary depending on whether you are using Google Workspace or Microsoft 365.
+
+![failure-log-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2348,height=1692,format=webp/_astro/enhanced-visibility-post-delivery-actions.BNiyPtJU.png)
+
+This update allows you to see the full lifecycle of a failed action. For instance, if an administrator tries to move an email that has already been deleted or moved manually, the log will now show the multiple retry attempts and the specific destination error.
+
+This applies to all Email Security packages:
+
+- **Enterprise**
+- **Enterprise + PhishGuard**
+
+Jan 12, 2026
+
+[<h2>Metro code field now available in Rules</h2>](https://developers.cloudflare.com/changelog/post/2026-01-12-dma-metro-code-field/)
+
+[Rules](https://developers.cloudflare.com/rules/)
+
+The `ip.src.metro_code` field in the Ruleset Engine is now populated with DMA (Designated Market Area) data.
+
+You can use this field to build rules that target traffic based on geographic market areas, enabling more granular location-based policies for your applications.
+
+#### Field details
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `ip.src.metro_code` | String \| null | The metro code (DMA) of the incoming request's IP address. Returns the designated market area code for the client's location. |
+
+Example filter expression:
+
+```plaintext
+ip.src.metro_code eq "501"
+```
+
+For more information, refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.metro_code/).
+
+Jan 12, 2026
+
+[<h2>Cloudflare Threat Events now support STIX2 format</h2>](https://developers.cloudflare.com/changelog/post/2026-01-12-STIX2-available-for-threat-events-api/)
+
+[Security Center](https://developers.cloudflare.com/security-center/)
+
+We are excited to announce that **Cloudflare Threat Events** now supports the **STIX2 (Structured Threat Information Expression)** format. This was a highly requested feature designed to streamline how security teams consume and act upon our threat intelligence.
+
+By adopting this industry-standard format, you can now integrate Cloudflare's threat events data more effectively into your existing security ecosystem.
+
+#### Key benefits
+
+- Eliminate the need for custom parsers, as STIX2 allows for "out of the box" ingestion into major **Threat Intel Platforms (TIPs)**, **SIEMs**, and **SOAR** tools.
+- STIX2 provides a standardized way to represent relationships between indicators, sightings, and threat actors, giving your analysts a clearer picture of the threat landscape.
+
+For technical details on how to query events using this format, please refer to our [Threat Events API Documentation ↗︎](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list/).
+
+---
+
+Jan 12, 2026
+
+[<h2>WAF Release - 2026-01-12</h2>](https://developers.cloudflare.com/changelog/post/2026-01-12-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week's release focuses on improvements to existing detections to enhance coverage.
+
+**Key Findings**
+
+- Existing rule enhancements have been deployed to improve detection resilience against SQL Injection.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...48a1841a | N/A | SQLi - AND/OR MAKE\_SET/ELT - Beta | Log | Block | This rule is merged into the original rule "SQLi - AND/OR MAKE\_SET/ELT" (ID: ...252d3934) |
+| Cloudflare Managed Ruleset | ...9e553ad3
+
+N/A | SQLi - Benchmark Function - Beta | Log | Block  
+ | This rule is merged into the original rule "SQLi - Benchmark Function" (ID: ...2ebc44ad)
+
+ |
+
+Jan 12, 2026
+
+[<h2>Validate your generated types with \`wrangler types --check\`</h2>](https://developers.cloudflare.com/changelog/post/2026-01-11-wrangler-types-check/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Wrangler now supports a `--check` flag for the `wrangler types` command. This flag validates that your generated types are up to date without writing any changes to disk.
+
+This is useful in CI/CD pipelines where you want to ensure that developers have regenerated their types after making changes to their Wrangler configuration. If the types are out of date, the command will exit with a non-zero status code.
+
+```sh
+npx wrangler types --check
+```
+
+If your types are up to date, the command will succeed silently. If they are out of date, you'll see an error message indicating which files need to be regenerated.
+
+For more information, see the [Wrangler types documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#types).
+
+Jan 9, 2026
+
+[<h2>Get notified when your Workers builds succeed or fail</h2>](https://developers.cloudflare.com/changelog/post/2025-12-11-builds-event-subscriptions/)
+
+[Workers](https://developers.cloudflare.com/workers/) [Queues](https://developers.cloudflare.com/queues/)
+
+You can now receive notifications when your Workers' builds start, succeed, fail, or get cancelled using [Event Subscriptions](https://developers.cloudflare.com/queues/event-subscriptions/).
+
+[Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) publishes events to a [Queue](https://developers.cloudflare.com/queues/) that your Worker can read messages from, and then send notifications wherever you need — Slack, Discord, email, or any webhook endpoint.
+
+You can deploy [this Worker ↗︎](https://github.com/cloudflare/templates/tree/main/workers-builds-notifications-template) to your own Cloudflare account to send build notifications to Slack:
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/workers-builds-notifications-template)
+
+The template includes:
+
+- Build status with Preview/Live URLs for successful deployments
+- Inline error messages for failed builds
+- Branch, commit hash, and author name
+
+![Slack notifications showing build events](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1700,height=1088,format=webp/_astro/builds-notifications-slack.rcRiU95L.png)
+
+For setup instructions, refer to the [template README ↗︎](https://github.com/cloudflare/templates/tree/main/workers-builds-notifications-template#readme) or the [Event Subscriptions documentation](https://developers.cloudflare.com/queues/event-subscriptions/manage-event-subscriptions/).
+
+Jan 9, 2026
+
+[<h2>Shell tab completions for Wrangler CLI</h2>](https://developers.cloudflare.com/changelog/post/2026-01-09-wrangler-tab-completion/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Wrangler now includes built-in shell tab completion support, making it faster and easier to navigate commands without memorizing every option. Press Tab as you type to autocomplete commands, subcommands, flags, and even option values like log levels.
+
+Tab completions are supported for Bash, Zsh, Fish, and PowerShell.
+
+#### Setup
+
+Generate the completion script for your shell and add it to your configuration file:
+
+```sh
+# Bash
+wrangler complete bash >> ~/.bashrc
+
+# Zsh
+wrangler complete zsh >> ~/.zshrc
+
+# Fish
+wrangler complete fish >> ~/.config/fish/config.fish
+
+# PowerShell
+wrangler complete powershell >> $PROFILE
+```
+
+After adding the script, restart your terminal or source your configuration file for the changes to take effect. Then you can simply press Tab to see available completions:
+
+```sh
+wrangler d<TAB>          # completes to 'deploy', 'dev', 'd1', etc.
+wrangler kv <TAB>        # shows subcommands: namespace, key, bulk
+```
+
+Tab completions are dynamically generated from Wrangler's command registry, so they stay up-to-date as new commands and options are added. This feature is powered by [`@bomb.sh/tab` ↗︎](https://github.com/bombshell-dev/tab/).
+
+See the [`wrangler complete` documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#complete) for more details.
+
+Jan 8, 2026
+
+[<h2>Cloudflare admin activity logs capture creation of DNS over HTTP (DoH) users</h2>](https://developers.cloudflare.com/changelog/post/2026-01-08-Access-audit-log-for-DoH-users/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+Cloudflare [admin activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/) now capture each time a [DNS over HTTP (DoH) user](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-https/) is created.
+
+These logs can be viewed from the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com/), pulled via the [Cloudflare API](https://developers.cloudflare.com/api/), and exported through [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
+
+Jan 7, 2026
+
+[<h2>Workers Analytics Engine SQL now supports filtering using HAVING and LIKE</h2>](https://developers.cloudflare.com/changelog/post/2026-01-07-analytics-engine-support-for-like-and-having/)
+
+[Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) [Workers](https://developers.cloudflare.com/workers/)
+
+You can now use the `HAVING` clause and `LIKE` pattern matching operators in [Workers Analytics Engine ↗︎](https://developers.cloudflare.com/analytics/analytics-engine/).
+
+Workers Analytics Engine allows you to ingest and store high-cardinality data at scale and query your data through a simple SQL API.
+
+#### Filtering using `HAVING`
+
+The `HAVING` clause complements the `WHERE` clause by enabling you to filter groups based on aggregate values. While `WHERE` filters rows before aggregation, `HAVING` filters groups after aggregation is complete.
+
+You can use `HAVING` to filter groups where the average exceeds a threshold:
+
+```sql
+SELECT
+    blob1 AS probe_name,
+    avg(double1) AS average_temp
+FROM temperature_readings
+GROUP BY probe_name
+HAVING average_temp > 10
+```
+
+You can also filter groups based on aggregates such as the number of items in the group:
+
+```sql
+SELECT
+    blob1 AS probe_name,
+    count() AS num_readings
+FROM temperature_readings
+GROUP BY probe_name
+HAVING num_readings > 100
+```
+
+#### Pattern matching using `LIKE`
+
+The new pattern matching operators enable you to search for strings that match specific patterns using wildcard characters:
+
+- `LIKE` - case-sensitive pattern matching
+- `NOT LIKE` - case-sensitive pattern exclusion
+- `ILIKE` - case-insensitive pattern matching
+- `NOT ILIKE` - case-insensitive pattern exclusion
+
+Pattern matching supports two wildcard characters: `%` (matches zero or more characters) and `_` (matches exactly one character).
+
+You can match strings starting with a prefix:
+
+```sql
+SELECT *
+FROM logs
+WHERE blob1 LIKE 'error%'
+```
+
+You can also match file extensions (case-insensitive):
+
+```sql
+SELECT *
+FROM requests
+WHERE blob2 ILIKE '%.jpg'
+```
+
+Another example is excluding strings containing specific text:
+
+```sql
+SELECT *
+FROM events
+WHERE blob3 NOT ILIKE '%debug%'
+```
+
+#### Ready to get started?
+
+Learn more about the [`HAVING` clause](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/#having-clause) or [pattern matching operators](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/operators/#pattern-matching-operators) in the Workers Analytics Engine SQL reference documentation.
+
+Jan 5, 2026
+
+[<h2>Custom container instance types now available for all users</h2>](https://developers.cloudflare.com/changelog/post/2026-01-05-custom-instance-types/)
+
+[Containers](https://developers.cloudflare.com/containers/)
+
+Custom instance types are now enabled for all [Cloudflare Containers](https://developers.cloudflare.com/containers) users. You can now specify specific vCPU, memory, and disk amounts, rather than being limited to pre-defined [instance types](https://developers.cloudflare.com/containers/platform/limits/#instance-types). Previously, only select Enterprise customers were able to customize their instance type.
+
+To use a custom instance type, specify the `instance_type` property as an object with `vcpu`, `memory_mib`, and `disk_mb` fields in your Wrangler configuration:
+
+```toml
+[[containers]]
+image = "./Dockerfile"
+instance_type = { vcpu = 2, memory_mib = 6144, disk_mb = 12000 }
+```
+
+Individual limits for custom instance types are based on the `standard-4` instance type (4 vCPU, 12 GiB memory, 20 GB disk). You must allocate at least 1 vCPU for custom instance types. For workloads requiring less than 1 vCPU, use the predefined instance types like `lite` or `basic`.
+
+See the [limits documentation](https://developers.cloudflare.com/containers/platform/limits/#custom-instance-types) for the full list of constraints on custom instance types. See the [getting started guide](https://developers.cloudflare.com/containers/get-started/) to deploy your first Container,
+
+Jan 1, 2026
+
+[<h2>Build microfrontend applications on Workers</h2>](https://developers.cloudflare.com/changelog/post/2026-01-01-microfrontends/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+You can now deploy microfrontends to Cloudflare, splitting a single application into smaller, independently deployable units that render as one cohesive application. This lets different teams using different frameworks develop, test, and deploy each microfrontend without coordinating releases.
+
+Microfrontends solve several challenges for large-scale applications:
+
+- **Independent deployments**: Teams deploy updates on their own schedule without redeploying the entire application
+- **Framework flexibility**: Build multi-framework applications (for example, Astro, Remix, and Next.js in one app)
+- **Gradual migration**: Migrate from a monolith to a distributed architecture incrementally
+
+Create a microfrontend project:
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://dash.cloudflare.com/?to=/:account/workers-and-pages/create?type=vmfe)
+
+This template automatically creates a router worker with pre-configured routing logic, and lets you configure [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) to Workers you have already deployed to your Cloudflare account. The router Worker analyzes incoming requests, matches them against configured routes, and forwards requests to the appropriate microfrontend via service bindings. The router automatically rewrites HTML, CSS, and headers to ensure assets load correctly from each microfrontend's mount path. The router includes advanced features like preloading for faster navigation between microfrontends, smooth page transitions using the View Transitions API, and automatic path rewriting for assets, redirects, and cookies.
+
+Each microfrontend can be a full-framework application, a static site with Workers Static Assets, or any other Worker-based application.
+
+Get started with the [microfrontends template ↗︎](https://dash.cloudflare.com/?to=/:account/workers-and-pages/create?type=vmfe), or read the [microfrontends documentation](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/) for implementation details.
+
+Dec 31, 2025
+
+[<h2>Breakout traffic visibility via NetFlow</h2>](https://developers.cloudflare.com/changelog/post/2025-12-31-connector-breakout-traffic-netflow/)
+
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+Magic WAN Connector now exports NetFlow data for breakout traffic to Magic Network Monitoring (MNM), providing visibility into traffic that bypasses Cloudflare's security filtering.
+
+This feature allows you to:
+
+- Monitor breakout traffic statistics in the Cloudflare dashboard.
+- View traffic patterns for applications configured to bypass Cloudflare.
+- Maintain visibility across all traffic passing through your Magic WAN Connector.
+
+For more information, refer to [NetFlow statistics](https://developers.cloudflare.com/cloudflare-wan/analytics/netflow-analytics/).
+
+Dec 22, 2025
+
+[<h2>Agents SDK v0.3.0, workers-ai-provider v3.0.0, and ai-gateway-provider v3.0.0 with AI SDK v6 support</h2>](https://developers.cloudflare.com/changelog/post/2025-12-22-agents-sdk-ai-sdk-v6/)
+
+[Agents](https://developers.cloudflare.com/agents/) [Workers](https://developers.cloudflare.com/workers/)
+
+We've shipped a new release for the [Agents SDK ↗︎](https://github.com/cloudflare/agents) v0.3.0 bringing full compatibility with [AI SDK v6 ↗︎](https://ai-sdk.dev/docs/introduction) and introducing the unified tool pattern, dynamic tool approval, and enhanced React hooks with improved tool handling.
+
+This release includes improved streaming and tool support, dynamic tool approval (for "human in the loop" systems), enhanced React hooks with `onToolCall` callback, improved error handling for streaming responses, and seamless migration from v5 patterns.
+
+This makes it ideal for building production AI chat interfaces with Cloudflare Workers AI models, agent workflows, human-in-the-loop systems, or any application requiring reliable tool execution and approval workflows.
+
+Additionally, we've updated **workers-ai-provider v3.0.0**, the official provider for Cloudflare Workers AI models, and **ai-gateway-provider v3.0.0**, the provider for Cloudflare AI Gateway, to be compatible with AI SDK v6.
+
+#### Agents SDK v0.3.0
+
+#### Unified Tool Pattern
+
+AI SDK v6 introduces a unified tool pattern where all tools are defined on the server using the `tool()` function. This replaces the previous client-side `AITool` pattern.
+
+#### Server-Side Tool Definition
+
+```ts
+import { tool } from "ai";
+import { z } from "zod";
+
+// Server: Define ALL tools on the server
+const tools = {
+	// Server-executed tool
+	getWeather: tool({
+		description: "Get weather for a city",
+		inputSchema: z.object({ city: z.string() }),
+		execute: async ({ city }) => fetchWeather(city)
+	}),
+
+	// Client-executed tool (no execute = client handles via onToolCall)
+	getLocation: tool({
+		description: "Get user location from browser",
+		inputSchema: z.object({})
+		// No execute function
+	}),
+
+	// Tool requiring approval (dynamic based on input)
+	processPayment: tool({
+		description: "Process a payment",
+		inputSchema: z.object({ amount: z.number() }),
+		needsApproval: async ({ amount }) => amount > 100,
+		execute: async ({ amount }) => charge(amount)
+	})
+};
+```
+
+#### Client-Side Tool Handling
+
+```ts
+// Client: Handle client-side tools via onToolCall callback
+import { useAgentChat } from "agents/ai-react";
+
+const { messages, sendMessage, addToolOutput } = useAgentChat({
+	agent,
+	onToolCall: async ({ toolCall, addToolOutput }) => {
+		if (toolCall.toolName === "getLocation") {
+			const position = await new Promise((resolve, reject) => {
+				navigator.geolocation.getCurrentPosition(resolve, reject);
+			});
+			addToolOutput({
+				toolCallId: toolCall.toolCallId,
+				output: {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				}
+			});
+		}
+	}
+});
+```
+
+**Key benefits of the unified tool pattern:**
+
+- **Server-defined tools**: All tools are defined in one place on the server
+- **Dynamic approval**: Use `needsApproval` to conditionally require user confirmation
+- **Cleaner client code**: Use `onToolCall` callback instead of managing tool configs
+- **Type safety**: Full TypeScript support with proper tool typing
+
+#### useAgentChat(options)
+
+Creates a new chat interface with enhanced v6 capabilities.
+
+```ts
+// Basic chat setup with onToolCall
+const { messages, sendMessage, addToolOutput } = useAgentChat({
+	agent,
+	onToolCall: async ({ toolCall, addToolOutput }) => {
+		// Handle client-side tool execution
+		await addToolOutput({
+			toolCallId: toolCall.toolCallId,
+			output: { result: "success" }
+		});
+	}
+});
+```
+
+#### Dynamic Tool Approval
+
+Use `needsApproval` on server tools to conditionally require user confirmation:
+
+```ts
+const paymentTool = tool({
+	description: "Process a payment",
+	inputSchema: z.object({
+		amount: z.number(),
+		recipient: z.string()
+	}),
+	needsApproval: async ({ amount }) => amount > 1000,
+	execute: async ({ amount, recipient }) => {
+		return await processPayment(amount, recipient);
+	}
+});
+```
+
+#### Tool Confirmation Detection
+
+The `isToolUIPart` and `getToolName` functions now check both static and dynamic tool parts:
+
+```ts
+import { isToolUIPart, getToolName } from "ai";
+
+const pendingToolCallConfirmation = messages.some((m) =>
+	m.parts?.some(
+		(part) => isToolUIPart(part) && part.state === "input-available",
+	),
+);
+
+// Handle tool confirmation
+if (pendingToolCallConfirmation) {
+	await addToolOutput({
+		toolCallId: part.toolCallId,
+		output: "User approved the action"
+	});
+}
+```
+
+If you need the v5 behavior (static-only checks), use the new functions:
+
+```ts
+import { isStaticToolUIPart, getStaticToolName } from "ai";
+```
+
+#### convertToModelMessages() is now async
+
+The `convertToModelMessages()` function is now asynchronous. Update all calls to await the result:
+
+```ts
+import { convertToModelMessages } from "ai";
+
+const result = streamText({
+	messages: await convertToModelMessages(this.messages),
+	model: openai("gpt-4o")
+});
+```
+
+#### ModelMessage type
+
+The `CoreMessage` type has been removed. Use `ModelMessage` instead:
+
+```ts
+import { convertToModelMessages, type ModelMessage } from "ai";
+
+const modelMessages: ModelMessage[] = await convertToModelMessages(messages);
+```
+
+#### generateObject mode option removed
+
+The `mode` option for `generateObject` has been removed:
+
+```ts
+// Before (v5)
+const result = await generateObject({
+	mode: "json",
+	model,
+	schema,
+	prompt
+});
+
+// After (v6)
+const result = await generateObject({
+	model,
+	schema,
+	prompt
+});
+```
+
+#### Structured Output with generateText
+
+While `generateObject` and `streamObject` are still functional, the recommended approach is to use `generateText`/`streamText` with the `Output.object()` helper:
+
+```ts
+import { generateText, Output, stepCountIs } from "ai";
+
+const { output } = await generateText({
+	model: openai("gpt-4"),
+	output: Output.object({
+		schema: z.object({ name: z.string() })
+	}),
+	stopWhen: stepCountIs(2),
+	prompt: "Generate a name"
+});
+```
+
+> **Note**: When using structured output with `generateText`, you must configure multiple steps with `stopWhen` because generating the structured output is itself a step.
+
+#### workers-ai-provider v3.0.0
+
+Seamless integration with Cloudflare Workers AI models through the updated workers-ai-provider v3.0.0 with AI SDK v6 support.
+
+#### Model Setup with Workers AI
+
+Use Cloudflare Workers AI models directly in your agent workflows:
+
+```ts
+import { createWorkersAI } from "workers-ai-provider";
+import { useAgentChat } from "agents/ai-react";
+
+// Create Workers AI model (v3.0.0 - enhanced v6 internals)
+const model = createWorkersAI({
+	binding: env.AI,
+})("@cf/meta/llama-3.2-3b-instruct");
+```
+
+#### Enhanced File and Image Support
+
+Workers AI models now support v6 file handling with automatic conversion:
+
+```ts
+// Send images and files to Workers AI models
+sendMessage({
+	role: "user",
+	parts: [
+		{ type: "text", text: "Analyze this image:" },
+		{
+			type: "file",
+			data: imageBuffer,
+			mediaType: "image/jpeg",
+		},
+	],
+});
+
+// Workers AI provider automatically converts to proper format
+```
+
+#### Streaming with Workers AI
+
+Enhanced streaming support with automatic warning detection:
+
+```ts
+// Streaming with Workers AI models
+const result = await streamText({
+	model: createWorkersAI({ binding: env.AI })("@cf/meta/llama-3.2-3b-instruct"),
+	messages: await convertToModelMessages(messages),
+	onChunk: (chunk) => {
+		// Enhanced streaming with warning handling
+		console.log(chunk);
+	},
+});
+```
+
+#### ai-gateway-provider v3.0.0
+
+The ai-gateway-provider v3.0.0 now supports AI SDK v6, enabling you to use Cloudflare AI Gateway with multiple AI providers including Anthropic, Azure, AWS Bedrock, Google Vertex, and Perplexity.
+
+#### AI Gateway Setup
+
+Use Cloudflare AI Gateway to add analytics, caching, and rate limiting to your AI applications:
+
+```ts
+import { createAIGateway } from "ai-gateway-provider";
+
+// Create AI Gateway provider (v3.0.0 - enhanced v6 internals)
+const model = createAIGateway({
+	gatewayUrl: "https://gateway.ai.cloudflare.com/v1/your-account-id/gateway",
+	headers: {
+		"Authorization": `Bearer ${env.AI_GATEWAY_TOKEN}`
+	}
+})({
+	provider: "openai",
+	model: "gpt-4o"
+});
+```
+
+#### Migration from v5
+
+#### Deprecated APIs
+
+The following APIs are deprecated in favor of the unified tool pattern:
+
+| Deprecated | Replacement |
+| --- | --- |
+| `AITool` type | Use AI SDK's `tool()` function on server |
+| `extractClientToolSchemas()` | Define tools on server, no client schemas needed |
+| `createToolsFromClientSchemas()` | Define tools on server with `tool()` |
+| `toolsRequiringConfirmation` option | Use `needsApproval` on server tools |
+| `experimental_automaticToolResolution` | Use `onToolCall` callback |
+| `tools` option in `useAgentChat` | Use `onToolCall` for client-side execution |
+| `addToolResult()` | Use `addToolOutput()` |
+
+#### Breaking Changes Summary
+
+1. **Unified Tool Pattern**: All tools must be defined on the server using `tool()`
+2. **`convertToModelMessages()` is async**: Add `await` to all calls
+3. **`CoreMessage` removed**: Use `ModelMessage` instead
+4. **`generateObject` mode removed**: Remove `mode` option
+5. **`isToolUIPart` behavior changed**: Now checks both static and dynamic tool parts
+
+#### Installation
+
+Update your dependencies to use the latest versions:
+
+```bash
+npm install agents@^0.3.0 workers-ai-provider@^3.0.0 ai-gateway-provider@^3.0.0 ai@^6.0.0 @ai-sdk/react@^3.0.0 @ai-sdk/openai@^3.0.0
+```
+
+#### Resources
+
+- [Migration Guide ↗︎](https://github.com/cloudflare/agents/blob/main/docs/migration-to-ai-sdk-v6.md) - Comprehensive migration documentation from v5 to v6
+- [AI SDK v6 Documentation ↗︎](https://ai-sdk.dev/docs/migration-guides/migration-guide-6-0) - Official AI SDK migration guide
+- [AI SDK v6 Announcement ↗︎](https://vercel.com/blog/ai-sdk-6) - Learn about new features in v6
+- [AI SDK Documentation ↗︎](https://sdk.vercel.ai/docs) - Complete AI SDK reference
+- [GitHub Issues ↗︎](https://github.com/cloudflare/agents/issues) - Report bugs or request features
+
+#### Feedback Welcome
+
+We'd love your feedback! We're particularly interested in feedback on:
+
+- **Migration experience** - How smooth was the upgrade from v5 to v6?
+- **Unified tool pattern** - How does the new server-defined tool pattern work for you?
+- **Dynamic tool approval** - Does the `needsApproval` feature meet your needs?
+- **AI Gateway integration** - How well does the new provider work with your setup?
+
+Dec 19, 2025
+
+[<h2>Terraform v5.15.0 now available</h2>](https://developers.cloudflare.com/changelog/post/2025-12-19-terraform-v5.15.0-provider/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Terraform](https://developers.cloudflare.com/terraform/)
+
+Earlier this year, we announced the launch of the new Terraform v5 Provider. We are aware of the high number of issues reported by the Cloudflare community related to the v5 release. We have committed to releasing improvements on a [2-3 week cadence ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/5774) to ensure its stability and reliability, including the v5.15 release. We have also pivoted from an [issue-to-issue approach to a resource-per-resource approach ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6237) - we will be focusing on specific resources to not only stabilize the resource but also ensure it is migration-friendly for those migrating from v4 to v5.
+
+Thank you for continuing to raise issues. They make our provider stronger and help us build products that reflect your needs.
+
+This release includes bug fixes, the stabilization of even more popular resources, and more.
+
+#### Features
+
+- **ai\_search:** Add AI Search endpoints ([6f02adb ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/6f02adb420e872457f71f95b49cb527663388915))
+- **certificate\_pack:** Ensure proper Terraform resource ID handling for path parameters in API calls ([081f32a ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/081f32acab4ce9a194a7ff51c8e9fcabd349895a))
+- **worker\_version:** Support `startup_time_ms` ([286ab55 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/286ab55bea8d5be0faa5a2b5b8b157e4a2214eba))
+- **zero\_trust\_dlp\_custom\_entry:** Support `upload_status` ([7dc0fe3 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/7dc0fe3b23726ead8dc075f86728a0540846d90c))
+- **zero\_trust\_dlp\_entry:** Support `upload_status` ([7dc0fe3 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/7dc0fe3b23726ead8dc075f86728a0540846d90c))
+- **zero\_trust\_dlp\_integration\_entry:** Support `upload_status` ([7dc0fe3 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/7dc0fe3b23726ead8dc075f86728a0540846d90c))
+- **zero\_trust\_dlp\_predefined\_entry:** Support `upload_status` ([7dc0fe3 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/7dc0fe3b23726ead8dc075f86728a0540846d90c))
+- **zero\_trust\_gateway\_policy:** Support `forensic_copy` ([5741fd0 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/5741fd0ed9f7270d20731cc47ec45eb0403a628b))
+- **zero\_trust\_list:** Support additional types (category, location, device) ([5741fd0 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/5741fd0ed9f7270d20731cc47ec45eb0403a628b))
+
+#### Bug fixes
+
+- **access\_rules:** Add validation to prevent state drift. Ideally, we'd use Semantic Equality but since that isn't an option, this will remove a foot-gun. ([4457791 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/44577911b3cbe45de6279aefa657bdee73c0794d))
+- **cloudflare\_pages\_project:** Addressing drift issues ([6edffcf ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/6edffcfcf187fdc9b10b624b9a9b90aed2fb2b2e)) ([3db318e ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/3db318e747423bf10ce587d9149e90edcd8a77b0))
+- **cloudflare\_worker:** Can be cleanly imported ([4859b52 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/4859b52968bb25570b680df9813f8e07fd50728f))
+- **cloudflare\_worker:** Ensure clean imports ([5b525bc ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/5b525bc478a4e2c9c0d4fd659b92cc7f7c18016a))
+- **list\_items:** Add validation for IP List items to avoid inconsistent state ([b6733dc ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/b6733dc4be909a5ab35895a88e519fc2582ccada))
+- **zero\_trust\_access\_application:** Remove all conditions from sweeper ([3197f1a ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/3197f1aed61be326d507d9e9e3b795b9f1d18fd7))
+- **spectrum\_application:** Map missing fields during spectrum resource import ([#6495 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6495)) ([ddb4e72 ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/commit/ddb4e722b82c735825a549d651a9da219c142efa))
+
+#### Upgrade to newer version
+
+We suggest waiting to migrate to v5 while we work on stabilization. This helps with avoiding any blocking issues while the Terraform resources are actively being [stabilized ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/6237). We will be releasing a new migration tool in March 2026 to help support v4 to v5 transitions for our most popular resources.
+
+#### For more information
+
+- [Terraform Provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs)
+- [Documentation on using Terraform with Cloudflare](https://developers.cloudflare.com/terraform/)
+
+Dec 19, 2025
+
+[<h2>Static prerendering support for TanStack Start</h2>](https://developers.cloudflare.com/changelog/post/2025-12-19-tanstack-start-prerendering/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+[TanStack Start ↗︎](https://tanstack.com/start/) apps can now prerender routes to static HTML at build time with access to build time environment variables and bindings, and serve them as [static assets](https://developers.cloudflare.com/workers/static-assets/). To enable prerendering, configure the `prerender` option of the TanStack Start plugin in your Vite config:
+
+*vite.config.tsts*
+
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+
+export default defineConfig({
+  plugins: [
+    cloudflare({ viteEnvironment: { name: "ssr" } }),
+    tanstackStart({
+      prerender: {
+        enabled: true,
+      },
+    }),
+  ],
+});
+```
+
+This feature requires `@tanstack/react-start` v1.138.0 or later. See the [TanStack Start framework guide](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/#static-prerendering) for more details.
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/31/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/31/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

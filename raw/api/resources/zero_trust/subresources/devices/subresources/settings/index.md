@@ -1,0 +1,107 @@
+---
+title: Settings
+---
+
+[Skip to content](#_top)
+
+[API Reference](https://developers.cloudflare.com/api)
+
+[Zero Trust](https://developers.cloudflare.com/api/resources/zero_trust)
+
+[Devices](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices)
+
+Copy Markdown
+
+Open in **Claude**Open in **ChatGPT**Open in **Cursor**
+
+---
+
+**Copy Markdown****View as Markdown**
+
+# Settings
+
+##### [Get device settings](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/settings/methods/get)
+
+GET/accounts/{account\_id}/devices/settings
+
+##### [Update device settings (deprecated)](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/settings/methods/update)
+
+Deprecated
+
+PUT/accounts/{account\_id}/devices/settings
+
+##### [Update device settings](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/settings/methods/edit)
+
+PATCH/accounts/{account\_id}/devices/settings
+
+##### [Reset device settings](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/settings/methods/delete)
+
+DELETE/accounts/{account\_id}/devices/settings
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+DeviceSettings object {disable\_for\_time, external\_emergency\_signal\_enabled, external\_emergency\_signal\_fingerprint, 6 more }
+
+</summary>
+
+disable\_for\_time: optional number
+
+Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
+
+<a href="#(resource)%20zero_trust.devices.settings%20%3E%20(model)%20device_settings%20%3E%20(schema)%20%3E%20(property)%20disable_for_time">Link to this property</a>
+
+external\_emergency\_signal\_enabled: optional boolean
+
+Controls whether the external emergency disconnect feature is enabled.
+
+<a href="#(resource)%20zero_trust.devices.settings%20%3E%20(model)%20device_settings%20%3E%20(schema)%20%3E%20(property)%20external_emergency_signal_enabled">Link to this property</a>
+
+external\_emergency\_signal\_fingerprint: optional string
+
+The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external\_emergency\_signal\_url. If provided, the WARP client will use this value to verify the server’s identity. The device will ignore any response if the server’s certificate fingerprint does not exactly match this value.
+
+<a href="#(resource)%20zero_trust.devices.settings%20%3E%20(model)%20device_settings%20%3E%20(schema)%20%3E%20(property)%20external_emergency_signal_fingerprint">Link to this property</a>
+
+external\_emergency\_signal\_interval: optional string
+
+The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., “5m”, “2m30s”, “1h”). Minimum 30 seconds.
+
+<a href="#(resource)%20zero_trust.devices.settings%20%3E%20(model)%20device_settings%20%3E%20(schema)%20%3E%20(property)%20external_emergency_signal_interval">Link to this property</a>
+
+external\_emergency\_signal\_url: optional string
+
+The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+
+<a href="#(resource)%20zero_trust.devices.settings%20%3E%20(model)%20device_settings%20%3E%20(schema)%20%3E%20(property)%20external_emergency_signal_url">Link to this property</a>
+
+gateway\_proxy\_enabled: optional boolean
+
+Enable gateway proxy filtering on TCP.
+
+<a href="#(resource)%20zero_trust.devices.settings%20%3E%20(model)%20device_settings%20%3E%20(schema)%20%3E%20(property)%20gateway_proxy_enabled">Link to this property</a>
+
+gateway\_udp\_proxy\_enabled: optional boolean
+
+Enable gateway proxy filtering on UDP.
+
+<a href="#(resource)%20zero_trust.devices.settings%20%3E%20(model)%20device_settings%20%3E%20(schema)%20%3E%20(property)%20gateway_udp_proxy_enabled">Link to this property</a>
+
+root\_certificate\_installation\_enabled: optional boolean
+
+Enable installation of cloudflare managed root certificate.
+
+<a href="#(resource)%20zero_trust.devices.settings%20%3E%20(model)%20device_settings%20%3E%20(schema)%20%3E%20(property)%20root_certificate_installation_enabled">Link to this property</a>
+
+use\_zt\_virtual\_ip: optional boolean
+
+Enable using CGNAT virtual IPv4.
+
+<a href="#(resource)%20zero_trust.devices.settings%20%3E%20(model)%20device_settings%20%3E%20(schema)%20%3E%20(property)%20use_zt_virtual_ip">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20zero_trust.devices.settings%20%3E%20(model)%20device_settings%20%3E%20(schema)>)

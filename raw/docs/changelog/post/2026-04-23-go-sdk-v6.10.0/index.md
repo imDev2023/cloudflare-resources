@@ -1,0 +1,227 @@
+---
+description: Major release with breaking changes, new Vulnerability Scanner service, AI Search Namespaces, Browser Rendering DevTools, and more.
+title: Go SDK v6.10.0 Released
+image: https://developers.cloudflare.com/changelog/post/2026-04-23-go-sdk-v6.10.0/og.png?v=1ec63214abcd395a
+---
+
+[Skip to content](#main-content)
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+[Back to all posts](https://developers.cloudflare.com/changelog)
+
+April 23, 2026
+
+## Go SDK v6.10.0 Released
+
+[SDK](https://developers.cloudflare.com/fundamentals/api/reference/sdks/) [Go SDK](https://developers.cloudflare.com/fundamentals/api/reference/sdks/)
+
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/changelog/post/2026-04-23-go-sdk-v6.10.0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+#### v6.10.0
+
+In this release, you'll see a number of breaking changes. This is primarily due to changes in OpenAPI definitions, which our libraries are based off of, and codegen updates that we rely on to read those OpenAPI definitions and produce our SDK libraries.
+
+**Please ensure you read through the list of changes below before moving to this version** - this will help you understand any down or upstream issues it may cause to your environments.
+
+#### Breaking Changes
+
+See the [v6.10.0 Migration Guide ↗︎](https://github.com/cloudflare/cloudflare-go/blob/main/MIGRATION_GUIDE.md) for before/after code examples and actions needed for each change.
+
+#### Abuse Reports - Registrar WHOIS Report Field Removals
+
+Several fields have been removed from `AbuseReportNewParamsBodyAbuseReportsRegistrarWhoisReportRegWhoRequest`:
+
+- `RegWhoGoodFaithAffirmation`
+- `RegWhoLawfulProcessingAgreement`
+- `RegWhoLegalBasis`
+- `RegWhoRequestType`
+- `RegWhoRequestedDataElements`
+
+#### AI Search - Instance Params Restructured
+
+The `InstanceNewParams` and `InstanceUpdateParams` types have been significantly restructured. Many fields have been moved or removed:
+
+- `InstanceNewParams.TokenID`, `Type`, `CreatedFromAISearchWizard`, `WorkerDomain` removed
+- `InstanceUpdateParams` — most configuration fields removed (including `IndexMethod`, `IndexingOptions`, `MaxNumResults`, `Metadata`, `Paused`, `PublicEndpointParams`, `Reranking`, `RerankingModel`, `RetrievalOptions`, `RewriteModel`, `RewriteQuery`, `ScoreThreshold`, `SourceParams`, `Summarization`, `SummarizationModel`, `SystemPromptAISearch`, `SystemPromptIndexSummarization`, `SystemPromptRewriteQuery`, `TokenID`, `CreatedFromAISearchWizard`, `WorkerDomain`)
+- `InstanceSearchParams.Messages` field removed along with `InstanceSearchParamsMessage` and `InstanceSearchParamsMessagesRole` types
+
+#### AI Search - InstanceItem Service Removed
+
+The `InstanceItemService` type has been removed. The items sub-resource at `client.AISearch.Instances.Items` no longer exists in the non-namespace path. Use `client.AISearch.Namespaces.Instances.Items` instead.
+
+#### AI Search - Token Types Removed
+
+The following types have been removed from the `ai_search` package:
+
+- `TokenDeleteResponse`
+- `TokenListParams` (and associated `TokenListParamsOrderBy`, `TokenListParamsOrderByDirection`)
+
+#### Email Security - Investigate Move Return Type Change
+
+The `Investigate.Move.New()` method now returns a raw slice instead of a paginated wrapper:
+
+- `New()` returns `*[]InvestigateMoveNewResponse` instead of `*pagination.SinglePage[InvestigateMoveNewResponse]`
+- `NewAutoPaging()` method removed
+
+#### Hyperdrive - Config Params Restructured
+
+The `ConfigEditParams` type lost its `MTLS` and `Name` fields. The `HyperdriveMTLSParam` type lost `MTLS` and `Host` fields. The `Host` field on origin config changed from `param.Field[string]` to a plain `string`.
+
+#### IAM - UserGroupMember Params and Return Types Changed
+
+The `UserGroupMemberNewParams` struct has been restructured and the `New()` method now returns a paginated response:
+
+- `UserGroupMemberNewParams.Body` renamed to `UserGroupMemberNewParams.Members`
+- `UserGroupMemberNewParamsBody` renamed to `UserGroupMemberNewParamsMember`
+- `UserGroupMemberUpdateParams.Body` renamed to `UserGroupMemberUpdateParams.Members`
+- `UserGroupMemberUpdateParamsBody` renamed to `UserGroupMemberUpdateParamsMember`
+- `UserGroups.Members.New()` returns `*pagination.SinglePage[UserGroupMemberNewResponse]` instead of `*UserGroupMemberNewResponse`
+
+#### IAM - UserGroup List Direction Type Changed
+
+The `UserGroupListParams.Direction` field changed from `param.Field[string]` to `param.Field[UserGroupListParamsDirection]` (typed enum with `asc`/`desc` values).
+
+#### Pipelines - Delete Methods Now Return Typed Responses
+
+Several delete methods across Pipelines now return typed responses instead of bare error:
+
+- `Pipelines.DeleteV1()` returns `(*PipelineDeleteV1Response, error)` instead of `error`
+- `Pipelines.Sinks.Delete()` returns `(*SinkDeleteResponse, error)` instead of `error`
+- `Pipelines.Streams.Delete()` returns `(*StreamDeleteResponse, error)` instead of `error`
+
+#### Queues - Message Response Types Removed
+
+The following response envelope types have been removed:
+
+- `MessageBulkPushResponseSuccess`
+- `MessagePushResponseSuccess`
+- `MessageAckResponse` fields `RetryCount` and `Warnings` removed
+
+#### Secrets Store - Pagination Wrapper Removal and Type Changes
+
+Methods now return direct types instead of `SinglePage` wrappers, and several internal types have been removed. Associated `AutoPaging` methods have also been removed:
+
+- `Stores.New()` returns `*StoreNewResponse` instead of `*pagination.SinglePage[StoreNewResponse]`
+- `Stores.NewAutoPaging()` method removed
+- `Stores.Secrets.BulkDelete()` returns `*StoreSecretBulkDeleteResponse` instead of `*pagination.SinglePage[StoreSecretBulkDeleteResponse]`
+- `Stores.Secrets.BulkDeleteAutoPaging()` method removed
+- Removed types: `StoreDeleteResponse`, `StoreDeleteResponseEnvelopeResultInfo`, `StoreSecretDeleteResponse`, `StoreSecretDeleteResponseStatus`, `StoreSecretBulkDeleteResponse` (old shape), `StoreSecretBulkDeleteResponseStatus`, `StoreSecretDeleteResponseEnvelopeResultInfo`
+- `StoreNewParams` restructured (old `StoreNewParamsBody` removed)
+- `StoreSecretBulkDeleteParams` restructured
+
+#### Stream - AudioTracks Return Type Change
+
+The `AudioTracks.Get()` method now returns a dedicated response type instead of a paginated list. The `GetAutoPaging()` method has been removed:
+
+- `Get()` returns `*AudioTrackGetResponse` instead of `*pagination.SinglePage[Audio]`
+- `GetAutoPaging()` method removed
+
+#### Stream - Clip Type Removal and Return Type Change
+
+The `Clip.New()` method now returns the shared `Video` type. The following types have been entirely removed:
+
+- `Clip`, `ClipPlayback`, `ClipStatus`, `ClipWatermark`
+
+#### Stream - Copy and Clip Params Field Removals
+
+- `ClipNewParams.MaxDurationSeconds`, `ThumbnailTimestampPct`, `Watermark` removed
+- `CopyNewParams.ThumbnailTimestampPct`, `Watermark` removed
+
+#### Stream - Download and Webhook Changes
+
+- `DownloadNewResponseStatus` type removed
+- `WebhookUpdateResponse` and `WebhookGetResponse` changed from `interface{}` type aliases to full struct types
+
+#### Zero Trust - Access AI Control MCP Portal Union Types Removed
+
+The following union interface types have been removed:
+
+- `AccessAIControlMcpPortalListResponseServersUpdatedPromptsUnion`
+- `AccessAIControlMcpPortalListResponseServersUpdatedToolsUnion`
+- `AccessAIControlMcpPortalReadResponseServersUpdatedPromptsUnion`
+- `AccessAIControlMcpPortalReadResponseServersUpdatedToolsUnion`
+
+#### Features
+
+#### Vulnerability Scanner (`client.VulnerabilityScanner`)
+
+**NEW SERVICE:** Full vulnerability scanning management
+
+- **CredentialSets** - CRUD for credential sets ( `New`, `Update`, `List`, `Delete`, `Edit`, `Get`)
+- **Credentials** - Manage credentials within sets ( `New`, `Update`, `List`, `Delete`, `Edit`, `Get`)
+- **Scans** - Create and manage vulnerability scans ( `New`, `List`, `Get`)
+- **TargetEnvironments** - Manage scan target environments ( `New`, `Update`, `List`, `Delete`, `Edit`, `Get`)
+
+#### AI Search - Namespaces (`client.AISearch.Namespaces`)
+
+**NEW SERVICE:** Namespace-scoped AI Search management
+
+- `New()`, `Update()`, `List()`, `Delete()`, `ChatCompletions()`, `Read()`, `Search()`
+- **Instances** - Namespace-scoped instances ( `New`, `Update`, `List`, `Delete`, `ChatCompletions`, `Read`, `Search`, `Stats`)
+- **Jobs** - Instance job management ( `New`, `Update`, `List`, `Get`, `Logs`)
+- **Items** - Instance item management ( `List`, `Delete`, `Chunks`, `NewOrUpdate`, `Download`, `Get`, `Logs`, `Sync`, `Upload`)
+
+#### Browser Rendering - Devtools (`client.BrowserRendering.Devtools`)
+
+**NEW SERVICE:** DevTools protocol browser control
+
+- **Session** - List and get devtools sessions
+- **Browser** - Browser lifecycle management ( `New`, `Delete`, `Connect`, `Launch`, `Protocol`, `Version`)
+- **Page** - Get page by target ID
+- **Targets** - Manage browser targets ( `New`, `List`, `Activate`, `Get`)
+
+#### Registrar (`client.Registrar`)
+
+**NEW:** Domain check and search endpoints
+
+- `Check()` - `POST /accounts/{account_id}/registrar/domain-check`
+- `Search()` - `GET /accounts/{account_id}/registrar/domain-search`
+
+**NEW:** Registration management (`client.Registrar.Registrations`)
+
+- `New()`, `List()`, `Edit()`, `Get()`
+- `RegistrationStatus.Get()` - Get registration workflow status
+- `UpdateStatus.Get()` - Get update workflow status
+
+#### Cache - Origin Cloud Regions (`client.Cache.OriginCloudRegions`)
+
+**NEW SERVICE:** Manage origin cloud region configurations
+
+- `New()`, `List()`, `Delete()`, `BulkDelete()`, `BulkEdit()`, `Edit()`, `Get()`, `SupportedRegions()`
+
+#### Zero Trust - DLP Settings (`client.ZeroTrust.DLP.Settings`)
+
+**NEW SERVICE:** DLP settings management
+
+- `Update()`, `Delete()`, `Edit()`, `Get()`
+
+#### Radar
+
+- `AgentReadiness.Summary()` - Agent readiness summary by dimension
+- `AI.MarkdownForAgents.Summary()` - Markdown-for-agents summary
+- `AI.MarkdownForAgents.Timeseries()` - Markdown-for-agents timeseries
+
+#### IAM (`client.IAM`)
+
+- `UserGroups.Members.Get()` - Get details of a specific member in a user group
+- `UserGroups.Members.NewAutoPaging()` - Auto-paging variant for adding members
+- `UserGroups.NewParams.Policies` changed from required to optional
+
+#### Bot Management
+
+- `ContentBotsProtection` field added to `BotFightModeConfiguration` and `SubscriptionConfiguration` ( `block`/ `disabled`)
+
+#### Deprecations
+
+None in this release.
+
+#### Get started
+
+- [Download Go SDK v6.10.0 ↗︎](https://github.com/cloudflare/cloudflare-go/releases/tag/v6.10.0)
+- [Go SDK documentation ↗︎](https://developers.cloudflare.com/api/sdks/go/)
+- [Migration Guide ↗︎](https://github.com/cloudflare/cloudflare-go/blob/main/MIGRATION_GUIDE.md)
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/post/2026-04-23-go-sdk-v6.10.0/#page","headline":"Go SDK v6.10.0 Released","description":"Major release with breaking changes, new Vulnerability Scanner service, AI Search Namespaces, Browser Rendering DevTools, and more.","url":"https://developers.cloudflare.com/changelog/post/2026-04-23-go-sdk-v6.10.0/","inLanguage":"en","image":"https://developers.cloudflare.com/changelog/post/2026-04-23-go-sdk-v6.10.0/og.png?v=1ec63214abcd395a","dateModified":"2026-04-23","datePublished":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

@@ -1,0 +1,719 @@
+---
+title: Secrets
+---
+
+[Skip to content](#_top)
+
+[API Reference](https://developers.cloudflare.com/api)
+
+[Workers](https://developers.cloudflare.com/api/resources/workers)
+
+[Scripts](https://developers.cloudflare.com/api/resources/workers/subresources/scripts)
+
+Copy Markdown
+
+Open in **Claude**Open in **ChatGPT**Open in **Cursor**
+
+---
+
+**Copy Markdown****View as Markdown**
+
+# Secrets
+
+##### [List secrets bound to a Worker script](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/secrets/methods/list)
+
+GET/accounts/{account\_id}/workers/scripts/{script\_name}/secrets
+
+##### [Get a secret binding](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/secrets/methods/get)
+
+GET/accounts/{account\_id}/workers/scripts/{script\_name}/secrets/{secret\_name}
+
+##### [Add a secret to a Worker script](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/secrets/methods/update)
+
+PUT/accounts/{account\_id}/workers/scripts/{script\_name}/secrets
+
+##### [Delete Worker script secret](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/secrets/methods/delete)
+
+DELETE/accounts/{account\_id}/workers/scripts/{script\_name}/secrets/{secret\_name}
+
+##### [Patch multiple Worker script secrets](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/secrets/methods/bulk_update)
+
+PATCH/accounts/{account\_id}/workers/scripts/{script\_name}/secrets-bulk
+
+##### ModelsExpand Collapse
+
+<details>
+
+<summary>
+
+SecretListResponse = object {name, text, type } or object {algorithm, format, name, 4 more }
+
+A secret value accessible through a binding.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+SecretText object {name, text, type }
+
+</summary>
+
+name: string
+
+A JavaScript variable name for the binding.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20name">Link to this property</a>
+
+text: string
+
+The secret value to use.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20text">Link to this property</a>
+
+type: "secret\_text"
+
+The kind of resource that the binding provides.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+SecretKey object {algorithm, format, name, 4 more }
+
+</summary>
+
+algorithm: unknown
+
+Algorithm-specific key parameters. <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm">Learn more</a>.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20algorithm">Link to this property</a>
+
+<details>
+
+<summary>
+
+format: "raw"or "pkcs8"or "spki"or "jwk"
+
+Data format of the key. <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format">Learn more</a>.
+
+</summary>
+
+One of the following:
+
+"raw"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%200">Link to this property</a>
+
+"pkcs8"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%201">Link to this property</a>
+
+"spki"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%202">Link to this property</a>
+
+"jwk"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format">Link to this property</a>
+
+name: string
+
+A JavaScript variable name for the binding.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20name">Link to this property</a>
+
+type: "secret\_key"
+
+The kind of resource that the binding provides.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+<details>
+
+<summary>
+
+usages: array of "encrypt"or "decrypt"or "sign"or 5 more
+
+Allowed operations with the key. <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages">Learn more</a>.
+
+</summary>
+
+One of the following:
+
+"encrypt"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%200">Link to this property</a>
+
+"decrypt"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%201">Link to this property</a>
+
+"sign"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%202">Link to this property</a>
+
+"verify"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%203">Link to this property</a>
+
+"deriveKey"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%204">Link to this property</a>
+
+"deriveBits"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%205">Link to this property</a>
+
+"wrapKey"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%206">Link to this property</a>
+
+"unwrapKey"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%207">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages">Link to this property</a>
+
+key\_base64: optional string
+
+Base64-encoded key data. Required if <code>format</code> is “raw”, “pkcs8”, or “spki”.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20key_base64">Link to this property</a>
+
+key\_jwk: optional unknown
+
+Key data in <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key">JSON Web Key</a> format. Required if <code>format</code> is “jwk”.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20key_jwk">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_list_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+SecretGetResponse = object {name, text, type } or object {algorithm, format, name, 4 more }
+
+A secret value accessible through a binding.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+SecretText object {name, text, type }
+
+</summary>
+
+name: string
+
+A JavaScript variable name for the binding.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20name">Link to this property</a>
+
+text: string
+
+The secret value to use.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20text">Link to this property</a>
+
+type: "secret\_text"
+
+The kind of resource that the binding provides.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+SecretKey object {algorithm, format, name, 4 more }
+
+</summary>
+
+algorithm: unknown
+
+Algorithm-specific key parameters. <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm">Learn more</a>.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20algorithm">Link to this property</a>
+
+<details>
+
+<summary>
+
+format: "raw"or "pkcs8"or "spki"or "jwk"
+
+Data format of the key. <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format">Learn more</a>.
+
+</summary>
+
+One of the following:
+
+"raw"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%200">Link to this property</a>
+
+"pkcs8"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%201">Link to this property</a>
+
+"spki"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%202">Link to this property</a>
+
+"jwk"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format">Link to this property</a>
+
+name: string
+
+A JavaScript variable name for the binding.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20name">Link to this property</a>
+
+type: "secret\_key"
+
+The kind of resource that the binding provides.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+<details>
+
+<summary>
+
+usages: array of "encrypt"or "decrypt"or "sign"or 5 more
+
+Allowed operations with the key. <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages">Learn more</a>.
+
+</summary>
+
+One of the following:
+
+"encrypt"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%200">Link to this property</a>
+
+"decrypt"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%201">Link to this property</a>
+
+"sign"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%202">Link to this property</a>
+
+"verify"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%203">Link to this property</a>
+
+"deriveKey"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%204">Link to this property</a>
+
+"deriveBits"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%205">Link to this property</a>
+
+"wrapKey"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%206">Link to this property</a>
+
+"unwrapKey"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%207">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages">Link to this property</a>
+
+key\_base64: optional string
+
+Base64-encoded key data. Required if <code>format</code> is “raw”, “pkcs8”, or “spki”.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20key_base64">Link to this property</a>
+
+key\_jwk: optional unknown
+
+Key data in <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key">JSON Web Key</a> format. Required if <code>format</code> is “jwk”.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20key_jwk">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_get_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+SecretUpdateResponse = object {name, text, type } or object {algorithm, format, name, 4 more }
+
+A secret value accessible through a binding.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+SecretText object {name, text, type }
+
+</summary>
+
+name: string
+
+A JavaScript variable name for the binding.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20name">Link to this property</a>
+
+text: string
+
+The secret value to use.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20text">Link to this property</a>
+
+type: "secret\_text"
+
+The kind of resource that the binding provides.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+SecretKey object {algorithm, format, name, 4 more }
+
+</summary>
+
+algorithm: unknown
+
+Algorithm-specific key parameters. <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm">Learn more</a>.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20algorithm">Link to this property</a>
+
+<details>
+
+<summary>
+
+format: "raw"or "pkcs8"or "spki"or "jwk"
+
+Data format of the key. <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format">Learn more</a>.
+
+</summary>
+
+One of the following:
+
+"raw"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%200">Link to this property</a>
+
+"pkcs8"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%201">Link to this property</a>
+
+"spki"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%202">Link to this property</a>
+
+"jwk"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20format">Link to this property</a>
+
+name: string
+
+A JavaScript variable name for the binding.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20name">Link to this property</a>
+
+type: "secret\_key"
+
+The kind of resource that the binding provides.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+<details>
+
+<summary>
+
+usages: array of "encrypt"or "decrypt"or "sign"or 5 more
+
+Allowed operations with the key. <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages">Learn more</a>.
+
+</summary>
+
+One of the following:
+
+"encrypt"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%200">Link to this property</a>
+
+"decrypt"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%201">Link to this property</a>
+
+"sign"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%202">Link to this property</a>
+
+"verify"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%203">Link to this property</a>
+
+"deriveKey"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%204">Link to this property</a>
+
+"deriveBits"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%205">Link to this property</a>
+
+"wrapKey"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%206">Link to this property</a>
+
+"unwrapKey"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%207">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20usages">Link to this property</a>
+
+key\_base64: optional string
+
+Base64-encoded key data. Required if <code>format</code> is “raw”, “pkcs8”, or “spki”.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20key_base64">Link to this property</a>
+
+key\_jwk: optional unknown
+
+Key data in <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key">JSON Web Key</a> format. Required if <code>format</code> is “jwk”.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201%20%3E%20(property)%20key_jwk">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_update_response%20%3E%20(schema)>)
+
+SecretDeleteResponse = unknown
+
+[Link to this property](<#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_delete_response%20%3E%20(schema)>)
+
+<details>
+
+<summary>
+
+SecretBulkUpdateResponse = map\[object {name, text, type } or object {algorithm, format, name, 4 more } ]
+
+Map of secret names to secret metadata for resulting secrets.
+
+</summary>
+
+One of the following:
+
+<details>
+
+<summary>
+
+SecretText object {name, text, type }
+
+</summary>
+
+name: string
+
+A JavaScript variable name for the binding.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20name">Link to this property</a>
+
+text: string
+
+The secret value to use.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20text">Link to this property</a>
+
+type: "secret\_text"
+
+The kind of resource that the binding provides.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%200%20%3E%20(property)%20type">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%200">Link to this property</a>
+
+<details>
+
+<summary>
+
+SecretKey object {algorithm, format, name, 4 more }
+
+</summary>
+
+algorithm: unknown
+
+Algorithm-specific key parameters. <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm">Learn more</a>.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20algorithm">Link to this property</a>
+
+<details>
+
+<summary>
+
+format: "raw"or "pkcs8"or "spki"or "jwk"
+
+Data format of the key. <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format">Learn more</a>.
+
+</summary>
+
+One of the following:
+
+"raw"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%200">Link to this property</a>
+
+"pkcs8"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%201">Link to this property</a>
+
+"spki"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%202">Link to this property</a>
+
+"jwk"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20format%20%3E%20(member)%203">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20format">Link to this property</a>
+
+name: string
+
+A JavaScript variable name for the binding.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20name">Link to this property</a>
+
+type: "secret\_key"
+
+The kind of resource that the binding provides.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20type">Link to this property</a>
+
+<details>
+
+<summary>
+
+usages: array of "encrypt"or "decrypt"or "sign"or 5 more
+
+Allowed operations with the key. <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages">Learn more</a>.
+
+</summary>
+
+One of the following:
+
+"encrypt"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%200">Link to this property</a>
+
+"decrypt"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%201">Link to this property</a>
+
+"sign"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%202">Link to this property</a>
+
+"verify"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%203">Link to this property</a>
+
+"deriveKey"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%204">Link to this property</a>
+
+"deriveBits"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%205">Link to this property</a>
+
+"wrapKey"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%206">Link to this property</a>
+
+"unwrapKey"
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20usages%20%3E%20(items)%20%3E%20(member)%207">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20usages">Link to this property</a>
+
+key\_base64: optional string
+
+Base64-encoded key data. Required if <code>format</code> is “raw”, “pkcs8”, or “spki”.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20key_base64">Link to this property</a>
+
+key\_jwk: optional unknown
+
+Key data in <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key">JSON Web Key</a> format. Required if <code>format</code> is “jwk”.
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201%20%3E%20(property)%20key_jwk">Link to this property</a>
+
+</details>
+
+<a href="#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)%20%3E%20(items)%20%3E%20(variant)%201">Link to this property</a>
+
+</details>
+
+[Link to this property](<#(resource)%20workers.scripts.secrets%20%3E%20(model)%20secret_bulk_update_response%20%3E%20(schema)>)

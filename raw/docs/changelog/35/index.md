@@ -1,0 +1,881 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Nov 4, 2025
+
+[<h2>Log Explorer now supports query cancellation</h2>](https://developers.cloudflare.com/changelog/post/2025-11-04-query-cancellation/)
+
+[Log Explorer](https://developers.cloudflare.com/log-explorer/)
+
+We're excited to announce that Log Explorer users can now cancel queries that are currently running.
+
+This new feature addresses a common pain point: waiting for a long, unintended, or misconfigured query to complete before you can submit a new, correct one. With query cancellation, you can immediately stop the execution of any undesirable query, allowing you to quickly craft and submit a new query, significantly improving your investigative workflow and productivity within Log Explorer.
+
+Nov 4, 2025
+
+[<h2>Log Explorer now shows query result distribution</h2>](https://developers.cloudflare.com/changelog/post/2025-11-13-query-result-distribution/)
+
+[Log Explorer](https://developers.cloudflare.com/log-explorer/)
+
+We're excited to announce a new feature in Log Explorer that significantly enhances how you analyze query results: the Query results distribution chart.
+
+This new chart provides a graphical distribution of your results over the time window of the query. Immediately after running a query, you will see the distribution chart above your result table. This visualization allows Log Explorer users to quickly spot trends, identify anomalies, and understand the temporal concentration of log events that match their criteria. For example, you can visually confirm if a spike in traffic or errors occurred at a specific time, allowing you to focus your investigation efforts more effectively. This feature makes it faster and easier to extract meaningful insights from your vast log data.
+
+The chart will dynamically update to reflect the logs matching your current query.
+
+Nov 3, 2025
+
+[<h2>WAF Release - 2025-11-03</h2>](https://developers.cloudflare.com/changelog/post/2025-11-03-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week highlights enhancements to detection signatures improving coverage for vulnerabilities in Adobe Commerce and Magento Open Source, linked to CVE-2025-54236.
+
+**Key Findings**
+
+This vulnerability allows unauthenticated attackers to take over customer accounts through the Commerce REST API and, in certain configurations, may lead to remote code execution. The latest update provides enhanced detection logic for resilient protection against exploitation attempts.
+
+**Impact**
+
+- Adobe Commerce (CVE-2025-54236): Exploitation may allow attackers to hijack sessions, execute arbitrary commands, steal data, and disrupt storefronts, resulting in confidentiality and integrity risks for merchants. Administrators are strongly encouraged to apply vendor patches without delay.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...cb6d5fe5 | 100774C | Adobe Commerce - Remote Code Execution - CVE:CVE-2025-54236 | Log | Block | This is an improved detection. |
+
+Nov 3, 2025
+
+[<h2>Capture Wrangler command output in structured format</h2>](https://developers.cloudflare.com/changelog/post/2025-11-03-wrangler-output-file/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+You can now capture Wrangler command output in a structured [ND-JSON ↗︎](https://github.com/ndjson/ndjson-spec) format by setting the [`WRANGLER_OUTPUT_FILE_PATH`](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#supported-environment-variables) or [`WRANGLER_OUTPUT_FILE_DIRECTORY`](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#supported-environment-variables) environment variables. This feature is particularly useful for CI/CD pipelines and automation tools that need programmatic access to deployment information such as worker names, version IDs, deployment URLs, and error details. Commands that support this feature include [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/#deploy), [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/#versions), [`wrangler versions deploy`](https://developers.cloudflare.com/workers/wrangler/commands/#versions), and [`wrangler pages deploy`](https://developers.cloudflare.com/workers/wrangler/commands/#deploy-1).
+
+Oct 31, 2025
+
+[<h2>Report logo misuse to Cloudflare directly from the Brand Protection dashboard</h2>](https://developers.cloudflare.com/changelog/post/2025-10-31-brand-protection-logo-dashboard-report-abuse/)
+
+[Security Center](https://developers.cloudflare.com/security-center/)
+
+The Brand Protection logo query dashboard now allows you to use the **Report to Cloudflare** button to submit an Abuse report directly from the Brand Protection logo queries dashboard. While you could previously report new domains that were impersonating your brand before, now you can do the same for websites found to be using your logo without your permission. The abuse reports will be prefilled and you will only need to validate a few fields before you can click the submit button, after which our team process your request.
+
+Ready to start? Check out the [Brand Protection docs](https://developers.cloudflare.com/security-center/brand-protection/).
+
+Oct 31, 2025
+
+[<h2>Workers WebSocket message size limit increased from 1 MiB to 32 MiB</h2>](https://developers.cloudflare.com/changelog/post/2025-10-31-increased-websocket-message-size-limit/)
+
+[Workers](https://developers.cloudflare.com/workers/) [Durable Objects](https://developers.cloudflare.com/durable-objects/) [Browser Run](https://developers.cloudflare.com/browser-run/)
+
+Workers, including those using [Durable Objects](https://developers.cloudflare.com/durable-objects/) and [Browser Rendering](https://developers.cloudflare.com/browser-run/), may now process WebSocket messages up to 32 MiB in size. Previously, this limit was 1 MiB.
+
+This change allows Workers to handle use cases requiring large message sizes, such as processing Chrome Devtools Protocol messages.
+
+For more information, please see the [Durable Objects startup limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits).
+
+Oct 31, 2025
+
+[<h2>Increased Workflows instance and concurrency limits</h2>](https://developers.cloudflare.com/changelog/post/2025-10-28-raising-limits/)
+
+[Workflows](https://developers.cloudflare.com/workflows/) [Workers](https://developers.cloudflare.com/workers/)
+
+We've raised the [Cloudflare Workflows](https://developers.cloudflare.com/workflows/) account-level limits for all accounts on the [Workers paid plan](https://developers.cloudflare.com/workers/platform/pricing/):
+
+- **Instance creation rate** increased from 100 workflow instances per 10 seconds to 100 instances per second
+- **Concurrency limit** increased from 4,500 to 10,000 workflow instances per account
+
+These increases mean you can create new instances up to 10x faster, and have more workflow instances concurrently executing. To learn more and get started with Workflows, refer to [the getting started guide](https://developers.cloudflare.com/workflows/get-started/guide/).
+
+If your application requires a higher limit, fill out the [Limit Increase Request Form](https://developers.cloudflare.com/workers/platform/limits/) or contact your account team. Please refer to [Workflows pricing](https://developers.cloudflare.com/workflows/reference/pricing/) for more information.
+
+Oct 30, 2025
+
+[<h2>Introducing email two-factor authentication</h2>](https://developers.cloudflare.com/changelog/post/2025-10-30-email-2FA/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+Two-factor authentication (2FA) is one of the best ways to protect your account from the risk of account takeover. Cloudflare has offered phishing resistant 2FA options including hardware based keys (for example, a Yubikey) and app based TOTP (time-based one-time password) options which use apps like Google or Microsoft's Authenticator app. Unfortunately, while these solutions are very secure, they can be lost if you misplace the hardware based key, or lose the phone which includes that app. The result is that users sometimes get locked out of their accounts and need to contact support.
+
+Today, we are announcing the addition of email as a 2FA factor for all Cloudflare accounts. Email 2FA is in wide use across the industry as a least common denominator for 2FA because it is low friction, loss resistant, and still improves security over username/password login only. We also know that most commercial email providers already require 2FA, so your email address is usually well protected already.
+
+You can now enable email 2FA on the Cloudflare dashboard:
+
+1. Go to **Profile** at the top right corner.
+2. Select **Authentication**.
+3. Under **Two-Factor Authentication**, select **Set up**.
+
+#### Sign-in security best practices
+
+Cloudflare is critical infrastructure, and you should protect it as such. Review the following best practices and make sure you are doing your part to secure your account:
+
+- Use a unique password for every website, including Cloudflare, and store it in a password manager like 1Password or Keeper. These services are cross-platform and simplify the process of managing secure passwords.
+- Use 2FA to make it harder for an attacker to get into your account in the event your password is leaked.
+- Store your backup codes securely. A password manager is the best place since it keeps the backup codes encrypted, but you can also print them and put them somewhere safe in your home.
+- If you use an app to manage your 2FA keys, enable cloud backup, so that you don't lose your keys in the event you lose your phone.
+- If you use a custom email domain to sign in, [configure SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/).
+- If you use a public email domain like Gmail or Hotmail, you can also use social login with Apple, GitHub, or Google to sign in.
+- If you manage a Cloudflare account for work:
+  - Have at least two administrators in case one of them unexpectedly leaves your company.
+  - Use SCIM to automate permissions management for members in your Cloudflare account.
+
+Oct 30, 2025
+
+[<h2>Revamped Member Management UI</h2>](https://developers.cloudflare.com/changelog/post/2025-10-30-member-management-improvements/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+As Cloudflare's platform has grown, so has the need for precise, role-based access control. We’ve redesigned the Member Management experience in the Dashboard to help administrators more easily discover, assign, and refine permissions for specific principals.
+
+#### What's New
+
+**Refreshed member invite flow**
+
+We overhauled the Invite Members UI to simplify inviting users and assigning permissions.
+
+![Updated Invite Flow UX](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=435,format=webp/_astro/2025-10-30-invite-experience.B7F3VQ_y.gif)
+
+**Refreshed Members Overview Page**
+
+We've updated the Members Overview Page to clearly display:
+
+- Member 2FA status
+- Which members hold Super Admin privileges
+- API access settings per member
+- Member onboarding state (accepted vs pending invite)
+
+![Updated Member Management Overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3016,height=1424,format=webp/_astro/2025-10-30-member-management-screen.BLc2lx98.png)
+
+**New Member Permission Policies Details View**
+
+We've created a new member details screen that shows all permission policies associated with a member; including policies inherited from group associations to make it easier for members to understand the effective permissions they have.
+
+![Updated Permission Policies Details Screen](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=435,format=webp/_astro/2025-10-30-permission-policies-screen.pMj53si2.gif)
+
+**Improved Member Permission Workflow**
+
+We redesigned the permission management experience to make it faster and easier for administrators to review roles and grant access.
+
+![Updated Member Permission Management UX](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=435,format=webp/_astro/2025-10-30-permission-policies-screen.pMj53si2.gif)
+
+**Account-scoped Policies Restrictions Relaxed**
+
+Previously, customers could only associate a single account-scoped policy with a member. We've relaxed this restriction, and now Administrators can now assign multiple account-scoped policies to the same member; bringing policy assignment behavior in-line with user-groups and providing greater flexibility in managing member permissions.
+
+Oct 30, 2025
+
+[<h2>New TCP-based fields available in Rulesets</h2>](https://developers.cloudflare.com/changelog/post/2025-10-30-tcp-rtt-and-tcp-fields/)
+
+[Rules](https://developers.cloudflare.com/rules/)
+
+#### Build rules based on TCP transport and latency
+
+Cloudflare now provides two new request fields in the Ruleset engine that let you make decisions based on whether a request used TCP and the measured TCP round-trip time between the client and Cloudflare. These fields help you understand protocol usage across your traffic and build policies that respond to network performance. For example, you can distinguish TCP from QUIC traffic or route high latency requests to alternative origins when needed.
+
+---
+
+#### New fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cf.edge.client_tcp` | Boolean | Indicates whether the request used TCP. A value of true means the client connected using TCP instead of QUIC. |
+| `cf.timings.client_tcp_rtt_msec` | Number | Reports the smoothed TCP round-trip time between the client and Cloudflare in milliseconds. For example, a value of 20 indicates roughly twenty milliseconds of RTT. |
+
+Example filter expression:
+
+```plaintext
+cf.edge.client_tcp && cf.timings.client_tcp_rtt_msec < 100
+```
+
+More information can be found in the Rules language [fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/).
+
+Oct 30, 2025
+
+[<h2>WAF Release - 2025-10-30 - Emergency</h2>](https://developers.cloudflare.com/changelog/post/2025-10-30-emergency-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week’s release introduces a new detection signature that enhances coverage for a critical vulnerability in Oracle E-Business Suite, tracked as CVE-2025-61884.
+
+**Key Findings**
+
+The flaw is easily exploitable and allows an unauthenticated attacker with network access to compromise Oracle Configurator, which can grant access to sensitive resources and configuration data. The affected versions include 12.2.3 through 12.2.14.
+
+**Impact**
+
+Successful exploitation of CVE-2025-61884 may result in unauthorized access to critical business data or full exposure of information accessible through Oracle Configurator. Administrators are strongly advised to apply vendor's patches and recommended mitigations to reduce this exposure.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...8827402f | N/A | Oracle E-Business Suite - SSRF - CVE:CVE-2025-61884 | N/A | Block | This is a New Detection |
+
+Oct 30, 2025
+
+[<h2>Access Workers preview URLs from the Build details page</h2>](https://developers.cloudflare.com/changelog/post/2025-10-30-builds-preview/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+You can now access [preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/) directly from the build details page, making it easier to test your changes when reviewing builds in the dashboard.
+
+![preview button](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1656,height=1112,format=webp/_astro/builds-preview-button.CjGnhkt7.png)
+
+**What's new**
+
+- A **Preview** button now appears in the top-right corner of the build details page for successful builds
+- Click it to instantly open the latest preview URL
+- Matches the same experience you're familiar with from Pages
+
+Oct 28, 2025
+
+[<h2>Access private hostname applications support all ports/protocols</h2>](https://developers.cloudflare.com/changelog/post/2025-10-28-Access-Application-Support-For-All-Ports-And-Protocols/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+[Cloudflare Access for private hostname applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) can now secure traffic on all ports and protocols.
+
+Previously, applying Zero Trust policies to private applications required the application to use HTTPS on port `443` and support Server Name Indicator (SNI).
+
+This update removes that limitation. As long as the application is reachable via a Cloudflare off-ramp, you can now enforce your critical security controls — like single sign-on (SSO), MFA, device posture, and variable session lengths — to any private application. This allows you to extend Zero Trust security to services like SSH, RDP, internal databases, and other non-HTTPS applications.
+
+![Example private application on non-443 port](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1283,height=496,format=webp/_astro/internal_private_app_any_port.DNXnEy0u.png)
+
+For example, you can now create a self-hosted application in Access for `ssh.testapp.local` running on port `22`. You can then build a policy that only allows engineers in your organization to connect after they pass an SSO/MFA check and are using a corporate device.
+
+This feature is generally available across all plans.
+
+Oct 28, 2025
+
+[<h2>Reranking and API-based system prompt configuration in AI Search</h2>](https://developers.cloudflare.com/changelog/post/2025-10-27-ai-search-reranking-system-prompt/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/) now supports reranking for improved retrieval quality and allows you to set the system prompt directly in your API requests.
+
+#### Rerank for more relevant results
+
+You can now enable [reranking](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/) to reorder retrieved documents based on their semantic relevance to the user’s query. Reranking helps improve accuracy, especially for large or noisy datasets where vector similarity alone may not produce the optimal ordering.
+
+You can enable and configure reranking in the dashboard or directly in your API requests:
+
+```javascript
+const answer = await env.AI.autorag("my-autorag").aiSearch({
+	query: "How do I train a llama to deliver coffee?",
+	model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+	reranking: {
+		enabled: true,
+		model: "@cf/baai/bge-reranker-base",
+	},
+});
+```
+
+#### Set system prompts in API
+
+Previously, [system prompts](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/) could only be configured in the dashboard. You can now define them directly in your API requests, giving you per-query control over behavior. For example:
+
+```javascript
+// Dynamically set query and system prompt in AI Search
+async function getAnswer(query, tone) {
+	const systemPrompt = `You are a ${tone} assistant.`;
+
+	const response = await env.AI.autorag("my-autorag").aiSearch({
+		query: query,
+		system_prompt: systemPrompt,
+	});
+
+	return response;
+}
+
+// Example usage
+const query = "What is Cloudflare?";
+const tone = "friendly";
+
+const answer = await getAnswer(query, tone);
+console.log(answer);
+```
+
+Learn more about [Reranking](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/) and [System Prompt](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/) in AI Search.
+
+Oct 28, 2025
+
+[<h2>CASB introduces new granular roles</h2>](https://developers.cloudflare.com/changelog/post/2025-10-28-casb-roles/)
+
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+
+Cloudflare CASB (Cloud Access Security Broker) now supports two new granular roles to provide more precise access control for your security teams:
+
+- **Cloudflare CASB Read:** Provides read-only access to view CASB findings and dashboards. This role is ideal for security analysts, compliance auditors, or team members who need visibility without modification rights.
+- **Cloudflare CASB:** Provides full administrative access to configure and manage all aspects of the CASB product.
+
+These new roles help you better enforce the principle of least privilege. You can now grant specific members access to CASB security findings without assigning them broader permissions, such as the **Super Administrator** or **Administrator** roles.
+
+To enable [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/), scans in CASB, account members will need the **Cloudflare Zero Trust** role.
+
+You can find these new roles when inviting members or creating API tokens in the Cloudflare dashboard under **Manage Account** > **Members**.
+
+To learn more about managing roles and permissions, refer to the [Manage account members and roles documentation](https://developers.cloudflare.com/fundamentals/manage-members/roles/).
+
+Oct 28, 2025
+
+[<h2>New Application Categories added for HTTP Traffic Management</h2>](https://developers.cloudflare.com/changelog/post/Gateway-application-categories-added/)
+
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+
+To give you precision and flexibility while creating policies to block unwanted traffic, we are introducing new, more granular application categories in the Gateway product.
+
+We have added the following categories to provide more precise organization and allow for finer-grained policy creation, designed around how users interact with different types of applications:
+
+- Business
+- Education
+- Entertainment & Events
+- Food & Drink
+- Health & Fitness
+- Lifestyle
+- Navigation
+- Photography & Graphic Design
+- Travel
+
+The new categories are live now, but we are providing a transition period for existing applications to be fully remapped to these new categories.
+
+The full remapping will be completed by January 30, 2026.
+
+We encourage you to use this time to:
+
+- Review the new category structure.
+- Identify and adjust any existing HTTP policies that reference older categories to ensure a smooth transition.
+
+For more information on creating HTTP policies, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/).
+
+Oct 27, 2025
+
+[<h2>Azure Sentinel Connector</h2>](https://developers.cloudflare.com/changelog/post/2025-10-27-Sentinel-connector/)
+
+[Logs](https://developers.cloudflare.com/logs/)
+
+Logpush now supports integration with [Microsoft Sentinel ↗︎](https://www.microsoft.com/en-us/security/business/siem-and-xdr/microsoft-sentinel).The new Azure Sentinel Connector built on Microsoft’s Codeless Connector Framework (CCF), is now available. This solution replaces the previous Azure Functions-based connector, offering significant improvements in security, data control, and ease of use for customers. Logpush customers can send logs to Azure Blob Storage and configure this new Sentinel Connector to ingest those logs directly into Microsoft Sentinel.
+
+This upgrade significantly streamlines log ingestion, improves security, and provides greater control:
+
+- Simplified Implementation: Easier for engineering teams to set up and maintain.
+- Cost Control: New support for Data Collection Rules (DCRs) allows you to filter and transform logs at ingestion time, offering potential cost savings.
+- Enhanced Security: CCF provides a higher level of security compared to the older Azure Functions connector.
+- Data Lake Integration: Includes native integration with Data Lake.
+
+Find the new solution [here ↗︎](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview) and refer to the [Cloudflare's developer documentation ↗︎](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/#supported-logs:~:text=WorkBook%20fields,-Analytic%20rules)for more information on the connector, including setup steps, supported logs and Microsoft's resources.
+
+Oct 27, 2025
+
+[<h2>TLD Insights in Cloudflare Radar</h2>](https://developers.cloudflare.com/changelog/post/2025-10-27-radar-tld-insights/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Radar**](https://developers.cloudflare.com/radar/) now introduces Top-Level Domain (TLD) insights, providing visibility into popularity based on the DNS magnitude metric, detailed TLD information including its type, manager, DNSSEC support, RDAP support, and WHOIS data, and trends such as DNS query volume and geographic distribution observed by the [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/) DNS resolver.
+
+The following dimensions were added to the Radar DNS API, specifically, to the [`/dns/summary/{dimension}`](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/summary_v2/) and [`/dns/timeseries_groups/{dimension}`](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/timeseries_groups_v2/) endpoints:
+
+- `tld`: Top-level domain extracted from DNS queries; can also be used as a filter.
+- `tld_dns_magnitude`: Top-level domain ranking by [DNS magnitude](https://developers.cloudflare.com/radar/glossary#dns-magnitude).
+
+And the following endpoints were added:
+
+- [`/tlds`](https://developers.cloudflare.com/api/resources/radar/subresources/tlds/methods/list/) - Lists all TLDs.
+- [`/tlds/{tld}`](https://developers.cloudflare.com/api/resources/radar/subresources/tlds/methods/get/) - Retrieves information about a specific TLD.
+
+![Screenshot of the TLD ranking by DNS magnitude](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=2344,format=webp/_astro/tld-ranking-by-dns-magnitude.DbmrooPK.png)
+
+Learn more about the new Radar DNS insights in our [blog post ↗︎](https://blog.cloudflare.com/introducing-tld-insights-on-cloudflare-radar/), and check out the [new Radar page ↗︎](https://radar.cloudflare.com/tlds).
+
+Oct 27, 2025
+
+[<h2>Cloudforce One RFI tokens are now visible in the dashboard</h2>](https://developers.cloudflare.com/changelog/post/2025-10-27-RFI-Tokens-in-Dash/)
+
+[Security Center](https://developers.cloudflare.com/security-center/)
+
+The Requests for Information (RFI) dashboard now shows users the number of tokens used by each submitted RFI to better understand usage of tokens and how they relate to each request submitted.
+
+![Cloudforce One RFI tokens](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2380,height=1216,format=webp/_astro/2025-10-24RFITokens.DPm1e8uC.png)
+
+What’s new:
+
+- Users can now see the number of tokens used for a submitted request for information.
+- Users can see the remaining tokens allocated to their account for the quarter.
+- Users can only select the Routine priority for the `Strategic Threat Research` request type.
+
+Cloudforce One subscribers can try it now in [Application Security > Threat Intelligence > Requests for Information ↗︎](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/requests).
+
+Oct 24, 2025
+
+[<h2>WAF Release - 2025-10-24 - Emergency</h2>](https://developers.cloudflare.com/changelog/post/2025-10-24-emergency-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week’s release introduces a new detection signature that enhances coverage for a critical vulnerability in Windows Server Update Services (WSUS), tracked as CVE-2025-59287.
+
+**Key Findings**
+
+The vulnerability allows unauthenticated attackers to potentially achieve remote code execution. The updated detection logic strengthens defenses by improving resilience against exploitation attempts targeting this flaw.
+
+**Impact**
+
+Successful exploitation of CVE-2025-59287 could enable attackers to hijack sessions, execute arbitrary commands, exfiltrate sensitive data, and disrupt storefront operations. These actions pose significant confidentiality and integrity risks to affected environments. Administrators should apply vendor patches immediately to mitigate exposure.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...bd72ba08 | N/A | Windows Server - Deserialization - CVE:CVE-2025-59287 | N/A | Block | This is a New Detection |
+
+Oct 24, 2025
+
+[<h2>Automatic resource provisioning for KV, R2, and D1</h2>](https://developers.cloudflare.com/changelog/post/2025-10-24-automatic-resource-provisioning/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Previously, if you wanted to develop or deploy a worker with attached resources, you'd have to first manually create the desired resources. Now, if your Wrangler configuration file includes a KV namespace, D1 database, or R2 bucket that does not yet exist on your account, you can develop locally and deploy your application seamlessly, without having to run additional commands.
+
+Automatic provisioning is launching as an open beta, and we'd love to hear your feedback to help us make improvements! It currently works for KV, R2, and D1 bindings. You can disable the feature using the `--no-x-provision` flag.
+
+To use this feature, update to wrangler@4.45.0 and add bindings to your config file *without* resource IDs e.g.:
+
+```jsonc
+{
+	"kv_namespaces": [{ "binding": "MY_KV" }],
+	"d1_databases": [{ "binding": "MY_DB" }],
+	"r2_buckets": [{ "binding": "MY_R2" }],
+}
+```
+
+`wrangler dev` will then automatically create these resources for you locally, and on your next run of `wrangler deploy`, Wrangler will call the Cloudflare API to create the requested resources and link them to your Worker.
+
+Though resource IDs will be automatically written back to your Wrangler config file after resource creation, resources will stay linked across future deploys even without adding the resource IDs to the config file. This is especially useful for shared templates, which now no longer need to include account-specific resource IDs when adding a binding.
+
+Oct 24, 2025
+
+[<h2>Build TanStack Start apps with the Cloudflare Vite plugin</h2>](https://developers.cloudflare.com/changelog/post/2025-10-24-tanstack-start/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+The [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) now supports [TanStack Start ↗︎](https://tanstack.com/start/) apps. Get started with new or existing projects.
+
+#### New projects
+
+Create a new TanStack Start project that uses the Cloudflare Vite plugin via the `create-cloudflare` CLI:
+
+npmyarnpnpm
+
+```
+npm create cloudflare@latest -- my-tanstack-start-app --framework=tanstack-start
+```
+
+```
+yarn create cloudflare my-tanstack-start-app --framework=tanstack-start
+```
+
+```
+pnpm create cloudflare@latest my-tanstack-start-app --framework=tanstack-start
+```
+
+#### Existing projects
+
+Migrate an existing TanStack Start project to use the Cloudflare Vite plugin:
+
+1. Install `@cloudflare/vite-plugin` and `wrangler`
+
+npmyarnpnpmbun
+
+```
+npm i -D @cloudflare/vite-plugin wrangler
+```
+
+```
+yarn add -D @cloudflare/vite-plugin wrangler
+```
+
+```
+pnpm add -D @cloudflare/vite-plugin wrangler
+```
+
+```
+bun add -d @cloudflare/vite-plugin wrangler
+```
+
+2. Add the Cloudflare plugin to your Vite config
+
+*vite.config.tsts*
+
+```ts
+import { defineConfig } from "vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import viteReact from "@vitejs/plugin-react";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+export default defineConfig({
+	plugins: [
+		cloudflare({ viteEnvironment: { name: "ssr" } }),
+		tanstackStart(),
+		viteReact(),
+	],
+});
+```
+
+3. Add your Worker config file
+
+```jsonc
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-tanstack-start-app",
+	// Set this to today's date
+	"compatibility_date": "2026-10-05",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"main": "@tanstack/react-start/server-entry"
+}
+```
+
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-tanstack-start-app"
+# Set this to today's date
+compatibility_date = "2026-10-05"
+compatibility_flags = [ "nodejs_compat" ]
+main = "@tanstack/react-start/server-entry"
+```
+
+4. Modify the scripts in your `package.json`
+
+*package.jsonjson*
+
+```json
+{
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build && tsc --noEmit",
+		"start": "node .output/server/index.mjs",
+		"preview": "vite preview",
+		"deploy": "npm run build && wrangler deploy",
+		"cf-typegen": "wrangler types"
+	}
+}
+```
+
+See the [TanStack Start framework guide](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/) for more info.
+
+Oct 23, 2025
+
+[<h2>WAF Release - 2025-10-23 - Emergency</h2>](https://developers.cloudflare.com/changelog/post/2025-10-23-emergency-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week highlights enhancements to detection signatures improving coverage for vulnerabilities in Adobe Commerce and Magento Open Source, linked to CVE-2025-54236.
+
+**Key Findings**
+
+This vulnerability allows unauthenticated attackers to take over customer accounts through the Commerce REST API and, in certain configurations, may lead to remote code execution. The latest update enhances detection logic to provide more resilient protection against exploitation attempts.
+
+**Impact**
+
+Adobe Commerce (CVE-2025-54236): Exploitation may allow attackers to hijack sessions, execute arbitrary commands, steal data, and disrupt storefronts, resulting in confidentiality and integrity risks for merchants. Administrators are strongly encouraged to apply vendor patches without delay.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...c6ef59a1 | N/A | Adobe Commerce - Remote Code Execution - CVE:CVE-2025-54236 | N/A | Block | This is a New Detection |
+
+Oct 23, 2025
+
+[<h2>Workers AI Markdown Conversion: New endpoint to list supported formats</h2>](https://developers.cloudflare.com/changelog/post/2025-10-23-new-markdown-conversion-endpoint/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+Developers can now programmatically retrieve a list of all file formats supported by the [Markdown Conversion utility](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) in Workers AI.
+
+You can use the [`env.AI`](https://developers.cloudflare.com/workers-ai/configuration/bindings/) binding:
+
+```typescript
+await env.AI.toMarkdown().supported()
+```
+
+Or call the REST API:
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/tomarkdown/supported \
+  -H 'Authorization: Bearer {API_TOKEN}'
+```
+
+Both return a list of file formats that users can convert into Markdown:
+
+```json
+[
+	{
+		"extension": ".pdf",
+		"mimeType": "application/pdf",
+	},
+	{
+		"extension": ".jpeg",
+		"mimeType": "image/jpeg",
+	},
+	...
+]
+```
+
+Learn more about our [Markdown Conversion utility](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/).
+
+Oct 23, 2025
+
+[<h2>Workers Preview URL default behavior now matches your workers.dev setting</h2>](https://developers.cloudflare.com/changelog/post/2025-10-23-preview-url-default-behavior/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+We have updated the default behavior for Cloudflare Workers [Preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/). **Going forward, if a preview URL setting is not [explicitly configured](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/#toggle-preview-urls-enable-or-disable) during deployment, its default behavior will automatically match the setting of your [`workers.dev` subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/).**
+
+This change is intended to provide a more intuitive and secure experience by aligning your preview URL's default state with your `workers.dev` configuration to prevent cases where a preview URL might remain public even after you disabled your `workers.dev` route.
+
+**What this means for you:**
+
+- **If neither setting is configured:** both the workers.dev route and the preview URL will default to enabled
+- **If your workers.dev route is enabled and you do not explicitly set Preview URLs to enabled or disabled:** Preview URLs will default to enabled
+- **If your workers.dev route is disabled and you do not explicitly set Preview URLs to enabled or disabled:** Preview URLs will default to disabled
+
+You can override the default setting by explicitly enabling or disabling the preview URL in your Worker's configuration through the [API](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/subdomain/), [Dashboard](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/#from-the-dashboard), or [Wrangler](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/#from-the-wrangler-configuration-file).
+
+**Wrangler Version Behavior**
+
+The default behavior depends on the version of Wrangler you are using. This new logic applies to the latest version. Here is a summary of the behavior across different versions:
+
+- **Before v4.34.0:** Preview URLs defaulted to enabled, regardless of the workers.dev setting.
+- **v4.34.0 up to (but not including) v4.44.0:** Preview URLs defaulted to disabled, regardless of the workers.dev setting.
+- **v4.44.0 or later:** Preview URLs now default to matching your workers.dev setting.
+
+**Why we’re making this change**
+
+In July, [we introduced preview URLs to Workers](https://developers.cloudflare.com/changelog/2025-07-23-workers-preview-urls/), which let you preview code changes before deploying to production. This made disabling your Worker’s workers.dev URL an ambiguous action — the preview URL, served as a subdomain of `workers.dev` (ex: `preview-id-worker-name.account-name.workers.dev`) would still be live even if you had disabled your Worker’s `workers.dev` route. If you misinterpreted what it meant to disable your `workers.dev` route, you might unintentionally leave preview URLs enabled when you didn’t mean to, and expose them to the public Internet.
+
+To address this, we made a [one-time update](https://developers.cloudflare.com/changelog/2025-09-17-update-preview-url-setting/) to disable preview URLs on existing Workers that had their workers.dev route disabled and changed the default behavior to be disabled for all new deployments where a preview URL setting was not explicitly configured.
+
+While this change helped secure many customers, it was disruptive for customers who keep their `workers.dev` route enabled and actively use the preview functionality, as it now required them to explicitly enable preview URLs on every redeployment.This new, more intuitive behavior ensures that your preview URL settings align with your `workers.dev` configuration by default, providing a more secure and predictable experience.
+
+**Securing access to `workers.dev` and preview URL endpoints**
+
+To further secure your `workers.dev` subdomain and preview URL, you can [enable Cloudflare Access with a single click](https://developers.cloudflare.com/changelog/2025-10-03-one-click-access-for-workers/) in your Worker's settings to limit access to specific users or groups.
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/35/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/35/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

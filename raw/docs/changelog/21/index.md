@@ -1,0 +1,1227 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Apr 23, 2026
+
+[<h2>Audit Logs v2 — Organization-level support</h2>](https://developers.cloudflare.com/changelog/post/2026-04-23-audit-logs-v2-organization-level/)
+
+[Audit Logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/)
+
+Audit Logs v2 now supports organization-level audit logs. Org Admins can retrieve audit events for actions performed at the organization level via the Audit Logs v2 API.
+
+To retrieve organization-level audit logs, use the following endpoint:
+
+```bash
+GET https://api.cloudflare.com/client/v4/organizations/{organization_id}/logs/audit
+```
+
+This release covers user-initiated actions performed through organization-level APIs. Audit logs for system-initiated actions, a dashboard UI, and Logpush support for organizations will be added in future releases.
+
+Note
+
+Organization-level audit logs are separate from account-level audit logs. Actions performed within a specific account continue to be available via the account-level Audit Logs UI, Audit Logs v2 API, and Logpush.
+
+For more information, refer to the [Audit Logs documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
+
+Apr 23, 2026
+
+[<h2>Go SDK v6.10.0 Released</h2>](https://developers.cloudflare.com/changelog/post/2026-04-23-go-sdk-v6.10.0/)
+
+[SDK](https://developers.cloudflare.com/fundamentals/api/reference/sdks/) [Go SDK](https://developers.cloudflare.com/fundamentals/api/reference/sdks/)
+
+#### v6.10.0
+
+In this release, you'll see a number of breaking changes. This is primarily due to changes in OpenAPI definitions, which our libraries are based off of, and codegen updates that we rely on to read those OpenAPI definitions and produce our SDK libraries.
+
+**Please ensure you read through the list of changes below before moving to this version** - this will help you understand any down or upstream issues it may cause to your environments.
+
+#### Breaking Changes
+
+See the [v6.10.0 Migration Guide ↗︎](https://github.com/cloudflare/cloudflare-go/blob/main/MIGRATION_GUIDE.md) for before/after code examples and actions needed for each change.
+
+#### Abuse Reports - Registrar WHOIS Report Field Removals
+
+Several fields have been removed from `AbuseReportNewParamsBodyAbuseReportsRegistrarWhoisReportRegWhoRequest`:
+
+- `RegWhoGoodFaithAffirmation`
+- `RegWhoLawfulProcessingAgreement`
+- `RegWhoLegalBasis`
+- `RegWhoRequestType`
+- `RegWhoRequestedDataElements`
+
+#### AI Search - Instance Params Restructured
+
+The `InstanceNewParams` and `InstanceUpdateParams` types have been significantly restructured. Many fields have been moved or removed:
+
+- `InstanceNewParams.TokenID`, `Type`, `CreatedFromAISearchWizard`, `WorkerDomain` removed
+- `InstanceUpdateParams` — most configuration fields removed (including `IndexMethod`, `IndexingOptions`, `MaxNumResults`, `Metadata`, `Paused`, `PublicEndpointParams`, `Reranking`, `RerankingModel`, `RetrievalOptions`, `RewriteModel`, `RewriteQuery`, `ScoreThreshold`, `SourceParams`, `Summarization`, `SummarizationModel`, `SystemPromptAISearch`, `SystemPromptIndexSummarization`, `SystemPromptRewriteQuery`, `TokenID`, `CreatedFromAISearchWizard`, `WorkerDomain`)
+- `InstanceSearchParams.Messages` field removed along with `InstanceSearchParamsMessage` and `InstanceSearchParamsMessagesRole` types
+
+#### AI Search - InstanceItem Service Removed
+
+The `InstanceItemService` type has been removed. The items sub-resource at `client.AISearch.Instances.Items` no longer exists in the non-namespace path. Use `client.AISearch.Namespaces.Instances.Items` instead.
+
+#### AI Search - Token Types Removed
+
+The following types have been removed from the `ai_search` package:
+
+- `TokenDeleteResponse`
+- `TokenListParams` (and associated `TokenListParamsOrderBy`, `TokenListParamsOrderByDirection`)
+
+#### Email Security - Investigate Move Return Type Change
+
+The `Investigate.Move.New()` method now returns a raw slice instead of a paginated wrapper:
+
+- `New()` returns `*[]InvestigateMoveNewResponse` instead of `*pagination.SinglePage[InvestigateMoveNewResponse]`
+- `NewAutoPaging()` method removed
+
+#### Hyperdrive - Config Params Restructured
+
+The `ConfigEditParams` type lost its `MTLS` and `Name` fields. The `HyperdriveMTLSParam` type lost `MTLS` and `Host` fields. The `Host` field on origin config changed from `param.Field[string]` to a plain `string`.
+
+#### IAM - UserGroupMember Params and Return Types Changed
+
+The `UserGroupMemberNewParams` struct has been restructured and the `New()` method now returns a paginated response:
+
+- `UserGroupMemberNewParams.Body` renamed to `UserGroupMemberNewParams.Members`
+- `UserGroupMemberNewParamsBody` renamed to `UserGroupMemberNewParamsMember`
+- `UserGroupMemberUpdateParams.Body` renamed to `UserGroupMemberUpdateParams.Members`
+- `UserGroupMemberUpdateParamsBody` renamed to `UserGroupMemberUpdateParamsMember`
+- `UserGroups.Members.New()` returns `*pagination.SinglePage[UserGroupMemberNewResponse]` instead of `*UserGroupMemberNewResponse`
+
+#### IAM - UserGroup List Direction Type Changed
+
+The `UserGroupListParams.Direction` field changed from `param.Field[string]` to `param.Field[UserGroupListParamsDirection]` (typed enum with `asc`/`desc` values).
+
+#### Pipelines - Delete Methods Now Return Typed Responses
+
+Several delete methods across Pipelines now return typed responses instead of bare error:
+
+- `Pipelines.DeleteV1()` returns `(*PipelineDeleteV1Response, error)` instead of `error`
+- `Pipelines.Sinks.Delete()` returns `(*SinkDeleteResponse, error)` instead of `error`
+- `Pipelines.Streams.Delete()` returns `(*StreamDeleteResponse, error)` instead of `error`
+
+#### Queues - Message Response Types Removed
+
+The following response envelope types have been removed:
+
+- `MessageBulkPushResponseSuccess`
+- `MessagePushResponseSuccess`
+- `MessageAckResponse` fields `RetryCount` and `Warnings` removed
+
+#### Secrets Store - Pagination Wrapper Removal and Type Changes
+
+Methods now return direct types instead of `SinglePage` wrappers, and several internal types have been removed. Associated `AutoPaging` methods have also been removed:
+
+- `Stores.New()` returns `*StoreNewResponse` instead of `*pagination.SinglePage[StoreNewResponse]`
+- `Stores.NewAutoPaging()` method removed
+- `Stores.Secrets.BulkDelete()` returns `*StoreSecretBulkDeleteResponse` instead of `*pagination.SinglePage[StoreSecretBulkDeleteResponse]`
+- `Stores.Secrets.BulkDeleteAutoPaging()` method removed
+- Removed types: `StoreDeleteResponse`, `StoreDeleteResponseEnvelopeResultInfo`, `StoreSecretDeleteResponse`, `StoreSecretDeleteResponseStatus`, `StoreSecretBulkDeleteResponse` (old shape), `StoreSecretBulkDeleteResponseStatus`, `StoreSecretDeleteResponseEnvelopeResultInfo`
+- `StoreNewParams` restructured (old `StoreNewParamsBody` removed)
+- `StoreSecretBulkDeleteParams` restructured
+
+#### Stream - AudioTracks Return Type Change
+
+The `AudioTracks.Get()` method now returns a dedicated response type instead of a paginated list. The `GetAutoPaging()` method has been removed:
+
+- `Get()` returns `*AudioTrackGetResponse` instead of `*pagination.SinglePage[Audio]`
+- `GetAutoPaging()` method removed
+
+#### Stream - Clip Type Removal and Return Type Change
+
+The `Clip.New()` method now returns the shared `Video` type. The following types have been entirely removed:
+
+- `Clip`, `ClipPlayback`, `ClipStatus`, `ClipWatermark`
+
+#### Stream - Copy and Clip Params Field Removals
+
+- `ClipNewParams.MaxDurationSeconds`, `ThumbnailTimestampPct`, `Watermark` removed
+- `CopyNewParams.ThumbnailTimestampPct`, `Watermark` removed
+
+#### Stream - Download and Webhook Changes
+
+- `DownloadNewResponseStatus` type removed
+- `WebhookUpdateResponse` and `WebhookGetResponse` changed from `interface{}` type aliases to full struct types
+
+#### Zero Trust - Access AI Control MCP Portal Union Types Removed
+
+The following union interface types have been removed:
+
+- `AccessAIControlMcpPortalListResponseServersUpdatedPromptsUnion`
+- `AccessAIControlMcpPortalListResponseServersUpdatedToolsUnion`
+- `AccessAIControlMcpPortalReadResponseServersUpdatedPromptsUnion`
+- `AccessAIControlMcpPortalReadResponseServersUpdatedToolsUnion`
+
+#### Features
+
+#### Vulnerability Scanner (`client.VulnerabilityScanner`)
+
+**NEW SERVICE:** Full vulnerability scanning management
+
+- **CredentialSets** - CRUD for credential sets ( `New`, `Update`, `List`, `Delete`, `Edit`, `Get`)
+- **Credentials** - Manage credentials within sets ( `New`, `Update`, `List`, `Delete`, `Edit`, `Get`)
+- **Scans** - Create and manage vulnerability scans ( `New`, `List`, `Get`)
+- **TargetEnvironments** - Manage scan target environments ( `New`, `Update`, `List`, `Delete`, `Edit`, `Get`)
+
+#### AI Search - Namespaces (`client.AISearch.Namespaces`)
+
+**NEW SERVICE:** Namespace-scoped AI Search management
+
+- `New()`, `Update()`, `List()`, `Delete()`, `ChatCompletions()`, `Read()`, `Search()`
+- **Instances** - Namespace-scoped instances ( `New`, `Update`, `List`, `Delete`, `ChatCompletions`, `Read`, `Search`, `Stats`)
+- **Jobs** - Instance job management ( `New`, `Update`, `List`, `Get`, `Logs`)
+- **Items** - Instance item management ( `List`, `Delete`, `Chunks`, `NewOrUpdate`, `Download`, `Get`, `Logs`, `Sync`, `Upload`)
+
+#### Browser Rendering - Devtools (`client.BrowserRendering.Devtools`)
+
+**NEW SERVICE:** DevTools protocol browser control
+
+- **Session** - List and get devtools sessions
+- **Browser** - Browser lifecycle management ( `New`, `Delete`, `Connect`, `Launch`, `Protocol`, `Version`)
+- **Page** - Get page by target ID
+- **Targets** - Manage browser targets ( `New`, `List`, `Activate`, `Get`)
+
+#### Registrar (`client.Registrar`)
+
+**NEW:** Domain check and search endpoints
+
+- `Check()` - `POST /accounts/{account_id}/registrar/domain-check`
+- `Search()` - `GET /accounts/{account_id}/registrar/domain-search`
+
+**NEW:** Registration management (`client.Registrar.Registrations`)
+
+- `New()`, `List()`, `Edit()`, `Get()`
+- `RegistrationStatus.Get()` - Get registration workflow status
+- `UpdateStatus.Get()` - Get update workflow status
+
+#### Cache - Origin Cloud Regions (`client.Cache.OriginCloudRegions`)
+
+**NEW SERVICE:** Manage origin cloud region configurations
+
+- `New()`, `List()`, `Delete()`, `BulkDelete()`, `BulkEdit()`, `Edit()`, `Get()`, `SupportedRegions()`
+
+#### Zero Trust - DLP Settings (`client.ZeroTrust.DLP.Settings`)
+
+**NEW SERVICE:** DLP settings management
+
+- `Update()`, `Delete()`, `Edit()`, `Get()`
+
+#### Radar
+
+- `AgentReadiness.Summary()` - Agent readiness summary by dimension
+- `AI.MarkdownForAgents.Summary()` - Markdown-for-agents summary
+- `AI.MarkdownForAgents.Timeseries()` - Markdown-for-agents timeseries
+
+#### IAM (`client.IAM`)
+
+- `UserGroups.Members.Get()` - Get details of a specific member in a user group
+- `UserGroups.Members.NewAutoPaging()` - Auto-paging variant for adding members
+- `UserGroups.NewParams.Policies` changed from required to optional
+
+#### Bot Management
+
+- `ContentBotsProtection` field added to `BotFightModeConfiguration` and `SubscriptionConfiguration` ( `block`/ `disabled`)
+
+#### Deprecations
+
+None in this release.
+
+#### Get started
+
+- [Download Go SDK v6.10.0 ↗︎](https://github.com/cloudflare/cloudflare-go/releases/tag/v6.10.0)
+- [Go SDK documentation ↗︎](https://developers.cloudflare.com/api/sdks/go/)
+- [Migration Guide ↗︎](https://github.com/cloudflare/cloudflare-go/blob/main/MIGRATION_GUIDE.md)
+
+Apr 22, 2026
+
+[<h2>R2 Data Catalog snapshot expiration now removes unreferenced data files</h2>](https://developers.cloudflare.com/changelog/post/2026-04-22-snapshot-expiration-cleans-data-files/)
+
+[Basin Catalog](https://developers.cloudflare.com/basin-catalog/) [Basin](https://developers.cloudflare.com/basin/) [R2](https://developers.cloudflare.com/r2/)
+
+[R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/), a managed [Apache Iceberg ↗︎](https://iceberg.apache.org/) catalog built into R2, now removes unreferenced data files during automatic snapshot expiration. This improvement reduces storage costs and eliminates the need to run manual maintenance jobs to reclaim space from deleted data.
+
+Previously, snapshot expiration only cleaned up Iceberg metadata files such as manifests and manifest lists. Data files that were no longer referenced by active snapshots remained in R2 storage until you manually ran `remove_orphan_files` or `expire_snapshots` through an engine like Spark. This required extra operational overhead and left stale data files consuming storage.
+
+Snapshot expiration now handles both metadata and data file cleanup automatically. When a snapshot is expired, any data files that are no longer referenced by retained snapshots are removed from R2 storage.
+
+```bash
+# Enable catalog-level snapshot expiration
+npx wrangler r2 bucket catalog snapshot-expiration enable my-bucket \
+  --older-than-days 7 \
+  --retain-last 10
+```
+
+For more information, refer to the [table maintenance documentation](https://developers.cloudflare.com/basin-catalog/table-maintenance/).
+
+Apr 22, 2026
+
+[<h2>Custom dashboards available to all customers</h2>](https://developers.cloudflare.com/changelog/post/2026-04-22-custom-dashboards-ga/)
+
+[Analytics](https://developers.cloudflare.com/analytics/) [Log Explorer](https://developers.cloudflare.com/log-explorer/)
+
+Custom Dashboards are now available to all Cloudflare customers. Build personalized views that highlight the metrics most critical to your infrastructure and security posture, moving beyond standard product dashboards.
+
+This update significantly expands the data available for visualization. Build charts based on any of the **100+ datasets** available via the Cloudflare GraphQL API, covering everything from WAF events and Workers metrics to Load Balancing and Zero Trust logs.
+
+#### Log Explorer integration
+
+Log Explorer customers can select Log Explorer datasets to create charts from raw, unsampled log data.
+
+#### Key benefits
+
+- **Unified visibility**: Consolidate signals from different Cloudflare products (for example, HTTP Traffic and R2 Storage) into a single view.
+- **Flexible monitoring**: Create charts that focus on specific status codes, ASN regions, or security actions that matter to your business.
+- **Expanded limits**: Log Explorer customers can create up to **100 dashboards** (up from 25 for standard customers).
+
+![Custom Dashboards home page showing dashboard list and chart previews](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1079,height=793,format=webp/_astro/customdashboardshome.BIpSvImM.jpg)
+
+To get started, refer to the [Custom Dashboards documentation](https://developers.cloudflare.com/analytics/custom-dashboards/).
+
+Apr 21, 2026
+
+[<h2>Country rules supported in Unified Routing</h2>](https://developers.cloudflare.com/changelog/post/2026-04-21-unified-routing-geoip-country-rules/)
+
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+[Cloudflare Advanced Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) Country rules are now supported for accounts using [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing) mode. This feature requires a Cloudflare Advanced Network Firewall subscription.
+
+You can create firewall rules that match traffic based on source or destination country to enforce geographic access policies across your network.
+
+This is the first of the Cloudflare Advanced Network Firewall features to become available in Unified Routing. Support for additional features - IP Lists, ASN Lists, Threat Intel Lists, IDS, Rate Limiting, SIP, and Managed Rulesets - is planned.
+
+For the full list of current beta limitations, refer to [Traffic steering beta limitations](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#check-feature-availability-before-upgrading).
+
+Apr 21, 2026
+
+[<h2>Network Overview page in the dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-04-21-network-overview-page/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+A new **Network Overview** page in the Cloudflare dashboard gives you a single starting point for network security and connectivity products.
+
+From the Network Overview page, you can:
+
+- **Connect resources with [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)** - Create tunnels to connect your infrastructure to Cloudflare without exposing it to the public Internet.
+- **Monitor traffic with Network Flow** - Get real-time visibility into traffic volume from your routers.
+- **Configure Address Maps** - Map dedicated static IPs or BYOIP prefixes to specific hostnames.
+- **Explore Magic Transit and Cloudflare WAN** - Set up DDoS protection for your networks and connectivity for your branch offices and data centers.
+
+To find it, go to [**Networking** ↗︎](https://dash.cloudflare.com/?to=/:account/magic-networks/overview) in the dashboard sidebar.
+
+If you already use [Magic Transit](https://developers.cloudflare.com/magic-transit/), [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/), or other Cloudflare network services products, your existing experience is unchanged.
+
+![Network Overview page in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1650,height=1362,format=webp/_astro/network-overview.4FLDtULW.png)
+
+Apr 21, 2026
+
+[<h2>Additional step context and ReadableStream support now available in Workflows step.do()</h2>](https://developers.cloudflare.com/changelog/post/2026-04-21-step-context-and-readable-streams/)
+
+[Workflows](https://developers.cloudflare.com/workflows/)
+
+[Workflows](https://developers.cloudflare.com/workflows/) now provides additional context inside `step.do()` callbacks and supports returning `ReadableStream` to handle larger step outputs.
+
+#### Step context properties
+
+The `step.do()` callback receives a context object with new properties [alongside](https://developers.cloudflare.com/changelog/post/2026-03-06-step-context-available/) `attempt`:
+
+- **`step.name`** — The name passed to `step.do()`
+- **`step.count`** — How many times a step with that name has been invoked in this instance (1-indexed)
+  - Useful when running the same step in a loop.
+- **`config`** — The resolved step configuration, including `timeout` and `retries` with defaults applied
+
+```ts
+type ResolvedStepConfig = {
+	retries: {
+		limit: number;
+		delay: WorkflowDelayDuration | number;
+		backoff?: "constant" | "linear" | "exponential";
+	};
+	timeout: WorkflowTimeoutDuration | number;
+};
+
+type WorkflowStepContext = {
+	step: {
+		name: string;
+		count: number;
+	};
+	attempt: number;
+	config: ResolvedStepConfig;
+};
+```
+
+#### ReadableStream support in `step.do()`
+
+Steps can now return a `ReadableStream` directly. Although non-stream step outputs are [limited to 1 MiB](https://developers.cloudflare.com/workflows/reference/limits/), streamed outputs support much larger payloads.
+
+```ts
+const largePayload = await step.do("fetch-large-file", async () => {
+	const object = await env.MY_BUCKET.get("large-file.bin");
+	return object.body;
+});
+```
+
+Note that streamed outputs are still considered part of the Workflow instance storage limit.
+
+Apr 21, 2026
+
+[<h2>Container logs page now includes relevant Worker and Durable Object logs</h2>](https://developers.cloudflare.com/changelog/post/2026-04-21-correlated-worker-durable-object-logs/)
+
+[Containers](https://developers.cloudflare.com/containers/)
+
+The Container logs page now displays related [Worker](https://developers.cloudflare.com/workers/) and [Durable Object](https://developers.cloudflare.com/durable-objects/) logs alongside container logs. This co-locates all relevant log events for a container application in one place, making it easier to trace requests and debug issues.
+
+![Container logs page showing Worker and Durable Object logs alongside container logs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1682,height=926,format=webp/_astro/container-worker-logs.BBQ7NRse.png)
+
+You can filter to a single source when you need to isolate Container, Worker, or Durable Object output.
+
+For information on configuring container logging, refer to [How do Container logs work?](https://developers.cloudflare.com/containers/faq/#how-do-container-logs-work).
+
+Apr 21, 2026
+
+[<h2>Introducing Billable Usage dashboard and Budget alerts</h2>](https://developers.cloudflare.com/changelog/post/2026-04-13-billable-usage-dashboard-and-budget-alerts/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Workers](https://developers.cloudflare.com/workers/)
+
+Pay-as-you-go customers can now monitor usage-based costs and configure spend alerts through two new features: the Billable Usage dashboard and Budget alerts.
+
+#### Billable Usage dashboard
+
+The Billable Usage dashboard provides daily visibility into usage-based costs across your Cloudflare account. The data comes from the same system that generates your monthly invoice, so the figures match your bill.
+
+The dashboard displays:
+
+- A bar chart showing daily usage charges for your billing period
+- A sortable table breaking down usage by product, including total usage, billable usage, and cumulative costs
+- Ability to view previous billing periods
+
+Usage data aligns to your billing cycle, not the calendar month. The total usage cost shown at the end of a completed billing period matches the usage overage charges on your corresponding invoice.
+
+To access the dashboard, go to **Manage Account** > **Billing** > **Billable Usage**.
+
+![Screenshot of the Billable Usage dashboard in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1033,height=757,format=webp/_astro/billable-usage-dashboard.CQvMdtrp.png)
+
+#### Budget alerts
+
+Budget alerts allow you to set dollar-based thresholds for your account-level usage spend. You receive an email notification when your projected monthly spend reaches your configured threshold, giving you proactive visibility into your bill before month-end.
+
+To configure a budget alert:
+
+1. Go to **Manage Account** > **Billing** > **Billable Usage**.
+2. Select **Set Budget Alert**.
+3. Enter a budget threshold amount greater than $0.
+4. Select **Create**.
+
+Alternatively, configure alerts via **Notifications** > **Add** > **Budget Alert**.
+
+![Create Budget Alert modal in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=315,height=374,format=webp/_astro/budget-alert-modal.BjIzGOLV.png)
+
+You can create multiple budget alerts at different dollar amounts. The notifications system automatically deduplicates alerts if multiple thresholds trigger at the same time. Budget alerts are calculated daily based on your usage trends and fire once per billing cycle when your projected spend first crosses your threshold.
+
+Both features are available to Pay-as-you-go accounts with usage-based products (Workers, R2, Images, etc.). Enterprise contract accounts are not supported.
+
+For more information, refer to the [Usage based billing documentation](https://developers.cloudflare.com/billing/understand/usage-based-billing/).
+
+Apr 21, 2026
+
+[<h2>Logpush subrequest merging for HTTP requests</h2>](https://developers.cloudflare.com/changelog/post/2026-04-21-logpush-subrequests-merging/)
+
+[Logs](https://developers.cloudflare.com/logs/)
+
+When a Cloudflare Worker intercepts a visitor request, it can dispatch additional outbound fetch calls called subrequests. By default, each subrequest generates its own log entry in Logpush, resulting in multiple log lines per visitor request. With subrequest merging enabled, subrequest data is embedded as a nested array field on the parent log record instead.
+
+#### What's new
+
+- New subrequest\_merging field on Logpush jobs — Set "merge\_subrequests": true when creating or updating an http\_requests Logpush job to enable the feature.
+- New Subrequests log field — When subrequest merging is enabled, a Subrequests field ( `array\<object\>`) is added to each parent request log record. Each element in the array contains the standard http\_requests fields for that subrequest.
+
+#### Limitations
+
+- Applies to the http\_requests (zone-scoped) dataset only.
+- A maximum of 50 subrequests are merged per parent request. Subrequests beyond this limit are passed through unmodified as individual log entries.
+- Subrequests must complete within 5 minutes of the visitor request. Subrequests that exceed this window are passed through unmodified.
+- Subrequests that do not qualify appear as separate log entries — no data is lost.
+- Subrequest merging is being gradually rolled out and is not yet available on all zones. Contact your account team for concerns or to ensure it is enabled for your zone.
+- For more information, refer to [Subrequests](https://developers.cloudflare.com/logs/logpush/logpush-job/subrequests/).
+
+Apr 21, 2026
+
+[<h2>WAF Release - 2026-04-21</h2>](https://developers.cloudflare.com/changelog/post/2026-04-21-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week's release introduces a new detection for a Remote Code Execution (RCE) vulnerability in Apache ActiveMQ (CVE-2026-34197) and an updated signature for Magento 2 - Unrestricted File Upload. Alongside these detections, we are continuing our work on rule refinements to provide deeper security insights for our customers.
+
+**Key Findings**
+
+- Apache ActiveMQ (CVE-2026-34197): A vulnerability in Apache ActiveMQ allows an unauthenticated, remote attacker to execute arbitrary code. This flaw occurs during the processing of specially crafted network packets, leading to potential full system compromise.
+- Magento 2 - Unrestricted File Upload - 2: This is a follow-up enhancement to our existing protections for Magento and Adobe Commerce.
+
+**Impact**
+
+Successful exploitation of these vulnerabilities could allow unauthenticated attackers to execute arbitrary code or gain full administrative control over affected servers. We strongly recommend applying official vendor patches for Apache ActiveMQ and Magento to address the underlying vulnerabilities.
+
+**Continuous Rule Improvements**
+
+We are continuously refining our managed rules to provide more resilient protection and deeper insights into attack patterns. To ensure an optimal security posture, we recommend consistently monitoring the Security Events dashboard and adjusting rule actions as these enhancements are deployed.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...ee159e2e | N/A | Command Injection - Generic 8 - uri | Log | Block | This is a new detection. Previous description was "Command Injection - Generic 8 - uri - Beta" |
+| Cloudflare Managed Ruleset | ...a15308cf | N/A | Command Injection - Generic 8 - body - Beta | Disabled | Disabled | This is a new detection. This rule is merged into the original rule "Command Injection - Generic 8 - body" (ID: ...413592e2). The rule previously known as "Command Injection - Generic 8" is now renamed to "Command Injection - Generic 8 - body". |
+| Cloudflare Managed Ruleset | ...958047ed | N/A | MySQL - SQLi - Executable Comment - Beta | Log | Block | This is a new detection. This rule is merged into the original rule "MySQL - SQLi - Executable Comment - Body" (ID: ...7bd2d8fa) The rule previously known as "MySQL - SQLi - Executable Comment" is now renamed to "MySQL - SQLi - Executable Comment - Body". |
+| Cloudflare Managed Ruleset | ...582cc559 | N/A | MySQL - SQLi - Executable Comment - Headers | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...a16639d3 | N/A | MySQL - SQLi - Executable Comment - URI | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...44f24211 | N/A | Magento 2 - Unrestricted file upload - 2 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...bf170a17 | N/A | Apache ActiveMQ - Remote Code Execution - CVE:CVE-2026-34197 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...8c2ac1a7 | N/A | SQLi - Sleep Function - Beta | Log | Block | This is a new detection. This rule is merged into the original rule "SQLi - Sleep Function" (ID: ...f77e8d54) |
+| Cloudflare Managed Ruleset | ...4dacaeb8 | N/A | SQLi - Sleep Function - Headers | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...ed4c9ece | N/A | SQLi - Sleep Function - URI | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...1dfa64df | N/A | SQLi - Probing - uri | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...4c62e2e7 | N/A | SQLi - Probing - header | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...aab28ea1 | N/A | SQLi - Probing - body | Disabled | Disabled | This is a new detection. This rule is merged into the original rule "SQLi - Probing" (ID: ...b4026c88) |
+| Cloudflare Managed Ruleset | ...20999be0 | N/A | SQLi - Probing 2 | Disabled | Disabled | This rule had duplicate detection logic and has been deprecated. |
+| Cloudflare Managed Ruleset | ...d7aa0008 | N/A | SQLi - UNION in MSSQL - Body | Disabled | Disabled | This rule has been renamed to differentiate from "SQLi - UNION in MSSQL" (ID: ...ee5e35fd) and contains updated rule logic. |
+| Cloudflare Managed Ruleset | ...a67d8561 | N/A | SQLi - UNION - 3 | Disabled | Disabled | This rule had duplicate detection logic and has been deprecated. |
+| Cloudflare Managed Ruleset | ...0af34bba | N/A | XSS, HTML Injection - Embed Tag - URI | Disabled | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...70282f38 | N/A | XSS, HTML Injection - Embed Tag - Headers | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...23f4d718 | N/A | XSS, HTML Injection - IFrame Tag - Src and Srcdoc Attributes - Headers | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...6978def1 | N/A | XSS, HTML Injection - Link Tag - Headers | Log | Disabled | This is a new detection. |
+| Cloudflare Managed Ruleset | ...ebd81645 | N/A | XSS, HTML Injection - Link Tag - URI | Disabled | Disabled | This is a new detection. |
+
+Apr 21, 2026
+
+[<h2>WebSocket binary messages now delivered as Blob by default</h2>](https://developers.cloudflare.com/changelog/post/2026-04-21-websocket-standard-binary-type/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Binary frames received on a `WebSocket` are now delivered to the `message` event as [`Blob` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Blob) objects by default. This matches the [WebSocket specification ↗︎](https://websockets.spec.whatwg.org/) and standard browser behavior. Previously, binary frames were always delivered as [`ArrayBuffer` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer). The [`binaryType`](https://developers.cloudflare.com/workers/runtime-apis/websockets/#binarytype) property on `WebSocket` controls the delivery type on a per-WebSocket basis.
+
+This change has been active for Workers with compatibility dates on or after `2026-03-17`, via the [`websocket_standard_binary_type`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-standard-binary-type) compatibility flag. We should have documented this change when it shipped but didn't. We're sorry for the trouble that caused. If your Worker handles binary WebSocket messages and assumes `event.data` is an `ArrayBuffer`, the frames will arrive as `Blob` instead, and a naive `instanceof ArrayBuffer` check will silently drop every frame.
+
+To opt back into `ArrayBuffer` delivery, assign `binaryType` before calling `accept()`. This works regardless of the compatibility flag:
+
+```js
+const resp = await fetch("https://example.com", {
+	headers: { Upgrade: "websocket" },
+});
+const ws = resp.webSocket;
+
+// Opt back into ArrayBuffer delivery for this WebSocket.
+ws.binaryType = "arraybuffer";
+ws.accept();
+
+ws.addEventListener("message", (event) => {
+	if (typeof event.data === "string") {
+		// Text frame.
+	} else {
+		// event.data is an ArrayBuffer because we set binaryType above.
+	}
+});
+```
+
+If you are not ready to migrate and want to keep `ArrayBuffer` as the default for all WebSockets in your Worker, add the `no_websocket_standard_binary_type` flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
+
+This change has no effect on the Durable Object hibernatable WebSocket [`webSocketMessage`](https://developers.cloudflare.com/durable-objects/best-practices/websockets/) handler, which continues to receive binary data as `ArrayBuffer`.
+
+For more information, refer to [WebSockets binary messages](https://developers.cloudflare.com/workers/runtime-apis/websockets/#binary-messages).
+
+Apr 20, 2026
+
+[<h2>R2 SQL adds JSON functions, EXPLAIN FORMAT JSON, and unpartitioned table support</h2>](https://developers.cloudflare.com/changelog/post/2026-04-20-r2-sql-json-functions-explain-format/)
+
+[Basin SQL](https://developers.cloudflare.com/basin-sql/) [Basin](https://developers.cloudflare.com/basin/)
+
+[R2 SQL](https://developers.cloudflare.com/basin-sql/) is Cloudflare's serverless, distributed, analytics query engine for querying [Apache Iceberg ↗︎](https://iceberg.apache.org/) tables stored in [R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/).
+
+R2 SQL now supports functions for querying JSON data stored in Apache Iceberg tables, an easier way to parse query plans with `EXPLAIN FORMAT JSON`, and querying tables without partition keys stored in [R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/).
+
+JSON functions extract and manipulate JSON values directly in SQL without client-side processing:
+
+```sql
+SELECT
+  json_get_str(doc, 'name') AS name,
+  json_get_int(doc, 'user', 'profile', 'level') AS level,
+  json_get_bool(doc, 'active') AS is_active
+FROM my_namespace.sales_data
+WHERE json_contains(doc, 'email')
+```
+
+For a full list of available functions, refer to [JSON functions](https://developers.cloudflare.com/basin-sql/sql-reference/scalar-functions/#json-functions).
+
+`EXPLAIN FORMAT JSON` returns query execution plans as structured JSON for programmatic analysis and observability integrations:
+
+```bash
+npx wrangler r2 sql query "${WAREHOUSE}" "EXPLAIN FORMAT JSON SELECT * FROM logpush.requests LIMIT 10;"
+
+┌──────────────────────────────────────┐
+│ plan                                 │
+├──────────────────────────────────────┤
+│ {                                    │
+│   "name": "CoalescePartitionsExec",  │
+│   "output_partitions": 1,            │
+│   "rows": 10,                        │
+│   "size_approx": "310B",             │
+│   "children": [                      │
+│     {                                │
+│       "name": "DataSourceExec",      │
+│       "output_partitions": 4,        │
+│       "rows": 28951,                 │
+│       "size_approx": "900.0KB",      │
+│       "table": "logpush.requests",   │
+│       "files": 7,                    │
+│       "bytes": 900019,               │
+│       "projection": [                │
+│         "__ingest_ts",               │
+│         "CPUTimeMs",                 │
+│         "DispatchNamespace",         │
+│         "Entrypoint",                │
+│         "Event",                     │
+│         "EventTimestampMs",          │
+│         "EventType",                 │
+│         "Exceptions",                │
+│         "Logs",                      │
+│         "Outcome",                   │
+│         "ScriptName",                │
+│         "ScriptTags",                │
+│         "ScriptVersion",             │
+│         "WallTimeMs"                 │
+│       ],                             │
+│       "limit": 10                    │
+│     }                                │
+│   ]                                  │
+│ }                                    │
+└──────────────────────────────────────┘
+```
+
+For more details, refer to [EXPLAIN](https://developers.cloudflare.com/basin-sql/sql-reference/#explain).
+
+Unpartitioned Iceberg tables can now be queried directly, which is useful for smaller datasets or data without natural time dimensions. For tables with more than 1000 files, partitioning is still recommended for better performance.
+
+Refer to [Limitations and best practices](https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/) for the latest guidance on using R2 SQL.
+
+Apr 20, 2026
+
+[<h2>Network session analytics dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-04-20-network-session-analytics/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+
+The new [Network session analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/network-sessions/) dashboard is now available in Cloudflare One. This dashboard provides visibility into your network traffic patterns, helping you understand how traffic flows through your Cloudflare One infrastructure.
+
+![Cloudflare One Network Session Analytics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2926,height=1574,format=webp/_astro/cf1-network-session-analytics.Gl90hEcp.png)
+
+#### What you can do with Network session analytics
+
+- **Analyze geographic distribution**: View a world map showing where your network traffic originates, with a list of top locations by session count.
+- **Monitor key metrics**: Track session count, total bytes transferred, and unique users.
+- **Identify connection issues**: Analyze connection close reasons to troubleshoot network problems.
+- **Review protocol usage**: See which network protocols (TCP, UDP, ICMP) are most used.
+
+#### Dashboard features
+
+- **Summary metrics**: Session count, bytes total, and unique users
+- **Traffic by location**: World map visualization and location list with top traffic sources
+- **Top protocols**: Breakdown of TCP, UDP, ICMP, and ICMPv6 traffic
+- **Connection close reasons**: Insights into why sessions terminated (client closed, origin closed, timeouts, errors)
+
+#### How to access
+
+1. Log in to [Cloudflare One ↗︎](https://dash.cloudflare.com).
+2. Go to **Zero Trust** > **Insights** > **Dashboards**.
+3. Select **Network session analytics**.
+
+For more information, refer to the [Network session analytics documentation](https://developers.cloudflare.com/cloudflare-one/insights/analytics/network-sessions/).
+
+Apr 20, 2026
+
+[<h2>Cloudflare Pipelines as a Logpush destination</h2>](https://developers.cloudflare.com/changelog/post/2026-04-20-pipelines-logpush-destination/)
+
+[Logs](https://developers.cloudflare.com/logs/) [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/)
+
+Logpush has traditionally been great at delivering Cloudflare logs to a variety of destinations in JSON format. While JSON is flexible and easily readable, it can be inefficient to store and query at scale.
+
+With this release, you can now send your logs directly to [Pipelines](https://developers.cloudflare.com/basin-pipelines/) to ingest, transform, and store your logs in [R2](https://developers.cloudflare.com/r2/) as Parquet files or Apache Iceberg tables managed by [R2 Data Catalog](https://developers.cloudflare.com/basin-catalog/). This makes the data footprint more compact and more efficient at querying your logs instantly with [R2 SQL](https://developers.cloudflare.com/basin-sql/) or any other query engine that supports Apache Iceberg or Parquet.
+
+#### Transform logs before storage
+
+Pipelines SQL runs on each log record in-flight, so you can reshape your data before it is written. For example, you can drop noisy fields, redact sensitive values, or derive new columns:
+
+```sql
+INSERT INTO http_logs_sink
+SELECT
+  ClientIP,
+  EdgeResponseStatus,
+  to_timestamp_micros(EdgeStartTimestamp) AS event_time,
+  upper(ClientRequestMethod) AS method,
+  sha256(ClientIP) AS hashed_ip
+FROM http_logs_stream
+WHERE EdgeResponseStatus >= 400;
+```
+
+Pipelines SQL supports string functions, regex, hashing, JSON extraction, timestamp conversion, conditional expressions, and more. For the full list, refer to the [Pipelines SQL reference](https://developers.cloudflare.com/basin-pipelines/sql-reference/).
+
+#### Get started
+
+To configure Pipelines as a Logpush destination, refer to [Enable Cloudflare Pipelines](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/).
+
+Apr 20, 2026
+
+[<h2>Archive and audit security action items</h2>](https://developers.cloudflare.com/changelog/post/2026-04-27-archive-and-audit-security-action-items/)
+
+[Security Overview](https://developers.cloudflare.com/security/overview/)
+
+#### Archive and audit security action items
+
+Introducing enhanced archiving capabilities for security action items within the Security Overview dashboard. This update allows security teams to maintain a cleaner workspace by removing resolved, accepted, or irrelevant items from their active list while maintaining a clear paper trail for compliance.
+
+---
+
+#### Why this matters
+
+Managing a high volume of security insights can be overwhelming. Previously, users lacked a structured way to dismiss items without losing the context of why they were ignored.
+
+With these new archiving options—**False Positive**, **Accept Risk**, and **Other**—you can now suppress items indefinitely with required rationale text for risk-based decisions. This ensures that your team remains focused on critical, actionable vulnerabilities while preserving institutional knowledge for audits.
+
+#### Key features
+
+- **Structured Archiving:** Choose from specific categories to define why an action item is being moved.
+- **Required Rationale:** For "Accept Risk" and "Other" categories, users must provide documentation, ensuring accountability for security decisions.
+- **Audit Log Transparency:** New API endpoints allow you to programmatically retrieve the history of status changes and rationale for any insight at the account or zone level.
+- **Reversible Actions:** Any archived item can be moved back to the active list at any time if the security context changes.
+
+:::note Archiving a suspicious activity item will remove it from the Security Overview page, but the activity will remain visible in your Security Analytics dashboard for deeper forensic analysis. :::
+
+---
+
+#### Example: Retrieve audit logs via API
+
+To review the history and rationale of a specific archived issue at the account level, you can use the following API command:
+
+```bash
+curl "[https://api.cloudflare.com/client/v4/accounts/](https://api.cloudflare.com/client/v4/accounts/){account_id}/insights/{insight_id}/audit-log" \
+     -H "Authorization: Bearer <API_TOKEN>" \
+     -H "Content-Type: application/json"
+```
+
+Apr 20, 2026
+
+[<h2>Moonshot AI Kimi K2.6 now available on Workers AI</h2>](https://developers.cloudflare.com/changelog/post/2026-04-20-kimi-k2-6-workers-ai/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+[`@cf/moonshotai/kimi-k2.6`](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/) is now available on Workers AI, in partnership with Moonshot AI for Day 0 support. Kimi K2.6 is a native multimodal agentic model from Moonshot AI that advances practical capabilities in long-horizon coding, coding-driven design, proactive autonomous execution, and swarm-based task orchestration.
+
+Built on a Mixture-of-Experts architecture with 1T total parameters and 32B active per token, Kimi K2.6 delivers frontier-scale intelligence with efficient inference. It scores competitively against GPT-5.4 and Claude Opus 4.6 on agentic and coding benchmarks, including BrowseComp (83.2), SWE-Bench Verified (80.2), and Terminal-Bench 2.0 (66.7).
+
+#### Key capabilities
+
+- **262.1k token context window** for retaining full conversation history, tool definitions, and codebases across long-running agent sessions
+- **Long-horizon coding** with significant improvements on complex, end-to-end coding tasks across languages including Rust, Go, and Python
+- **Coding-driven design** that transforms simple prompts and visual inputs into production-ready interfaces and full-stack workflows
+- **Agent swarm orchestration** scaling horizontally to 300 sub-agents executing 4,000 coordinated steps for complex autonomous tasks
+- **Vision inputs** for processing images alongside text
+- **Thinking mode** with configurable reasoning depth
+- **Multi-turn tool calling** for building agents that invoke tools across multiple conversation turns
+
+#### Differences from Kimi K2.5
+
+If you are migrating from Kimi K2.5, note the following API changes:
+
+- K2.6 uses `chat_template_kwargs.thinking` to control reasoning, replacing `chat_template_kwargs.enable_thinking`
+- K2.6 returns reasoning content in the `reasoning` field, replacing `reasoning_content`
+
+#### Get started
+
+Use Kimi K2.6 through the [Workers AI binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/) (`env.AI.run()`), the REST API at `/ai/run`, or the OpenAI-compatible endpoint at `/v1/chat/completions`. You can also use [AI Gateway](https://developers.cloudflare.com/ai-gateway/) with any of these endpoints.
+
+For more information, refer to the [Kimi K2.6 model page](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/) and [pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/).
+
+Apr 17, 2026
+
+[<h2>Homepage and sign-out for MCP server portals</h2>](https://developers.cloudflare.com/changelog/post/2026-04-17-mcp-portal-homepage-and-sign-out/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) display a homepage when users visit the portal domain in a browser.
+
+![MCP server portal homepage showing connection status and setup instructions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1037,height=631,format=webp/_astro/portals-homepage-disconnected.BHbOwayQ.png)
+
+The homepage shows:
+
+- The portal name and organization branding
+- The MCP endpoint URL with a copy button
+- Per-client connection instructions for Claude Desktop, Workers AI Playground, OpenCode, Windsurf, and other MCP clients
+
+Authenticated users see their email address and a **Sign out** button. Selecting **Sign out** revokes all portal-level OAuth grants, deletes upstream server OAuth states, and redirects through Cloudflare Access logout. A confirmation page shows a summary of the revoked sessions.
+
+For more information, refer to [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#portal-homepage).
+
+Apr 17, 2026
+
+[<h2>Introducing Redirects for AI Training</h2>](https://developers.cloudflare.com/changelog/post/2026-04-17-redirects-for-ai-training/)
+
+[AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/)
+
+Cloudflare's network now supports redirecting verified AI training crawlers to canonical URLs when they request deprecated or duplicate pages. When enabled via **AI Crawl Control** > **Quick Actions**, AI training crawlers that request a page with a canonical tag pointing elsewhere receive a 301 redirect to the canonical version. Humans, search engine crawlers, and AI Search agents continue to see the original page normally.
+
+This feature leverages your existing `<link rel="canonical">` tags. No additional configuration required beyond enabling the toggle. Available on Pro, Business, and Enterprise plans at no additional cost.
+
+Refer to the [Redirects for AI Training documentation](https://developers.cloudflare.com/ai-crawl-control/reference/redirects-for-ai-training/) for details.
+
+Apr 17, 2026
+
+[<h2>Tools to prepare your site for the agentic Internet</h2>](https://developers.cloudflare.com/changelog/post/2026-04-17-tools-for-agentic-internet/)
+
+[AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/)
+
+AI Crawl Control now includes new tools to help you prepare your site for the agentic Internet—a web where AI agents are first-class citizens that discover and interact with content differently than human visitors.
+
+#### Content Format insights
+
+The **Metrics** tab now includes a **Content Format** chart showing what content types AI systems request versus what your origin serves. Understanding these patterns helps you optimize content delivery for both human and agent consumption.
+
+#### Directives tab (formerly Robots.txt)
+
+The **Robots.txt** tab has been renamed to **Directives** and now includes a link to check your site's [Agent Readiness ↗︎](https://isitagentready.com) score.
+
+Refer to our [blog post on preparing for the agentic Internet ↗︎](https://blog.cloudflare.com/agent-readiness/) for more on why these capabilities matter.
+
+Apr 17, 2026
+
+[<h2>Smart Tiered Cache optimizes public cloud origins</h2>](https://developers.cloudflare.com/changelog/post/2026-04-17-smart-tiered-cache-for-public-cloud/)
+
+[Cache / CDN](https://developers.cloudflare.com/cache/)
+
+You can now achieve higher cache HIT rates and reduce origin load for origins hosted on public cloud providers with [Smart Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/#smart-tiered-cache). By setting a cloud region hint for your origin, Cloudflare selects the optimal upper-tier data center for that cloud region, funneling all cache MISSes through a single location close to your origin.
+
+Previously, Smart Tiered Cache could not reliably select an optimal upper tier for origins behind anycast or regional unicast networks commonly used by cloud providers. Origins on AWS, GCP, Azure, and Oracle Cloud would fall back to a multi-upper-tier topology, resulting in lower cache HIT rates and more requests reaching your origin.
+
+#### How it works
+
+Set a cloud region hint (for example, `aws/us-east-1` or `gcp/europe-west1`) for your origin IP or hostname. Smart Tiered Cache uses this hint along with real-time latency data to select a primary upper tier close to your cloud region, plus a fallback in a different location for resilience.
+
+- **Supported providers**: AWS, GCP, Azure, and Oracle Cloud.
+- **All plans**: Available on Free, Pro, Business, and Enterprise plans at no additional cost.
+- **Dashboard and API**: Configure from **Caching** > **Tiered Cache** > **Origin Configuration**, or use the API and Terraform.
+
+#### Get started
+
+To get started, enable [Smart Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/) and set a cloud region hint for your origin in the [Tiered Cache settings](https://developers.cloudflare.com/cache/how-to/tiered-cache/#public-cloud-origins).
+
+Apr 17, 2026
+
+[<h2>AI Insights updates on Cloudflare Radar</h2>](https://developers.cloudflare.com/changelog/post/2026-04-17-radar-ai-insights-updates/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Radar**](https://developers.cloudflare.com/radar/) adds three new features to the [AI Insights ↗︎](https://radar.cloudflare.com/ai-insights) page, expanding visibility into how AI bots, crawlers, and agents interact with the web.
+
+#### Adoption of AI agent standards
+
+The AI Insights page now includes an [adoption of AI agent standards ↗︎](https://radar.cloudflare.com/ai-insights#adoption-of-ai-agent-standards) widget that tracks how websites adopt agent-facing standards. The data is filterable by domain category and updated weekly on Mondays. This data is also available through the [Agent Readiness API reference](https://developers.cloudflare.com/api/resources/radar/subresources/agent_readiness/methods/summary/).
+
+![Screenshot of the adoption of AI agent standards chart](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=1332,format=webp/_astro/agent-readiness-adoption-chart.B3ATN59P.png)
+
+[URL Scanner ↗︎](https://radar.cloudflare.com/scan) reports now include an **Agent readiness** tab that evaluates a scanned URL against the criteria used by the [Agent Readiness score tool ↗︎](https://isitagentready.com/).
+
+![Screenshot of the URL Scanner agent readiness tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1145,format=webp/_astro/agent-readiness-url-scanner.DRVuuaUi.png)
+
+For more details, refer to the [Agent Readiness blog post ↗︎](https://blog.cloudflare.com/agent-readiness/).
+
+#### Markdown for Agents savings
+
+A new [savings gauge ↗︎](https://radar.cloudflare.com/ai-insights#markdown-for-agents-savings) shows the median response-size reduction when serving Markdown instead of HTML to AI bots and crawlers. This highlights the bandwidth and token savings that [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/) provides.
+
+![Screenshot of the Markdown for Agents savings gauge](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=614,height=652,format=webp/_astro/markdown-for-agents-savings.Di1GjNON.png)
+
+For more details, refer to the [Markdown for Agents API reference](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/markdown_for_agents/methods/summary).
+
+#### Response status
+
+The new [response status widget ↗︎](https://radar.cloudflare.com/ai-insights#response-status) displays the distribution of HTTP response status codes returned to AI bots and crawlers. Results are groupable by individual status code (200, 403, 404) or by category (2xx, 3xx, 4xx, 5xx).
+
+The same widget is available on each verified bot's detail page (only available for AI bots), for example [Google ↗︎](https://radar.cloudflare.com/bots/directory/google#response-status).
+
+![Screenshot of the response status distribution widget](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=878,format=webp/_astro/ai-response-status.BwSMF23Z.png)
+
+Explore all three features on the [Cloudflare Radar AI Insights ↗︎](https://radar.cloudflare.com/ai-insights) page.
+
+Apr 16, 2026
+
+[<h2>AI Search instances now include built-in storage and namespace Workers Bindings</h2>](https://developers.cloudflare.com/changelog/post/2026-04-16-ai-search-namespace-binding/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+New [AI Search](https://developers.cloudflare.com/ai-search/) instances created after today will work differently. New instances come with built-in storage and a vector index, so you can upload a file, have it indexed immediately, and search it right away.
+
+Additionally new Workers Bindings are now available to use with AI Search. The new namespace binding lets you create and manage instances at runtime, and cross-instance search API lets you query across multiple instances in one call.
+
+#### Built-in storage and vector index
+
+All new instances now comes with built-in storage which allows you to upload files directly to it using the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/) or the dashboard. No R2 buckets to set up, no external data sources to connect first.
+
+```ts
+const instance = env.AI_SEARCH.get("my-instance");
+
+// upload and wait for indexing to complete
+const item = await instance.items.uploadAndPoll("faq.md", content);
+
+// search immediately after indexing
+const results = await instance.search({
+	messages: [{ role: "user", content: "onboarding guide" }],
+});
+```
+
+#### Namespace binding
+
+The new `ai_search_namespaces` binding replaces the previous `env.AI.autorag()` API provided through the `AI` binding. It gives your Worker access to all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) and lets you create, update, and delete instances at runtime without redeploying.
+
+```jsonc
+// wrangler.jsonc
+{
+	"ai_search_namespaces": [
+		{
+			"binding": "AI_SEARCH",
+			"namespace": "default",
+		},
+	],
+}
+```
+
+```ts
+// create an instance at runtime
+const instance = await env.AI_SEARCH.create({
+	id: "my-instance",
+});
+```
+
+For migration details, refer to [Workers binding migration](https://developers.cloudflare.com/ai-search/api/migration/workers-binding/). For more on namespaces, refer to [Namespaces](https://developers.cloudflare.com/ai-search/concepts/namespaces/).
+
+#### Cross-instance search
+
+Within the new AI Search binding, you now have access to a Search and Chat API on the namespace level. Pass an array of instance IDs and get one ranked list of results back.
+
+```ts
+const results = await env.AI_SEARCH.search({
+	messages: [{ role: "user", content: "What is Cloudflare?" }],
+	ai_search_options: {
+		instance_ids: ["product-docs", "customer-abc123"],
+	},
+});
+```
+
+Refer to [Namespace-level search](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#namespace-level) for details.
+
+Apr 16, 2026
+
+[<h2>AI Search now has hybrid search and relevance boosting</h2>](https://developers.cloudflare.com/changelog/post/2026-04-16-hybrid-search-and-relevance-boosting/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/)
+
+[AI Search](https://developers.cloudflare.com/ai-search/) now supports hybrid search and relevance boosting, giving you more control over how results are found and ranked.
+
+#### Hybrid search
+
+Hybrid search combines vector (semantic) search with BM25 keyword search in a single query. Vector search finds chunks with similar meaning, even when the exact words differ. Keyword search matches chunks that contain your query terms exactly. When you enable hybrid search, both run in parallel and the results are fused into a single ranked list.
+
+You can configure the tokenizer (`porter` for natural language, `trigram` for code), keyword match mode (`and` for precision, `or` for recall), and fusion method (`rrf` or `max`) per instance:
+
+```ts
+const instance = await env.AI_SEARCH.create({
+	id: "my-instance",
+	index_method: { vector: true, keyword: true },
+	fusion_method: "rrf",
+	indexing_options: { keyword_tokenizer: "porter" },
+	retrieval_options: { keyword_match_mode: "and" },
+});
+```
+
+Refer to [Search modes](https://developers.cloudflare.com/ai-search/concepts/search-modes/) for an overview and [Hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/) for configuration details.
+
+#### Relevance boosting
+
+Relevance boosting lets you nudge search rankings based on document metadata. For example, you can prioritize recent documents by boosting on `timestamp`, or surface high-priority content by boosting on a custom metadata field like `priority`.
+
+Configure up to 3 boost fields per instance or override them per request:
+
+```ts
+const results = await env.AI_SEARCH.get("my-instance").search({
+	messages: [{ role: "user", content: "deployment guide" }],
+	ai_search_options: {
+		retrieval: {
+			boost_by: [
+				{ field: "timestamp", direction: "desc" },
+				{ field: "priority", direction: "desc" },
+			],
+		},
+	},
+});
+```
+
+Refer to [Relevance boosting](https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/) for configuration details.
+
+Apr 16, 2026
+
+[<h2>Artifacts now in beta: versioned filesystem with Git access</h2>](https://developers.cloudflare.com/changelog/post/2026-04-16-artifacts-now-in-beta/)
+
+[Artifacts](https://developers.cloudflare.com/artifacts/)
+
+[Artifacts](https://developers.cloudflare.com/artifacts/) is now in private beta. Artifacts is Git-compatible storage built for scale: create tens of millions of repos, fork from any remote, and hand off a URL to any Git client. It provides a versioned filesystem for storing and exchanging file trees across Workers, the REST API, and any Git client, running locally or within an agent.
+
+You can [read the announcement blog ↗︎](https://blog.cloudflare.com/artifacts-git-for-agents-beta/) to learn more about what Artifacts does, how it works, and how to create repositories for your agents to use.
+
+Artifacts has three API surfaces:
+
+- Workers bindings (for creating and managing repositories)
+- REST API (for creating and managing repos from any other compute platform)
+- Git protocol (for interacting with repos)
+
+As an example: you can use the Workers binding to create a repo and read back its remote URL:
+
+```ts
+# Create a thousand, a million or ten million repos: one for every agent, for every upstream branch, or every user.
+const created = await env.PROD_ARTIFACTS.create("agent-007");
+const remote = (await created.repo.info())?.remote;
+```
+
+Or, use the REST API to create a repo inside a namespace from your agent(s) running on any platform:
+
+```bash
+curl --request POST "https://artifacts.cloudflare.net/v1/api/namespaces/some-namespace/repos" --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" --header "Content-Type: application/json" --data '{"name":"agent-007"}'
+```
+
+Any Git client that speaks smart HTTP can use the returned remote URL:
+
+```bash
+# Agents know git.
+# Every repository can act as a git repo, allowing agents to interact with Artifacts the way they know best: using the git CLI.
+git clone https://x:${REPO_TOKEN}@artifacts.cloudflare.net/some-namespace/agent-007.git
+```
+
+To learn more, refer to [Get started](https://developers.cloudflare.com/artifacts/get-started/), [Workers binding](https://developers.cloudflare.com/artifacts/api/workers-binding/), and [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/).
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/21/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/21/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

@@ -1,0 +1,1226 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Feb 24, 2026
+
+[<h2>Stream live inputs can now be disabled and enabled</h2>](https://developers.cloudflare.com/changelog/post/2026-02-24-disable-live-inputs/)
+
+[Stream](https://developers.cloudflare.com/stream/)
+
+You can now disable a live input to reject incoming RTMPS and SRT connections. When a live input is disabled, any broadcast attempts will fail to connect.
+
+This gives you more control over your live inputs:
+
+- Temporarily pause an input without deleting it
+- Programmatically end creator broadcasts
+- Prevent new broadcasts from starting on a specific input
+
+To disable a live input via the API, set the `enabled` property to `false`:
+
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \
+--header "Authorization: Bearer <API_TOKEN>" \
+--data '{"enabled": false}'
+```
+
+You can also disable or enable a live input from the **Live inputs** list page or the live input detail page in the Dashboard.
+
+All existing live inputs remain enabled by default. For more information, refer to [Start a live stream](https://developers.cloudflare.com/stream/stream-live/start-stream-live/).
+
+Feb 23, 2026
+
+[<h2>Backup and restore API for Sandbox SDK</h2>](https://developers.cloudflare.com/changelog/post/2026-02-23-sandbox-backup-restore-api/)
+
+[Agents](https://developers.cloudflare.com/agents/) [R2](https://developers.cloudflare.com/r2/) [Containers](https://developers.cloudflare.com/containers/)
+
+[Sandboxes](https://developers.cloudflare.com/sandbox/) now support `createBackup()` and `restoreBackup()` methods for creating and restoring point-in-time snapshots of directories.
+
+This allows you to restore environments quickly. For instance, in order to develop in a sandbox, you may need to include a user's codebase and run a build step. Unfortunately `git clone` and `npm install` can take minutes, and you don't want to run these steps every time the user starts their sandbox.
+
+Now, after the initial setup, you can just call `createBackup()`, then `restoreBackup()` the next time this environment is needed. This makes it practical to pick up exactly where a user left off, even after days of inactivity, without repeating expensive setup steps.
+
+```ts
+const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+
+// Make non-trivial changes to the file system
+await sandbox.gitCheckout(endUserRepo, { targetDir: "/workspace" });
+await sandbox.exec("npm install", { cwd: "/workspace" });
+
+// Create a point-in-time backup of the directory
+const backup = await sandbox.createBackup({ dir: "/workspace" });
+
+// Store the handle for later use
+await env.KV.put(`backup:${userId}`, JSON.stringify(backup));
+
+// ... in a future session...
+
+// Restore instead of re-cloning and reinstalling
+await sandbox.restoreBackup(backup);
+```
+
+Backups are stored in [R2](https://developers.cloudflare.com/r2) and can take advantage of [R2 object lifecycle rules](https://developers.cloudflare.com/sandbox/guides/backup-restore/#configure-r2-lifecycle-rules-for-automatic-cleanup) to ensure they do not persist forever.
+
+Key capabilities:
+
+- **Persist and reuse across sandbox sessions** — Easily store backup handles in KV, D1, or Durable Object storage for use in subsequent sessions
+- **Usable across multiple instances** — Fork a backup across many sandboxes for parallel work
+- **Named backups** — Provide optional human-readable labels for easier management
+- **TTLs** — Set time-to-live durations so backups are automatically removed from storage once they are no longer needed
+
+Note
+
+Backup and restore currently uses a FUSE overlay. Soon, native snapshotting at a lower level will be added to Containers and Sandboxes, improving speed and ergonomics. The current backup functionality provides a significant speed improvement over manually recreating a file system, but it will be further optimized in the future. The new snapshotting system will use a similar API, so changing to this system will be simple once it is available.
+
+To get started, refer to the [backup and restore guide](https://developers.cloudflare.com/sandbox/guides/backup-restore/) for setup instructions and usage patterns, or the [Backups API reference](https://developers.cloudflare.com/sandbox/api/backups/) for full method documentation.
+
+Feb 23, 2026
+
+[<h2>Hyperdrive no longer caches queries using STABLE PostgreSQL functions</h2>](https://developers.cloudflare.com/changelog/post/2026-02-23-hyperdrive-stable-functions-uncacheable/)
+
+[Hyperdrive](https://developers.cloudflare.com/hyperdrive/)
+
+Hyperdrive now treats queries containing PostgreSQL `STABLE` functions as uncacheable, in addition to `VOLATILE` functions.
+
+Previously, only functions [that PostgreSQL categorizes ↗︎](https://www.postgresql.org/docs/current/xfunc-volatility.html) as `VOLATILE` (for example, `RANDOM()`, `LASTVAL()`) were detected as uncacheable. `STABLE` functions (for example, `NOW()`, `CURRENT_TIMESTAMP`, `CURRENT_DATE`) were incorrectly allowed to be cached.
+
+Because `STABLE` functions can return different results across different SQL statements within the same transaction, caching their results could serve stale or incorrect data. This change aligns Hyperdrive's caching behavior with PostgreSQL's function volatility semantics.
+
+If your queries use `STABLE` functions, and you were relying on them being cached, move the function call to your application code and pass the result as a query parameter. For example, instead of `WHERE created_at > NOW()`, compute the timestamp in your Worker and pass it as `WHERE created_at > $1`.
+
+Hyperdrive uses text-based pattern matching to detect uncacheable functions. References to function names like `NOW()` in SQL comments also cause the query to be marked as uncacheable.
+
+For more information, refer to [Query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/) and [Troubleshoot and debug](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/).
+
+Feb 23, 2026
+
+[<h2>Saved views for Threat Events</h2>](https://developers.cloudflare.com/changelog/post/2026-02-23-Saved-views-in-threat-events/)
+
+[Security Center](https://developers.cloudflare.com/security-center/)
+
+**TL;DR:** You can now create and save custom configurations of the Threat Events dashboard, allowing you to instantly return to specific filtered views — such as industry-specific attacks or regional Sankey flows — without manual reconfiguration.
+
+#### Why this matters
+
+Threat intelligence is most effective when it is personalized. Previously, analysts had to manually re-apply complex filters (like combining specific industry datasets with geographic origins) every time they logged in. This update provides material value by:
+
+- Analysts can now jump straight into "Known Ransomware Infrastructure" or "Retail Sector Targets" views with a single click, eliminating repetitive setup tasks
+- Teams can ensure everyone is looking at the same data subsets by using standardized saved views, reducing the risk of missing critical patterns due to inconsistent filtering.
+
+Cloudforce One subscribers can start saving their custom views now in [Application Security > Threat Intelligence > Threat Events ↗︎](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/threat-events).
+
+Feb 20, 2026
+
+[<h2>@cloudflare/codemode v0.1.0: a new runtime agnostic modular architecture</h2>](https://developers.cloudflare.com/changelog/post/2026-02-20-codemode-sdk-rewrite/)
+
+[Agents](https://developers.cloudflare.com/agents/) [Workers](https://developers.cloudflare.com/workers/)
+
+The [`@cloudflare/codemode` ↗︎](https://www.npmjs.com/package/@cloudflare/codemode) package has been rewritten into a modular, runtime-agnostic SDK.
+
+[Code Mode ↗︎](https://blog.cloudflare.com/code-mode/) enables LLMs to write and execute code that orchestrates your tools, instead of calling them one at a time. This can (and does) yield significant token savings, reduces context window pressure and improves overall model performance on a task.
+
+The new `Executor` interface is runtime agnostic and comes with a prebuilt `DynamicWorkerExecutor` to run generated code in a [Dynamic Worker Loader](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/).
+
+#### Breaking changes
+
+- Removed `experimental_codemode()` and `CodeModeProxy` — the package no longer owns an LLM call or model choice
+- New import path: `createCodeTool()` is now exported from `@cloudflare/codemode/ai`
+
+#### New features
+
+- **`createCodeTool()`** — Returns a standard AI SDK `Tool` to use in your AI agents.
+- **`Executor` interface** — Minimal `execute(code, fns)` contract. Implement for any code sandboxing primitive or runtime.
+
+#### `DynamicWorkerExecutor`
+
+Runs code in a [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/). It comes with the following features:
+
+- **Network isolation** — `fetch()` and `connect()` blocked by default ( `globalOutbound: null`) when using `DynamicWorkerExecutor`
+- **Console capture** — `console.log/warn/error` captured and returned in `ExecuteResult.logs`
+- **Execution timeout** — Configurable via `timeout` option (default 30s)
+
+#### Usage
+
+```js
+import { createCodeTool } from "@cloudflare/codemode/ai";
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import { streamText } from "ai";
+
+const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
+const codemode = createCodeTool({ tools: myTools, executor });
+
+const result = streamText({
+	model,
+	tools: { codemode },
+	messages,
+});
+```
+
+```ts
+import { createCodeTool } from "@cloudflare/codemode/ai";
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import { streamText } from "ai";
+
+const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
+const codemode = createCodeTool({ tools: myTools, executor });
+
+const result = streamText({
+	model,
+	tools: { codemode },
+	messages,
+});
+```
+
+#### Wrangler configuration
+
+```jsonc
+{
+	"worker_loaders": [{ "binding": "LOADER" }],
+}
+```
+
+```toml
+[[worker_loaders]]
+binding = "LOADER"
+```
+
+See the [Code Mode documentation](https://developers.cloudflare.com/agents/tools/codemode/) for full API reference and examples.
+
+#### Upgrade
+
+```sh
+npm i @cloudflare/codemode@latest
+```
+
+Feb 20, 2026
+
+[<h2>Understand CASB findings instantly with Cloudy Summaries</h2>](https://developers.cloudflare.com/changelog/post/2026-02-20-cloudy-in-casb/)
+
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+
+You can now easily understand your SaaS security posture findings and why they were detected with **Cloudy Summaries in CASB**. This feature integrates Cloudflare's Cloudy AI directly into your CASB Posture Findings to automatically generate clear, plain-language summaries of complex security misconfigurations, third-party app risks, and data exposures.
+
+This allows security teams and IT administrators to drastically reduce triage time by immediately understanding the context, potential impact, and necessary remediation steps for any given finding—without needing to be an expert in every connected SaaS application.
+
+To view a summary, simply navigate to your Posture Findings in the Cloudflare One dashboard (under **Cloud and SaaS findings**) and open the finding details of a specific instance of a Finding.
+
+Cloudy Summaries are supported on all available integrations, including Microsoft 365, Google Workspace, Salesforce, GitHub, AWS, Slack, and Dropbox. See the full list of supported integrations [here](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/).
+
+#### Key capabilities
+
+- **Contextual explanations** — Quickly understand the specifics of a finding with plain-language summaries detailing exactly what was detected, from publicly shared sensitive files to risky third-party app scopes.
+- **Clear risk assessment** — Instantly grasp the potential security impact of the finding, such as data breach risks, unauthorized account access, or email spoofing vulnerabilities.
+- **Actionable guidance** — Get clear recommendations and next steps on how to effectively remediate the issue and secure your environment.
+- **Built-in feedback** — Help improve future AI summarization accuracy by submitting feedback directly using the thumbs-up and thumbs-down buttons.
+
+#### Learn more
+
+- Learn more about managing [CASB Posture Findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/) in Cloudflare.
+
+Cloudy Summaries in CASB are available to all Cloudflare CASB users today.
+
+Feb 20, 2026
+
+[<h2>Manage Cloudflare Tunnel directly from the main Cloudflare Dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-02-20-tunnel-core-dashboard/)
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) is now available in the main Cloudflare Dashboard at [Networking > Tunnels ↗︎](https://dash.cloudflare.com/?to=/:account/tunnels), bringing first-class Tunnel management to developers using Tunnel for securing origin servers.
+
+![Manage Tunnels in the Core Dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=894,format=webp/_astro/tunnel-core-dashboard.BGPqaHfo.gif)
+
+This new experience provides everything you need to manage Tunnels for [public applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/), including:
+
+- **Full Tunnel lifecycle management**: Create, configure, delete, and monitor all your Tunnels in one place.
+- **Native integrations**: View Tunnels by name when configuring [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) and [Workers VPC](https://developers.cloudflare.com/workers-vpc/) — no more copy-pasting UUIDs.
+- **Real-time visibility**: Monitor [replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) and Tunnel [health status](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#tunnel-status) directly in the dashboard.
+- **Routing map**: Manage all ingress routes for your Tunnel, including [public applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/), [private hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/), [private CIDRs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/), and [Workers VPC services](https://developers.cloudflare.com/workers-vpc/), from a single interactive interface.
+
+#### Choose the right dashboard for your use case
+
+**Core Dashboard**: Navigate to [Networking > Tunnels ↗︎](https://dash.cloudflare.com/?to=/:account/tunnels) to manage Tunnels for:
+
+- Securing origin servers and [public applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/) with CDN, WAF, Load Balancing, and DDoS protection
+- Connecting [Workers to private services](https://developers.cloudflare.com/workers-vpc/) via Workers VPC
+
+**Cloudflare One Dashboard**: Navigate to [Zero Trust > Networks > Connectors ↗︎](https://one.dash.cloudflare.com/?to=/:account/networks/connectors) to manage Tunnels for:
+
+- Securing your public applications with [Zero Trust access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/)
+- Connecting users to [private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/)
+- Building a [private mesh network](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks)
+
+Both dashboards provide complete Tunnel management capabilities — choose based on your primary workflow.
+
+#### Get started
+
+New to Tunnel? Learn how to [get started with Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or explore advanced use cases like [securing SSH servers](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/) or [running Tunnels in Kubernetes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/kubernetes/).
+
+Feb 19, 2026
+
+[<h2>AI dashboard experience improvements</h2>](https://developers.cloudflare.com/changelog/post/2026-02-19-ai-dashboard-experience-improvements/)
+
+[AI Gateway](https://developers.cloudflare.com/ai-gateway/) [Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/) and [AI Gateway](https://developers.cloudflare.com/ai-gateway/) have received a series of dashboard improvements to help you get started faster and manage your AI workloads more easily.
+
+**Navigation and discoverability**
+
+AI now has its own top-level section in the Cloudflare dashboard sidebar, so you can find AI features without digging through menus.
+
+![AI sidebar navigation in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2328,height=1140,format=webp/_astro/sidebar-navigation.BQNFBmAk.png) *The new top-level AI section in the dashboard sidebar.*
+
+**Onboarding and getting started**
+
+[Getting started](https://developers.cloudflare.com/ai-gateway/get-started/) with AI Gateway is now simpler. When you create your first gateway, we now show your gateway's OpenAI-compatible endpoint and step-by-step guidance to help you configure it. The Playground also includes helpful prompts, and usage pages have clear next steps if you have not made any requests yet.
+
+![AI Gateway onboarding flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2400,height=1232,format=webp/_astro/onboarding-flow.DZ7aMcHa.png) *The first-run setup experience for new gateways.*
+
+We've also combined the previously separate code example sections into one view with dropdown selectors for API type, provider, SDK, and authentication method so you can now customize the exact code snippet you need from one place.
+
+**Dynamic Routing**
+
+- The [route builder](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) is now more performant and responsive.
+- You can now copy route names to your clipboard with a single click.
+- Code examples use the [Universal Endpoint](https://developers.cloudflare.com/ai-gateway/usage/universal/) format, making it easier to integrate routes into your application.
+
+**Observability and analytics**
+
+- Small monetary values now display correctly in [cost analytics](https://developers.cloudflare.com/ai-gateway/observability/costs/) charts, so you can accurately track spending at any scale.
+
+**Accessibility**
+
+- Improvements to keyboard navigation within the AI Gateway, specifically when exploring usage by [provider](https://developers.cloudflare.com/ai-gateway/usage/providers/).
+- Improvements to sorting and filtering components on the [Workers AI](https://developers.cloudflare.com/workers-ai/models/) models page.
+
+For more information, refer to the [AI Gateway documentation](https://developers.cloudflare.com/ai-gateway/).
+
+Feb 19, 2026
+
+[<h2>DEX Supports EU Customer Metadata Boundary</h2>](https://developers.cloudflare.com/changelog/post/2026-02-19-dex-supports-cmb-eu/)
+
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+
+[Digital Experience Monitoring (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) provides visibility into [WARP](https://developers.cloudflare.com/warp-client/) device connectivity and performance to any internal or external application.
+
+Now, all DEX logs are fully compatible with Cloudflare's [Customer Metadata Boundary](https://developers.cloudflare.com/data-localization/metadata-boundary/) (CMB) setting for the 'EU' (European Union), which ensures that DEX logs will not be stored outside the 'EU' when the option is configured.
+
+If a Cloudflare One customer using DEX enables CMB 'EU', they will not see any DEX data in the Cloudflare One dashboard. Customers can ingest DEX data via [LogPush](https://developers.cloudflare.com/logs/logpush/), and build their own analytics and dashboards.
+
+If a customer enables CMB in their account, they will see the following message in the Digital Experience dashboard: "DEX data is unavailable because Customer Metadata Boundary configuration is on. Use Cloudflare LogPush to export DEX datasets."
+
+![Digital Experience Monitoring message when Customer Metadata Boundary for the EU is enabled](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2143,height=1221,format=webp/_astro/dex_supports_cmb.6YOLXjHN.png)
+
+Feb 19, 2026
+
+[<h2>Cloudforce One Threat events graphs are now visible in the dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-02-19-threat-events-graphs/)
+
+[Security Center](https://developers.cloudflare.com/security-center/)
+
+We have introduced dynamic visualizations to the Threat Events dashboard to help you better understand the threat landscape and identify emerging patterns at a glance.
+
+What's new:
+
+- **Sankey Diagrams**: Trace the flow of attacks from country of origin to target country to identify which regions are being hit hardest and where the threat infrastructure resides.
+
+![Sankey Diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2652,height=1186,format=webp/_astro/2026-02-19-sankey-diagram.VZMSmdZL.png)
+
+- **Dataset Distribution over time**: Instantly pivot your view to understand if a specific campaign is targeting your sector or if it is a broad-spectrum commodity attack.
+
+![Events over time](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2648,height=1176,format=webp/_astro/2026-02-19-events-over-time.CqD7VKqA.png)
+
+- **Enhanced Filtering**: Use these visual tools to filter and drill down into specific attack vectors directly from the charts.
+
+Cloudforce One subscribers can explore these new views now in [Application Security > Threat Intelligence > Threat Events ↗︎](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/threat-events).
+
+Feb 18, 2026
+
+[<h2>New cfWorker metric in Server-Timing header</h2>](https://developers.cloudflare.com/changelog/post/2026-02-18-cfworker-server-timing/)
+
+[Analytics](https://developers.cloudflare.com/analytics/)
+
+The Server-Timing header now includes a new `cfWorker` metric that measures time spent executing Cloudflare Workers, including any subrequests performed by the Worker. This helps developers accurately identify whether high Time to First Byte (TTFB) is caused by Worker processing or slow upstream dependencies.
+
+Previously, Worker execution time was included in the `edge` metric, making it harder to identify true edge performance. The new `cfWorker` metric provides this visibility:
+
+| Metric | Description |
+| --- | --- |
+| `edge` | Total time spent on the Cloudflare edge, including Worker execution |
+| `origin` | Time spent fetching from the origin server |
+| `cfWorker` | Time spent in Worker execution, including subrequests but excluding origin fetch time |
+
+#### Example response
+
+```txt
+Server-Timing: cdn-cache; desc=DYNAMIC, edge; dur=20, origin; dur=100, cfWorker; dur=7
+```
+
+In this example, the edge took 20ms, the origin took 100ms, and the Worker added just 7ms of processing time.
+
+#### Availability
+
+The `cfWorker` metric is enabled by default if you have [Real User Monitoring (RUM)](https://developers.cloudflare.com/web-analytics/) enabled. Otherwise, you can enable it using [Rules](https://developers.cloudflare.com/rules/).
+
+This metric is particularly useful for:
+
+- **Performance debugging**: Quickly determine if latency is caused by Worker code, external API calls within Workers, or slow origins.
+- **Optimization targeting**: Identify which component of your request path needs optimization.
+- **Real User Monitoring (RUM)**: Access detailed timing breakdowns directly from response headers for client-side analytics.
+
+For more information about Server-Timing headers, refer to the [W3C Server Timing specification ↗︎](https://www.w3.org/TR/server-timing/).
+
+Feb 17, 2026
+
+[<h2>Streamlined clientless browser isolation for private applications</h2>](https://developers.cloudflare.com/changelog/post/2026-02-17-clientless-access-for-private-apps/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+A new **Allow clientless access** setting makes it easier to connect users without a device client to internal applications, without using public DNS.
+
+![Allow clientless access setting in the Cloudflare One dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1117,height=206,format=webp/_astro/allow-clientless-access.BHKwQuVt.png)
+
+Previously, to provide clientless access to a private hostname or IP without a [published application](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/#add-a-published-application-route), you had to create a separate [bookmark application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/bookmarks/) pointing to a prefixed [Clientless Web Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/) URL (for example, `https://<your-teamname>.cloudflareaccess.com/browser/https://10.0.0.1/`). This bookmark was visible to all users in the App Launcher, regardless of whether they had access to the underlying application.
+
+Now, you can manage clientless access directly within your [private self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/). When **Allow clientless access** is turned on, users who pass your Access application policies will see a tile in their App Launcher pointing to the prefixed URL. Users must have [remote browser permissions](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/) to open the link.
+
+Feb 17, 2026
+
+[<h2>Policies for bookmark applications</h2>](https://developers.cloudflare.com/changelog/post/2026-02-17-policies-for-bookmarks/)
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+You can now assign [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to [bookmark applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/bookmarks/). This lets you control which users see a bookmark in the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) based on identity, device posture, and other policy rules.
+
+Previously, bookmark applications were visible to all users in your organization. With policy support, you can now:
+
+- **Tailor the App Launcher to each user** — Users only see the applications they have access to, reducing clutter and preventing accidental clicks on irrelevant resources.
+- **Restrict visibility of sensitive bookmarks** — Limit who can view bookmarks to internal tools or partner resources based on group membership, identity provider, or device posture.
+
+Bookmarks support all [Access policy configurations](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) except purpose justification, temporary authentication, and application isolation. If no policy is assigned, the bookmark remains visible to all users (maintaining backwards compatibility).
+
+For more information, refer to [Add bookmarks](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/bookmarks/).
+
+Feb 17, 2026
+
+[<h2>Agents SDK v0.5.0: Protocol message control, retry utilities, data parts, and @cloudflare/ai-chat v0.1.0</h2>](https://developers.cloudflare.com/changelog/post/2026-02-17-agents-sdk-v0.5.0/)
+
+[Agents](https://developers.cloudflare.com/agents/) [Workers](https://developers.cloudflare.com/workers/)
+
+The latest release of the [Agents SDK ↗︎](https://github.com/cloudflare/agents) adds built-in retry utilities, per-connection protocol message control, and a fully rewritten `@cloudflare/ai-chat` with data parts, tool approval persistence, and zero breaking changes.
+
+#### Retry utilities
+
+A new `this.retry()` method lets you retry any async operation with exponential backoff and jitter. You can pass an optional `shouldRetry` predicate to bail early on non-retryable errors.
+
+```js
+class MyAgent extends Agent {
+	async onRequest(request) {
+		const data = await this.retry(() => callUnreliableService(), {
+			maxAttempts: 4,
+			shouldRetry: (err) => !(err instanceof PermanentError),
+		});
+		return Response.json(data);
+	}
+}
+```
+
+```ts
+class MyAgent extends Agent {
+	async onRequest(request: Request) {
+		const data = await this.retry(() => callUnreliableService(), {
+			maxAttempts: 4,
+			shouldRetry: (err) => !(err instanceof PermanentError),
+		});
+		return Response.json(data);
+	}
+}
+```
+
+Retry options are also available per-task on `queue()`, `schedule()`, `scheduleEvery()`, and `addMcpServer()`:
+
+```js
+// Per-task retry configuration, persisted in SQLite alongside the task
+await this.schedule(
+	Date.now() + 60_000,
+	"sendReport",
+	{ userId: "abc" },
+	{
+		retry: { maxAttempts: 5 },
+	},
+);
+
+// Class-level retry defaults
+class MyAgent extends Agent {
+	static options = {
+		retry: { maxAttempts: 3 },
+	};
+}
+```
+
+```ts
+// Per-task retry configuration, persisted in SQLite alongside the task
+await this.schedule(Date.now() + 60_000, "sendReport", { userId: "abc" }, {
+	retry: { maxAttempts: 5 },
+});
+
+// Class-level retry defaults
+class MyAgent extends Agent {
+	static options = {
+		retry: { maxAttempts: 3 },
+	};
+}
+```
+
+Retry options are validated eagerly at enqueue/schedule time, and invalid values throw immediately. Internal retries have also been added for workflow operations (`terminateWorkflow`, `pauseWorkflow`, and others) with Durable Object-aware error detection.
+
+#### Per-connection protocol message control
+
+Agents automatically send JSON text frames (identity, state, MCP server lists) to every WebSocket connection. You can now suppress these per-connection for clients that cannot handle them — binary-only devices, MQTT clients, or lightweight embedded systems.
+
+```js
+class MyAgent extends Agent {
+	shouldSendProtocolMessages(connection, ctx) {
+		// Suppress protocol messages for MQTT clients
+		const subprotocol = ctx.request.headers.get("Sec-WebSocket-Protocol");
+		return subprotocol !== "mqtt";
+	}
+}
+```
+
+```ts
+class MyAgent extends Agent {
+	shouldSendProtocolMessages(connection: Connection, ctx: ConnectionContext) {
+		// Suppress protocol messages for MQTT clients
+		const subprotocol = ctx.request.headers.get("Sec-WebSocket-Protocol");
+		return subprotocol !== "mqtt";
+	}
+}
+```
+
+Connections with protocol messages disabled still fully participate in RPC and regular messaging. Use `isConnectionProtocolEnabled(connection)` to check a connection's status at any time. The flag persists across Durable Object hibernation.
+
+See [Protocol messages](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/) for full documentation.
+
+#### `@cloudflare/ai-chat` v0.1.0
+
+The first stable release of `@cloudflare/ai-chat` ships alongside this release with a major refactor of `AIChatAgent` internals — new `ResumableStream` class, WebSocket `ChatTransport`, and simplified SSE parsing — with zero breaking changes. Existing code using `AIChatAgent` and `useAgentChat` works as-is.
+
+Key new features:
+
+- **Data parts** — Attach typed JSON blobs ( `data-*`) to messages alongside text. Supports reconciliation (type+id updates in-place), append, and transient parts (ephemeral via `onData` callback). See [Data parts](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#data-parts).
+- **Tool approval persistence** — The `needsApproval` approval UI now survives page refresh and DO hibernation. The streaming message is persisted to SQLite when a tool enters `approval-requested` state.
+- **`maxPersistedMessages`** — Cap SQLite message storage with automatic oldest-message deletion.
+- **`body` option on `useAgentChat`** — Send custom data with every request (static or dynamic).
+- **Incremental persistence** — Hash-based cache to skip redundant SQL writes.
+- **Row size guard** — Automatic two-pass compaction when messages approach the SQLite 2 MB limit.
+- **`autoContinueAfterToolResult` defaults to `true`** — Client-side tool results and tool approvals now automatically trigger a server continuation, matching server-executed tool behavior. Set `autoContinueAfterToolResult: false` in `useAgentChat` to restore the previous behavior.
+
+Notable bug fixes:
+
+- Resolved stream resumption race conditions
+- Resolved an issue where `setMessages` functional updater sent empty arrays
+- Resolved an issue where client tool schemas were lost after DO hibernation
+- Resolved `InvalidPromptError` after tool approval ( `approval.id` was dropped)
+- Resolved an issue where message metadata was not propagated on broadcast/resume paths
+- Resolved an issue where `clearAll()` did not clear in-memory chunk buffers
+- Resolved an issue where `reasoning-delta` silently dropped data when `reasoning-start` was missed during stream resumption
+
+#### Synchronous queue and schedule getters
+
+`getQueue()`, `getQueues()`, `getSchedule()`, `dequeue()`, `dequeueAll()`, and `dequeueAllByCallback()` were unnecessarily `async` despite only performing synchronous SQL operations. They now return values directly instead of wrapping them in Promises. This is backward compatible — existing code using `await` on these methods will continue to work.
+
+#### Other improvements
+
+- **Fix TypeScript "excessively deep" error** — A depth counter on `CanSerialize` and `IsSerializableParam` types bails out to `true` after 10 levels of recursion, preventing the "Type instantiation is excessively deep" error with deeply nested types like AI SDK `CoreMessage[]`.
+- **POST SSE keepalive** — The POST SSE handler now sends `event: ping` every 30 seconds to keep the connection alive, matching the existing GET SSE handler behavior. This prevents POST response streams from being silently dropped by proxies during long-running tool calls.
+- **Widened peer dependency ranges** — Peer dependency ranges across packages have been widened to prevent cascading major bumps during 0.x minor releases. `@cloudflare/ai-chat` and `@cloudflare/codemode` are now marked as optional peer dependencies.
+
+#### Upgrade
+
+To update to the latest version:
+
+```sh
+npm i agents@latest @cloudflare/ai-chat@latest
+```
+
+Feb 17, 2026
+
+[<h2>Cloudflare One Product Name Updates</h2>](https://developers.cloudflare.com/changelog/post/2026-02-17-product-name-updates/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Network Flow](https://developers.cloudflare.com/network-flow/)
+
+We are updating naming related to some of our Networking products to better clarify their place in the Zero Trust and Secure Access Service Edge (SASE) journey.
+
+We are retiring some older brand names in favor of names that describe exactly what the products do within your network. We are doing this to help customers build better, clearer mental models for comprehensive SASE architecture delivered on Cloudflare.
+
+#### What's changing
+
+- **Magic WAN** → **Cloudflare WAN**
+- **Magic WAN IPsec** → **Cloudflare IPsec**
+- **Magic WAN GRE** → **Cloudflare GRE**
+- **Magic WAN Connector** → **Cloudflare One Appliance**
+- **Magic Firewall** → **Cloudflare Network Firewall**
+- **Magic Network Monitoring** → **Network Flow**
+- **Magic Cloud Networking** → **Cloudflare One Multi-cloud Networking**
+
+**No action is required by you** — all functionality, existing configurations, and billing will remain exactly the same.
+
+For more information, visit the [Cloudflare One documentation](https://developers.cloudflare.com/cloudflare-one/).
+
+Feb 17, 2026
+
+[<h2>Docker-in-Docker support added to Containers and Sandboxes</h2>](https://developers.cloudflare.com/changelog/post/2026-02-17-docker-in-docker/)
+
+[Containers](https://developers.cloudflare.com/containers/)
+
+[Sandboxes](https://developers.cloudflare.com/sandbox/) and [Containers](https://developers.cloudflare.com/containers/) now support running Docker for "Docker-in-Docker" setups. This is particularly useful when your end users or [agents](https://developers.cloudflare.com/agents) want to run a full sandboxed development environment.
+
+This allows you to:
+
+- Develop containerized applications with your Sandbox
+- Run isolated test environments for images
+- Build container images as part of CI/CD workflows
+- Deploy arbitrary images supplied at runtime within a container
+
+For [Sandbox SDK](https://developers.cloudflare.com/sandbox/) users, see the [Docker-in-Docker guide](https://developers.cloudflare.com/sandbox/guides/docker-in-docker/) for instructions on combining Docker with the SandboxSDK. For general Containers usage, see the [Containers FAQ](https://developers.cloudflare.com/containers/faq/#can-i-run-docker-inside-a-container-docker-in-docker).
+
+Feb 16, 2026
+
+[<h2>Content encoding support for Markdown for Agents and other improvements</h2>](https://developers.cloudflare.com/changelog/post/2026-02-16-markdown-for-agents-improvements/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+When AI systems request pages from any website that uses Cloudflare and has [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/) enabled, they can express the preference for `text/markdown` in the request: our network will automatically and efficiently convert the HTML to markdown, when possible, on the fly.
+
+This release adds the following improvements:
+
+- The origin response limit was raised from 1 MB to 2 MB (2,097,152 bytes).
+- We no longer require the origin to send the `content-length` header.
+- We now support content encoded responses from the origin.
+
+If you haven’t enabled automatic Markdown conversion yet, visit the [AI Crawl Control ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ai) section of the Cloudflare dashboard and enable **Markdown for Agents**.
+
+Refer to our [developer documentation](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/) for more details.
+
+Feb 16, 2026
+
+[<h2>WAF Release - 2026-02-16</h2>](https://developers.cloudflare.com/changelog/post/2026-02-16-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week’s release introduces new detections for CVE-2025-68645 and CVE-2025-31125.
+
+**Key Findings**
+
+- CVE-2025-68645: A Local File Inclusion (LFI) vulnerability in the Webmail Classic UI of Zimbra Collaboration Suite (ZCS) 10.0 and 10.1 allows unauthenticated remote attackers to craft requests to the `/h/rest` endpoint, improperly influence internal dispatching, and include arbitrary files from the WebRoot directory.
+- CVE-2025-31125: Vite, the JavaScript frontend tooling framework, exposes content of non-allowed files via `?inline&import` when its development server is network-exposed, enabling unauthorized attackers to read arbitrary files and potentially leak sensitive information.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...833761f7 | N/A | Zimbra - Local File Inclusion - CVE:CVE-2025-68645 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...950ed8c8 | N/A | Vite - WASM Import Path Traversal - CVE:CVE-2025-31125 | Log | Block | This is a new detection. |
+
+Feb 16, 2026
+
+[<h2>Quick Editor devtools replaced with log viewer</h2>](https://developers.cloudflare.com/changelog/post/2026-02-12-quick-editor-dev-tools-deprecation/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+Cloudflare has deprecated the Workers Quick Editor dev tools inspector and replaced it with a lightweight log viewer.
+
+This aligns our logging with `wrangler tail` and gives us the opportunity to focus our efforts on bringing benefits from the work we have invested in observability, which would not be possible otherwise.
+
+We have made improvements to this logging viewer based on your feedback such that you can log object and array types, and easily clear the list of logs. This does not include class instances. Limitations are documented in the [Workers Playground docs](https://developers.cloudflare.com/workers/playground/).
+
+If you do need to develop your Worker with a remote inspector, you can still do this using Wrangler locally. Cloning a project from your quick editor to your computer for local development can be done with the `wrangler init --from-dash` command. For more information, refer to [Wrangler commands](https://developers.cloudflare.com/workers/wrangler/commands/general/#init).
+
+Feb 15, 2026
+
+[<h2>New Best Practices guide for Workers</h2>](https://developers.cloudflare.com/changelog/post/2026-02-15-workers-best-practices/)
+
+[Workers](https://developers.cloudflare.com/workers/)
+
+A new [Workers Best Practices](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/) guide provides opinionated recommendations for building fast, reliable, observable, and secure Workers. The guide draws on production patterns, Cloudflare internal usage, and best practices observed from developers building on Workers.
+
+Key guidance includes:
+
+- **Keep your compatibility date current and enable `nodejs_compat`** — Ensure you have access to the latest runtime features and Node.js built-in modules.
+
+```jsonc
+{
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-10-05",
+	"compatibility_flags": ["nodejs_compat"],
+}
+```
+
+```toml
+name = "my-worker"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-10-05"
+compatibility_flags = [ "nodejs_compat" ]
+```
+
+- **Generate binding types with `wrangler types`** — Never hand-write your `Env` interface. Let Wrangler generate it from your actual configuration to catch mismatches at compile time.
+- **Stream request and response bodies** — Avoid buffering large payloads in memory. Use `TransformStream` and `pipeTo` to stay within the 128 MB memory limit and improve time-to-first-byte.
+- **Use bindings, not REST APIs** — Bindings to KV, R2, D1, Queues, and other Cloudflare services are direct, in-process references with no network hop and no authentication overhead.
+- **Use Queues and Workflows for background work** — Move long-running or retriable tasks out of the critical request path. Use Queues for simple fan-out and buffering, and Workflows for multi-step durable processes.
+- **Enable Workers Logs and Traces** — Configure observability before deploying to production so you have data when you need to debug.
+- **Avoid global mutable state** — Workers reuse isolates across requests. Storing request-scoped data in module-level variables causes cross-request data leaks.
+- **Always `await` or `waitUntil` your Promises** — Floating promises cause silent bugs and dropped work.
+- **Use Web Crypto for secure token generation** — Never use `Math.random()` for security-sensitive operations.
+
+To learn more, refer to [Workers Best Practices](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/).
+
+Feb 13, 2026
+
+[<h2>Fine-grained permissions for Access policies and service tokens</h2>](https://developers.cloudflare.com/changelog/post/2026-02-13-access-policy-service-token-permissions/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+Fine-grained permissions for **Access policies** and **Access service tokens** are available. These new resource-scoped roles expand the existing RBAC model, enabling administrators to grant permissions scoped to individual resources.
+
+#### New roles
+
+- **Cloudflare Access policy admin**: Can edit a specific [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) in an account.
+- **Cloudflare Access service token admin**: Can edit a specific [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) in an account.
+
+These roles complement the existing resource-scoped roles for Access applications, identity providers, and infrastructure targets.
+
+For more information:
+
+- [Resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles)
+- [Role scopes](https://developers.cloudflare.com/fundamentals/manage-members/scope/)
+
+Note
+
+Resource-scoped roles is currently in beta.
+
+Feb 13, 2026
+
+[<h2>Cloudflare Python SDK v5.0.0-beta.1 now available</h2>](https://developers.cloudflare.com/changelog/post/2026-02-13-cloudflare-python-v5.0.0-beta.1/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [SDK](https://developers.cloudflare.com/fundamentals/api/reference/sdks/)
+
+> **Disclaimer:** Please note that v5.0.0-beta.1 is in Beta and we are still testing it for stability.
+
+Full Changelog: [v4.3.1...v5.0.0-beta.1 ↗︎](https://github.com/cloudflare/cloudflare-python/compare/v4.3.1...v5.0.0-beta.1)
+
+In this release, you'll see a large number of breaking changes. This is primarily due to a change in OpenAPI definitions, which our libraries are based off of, and codegen updates that we rely on to read those OpenAPI definitions and produce our SDK libraries. As the codegen is always evolving and improving, so are our code bases.
+
+There may be changes that are not captured in this changelog. Feel free to open an issue to report any inaccuracies, and we will make sure it gets into the changelog before the v5.0.0 release.
+
+Most of the breaking changes below are caused by improvements to the accuracy of the base OpenAPI schemas, which sometimes translates to breaking changes in downstream clients that depend on those schemas.
+
+Please ensure you read through the list of changes below and the migration guide before moving to this version - this will help you understand any down or upstream issues it may cause to your environments.
+
+#### Breaking Changes
+
+**The following resources have breaking changes. See the [v5 Migration Guide ↗︎](https://github.com/cloudflare/cloudflare-python/blob/main/docs/v5-migration-guide.md) for detailed migration instructions.**
+
+- `abusereports`
+- `acm.totaltls`
+- `apigateway.configurations`
+- `cloudforceone.threatevents`
+- `d1.database`
+- `intel.indicatorfeeds`
+- `logpush.edge`
+- `origintlsclientauth.hostnames`
+- `queues.consumers`
+- `radar.bgp`
+- `rulesets.rules`
+- `schemavalidation.schemas`
+- `snippets`
+- `zerotrust.dlp`
+- `zerotrust.networks`
+
+#### Features
+
+#### New API Resources
+
+- `abusereports` - Abuse report management
+- `abusereports.mitigations` - Abuse report mitigation actions
+- `ai.tomarkdown` - AI-powered markdown conversion
+- `aigateway.dynamicrouting` - AI Gateway dynamic routing configuration
+- `aigateway.providerconfigs` - AI Gateway provider configurations
+- `aisearch` - AI-powered search functionality
+- `aisearch.instances` - AI Search instance management
+- `aisearch.tokens` - AI Search authentication tokens
+- `alerting.silences` - Alert silence management
+- `brandprotection.logomatches` - Brand protection logo match detection
+- `brandprotection.logos` - Brand protection logo management
+- `brandprotection.matches` - Brand protection match results
+- `brandprotection.queries` - Brand protection query management
+- `cloudforceone.binarystorage` - CloudForce One binary storage
+- `connectivity.directory` - Connectivity directory services
+- `d1.database` - D1 database management
+- `diagnostics.endpointhealthchecks` - Endpoint health check diagnostics
+- `fraud` - Fraud detection and prevention
+- `iam.sso` - IAM Single Sign-On configuration
+- `loadbalancers.monitorgroups` - Load balancer monitor groups
+- `organizations` - Organization management
+- `organizations.organizationprofile` - Organization profile settings
+- `origintlsclientauth.hostnamecertificates` - Origin TLS client auth hostname certificates
+- `origintlsclientauth.hostnames` - Origin TLS client auth hostnames
+- `origintlsclientauth.zonecertificates` - Origin TLS client auth zone certificates
+- `pipelines` - Data pipeline management
+- `pipelines.sinks` - Pipeline sink configurations
+- `pipelines.streams` - Pipeline stream configurations
+- `queues.subscriptions` - Queue subscription management
+- `r2datacatalog` - R2 Data Catalog integration
+- `r2datacatalog.credentials` - R2 Data Catalog credentials
+- `r2datacatalog.maintenanceconfigs` - R2 Data Catalog maintenance configurations
+- `r2datacatalog.namespaces` - R2 Data Catalog namespaces
+- `radar.bots` - Radar bot analytics
+- `radar.ct` - Radar certificate transparency data
+- `radar.geolocations` - Radar geolocation data
+- `realtimekit.activesession` - Real-time Kit active session management
+- `realtimekit.analytics` - Real-time Kit analytics
+- `realtimekit.apps` - Real-time Kit application management
+- `realtimekit.livestreams` - Real-time Kit live streaming
+- `realtimekit.meetings` - Real-time Kit meeting management
+- `realtimekit.presets` - Real-time Kit preset configurations
+- `realtimekit.recordings` - Real-time Kit recording management
+- `realtimekit.sessions` - Real-time Kit session management
+- `realtimekit.webhooks` - Real-time Kit webhook configurations
+- `tokenvalidation.configuration` - Token validation configuration
+- `tokenvalidation.rules` - Token validation rules
+- `workers.beta` - Workers beta features
+
+#### New Endpoints (Existing Resources)
+
+#### `acm.totaltls`
+
+- `edit()`
+- `update()`
+
+#### `cloudforceone.threatevents`
+
+- `list()`
+
+#### `contentscanning`
+
+- `create()`
+- `get()`
+- `update()`
+
+#### `dns.records`
+
+- `scan_list()`
+- `scan_review()`
+- `scan_trigger()`
+
+#### `intel.indicatorfeeds`
+
+- `create()`
+- `delete()`
+- `list()`
+
+#### `leakedcredentialchecks.detections`
+
+- `get()`
+
+#### `queues.consumers`
+
+- `list()`
+
+#### `radar.ai`
+
+- `summary()`
+- `timeseries()`
+- `timeseries_groups()`
+
+#### `radar.bgp`
+
+- `changes()`
+- `snapshot()`
+
+#### `workers.subdomains`
+
+- `delete()`
+
+#### `zerotrust.networks`
+
+- `create()`
+- `delete()`
+- `edit()`
+- `get()`
+- `list()`
+
+#### General Fixes and Improvements
+
+#### Type System & Compatibility
+
+- **Type inference improvements**: Allow Pyright to properly infer TypedDict types within SequenceNotStr
+- **Type completeness**: Add missing types to method arguments and response models
+- **Pydantic compatibility**: Ensure compatibility with Pydantic versions prior to 2.8.0 when using additional fields
+
+#### Request/Response Handling
+
+- **Multipart form data**: Correctly handle sending multipart/form-data requests with JSON data
+- **Header handling**: Do not send headers with default values set to omit
+- **GET request headers**: Don't send Content-Type header on GET requests
+- **Response body model accuracy**: Broad improvements to the correctness of models
+
+#### Parsing & Data Processing
+
+- **Discriminated unions**: Correctly handle nested discriminated unions in response parsing
+- **Extra field types**: Parse extra field types correctly
+- **Empty metadata**: Ignore empty metadata fields during parsing
+- **Singularization rules**: Update resource name singularization rules for better consistency
+
+Feb 13, 2026
+
+[<h2>Introducing GLM-4.7-Flash on Workers AI, @cloudflare/tanstack-ai, and workers-ai-provider v3.1.1</h2>](https://developers.cloudflare.com/changelog/post/2026-02-13-glm-4.7-flash-workers-ai/)
+
+[Workers](https://developers.cloudflare.com/workers/) [Agents](https://developers.cloudflare.com/agents/) [Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+We're excited to announce **GLM-4.7-Flash** on Workers AI, a fast and efficient text generation model optimized for multilingual dialogue and instruction-following tasks, along with the brand-new [**@cloudflare/tanstack-ai** ↗︎](https://www.npmjs.com/package/@cloudflare/tanstack-ai) package and [**workers-ai-provider v3.1.1** ↗︎](https://www.npmjs.com/package/workers-ai-provider).
+
+You can now run AI agents entirely on Cloudflare. With GLM-4.7-Flash's multi-turn tool calling support, plus full compatibility with TanStack AI and the Vercel AI SDK, you have everything you need to build agentic applications that run completely at the edge.
+
+#### GLM-4.7-Flash — Multilingual Text Generation Model
+
+[`@cf/zai-org/glm-4.7-flash`](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/) is a multilingual model with a 131,072 token context window, making it ideal for long-form content generation, complex reasoning tasks, and multilingual applications.
+
+**Key Features and Use Cases:**
+
+- **Multi-turn Tool Calling for Agents**: Build AI agents that can call functions and tools across multiple conversation turns
+- **Multilingual Support**: Built to handle content generation in multiple languages effectively
+- **Large Context Window**: 131,072 tokens for long-form writing, complex reasoning, and processing long documents
+- **Fast Inference**: Optimized for low-latency responses in chatbots and virtual assistants
+- **Instruction Following**: Excellent at following complex instructions for code generation and structured tasks
+
+Use GLM-4.7-Flash through the [Workers AI binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/) (`env.AI.run()`), the REST API at `/run` or `/v1/chat/completions`, [AI Gateway](https://developers.cloudflare.com/ai-gateway/), or via [workers-ai-provider](https://developers.cloudflare.com/workers-ai/configuration/ai-sdk/) for the Vercel AI SDK.
+
+Pricing is available on the [model page](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/) or [pricing page](https://developers.cloudflare.com/workers-ai/platform/pricing/).
+
+#### @cloudflare/tanstack-ai v0.1.1 — TanStack AI adapters for Workers AI and AI Gateway
+
+We've released `@cloudflare/tanstack-ai`, a new package that brings Workers AI and AI Gateway support to [TanStack AI ↗︎](https://tanstack.com/ai). This provides a framework-agnostic alternative for developers who prefer TanStack's approach to building AI applications.
+
+**Workers AI adapters** support four configuration modes — plain binding (`env.AI`), plain REST, AI Gateway binding (`env.AI.gateway(id)`), and AI Gateway REST — across all capabilities:
+
+- **Chat** ( `createWorkersAiChat`) — Streaming chat completions with tool calling, structured output, and reasoning text streaming.
+- **Image generation** ( `createWorkersAiImage`) — Text-to-image models.
+- **Transcription** ( `createWorkersAiTranscription`) — Speech-to-text.
+- **Text-to-speech** ( `createWorkersAiTts`) — Audio generation.
+- **Summarization** ( `createWorkersAiSummarize`) — Text summarization.
+
+**AI Gateway adapters** route requests from third-party providers — OpenAI, Anthropic, Gemini, Grok, and OpenRouter — through Cloudflare AI Gateway for caching, rate limiting, and unified billing.
+
+To get started:
+
+```sh
+npm install @cloudflare/tanstack-ai @tanstack/ai
+```
+
+#### workers-ai-provider v3.1.1 — transcription, speech, reranking, and reliability
+
+The Workers AI provider for the [Vercel AI SDK ↗︎](https://ai-sdk.dev) now supports three new capabilities beyond chat and image generation:
+
+- **Transcription** ( `provider.transcription(model)`) — Speech-to-text with automatic handling of model-specific input formats across binding and REST paths.
+- **Text-to-speech** ( `provider.speech(model)`) — Audio generation with support for voice and speed options.
+- **Reranking** ( `provider.reranking(model)`) — Document reranking for RAG pipelines and search result ordering.
+
+```typescript
+import { createWorkersAI } from "workers-ai-provider";
+import {
+	experimental_transcribe,
+	experimental_generateSpeech,
+	rerank,
+} from "ai";
+
+const workersai = createWorkersAI({ binding: env.AI });
+
+const transcript = await experimental_transcribe({
+	model: workersai.transcription("@cf/openai/whisper-large-v3-turbo"),
+	audio: audioData,
+	mediaType: "audio/wav",
+});
+
+const speech = await experimental_generateSpeech({
+	model: workersai.speech("@cf/deepgram/aura-1"),
+	text: "Hello world",
+	voice: "asteria",
+});
+
+const ranked = await rerank({
+	model: workersai.reranking("@cf/baai/bge-reranker-base"),
+	query: "What is machine learning?",
+	documents: ["ML is a branch of AI.", "The weather is sunny."],
+});
+```
+
+This release also includes a comprehensive reliability overhaul (v3.0.5):
+
+- **Fixed streaming** — Responses now stream token-by-token instead of buffering all chunks, using a proper `TransformStream` pipeline with backpressure.
+- **Fixed tool calling** — Resolved issues with tool call ID sanitization, conversation history preservation, and a heuristic that silently fell back to non-streaming mode when tools were defined.
+- **Premature stream termination detection** — Streams that end unexpectedly now report `finishReason: "error"` instead of silently reporting `"stop"`.
+- **AI Search support** — Added `createAISearch` as the canonical export (renamed from AutoRAG). `createAutoRAG` still works with a deprecation warning.
+
+To upgrade:
+
+```sh
+npm install workers-ai-provider@latest ai
+```
+
+#### Resources
+
+- [@cloudflare/tanstack-ai on npm ↗︎](https://www.npmjs.com/package/@cloudflare/tanstack-ai)
+- [workers-ai-provider on npm ↗︎](https://www.npmjs.com/package/workers-ai-provider)
+- [GitHub repository ↗︎](https://github.com/cloudflare/ai)
+
+Feb 13, 2026
+
+[<h2>Origin CA certificate support for Workers VPC</h2>](https://developers.cloudflare.com/changelog/post/2026-02-13-origin-ca-certificate-support/)
+
+[Workers VPC](https://developers.cloudflare.com/workers-vpc/)
+
+Workers VPC now supports [Cloudflare Origin CA certificates](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/) when connecting to your private services over HTTPS. Previously, Workers VPC only trusted certificates issued by publicly trusted certificate authorities (for example, Let's Encrypt, DigiCert).
+
+With this change, you can use free Cloudflare Origin CA certificates on your origin servers within private networks and connect to them from Workers VPC using the `https` scheme. This is useful for encrypting traffic between the tunnel and your service without needing to provision certificates from a public CA.
+
+For more information, refer to [Supported TLS certificates](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#supported-tls-certificates).
+
+Feb 12, 2026
+
+[<h2>Anycast IPs displayed on the dashboard</h2>](https://developers.cloudflare.com/changelog/post/2026-02-12-anycast-ips-on-dashboard/)
+
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+Cloudflare WAN now displays your Anycast IP addresses directly in the dashboard when you configure IPsec or GRE tunnels.
+
+Previously, customers received their Anycast IPs during onboarding or had to retrieve them with an API call. The dashboard now pre-loads these addresses, reducing setup friction and preventing configuration errors.
+
+No action is required. All Cloudflare WAN customers can see their Anycast IPs in the tunnel configuration form automatically.
+
+For more information, refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/28/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/28/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

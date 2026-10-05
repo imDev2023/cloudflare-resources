@@ -1,0 +1,34 @@
+---
+description: Use the Skip action to bypass security features for matching requests.
+title: Configure a rule with the Skip action
+image: https://developers.cloudflare.com/waf/custom-rules/skip/og.png?v=718777228b5c20f8
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Configure a rule with the Skip action
+
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/skip/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Use the *Skip* action in a custom rule to skip one or more security features. A rule configured with the *Skip* action is also known as a skip rule.
+
+Skip rules allow specific requests to bypass security features that would otherwise block or challenge them. Use skip rules when legitimate traffic matches a security rule unintentionally. For example, to allow a trusted API client through [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), or to exempt an internal monitoring service from [Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
+
+You can skip [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), [Managed Rules](https://developers.cloudflare.com/waf/managed-rules/), [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) rules, and several other security products. However, you cannot skip [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) (available on the Free plan).
+
+For more information on the available options, refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/).
+
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) by selecting **Create rule** > **Custom rules**, or edit an existing custom rule.
+3. Define the rule name and the rule expression.
+4. Under **Choose action**, select *Skip* from the dropdown.![Available Skip action options when configuring a custom rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=900,height=670,format=webp/_astro/skip-action-options.N8Emdhwv.png)
+5. Configure the desired [skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/).
+6. Save your changes.
+
+Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to configure custom rules via API.
+
+Refer to [API examples](https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/) for examples of creating skip rules.

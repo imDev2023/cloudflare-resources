@@ -1,0 +1,163 @@
+---
+description: Create a custom ruleset with the Rulesets API.
+title: Create a custom ruleset
+image: https://developers.cloudflare.com/ruleset-engine/custom-rulesets/create-custom-ruleset/og.png?v=7956e876705cecf1
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Create a custom ruleset
+
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/create-custom-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Use the [Create an account or zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation to create a custom ruleset, making sure that you:
+
+- Set the `kind` field to `custom`.
+- Specify the name of the [phase](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) where you want to create the custom ruleset in the `phase` field.
+
+You can also specify the list of rules to include in the custom ruleset in the `rules` array. To add rules after creating the custom ruleset, refer to [Add rules to a custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/).
+
+If you are using Terraform, refer to [WAF custom rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/#create-and-deploy-a-custom-ruleset) for examples of creating and deploying custom rulesets.
+
+If you are using the Cloudflare dashboard, refer to [Work with custom rulesets in the dashboard](https://developers.cloudflare.com/waf/account/custom-rulesets/create-dashboard/).
+
+Note
+
+Currently, zone-level custom rulesets are only available in the [`http_request_firewall_custom`](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/#deploy-a-custom-ruleset-via-api) phase.
+
+## Example A - Custom ruleset at the account level
+
+The following request creates a new custom ruleset at the account level. The response will include the ID of the new custom ruleset in the `id` field.
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Create an account rulesetbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Custom Ruleset 1",
+		"description": "My First Custom Ruleset (account)",
+		"kind": "custom",
+		"phase": "http_request_firewall_custom"
+	}'
+```
+
+```json
+{
+	"result": {
+		"id": "f82ccda3d21f4a02825d3fe45b5e1c10",
+		"name": "Custom Ruleset 1",
+		"description": "My First Custom Ruleset (account)",
+		"kind": "custom",
+		"version": "1",
+		"last_updated": "2025-08-09T10:27:30.636197Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
+}
+```
+
+You can include a list of rules in the custom ruleset creation request. If you have not added any rules, refer to [Add rules to a custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/) for more information.
+
+## Example B - Custom ruleset at the zone level
+
+The following request creates a new custom ruleset at the zone level. The response will include the ID of the new custom ruleset in the `id` field.
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Config Settings Write</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Cache Settings Write</code>
+- <code>Custom Errors Write</code>
+- <code>Origin Write</code>
+- <code>Managed headers Write</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>Sanitize Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Bot Management Write</code>
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Create a zone rulesetbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Custom Ruleset 1",
+		"description": "My First Custom Ruleset (zone)",
+		"kind": "custom",
+		"phase": "http_request_firewall_custom"
+	}'
+```
+
+```json
+{
+	"result": {
+		"id": "f82ccda3d21f4a02825d3fe45b5e1c10",
+		"name": "Custom Ruleset 1",
+		"description": "My First Custom Ruleset (zone)",
+		"kind": "custom",
+		"version": "1",
+		"last_updated": "2025-08-09T10:27:30.636197Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
+}
+```
+
+You can include a list of rules in the custom ruleset creation request. If you have not added any rules, refer to [Add rules to a custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/) for more information.
+
+Note
+
+Currently, zone-level custom rulesets are only available in the [`http_request_firewall_custom`](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/#deploy-a-custom-ruleset-via-api) phase.

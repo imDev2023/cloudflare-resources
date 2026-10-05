@@ -1,0 +1,959 @@
+---
+title: Changelogs
+image: https://developers.cloudflare.com/og-changelog.png
+---
+
+[Skip to content](#main-content)
+
+All products
+
+Product groups
+
+AI
+
+Analytics
+
+Application performance
+
+Application security
+
+Cloudflare One
+
+Consumer services
+
+Core platform
+
+Developer platform
+
+Docs collections
+
+Media
+
+Network security
+
+Privacy
+
+Storage
+
+Products
+
+1.1.1.1 (DNS Resolver)
+
+Access
+
+Agent Lee
+
+Agents
+
+AI Crawl Control
+
+AI Gateway
+
+AI Search
+
+Analytics
+
+API Shield
+
+Artifacts
+
+Audit Logs
+
+Automatic Platform Optimization
+
+Basin
+
+Basin Catalog
+
+Basin Pipelines
+
+Basin SQL
+
+Billing
+
+Bots
+
+Browser Isolation
+
+Browser Run
+
+Cache / CDN
+
+CASB
+
+Cloudflare CLI
+
+Cloudflare for SaaS
+
+Cloudflare Fundamentals
+
+Cloudflare Images
+
+Cloudflare Mesh
+
+Cloudflare Network Firewall
+
+Cloudflare One
+
+Cloudflare One Appliance
+
+Cloudflare One Client
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel for SASE
+
+Cloudflare WAN
+
+Cloudflare Web Analytics
+
+Containers
+
+D1
+
+Data Localization Suite
+
+Data Loss Prevention
+
+Digital Experience Monitoring
+
+DNS
+
+Durable Objects
+
+Email security
+
+Email Service
+
+Flagship
+
+Gateway
+
+Go SDK
+
+Hyperdrive
+
+KV
+
+Load Balancing
+
+Log Explorer
+
+Logpush
+
+Logpush Connectors
+
+Logs
+
+Magic Transit
+
+Monetization Gateway
+
+Multi-Cloud Networking
+
+Network Flow
+
+Network Interconnect
+
+Organizations
+
+Pages
+
+Privacy Proxy
+
+Queues
+
+R2
+
+Radar
+
+Realtime
+
+Registrar
+
+Resource Tagging
+
+Risk Score
+
+Rules
+
+Sandboxes
+
+SDK
+
+Secrets Store
+
+Security Center
+
+Security Overview
+
+Speed
+
+SSL/TLS
+
+Stream
+
+Support
+
+Terraform
+
+Turnstile
+
+Vectorize
+
+WAF
+
+Web Search API
+
+Workers
+
+Workers AI
+
+Workers Analytics Engine
+
+Workers for Platforms
+
+Workers VPC
+
+Workflows
+
+Zaraz
+
+No products found.
+
+[View RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) [ Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/index.xml)
+
+Mar 17, 2026
+
+[<h2>Log AI Gateway request metadata without storing payloads</h2>](https://developers.cloudflare.com/changelog/post/2026-03-17-collect-log-payload-header/)
+
+[AI Gateway](https://developers.cloudflare.com/ai-gateway/)
+
+AI Gateway now supports the `cf-aig-collect-log-payload` header, which controls whether request and response bodies are stored in logs. By default, this header is set to `true` and payloads are stored alongside metadata. Set this header to `false` to skip payload storage while still logging metadata such as token counts, model, provider, status code, cost, and duration.
+
+This is useful when you need usage metrics but do not want to persist sensitive prompt or response data.
+
+```bash
+curl https://gateway.ai.cloudflare.com/v1/$ACCOUNT_ID/$GATEWAY_ID/openai/chat/completions \
+  --header "Authorization: Bearer $TOKEN" \
+  --header 'Content-Type: application/json' \
+  --header 'cf-aig-collect-log-payload: false' \
+  --data '{
+    "model": "gpt-4o-mini",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the email address and phone number of user123?"
+      }
+    ]
+  }'
+```
+
+For more information, refer to [Logging](https://developers.cloudflare.com/ai-gateway/observability/logging/#collect-log-payload-cf-aig-collect-log-payload).
+
+Mar 17, 2026
+
+[<h2>New Security Overview UI</h2>](https://developers.cloudflare.com/changelog/post/2026-03-17-new-security-overview-ui/)
+
+[Security Overview](https://developers.cloudflare.com/security/overview/)
+
+The Security Overview has been updated to provide Application Security customers with more actionable insights and a clearer view of their security posture.
+
+Key improvements include:
+
+- **Criticality for all Insights**: Every insight now includes a criticality rating, allowing you to prioritize the most impactful security action items first.
+- **Detection Tools Section**: A new section displays the security detection tools available to you, indicating which are currently enabled and which can be activated to strengthen your defenses.
+- **Industry Peer Comparison** (Enterprise customers): A new module from Security Reports benchmarks your security posture against industry peers, highlighting relative strengths and areas for improvement.
+
+![New Security Overview UI](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1921,height=958,format=webp/_astro/overview-ui.D7FzaCLm.png)
+
+For more information, refer to [Security Overview](https://developers.cloudflare.com/security/overview/).
+
+Mar 16, 2026
+
+[<h2>Return up to 50 query results with values or metadata</h2>](https://developers.cloudflare.com/changelog/post/2026-03-16-topk-limit-increased-to-50/)
+
+[Vectorize](https://developers.cloudflare.com/vectorize/)
+
+You can now set `topK` up to `50` when a Vectorize query returns values or full metadata. This raises the previous limit of `20` for queries that use `returnValues: true` or `returnMetadata: "all"`.
+
+Use the higher limit when you need more matches in a single query response without dropping values or metadata. Refer to the [Vectorize API reference](https://developers.cloudflare.com/vectorize/reference/client-api/) for query options and current `topK` limits.
+
+Mar 15, 2026
+
+[<h2>Unlimited result paging in Investigations</h2>](https://developers.cloudflare.com/changelog/post/2026-03-15-infinite-paging-investigations/)
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
+
+Investigations now support unlimited result paging in both the dashboard and the API, removing the previous 1,000-record cap. Security teams can page through complete result sets when searching across large mail volumes, giving SOC analysts and automated workflows deeper visibility for forensics and threat hunting.
+
+In the dashboard, infinite paging is now supported in the Investigations view. The 1,000-record ceiling has been removed, so you can navigate through the full result set directly in the UI. The [Investigations API](https://developers.cloudflare.com/api/resources/email_security/subresources/investigate/methods/list) now returns up to 10,000 records per page (up from 1,000), with no cap on total result volume across pages.
+
+For high-volume use cases, we recommend:
+
+- **[Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/) to a SIEM** for full-fidelity datasets and long-term retention.
+- **SOAR playbooks** against the async bulk action API for large-scale remediation. Bulk actions initiated from the dashboard remain capped at 1,000 messages per action.
+- **The Investigations API** for report exports larger than 1,000 results, which is the dashboard download cap.
+
+This applies to all Email Security packages:
+
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
+
+Mar 15, 2026
+
+[<h2>Access Durable Object name via \`ctx.id.name\`</h2>](https://developers.cloudflare.com/changelog/post/2026-03-15-durable-object-id-name/)
+
+[Durable Objects](https://developers.cloudflare.com/durable-objects/) [Workers](https://developers.cloudflare.com/workers/)
+
+When your Worker accesses a Durable Object via `idFromName()` or `getByName()`, the same name is now available on `ctx.id.name` inside the object — no need to pass it through method arguments or persist it in storage. This brings the runtime behavior in line with the [Workers runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
+
+This is especially useful for [alarms](https://developers.cloudflare.com/durable-objects/api/alarms/), where there is no calling client to pass the name as an argument. When an alarm handler runs, `ctx.id.name` will hold the same name the object was originally accessed with.
+
+```js
+import { DurableObject } from "cloudflare:workers";
+
+export class ChatRoom extends DurableObject {
+  async getRoomName() {
+    // ctx.id.name returns the name passed to getByName() or idFromName()
+    return this.ctx.id.name;
+  }
+}
+
+// Worker
+export default {
+  async fetch(request, env) {
+    const stub = env.CHAT_ROOM.getByName("general");
+    const roomName = await stub.getRoomName();
+    return new Response(`Welcome to ${roomName}!`);
+  },
+};
+```
+
+`ctx.id.name` is `undefined` in the following cases:
+
+- For Durable Objects created with `newUniqueId()`.
+- When accessed via `idFromString()`, even if the ID was originally created from a name.
+- For [names longer than 1,024 bytes](https://developers.cloudflare.com/durable-objects/api/id/#name).
+
+This works the same way in local development with `wrangler dev` as it does in production. Run `npm update wrangler` to ensure you are on a version with this support.
+
+For more information, refer to the [Durable Object ID documentation](https://developers.cloudflare.com/durable-objects/api/id/#name).
+
+Mar 12, 2026
+
+[<h2>SSH into running Container instances</h2>](https://developers.cloudflare.com/changelog/post/2026-03-12-ssh-support/)
+
+[Containers](https://developers.cloudflare.com/containers/)
+
+You can now SSH into running Container instances using Wrangler. This is useful for debugging, inspecting running processes, or executing one-off commands inside a Container.
+
+To connect, enable `wrangler_ssh` in your Container configuration and add your `ssh-ed25519` public key to `authorized_keys`:
+
+```jsonc
+{
+	"containers": [
+		{
+			"wrangler_ssh": {
+				"enabled": true
+			},
+			"authorized_keys": [
+				{
+					"name": "<NAME>",
+					"public_key": "<YOUR_PUBLIC_KEY_HERE>"
+				}
+			]
+		}
+	]
+}
+```
+
+```toml
+[[containers]]
+[containers.wrangler_ssh]
+enabled = true
+
+[[containers.authorized_keys]]
+name = "<NAME>"
+public_key = "<YOUR_PUBLIC_KEY_HERE>"
+```
+
+Then connect with:
+
+```sh
+wrangler containers ssh <INSTANCE_ID>
+```
+
+You can also run a single command without opening an interactive shell:
+
+```sh
+wrangler containers ssh <INSTANCE_ID> -- ls -al
+```
+
+Use `wrangler containers instances <APPLICATION>` to find the instance ID for a running Container.
+
+For more information, refer to the [SSH documentation](https://developers.cloudflare.com/containers/guides/ssh/).
+
+Mar 12, 2026
+
+[<h2>List Container instances with \`wrangler containers instances\`</h2>](https://developers.cloudflare.com/changelog/post/2026-03-12-wrangler-containers-instances/)
+
+[Containers](https://developers.cloudflare.com/containers/)
+
+A new [`wrangler containers instances`](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-instances) command lists all instances for a given Container application. This mirrors the instances view in the Cloudflare dashboard.
+
+The command displays each instance's ID, name, state, location, version, and creation time:
+
+```sh
+wrangler containers instances <APPLICATION_ID>
+```
+
+Use the `--json` flag for machine-readable output, which is also the default format in non-interactive environments such as CI pipelines.
+
+For the full list of options, refer to the [`containers instances` command reference](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-instances).
+
+Mar 12, 2026
+
+[<h2>Retry-After HTTP header for retryable 1xxx errors</h2>](https://developers.cloudflare.com/changelog/post/2026-03-12-retry-after-header-for-1xxx-errors/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+Cloudflare-generated 1xxx error responses now include a standard `Retry-After` HTTP header when the error is retryable. Agents and HTTP clients can read the recommended wait time from response headers alone — no body parsing required.
+
+#### Changes
+
+Seven retryable error codes now emit `Retry-After`:
+
+| Error code | Retry-After (seconds) | Error name |
+| --- | --- | --- |
+| 1004 | 120 | DNS resolution error |
+| 1005 | 120 | Banned zone |
+| 1015 | 30 | Rate limited |
+| 1033 | 120 | Argo Tunnel error |
+| 1038 | 60 | HTTP headers limit exceeded |
+| 1200 | 60 | Cache connection limit |
+| 1205 | 5 | Too many redirects |
+
+The header value matches the existing `retry_after` body field in JSON and Markdown responses.
+
+If a WAF rate limiting rule has already set a dynamic `Retry-After` value on the response, that value takes precedence.
+
+#### Availability
+
+Available for all zones on all plans.
+
+#### Verify
+
+Check for the header on any retryable error:
+
+```bash
+curl -s --compressed -D - -o /dev/null -H "Accept: application/json" -A "TestAgent/1.0" -H "Accept-Encoding: gzip, deflate" "<YOUR_DOMAIN>/cdn-cgi/error/1015" | grep -i retry-after
+```
+
+References:
+
+- [RFC 9110 section 10.2.3 - Retry-After ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-10.2.3)
+- [Cloudflare 1xxx error documentation](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/)
+
+Mar 12, 2026
+
+[<h2>WAF Release - 2026-03-12 - Emergency</h2>](https://developers.cloudflare.com/changelog/post/2026-03-12-emergency-waf-release/)
+
+[WAF](https://developers.cloudflare.com/waf/)
+
+This week's release introduces new detections for vulnerabilities in Ivanti Endpoint Manager Mobile (CVE-2026-1281 and CVE-2026-1340), alongside a new generic detection rule designed to identify and block Cross-Site Scripting (XSS) injection attempts within the `Content-Security-Policy` (CSP) HTTP request header.
+
+**Key Findings**
+
+- CVE-2026-1281 & CVE-2026-1340: Ivanti Endpoint Manager Mobile processes HTTP requests through Apache RevwriteMap directives that pass user-controlled input to Bash scripts ( `/mi/bin/map-appstore-url` and `/mi/bin/map-aft-store-url`). Bash scripts do not sanitize user input and are vulnerable to shell arithmetic expansion thereby allowing attackers to achieve unauthenticated remote code execution.
+- Generic XSS in CSP Header: This rule identifies malicious payloads embedded within the request's `Content-Security-Policy` header. It specifically targets scenarios where web frameworks or applications trust and extract values directly from the CSP header in the incoming request without sufficient validation. Attackers can provide crafted header values to inject scripts or malicious directives that are subsequently processed by the server.
+
+**Impact**
+
+Successful exploitation of Ivanti EPMM vulnerability allows unauthenticated remote code execution and generic XSS in CSP header allows attackers to inject malicious scripts during page rendering. In environments using server-side caching, this poisoned XSS content can subsequently be cached and automatically served to all visitors.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...796ea2f6 | N/A | Ivanti EPMM - Code Injection - CVE:CVE-2026-1281 CVE:CVE-2026-1340 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...ee964a8c | N/A | Anomaly:Header:Content-Security-Policy | N/A | Block | This is a new detection. |
+
+Mar 11, 2026
+
+[<h2>JSON responses and RFC 9457 support for Cloudflare 1xxx errors</h2>](https://developers.cloudflare.com/changelog/post/2026-03-11-json-rfc9457-responses-for-1xxx-errors/)
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+
+Cloudflare-generated 1xxx errors now return structured JSON when clients send `Accept: application/json` or `Accept: application/problem+json`. JSON responses follow [RFC 9457 (Problem Details for HTTP APIs) ↗︎](https://www.rfc-editor.org/rfc/rfc9457), so any HTTP client that understands Problem Details can parse the base members without Cloudflare-specific code.
+
+#### Breaking change
+
+The Markdown frontmatter field `http_status` has been renamed to `status`. Agents consuming Markdown frontmatter should update parsers accordingly.
+
+#### Changes
+
+**JSON format.** Clients sending `Accept: application/json` or `Accept: application/problem+json` now receive a structured JSON object with the same operational fields as Markdown frontmatter, plus RFC 9457 standard members.
+
+**RFC 9457 standard members (JSON only):**
+
+- `type` — URI pointing to Cloudflare documentation for the specific error code
+- `status` — HTTP status code (matching the response status)
+- `title` — short, human-readable summary
+- `detail` — human-readable explanation specific to this occurrence
+- `instance` — Ray ID identifying this specific error occurrence
+
+**Field renames:**
+
+- `http_status` -> `status` (JSON and Markdown)
+- `what_happened` -> `detail` (JSON only — Markdown prose sections are unchanged)
+
+**Content-Type mirroring.** Clients sending `Accept: application/problem+json` receive `Content-Type: application/problem+json; charset=utf-8` back; `Accept: application/json` receives `application/json; charset=utf-8`. Same body in both cases.
+
+#### Negotiation behavior
+
+| Request header sent | Response format |
+| --- | --- |
+| `Accept: application/json` | JSON (`application/json` content type) |
+| `Accept: application/problem+json` | JSON (`application/problem+json` content type) |
+| `Accept: application/json, text/markdown;q=0.9` | JSON |
+| `Accept: text/markdown` | Markdown |
+| `Accept: text/markdown, application/json` | Markdown (equal `q`, first-listed wins) |
+| `Accept: */*` | HTML (default) |
+
+#### Availability
+
+Available now for Cloudflare-generated 1xxx errors.
+
+#### Get started
+
+```bash
+curl -s --compressed -H "Accept: application/json" -A "TestAgent/1.0" -H "Accept-Encoding: gzip, deflate" "<YOUR_DOMAIN>/cdn-cgi/error/1015" | jq .
+```
+
+```bash
+curl -s --compressed -H "Accept: application/problem+json" -A "TestAgent/1.0" -H "Accept-Encoding: gzip, deflate" "<YOUR_DOMAIN>/cdn-cgi/error/1015" | jq .
+```
+
+References:
+
+- [RFC 9457 — Problem Details for HTTP APIs ↗︎](https://www.rfc-editor.org/rfc/rfc9457)
+- [Cloudflare 1xxx error documentation](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/)
+
+Mar 11, 2026
+
+[<h2>Ingest field selection for Log Explorer</h2>](https://developers.cloudflare.com/changelog/post/2026-03-11-ingest-field-selection/)
+
+[Log Explorer](https://developers.cloudflare.com/log-explorer/)
+
+Cloudflare Log Explorer now allows you to customize exactly which data fields are ingested and stored when enabling or managing log datasets.
+
+Previously, ingesting logs often meant taking an "all or nothing" approach to data fields. With **Ingest Field Selection**, you can now choose from a list of available and recommended fields for each dataset. This allows you to reduce noise, focus on the metrics that matter most to your security and performance analysis, and manage your data footprint more effectively.
+
+#### Key capabilities
+
+- **Granular control:** Select only the specific fields you need when enabling a new dataset.
+- **Dynamic updates:** Update fields for existing, already enabled logstreams at any time.
+- **Historical consistency:** Even if you disable a field later, you can still query and receive results for that field for the period it was captured.
+- **Data integrity:** Core fields, such as `Timestamp`, are automatically retained to ensure your logs remain searchable and chronologically accurate.
+
+#### Example configuration
+
+When configuring a dataset via the dashboard or API, you can define a specific set of fields. The `Timestamp` field remains mandatory to ensure data indexability.
+
+```json
+{
+  "dataset": "firewall_events",
+  "enabled": true,
+  "fields": [
+    "Timestamp",
+    "ClientRequestHost",
+    "ClientIP",
+    "Action",
+    "EdgeResponseStatus",
+    "OriginResponseStatus"
+  ]
+}
+```
+
+For more information, refer to the [Log Explorer documentation](https://developers.cloudflare.com/log-explorer/).
+
+Mar 11, 2026
+
+[<h2>NVIDIA Nemotron 3 Super now available on Workers AI</h2>](https://developers.cloudflare.com/changelog/post/2026-03-11-nemotron-3-super-workers-ai/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+We're excited to partner with NVIDIA to bring [`@cf/nvidia/nemotron-3-120b-a12b`](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/) to Workers AI. NVIDIA Nemotron 3 Super is a Mixture-of-Experts (MoE) model with a hybrid Mamba-transformer architecture, 120B total parameters, and 12B active parameters per forward pass.
+
+The model is optimized for running many collaborating agents per application. It delivers high accuracy for reasoning, tool calling, and instruction following across complex multi-step tasks.
+
+**Key capabilities:**
+
+- **Hybrid Mamba-transformer architecture** delivers over 50% higher token generation throughput compared to leading open models, reducing latency for real-world applications
+- **Tool calling** support for building AI agents that invoke tools across multiple conversation turns
+- **Multi-Token Prediction (MTP)** accelerates long-form text generation by predicting several future tokens simultaneously in a single forward pass
+- **32,000 token context window** for retaining conversation history and plan states across multi-step agent workflows
+
+Prompt caching
+
+For optimal performance with multi-turn conversations, send the `x-session-affinity` header with a unique session identifier to enable prompt caching. This routes requests to the same model instance, reducing latency and inference costs. For details, refer to [Prompt caching](https://developers.cloudflare.com/workers-ai/features/prompt-caching/).
+
+Use Nemotron 3 Super through the [Workers AI binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/) (`env.AI.run()`), the REST API at `/run` or `/v1/chat/completions`, or the [OpenAI-compatible endpoint](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+
+For more information, refer to the [Nemotron 3 Super model page](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/).
+
+Mar 10, 2026
+
+[<h2>WARP client for macOS (version 2026.3.566.1)</h2>](https://developers.cloudflare.com/changelog/post/2026-03-10-warp-macos-beta/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new Beta release for the macOS WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
+
+This release contains minor fixes and introduces a brand new visual style for the client interface. The new Cloudflare One Client interface changes connectivity management from a toggle to a button and brings useful connectivity settings to the home screen. The redesign also introduces a collapsible navigation bar. When expanded, more client information can be accessed including connectivity, settings, and device profile information. If you have any feedback or questions, visit the [Cloudflare Community forum](https://community.cloudflare.com/t/introducing-the-new-cloudflare-one-client-interface/901362) and let us know.
+
+**Changes and improvements**
+
+- Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+- Fixed an issue in proxy mode where the client could become unresponsive due to upstream connection timeouts.
+- Fixed emergency disconnect state from a previous organization incorrectly persisting after switching organizations.
+- Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+- Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+- Added monitoring for tunnel statistics collection timeouts.
+- Switched tunnel congestion control algorithm to Cubic for improved reliability across platforms.
+- Fixed initiating managed network detection checks when no network is available, which caused device profile flapping.
+
+**Known issues**
+
+- The client may become stuck in a `Connecting` state. To resolve this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface. Alternatively, change the client's operation mode.
+- The client may display an empty white screen upon the device waking from sleep. To resolve this issue, exit and then open the client to re-launch it.
+- Canceling login during a single MDM configuration setup results in an empty page with no way to resume authentication. To work around this issue, exit and relaunch the client.
+
+Mar 10, 2026
+
+[<h2>WARP client for Windows (version 2026.3.566.1)</h2>](https://developers.cloudflare.com/changelog/post/2026-03-10-warp-windows-beta/)
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+A new Beta release for the Windows WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
+
+This release contains minor fixes and introduces a brand new visual style for the client interface. The new Cloudflare One Client interface changes connectivity management from a toggle to a button and brings useful connectivity settings to the home screen. The redesign also introduces a collapsible navigation bar. When expanded, more client information can be accessed including connectivity, settings, and device profile information. If you have any feedback or questions, visit the [Cloudflare Community forum](https://community.cloudflare.com/t/introducing-the-new-cloudflare-one-client-interface/901362) and let us know.
+
+**Changes and improvements**
+
+- Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+- Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+- Added monitoring for tunnel statistics collection timeouts.
+- Switched tunnel congestion control algorithm to Cubic for improved reliability across platforms.
+- Fixed packet capture failing on tunnel interface when the tunnel interface is renamed by SCCM VPN boundary support.
+- Fixed unnecessary registration deletion caused by RDP connections in multi-user mode.
+- Fixed increased tunnel interface start-up time due to a race between duplicate address detection (DAD) and disabling NetBT.
+- Fixed tunnel failing to connect when the system DNS search list contains unexpected characters.
+- Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+- Fixed an issue in proxy mode where the client could become unresponsive due to upstream connection timeouts.
+- Fixed emergency disconnect state from a previous organization incorrectly persisting after switching organizations.
+- Fixed initiating managed network detection checks when no network is available, which caused device profile flapping.
+
+**Known issues**
+
+- The client may unexpectedly terminate during captive portal login. To work around this issue, use a web browser to authenticate with the captive portal and then re-launch the client.
+- An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
+- The client may become stuck in a `Connecting` state. To resolve this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface. Alternatively, change the client's operation mode.
+- The client may display an empty white screen upon the device waking from sleep. To resolve this issue, exit and then open the client to re-launch it.
+- Canceling login during a single MDM configuration setup results in an empty page with no way to resume authentication. To work around this issue, exit and relaunch the client.
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later. This warning will be omitted from future release notes. This Microsoft Security Intelligence update was released in May 2025.
+- DNS resolution may be broken when the following conditions are all true:
+  - The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while the client is connected. To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
+
+Mar 10, 2026
+
+[<h2>Audit logs (version 2) - General Availability</h2>](https://developers.cloudflare.com/changelog/post/2026-03-10-audit-logs-v2-ga/)
+
+[Audit Logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/)
+
+Audit Logs v2 is now generally available to all Cloudflare customers.
+
+![Audit Logs v2 GA](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=319,format=webp/_astro/auditlogsv2.C3pqAR33.gif)
+
+Audit Logs v2 provides a unified and standardized system for tracking and recording all user and system actions across Cloudflare products. Built on Cloudflare's API Shield / OpenAPI gateway, logs are generated automatically without requiring manual instrumentation from individual product teams, ensuring consistency across \~95% of Cloudflare products.
+
+**What's available at GA:**
+
+- **Standardized logging** — Audit logs follow a consistent format across all Cloudflare products, making it easier to search, filter, and investigate activity.
+- **Expanded product coverage** — \~95% of Cloudflare products covered, up from \~75% in v1.
+- **Granular filtering** — Filter by actor, action type, action result, resource, raw HTTP method, zone, and more. Over 20 filter parameters available via the API.
+- **Enhanced context** — Each log entry includes authentication method, interface (API or dashboard), Cloudflare Ray ID, and actor token details.
+- **18-month retention** — Logs are retained for 18 months. Full history is accessible via the API or Logpush.
+
+**Access:**
+
+- **Dashboard**: Go to **Manage Account** > **Audit Logs**. Audit Logs v2 is shown by default.
+- **API**: `GET https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/audit`
+- **Logpush**: Available via the `audit_logs_v2` account-scoped dataset.
+
+**Important notes:**
+
+- Approximately 30 days of logs from the Beta period (back to \~February 8, 2026) are available at GA. These Beta logs will expire on \~April 9, 2026. Logs generated after GA will be retained for the full 18 months. Older logs remain available in Audit Logs v1.
+- The UI query window is limited to 90 days for performance reasons. Use the API or Logpush for access to the full 18-month history.
+- `GET` requests (view actions) and `4xx` error responses are not logged at GA. `GET` logging will be selectively re-enabled for sensitive read operations in a future release.
+- Audit Logs v1 continues to run in parallel. A deprecation timeline will be communicated separately.
+- Before and after values — the ability to see what a value changed from and to — is a highly requested feature and is on our roadmap for a post-GA release. In the meantime, we recommend using Audit Logs v1 for before and after values. Audit Logs v1 will continue to run in parallel until this feature is available in v2.
+
+For more details, refer to the [Audit Logs v2 documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
+
+Mar 10, 2026
+
+[<h2>Crawl entire websites with a single API call using Browser Rendering</h2>](https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+*Edit: this post has been edited to clarify crawling behavior with respect to site guidance.*
+
+You can now crawl an entire website with a single API call using [Browser Rendering](https://developers.cloudflare.com/browser-run/)'s new [`/crawl` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/), available in open beta. Submit a starting URL, and pages are automatically discovered, rendered in a headless browser, and returned in multiple formats, including HTML, Markdown, and structured JSON. The endpoint is a [verified bot (intermediary agent)](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) that respects robots.txt and [AI Crawl Control ↗︎](https://www.cloudflare.com/ai-crawl-control/) by default, making it easy for developers to comply with website rules, and making it less likely for crawlers to ignore web-owner guidance. This is great for training models, building RAG pipelines, and researching or monitoring content across a site.
+
+Crawl jobs run asynchronously. You submit a URL, receive a job ID, and check back for results as pages are processed.
+
+```sh
+# Initiate a crawl
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://blog.cloudflare.com/"
+  }'
+
+# Check results
+curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/{job_id}' \
+  -H 'Authorization: Bearer <apiToken>'
+```
+
+Key features:
+
+- **Multiple output formats** - Return crawled content as HTML, Markdown, and structured JSON (powered by [Workers AI](https://developers.cloudflare.com/workers-ai/))
+- **Crawl scope controls** - Configure crawl depth, page limits, and wildcard patterns to include or exclude specific URL paths
+- **Automatic page discovery** - Discovers URLs from sitemaps, page links, or both
+- **Incremental crawling** - Use `modifiedSince` and `maxAge` to skip pages that haven't changed or were recently fetched, saving time and cost on repeated crawls
+- **Static mode** - Set `render: false` to fetch static HTML without spinning up a browser, for faster crawling of static sites
+- **Well-behaved bot** - Honors `robots.txt` directives, including `crawl-delay`
+
+Available on both the Workers Free and Paid plans.
+
+**Note**: the /crawl endpoint cannot bypass Cloudflare bot detection or captchas, and self-identifies as a bot.
+
+To get started, refer to the [crawl endpoint documentation](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/). If you are setting up your own site to be crawled, review the [robots.txt and sitemaps best practices](https://developers.cloudflare.com/browser-run/reference/robots-txt/).
+
+Mar 9, 2026
+
+[<h2>New Vulnerability Scanner for API Shield</h2>](https://developers.cloudflare.com/changelog/post/2026-03-09-vulnerability-scanner/)
+
+[API Shield](https://developers.cloudflare.com/api-shield/)
+
+Introducing Cloudflare's Web and API Vulnerability Scanner (Open Beta)
+
+Cloudflare is launching the [Open Beta of the **Web and API Vulnerability Scanner** ↗︎](https://blog.cloudflare.com/vulnerability-scanner) for all [API Shield](https://developers.cloudflare.com/api-shield/) customers. This new, stateful Dynamic Application Security Testing (DAST) platform helps teams proactively find logic flaws in their APIs.
+
+The initial release focuses on detecting Broken Object Level Authorization (BOLA) vulnerabilities by building API call graphs to simulate attacker and owner contexts, then testing these contexts by sending real HTTP requests to your APIs.
+
+The scanner is now available via the Cloudflare API. To scan, set up your target environment, owner and attacker credentials, and upload your OpenAPI file with response schemas. The scanner will be available in the Cloudflare dashboard in a future release.
+
+**Access**: This feature is only available to API Shield subscribers via the Cloudflare API. We hope you will use the API for programmatic integration into your CI/CD pipelines and security dashboards.
+
+**Documentation**: Refer to the [developer documentation](https://developers.cloudflare.com/api-shield/security/vulnerability-scanner/) to start scanning your endpoints today.
+
+Mar 9, 2026
+
+[<h2>New MCP Portal Logs dataset and new fields across multiple Logpush datasets in Cloudflare Logs</h2>](https://developers.cloudflare.com/changelog/post/2026-03-09-log-fields-updated/)
+
+[Logs](https://developers.cloudflare.com/logs/)
+
+Cloudflare has added new fields across multiple [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/):
+
+#### New dataset
+
+- **MCP Portal Logs**: A new dataset with fields including `ClientCountry`, `ClientIP`, `ColoCode`, `Datetime`, `Error`, `Method`, `PortalAUD`, `PortalID`, `PromptGetName`, `ResourceReadURI`, `ServerAUD`, `ServerID`, `ServerResponseDurationMs`, `ServerURL`, `SessionID`, `Success`, `ToolCallName`, `UserEmail`, and `UserID`.
+
+#### New fields in existing datasets
+
+- **DEX Application Tests**: `HTTPRedirectEndMs`, `HTTPRedirectStartMs`, `HTTPResponseBody`, and `HTTPResponseHeaders`.
+- **DEX Device State Events**: `ExperimentalExtra`.
+- **Firewall Events**: `FraudUserID`.
+- **Gateway HTTP**: `AppControlInfo` and `ApplicationStatuses`.
+- **Gateway DNS**: `InternalDNSDurationMs`.
+- **HTTP Requests**: `FraudEmailRisk`, `FraudUserID`, and `PayPerCrawlStatus`.
+- **Network Analytics Logs**: `DNSQueryName`, `DNSQueryType`, and `PFPCustomTag`.
+- **WARP Toggle Changes**: `UserEmail`.
+- **WARP Config Changes**: `UserEmail`.
+- **Zero Trust Network Session Logs**: `SNI`.
+
+For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
+
+Mar 6, 2026
+
+[<h2>Workflow steps now expose retry attempt number via step context</h2>](https://developers.cloudflare.com/changelog/post/2026-03-06-step-context-available/)
+
+[Workflows](https://developers.cloudflare.com/workflows/) [Workers](https://developers.cloudflare.com/workers/)
+
+Cloudflare Workflows allows you to configure specific retry logic for each step in your workflow execution. Now, you can access **which** retry attempt is currently executing for calls to `step.do()`:
+
+```ts
+await step.do("my-step", async (ctx) => {
+	// ctx.attempt is 1 on first try, 2 on first retry, etc.
+	console.log(`Attempt ${ctx.attempt}`);
+});
+```
+
+You can use the step context for improved logging & observability, progressive backoff, or conditional logic in your workflow definition.
+
+Note that the current attempt number is 1-indexed. For more information on retry behavior, refer to [Sleeping and Retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/).
+
+Mar 6, 2026
+
+[<h2>Region Filtering, AS Traffic Volume, and Navigation Improvements on Cloudflare Radar</h2>](https://developers.cloudflare.com/changelog/post/2026-03-06-radar-region-filtering-traffic-volume-navigation/)
+
+[Radar](https://developers.cloudflare.com/radar/)
+
+[**Radar**](https://developers.cloudflare.com/radar/) ships several new features that improve the flexibility and usability of the platform, as well as visibility into what is happening on the Internet.
+
+#### Region filtering
+
+All location-aware pages now support filtering by region, including continents, geographic subregions ([Middle East ↗︎](https://radar.cloudflare.com/middle-east), [Eastern Asia ↗︎](https://radar.cloudflare.com/eastern-asia), etc.), political regions ([EU ↗︎](https://radar.cloudflare.com/european-union), [African Union ↗︎](https://radar.cloudflare.com/african-union)), and US Census regions/divisions (for example, [New England ↗︎](https://radar.cloudflare.com/traffic/us-new-england), [US Northeast ↗︎](https://radar.cloudflare.com/traffic/us-northeast)).
+
+![Screenshot of region filtering on Radar - Middle east](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=1108,format=webp/_astro/region-filtering-middle-east.D__dYNBw.png)
+
+#### Traffic volume by top autonomous systems and locations
+
+A new traffic volume view shows the top autonomous systems and countries/territories for a given location. This is useful for quickly determining which network providers in a location may be experiencing connectivity issues, or how traffic is distributed across a region.
+
+![Screenshot of traffic volume by top autonomous systems in US](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=928,format=webp/_astro/traffic-volume-top-as-us.DhnbB8gy.png)
+
+The new AS and location dimensions have also been added to the [Data Explorer ↗︎](https://radar.cloudflare.com/explorer) for the HTTP, DNS, and NetFlows datasets. Combined with other available filters, this provides a powerful tool for generating unique insights.
+
+![Screenshot of AS and location dimensions in Data Explorer](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=1486,format=webp/_astro/data-explorer-top-as-pt.DAWOCd_b.png)
+
+Finally, breadcrumb navigation is now available on most pages, allowing easier navigation between parent and related pages.
+
+Check out these features on [Cloudflare Radar ↗︎](https://radar.cloudflare.com).
+
+Mar 6, 2026
+
+[<h2>Real-time transcription in RealtimeKit now supports 10 languages with regional variants</h2>](https://developers.cloudflare.com/changelog/post/2026-03-06-realtimekit-multilingual-transcription/)
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/) [Realtime](https://developers.cloudflare.com/realtime/)
+
+[Real-time transcription](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/) in RealtimeKit now supports 10 languages with regional variants, powered by [Deepgram Nova-3](https://developers.cloudflare.com/workers-ai/models/nova-3/) running on [Workers AI](https://developers.cloudflare.com/workers-ai/).
+
+During a meeting, participant audio is routed through [AI Gateway](https://developers.cloudflare.com/ai-gateway/) to Nova-3 on Workers AI — so transcription runs on Cloudflare's network end-to-end, reducing latency compared to routing through external speech-to-text services.
+
+Set the language when [creating a meeting](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/) via `ai_config.transcription.language`:
+
+```json
+{
+	"ai_config": {
+		"transcription": {
+			"language": "fr"
+		}
+	}
+}
+```
+
+Supported languages include English, Spanish, French, German, Hindi, Russian, Portuguese, Japanese, Italian, and Dutch — with regional variants like `en-AU`, `en-GB`, `en-IN`, `en-NZ`, `es-419`, `fr-CA`, `de-CH`, `pt-BR`, and `pt-PT`. Use `multi` for automatic multilingual detection.
+
+If you are building voice agents or real-time translation workflows, your agent can now transcribe in the caller's language natively — no extra services or routing logic needed.
+
+- [Transcription docs](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/)
+- [Nova-3 model page](https://developers.cloudflare.com/workers-ai/models/nova-3/)
+- [Workers AI](https://developers.cloudflare.com/workers-ai/)
+- [AI Gateway](https://developers.cloudflare.com/ai-gateway/)
+
+Mar 6, 2026
+
+[<h2>Dismiss and filter matches in Brand Protection</h2>](https://developers.cloudflare.com/changelog/post/2026-03-06-brand-protection-dismiss-match/)
+
+[Security Center](https://developers.cloudflare.com/security-center/)
+
+We have introduced new triage controls to help you manage your Brand Protection results more efficiently. You can now clear out the noise by dismissing matches while maintaining full visibility into your historical decisions.
+
+#### What's new
+
+- **Dismiss matches**: Users can now mark specific results as dismissed if they are determined to be benign or false positives, removing them from the primary triage view.
+- **Show/Hide toggle**: A new visibility control allows you to instantly switch between viewing only active matches and including previously dismissed ones.
+- **Persistent review states**: Dismissed status is saved across sessions, ensuring that your workspace remains organized and focused on new or high-priority threats.
+
+#### Key benefits of the dismiss match functionality:
+
+- Reduce alert fatigue by hiding known-safe results, allowing your team to focus exclusively on unreviewed or high-risk infringements.
+- Auditability and recovery through the visibility toggle, ensuring that no match is ever truly "lost" and can be re-evaluated if a site's content changes.
+- Improved collaboration as your team members can see which matches have already been vetted and dismissed by others.
+
+Ready to clean up your match queue? Learn more in our [Brand Protection documentation](https://developers.cloudflare.com/security-center/brand-protection/).
+
+Mar 4, 2026
+
+[<h2>Browser Rendering: 3x higher REST API request rate</h2>](https://developers.cloudflare.com/changelog/post/2026-03-04-br-rest-api-limit-increase/)
+
+[Browser Run](https://developers.cloudflare.com/browser-run/)
+
+[Browser Rendering](https://developers.cloudflare.com/browser-run/) REST API rate limits for Workers Paid plans have been increased from 3 requests per second (180/min) to **10 requests per second (600/min)**. No action is needed to benefit from the higher limit.
+
+![Browser Rendering REST API rate limit increased from 3 to 10 requests per second](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=916,height=85,format=webp/_astro/rest-api-limit-increase.DJHY7xYF.png)
+
+The [REST API](https://developers.cloudflare.com/browser-run/quick-actions/) lets you perform common browser tasks with a single API call, and you can now do it at a higher rate.
+
+- [/content - Fetch HTML](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/)
+- [/screenshot - Capture screenshot](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/)
+- [/pdf - Render PDF](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/)
+- [/markdown - Extract Markdown from a webpage](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/)
+- [/snapshot - Take a webpage snapshot](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/)
+- [/scrape - Scrape HTML elements](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/)
+- [/json - Capture structured data using AI](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/)
+- [/links - Retrieve links from a webpage](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/)
+
+If you use the [Browser Sessions](https://developers.cloudflare.com/browser-run/#integration-methods) method, increases to concurrent browser and new browser limits are coming soon. Stay tuned.
+
+For full details, refer to the [Browser Rendering limits page](https://developers.cloudflare.com/browser-run/limits/).
+
+Mar 4, 2026
+
+[<h2>User risk score selector in Access policies</h2>](https://developers.cloudflare.com/changelog/post/2026-03-04-user-risk-score-access-policies/)
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+You can now use [user risk scores](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) in your [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). The new **User Risk Score** selector allows you to create Access policies that respond to user behavior patterns detected by Cloudflare's risk scoring system, including impossible travel, high DLP policy matches, and more.
+
+For more information, refer to [Use risk scores in Access policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/#use-risk-scores-in-access-policies).
+
+Mar 4, 2026
+
+[<h2>Gateway Authorization Proxy and hosted PAC files (open beta)</h2>](https://developers.cloudflare.com/changelog/post/2026-03-04-gateway-authorization-proxy-open-beta/)
+
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+
+The [Gateway Authorization Proxy](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint) and [PAC file hosting](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#create-a-hosted-pac-file) are now in open beta for all plan types.
+
+Previously, [proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#source-ip-endpoint) relied on static source IP addresses to authorize traffic, providing no user-level identity in logs or policies. The new authorization proxy replaces IP-based authorization with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) authentication, verifying who a user is before applying Gateway filtering without installing the WARP client.
+
+This is ideal for environments where you cannot deploy a device client, such as virtual desktops (VDI), mergers and acquisitions, or compliance-restricted endpoints.
+
+#### Key capabilities
+
+- **Identity-aware proxy traffic** — Users authenticate through your identity provider (Okta, Microsoft Entra ID, Google Workspace, and others) via Cloudflare Access. Logs now show exactly which user accessed which site, and you can write [identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) like "only the Finance team can access this accounting tool."
+- **Multiple identity providers** — Display one or multiple login methods simultaneously, giving flexibility for organizations managing users across different identity systems.
+- **Cloudflare-hosted PAC files** — Create and host [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#create-a-hosted-pac-file) directly in Cloudflare One with pre-configured templates for Okta and Azure, hosted at `https://pac.cloudflare-gateway.com/<account-id>/<slug>` on Cloudflare's global network.
+- **Simplified billing** — Each user occupies a seat, exactly like they do with the Cloudflare One Client. No new metrics to track.
+
+#### Get started
+
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies** > **Proxy endpoints**.
+2. [Create an authorization proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint) and configure Access policies.
+3. [Create a hosted PAC file](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#create-a-hosted-pac-file) or write your own.
+4. [Configure browsers](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#3b-configure-browser-to-use-pac-file) to use the PAC file URL.
+5. [Install the Cloudflare certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) for HTTPS inspection.
+
+For more details, refer to the [proxy endpoints documentation](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) and the [announcement blog post ↗︎](https://blog.cloudflare.com/gateway-authorization-proxy-identity-aware-policies/).
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/changelog/26/#page","headline":"Changelogs","url":"https://developers.cloudflare.com/changelog/26/","inLanguage":"en","image":"https://developers.cloudflare.com/og-changelog.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

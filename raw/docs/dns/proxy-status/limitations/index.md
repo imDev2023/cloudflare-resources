@@ -1,0 +1,69 @@
+---
+description: Limitations when proxying DNS records through Cloudflare.
+title: Proxying limitations
+image: https://developers.cloudflare.com/dns/proxy-status/limitations/og.png?v=3a85ff2b41106be3
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Proxying limitations
+
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/proxy-status/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+This page describes expected limitations when proxying DNS records. For further information about proxying, refer to [How Cloudflare DNS works](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/).
+
+For guidance on when to proxy records and when to use DNS only, refer to [Use cases](https://developers.cloudflare.com/dns/proxy-status/use-cases/).
+
+## Proxy eligibility
+
+Only A, AAAA, and CNAME records that serve HTTP or HTTPS traffic can be proxied. Other DNS record types cannot be proxied.
+
+If you encounter a [CNAME record](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#cname) that you cannot proxy — usually associated with another CDN provider — a proxied version of that record will cause connectivity errors. Cloudflare is purposely preventing that record from being proxied to protect you from a misconfiguration.
+
+<details>
+
+<summary>
+
+Non-proxiable targets
+
+</summary>
+
+- Exact match:
+  - <code>dkim2.mcsv.net</code> (<a href="https://mailchimp.com/help/set-up-email-domain-authentication/">Mailchimp documentation ↗︎</a>)
+  - <code>dkim3.mcsv.net</code> (<a href="https://mailchimp.com/help/set-up-email-domain-authentication/">Mailchimp documentation ↗︎</a>)
+  - <code>zmverify.zoho.com</code> (<a href="https://www.zoho.com/mail/help/adminconsole/domain-verification.html">Zoho documentation ↗︎</a>)
+  - <code>dkim.infusionmail.com</code> (<a href="https://help.keap.com/help/dmarc">Keap documentation ↗︎</a>)
+- Exact match or subdomain of:
+  - <code>dkim.amazonses.com</code> (<a href="https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#just-verify-domain-proc">Amazon SES documentation ↗︎</a>)
+- Subdomain of:
+  - <code>onmicrosoft.com</code> (<a href="https://learn.microsoft.com/defender-office-365/email-authentication-dkim-configure">Microsoft documentation ↗︎</a>)
+  - <code>dkim.intercom.io</code> (<a href="https://www.intercom.com/help/articles/9744849-connect-your-email-support-channel">Intercom documentation ↗︎</a>)
+  - <code>acm-validations.aws</code> (<a href="https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html">AWS certificate manager documentation ↗︎</a>)
+
+</details>
+
+### Pre-signed DNSSEC
+
+If you use Cloudflare as your [secondary DNS provider](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) and leverage [Secondary DNS Overrides](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/) to set records to proxied, note that opting for [Pre-signed DNSSEC](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/) will cause Cloudflare to treat your records as DNS-only.
+
+## Ports and protocols
+
+To proxy HTTP/HTTPS traffic on [non-standard ports](https://developers.cloudflare.com/fundamentals/reference/network-ports/) or to proxy a TCP or UDP based application, use [Cloudflare Spectrum](https://developers.cloudflare.com/spectrum/).
+
+## Pending domains
+
+When you [add a domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare, Cloudflare protection will be in a [pending state](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) until we can verify ownership. This could take up to 24 hours to complete.
+
+This means that DNS records — even those set to [proxy traffic through Cloudflare](#proxy-eligibility) — will be [DNS-only](https://developers.cloudflare.com/dns/proxy-status/#dns-only-records) until your zone has been activated and any requests to your DNS records will return your origin server's IP address.
+
+If this warning is still present after 24 hours, refer to [Troubleshooting](https://developers.cloudflare.com/dns/troubleshooting/).
+
+For enhanced security, we recommend rolling your origin IP addresses at your hosting provider after your zone has been activated. This action prevents your origin IPs from being leaked during onboarding.
+
+## Windows authentication
+
+Because Microsoft Integrated Windows Authentication, NTLM, and Kerberos violate HTTP/1.1 specifications, they are not compatible with proxied DNS records. NTLM authenticates at the TCP connection level (Layer 4), and Cloudflare does not guarantee that consecutive requests from the same client reuse the same TCP connection to the origin. This can cause repeated authentication prompts or authentication loops.

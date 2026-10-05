@@ -1,0 +1,241 @@
+---
+description: Set up per-hostname Authenticated Origin Pulls with custom certificates.
+title: Per-hostname
+image: https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/og.png?v=7ec41ab3de451b9f
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Per-hostname
+
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+When you enable per-hostname Authenticated Origin Pulls (AOP), all proxied traffic to the specified hostname is authenticated at the origin web server using a certificate that you upload. You can use client certificates from your Private PKI to authenticate connections from Cloudflare.
+
+[Global](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/), [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/), and per-hostname AOP are independent configurations. Enabling or disabling one does not affect the others. Per-hostname certificates take precedence over zone-level and global certificates for the specified hostname.
+
+## Before you begin
+
+Warning
+
+It is not possible to set up per-hostname authenticated origin pulls with the Cloudflare-provided certificate used by [global AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/). You must upload your own certificate.
+
+Refer to the steps below for an example of how to generate a custom certificate using OpenSSL. The CA root certificate that you use to issue the custom certificate should be the same CA that you will [upload to your origin](#2-configure-origin-to-accept-client-certificates).
+
+<details>
+
+<summary>
+
+OpenSSL example
+
+</summary>
+
+1. Run the following command to generate a 4096-bit RSA private key, using AES-256 encryption. Enter a passphrase when prompted.
+
+```bash
+openssl genrsa -aes256 -out rootca.key 4096
+```
+
+2. Create the CA root certificate. When prompted, fill in the information to be included in the certificate. For the <code>Common Name</code> field, use the domain name as value, not the hostname.
+
+```bash
+openssl req -x509 -new -nodes -key rootca.key -sha256 -days 1826 -out rootca.crt
+```
+
+3. Create a Certificate Signing Request (CSR). When prompted, fill in the information to be included in the request. For the <code>Common Name</code> field, use the hostname as value.
+
+```bash
+openssl req -new -nodes -out cert.csr -newkey rsa:4096 -keyout cert.key
+```
+
+4. Sign the certificate using the <code>rootca.key</code> and <code>rootca.crt</code> created in previous steps.
+
+```bash
+openssl x509 -req -in cert.csr -CA rootca.crt -CAkey rootca.key -CAcreateserial -out cert.crt -days 730 -sha256 -extfile ./cert.v3.ext
+```
+
+5. Make sure the certificate extensions file <code>cert.v3.ext</code> specifies the following:
+
+```plaintext
+basicConstraints=CA:FALSE
+```
+
+</details>
+
+## 1. Upload custom certificate
+
+1. Go to the **Origin Server** page. [Go to **Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+2. Select the **Authenticated Origin Pulls** tab.
+3. In the **Per-hostname** section, select **Upload certificate**.
+4. Paste the certificate and private key, then select **Continue**.
+
+   Note
+
+   You must upload a [leaf certificate](https://developers.cloudflare.com/ssl/concepts/#chain-of-trust). If you upload a root CA instead, the upload will fail.
+5. Review your certificate details, save the certificate ID for future reference, and select **Continue**.
+6. On the **Associate Hostnames** page, enter the fully qualified domain name that should use this certificate and select **Add** for each one. You can also skip this step and associate hostnames later.
+7. Select **Save** to confirm.
+
+Use the [Upload a Hostname Client Certificate](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostname_certificates/methods/create/) endpoint to upload your custom certificate.
+
+Note
+
+You must upload a [leaf certificate](https://developers.cloudflare.com/ssl/concepts/#chain-of-trust). If you upload a root CA instead, the API will return a `missing leaf certificate` error.
+
+```bash
+MYCERT="$(cat cert.crt|perl -pe 's/\r?\n/\\n/'|sed -e 's/..$//')"
+MYKEY="$(cat cert.key|perl -pe 's/\r?\n/\\n/'|sed -e's/..$//')"
+
+request_body=$(< <(cat <<EOF
+{
+"certificate": "$MYCERT",
+"private_key": "$MYKEY",
+"bundle_method":"ubiquitous"
+}
+EOF
+))
+
+# Push the certificate
+
+curl --silent \
+"https://api.cloudflare.com/client/v4/zones/$ZONEID/origin_tls_client_auth/hostnames/certificates" \
+--header "Content-Type: application/json" \
+--header "X-Auth-Email: $MYAUTHEMAIL" \
+--header "X-Auth-Key: $MYAUTHKEY" \
+--data "$request_body"
+```
+
+In the API response, save the certificate `id` since it will be required in step 3.
+
+## 2. Configure origin to accept client certificates
+
+With the certificate installed, set up your origin web server to accept client certificates.
+
+Check the examples below for Apache and NGINX or refer to your origin web server documentation - for example, [HAProxy ↗︎](https://www.haproxy.com/documentation/hapee/latest/security/authentication/client-certificate-authentication/), [Traefik ↗︎](https://doc.traefik.io/traefik/https/tls/#client-authentication-mtls), [Caddy ↗︎](https://caddyserver.com/docs/json/apps/http/servers/tls_connection_policies/client_authentication/mode/).
+
+<details>
+
+<summary>
+
+Apache example
+
+</summary>
+
+```txt
+SSLCACertificateFile /path/to/origin-pull-ca.pem
+```
+
+For this example, you would have saved your certificate to <code>/path/to/origin-pull-ca.pem</code>.
+
+</details>
+
+<details>
+
+<summary>
+
+NGINX example
+
+</summary>
+
+```txt
+ssl_verify_client optional;
+ssl_client_certificate /etc/nginx/certs/cloudflare.crt;
+```
+
+For this example, you would have saved your certificate to <code>/etc/nginx/certs/cloudflare.crt</code>.
+
+</details>
+
+At this point, you may also want to enable logging on your origin so that you can verify the configuration is working.
+
+## 3. Enable Authenticated Origin Pulls for the hostname
+
+Note
+
+For per-hostname AOP, the enablement happens as you associate a hostname. If you had already associated hostnames as you uploaded the certificate, you can skip this step.
+
+1. Go to the **Origin Server** page. [Go to **Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+2. Select the **Authenticated Origin Pulls** tab.
+3. In the **Per-hostname** section, find the certificate that should be used and associate the hostname with it.
+
+If you had set up logging on your origin during step 2, test and confirm that Authenticated Origin Pulls is working.
+
+Use the [Enable or Disable a Hostname for Client Authentication](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostnames/methods/update/) endpoint to enable Authenticated Origin Pulls for specific hostnames.
+
+If you had set up logging on your origin during step 2, test and confirm that Authenticated Origin Pulls is working.
+
+## 4. Enforce validation check on your origin
+
+Once you can confirm everything is working as expected for your specific origin setup, configure your origin to enforce the authentication.
+
+<details>
+
+<summary>
+
+Apache example
+
+</summary>
+
+```txt
+SSLVerifyClient require
+```
+
+</details>
+
+<details>
+
+<summary>
+
+NGINX example
+
+</summary>
+
+```txt
+ssl_verify_client on;
+```
+
+</details>
+
+After completing the process, you can use `curl` to send requests directly to your origin IPs, verifying that the requests fail due to certificate validation being enforced.
+
+## 5. (Optional) Set up expiration alerts
+
+You can configure alerts to receive notifications before your AOP certificates expire.
+
+<details>
+
+<summary>
+
+Hostname-level Authenticated Origin Pulls Certificate Expiration Alert
+
+</summary>
+
+**Who is it for?**
+
+Customers that upload their own certificate to use with hostname-level Authenticated Origin Pull (AOP) to secure connections from Cloudflare to their origin server. AOP certificate expiration notifications are sent 30 days and 14 days before the certificate expiry.
+
+**Other options / filters**
+
+None.
+
+**Included with**
+
+Authenticated Origin Pull.
+
+**What should you do if you receive one?**
+
+Upload a renewed certificate to use for <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/">hostname-level AOP</a>.
+
+</details>
+
+Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
+
+## Further options
+
+Refer to [Manage certificates](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/manage-certificates/) for further options.
+
+To learn how to remove the configuration, refer to [Rollback](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/rollback/).

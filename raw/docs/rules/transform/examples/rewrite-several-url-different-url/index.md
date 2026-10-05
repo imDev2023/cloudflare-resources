@@ -1,0 +1,33 @@
+---
+description: Create a URL rewrite rule (part of Transform Rules) to rewrite any requests for `/images/<FOLDER1>/<FOLDER2>/<FILENAME>` to `/img/<FILENAME>`.
+title: Rewrite image paths with several URL segments
+image: https://developers.cloudflare.com/rules/transform/examples/rewrite-several-url-different-url/og.png?v=6e1277e3f0d9d044
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Rewrite image paths with several URL segments
+
+Create a URL rewrite rule (part of Transform Rules) to rewrite any requests for `/images/<FOLDER1>/<FOLDER2>/<FILENAME>` to `/img/<FILENAME>`.
+
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/examples/rewrite-several-url-different-url/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+To rewrite paths like `/images/<FOLDER1>/<FOLDER2>/<FILENAME>` — where `<FOLDER1>`, `<FOLDER2>`, and `<FILENAME>` can vary — to `/img/<FILENAME>`, create a URL rewrite rule with a dynamic rewrite of the path component:
+
+Text in **Expression Editor**:
+
+```txt
+http.request.uri.path ~ "^/images/[^/]+/[^/]+/[^/]+$"
+```
+
+Text after **Path** > **Rewrite to** > *Dynamic*:
+
+```txt
+regex_replace(http.request.uri.path, "^/images/[^/]+/[^/]+/(.+)$", "/img/${1}")
+```
+
+For example, this rule would rewrite the `/images/nature/animals/tiger.png` path to `/img/tiger.png`.
