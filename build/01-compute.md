@@ -851,6 +851,15 @@ Sources: https://developers.cloudflare.com/durable-objects/best-practices/rules-
 
 Sources: https://developers.cloudflare.com/agents/platform/limits/, https://developers.cloudflare.com/workers/platform/storage-options/, https://developers.cloudflare.com/workers/cache/limitations/, https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/, https://developers.cloudflare.com/workers/previews/
 
+### Code updates in practice (observed 2026-10-29)
+
+- The lifecycle page says a deploy shuts down and restarts every Durable Object, eventually consistently, and the known-issues page puts the overlap with the previous version at "typically seconds to minutes".
+- Observed in the Top-pad (Heat) project, issue #44: an indexer object kept alive by an outbound WebSocket (a `fetch()` upgrade to an RPC node) and a 15-second alarm went on running the previous version for over ten minutes and across a second deploy, while the Worker that called it ran the new one.
+- `wrangler deploy` (and `wrangler versions deploy`) takes `--durable-objects-code-update-mode`, "immediate, or deferred followed by a maximum delay (for example, deferred 30s)"; deploying with `immediate` moved that object to the new version at once.
+- A guard that does not depend on the deploy flag: bind `version_metadata` (`env.CF_VERSION_METADATA.id`), have the Worker pass its version on each call, and have the object call `this.ctx.abort()` when its own version differs, so the runtime restarts it on the current one.
+
+Sources: https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/, https://developers.cloudflare.com/durable-objects/platform/known-issues/, https://developers.cloudflare.com/workers/wrangler/commands/workers/, https://developers.cloudflare.com/durable-objects/api/state/, https://github.com/imDev2023/top-pad/issues/44
+
 ### Most useful pages
 
 - [Overview](https://developers.cloudflare.com/durable-objects/) - entry point
@@ -1047,6 +1056,8 @@ Sources: https://developers.cloudflare.com/workflows/build/workers-api/, https:/
 Make API and binding calls idempotent; make steps granular; do not rely on state outside a step; avoid side effects outside `step.do`; do not mutate incoming events; name steps deterministically; take care with `Promise.race()` and `Promise.any()`; instance IDs are unique; always `await` steps; use conditional logic carefully; batch multiple invocations; keep step timeouts at 30 minutes or less (use `waitForEvent` beyond that); keep non-stream step return values under 1 MiB.
 
 Sources: https://developers.cloudflare.com/workflows/build/rules-of-workflows/
+
+Observed in practice (2026-10-29, Top-pad #44, wrangler 4.154): `step.sleepUntil()` with a time already past throws ("You can't sleep until a time in the past"), so a Workflow started late must skip the sleep; `wrangler dev` runs Workflows locally and lists their instances at `/cdn-cgi/local/explorer/api/workflows/<name>/instances`; deployed instances list with `wrangler workflows instances list <name>`.
 
 ### Limits (as of 2026-10-05)
 
